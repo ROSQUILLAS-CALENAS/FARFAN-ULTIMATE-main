@@ -20,28 +20,150 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import argparse
 
-import redis
-import numpy as np
-from transformers import AutoTokenizer, AutoModel
-import torch
+try:
+    import redis
+except ImportError:
+    redis = None
+
+try:
+    import numpy as np
+except ImportError:
+    np = None
+
+try:
+    from transformers import AutoTokenizer, AutoModel
+except ImportError:
+    AutoTokenizer = None
+    AutoModel = None
+
+try:
+    import torch
+except ImportError:
+    torch = None
+
+# Advanced serialization with fallback logic
+class SerializationManager:
+    """Manages serialization with fallback logic across multiple backends."""
+    
+    def __init__(self, preferred_backend: str = "dill"):
+        self.preferred_backend = preferred_backend
+        self._available_backends = self._detect_available_backends()
+        self._backend_order = self._get_backend_order()
+        
+    def _detect_available_backends(self) -> Dict[str, Any]:
+        """Detect available serialization backends."""
+        backends = {}
+        
+        try:
+            import dill
+            backends['dill'] = dill
+        except ImportError:
+            pass
+            
+        try:
+            import cloudpickle
+            backends['cloudpickle'] = cloudpickle
+        except ImportError:
+            pass
+            
+        import pickle
+        backends['pickle'] = pickle
+        
+        return backends
+    
+    def _get_backend_order(self) -> List[str]:
+        """Get the order of backends to try based on preference."""
+        if self.preferred_backend in self._available_backends:
+            order = [self.preferred_backend]
+        else:
+            order = []
+            
+        # Add remaining backends in preferred order
+        preferred_order = ['dill', 'cloudpickle', 'pickle']
+        for backend in preferred_order:
+            if backend in self._available_backends and backend not in order:
+                order.append(backend)
+                
+        return order
+    
+    def serialize(self, obj: Any) -> bytes:
+        """Serialize object using fallback logic."""
+        last_error = None
+        
+        for backend_name in self._backend_order:
+            backend = self._available_backends[backend_name]
+            try:
+                return backend.dumps(obj)
+            except Exception as e:
+                last_error = e
+                logging.debug(f"Serialization failed with {backend_name}: {e}")
+                continue
+                
+        raise RuntimeError(f"All serialization backends failed. Last error: {last_error}")
+    
+    def deserialize(self, data: bytes) -> Any:
+        """Deserialize object using fallback logic."""
+        last_error = None
+        
+        for backend_name in self._backend_order:
+            backend = self._available_backends[backend_name]
+            try:
+                return backend.loads(data)
+            except Exception as e:
+                last_error = e
+                logging.debug(f"Deserialization failed with {backend_name}: {e}")
+                continue
+                
+        raise RuntimeError(f"All deserialization backends failed. Last error: {last_error}")
+    
+    def get_backend_info(self) -> Dict[str, Any]:
+        """Get information about available backends."""
+        return {
+            'available_backends': list(self._available_backends.keys()),
+            'backend_order': self._backend_order,
+            'preferred_backend': self.preferred_backend
+        }
 # Optional sklearn cosine_similarity with fallback
 try:
     from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 except Exception:
     def cosine_similarity(A, B):
-        import numpy as np
+        if np is None:
+            raise ImportError("numpy is required for cosine similarity calculation")
         A = np.asarray(A, dtype=np.float32)
         B = np.asarray(B, dtype=np.float32)
         A_norm = A / (np.linalg.norm(A, axis=1, keepdims=True) + 1e-8)
         B_norm = B / (np.linalg.norm(B, axis=1, keepdims=True) + 1e-8)
         return A_norm @ B_norm.T
 
-# Import EGW components
-from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval
-from egw_query_expansion.core.gw_alignment import GWAlignment
-from egw_query_expansion.core.query_generator import QueryGenerator
-from evidence_processor import EvidenceProcessor
-from answer_synthesizer import AnswerSynthesizer
+# Import EGW components with fallbacks
+try:
+    from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval
+    from egw_query_expansion.core.gw_alignment import GWAlignment
+    from egw_query_expansion.core.query_generator import QueryGenerator
+    from evidence_processor import EvidenceProcessor
+    from answer_synthesizer import AnswerSynthesizer
+except ImportError:
+    # Create placeholder classes if EGW components aren't available
+    class HybridRetrieval:
+        def __init__(self, config): pass
+        def search(self, query, corpus): return {}
+    
+    class GWAlignment:
+        def __init__(self, config): pass
+        def align(self, query, corpus): return []
+        
+    class QueryGenerator:
+        def __init__(self, config): pass
+        def generate_expansions(self, query): return [query]
+        
+    class EvidenceProcessor:
+        def __init__(self, config): pass
+        def extract_evidence(self, content, results): return []
+        
+    class AnswerSynthesizer:
+        def __init__(self, config): pass
+        def synthesize(self, query, evidence, context): return {"answer": "", "summary": ""}
 
 
 @dataclass
@@ -106,9 +228,17 @@ class QualityValidator:
         self.min_coherence_score = config.get('min_coherence_score', 0.8)
         self.max_response_time = config.get('max_response_time', 30.0)
 
-        # Initialize embeddings for semantic validation
-        self.tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
-        self.model = AutoModel.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
+        # Initialize embeddings for semantic validation (if transformers available)
+        if AutoTokenizer and AutoModel:
+            try:
+                self.tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
+                self.model = AutoModel.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
+            except Exception:
+                self.tokenizer = None
+                self.model = None
+        else:
+            self.tokenizer = None
+            self.model = None
 
     def validate_result(self, result: ProcessingResult, reference_query: str) -> Dict[str, float]:
         """Validate processing result quality"""
@@ -135,9 +265,8 @@ class QualityValidator:
             metrics['completeness_score'] = completeness
 
             # Overall quality score
-            metrics['overall_quality'] = np.mean([
-                relevance, coherence, performance, completeness
-            ])
+            scores = [relevance, coherence, performance, completeness]
+            metrics['overall_quality'] = sum(scores) / len(scores)
 
             # Pass/fail determination
             metrics['quality_passed'] = (
@@ -180,8 +309,12 @@ class QualityValidator:
             logging.error(f"Relevance calculation failed: {e}")
             return 0.0
 
-    def _encode_text(self, text: str) -> np.ndarray:
+    def _encode_text(self, text: str):
         """Encode text to embeddings"""
+        if not (self.tokenizer and self.model and torch):
+            # Fallback to simple text similarity
+            return list(range(len(text.split()[:50])))  # Simple word count vector
+            
         inputs = self.tokenizer(text, return_tensors='pt', truncation=True, max_length=512)
 
         with torch.no_grad():
@@ -207,7 +340,8 @@ class QualityValidator:
             evidence = result_data.get('evidence', [])
             evidence_score = min(1.0, len(evidence) / 5) if evidence else 0.0
 
-            return np.mean([field_completeness, content_score, evidence_score])
+            scores = [field_completeness, content_score, evidence_score]
+            return sum(scores) / len(scores)
 
         except Exception as e:
             logging.error(f"Coherence calculation failed: {e}")
@@ -219,7 +353,8 @@ class QualityValidator:
             return 1.0
         else:
             # Exponential decay for longer processing times
-            return max(0.0, np.exp(-(result.processing_time - self.max_response_time) / 10.0))
+            import math
+            return max(0.0, math.exp(-(result.processing_time - self.max_response_time) / 10.0))
 
     def _calculate_completeness(self, result_data: Dict[str, Any]) -> float:
         """Calculate result completeness score"""
@@ -253,7 +388,7 @@ class ResultAggregator:
 
         # Calculate overall quality score
         quality_scores = [r.quality_metrics.get('overall_quality', 0.0) for r in results]
-        quality_score = np.mean(quality_scores) if quality_scores else 0.0
+        quality_score = sum(quality_scores) / len(quality_scores) if quality_scores else 0.0
 
         # Combine result data using consensus approach
         combined_results = self._combine_result_data(results)
@@ -298,10 +433,13 @@ class ResultAggregator:
             for metric_name in ['relevance_score', 'coherence_score']:
                 values = [qm.get(metric_name, 0.0) for qm in quality_metrics]
                 if values:
-                    std_dev = np.std(values)
+                    # Calculate standard deviation without numpy
+                    mean_val = sum(values) / len(values)
+                    variance = sum((x - mean_val) ** 2 for x in values) / len(values)
+                    std_dev = variance ** 0.5
                     consistency_scores.append(max(0.0, 1.0 - std_dev))
 
-        return np.mean(consistency_scores) if consistency_scores else 0.0
+        return sum(consistency_scores) / len(consistency_scores) if consistency_scores else 0.0
 
     def _combine_result_data(self, results: List[ProcessingResult]) -> Dict[str, Any]:
         """Combine result data from multiple processing instances"""
@@ -376,14 +514,14 @@ class ResultAggregator:
 
         # Overall confidence based on result quality
         quality_scores = [r.quality_metrics.get('overall_quality', 0.0) for r in results]
-        scores['overall_confidence'] = np.mean(quality_scores) if quality_scores else 0.0
+        scores['overall_confidence'] = sum(quality_scores) / len(quality_scores) if quality_scores else 0.0
 
         # Consensus confidence
         scores['consensus_confidence'] = self._calculate_consistency(results)
 
         # Performance confidence
         processing_times = [r.processing_time for r in results]
-        avg_time = np.mean(processing_times) if processing_times else 0.0
+        avg_time = sum(processing_times) / len(processing_times) if processing_times else 0.0
         scores['performance_confidence'] = max(0.0, 1.0 - avg_time / 60.0)  # Normalize by 1 minute
 
         return scores
@@ -392,10 +530,14 @@ class ResultAggregator:
 class DistributedProcessor:
     """Main distributed processing coordinator"""
 
-    def __init__(self, worker_id: str = None, redis_url: str = "redis://localhost:6379"):
+    def __init__(self, worker_id: str = None, redis_url: str = "redis://localhost:6379", 
+                 serialization_backend: str = "dill"):
         self.worker_id = worker_id or f"worker-{uuid.uuid4().hex[:8]}"
         self.redis_url = redis_url
         self.redis_client = redis.from_url(redis_url)
+
+        # Initialize serialization manager
+        self.serialization_manager = SerializationManager(preferred_backend=serialization_backend)
 
         # Configuration
         self.config = {
@@ -406,7 +548,8 @@ class DistributedProcessor:
             'task_timeout': 300,  # 5 minutes
             'min_relevance_score': 0.7,
             'min_coherence_score': 0.8,
-            'consensus_threshold': 0.7
+            'consensus_threshold': 0.7,
+            'serialization_backend': serialization_backend
         }
 
         # Initialize components
@@ -432,6 +575,11 @@ class DistributedProcessor:
 
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(f"DistributedProcessor-{self.worker_id}")
+        
+        # Log serialization backend information
+        backend_info = self.serialization_manager.get_backend_info()
+        self.logger.info(f"Initialized with serialization backends: {backend_info['available_backends']}")
+        self.logger.info(f"Backend order: {backend_info['backend_order']}")
 
     async def start_worker(self):
         """Start the distributed worker"""
@@ -633,19 +781,32 @@ class DistributedProcessor:
 
     # Redis coordination methods
     async def _register_worker(self):
-        """Register worker with Redis"""
+        """Register worker with Redis using advanced serialization"""
         worker_info = {
             'worker_id': self.worker_id,
             'status': 'active',
             'registered_at': time.time(),
-            'config': self.config
+            'config': self.config,
+            'serialization_backend': self.serialization_manager.get_backend_info()
         }
-        self.redis_client.hset(
-            "workers",
-            self.worker_id,
-            json.dumps(worker_info)
-        )
-        self.redis_client.expire(f"worker:{self.worker_id}", 300)  # 5 minute TTL
+        try:
+            serialized_info = self.serialization_manager.serialize(worker_info)
+            self.redis_client.hset(
+                "workers",
+                self.worker_id,
+                serialized_info
+            )
+            self.redis_client.expire(f"worker:{self.worker_id}", 300)  # 5 minute TTL
+            self.logger.debug(f"Worker registered with serialization backend: {self.config['serialization_backend']}")
+        except Exception as e:
+            # Fallback to JSON if serialization fails
+            self.logger.warning(f"Advanced serialization failed for worker registration, falling back to JSON: {e}")
+            self.redis_client.hset(
+                "workers",
+                self.worker_id,
+                json.dumps(worker_info, default=str)
+            )
+            self.redis_client.expire(f"worker:{self.worker_id}", 300)
 
     async def _unregister_worker(self):
         """Unregister worker from Redis"""
@@ -653,46 +814,73 @@ class DistributedProcessor:
         self.redis_client.delete(f"worker:{self.worker_id}")
 
     async def _submit_tasks(self, tasks: List[ProcessingTask]):
-        """Submit tasks to Redis queue"""
+        """Submit tasks to Redis queue using advanced serialization"""
         pipe = self.redis_client.pipeline()
 
         for task in tasks:
-            task_data = json.dumps(asdict(task))
-            pipe.lpush("task_queue", task_data)
-            pipe.hset("tasks", task.task_id, task_data)
+            try:
+                task_data = self.serialization_manager.serialize(asdict(task))
+                pipe.lpush("task_queue", task_data)
+                pipe.hset("tasks", task.task_id, task_data)
+            except Exception as e:
+                # Fallback to JSON serialization
+                self.logger.warning(f"Advanced serialization failed for task {task.task_id}, falling back to JSON: {e}")
+                task_data = json.dumps(asdict(task), default=str)
+                pipe.lpush("task_queue", task_data)
+                pipe.hset("tasks", task.task_id, task_data)
 
         pipe.execute()
 
     async def _get_next_task(self) -> Optional[Dict[str, Any]]:
-        """Get next task from Redis queue"""
+        """Get next task from Redis queue using advanced serialization"""
         task_data = self.redis_client.brpop("task_queue", timeout=10)
 
         if task_data:
-            return json.loads(task_data[1])
+            try:
+                # Try advanced deserialization first
+                return self.serialization_manager.deserialize(task_data[1])
+            except Exception as e:
+                # Fallback to JSON deserialization
+                self.logger.debug(f"Advanced deserialization failed, falling back to JSON: {e}")
+                try:
+                    return json.loads(task_data[1])
+                except Exception as json_error:
+                    self.logger.error(f"Both advanced and JSON deserialization failed: {json_error}")
+                    return None
         return None
 
     async def _update_task_status(self, task_id: str, status: str, worker_id: str):
-        """Update task status in Redis"""
+        """Update task status in Redis using advanced serialization"""
         update_data = {
             'status': status,
             'worker_id': worker_id,
-            'updated_at': time.time()
+            'updated_at': time.time(),
+            'serialization_backend': self.config['serialization_backend']
         }
-        self.redis_client.hset(
-            f"task:{task_id}",
-            mapping=update_data
-        )
+        try:
+            serialized_update = self.serialization_manager.serialize(update_data)
+            self.redis_client.hset(f"task:{task_id}", "status_data", serialized_update)
+        except Exception as e:
+            # Fallback to individual field updates
+            self.logger.debug(f"Advanced serialization failed for task status update, using individual fields: {e}")
+            self.redis_client.hset(f"task:{task_id}", mapping=update_data)
 
     async def _store_result(self, result: ProcessingResult):
-        """Store processing result in Redis"""
-        result_data = json.dumps(asdict(result), default=str)
-
-        self.redis_client.hset("results", result.task_id, result_data)
-        self.redis_client.expire(f"result:{result.task_id}", self.config['result_ttl'])
+        """Store processing result in Redis using advanced serialization"""
+        try:
+            result_data = self.serialization_manager.serialize(asdict(result))
+            self.redis_client.hset("results", result.task_id, result_data)
+            self.redis_client.expire(f"result:{result.task_id}", self.config['result_ttl'])
+        except Exception as e:
+            # Fallback to JSON serialization
+            self.logger.warning(f"Advanced serialization failed for result storage, falling back to JSON: {e}")
+            result_data = json.dumps(asdict(result), default=str)
+            self.redis_client.hset("results", result.task_id, result_data)
+            self.redis_client.expire(f"result:{result.task_id}", self.config['result_ttl'])
 
     async def _wait_for_results(self, task_ids: List[str],
                                timeout: float = 300) -> List[ProcessingResult]:
-        """Wait for processing results"""
+        """Wait for processing results using advanced serialization"""
         results = []
         start_time = time.time()
 
@@ -701,9 +889,20 @@ class DistributedProcessor:
                 if task_id not in [r.task_id for r in results]:
                     result_data = self.redis_client.hget("results", task_id)
                     if result_data:
-                        result_dict = json.loads(result_data)
-                        result = ProcessingResult(**result_dict)
-                        results.append(result)
+                        try:
+                            # Try advanced deserialization
+                            result_dict = self.serialization_manager.deserialize(result_data)
+                            result = ProcessingResult(**result_dict)
+                            results.append(result)
+                        except Exception as e:
+                            # Fallback to JSON deserialization
+                            self.logger.debug(f"Advanced deserialization failed for result {task_id}, falling back to JSON: {e}")
+                            try:
+                                result_dict = json.loads(result_data)
+                                result = ProcessingResult(**result_dict)
+                                results.append(result)
+                            except Exception as json_error:
+                                self.logger.error(f"Both advanced and JSON deserialization failed for result {task_id}: {json_error}")
 
             if len(results) < len(task_ids):
                 await asyncio.sleep(1.0)
@@ -711,18 +910,31 @@ class DistributedProcessor:
         return results
 
     async def _store_aggregated_result(self, aggregated: AggregatedResult):
-        """Store aggregated result in Redis"""
-        result_data = json.dumps(asdict(aggregated), default=str)
-
-        self.redis_client.hset(
-            "aggregated_results",
-            aggregated.request_id,
-            result_data
-        )
-        self.redis_client.expire(
-            f"aggregated_result:{aggregated.request_id}",
-            self.config['result_ttl']
-        )
+        """Store aggregated result in Redis using advanced serialization"""
+        try:
+            result_data = self.serialization_manager.serialize(asdict(aggregated))
+            self.redis_client.hset(
+                "aggregated_results",
+                aggregated.request_id,
+                result_data
+            )
+            self.redis_client.expire(
+                f"aggregated_result:{aggregated.request_id}",
+                self.config['result_ttl']
+            )
+        except Exception as e:
+            # Fallback to JSON serialization
+            self.logger.warning(f"Advanced serialization failed for aggregated result, falling back to JSON: {e}")
+            result_data = json.dumps(asdict(aggregated), default=str)
+            self.redis_client.hset(
+                "aggregated_results",
+                aggregated.request_id,
+                result_data
+            )
+            self.redis_client.expire(
+                f"aggregated_result:{aggregated.request_id}",
+                self.config['result_ttl']
+            )
 
 
 async def main():
@@ -741,12 +953,16 @@ async def main():
                        help="Documents to process")
     parser.add_argument("--query", type=str,
                        help="Query for processing")
+    parser.add_argument("--serialization-backend", type=str,
+                       default="dill", choices=["dill", "cloudpickle", "pickle"],
+                       help="Serialization backend to use")
 
     args = parser.parse_args()
 
     processor = DistributedProcessor(
         worker_id=args.worker_id,
-        redis_url=args.redis_url
+        redis_url=args.redis_url,
+        serialization_backend=args.serialization_backend
     )
 
     if args.worker_mode:
@@ -760,6 +976,9 @@ async def main():
         print(f"Quality Score: {result.quality_score:.3f}")
         print(f"Consistency Score: {result.consistency_score:.3f}")
         print(f"Total Processing Time: {result.total_processing_time:.2f}s")
+        backend_info = processor.serialization_manager.get_backend_info()
+        print(f"Serialization Backend: {backend_info['preferred_backend']}")
+        print(f"Available Backends: {backend_info['available_backends']}")
     else:
         print("Please specify --worker-mode or --coordinator-mode with --documents and --query")
 

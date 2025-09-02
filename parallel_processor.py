@@ -7,7 +7,6 @@ configurable worker count, progress tracking, and recovery mechanisms.
 """
 
 import logging
-import pickle
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import dataclass, field
@@ -15,6 +14,89 @@ from pathlib import Path
 from queue import Queue
 from threading import Lock, Thread
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+
+# Advanced serialization with fallback logic
+class SerializationManager:
+    """Manages serialization with fallback logic across multiple backends."""
+    
+    def __init__(self, preferred_backend: str = "dill"):
+        self.preferred_backend = preferred_backend
+        self._available_backends = self._detect_available_backends()
+        self._backend_order = self._get_backend_order()
+        
+    def _detect_available_backends(self) -> Dict[str, Any]:
+        """Detect available serialization backends."""
+        backends = {}
+        
+        try:
+            import dill
+            backends['dill'] = dill
+        except ImportError:
+            pass
+            
+        try:
+            import cloudpickle
+            backends['cloudpickle'] = cloudpickle
+        except ImportError:
+            pass
+            
+        import pickle
+        backends['pickle'] = pickle
+        
+        return backends
+    
+    def _get_backend_order(self) -> List[str]:
+        """Get the order of backends to try based on preference."""
+        if self.preferred_backend in self._available_backends:
+            order = [self.preferred_backend]
+        else:
+            order = []
+            
+        # Add remaining backends in preferred order
+        preferred_order = ['dill', 'cloudpickle', 'pickle']
+        for backend in preferred_order:
+            if backend in self._available_backends and backend not in order:
+                order.append(backend)
+                
+        return order
+    
+    def serialize(self, obj: Any) -> bytes:
+        """Serialize object using fallback logic."""
+        last_error = None
+        
+        for backend_name in self._backend_order:
+            backend = self._available_backends[backend_name]
+            try:
+                return backend.dumps(obj)
+            except Exception as e:
+                last_error = e
+                logging.debug(f"Serialization failed with {backend_name}: {e}")
+                continue
+                
+        raise RuntimeError(f"All serialization backends failed. Last error: {last_error}")
+    
+    def deserialize(self, data: bytes) -> Any:
+        """Deserialize object using fallback logic."""
+        last_error = None
+        
+        for backend_name in self._backend_order:
+            backend = self._available_backends[backend_name]
+            try:
+                return backend.loads(data)
+            except Exception as e:
+                last_error = e
+                logging.debug(f"Deserialization failed with {backend_name}: {e}")
+                continue
+                
+        raise RuntimeError(f"All deserialization backends failed. Last error: {last_error}")
+    
+    def get_backend_info(self) -> Dict[str, Any]:
+        """Get information about available backends."""
+        return {
+            'available_backends': list(self._available_backends.keys()),
+            'backend_order': self._backend_order,
+            'preferred_backend': self.preferred_backend
+        }
 
 logger = logging.getLogger(__name__)
 
@@ -95,7 +177,8 @@ class ParallelPDFProcessor:
         worker_count: Optional[int] = None,
         chunk_size: int = 10,
         enable_recovery: bool = True,
-        recovery_dir: Optional[str] = None
+        recovery_dir: Optional[str] = None,
+        serialization_backend: str = "dill"
     ):
         """
         Initialize the parallel PDF processor.
@@ -105,6 +188,7 @@ class ParallelPDFProcessor:
             chunk_size: Number of pages per chunk
             enable_recovery: Whether to enable recovery mechanisms
             recovery_dir: Directory to store recovery state
+            serialization_backend: Preferred serialization backend ('dill', 'cloudpickle', 'pickle')
         """
         # Configure worker count (4-8 workers)
         if worker_count is None:
@@ -116,6 +200,9 @@ class ParallelPDFProcessor:
         self.enable_recovery = enable_recovery
         self.recovery_dir = Path(recovery_dir or "recovery_state")
         
+        # Initialize serialization manager
+        self.serialization_manager = SerializationManager(preferred_backend=serialization_backend)
+        
         # Internal state
         self.task_queue: Queue = Queue()
         self.result_queue: Queue = Queue()
@@ -126,7 +213,9 @@ class ParallelPDFProcessor:
         if self.enable_recovery:
             self.recovery_dir.mkdir(exist_ok=True)
             
+        backend_info = self.serialization_manager.get_backend_info()
         logger.info(f"Initialized ParallelPDFProcessor with {self.worker_count} workers")
+        logger.info(f"Serialization backend order: {backend_info['backend_order']}")
     
     def chunk_pdf(self, file_path: str, total_pages: Optional[int] = None) -> List[PDFChunk]:
         """
@@ -170,7 +259,7 @@ class ParallelPDFProcessor:
         return chunks
     
     def _save_recovery_state(self, chunks: List[PDFChunk], completed_chunks: List[str]) -> None:
-        """Save recovery state to disk."""
+        """Save recovery state to disk using advanced serialization."""
         if not self.enable_recovery:
             return
             
@@ -178,19 +267,21 @@ class ParallelPDFProcessor:
             "chunks": chunks,
             "completed_chunks": completed_chunks,
             "failed_chunks": self.failed_chunks,
-            "timestamp": time.time()
+            "timestamp": time.time(),
+            "serialization_backend": self.serialization_manager.preferred_backend
         }
         
         recovery_file = self.recovery_dir / "processing_state.pkl"
         try:
+            serialized_data = self.serialization_manager.serialize(recovery_state)
             with open(recovery_file, 'wb') as f:
-                pickle.dump(recovery_state, f)
+                f.write(serialized_data)
             logger.debug(f"Saved recovery state to {recovery_file}")
         except Exception as e:
             logger.warning(f"Failed to save recovery state: {e}")
     
     def _load_recovery_state(self) -> Optional[Dict[str, Any]]:
-        """Load recovery state from disk."""
+        """Load recovery state from disk using advanced serialization."""
         if not self.enable_recovery:
             return None
             
@@ -200,7 +291,8 @@ class ParallelPDFProcessor:
         
         try:
             with open(recovery_file, 'rb') as f:
-                recovery_state = pickle.load(f)
+                serialized_data = f.read()
+            recovery_state = self.serialization_manager.deserialize(serialized_data)
             logger.info(f"Loaded recovery state from {recovery_file}")
             return recovery_state
         except Exception as e:
@@ -221,6 +313,11 @@ class ParallelPDFProcessor:
         start_time = time.time()
         
         try:
+            # Initialize serialization manager in worker process
+            worker_serialization = SerializationManager(
+                preferred_backend=getattr(self, '_worker_serialization_backend', 'dill')
+            )
+            
             # Process the chunk
             result_data = processor_func(chunk)
             
@@ -292,6 +389,9 @@ class ParallelPDFProcessor:
         completed_chunks = list(completed_chunk_ids)
         
         logger.info(f"Processing {len(pending_chunks)} pending chunks with {self.worker_count} workers")
+        
+        # Set serialization backend for worker processes
+        self._worker_serialization_backend = self.serialization_manager.preferred_backend
         
         # Process chunks with ProcessPoolExecutor
         with ProcessPoolExecutor(max_workers=self.worker_count) as executor:
@@ -399,7 +499,8 @@ class ParallelPDFProcessor:
             "total_chunks": self.progress_tracker.total_chunks,
             "failed_chunks": self.progress_tracker.failed_chunks,
             "elapsed_time": self.progress_tracker.get_elapsed_time(),
-            "is_complete": self.progress_tracker.is_complete()
+            "is_complete": self.progress_tracker.is_complete(),
+            "serialization_backend": self.serialization_manager.get_backend_info()
         }
     
     def resume_failed_chunks(self, processor_func: Callable) -> Dict[str, Any]:
@@ -426,6 +527,9 @@ class ParallelPDFProcessor:
         self.failed_chunks.clear()
         
         results = {}
+        
+        # Set serialization backend for worker processes
+        self._worker_serialization_backend = self.serialization_manager.preferred_backend
         
         with ProcessPoolExecutor(max_workers=self.worker_count) as executor:
             future_to_chunk = {
@@ -509,12 +613,21 @@ def default_pdf_chunk_processor(chunk: PDFChunk) -> Dict[str, Any]:
 
 
 if __name__ == "__main__":
-    # Example usage
-    processor = ParallelPDFProcessor(worker_count=6, chunk_size=5)
+    # Example usage with configurable serialization
+    processor = ParallelPDFProcessor(
+        worker_count=6, 
+        chunk_size=5, 
+        serialization_backend="dill"  # Can be "dill", "cloudpickle", or "pickle"
+    )
     
     # Example progress callback
     def progress_callback(percentage):
         print(f"Progress: {percentage:.1f}%")
+    
+    # Display serialization backend information
+    backend_info = processor.serialization_manager.get_backend_info()
+    print(f"Available serialization backends: {backend_info['available_backends']}")
+    print(f"Backend order: {backend_info['backend_order']}")
     
     # Process a PDF file
     try:
