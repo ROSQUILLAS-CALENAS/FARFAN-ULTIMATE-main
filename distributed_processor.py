@@ -615,6 +615,19 @@ class DistributedProcessor:
         self.config = self.processing_config.to_dict()
         self.config['serialization_backend'] = serialization_backend
 
+        # Initialize logging first
+        logging.basicConfig(level=logging.INFO)
+        self.logger = logging.getLogger(f"DistributedProcessor-{self.worker_id}")
+
+        # Perform comprehensive validation during initialization
+        self.validation_results = self._perform_initialization_validation()
+        
+        if not self.validation_results['all_checks_passed']:
+            self.logger.error("Initialization validation failed - distributed processing may not work correctly")
+            for category, errors in self.validation_results['errors'].items():
+                if errors:
+                    self.logger.error(f"{category} errors: {errors}")
+
         # Initialize components
         self.quality_validator = QualityValidator(self.config)
         self.result_aggregator = ResultAggregator(self.config)
@@ -670,6 +683,14 @@ class DistributedProcessor:
 
     async def start_worker(self):
         """Start the distributed worker"""
+        # Validate distributed processing setup before starting worker
+        if not self.validate_distributed_processing_setup():
+            raise RuntimeError(
+                "Distributed processing setup validation failed. "
+                "Cannot start worker due to serialization/import issues. "
+                "Check logs for detailed error information."
+            )
+        
         self.is_running = True
         self.logger.info(f"Starting distributed worker {self.worker_id}")
 
