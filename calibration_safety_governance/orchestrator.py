@@ -8,7 +8,6 @@ and provenance tracking for comprehensive enhancement lifecycle management.
 
 import json
 import logging
-import asyncio
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Set
@@ -18,8 +17,8 @@ import threading
 import time
 
 from .preflight_validator import PreflightValidator, ValidationResult
-from .auto_deactivation_monitor import AutoDeactivationMonitor, DeactivationTriggerType, DeactivationSeverity
-from .provenance_tracker import ProvenanceTracker, EnhancementLifecycleState, ActivationCriteriaType
+from .auto_deactivation_monitor import AutoDeactivationMonitor
+from .provenance_tracker import ProvenanceTracker, ActivationCriteriaType
 
 
 class OrchestrationMode(Enum):

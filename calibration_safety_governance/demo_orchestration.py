@@ -6,16 +6,13 @@ Demonstrates comprehensive preflight validation, auto-deactivation monitoring,
 and provenance tracking capabilities.
 """
 
-import json
 import time
 import logging
-from datetime import datetime, timedelta
-from pathlib import Path
 
 from orchestrator import EnhancementOrchestrator, OrchestrationConfig, OrchestrationMode
 from preflight_validator import PreflightValidator
 from auto_deactivation_monitor import AutoDeactivationMonitor
-from provenance_tracker import ProvenanceTracker, ActivationCriteriaType
+from provenance_tracker import ProvenanceTracker
 
 
 def setup_logging():
