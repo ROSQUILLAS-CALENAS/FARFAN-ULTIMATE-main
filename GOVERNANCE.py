@@ -1,7 +1,7 @@
 import json
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Dict, List, Optional, Protocol, Tuple
+from typing import Any, Dict, List, Optional, Protocol, Tuple, Callable, Union
 
 
 class TechnicalStandardType(Enum):
@@ -18,7 +18,7 @@ class TechnicalStandardContract:
 
     standard_type: TechnicalStandardType
     mandatory_criteria: Dict[str, Any]
-    validation_rules: List[callable]
+    validation_rules: List[Callable[[Dict[str, Any]], bool]]
     compliance_threshold: float = 0.85
     veto_power: bool = True  # Can veto non-compliant processes
 
@@ -29,10 +29,10 @@ class TechnicalStandardsRector:
     This is the HIGHEST AUTHORITY in the pipeline.
     """
 
-    def __init__(self):
-        self.standards = self._initialize_standards()
-        self.compliance_registry = {}
-        self.veto_registry = []
+    def __init__(self) -> None:
+        self.standards: Dict[str, Any] = self._initialize_standards()
+        self.compliance_registry: Dict[str, Dict[str, Any]] = {}
+        self.veto_registry: List[Dict[str, Any]] = []
 
     def _initialize_standards(self) -> Dict[str, Any]:
         """Initialize the three rector standards"""
@@ -199,8 +199,8 @@ class TechnicalStandardsRector:
         }
 
     def enforce_compliance(
-        self, process_name: str, process_output: Dict
-    ) -> Tuple[bool, Dict]:
+        self, process_name: str, process_output: Dict[str, Any]
+    ) -> Tuple[bool, Dict[str, Any]]:
         """
         CENTRAL ENFORCEMENT: Verify that a process complies with ALL applicable standards
         """
@@ -278,13 +278,13 @@ class TechnicalStandardsRector:
         return compliance_results["compliant"], compliance_results
 
     def apply_technical_transformation(
-        self, data: Dict, standard_type: TechnicalStandardType
-    ) -> Dict:
+        self, data: Dict[str, Any], standard_type: TechnicalStandardType
+    ) -> Dict[str, Any]:
         """
         Apply technical standard transformation to ensure compliance
         """
 
-        transformed_data = data.copy()
+        transformed_data: Dict[str, Any] = data.copy()
 
         if standard_type == TechnicalStandardType.MAPEO:
             # Apply MAPEO standard transformation
@@ -313,7 +313,7 @@ class TechnicalStandardsRector:
 
         return transformed_data
 
-    def _extract_urban_components(self, data: Dict) -> Dict:
+    def _extract_urban_components(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Extract urban planning components according to MAPEO standard"""
         return {
             "density": data.get("urban_density", 0),
@@ -321,7 +321,7 @@ class TechnicalStandardsRector:
             "infrastructure": data.get("urban_infrastructure", {}),
         }
 
-    def _extract_rural_components(self, data: Dict) -> Dict:
+    def _extract_rural_components(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Extract rural planning components"""
         return {
             "agricultural_zones": data.get("agricultural", {}),
@@ -329,7 +329,7 @@ class TechnicalStandardsRector:
             "rural_infrastructure": data.get("rural_infrastructure", {}),
         }
 
-    def _extract_suburban_components(self, data: Dict) -> Dict:
+    def _extract_suburban_components(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Extract suburban planning components"""
         return {
             "transition_zones": data.get("suburban_transition", {}),
@@ -337,7 +337,7 @@ class TechnicalStandardsRector:
             "expansion_areas": data.get("expansion", {}),
         }
 
-    def _classify_sectors(self, data: Dict) -> Dict:
+    def _classify_sectors(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Classify data according to DNP sectors"""
         return {
             "education": data.get("education_sector", {}),
@@ -347,7 +347,7 @@ class TechnicalStandardsRector:
             "environment": data.get("environment_sector", {}),
         }
 
-    def _extract_kit_components(self, data: Dict) -> Dict:
+    def _extract_kit_components(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Extract KIT Territorial components"""
         return {
             "diagnostic_tools": data.get("kit_diagnostic", {}),
@@ -355,7 +355,7 @@ class TechnicalStandardsRector:
             "indicators": data.get("kit_indicators", {}),
         }
 
-    def _map_to_regulations(self, data: Dict) -> Dict:
+    def _map_to_regulations(self, data: Dict[str, Any]) -> Dict[str, bool]:
         """Map data to regulatory requirements"""
         return {
             "law_152": self._check_law_152_compliance(data),
@@ -364,7 +364,7 @@ class TechnicalStandardsRector:
             "decree_1082": self._check_decree_1082_compliance(data),
         }
 
-    def _generate_sinergia_indicators(self, data: Dict) -> List[Dict]:
+    def _generate_sinergia_indicators(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Generate SINERGIA system indicators"""
         return [
             {
@@ -377,7 +377,7 @@ class TechnicalStandardsRector:
             for i, indicator in enumerate(data.get("indicators", []))
         ]
 
-    def _structure_programs(self, data: Dict) -> List[Dict]:
+    def _structure_programs(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Structure programs according to DNP format"""
         return [
             {
@@ -389,7 +389,7 @@ class TechnicalStandardsRector:
             for prog in data.get("programs", [])
         ]
 
-    def _structure_indicators(self, data: Dict) -> List[Dict]:
+    def _structure_indicators(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Structure indicators according to DNP format"""
         return [
             {
@@ -402,7 +402,7 @@ class TechnicalStandardsRector:
             for ind in data.get("indicators", [])
         ]
 
-    def _structure_financial_framework(self, data: Dict) -> Dict:
+    def _structure_financial_framework(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Structure financial framework according to DNP"""
         return {
             "ingresos": data.get("revenues", {}),
@@ -411,9 +411,9 @@ class TechnicalStandardsRector:
             "fuentes_financiacion": data.get("funding_sources", {}),
         }
 
-    def _check_law_152_compliance(self, data: Dict) -> bool:
+    def _check_law_152_compliance(self, data: Dict[str, Any]) -> bool:
         """Check compliance with Law 152 of 1994"""
-        required_components = [
+        required_components: List[str] = [
             "diagnostic",
             "strategic_part",
             "investment_plan",
@@ -421,15 +421,15 @@ class TechnicalStandardsRector:
         ]
         return all(comp in data for comp in required_components)
 
-    def _check_law_1454_compliance(self, data: Dict) -> bool:
+    def _check_law_1454_compliance(self, data: Dict[str, Any]) -> bool:
         """Check compliance with LOOT"""
         return "territorial_ordering" in data and "land_use_plan" in data
 
-    def _check_law_1551_compliance(self, data: Dict) -> bool:
+    def _check_law_1551_compliance(self, data: Dict[str, Any]) -> bool:
         """Check municipal modernization compliance"""
         return "municipal_strengthening" in data
 
-    def _check_decree_1082_compliance(self, data: Dict) -> bool:
+    def _check_decree_1082_compliance(self, data: Dict[str, Any]) -> bool:
         """Check compliance with unified regulatory decree"""
         return "regulatory_framework" in data
 
@@ -440,12 +440,12 @@ class GovernedDevelopmentPlanPipeline:
     Pipeline that GUARANTEES technical standards compliance
     """
 
-    def __init__(self):
-        self.rector = TechnicalStandardsRector()
-        self.execution_graph = self._build_governed_graph()
-        self.compliance_checkpoints = []
+    def __init__(self) -> None:
+        self.rector: TechnicalStandardsRector = TechnicalStandardsRector()
+        self.execution_graph: Dict[str, Dict[str, Any]] = self._build_governed_graph()
+        self.compliance_checkpoints: List[Dict[str, Any]] = []
 
-    def _build_governed_graph(self) -> Dict[str, Dict]:
+    def _build_governed_graph(self) -> Dict[str, Dict[str, Any]]:
         """
         Build execution graph with MANDATORY rector checkpoints
         """

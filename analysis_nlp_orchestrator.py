@@ -9,7 +9,7 @@ import json
 import logging
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union, Tuple, Callable
 from collections import OrderedDict
 
 # Import total ordering base
@@ -47,14 +47,14 @@ class AnalysisNLPOrchestrator(TotalOrderingBase, DeterministicCollectionMixin):
     Plus the orchestrator itself as the 9th component.
     """
     
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__("AnalysisNLPOrchestrator")
         
         # Initialize all components
-        self.components = self._initialize_components()
+        self.components: Dict[str, Any] = self._initialize_components()
         
         # Processing configuration
-        self.processing_order = [
+        self.processing_order: List[str] = [
             "adaptive_analyzer",
             "question_analyzer", 
             "implementacion_mapeo",
@@ -66,7 +66,7 @@ class AnalysisNLPOrchestrator(TotalOrderingBase, DeterministicCollectionMixin):
         ]
         
         # Orchestrator statistics
-        self.orchestrator_stats = {
+        self.orchestrator_stats: Dict[str, Any] = {
             "components_initialized": len(self.components),
             "processing_runs": 0,
             "successful_runs": 0,
@@ -147,7 +147,7 @@ class AnalysisNLPOrchestrator(TotalOrderingBase, DeterministicCollectionMixin):
         
         return self.sort_dict_by_keys(components)
     
-    def process(self, data: Any = None, context: Any = None) -> Dict[str, Any]:
+    def process(self, data: Optional[Any] = None, context: Optional[Any] = None) -> Dict[str, Any]:
         """
         Main orchestrated processing function with deterministic output.
         
@@ -231,7 +231,14 @@ class AnalysisNLPOrchestrator(TotalOrderingBase, DeterministicCollectionMixin):
             }
             return self.sort_dict_by_keys(error_output)
     
-    def _generate_orchestrated_output(self, original_data: Dict[str, Any], context: Dict[str, Any], component_results: Dict[str, Any], processing_errors: Dict[str, Any], operation_id: str) -> Dict[str, Any]:
+    def _generate_orchestrated_output(
+        self, 
+        original_data: Dict[str, Any], 
+        context: Dict[str, Any], 
+        component_results: Dict[str, Any], 
+        processing_errors: Dict[str, Any], 
+        operation_id: str
+    ) -> Dict[str, Any]:
         """Generate comprehensive orchestrated output"""
         
         # Aggregate results from all components
@@ -443,7 +450,7 @@ class AnalysisNLPOrchestrator(TotalOrderingBase, DeterministicCollectionMixin):
 
 
 # Standalone functions for backward compatibility
-def orchestrate_analysis_nlp(data: Any = None, context: Any = None) -> Dict[str, Any]:
+def orchestrate_analysis_nlp(data: Optional[Any] = None, context: Optional[Any] = None) -> Dict[str, Any]:
     """Orchestrate all analysis_nlp components"""
     orchestrator = AnalysisNLPOrchestrator()
     return orchestrator.process(data, context)
@@ -455,16 +462,16 @@ def get_all_component_status() -> Dict[str, Any]:
     return orchestrator.get_component_status()
 
 
-def validate_deterministic_processing(data: Any = None) -> Dict[str, Any]:
+def validate_deterministic_processing(data: Optional[Any] = None) -> Dict[str, Any]:
     """Validate that processing is deterministic by running twice"""
     orchestrator = AnalysisNLPOrchestrator()
     
-    # Run processing twice
-    output1 = orchestrator.process(data)
-    output2 = orchestrator.process(data)
+    # Run processing twice with same inputs
+    result1 = orchestrator.process(data)
+    result2 = orchestrator.process(data)
     
-    # Validate they are identical
-    return orchestrator.validate_deterministic_output(output1, output2)
+    # Validate deterministic output
+    return orchestrator.validate_deterministic_output(result1, result2)
 
 
 # Main process function for compatibility

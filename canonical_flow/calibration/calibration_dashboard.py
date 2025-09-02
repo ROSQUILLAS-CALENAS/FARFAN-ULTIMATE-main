@@ -39,20 +39,20 @@ class CalibrationDashboard:
     Handles artifact generation, quality gate enforcement, and drift detection.
     """
     
-    def __init__(self, calibration_dir: Union[str, Path] = "canonical_flow/calibration"):
+    def __init__(self, calibration_dir: Union[str, Path] = "canonical_flow/calibration") -> None:
         """
         Initialize calibration dashboard.
         
         Args:
             calibration_dir: Directory for storing calibration artifacts
         """
-        self.calibration_dir = Path(calibration_dir)
+        self.calibration_dir: Path = Path(calibration_dir)
         self.calibration_dir.mkdir(parents=True, exist_ok=True)
         
-        self.logger = logging.getLogger(__name__)
+        self.logger: logging.Logger = logging.getLogger(__name__)
         
         # Default quality thresholds
-        self.default_thresholds = {
+        self.default_thresholds: Dict[str, Dict[str, float]] = {
             "retrieval": {
                 "calibration_quality_score": 0.7,
                 "coverage_percentage": 80.0,
@@ -321,9 +321,9 @@ class CalibrationDashboard:
         Returns:
             Quality gate status: "PASS", "WARNING", or "FAIL"
         """
-        fails = 0
-        warnings = 0
-        total = 0
+        fails: int = 0
+        warnings: int = 0
+        total: int = 0
         
         for metric, value in metrics.items():
             if metric in thresholds:

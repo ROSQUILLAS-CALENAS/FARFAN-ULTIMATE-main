@@ -20,15 +20,15 @@ logger = logging.getLogger(__name__)
 class ComponentValidationError(Exception):
     """Raised when analysis_nlp components fail validation."""
     
-    def __init__(self, message: str, failed_components: Dict[str, List[str]]):
-        self.failed_components = failed_components
+    def __init__(self, message: str, failed_components: Dict[str, List[str]]) -> None:
+        self.failed_components: Dict[str, List[str]] = failed_components
         super().__init__(message)
 
 
 class PlaceholderDetector:
     """Detects placeholder code patterns in functions and classes."""
     
-    PLACEHOLDER_PATTERNS = {
+    PLACEHOLDER_PATTERNS: Dict[str, List[str]] = {
         'pass_only': ['pass'],
         'not_implemented': ['raise NotImplementedError', 'raise NotImplemented'],
         'todo_comment': ['# TODO', '# FIXME', '# XXX'],
@@ -147,7 +147,7 @@ class PlaceholderDetector:
 class ComponentValidator:
     """Validates individual analysis_nlp components."""
     
-    REQUIRED_COMPONENTS = {
+    REQUIRED_COMPONENTS: Dict[str, Dict[str, Any]] = {
         'adaptive_analyzer': {
             'expected_classes': ['AdaptiveAnalyzer', 'AnalysisMode', 'SystemState'],
             'expected_functions': ['analyze_system'],
@@ -207,9 +207,9 @@ class ComponentValidator:
         }
     }
     
-    def __init__(self):
-        self.project_root = Path(__file__).resolve().parent
-        self.canonical_flow_path = self.project_root / 'canonical_flow' / 'A_analysis_nlp'
+    def __init__(self) -> None:
+        self.project_root: Path = Path(__file__).resolve().parent
+        self.canonical_flow_path: Path = self.project_root / 'canonical_flow' / 'A_analysis_nlp'
         
     def validate_component(self, component_name: str) -> Tuple[bool, List[str]]:
         """Validate a single component for implementation completeness."""
@@ -282,9 +282,9 @@ class ComponentValidator:
         
         return len(issues) == 0, issues
     
-    def _load_component_module(self, component_name: str):
+    def _load_component_module(self, component_name: str) -> Optional[Any]:
         """Load component module from canonical flow or project root."""
-        module = None
+        module: Optional[Any] = None
         
         # Try canonical flow first (alias files)
         try:

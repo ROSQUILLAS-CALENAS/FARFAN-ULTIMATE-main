@@ -4,7 +4,7 @@ Calibration Artifact Data Models
 Defines the standardized structure for calibration reports across pipeline stages.
 """
 
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 from typing import Dict, Any, Optional, List, Union
 from datetime import datetime
 from pathlib import Path
@@ -35,10 +35,10 @@ class CalibrationArtifact:
     
     def save(self, filepath: Union[str, Path]) -> None:
         """Save artifact to JSON file."""
-        filepath = Path(filepath)
-        filepath.parent.mkdir(parents=True, exist_ok=True)
+        filepath_obj: Path = Path(filepath)
+        filepath_obj.parent.mkdir(parents=True, exist_ok=True)
         
-        with open(filepath, 'w') as f:
+        with open(filepath_obj, 'w') as f:
             json.dump(self.to_dict(), f, indent=2)
     
     @classmethod
@@ -50,7 +50,7 @@ class CalibrationArtifact:
     def load(cls, filepath: Union[str, Path]) -> 'CalibrationArtifact':
         """Load artifact from JSON file."""
         with open(filepath, 'r') as f:
-            data = json.load(f)
+            data: Dict[str, Any] = json.load(f)
         return cls.from_dict(data)
     
     def check_quality_gates(self) -> bool:
@@ -71,15 +71,15 @@ class RetrievalCalibrationArtifact(CalibrationArtifact):
     
     # Stage parameters
     temperature_parameter: float = 1.0
-    fusion_weights: List[float] = None
-    retrieval_k_values: List[int] = None
+    fusion_weights: Optional[List[float]] = None
+    retrieval_k_values: Optional[List[int]] = None
     
     # Additional retrieval metrics
     retrieval_latency_ms: float = 0.0
     index_coherence_score: float = 0.0
     cross_encoder_agreement: float = 0.0
     
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if self.fusion_weights is None:
             self.fusion_weights = [0.33, 0.33, 0.34]
         if self.retrieval_k_values is None:
@@ -100,7 +100,7 @@ class ConfidenceCalibrationArtifact(CalibrationArtifact):
     # Conformal prediction metrics
     adaptive_coverage_gap: float = 0.0
     prediction_set_size_avg: float = 0.0
-    nonconformity_score_stats: Dict[str, float] = None
+    nonconformity_score_stats: Optional[Dict[str, float]] = None
     
     # Stage parameters
     confidence_level: float = 0.9
@@ -110,9 +110,9 @@ class ConfidenceCalibrationArtifact(CalibrationArtifact):
     # Distribution analysis
     distribution_shift_detected: bool = False
     ks_test_p_value: float = 1.0
-    bootstrap_intervals: Dict[str, List[float]] = None
+    bootstrap_intervals: Optional[Dict[str, List[float]]] = None
     
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if self.nonconformity_score_stats is None:
             self.nonconformity_score_stats = {}
         if self.bootstrap_intervals is None:
