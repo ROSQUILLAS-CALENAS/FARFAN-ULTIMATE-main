@@ -1,0 +1,2 @@
+[console_scripts]
+egw-expand = egw_query_expansion.cli:main

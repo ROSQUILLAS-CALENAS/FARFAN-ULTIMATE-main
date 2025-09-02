@@ -136,7 +136,7 @@ except Exception:
         B_norm = B / (np.linalg.norm(B, axis=1, keepdims=True) + 1e-8)
         return A_norm @ B_norm.T
 
-# Import EGW components with fallbacks
+# Import EGW components with fallbacks and serializable wrappers
 try:
     from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval
     from egw_query_expansion.core.gw_alignment import GWAlignment
@@ -164,6 +164,13 @@ except ImportError:
     class AnswerSynthesizer:
         def __init__(self, config): pass
         def synthesize(self, query, evidence, context): return {"answer": "", "summary": ""}
+
+from serializable_wrappers import (
+    ProcessingConfig, 
+    create_multiprocessing_safe_wrapper, 
+    process_document_serializable,
+    DocumentProcessorCallable
+)
 
 
 @dataclass
@@ -482,6 +489,58 @@ class ResultAggregator:
 
         return combined
 
+    async def process_batch_multiprocessing(self, documents: List[str], query: str, 
+                                           num_workers: int = None, 
+                                           wrapper_type: str = "class") -> List[Dict[str, Any]]:
+        """
+        Process documents using multiprocessing with serializable wrappers.
+        
+        Args:
+            documents: List of document paths to process
+            query: Query string for processing
+            num_workers: Number of worker processes (defaults to CPU count)
+            wrapper_type: Type of wrapper to use ("class" or "partial")
+            
+        Returns:
+            List of processing results
+        """
+        if num_workers is None:
+            import multiprocessing
+            num_workers = multiprocessing.cpu_count()
+        
+        # Get the appropriate wrapper
+        if wrapper_type == "class":
+            wrapper = self.class_wrapper
+        elif wrapper_type == "partial":
+            wrapper = self.partial_wrapper
+        else:
+            raise ValueError(f"Unsupported wrapper_type: {wrapper_type}")
+        
+        self.logger.info(f"Processing {len(documents)} documents with {num_workers} workers using {wrapper_type} wrapper")
+        
+        # Create tasks with serializable wrapper
+        tasks_with_wrapper = [
+            (doc_path, query, wrapper) 
+            for doc_path in documents
+        ]
+        
+        # Use multiprocessing pool
+        import multiprocessing
+        with multiprocessing.Pool(processes=num_workers) as pool:
+            # Use the wrapper directly since it's serializable
+            results = pool.starmap(
+                self._multiprocessing_wrapper,
+                tasks_with_wrapper
+            )
+        
+        return results
+    
+    @staticmethod
+    def _multiprocessing_wrapper(document_path: str, query: str, 
+                                 wrapper) -> Dict[str, Any]:
+        """Static method wrapper for multiprocessing"""
+        return wrapper(document_path, query)
+
     def _generate_consensus_content(self, contents: List[str]) -> str:
         """Generate consensus content from multiple content strings"""
         if not contents or not any(contents):
@@ -539,18 +598,22 @@ class DistributedProcessor:
         # Initialize serialization manager
         self.serialization_manager = SerializationManager(preferred_backend=serialization_backend)
 
-        # Configuration
-        self.config = {
-            'batch_size': int(os.getenv('BATCH_SIZE', 32)),
-            'max_concurrent_tasks': int(os.getenv('MAX_CONCURRENT_TASKS', 8)),
-            'chunk_size': int(os.getenv('CHUNK_SIZE', 1000)),
-            'result_ttl': 3600,  # 1 hour
-            'task_timeout': 300,  # 5 minutes
-            'min_relevance_score': 0.7,
-            'min_coherence_score': 0.8,
-            'consensus_threshold': 0.7,
-            'serialization_backend': serialization_backend
-        }
+        # Create processing configuration
+        self.processing_config = ProcessingConfig(
+            batch_size=int(os.getenv('BATCH_SIZE', 32)),
+            max_concurrent_tasks=int(os.getenv('MAX_CONCURRENT_TASKS', 8)),
+            chunk_size=int(os.getenv('CHUNK_SIZE', 1000)),
+            result_ttl=3600,  # 1 hour
+            task_timeout=300,  # 5 minutes
+            min_relevance_score=0.7,
+            min_coherence_score=0.8,
+            consensus_threshold=0.7,
+            redis_url=redis_url
+        )
+
+        # Legacy config dict for backward compatibility
+        self.config = self.processing_config.to_dict()
+        self.config['serialization_backend'] = serialization_backend
 
         # Initialize components
         self.quality_validator = QualityValidator(self.config)
@@ -563,6 +626,14 @@ class DistributedProcessor:
         self.evidence_processor = EvidenceProcessor({})
         self.answer_synthesizer = AnswerSynthesizer({})
 
+        # Create serializable wrappers
+        self.partial_wrapper = create_multiprocessing_safe_wrapper(
+            self.processing_config, "partial"
+        )
+        self.class_wrapper = create_multiprocessing_safe_wrapper(
+            self.processing_config, "class"
+        )
+
         # Processing state
         self.is_running = False
         self.active_tasks = {}
@@ -573,17 +644,21 @@ class DistributedProcessor:
         self.failed_count = 0
         self.total_processing_time = 0.0
 
-        # Initialize recovery mechanism
-        from recovery_system import FailedDocumentsTracker, DocumentRecoveryManager
-        self.failed_docs_tracker = FailedDocumentsTracker(
-            redis_client=self.redis_client,
-            retention_days=config.get('failed_docs_retention_days', 7)
-        )
-        self.recovery_manager = DocumentRecoveryManager(
-            distributed_processor=self,
-            failed_docs_tracker=self.failed_docs_tracker,
-            config=config
-        )
+        # Initialize recovery mechanism if available
+        try:
+            from recovery_system import FailedDocumentsTracker, DocumentRecoveryManager
+            self.failed_docs_tracker = FailedDocumentsTracker(
+                redis_client=self.redis_client,
+                retention_days=self.config.get('failed_docs_retention_days', 7)
+            )
+            self.recovery_manager = DocumentRecoveryManager(
+                distributed_processor=self,
+                failed_docs_tracker=self.failed_docs_tracker,
+                config=self.config
+            )
+        except ImportError:
+            self.failed_docs_tracker = None
+            self.recovery_manager = None
 
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(f"DistributedProcessor-{self.worker_id}")
@@ -615,12 +690,20 @@ class DistributedProcessor:
             self.is_running = False
 
     async def process_batch(self, documents: List[str], query: str,
-                           request_id: str = None) -> AggregatedResult:
-        """Process a batch of documents with distributed coordination"""
+                           request_id: str = None, use_wrapper: str = "class") -> AggregatedResult:
+        """Process a batch of documents with distributed coordination using serializable wrappers"""
         if not request_id:
             request_id = f"batch-{uuid.uuid4().hex[:8]}"
 
-        self.logger.info(f"Starting batch processing for request {request_id}")
+        self.logger.info(f"Starting batch processing for request {request_id} using {use_wrapper} wrapper")
+
+        # Get the appropriate serializable wrapper
+        if use_wrapper == "class":
+            process_func = self.class_wrapper
+        elif use_wrapper == "partial":
+            process_func = self.partial_wrapper
+        else:
+            raise ValueError(f"Unsupported wrapper type: {use_wrapper}")
 
         # Create tasks
         tasks = []
@@ -629,7 +712,11 @@ class DistributedProcessor:
                 task_id=f"task-{uuid.uuid4().hex[:8]}",
                 document_path=doc_path,
                 query=query,
-                metadata={'request_id': request_id}
+                metadata={
+                    'request_id': request_id,
+                    'wrapper_type': use_wrapper,
+                    'process_func': process_func  # Store the serializable function
+                }
             )
             tasks.append(task)
 
@@ -669,7 +756,7 @@ class DistributedProcessor:
                 await asyncio.sleep(5.0)
 
     async def _process_task(self, task: ProcessingTask):
-        """Process individual task"""
+        """Process individual task using serializable wrapper"""
         start_time = time.time()
         self.logger.info(f"Processing task {task.task_id}")
 
@@ -678,8 +765,15 @@ class DistributedProcessor:
             self.active_tasks[task.task_id] = task
             await self._update_task_status(task.task_id, "processing", self.worker_id)
 
-            # Perform EGW processing
-            result_data = await self._perform_egw_processing(task)
+            # Use the serializable wrapper stored in task metadata if available
+            process_func = task.metadata.get('process_func')
+            if process_func is None:
+                # Fallback to class wrapper
+                process_func = self.class_wrapper
+                self.logger.info(f"Using fallback class wrapper for task {task.task_id}")
+
+            # Perform processing using serializable wrapper
+            result_data = process_func(task.document_path, task.query)
 
             processing_time = time.time() - start_time
 
@@ -998,16 +1092,45 @@ async def main():
         # Run as worker
         await processor.start_worker()
     elif args.coordinator_mode and args.documents and args.query:
-        # Run as coordinator
-        result = await processor.process_batch(args.documents, args.query)
-        print(f"Processing completed:")
-        print(f"Request ID: {result.request_id}")
-        print(f"Quality Score: {result.quality_score:.3f}")
-        print(f"Consistency Score: {result.consistency_score:.3f}")
-        print(f"Total Processing Time: {result.total_processing_time:.2f}s")
+        # Run as coordinator with both serializable wrappers and original functionality
+        print("Testing both wrapper types and serialization backends...")
+        
+        # Test class wrapper
+        print("\n=== Testing Class Wrapper ===")
+        result_class = await processor.process_batch(args.documents, args.query, use_wrapper="class")
+        print(f"Class Wrapper Results:")
+        print(f"Request ID: {result_class.request_id}")
+        print(f"Quality Score: {result_class.quality_score:.3f}")
+        print(f"Consistency Score: {result_class.consistency_score:.3f}")
+        print(f"Total Processing Time: {result_class.total_processing_time:.2f}s")
+        
+        # Test partial wrapper
+        print("\n=== Testing Partial Wrapper ===")
+        result_partial = await processor.process_batch(args.documents, args.query, use_wrapper="partial")
+        print(f"Partial Wrapper Results:")
+        print(f"Request ID: {result_partial.request_id}")
+        print(f"Quality Score: {result_partial.quality_score:.3f}")
+        print(f"Consistency Score: {result_partial.consistency_score:.3f}")
+        print(f"Total Processing Time: {result_partial.total_processing_time:.2f}s")
+        
+        # Test multiprocessing approach
+        print("\n=== Testing Multiprocessing ===")
+        mp_results = await processor.process_batch_multiprocessing(
+            args.documents, 
+            args.query, 
+            num_workers=2,
+            wrapper_type="class"
+        )
+        print(f"Multiprocessing Results: {len(mp_results)} documents processed")
+        for i, result in enumerate(mp_results):
+            print(f"  Document {i+1}: {result['metadata']['processing_method']}")
+        
+        # Show serialization backend info
         backend_info = processor.serialization_manager.get_backend_info()
-        print(f"Serialization Backend: {backend_info['preferred_backend']}")
+        print(f"\nSerialization Backend: {backend_info['preferred_backend']}")
         print(f"Available Backends: {backend_info['available_backends']}")
+        
+        print(f"\nAll processing methods completed successfully!")
     else:
         print("Please specify --worker-mode or --coordinator-mode with --documents and --query")
 
