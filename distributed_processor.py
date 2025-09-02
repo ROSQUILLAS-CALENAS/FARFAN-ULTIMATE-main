@@ -573,6 +573,18 @@ class DistributedProcessor:
         self.failed_count = 0
         self.total_processing_time = 0.0
 
+        # Initialize recovery mechanism
+        from recovery_system import FailedDocumentsTracker, DocumentRecoveryManager
+        self.failed_docs_tracker = FailedDocumentsTracker(
+            redis_client=self.redis_client,
+            retention_days=config.get('failed_docs_retention_days', 7)
+        )
+        self.recovery_manager = DocumentRecoveryManager(
+            distributed_processor=self,
+            failed_docs_tracker=self.failed_docs_tracker,
+            config=config
+        )
+
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(f"DistributedProcessor-{self.worker_id}")
         
@@ -588,6 +600,10 @@ class DistributedProcessor:
 
         # Register worker
         await self._register_worker()
+
+        # Initialize recovery system and attempt recovery of failed documents
+        await self.recovery_manager.initialize()
+        await self.recovery_manager.attempt_recovery()
 
         # Start task processing loop
         try:
@@ -697,6 +713,9 @@ class DistributedProcessor:
             self.processed_count += 1
             self.total_processing_time += processing_time
 
+            # Remove from failed documents if it was previously failed
+            await self.failed_docs_tracker.remove_failed_document(task.document_path)
+
             self.logger.info(
                 f"Task {task.task_id} completed in {processing_time:.2f}s "
                 f"(quality: {quality_metrics.get('overall_quality', 0.0):.2f})"
@@ -718,6 +737,16 @@ class DistributedProcessor:
 
             await self._store_result(result)
             self.failed_count += 1
+
+            # Track failed document for recovery
+            await self.failed_docs_tracker.track_failed_document(
+                document_path=task.document_path,
+                task_id=task.task_id,
+                error_message=str(e),
+                query=task.query,
+                worker_id=self.worker_id,
+                metadata=task.metadata or {}
+            )
 
         finally:
             # Clean up

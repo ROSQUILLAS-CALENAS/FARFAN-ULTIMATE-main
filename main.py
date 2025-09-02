@@ -329,6 +329,16 @@ def add_canonical_arguments(parser):
         help="Run canonical pipeline mode for PDF processing"
     )
     parser.add_argument(
+        "--recover",
+        action="store_true",
+        help="Run document recovery for failed processing attempts"
+    )
+    parser.add_argument(
+        "--redis-url",
+        default="redis://localhost:6379",
+        help="Redis URL for recovery system"
+    )
+    parser.add_argument(
         "--all",
         action="store_true",
         help="Process all PDFs (default: first 3 for testing)"
@@ -367,6 +377,39 @@ def main():
     # Prepare canonical output directory
     canonical_dir = project_root / "canonical_flow"
     ensure_dir(canonical_dir)
+
+    # Recovery mode dispatcher
+    if getattr(args, "recover", False):
+        try:
+            import asyncio
+            from recovery_system import run_document_recovery
+            
+            if args.verbose:
+                print("[RECOVERY] Starting document recovery...")
+            
+            config = {
+                'max_retry_count': 3,
+                'min_retry_interval_hours': 0.5,
+                'recovery_batch_size': 10,
+                'enable_periodic_recovery': False
+            }
+            
+            result = asyncio.run(run_document_recovery(redis_url=args.redis_url, config=config))
+            
+            print(f"✓ Recovery completed:")
+            print(f"  Attempted documents: {result.get('attempted_documents', 0)}")
+            print(f"  Successful recoveries: {result.get('successful_recoveries', 0)}")
+            print(f"  Failed recoveries: {result.get('failed_recoveries', 0)}")
+            print(f"  Success rate: {result.get('success_rate', 0.0):.1%}")
+            print(f"  Recovery time: {result.get('recovery_time', 0.0):.2f}s")
+            
+            sys.exit(0)
+            
+        except Exception as e:
+            print(f"✗ Recovery failed: {e}")
+            if args.verbose:
+                traceback.print_exc()
+            sys.exit(1)
 
     # Canonical processing mode dispatcher
     if getattr(args, "canonical", False):
