@@ -16,32 +16,25 @@ This validator performs:
 8. Mathematical invariant verification
 """
 
-import asyncio
+import ast
+import concurrent.futures
+import gc
 import hashlib
 import json
+import sys
 import time
 import traceback
-from collections import defaultdict, OrderedDict
+from collections import defaultdict
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum, auto
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple, Callable, Union
-import concurrent.futures
-import inspect
-import sys
-import tempfile
-import uuid
-from contextlib import contextmanager
-import importlib
-import ast
-import dis
-import gc
-import weakref
-import functools
+from typing import Any, Dict, List, Optional, Set, Callable
 
 # Advanced testing utilities
 try:
+    # noinspection PyUnresolvedReferences
     import numpy as np
     HAS_NUMPY = True
 except ImportError:
