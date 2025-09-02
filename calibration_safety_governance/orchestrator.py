@@ -10,15 +10,14 @@ import json
 import logging
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Set
+from typing import Dict, List, Any, Set
 from dataclasses import dataclass
 from enum import Enum
 import threading
-import time
 
-from .preflight_validator import PreflightValidator, ValidationResult
+from .preflight_validator import PreflightValidator
 from .auto_deactivation_monitor import AutoDeactivationMonitor
-from .provenance_tracker import ProvenanceTracker, ActivationCriteriaType
+from .provenance_tracker import ProvenanceTracker
 
 
 class OrchestrationMode(Enum):
@@ -345,6 +344,7 @@ class EnhancementOrchestrator:
         enhancements_to_deactivate = []
         
         for enhancement_id in self.active_enhancements.copy():
+            monitoring_result = None
             try:
                 # Simulate performance and evidence quality metrics
                 # In real implementation, these would come from actual monitoring systems
@@ -379,7 +379,8 @@ class EnhancementOrchestrator:
                         "enhancement_id": enhancement_id,
                         "reason": monitoring_result["deactivation_decision"]["reason"],
                         "trigger_type": monitoring_result["deactivation_decision"]["trigger_type"],
-                        "metrics": performance_metrics
+                        "metrics": performance_metrics,
+                        "monitoring_result": monitoring_result
                     })
                     
             except Exception as e:
@@ -393,7 +394,7 @@ class EnhancementOrchestrator:
                 deactivation["metrics"],
                 {
                     "trigger_type": deactivation["trigger_type"],
-                    "monitoring_result": monitoring_result
+                    "monitoring_result": deactivation["monitoring_result"]
                 }
             )
 
