@@ -177,10 +177,11 @@ class EvidenceQualityTracker:
             "degradation_rate_exceeded": degradation_rate > self.degradation_threshold,
             "consistency_degrading": consistency_degrading,
             "coverage_adequate": current_coverage >= 0.9,
-            "trend_analysis": self._analyze_quality_trend(quality_scores)
+            "trend_analysis": EvidenceQualityTracker._analyze_quality_trend(quality_scores)
         }
         
-    def _analyze_quality_trend(self, scores: List[float]) -> Dict[str, Any]:
+    @staticmethod
+    def _analyze_quality_trend(scores: List[float]) -> Dict[str, Any]:
         """Analyze quality trend patterns"""
         if len(scores) < 3:
             return {"trend": "insufficient_data"}
@@ -527,7 +528,7 @@ class AutoDeactivationMonitor:
             cooldown_duration = cooldown_config.get("minor_deactivation", "PT15M")
             
         # Parse ISO 8601 duration (simplified)
-        cooldown_minutes = self._parse_duration_to_minutes(cooldown_duration)
+        cooldown_minutes = AutoDeactivationMonitor._parse_duration_to_minutes(cooldown_duration)
         cooldown_until = datetime.now() + timedelta(minutes=cooldown_minutes)
         
         # Record deactivation event
@@ -560,7 +561,8 @@ class AutoDeactivationMonitor:
             "deactivation_event_id": len(self.deactivation_events) - 1
         }
         
-    def _parse_duration_to_minutes(self, duration: str) -> int:
+    @staticmethod
+    def _parse_duration_to_minutes(duration: str) -> int:
         """Parse ISO 8601 duration to minutes (simplified parser)"""
         # Simple parser for PT format (PT15M, PT1H, PT24H)
         duration = duration.upper()
