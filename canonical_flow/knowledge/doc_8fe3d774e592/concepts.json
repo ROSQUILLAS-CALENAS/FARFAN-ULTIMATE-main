@@ -1,0 +1,96 @@
+{
+  "concepts": {
+    "desarrollo territorial": {
+      "concept": "desarrollo territorial",
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "occurrences": [
+            {
+              "context": "Desarrollo territorial sostenible es un objetivo estratégico del plan mu",
+              "end": 22,
+              "original_text": "Desarrollo territorial",
+              "pattern_matched": "\\b(?:desarrollo|development)\\s+(?:territorial|urban[oa]|sostenible)\\b",
+              "start": 0
+            }
+          ]
+        }
+      }
+    },
+    "gestión pública": {
+      "concept": "gestión pública",
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "occurrences": [
+            {
+              "context": "El proyecto de gestión pública incluye indicadores de transparencia ciudadana.",
+              "end": 30,
+              "original_text": "gestión pública",
+              "pattern_matched": "\\b(?:gestión|administración)\\s+(?:públic[oa]|municipal)\\b",
+              "start": 15
+            }
+          ]
+        }
+      }
+    },
+    "objetivo estratégico": {
+      "concept": "objetivo estratégico",
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "occurrences": [
+            {
+              "context": "Desarrollo territorial sostenible es un objetivo estratégico del plan municipal.",
+              "end": 60,
+              "original_text": "objetivo estratégico",
+              "pattern_matched": "\\b(?:objetivo|meta)\\s+(?:estratégic[oa]|específic[oa])\\b",
+              "start": 40
+            }
+          ]
+        }
+      }
+    },
+    "proyecto de gestión": {
+      "concept": "proyecto de gestión",
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "occurrences": [
+            {
+              "context": "El proyecto de gestión pública incluye indicadores de transparencia ciud",
+              "end": 22,
+              "original_text": "proyecto de gestión",
+              "pattern_matched": "\\b(?:plan|programa|proyecto)\\s+(?:de|para)\\s+\\w+\\b",
+              "start": 3
+            }
+          ]
+        }
+      }
+    },
+    "transparencia ciudadana": {
+      "concept": "transparencia ciudadana",
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "occurrences": [
+            {
+              "context": "royecto de gestión pública incluye indicadores de transparencia ciudadana.",
+              "end": 77,
+              "original_text": "transparencia ciudadana",
+              "pattern_matched": "\\b(?:participación|transparencia|accountability)\\s+ciudadan[oa]\\b",
+              "start": 54
+            }
+          ]
+        }
+      }
+    }
+  },
+  "extraction_type": "concepts",
+  "total_concepts": 5
+}

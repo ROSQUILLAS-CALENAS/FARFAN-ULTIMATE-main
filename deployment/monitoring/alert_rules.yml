@@ -1,0 +1,254 @@
+groups:
+  - name: egw_pipeline_alerts
+    rules:
+      # Performance alerts
+      - alert: EGWProcessingRateLow
+        expr: rate(egw_documents_processed_total[5m]) * 3600 < 170
+        for: 2m
+        labels:
+          severity: warning
+          component: pipeline
+        annotations:
+          summary: "EGW processing rate below benchmark"
+          description: "EGW pipeline processing rate is {{ $value }} documents/hour, below the required 170 documents/hour for the last 2 minutes."
+          
+      - alert: EGWProcessingRateCriticallyLow
+        expr: rate(egw_documents_processed_total[5m]) * 3600 < 100
+        for: 1m
+        labels:
+          severity: critical
+          component: pipeline
+        annotations:
+          summary: "EGW processing rate critically low"
+          description: "EGW pipeline processing rate is {{ $value }} documents/hour, critically below benchmark."
+          
+      # Quality alerts
+      - alert: EGWQualityScoreLow
+        expr: avg(egw_quality_score) < 0.8
+        for: 3m
+        labels:
+          severity: warning
+          component: quality
+        annotations:
+          summary: "EGW result quality below threshold"
+          description: "Average EGW quality score is {{ $value }}, below the required 0.8 threshold."
+          
+      - alert: EGWConsistencyScoreLow
+        expr: avg(egw_consistency_score) < 0.75
+        for: 3m
+        labels:
+          severity: warning
+          component: quality
+        annotations:
+          summary: "EGW result consistency below threshold"
+          description: "Average EGW consistency score is {{ $value }}, below the required 0.75 threshold."
+          
+      # System resource alerts
+      - alert: EGWHighMemoryUsage
+        expr: process_resident_memory_bytes / 1024 / 1024 > 2048
+        for: 5m
+        labels:
+          severity: warning
+          component: resources
+        annotations:
+          summary: "EGW service high memory usage"
+          description: "EGW service memory usage is {{ $value }}MB, above the 2GB limit."
+          
+      - alert: EGWHighCPUUsage
+        expr: rate(process_cpu_seconds_total[5m]) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+          component: resources
+        annotations:
+          summary: "EGW service high CPU usage"
+          description: "EGW service CPU usage is {{ $value }}%, above the 85% limit."
+          
+      # Error rate alerts
+      - alert: EGWHighErrorRate
+        expr: rate(egw_processing_errors_total[5m]) / rate(egw_documents_processed_total[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: warning
+          component: pipeline
+        annotations:
+          summary: "EGW high error rate detected"
+          description: "EGW processing error rate is {{ $value | humanizePercentage }}, above the 5% threshold."
+          
+      - alert: EGWCriticalErrorRate
+        expr: rate(egw_processing_errors_total[5m]) / rate(egw_documents_processed_total[5m]) > 0.15
+        for: 1m
+        labels:
+          severity: critical
+          component: pipeline
+        annotations:
+          summary: "EGW critical error rate"
+          description: "EGW processing error rate is {{ $value | humanizePercentage }}, critically high."
+          
+      # Service availability alerts
+      - alert: EGWServiceDown
+        expr: up{job="egw-service"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: service
+        annotations:
+          summary: "EGW service is down"
+          description: "EGW service has been down for more than 1 minute."
+          
+      - alert: EGWWorkerDown
+        expr: up{job="egw-workers"} == 0
+        for: 2m
+        labels:
+          severity: warning
+          component: workers
+        annotations:
+          summary: "EGW workers are down"
+          description: "EGW worker services have been down for more than 2 minutes."
+          
+      # Queue backlog alerts
+      - alert: EGWQueueBacklog
+        expr: redis_list_length{key="task_queue"} > 1000
+        for: 5m
+        labels:
+          severity: warning
+          component: queue
+        annotations:
+          summary: "EGW processing queue backlog"
+          description: "EGW processing queue has {{ $value }} pending tasks, indicating possible bottleneck."
+          
+      - alert: EGWQueueCriticalBacklog
+        expr: redis_list_length{key="task_queue"} > 5000
+        for: 2m
+        labels:
+          severity: critical
+          component: queue
+        annotations:
+          summary: "EGW critical queue backlog"
+          description: "EGW processing queue has {{ $value }} pending tasks, system may be overwhelmed."
+          
+      # Response time alerts
+      - alert: EGWSlowResponseTime
+        expr: histogram_quantile(0.95, rate(egw_request_duration_seconds_bucket[5m])) > 30
+        for: 3m
+        labels:
+          severity: warning
+          component: performance
+        annotations:
+          summary: "EGW slow response times"
+          description: "95th percentile response time is {{ $value }}s, above the 30s threshold."
+          
+      - alert: EGWVerySlowResponseTime
+        expr: histogram_quantile(0.95, rate(egw_request_duration_seconds_bucket[5m])) > 60
+        for: 1m
+        labels:
+          severity: critical
+          component: performance
+        annotations:
+          summary: "EGW very slow response times"
+          description: "95th percentile response time is {{ $value }}s, critically high."
+
+  - name: infrastructure_alerts
+    rules:
+      # Redis alerts
+      - alert: RedisDown
+        expr: up{job="redis"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: redis
+        annotations:
+          summary: "Redis is down"
+          description: "Redis service is not responding."
+          
+      - alert: RedisHighMemoryUsage
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.9
+        for: 5m
+        labels:
+          severity: warning
+          component: redis
+        annotations:
+          summary: "Redis high memory usage"
+          description: "Redis memory usage is {{ $value | humanizePercentage }}."
+          
+      # NGINX alerts
+      - alert: NginxDown
+        expr: up{job="nginx"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: nginx
+        annotations:
+          summary: "NGINX is down"
+          description: "NGINX load balancer is not responding."
+          
+      - alert: NginxHighConnectionRate
+        expr: rate(nginx_connections_handled_total[5m]) > 10000
+        for: 5m
+        labels:
+          severity: warning
+          component: nginx
+        annotations:
+          summary: "NGINX high connection rate"
+          description: "NGINX is handling {{ $value }} connections/second."
+          
+      # Node resource alerts
+      - alert: HighCPUUsage
+        expr: 100 - (avg(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 90
+        for: 5m
+        labels:
+          severity: warning
+          component: system
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage is {{ $value }}% for more than 5 minutes."
+          
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 90
+        for: 5m
+        labels:
+          severity: warning
+          component: system
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage is {{ $value }}% for more than 5 minutes."
+          
+      - alert: LowDiskSpace
+        expr: (1 - (node_filesystem_avail_bytes / node_filesystem_size_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+          component: system
+        annotations:
+          summary: "Low disk space"
+          description: "Disk usage is {{ $value }}% on {{ $labels.mountpoint }}."
+
+  - name: benchmark_alerts
+    rules:
+      # Benchmark performance alerts
+      - alert: BenchmarkPerformanceRegression
+        expr: |
+          (
+            rate(egw_documents_processed_total[1h]) * 3600 < 170 or
+            avg(egw_quality_score) < 0.8 or
+            avg(egw_consistency_score) < 0.75
+          )
+        for: 10m
+        labels:
+          severity: critical
+          component: benchmark
+        annotations:
+          summary: "EGW benchmark performance regression"
+          description: "EGW system is not meeting established benchmark requirements."
+          
+      - alert: ProcessingLatencyIncrease
+        expr: |
+          histogram_quantile(0.95, rate(egw_processing_duration_seconds_bucket[5m])) > 
+          histogram_quantile(0.95, rate(egw_processing_duration_seconds_bucket[1h] offset 1d)) * 1.5
+        for: 5m
+        labels:
+          severity: warning
+          component: performance
+        annotations:
+          summary: "Processing latency increase"
+          description: "Processing latency has increased by 50% compared to the same time yesterday."

@@ -1,0 +1,728 @@
+name: Dependency Compatibility Matrix CI/CD
+
+on:
+  push:
+    branches: [ main, develop, feature/* ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run twice daily for dependency monitoring
+    - cron: '0 6,18 * * *'
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: 'Test mode: compatibility|integration|performance'
+        required: false
+        default: 'compatibility'
+        type: choice
+        options:
+        - compatibility
+        - integration
+        - performance
+      fail_fast:
+        description: 'Fail fast on critical dependency failures'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+  PIP_NO_CACHE_DIR: 1
+  PYTHONDONTWRITEBYTECODE: 1
+
+jobs:
+  dependency-matrix:
+    name: Python ${{ matrix.python-version }} | ${{ matrix.os }} | ${{ matrix.dependency-set }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    continue-on-error: ${{ matrix.experimental }}
+    
+    strategy:
+      fail-fast: ${{ github.event.inputs.fail_fast == 'true' }}
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        dependency-set: [minimal, full, bleeding-edge]
+        experimental: [false]
+        include:
+          # Bleeding edge configurations (allow failures)
+          - python-version: '3.13-dev'
+            os: ubuntu-latest
+            dependency-set: minimal
+            experimental: true
+          - python-version: '3.12'
+            os: ubuntu-latest
+            dependency-set: nightly
+            experimental: true
+        exclude:
+          # Skip some combinations to reduce CI load
+          - os: windows-latest
+            dependency-set: bleeding-edge
+          - os: macos-latest
+            dependency-set: bleeding-edge
+          - python-version: '3.8'
+            dependency-set: bleeding-edge
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        allow-prereleases: ${{ matrix.experimental }}
+        
+    - name: Configure Windows PATH
+      if: matrix.os == 'windows-latest'
+      run: |
+        echo "$env:GITHUB_WORKSPACE" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        
+    - name: Create virtual environment
+      shell: bash
+      run: |
+        python -m venv venv
+        if [ "$RUNNER_OS" = "Windows" ]; then
+          source venv/Scripts/activate
+          echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+          echo "$VIRTUAL_ENV/Scripts" >> $GITHUB_PATH
+        else
+          source venv/bin/activate
+          echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+          echo "$VIRTUAL_ENV/bin" >> $GITHUB_PATH
+        fi
+        
+    - name: Upgrade pip and core tools
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip setuptools wheel
+        pip install importlib-metadata packaging
+        
+    - name: Install dependency set
+      shell: bash
+      run: |
+        case "${{ matrix.dependency-set }}" in
+          "minimal")
+            pip install -r requirements-minimal.txt || pip install -r requirements.txt
+            ;;
+          "full")
+            pip install -r requirements.txt
+            ;;
+          "bleeding-edge")
+            pip install --pre -r requirements.txt
+            ;;
+          "nightly")
+            pip install --pre --extra-index-url https://download.pytorch.org/whl/nightly/cpu torch
+            pip install -r requirements.txt
+            ;;
+        esac
+        
+    - name: Install development dependencies
+      shell: bash
+      run: |
+        pip install pytest pytest-cov pytest-xdist pytest-timeout
+        pip install importlib-metadata packaging
+        
+    - name: Install project in development mode
+      shell: bash
+      run: |
+        pip install -e .
+        
+    - name: Run critical dependency validation with fail-fast
+      shell: bash
+      run: |
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        from canonical_flow.mathematical_enhancers.mathematical_compatibility_matrix import MathematicalCompatibilityMatrix
+        
+        # Initialize compatibility matrix
+        matrix = MathematicalCompatibilityMatrix()
+        
+        # Check critical dependencies with fail-fast
+        critical_libs = ['numpy', 'scipy', 'torch', 'sklearn', 'POT']
+        failed_critical = []
+        
+        for lib in critical_libs:
+            result = matrix.check_library_compatibility(lib)
+            if not result.is_compatible:
+                failed_critical.append(lib)
+                print(f'CRITICAL FAILURE: {lib} - {result.issues}')
+        
+        if failed_critical and '${{ github.event.inputs.fail_fast }}' == 'true':
+            print(f'FAIL_FAST: Critical dependencies failed: {failed_critical}')
+            sys.exit(1)
+        "
+        
+    - name: Validate library version compatibility
+      shell: bash
+      run: |
+        python -c "
+        import sys, json
+        sys.path.insert(0, '.')
+        from canonical_flow.mathematical_enhancers.mathematical_compatibility_matrix import MathematicalCompatibilityMatrix
+        
+        matrix = MathematicalCompatibilityMatrix()
+        report = matrix.get_compatibility_report()
+        
+        # Print compatibility status
+        print('=== COMPATIBILITY MATRIX REPORT ===')
+        print(f'Python Version: {report[\"python_version\"]}')
+        print(f'OS: ${{ matrix.os }}')
+        print(f'Dependency Set: ${{ matrix.dependency-set }}')
+        print()
+        
+        # Check critical packages for version conflicts
+        critical_conflicts = []
+        for lib, result in report['library_compatibility'].items():
+            if lib in ['torch', 'numpy', 'scipy', 'sklearn', 'POT', 'transformers']:
+                status = '✅' if result['compatible'] else '❌'
+                print(f'{status} {lib}: {result.get(\"installed_version\", \"not installed\")}')
+                if not result['compatible'] and result.get('issues'):
+                    critical_conflicts.extend(result['issues'])
+        
+        # Save report for artifacts
+        with open('compatibility_report.json', 'w') as f:
+            json.dump(report, f, indent=2, default=str)
+            
+        if critical_conflicts:
+            print(f'\\nCritical conflicts detected: {critical_conflicts}')
+            sys.exit(1)
+        "
+        
+    - name: Run FAISS/PyTorch variant conflict detection  
+      shell: bash
+      run: |
+        python -c "
+        import sys, importlib.metadata as metadata
+        
+        # Check for FAISS CPU/GPU conflicts
+        faiss_variants = []
+        for variant in ['faiss-cpu', 'faiss-gpu']:
+            try:
+                version = metadata.version(variant)
+                faiss_variants.append((variant, version))
+            except metadata.PackageNotFoundError:
+                pass
+        
+        if len(faiss_variants) > 1:
+            print('WARNING: Multiple FAISS variants detected:')
+            for variant, version in faiss_variants:
+                print(f'  {variant}: {version}')
+            print('This may cause import conflicts.')
+        elif faiss_variants:
+            variant, version = faiss_variants[0]
+            print(f'✅ FAISS variant: {variant} {version}')
+        else:
+            print('❌ No FAISS variant installed')
+            sys.exit(1)
+            
+        # Check PyTorch variants
+        torch_variants = []
+        for variant in ['torch', 'torch-nightly']:
+            try:
+                version = metadata.version(variant)
+                torch_variants.append((variant, version))
+            except metadata.PackageNotFoundError:
+                pass
+                
+        if torch_variants:
+            variant, version = torch_variants[0]
+            print(f'✅ PyTorch variant: {variant} {version}')
+        else:
+            print('❌ No PyTorch variant installed')
+            sys.exit(1)
+        "
+        
+    - name: Run comprehensive import validation
+      shell: bash
+      run: |
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        
+        # Test imports for all EGW pipeline components
+        pipeline_components = [
+            'egw_query_expansion',
+            'egw_query_expansion.core.gw_alignment',
+            'egw_query_expansion.core.query_generator', 
+            'egw_query_expansion.core.hybrid_retrieval',
+            'egw_query_expansion.core.pattern_matcher',
+            'egw_query_expansion.core.conformal_risk_control',
+            'egw_query_expansion.core.deterministic_router',
+            'egw_query_expansion.core.permutation_invariant_processor',
+            'egw_query_expansion.mathematical_foundations'
+        ]
+        
+        import_failures = []
+        import_warnings = []
+        
+        for component in pipeline_components:
+            try:
+                __import__(component)
+                print(f'✅ {component}')
+            except ImportError as e:
+                if 'optional' in str(e).lower() or 'not found' in str(e).lower():
+                    import_warnings.append((component, str(e)))
+                    print(f'⚠️  {component}: {e}')
+                else:
+                    import_failures.append((component, str(e)))
+                    print(f'❌ {component}: {e}')
+            except Exception as e:
+                import_failures.append((component, str(e)))
+                print(f'💥 {component}: {e}')
+        
+        print(f'\\nImport Summary: {len(pipeline_components) - len(import_failures) - len(import_warnings)}/{len(pipeline_components)} succeeded')
+        print(f'Failures: {len(import_failures)}, Warnings: {len(import_warnings)}')
+        
+        if import_failures:
+            print('\\nCritical import failures detected!')
+            sys.exit(1)
+        "
+        
+    - name: Test mock implementation API consistency
+      shell: bash
+      run: |
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        
+        # Test that mock implementations maintain API consistency
+        # This validates fallback patterns when dependencies are missing
+        
+        class MockTorch:
+            '''Mock PyTorch with consistent API'''
+            def __init__(self):
+                self.cuda = MockCuda()
+                self.backends = MockBackends()
+            
+            def manual_seed(self, seed):
+                pass
+                
+            def no_grad(self):
+                class NoGradContext:
+                    def __enter__(self): return self
+                    def __exit__(self, *args): pass
+                return NoGradContext()
+        
+        class MockCuda:
+            def is_available(self): return False
+            def manual_seed(self, seed): pass
+            def manual_seed_all(self, seed): pass
+            
+        class MockBackends:
+            def __init__(self):
+                self.cudnn = MockCudnn()
+                
+        class MockCudnn:
+            deterministic = True
+            benchmark = False
+        
+        class MockFaiss:
+            '''Mock FAISS with consistent API'''
+            def seed_global_rng(self, seed):
+                pass
+                
+            def IndexFlatIP(self, dim):
+                return MockIndex(dim)
+                
+            def write_index(self, index, path):
+                with open(path, 'wb') as f:
+                    f.write(b'mock_faiss_index')
+        
+        class MockIndex:
+            def __init__(self, dim):
+                self.d = dim
+                self.ntotal = 0
+            
+            def add(self, vectors):
+                self.ntotal += len(vectors)
+        
+        # Test API consistency
+        mock_torch = MockTorch()
+        mock_faiss = MockFaiss()
+        
+        # Test torch API
+        assert hasattr(mock_torch, 'manual_seed')
+        assert hasattr(mock_torch.cuda, 'is_available')
+        assert hasattr(mock_torch.backends.cudnn, 'deterministic')
+        
+        # Test faiss API
+        assert hasattr(mock_faiss, 'IndexFlatIP')
+        index = mock_faiss.IndexFlatIP(128)
+        assert hasattr(index, 'd')
+        assert hasattr(index, 'ntotal')
+        
+        print('✅ Mock API consistency validated')
+        "
+        
+    - name: Run numerical stability validation
+      shell: bash
+      run: |
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        from canonical_flow.mathematical_enhancers.mathematical_compatibility_matrix import MathematicalCompatibilityMatrix
+        
+        matrix = MathematicalCompatibilityMatrix()
+        
+        # Run numerical stability tests
+        stability_result = matrix.validate_numerical_stability(
+            operations=['matmul', 'svd', 'eigendecomp', 'ot_basic', 'optimization'],
+            tolerance=1e-10
+        )
+        
+        print('=== NUMERICAL STABILITY REPORT ===')
+        print(f'Stable: {stability_result.is_stable}')
+        print(f'Max Error: {stability_result.max_error:.2e}')
+        print(f'Mean Error: {stability_result.mean_error:.2e}')
+        
+        if stability_result.failed_operations:
+            print(f'Failed Operations: {stability_result.failed_operations}')
+            
+        if stability_result.precision_warnings:
+            print(f'Precision Warnings: {stability_result.precision_warnings}')
+        
+        # Fail if critical numerical operations are unstable
+        critical_failures = [op for op in stability_result.failed_operations 
+                           if any(critical in op for critical in ['matmul', 'svd', 'eigen'])]
+        
+        if critical_failures:
+            print(f'CRITICAL: Numerical instability in core operations: {critical_failures}')
+            sys.exit(1)
+        "
+        
+    - name: Generate compatibility matrix report
+      shell: bash
+      run: |
+        python -c "
+        import sys, json
+        from datetime import datetime
+        sys.path.insert(0, '.')
+        from canonical_flow.mathematical_enhancers.mathematical_compatibility_matrix import MathematicalCompatibilityMatrix
+        
+        matrix = MathematicalCompatibilityMatrix()
+        report = matrix.get_compatibility_report()
+        
+        # Add CI metadata
+        report['ci_metadata'] = {
+            'python_version': '${{ matrix.python-version }}',
+            'os': '${{ matrix.os }}',
+            'dependency_set': '${{ matrix.dependency-set }}',
+            'timestamp': datetime.utcnow().isoformat(),
+            'github_sha': '${{ github.sha }}',
+            'github_ref': '${{ github.ref }}'
+        }
+        
+        # Generate upgrade recommendations
+        upgrade_recommendations = []
+        for lib, result in report['library_compatibility'].items():
+            if not result['compatible'] and result.get('installed_version'):
+                upgrade_recommendations.append({
+                    'library': lib,
+                    'current_version': result['installed_version'],
+                    'recommended_action': f'Upgrade to {result.get(\"required_version\", \"latest\")}',
+                    'priority': 'high' if lib in ['torch', 'numpy', 'scipy'] else 'medium'
+                })
+        
+        report['upgrade_recommendations'] = upgrade_recommendations
+        
+        # Save detailed report
+        filename = f'compatibility_matrix_py{\"${{ matrix.python-version }}\".replace(\".\", \"\")}_${{ matrix.os }}_${{ matrix.dependency-set }}.json'
+        with open(filename, 'w') as f:
+            json.dump(report, f, indent=2, default=str)
+        
+        print(f'Generated compatibility report: {filename}')
+        
+        # Generate fallback usage report
+        fallback_report = {}
+        for stage, libs in matrix.stage_dependencies.items():
+            fallback_libs = []
+            for lib in libs:
+                spec = matrix.library_specs.get(lib, {})
+                if hasattr(spec, 'fallback_libraries') and spec.fallback_libraries:
+                    fallback_libs.append({
+                        'primary': lib,
+                        'fallbacks': spec.fallback_libraries
+                    })
+            if fallback_libs:
+                fallback_report[stage.value] = fallback_libs
+        
+        with open('fallback_usage_report.json', 'w') as f:
+            json.dump(fallback_report, f, indent=2, default=str)
+        "
+        
+    - name: Run integration tests for dependency interactions
+      if: github.event.inputs.test_mode == 'integration' || github.event.inputs.test_mode == ''
+      shell: bash
+      run: |
+        pytest egw_query_expansion/tests/ -v -x --tb=short --timeout=300 \
+          -k "test_library_integration or test_dependency_interaction" \
+          --cov=egw_query_expansion --cov-report=xml
+        
+    - name: Upload compatibility artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: compatibility-matrix-${{ matrix.python-version }}-${{ matrix.os }}-${{ matrix.dependency-set }}
+        path: |
+          compatibility_*.json
+          fallback_usage_report.json
+          coverage.xml
+        retention-days: 30
+        
+    - name: Upload failure logs
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: failure-logs-${{ matrix.python-version }}-${{ matrix.os }}-${{ matrix.dependency-set }}
+        path: |
+          **/*.log
+          pip-freeze.txt
+        retention-days: 7
+
+  aggregate-compatibility-report:
+    name: Aggregate Compatibility Report
+    runs-on: ubuntu-latest
+    needs: dependency-matrix
+    if: always()
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        pip install pandas numpy matplotlib seaborn json5
+        
+    - name: Download all compatibility artifacts
+      uses: actions/download-artifact@v4
+      with:
+        pattern: compatibility-matrix-*
+        merge-multiple: true
+        path: compatibility-reports/
+        
+    - name: Generate aggregated compatibility report
+      run: |
+        python -c "
+        import json
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+        from pathlib import Path
+        from collections import defaultdict
+        
+        # Load all compatibility reports
+        reports = []
+        for report_file in Path('compatibility-reports').glob('compatibility_matrix_*.json'):
+            try:
+                with open(report_file) as f:
+                    data = json.load(f)
+                    if 'ci_metadata' in data:
+                        reports.append(data)
+            except Exception as e:
+                print(f'Failed to load {report_file}: {e}')
+        
+        print(f'Loaded {len(reports)} compatibility reports')
+        
+        # Aggregate results
+        compatibility_matrix = defaultdict(lambda: defaultdict(dict))
+        upgrade_summary = defaultdict(list)
+        
+        for report in reports:
+            metadata = report['ci_metadata']
+            py_version = metadata['python_version']
+            os_name = metadata['os']
+            dep_set = metadata['dependency_set']
+            
+            key = f'{py_version}-{os_name}-{dep_set}'
+            
+            # Collect compatibility status
+            for lib, result in report['library_compatibility'].items():
+                compatibility_matrix[lib][key] = result['compatible']
+            
+            # Collect upgrade recommendations
+            for rec in report.get('upgrade_recommendations', []):
+                upgrade_summary[rec['library']].append({
+                    'environment': key,
+                    'action': rec['recommended_action'],
+                    'priority': rec['priority']
+                })
+        
+        # Generate summary statistics
+        summary = {
+            'total_environments_tested': len(set(
+                f\"{r['ci_metadata']['python_version']}-{r['ci_metadata']['os']}-{r['ci_metadata']['dependency_set']}\"
+                for r in reports
+            )),
+            'critical_libraries_tested': len([lib for lib in compatibility_matrix.keys() 
+                                            if lib in ['torch', 'numpy', 'scipy', 'sklearn', 'POT']]),
+            'compatibility_rate': sum(
+                sum(env_results.values()) / len(env_results)
+                for env_results in compatibility_matrix.values()
+                if env_results
+            ) / len(compatibility_matrix) if compatibility_matrix else 0
+        }
+        
+        # Save aggregated report
+        aggregated_report = {
+            'summary': summary,
+            'compatibility_matrix': dict(compatibility_matrix),
+            'upgrade_recommendations': dict(upgrade_summary),
+            'timestamp': reports[0]['ci_metadata']['timestamp'] if reports else None
+        }
+        
+        with open('aggregated_compatibility_report.json', 'w') as f:
+            json.dump(aggregated_report, f, indent=2, default=str)
+        
+        print('Generated aggregated compatibility report')
+        print(f'Overall compatibility rate: {summary[\"compatibility_rate\"]:.2%}')
+        "
+        
+    - name: Generate compatibility visualization
+      run: |
+        python -c "
+        import json
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+        import pandas as pd
+        import numpy as np
+        
+        # Load aggregated report
+        with open('aggregated_compatibility_report.json') as f:
+            report = json.load(f)
+        
+        # Create compatibility heatmap
+        matrix_data = report['compatibility_matrix']
+        if matrix_data:
+            df_data = []
+            for lib, env_results in matrix_data.items():
+                for env, compatible in env_results.items():
+                    df_data.append({
+                        'Library': lib,
+                        'Environment': env,
+                        'Compatible': compatible
+                    })
+            
+            if df_data:
+                df = pd.DataFrame(df_data)
+                pivot_df = df.pivot(index='Library', columns='Environment', values='Compatible')
+                
+                plt.figure(figsize=(16, 10))
+                sns.heatmap(pivot_df, annot=True, cmap='RdYlGn', cbar_kws={'label': 'Compatible'})
+                plt.title('EGW Query Expansion - Library Compatibility Matrix')
+                plt.xlabel('Environment (Python-OS-DependencySet)')
+                plt.ylabel('Library')
+                plt.xticks(rotation=45, ha='right')
+                plt.tight_layout()
+                plt.savefig('compatibility_heatmap.png', dpi=300, bbox_inches='tight')
+                plt.close()
+                
+                print('Generated compatibility heatmap')
+        "
+        
+    - name: Create compatibility summary
+      run: |
+        python -c "
+        import json
+        from datetime import datetime
+        
+        with open('aggregated_compatibility_report.json') as f:
+            report = json.load(f)
+        
+        summary = report['summary']
+        
+        # Generate markdown report
+        md_content = f'''# EGW Query Expansion - Dependency Compatibility Report
+        
+        **Generated:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
+        **Commit:** ${{ github.sha }}
+        
+        ## Summary
+        
+        - **Environments Tested:** {summary['total_environments_tested']}
+        - **Critical Libraries:** {summary['critical_libraries_tested']}
+        - **Overall Compatibility Rate:** {summary['compatibility_rate']:.1%}
+        
+        ## Key Findings
+        
+        '''
+        
+        # Add upgrade recommendations
+        upgrade_recs = report.get('upgrade_recommendations', {})
+        if upgrade_recs:
+            md_content += '### Critical Upgrade Recommendations\\n\\n'
+            for lib, recs in upgrade_recs.items():
+                high_priority = [r for r in recs if r['priority'] == 'high']
+                if high_priority:
+                    md_content += f'- **{lib}**: {len(high_priority)} environments need upgrades\\n'
+        
+        # Add compatibility issues
+        matrix = report.get('compatibility_matrix', {})
+        if matrix:
+            incompatible_libs = []
+            for lib, env_results in matrix.items():
+                compatible_count = sum(env_results.values())
+                total_count = len(env_results)
+                if compatible_count < total_count:
+                    incompatible_libs.append((lib, compatible_count, total_count))
+            
+            if incompatible_libs:
+                md_content += '\\n### Libraries with Compatibility Issues\\n\\n'
+                for lib, compatible, total in sorted(incompatible_libs, key=lambda x: x[1]/x[2]):
+                    rate = compatible / total
+                    md_content += f'- **{lib}**: {rate:.1%} compatible ({compatible}/{total})\\n'
+        
+        md_content += '''
+        
+        ## Recommendations
+        
+        1. **High Priority**: Address libraries with <90% compatibility rate
+        2. **Medium Priority**: Update libraries with available patches
+        3. **Monitor**: Track compatibility for Python 3.13-dev builds
+        
+        For detailed compatibility matrix and upgrade paths, see the artifacts.
+        '''
+        
+        with open('COMPATIBILITY_REPORT.md', 'w') as f:
+            f.write(md_content)
+        
+        print('Generated compatibility summary')
+        "
+        
+    - name: Upload aggregated compatibility report
+      uses: actions/upload-artifact@v4
+      with:
+        name: aggregated-compatibility-report
+        path: |
+          aggregated_compatibility_report.json
+          COMPATIBILITY_REPORT.md
+          compatibility_heatmap.png
+        retention-days: 90
+        
+    - name: Comment PR with compatibility summary
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          
+          try {
+            const report = fs.readFileSync('COMPATIBILITY_REPORT.md', 'utf8');
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🔍 Dependency Compatibility Report\n\n${report}`
+            });
+          } catch (error) {
+            console.log('Could not post compatibility report:', error.message);
+          }

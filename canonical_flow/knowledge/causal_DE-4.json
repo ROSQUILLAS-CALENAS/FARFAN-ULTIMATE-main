@@ -1,0 +1,21 @@
+{
+  "dimension": "DE-4",
+  "edges": [],
+  "metadata": {
+    "component_id": "comp_fc386d2c64d26eae95f3eb0aca8fb922ca5466b3a92d1c65b690fb46ece",
+    "dimension": "DE-4",
+    "generation_timestamp": "2025-08-26T22:05:26.808546",
+    "is_sparse": true,
+    "operation_id": "op_f00e6721251ad89e0027a2c7e9c7ba6b023663aa944e01aa77b18ebc25628",
+    "reason": "Insufficient causal evidence available"
+  },
+  "nodes": [],
+  "validity_statistics": {
+    "edge_count": 0,
+    "graph_density": 0.0,
+    "max_validity": 0.0,
+    "mean_validity": 0.0,
+    "min_validity": 0.0,
+    "node_count": 0
+  }
+}

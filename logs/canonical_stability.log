@@ -1,0 +1,9 @@
+
+Canonical Flow Stability Report
+==================================
+- missing_file_failure_semantics: PASS - OK: failure artifact present and error message correct
+- success_and_idempotency: PASS - SKIP: no PDFs found in planes_input
+- batch_consistency_first_2: PASS - SKIP: planes_input does not exist
+
+Result: PASS - All checks passed (or were skipped appropriately).
+

@@ -1,0 +1,9 @@
+# Visual Testing Framework Dependencies
+playwright>=1.40.0
+selenium>=4.15.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# Browser drivers (install separately)
+# playwright install chromium
+# Download ChromeDriver for Selenium from https://chromedriver.chromium.org/

@@ -1,0 +1,114 @@
+{
+  "document_id": "TEST_DOCUMENT_001",
+  "point_number": 2,
+  "point_name": "Igualdad de la mujer y equidad de género",
+  "total_expected_questions": 47,
+  "dimensions": {
+    "DE-1": {
+      "expected_count": 6,
+      "actual_answered": 6,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_02_DE-1_7bd7f5c4",
+        "DQ_02_DE-1_5fd11946",
+        "DQ_02_DE-1_e2894578",
+        "DQ_02_DE-1_783ba068",
+        "DQ_02_DE-1_fbc8f06e",
+        "DQ_02_DE-1_a1a32c4f"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-2": {
+      "expected_count": 21,
+      "actual_answered": 21,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_02_DE-2_1af129be",
+        "DQ_02_DE-2_eb6d612a",
+        "DQ_02_DE-2_a39f3644",
+        "DQ_02_DE-2_e8850a8a",
+        "DQ_02_DE-2_4b7356aa",
+        "DQ_02_DE-2_55b242d1",
+        "DQ_02_DE-2_e558cc2c",
+        "DQ_02_DE-2_1d3d92c5",
+        "DQ_02_DE-2_6d30d476",
+        "DQ_02_DE-2_bc89e2e8",
+        "DQ_02_DE-2_d504a933",
+        "DQ_02_DE-2_710dd826",
+        "DQ_02_DE-2_3f131c35",
+        "DQ_02_DE-2_6a600351",
+        "DQ_02_DE-2_d1494327",
+        "DQ_02_DE-2_6f85dd0e",
+        "DQ_02_DE-2_678adcb7",
+        "DQ_02_DE-2_6b5fc2cd",
+        "DQ_02_DE-2_de03cc9c",
+        "DQ_02_DE-2_8b8b8ec9",
+        "DQ_02_DE-2_4bd89b2c"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-3": {
+      "expected_count": 8,
+      "actual_answered": 8,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_02_DE-3_18a2b807",
+        "DQ_02_DE-3_2df6da57",
+        "DQ_02_DE-3_7f50adbc",
+        "DQ_02_DE-3_a95beb53",
+        "DQ_02_DE-3_b52e4bc1",
+        "DQ_02_DE-3_20c46c73",
+        "DQ_02_DE-3_6f597b54",
+        "DQ_02_DE-3_7efe5c7b"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-4": {
+      "expected_count": 8,
+      "actual_answered": 8,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_02_DE-4_8062e49b",
+        "DQ_02_DE-4_04aaa319",
+        "DQ_02_DE-4_a5180675",
+        "DQ_02_DE-4_2d6a77f2",
+        "DQ_02_DE-4_13afa192",
+        "DQ_02_DE-4_655bfe6b",
+        "DQ_02_DE-4_c8a29ec9",
+        "DQ_02_DE-4_2d89e001"
+      ],
+      "unanswered_count": 0
+    },
+    "GEN": {
+      "expected_count": 4,
+      "actual_answered": 4,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_02_GEN_218a7b40",
+        "DQ_02_GEN_26196389",
+        "DQ_02_GEN_f9196dab",
+        "DQ_02_GEN_87c8648c"
+      ],
+      "unanswered_count": 0
+    }
+  },
+  "summary": {
+    "total_answered": 47,
+    "completion_percentage": 100.0,
+    "has_gaps": false,
+    "total_gaps": 0,
+    "dimensions_with_gaps": 0,
+    "fully_completed_dimensions": 5
+  },
+  "timestamp": "2025-08-26T22:10:35.756243"
+}

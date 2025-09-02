@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "processing_time": 5.6743621826171875e-05,
+    "model_status": "model_based",
+    "timestamp": "2025-08-26T18:42:34.579340",
+    "total_evidence": 3,
+    "errors": []
+  },
+  "summary": {
+    "total_evidence": 3,
+    "validation_rate": 0.3333333333333333,
+    "average_validation_score": 0.36000000000000004,
+    "average_dnp_score": 0.6,
+    "severity_distribution": {
+      "critical": 2,
+      "warning": 1,
+      "info": 0
+    },
+    "top_violations": [
+      {
+        "violation": "missing_document_id",
+        "count": 2
+      }
+    ]
+  },
+  "results": [
+    {
+      "evidence_id": "evidence_001",
+      "is_valid": true,
+      "validation_score": 0.7,
+      "dnp_compliance_score": 1.0,
+      "validation_messages": [
+        "Evidence meets minimum DNP compliance requirements"
+      ],
+      "severity_level": "warning",
+      "timestamp": "2025-08-26T18:42:34.579231",
+      "traceability_id": null,
+      "rule_violations": []
+    },
+    {
+      "evidence_id": "evidence_002",
+      "is_valid": false,
+      "validation_score": 0.0,
+      "dnp_compliance_score": 0.0,
+      "validation_messages": [
+        "Evidence does not meet DNP compliance standards",
+        "Rule violations detected: missing_document_id",
+        "DNP compliance score below acceptable threshold"
+      ],
+      "severity_level": "critical",
+      "timestamp": "2025-08-26T18:42:34.579253",
+      "traceability_id": null,
+      "rule_violations": [
+        "missing_document_id"
+      ]
+    },
+    {
+      "evidence_id": "evidence_003",
+      "is_valid": false,
+      "validation_score": 0.38,
+      "dnp_compliance_score": 0.8,
+      "validation_messages": [
+        "Evidence does not meet DNP compliance standards",
+        "Rule violations detected: missing_document_id"
+      ],
+      "severity_level": "critical",
+      "timestamp": "2025-08-26T18:42:34.579266",
+      "traceability_id": null,
+      "rule_violations": [
+        "missing_document_id"
+      ]
+    }
+  ]
+}

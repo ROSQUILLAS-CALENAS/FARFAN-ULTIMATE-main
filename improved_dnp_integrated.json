@@ -1,0 +1,1811 @@
+{
+  "metadata": {
+    "version": "2.0.0",
+    "created_date": "2025-01-20",
+    "methodology": "Decálogo de Derechos Humanos y Buen Gobierno - DNP",
+    "source": "Sistema de Evaluación PDT - Metodología Conjuntiva Avanzada",
+    "last_updated": "2025-01-20",
+    "catalog_adherence": "advanced_prompts_catalog v1.0",
+    "exhaustiveness_level": "COMPREHENSIVE",
+    "compatibility": {
+      "system_version": "2.0.0",
+      "python_version": ">=3.8",
+      "dependencies": [
+        "transformers>=4.21.0",
+        "torch>=1.12.0",
+        "faiss-cpu>=1.7.0",
+        "pandas>=1.5.0",
+        "yaml>=6.0",
+        "numpy>=1.23.0",
+        "scikit-learn>=1.1.0",
+        "spacy>=3.4.0"
+      ]
+    }
+  },
+  "advanced_prompts_integration": {
+    "catalog_version": "1.0",
+    "prompt_structure_mapping": {
+      "global_navigation": {
+        "prompt_id": "0.0",
+        "purpose": "Revisión y navegación del documento PDT",
+        "required_sections": [
+          "diagnostico_territorial_poblacional",
+          "estrategias_programas_proyectos",
+          "presupuesto_fuentes_financiacion",
+          "indicadores_productos_resultados"
+        ],
+        "expected_output": "Resumen estructura PDT con ubicaciones clave"
+      },
+      "cluster_execution_prompts": {
+        "cluster_1": {
+          "prompt_id": "7.1.1",
+          "name": "VÍCTIMAS Y CONSTRUCCIÓN DE PAZ",
+          "points": [8],
+          "execution_order": 1
+        },
+        "cluster_2": {
+          "prompt_id": "7.1.2",
+          "name": "DERECHOS DE GRUPOS POBLACIONALES",
+          "points": [2, 6, 9],
+          "execution_order": 2
+        },
+        "cluster_3": {
+          "prompt_id": "7.1.3",
+          "name": "TERRITORIO, AMBIENTE Y DESARROLLO SOSTENIBLE",
+          "points": [3, 7],
+          "execution_order": 3
+        },
+        "cluster_4": {
+          "prompt_id": "7.1.4",
+          "name": "DERECHOS ECONÓMICOS, SOCIALES Y CULTURALES",
+          "points": [4, 5, 10],
+          "execution_order": 4
+        },
+        "cluster_5": {
+          "prompt_id": "7.1.5",
+          "name": "DERECHOS CIVILES Y POLÍTICOS",
+          "points": [1, 11],
+          "execution_order": 5
+        }
+      }
+    }
+  },
+  "dimension_standards_comprehensive": {
+    "DE1": {
+      "name": "Lógica de Intervención y Coherencia Interna",
+      "weight": 0.4,
+      "description": "Evalúa la coherencia lógica de las intervenciones propuestas",
+      "scoring_methodology": "weighted_components_with_causal_factor",
+      "components": {
+        "bienestar": {
+          "weight": 0.6,
+          "questions": ["Q5", "Q6"],
+          "focus": "Impacto transformador en bienestar poblacional",
+          "expected_evidence": [
+            "metas ambiciosas transformadoras",
+            "impacto poblacional proyectado",
+            "beneficios cualitativos y cuantitativos",
+            "alineación con Decálogo DDHH"
+          ]
+        },
+        "resultado": {
+          "weight": 0.3,
+          "questions": ["Q3", "Q4"],
+          "focus": "Efectos directos e indicadores de resultado",
+          "expected_evidence": [
+            "indicadores de resultado claros",
+            "metas cuantitativas verificables",
+            "efectos directos en población objetivo",
+            "cambios esperados medibles"
+          ]
+        },
+        "gestion_producto": {
+          "weight": 0.1,
+          "questions": ["Q1", "Q2"],
+          "focus": "Productos y gestión operativa",
+          "expected_evidence": [
+            "productos concretos definidos",
+            "metas de gestión específicas",
+            "entregables cuantificables",
+            "responsables institucionales"
+          ]
+        }
+      },
+      "causal_evaluation": {
+        "max_score": 20,
+        "factors": {
+          "coherencia_diagnostico_propuesta": {
+            "weight": 5,
+            "criteria": "¿El diagnóstico justifica las acciones propuestas?",
+            "evidence_patterns": [
+              "problema.*causa.*objetivo.*estrategia",
+              "situación.*necesidad.*intervención",
+              "brecha.*identificada.*acción.*propuesta"
+            ]
+          },
+          "articulacion_logica_cadena": {
+            "weight": 5,
+            "criteria": "¿Existe secuencia clara entre actividades, productos, resultados e impactos?",
+            "evidence_patterns": [
+              "actividad.*producto.*resultado.*impacto",
+              "secuencia.*lógica.*causal",
+              "cadena.*valor.*completa"
+            ]
+          },
+          "consistencia_temporal": {
+            "weight": 5,
+            "criteria": "¿Las metas tienen secuencia temporal realista?",
+            "evidence_patterns": [
+              "2024.*2025.*2026.*2027",
+              "corto.*mediano.*largo.*plazo",
+              "metas.*intermedias.*vigencia"
+            ]
+          },
+          "suficiencia_evidencia_causal": {
+            "weight": 5,
+            "criteria": "¿La evidencia es suficiente para establecer relación causa-efecto?",
+            "evidence_patterns": [
+              "estudios.*demuestran.*que",
+              "evidencia.*indica.*relación",
+              "datos.*confirman.*causalidad"
+            ]
+          }
+        },
+        "factor_calculation": {
+          "formula": "0.5 + (suma_puntajes_causalidad / 40)",
+          "range": [0.5, 1.0],
+          "interpretation": {
+            "0.5-0.69": "Suficiencia causal insuficiente",
+            "0.7-0.89": "Suficiencia causal parcial",
+            "0.9-1.0": "Suficiencia causal suficiente"
+          }
+        }
+      },
+      "causality_patterns": {
+        "strong_causality": [
+          "por lo tanto",
+          "en consecuencia",
+          "como resultado",
+          "debido a",
+          "genera que",
+          "produce",
+          "conlleva",
+          "ocasiona",
+          "deriva en",
+          "lógica causal irrefutable",
+          "cadena causal irrefutable"
+        ],
+        "logical_sequence": [
+          "problema.*causa.*objetivo.*estrategia",
+          "diagnóstico.*análisis.*propuesta.*meta",
+          "situación.*factores.*intervención.*resultado",
+          "necesidad.*justificación.*acción.*impacto",
+          "narrativa integral",
+          "diagrama integral",
+          "secuencia clara, fluida y sin interrupciones lógicas"
+        ],
+        "evidence_indicators": [
+          "según el",
+          "estudios muestran",
+          "datos de",
+          "evidencia indica",
+          "investigaciones demuestran",
+          "análisis revela",
+          "estadísticas confirman",
+          "fuente: DANE",
+          "fuente: DNP",
+          "fuente: ministerio",
+          "pruebas contundentes (datos, estudios, investigaciones, referencias teóricas)",
+          "argumentación técnica sólida"
+        ],
+        "temporal_consistency": [
+          "primero.*luego.*finalmente",
+          "corto plazo.*largo plazo",
+          "2024.*2025.*2026.*2027",
+          "inicial.*intermedio.*final",
+          "fase.*etapa.*momento",
+          "secuencia temporal realista y coherente",
+          "metas intermedias de cada vigencia",
+          "meta final del 2027"
+        ]
+      },
+      "final_calculation": {
+        "formula": "((Bienestar * 0.6) + (Resultado * 0.3) + (Gestión * 0.1)) * Factor_Causal",
+        "scale": [0, 100],
+        "rounding": "decimal_places_1"
+      }
+    },
+    "DE2": {
+      "name": "Inclusión Temática y Grupos Poblacionales",
+      "weight": 0.25,
+      "description": "Evalúa inclusión y enfoque diferencial",
+      "scoring_methodology": "binary_verification_with_weighted_categories",
+      "verification_questions": {
+        "enfoque_diferencial": {
+          "question": "¿Incluye enfoque diferencial explícito para el derecho evaluado?",
+          "evidence_requirements": [
+            "mención explícita enfoque diferencial",
+            "identificación grupos poblacionales específicos",
+            "medidas diferenciadas por grupo",
+            "análisis interseccional básico"
+          ],
+          "weight": 0.25
+        },
+        "grupos_vulnerables": {
+          "question": "¿Identifica y prioriza grupos vulnerables específicos?",
+          "evidence_requirements": [
+            "listado específico grupos vulnerables",
+            "caracterización poblacional diferenciada",
+            "priorización explícita grupos",
+            "medidas de protección específicas"
+          ],
+          "weight": 0.25
+        },
+        "participacion_comunitaria": {
+          "question": "¿Contempla participación comunitaria en diseño e implementación?",
+          "evidence_requirements": [
+            "mecanismos participación definidos",
+            "espacios consultivos establecidos",
+            "involucramiento comunitario programado",
+            "feedback ciudadano contemplado"
+          ],
+          "weight": 0.3
+        },
+        "interseccionalidad": {
+          "question": "¿Reconoce interseccionalidad y múltiples discriminaciones?",
+          "evidence_requirements": [
+            "análisis interseccional explícito",
+            "reconocimiento múltiples vulnerabilidades",
+            "medidas interseccionales específicas",
+            "enfoque integral discriminaciones"
+          ],
+          "weight": 0.2
+        }
+      },
+      "inclusion_patterns": [
+        "enfoque diferencial",
+        "grupos poblacionales",
+        "población vulnerable",
+        "participación comunitaria",
+        "interseccionalidad",
+        "múltiples discriminaciones",
+        "diversidad poblacional",
+        "equidad territorial",
+        "inclusión social",
+        "no discriminación"
+      ],
+      "demographic_groups": [
+        "mujeres",
+        "niñez",
+        "juventud",
+        "adultos mayores",
+        "personas con discapacidad",
+        "pueblos indígenas",
+        "comunidades afrodescendientes",
+        "población LGBTI",
+        "víctimas del conflicto",
+        "población rural",
+        "campesinos",
+        "personas privadas de libertad"
+      ],
+      "scoring_calculation": {
+        "method": "weighted_binary_sum",
+        "formula": "suma((respuesta_binaria * peso_pregunta) * 100)",
+        "scale": [0, 100],
+        "interpretation": {
+          "80-100": "Inclusión excelente",
+          "60-79": "Inclusión buena",
+          "40-59": "Inclusión básica",
+          "0-39": "Inclusión insuficiente"
+        }
+      }
+    },
+    "DE3": {
+      "name": "Planificación y Adecuación Presupuestal",
+      "weight": 0.2,
+      "description": "Evalúa viabilidad presupuestal y planificación financiera",
+      "scoring_methodology": "subpoint_accumulation_by_categories",
+      "question_categories": {
+        "general": {
+          "questions": ["G1", "G2"],
+          "focus": "Aspectos generales de planificación presupuestal",
+          "G1": {
+            "text": "¿Existe presupuesto específico asignado al derecho?",
+            "evidence_expected": "Asignación presupuestal específica y cuantificada",
+            "patterns": [
+              "presupuesto.*específico.*[derecho]",
+              "asignación.*recursos.*[sector]",
+              "inversión.*programada.*[área]"
+            ]
+          },
+          "G2": {
+            "text": "¿Se definen fuentes de financiación claras?",
+            "evidence_expected": "Fuentes de recursos identificadas y programadas",
+            "patterns": [
+              "fuentes.*financiación.*identificadas",
+              "recursos.*propios.*transferencias.*cofinanciación",
+              "SGP.*SGR.*regalías.*otras.*fuentes"
+            ]
+          }
+        },
+        "asignacion": {
+          "questions": ["A1", "A2"],
+          "focus": "Adecuación y suficiencia de asignaciones",
+          "A1": {
+            "text": "¿La asignación es realista y suficiente?",
+            "evidence_expected": "Análisis de suficiencia y realismo presupuestal",
+            "patterns": [
+              "asignación.*realista.*suficiente",
+              "presupuesto.*adecuado.*necesidades",
+              "recursos.*dimensionados.*apropiadamente"
+            ]
+          },
+          "A2": {
+            "text": "¿Cumple con porcentajes mínimos normativos?",
+            "evidence_expected": "Cumplimiento de mínimos legales (ej. 25% salud, 15% educación)",
+            "critical_sectors": {
+              "salud": {"minimum_percentage": 25, "legal_basis": "Ley 715"},
+              "educacion": {"minimum_percentage": 15, "legal_basis": "Ley 715"},
+              "agua_potable": {"minimum_percentage": 5.4, "legal_basis": "Ley 1176"}
+            }
+          }
+        },
+        "realismo": {
+          "questions": ["R1", "R2"],
+          "focus": "Realismo y viabilidad de la planificación",
+          "R1": {
+            "text": "¿El cronograma de ejecución es realista?",
+            "evidence_expected": "Cronograma detallado con hitos alcanzables",
+            "patterns": [
+              "cronograma.*realista.*ejecución",
+              "calendario.*implementación.*viable",
+              "fases.*temporales.*coherentes"
+            ]
+          },
+          "R2": {
+            "text": "¿Considera capacidad institucional de ejecución?",
+            "evidence_expected": "Análisis de capacidades institucionales",
+            "patterns": [
+              "capacidad.*institucional.*análisis",
+              "recursos.*humanos.*técnicos.*disponibles",
+              "fortalecimiento.*institucional.*previsto"
+            ]
+          }
+        },
+        "sostenibilidad": {
+          "questions": ["S1", "S2"],
+          "focus": "Sostenibilidad financiera y contingencias",
+          "S1": {
+            "text": "¿Prevé mecanismos de sostenibilidad financiera?",
+            "evidence_expected": "Estrategias de sostenibilidad a mediano y largo plazo",
+            "patterns": [
+              "sostenibilidad.*financiera.*estrategias",
+              "recursos.*continuidad.*asegurada",
+              "financiación.*sostenible.*tiempo"
+            ]
+          },
+          "S2": {
+            "text": "¿Existe plan de contingencia presupuestal?",
+            "evidence_expected": "Escenarios alternativos o fuentes de respaldo",
+            "patterns": [
+              "contingencia.*presupuestal.*plan",
+              "escenarios.*alternativos.*financieros",
+              "fuentes.*respaldo.*identificadas"
+            ]
+          }
+        }
+      },
+      "scoring_system": {
+        "response_values": {
+          "Si": 10,
+          "Parcial": 5,
+          "No": 0,
+          "NI": 0
+        },
+        "calculation": "suma_total_respuestas",
+        "max_possible_score": 80,
+        "normalization": "score_to_100_scale",
+        "formula": "(suma_puntos / 80) * 100"
+      },
+      "budget_verification": {
+        "mandatory_percentages": {
+          "salud": {
+            "minimum": 25.0,
+            "legal_framework": "Artículos 356 y 357 CP, Ley 715/2001",
+            "verification_patterns": [
+              "25.*por.*ciento.*salud",
+              "veinticinco.*por.*ciento.*sector.*salud",
+              "25%.*presupuesto.*salud"
+            ]
+          },
+          "educacion": {
+            "minimum": 15.0,
+            "legal_framework": "Ley 715/2001, Ley 21/1982",
+            "verification_patterns": [
+              "15.*por.*ciento.*educación",
+              "quince.*por.*ciento.*educativo",
+              "15%.*presupuesto.*educación"
+            ]
+          },
+          "agua_potable_saneamiento": {
+            "minimum": 5.4,
+            "legal_framework": "Ley 1176/2007",
+            "verification_patterns": [
+              "agua.*potable.*saneamiento.*básico",
+              "acueducto.*alcantarillado.*aseo",
+              "servicios.*públicos.*domiciliarios"
+            ]
+          }
+        },
+        "budget_realism_indicators": [
+          "presupuesto.*histórico.*comparación",
+          "inflación.*considerada.*proyecciones",
+          "crecimiento.*económico.*territorial",
+          "capacidad.*fiscal.*municipal",
+          "transferencias.*nacionales.*confirmadas"
+        ]
+      }
+    },
+    "DE4": {
+      "name": "Cadena de Valor",
+      "weight": 0.15,
+      "description": "Evalúa completitud del ciclo de intervención",
+      "scoring_methodology": "chain_completeness_with_causal_integration",
+      "key_chain_links": {
+        "diagnostico_linea_base": {
+          "order": 1,
+          "question": "¿Presenta diagnóstico con línea base y brechas claras?",
+          "evidence_requirements": [
+            "datos línea base cuantitativos",
+            "brechas identificadas específicamente",
+            "situación inicial caracterizada",
+            "problemática territorial definida"
+          ],
+          "critical": true
+        },
+        "causalidad_explicita": {
+          "order": 2,
+          "question": "¿Causalidad explícita entre productos, resultados e impacto?",
+          "evidence_requirements": [
+            "relación causal demostrada",
+            "teoría de cambio explícita",
+            "lógica vertical de intervención",
+            "cadena causal articulada"
+          ],
+          "critical": true
+        },
+        "metas_transformadoras": {
+          "order": 3,
+          "question": "¿Metas formuladas con claridad y ambición transformadora?",
+          "evidence_requirements": [
+            "metas cuantitativas específicas",
+            "ambición transformadora evidente",
+            "horizonte temporal definido",
+            "impacto poblacional proyectado"
+          ],
+          "critical": true
+        },
+        "programas_detallados": {
+          "order": 4,
+          "question": "¿Programas o acciones detalladas con responsable y presupuesto?",
+          "evidence_requirements": [
+            "programas específicamente definidos",
+            "responsables institucionales asignados",
+            "presupuesto por programa",
+            "cronograma de ejecución"
+          ],
+          "critical": false
+        },
+        "territorializacion": {
+          "order": 5,
+          "question": "¿Territorialización de las intervenciones?",
+          "evidence_requirements": [
+            "ubicación geográfica específica",
+            "priorización territorial",
+            "focalización poblacional",
+            "contextualización local"
+          ],
+          "critical": false
+        },
+        "vinculacion_institucional": {
+          "order": 6,
+          "question": "¿Vinculación institucional clara?",
+          "evidence_requirements": [
+            "instituciones responsables identificadas",
+            "roles y responsabilidades definidos",
+            "coordinación interinstitucional",
+            "articulación multinivel"
+          ],
+          "critical": false
+        },
+        "seguimiento_indicadores": {
+          "order": 7,
+          "question": "¿Seguimiento con indicadores y calendario definido?",
+          "evidence_requirements": [
+            "indicadores de seguimiento específicos",
+            "periodicidad de medición definida",
+            "calendario de evaluación",
+            "sistema de monitoreo establecido"
+          ],
+          "critical": true
+        },
+        "proyeccion_impacto": {
+          "order": 8,
+          "question": "¿Proyección de impacto con alineación al Decálogo?",
+          "evidence_requirements": [
+            "impacto de largo plazo proyectado",
+            "alineación con Decálogo DDHH explícita",
+            "transformación territorial esperada",
+            "beneficios cualitativos identificados"
+          ],
+          "critical": true
+        }
+      },
+      "scoring_categories": {
+        "alto": {
+          "score": 100,
+          "requirements": {
+            "links_verified": 8,
+            "min_causal_factor": 0.9,
+            "description": "Cadena completa con alta suficiencia causal"
+          }
+        },
+        "medio": {
+          "score": 65,
+          "requirements": {
+            "links_verified": "6-7",
+            "min_causal_factor": 0.7,
+            "description": "Cadena mayormente completa con suficiencia causal parcial"
+          }
+        },
+        "bajo": {
+          "score": 35,
+          "requirements": {
+            "links_verified": "<=5",
+            "min_causal_factor": 0.0,
+            "description": "Cadena incompleta o suficiencia causal insuficiente"
+          }
+        }
+      },
+      "integration_with_de1": {
+        "causal_factor_source": "DE1_causal_evaluation",
+        "dependency": "Puntaje DE4 depende del Factor Causal calculado en DE1",
+        "formula": "if (links >= 8 AND causal_factor >= 0.9) then 100; elif (links >= 6 OR causal_factor >= 0.7) then 65; else 35"
+      }
+    }
+  },
+  "cluster_comprehensive_definitions": {
+    "cluster_1": {
+      "id": 1,
+      "name": "DERECHOS DE LAS VÍCTIMAS Y CONSTRUCCIÓN DE PAZ",
+      "points": [8],
+      "description": "Protección y garantía de derechos para líderes sociales y construcción de paz territorial",
+      "priority": "CRÍTICA",
+      "evaluation_weight": 0.25,
+      "execution_prompts": ["1.9", "1.10", "1.11", "1.12"],
+      "specific_challenges": [
+        "Amenazas constantes a líderes sociales",
+        "Debilidad institucional en protección",
+        "Falta de garantías de no repetición",
+        "Estigmatización del liderazgo social"
+      ],
+      "expected_interventions": [
+        "Programas de protección integral",
+        "Fortalecimiento institucional en DDHH",
+        "Garantías para liderazgo social",
+        "Construcción de paz territorial"
+      ]
+    },
+    "cluster_2": {
+      "id": 2,
+      "name": "DERECHOS DE GRUPOS POBLACIONALES",
+      "points": [2, 6, 9],
+      "description": "Enfoque diferencial y protección integral de grupos poblacionales vulnerables",
+      "priority": "ALTA",
+      "evaluation_weight": 0.25,
+      "execution_prompts": ["2.1-2.4", "2.5-2.8", "2.9-2.12"],
+      "intersectional_approach": {
+        "required": true,
+        "demographic_variables": [
+          "género", "edad", "etnia", "discapacidad",
+          "orientación sexual", "identidad de género",
+          "condición socioeconómica", "ubicación territorial"
+        ]
+      },
+      "specific_groups": {
+        "mujeres": {
+          "focus": "Equidad de género y prevención violencias",
+          "key_indicators": ["participación política", "autonomía económica", "vida libre de violencias"]
+        },
+        "niñez_juventud": {
+          "focus": "Desarrollo integral y protección",
+          "key_indicators": ["desarrollo temprano", "permanencia educativa", "prevención violencias"]
+        },
+        "personas_privadas_libertad": {
+          "focus": "Garantía de derechos y reinserción",
+          "key_indicators": ["condiciones dignas", "programas reinserción", "acceso servicios"]
+        }
+      }
+    },
+    "cluster_3": {
+      "id": 3,
+      "name": "TERRITORIO, AMBIENTE Y DESARROLLO SOSTENIBLE",
+      "points": [3, 7],
+      "description": "Sostenibilidad ambiental, ordenamiento territorial y gestión integral del territorio",
+      "priority": "ALTA",
+      "evaluation_weight": 0.20,
+      "execution_prompts": ["3.1-3.4", "3.5-3.8"],
+      "environmental_focus": {
+        "climate_change": {
+          "adaptation_required": true,
+          "mitigation_strategies": true,
+          "vulnerability_analysis": true
+        },
+        "disaster_risk_management": {
+          "prevention": true,
+          "preparation": true,
+          "response": true,
+          "recovery": true
+        }
+      },
+      "territorial_planning": {
+        "land_use_planning": {
+          "urban_rural_integration": true,
+          "environmental_zoning": true,
+          "risk_management_integration": true
+        },
+        "land_access": {
+          "equitable_distribution": true,
+          "rural_development": true,
+          "agrarian_reform_support": true
+        }
+      }
+    },
+    "cluster_4": {
+      "id": 4,
+      "name": "DERECHOS ECONÓMICOS, SOCIALES Y CULTURALES (DESC)",
+      "points": [4, 5, 10],
+      "description": "Garantía de derechos fundamentales económicos, sociales y culturales",
+      "priority": "CRÍTICA",
+      "evaluation_weight": 0.20,
+      "execution_prompts": ["4.1-4.4", "5.1-5.4", "4.9-4.12"],
+      "constitutional_mandates": {
+        "salud": {
+          "minimum_budget": 25.0,
+          "universal_access": true,
+          "quality_assurance": true,
+          "legal_framework": "Art. 49 CP, Ley 100/1993"
+        },
+        "educacion": {
+          "minimum_budget": 15.0,
+          "access_permanence_quality": true,
+          "educational_coverage": true,
+          "legal_framework": "Art. 67 CP, Ley 115/1994"
+        },
+        "trabajo": {
+          "decent_employment": true,
+          "social_security": true,
+          "productivity_enhancement": true,
+          "legal_framework": "Art. 25 CP, Código Sustantivo del Trabajo"
+        }
+      }
+    },
+    "cluster_5": {
+      "id": 5,
+      "name": "DERECHOS CIVILES Y POLÍTICOS",
+      "points": [1, 11],
+      "description": "Derechos civiles fundamentales y participación democrática efectiva",
+      "priority": "CRÍTICA",
+      "evaluation_weight": 0.10,
+      "execution_prompts": ["1.1-1.4", "11.1-11.4"],
+      "civil_rights_focus": {
+        "right_to_life": {
+          "security_guarantee": true,
+          "violence_prevention": true,
+          "victim_protection": true
+        },
+        "democratic_participation": {
+          "citizen_participation": true,
+          "social_protest_rights": true,
+          "democratic_governance": true
+        }
+      }
+    }
+  },
+  "decalogo_points_exhaustive": {
+    "point_1": {
+      "id": 1,
+      "name": "Derecho a la vida, a la seguridad y a la convivencia",
+      "cluster": 5,
+      "sector": "seguridad",
+      "priority": "CRÍTICA",
+      "legal_framework": [
+        "Artículo 11 Constitución Política",
+        "Ley 1448/2011 - Víctimas y Restitución",
+        "Decreto 1066/2015 - Sector Interior"
+      ],
+      "key_indicators": [
+        {
+          "name": "Tasa de homicidios por 100,000 habitantes",
+          "type": "resultado",
+          "target": "<= media nacional",
+          "source": "DANE/Medicina Legal"
+        },
+        {
+          "name": "Número de programas de prevención de violencia implementados",
+          "type": "producto",
+          "unit": "Número",
+          "source": "Sec. Gobierno/Alcaldía"
+        },
+        {
+          "name": "Reducción de delitos de alto impacto",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": ">= 10% anual",
+          "source": "Policía Nacional"
+        }
+      ],
+      "minimum_budget_percentage": 3.0,
+      "required_instruments": [
+        "Plan Integral de Seguridad y Convivencia Ciudadana",
+        "Sistema de alertas tempranas",
+        "Programas de prevención social de la violencia"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.4,
+        "DE2": 0.25,
+        "DE3": 0.2,
+        "DE4": 0.15
+      }
+    },
+    "point_2": {
+      "id": 2,
+      "name": "Igualdad de la mujer y equidad de género",
+      "cluster": 2,
+      "sector": "mujer_genero",
+      "priority": "ALTA",
+      "legal_framework": [
+        "Artículo 13 y 43 Constitución Política",
+        "Ley 1257/2008 - Violencias contra las mujeres",
+        "Ley 1448/2011 - Enfoque diferencial",
+        "CONPES 161/2013 - Equidad de género"
+      ],
+      "key_indicators": [
+        {
+          "name": "Porcentaje de participación política de mujeres",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": ">= 30%",
+          "source": "Registraduría/MOE"
+        },
+        {
+          "name": "Programas de prevención de violencia de género implementados",
+          "type": "producto",
+          "unit": "Número",
+          "source": "Sec. Mujer/Alcaldía"
+        },
+        {
+          "name": "Reducción de feminicidios",
+          "type": "resultado",
+          "unit": "Número",
+          "target": "Reducción anual",
+          "source": "Medicina Legal"
+        }
+      ],
+      "minimum_budget_percentage": 2.0,
+      "required_instruments": [
+        "Política pública de equidad de género",
+        "Ruta de atención a mujeres víctimas de violencia",
+        "Programas de empoderamiento económico"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.35,
+        "DE2": 0.4,
+        "DE3": 0.15,
+        "DE4": 0.1
+      }
+    },
+    "point_3": {
+      "id": 3,
+      "name": "Ambiente sano, cambio climático, prevención y atención de desastres",
+      "cluster": 3,
+      "sector": "ambiente",
+      "priority": "ALTA",
+      "legal_framework": [
+        "Artículo 79 y 80 Constitución Política",
+        "Ley 99/1993 - Sistema Nacional Ambiental",
+        "Ley 1523/2012 - Gestión del Riesgo",
+        "Ley 1931/2018 - Cambio Climático"
+      ],
+      "key_indicators": [
+        {
+          "name": "Estrategia integral de cambio climático formulada",
+          "type": "producto",
+          "unit": "Binario (Sí/No)",
+          "source": "Sec. Ambiente/Alcaldía"
+        },
+        {
+          "name": "Reducción de emisiones GEI territoriales",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": ">= 20% al 2030",
+          "source": "IDEAM/Inventarios GEI"
+        },
+        {
+          "name": "Municipios con Plan de Gestión del Riesgo actualizado",
+          "type": "producto",
+          "unit": "Binario (Sí/No)",
+          "source": "UNGRD"
+        }
+      ],
+      "minimum_budget_percentage": 1.5,
+      "required_instruments": [
+        "Plan de Acción Climática Territorial",
+        "Plan Municipal de Gestión del Riesgo de Desastres",
+        "Estrategia de Adaptación y Mitigación"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.3,
+        "DE2": 0.2,
+        "DE3": 0.3,
+        "DE4": 0.2
+      }
+    },
+    "point_4": {
+      "id": 4,
+      "name": "Derecho humano a la salud",
+      "cluster": 4,
+      "sector": "salud",
+      "priority": "CRÍTICA",
+      "legal_framework": [
+        "Artículo 49 Constitución Política",
+        "Ley 100/1993 - Sistema de Seguridad Social",
+        "Ley 715/2001 - Competencias territoriales",
+        "Ley 1438/2011 - Reforma sistema de salud"
+      ],
+      "key_indicators": [
+        {
+          "name": "Cobertura universal en salud",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": "100%",
+          "source": "ADRES/EPS"
+        },
+        {
+          "name": "Tasa de mortalidad infantil",
+          "type": "resultado",
+          "unit": "Por 1,000 nacidos vivos",
+          "target": "<= media nacional",
+          "source": "DANE/RUAF"
+        },
+        {
+          "name": "Cumplimiento inversión mínima 25% en salud",
+          "type": "producto",
+          "unit": "Porcentaje del presupuesto",
+          "target": ">= 25%",
+          "source": "Contraloría/FUT"
+        }
+      ],
+      "minimum_budget_percentage": 25.0,
+      "required_instruments": [
+        "Plan Territorial de Salud",
+        "Análisis de Situación de Salud - ASIS",
+        "Plan de Intervenciones Colectivas - PIC"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.3,
+        "DE2": 0.2,
+        "DE3": 0.4,
+        "DE4": 0.1
+      }
+    },
+    "point_5": {
+      "id": 5,
+      "name": "Derecho a la educación",
+      "cluster": 4,
+      "sector": "educacion",
+      "priority": "CRÍTICA",
+      "legal_framework": [
+        "Artículo 67 Constitución Política",
+        "Ley 115/1994 - Ley General de Educación",
+        "Ley 715/2001 - Competencias territoriales",
+        "Ley 1620/2013 - Convivencia escolar"
+      ],
+      "key_indicators": [
+        {
+          "name": "Tasa de cobertura neta en educación básica",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": ">= 95%",
+          "source": "MEN/SIMAT"
+        },
+        {
+          "name": "Tasa de deserción escolar",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": "<= 3%",
+          "source": "MEN/SIMAT"
+        },
+        {
+          "name": "Cumplimiento inversión mínima 15% en educación",
+          "type": "producto",
+          "unit": "Porcentaje del presupuesto",
+          "target": ">= 15%",
+          "source": "Contraloría/FUT"
+        }
+      ],
+      "minimum_budget_percentage": 15.0,
+      "required_instruments": [
+        "Plan Educativo Territorial",
+        "Plan de Desarrollo Educativo",
+        "Estrategia de permanencia educativa"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.35,
+        "DE2": 0.25,
+        "DE3": 0.3,
+        "DE4": 0.1
+      }
+    },
+    "point_6": {
+      "id": 6,
+      "name": "Derechos de la niñez y la juventud y protección de las familias",
+      "cluster": 2,
+      "sector": "niñez_juventud",
+      "priority": "ALTA",
+      "legal_framework": [
+        "Artículo 44 y 45 Constitución Política",
+        "Ley 1098/2006 - Código de Infancia y Adolescencia",
+        "Ley 1622/2013 - Estatuto de Ciudadanía Juvenil",
+        "Ley 1804/2016 - Política de Primera Infancia"
+      ],
+      "key_indicators": [
+        {
+          "name": "Cobertura en atención integral a primera infancia",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": ">= 80%",
+          "source": "ICBF/MEN"
+        },
+        {
+          "name": "Programas de prevención de violencia contra NNJ",
+          "type": "producto",
+          "unit": "Número",
+          "source": "ICBF/Comisaría de Familia"
+        },
+        {
+          "name": "Jóvenes vinculados a programas de participación",
+          "type": "resultado",
+          "unit": "Número",
+          "target": ">= meta PDT",
+          "source": "Sec. Participación/Alcaldía"
+        }
+      ],
+      "minimum_budget_percentage": 5.0,
+      "required_instruments": [
+        "Política pública de infancia y adolescencia",
+        "Política pública de juventud",
+        "Sistema de protección integral"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.3,
+        "DE2": 0.4,
+        "DE3": 0.2,
+        "DE4": 0.1
+      }
+    },
+    "point_7": {
+      "id": 7,
+      "name": "Tierras y territorios",
+      "cluster": 3,
+      "sector": "agricultura_territorio",
+      "priority": "ALTA",
+      "legal_framework": [
+        "Artículo 64 y 65 Constitución Política",
+        "Ley 160/1994 - Sistema Nacional de Reforma Agraria",
+        "Ley 1448/2011 - Restitución de tierras",
+        "Decreto 893/2017 - Programas de desarrollo rural"
+      ],
+      "key_indicators": [
+        {
+          "name": "Hectáreas tituladas o formalizadas",
+          "type": "producto",
+          "unit": "Hectáreas",
+          "source": "ANT/INCODER"
+        },
+        {
+          "name": "Familias beneficiarias de programas de desarrollo rural",
+          "type": "resultado",
+          "unit": "Número",
+          "target": ">= meta PDT",
+          "source": "ADR/Alcaldía"
+        },
+        {
+          "name": "Actualización catastral rural",
+          "type": "producto",
+          "unit": "Porcentaje del territorio",
+          "target": ">= 70%",
+          "source": "IGAC/Catastro"
+        }
+      ],
+      "minimum_budget_percentage": 3.0,
+      "required_instruments": [
+        "Plan de Desarrollo Rural Territorial",
+        "Esquema de Ordenamiento Territorial actualizado",
+        "Programas de formalización de tierras"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.3,
+        "DE2": 0.3,
+        "DE3": 0.25,
+        "DE4": 0.15
+      }
+    },
+    "point_8": {
+      "id": 8,
+      "name": "Líderes y defensores de derechos humanos sociales y ambientales",
+      "cluster": 1,
+      "sector": "derechos_humanos",
+      "priority": "CRÍTICA",
+      "legal_framework": [
+        "Artículo 40 Constitución Política",
+        "Ley 1448/2011 - Víctimas y restitución",
+        "Decreto 660/2018 - Programa de protección",
+        "Acuerdo Final de Paz - Punto 2"
+      ],
+      "key_indicators": [
+        {
+          "name": "Líderes sociales con medidas de protección",
+          "type": "producto",
+          "unit": "Número",
+          "source": "UNP/Personería"
+        },
+        {
+          "name": "Reducción de amenazas contra líderes sociales",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": "Reducción anual",
+          "source": "Defensoría/Personería"
+        },
+        {
+          "name": "Espacios de participación social fortalecidos",
+          "type": "producto",
+          "unit": "Número",
+          "source": "Sec. Participación/Alcaldía"
+        }
+      ],
+      "minimum_budget_percentage": 1.0,
+      "required_instruments": [
+        "Programa integral de protección a líderes",
+        "Plan de garantías de no repetición",
+        "Fortalecimiento del tejido social"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.45,
+        "DE2": 0.25,
+        "DE3": 0.2,
+        "DE4": 0.1
+      }
+    },
+    "point_9": {
+      "id": 9,
+      "name": "Crisis de derechos de personas privadas de la libertad",
+      "cluster": 2,
+      "sector": "justicia",
+      "priority": "MEDIA",
+      "legal_framework": [
+        "Artículo 12 Constitución Política",
+        "Ley 65/1993 - Código Penitenciario",
+        "Ley 1709/2014 - Reforma penitenciaria",
+        "Sentencia T-388/2013 - Estado de cosas inconstitucional"
+      ],
+      "key_indicators": [
+        {
+          "name": "Programas de reinserción social implementados",
+          "type": "producto",
+          "unit": "Número",
+          "source": "INPEC/Alcaldía"
+        },
+        {
+          "name": "Personas privadas de libertad en programas educativos",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": ">= 60%",
+          "source": "INPEC/MEN"
+        },
+        {
+          "name": "Mejoramiento de condiciones carcelarias",
+          "type": "producto",
+          "unit": "Inversión ejecutada",
+          "source": "USPEC/Alcaldía"
+        }
+      ],
+      "minimum_budget_percentage": 0.5,
+      "required_instruments": [
+        "Programas de reinserción social",
+        "Convenios interinstitucionales INPEC",
+        "Políticas de atención post-penitenciaria"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.3,
+        "DE2": 0.4,
+        "DE3": 0.2,
+        "DE4": 0.1
+      }
+    },
+    "point_10": {
+      "id": 10,
+      "name": "Derecho al trabajo y seguridad social",
+      "cluster": 4,
+      "sector": "trabajo",
+      "priority": "ALTA",
+      "legal_framework": [
+        "Artículo 25 y 53 Constitución Política",
+        "Código Sustantivo del Trabajo",
+        "Ley 100/1993 - Seguridad social",
+        "Ley 1429/2010 - Formalización laboral"
+      ],
+      "key_indicators": [
+        {
+          "name": "Tasa de desempleo territorial",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": "<= media nacional",
+          "source": "DANE/Gran Encuesta"
+        },
+        {
+          "name": "Empleos formales generados",
+          "type": "resultado",
+          "unit": "Número",
+          "target": ">= meta PDT",
+          "source": "PILA/MinTrabajo"
+        },
+        {
+          "name": "Programas de formación para el trabajo",
+          "type": "producto",
+          "unit": "Número",
+          "source": "SENA/Alcaldía"
+        }
+      ],
+      "minimum_budget_percentage": 2.0,
+      "required_instruments": [
+        "Plan de desarrollo económico local",
+        "Estrategia de generación de empleo",
+        "Programas de formalización laboral"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.35,
+        "DE2": 0.2,
+        "DE3": 0.25,
+        "DE4": 0.2
+      }
+    },
+    "point_11": {
+      "id": 11,
+      "name": "Derecho a la participación y la protesta social",
+      "cluster": 5,
+      "sector": "participacion",
+      "priority": "ALTA",
+      "legal_framework": [
+        "Artículo 40 y 37 Constitución Política",
+        "Ley 134/1994 - Participación ciudadana",
+        "Ley 1757/2015 - Promoción participación",
+        "Decreto 1081/2015 - Participación democrática"
+      ],
+      "key_indicators": [
+        {
+          "name": "Consejos territoriales de planeación funcionando",
+          "type": "producto",
+          "unit": "Número",
+          "source": "Sec. Participación/Alcaldía"
+        },
+        {
+          "name": "Protocolos de protesta social implementados",
+          "type": "producto",
+          "unit": "Número",
+          "source": "Sec. Participación/Alcaldía"
+        },
+        {
+          "name": "Aumento de la participación ciudadana en decisiones",
+          "type": "resultado",
+          "unit": "Porcentaje",
+          "target": ">= meta PDT",
+          "source": "Observatorios/Alcaldía"
+        }
+      ],
+      "minimum_budget_percentage": 1.0,
+      "required_instruments": [
+        "Plan de participación ciudadana",
+        "Protocolos de protesta social",
+        "Fortalecimiento organizacional"
+      ],
+      "evaluation_weights": {
+        "DE1": 0.4,
+        "DE2": 0.35,
+        "DE3": 0.15,
+        "DE4": 0.1
+      }
+    }
+  },
+  "advanced_search_patterns": {
+    "navigation_sections": {
+      "diagnostico_patterns": [
+        "diagnóstico.*territorial",
+        "caracterización.*poblacional",
+        "situación.*actual.*territorio",
+        "problemática.*identificada",
+        "brechas.*territoriales",
+        "línea.*base.*indicadores",
+        "análisis.*situacional"
+      ],
+      "strategic_patterns": [
+        "parte.*estratégica",
+        "visión.*misión.*objetivos",
+        "programas.*estratégicos",
+        "líneas.*acción",
+        "proyectos.*estructurantes",
+        "metas.*cuatrienio"
+      ],
+      "budget_patterns": [
+        "plan.*inversiones",
+        "presupuesto.*plurianual",
+        "recursos.*financieros",
+        "fuentes.*financiación",
+        "matriz.*presupuestal",
+        "proyección.*fiscal"
+      ],
+      "monitoring_patterns": [
+        "seguimiento.*evaluación",
+        "indicadores.*resultado",
+        "sistema.*monitoreo",
+        "tablero.*control",
+        "reportes.*avance",
+        "medición.*impacto"
+      ]
+    },
+    "evidence_extraction_patterns": {
+      "quantitative_evidence": [
+        "\\d+.*por.*ciento",
+        "\\d+.*personas.*beneficiarias",
+        "\\d+.*millones.*pesos",
+        "meta.*\\d+.*unidades",
+        "reducir.*\\d+.*por.*ciento",
+        "aumentar.*\\d+.*casos",
+        "\\d+.*programas.*implementar"
+      ],
+      "qualitative_evidence": [
+        "mejorar.*calidad.*vida",
+        "fortalecer.*capacidades.*institucionales",
+        "promover.*desarrollo.*sostenible",
+        "garantizar.*acceso.*universal",
+        "fomentar.*participación.*ciudadana",
+        "construir.*paz.*territorial"
+      ],
+      "institutional_evidence": [
+        "secretaría.*responsable",
+        "coordinación.*interinstitucional",
+        "alianzas.*estratégicas",
+        "convenios.*cooperación",
+        "articulación.*multinivel",
+        "competencias.*asignadas"
+      ]
+    },
+    "critical_keywords_by_point": {
+      "point_1": [
+        "seguridad", "convivencia", "violencia", "prevención", "protección",
+        "víctimas", "orden público", "paz", "reconciliación", "conflicto"
+      ],
+      "point_2": [
+        "género", "mujer", "equidad", "igualdad", "violencia de género",
+        "feminicidio", "participación política", "autonomía económica", "empoderamiento"
+      ],
+      "point_3": [
+        "ambiente", "climático", "sostenible", "gestión riesgo", "desastres",
+        "adaptación", "mitigación", "biodiversidad", "recursos naturales"
+      ],
+      "point_4": [
+        "salud", "salud pública", "atención médica", "promoción", "prevención",
+        "cobertura universal", "mortalidad", "morbilidad", "epidemiología"
+      ],
+      "point_5": [
+        "educación", "cobertura educativa", "calidad educativa", "deserción",
+        "permanencia", "primera infancia", "básica", "media", "superior"
+      ],
+      "point_6": [
+        "niñez", "juventud", "familia", "primera infancia", "adolescencia",
+        "protección integral", "desarrollo temprano", "participación juvenil"
+      ],
+      "point_7": [
+        "tierras", "territorio", "rural", "ordenamiento territorial", "formalización",
+        "desarrollo rural", "agricultura", "reforma agraria", "catastro"
+      ],
+      "point_8": [
+        "líderes sociales", "defensores", "derechos humanos", "protección",
+        "garantías", "amenazas", "participación social", "tejido social"
+      ],
+      "point_9": [
+        "privados libertad", "reinserción", "resocialización", "sistema penitenciario",
+        "programas educativos", "formación laboral", "post-penitenciario"
+      ],
+      "point_10": [
+        "trabajo", "empleo", "generación empleo", "formalización", "productividad",
+        "seguridad social", "desarrollo económico", "competitividad"
+      ],
+      "point_11": [
+        "participación ciudadana", "protesta social", "democracia participativa",
+        "control social", "veeduría", "consulta popular", "organizaciones sociales"
+      ]
+    }
+  },
+  "conjunctive_model_advanced": {
+    "satisfiability_framework": {
+      "methodology": "Conjunctive evaluation with multiple constraints",
+      "principle": "Un punto se considera SATISFIED solo si cumple TODAS las condiciones requeridas",
+      "thresholds": {
+        "SATISFIED": {
+          "min_aggregate_score": 80,
+          "required_dimensions_performance": {
+            "DE1": {"min_score": 70, "criticality": "ALTA"},
+            "DE2": {"min_score": 60, "criticality": "MEDIA"},
+            "DE3": {"min_score": 60, "criticality": "ALTA"},
+            "DE4": {"min_score": 50, "criticality": "MEDIA"}
+          },
+          "additional_constraints": [
+            {
+              "id": "constitutional_compliance",
+              "expression": "IF punto IN [4,5] THEN DE3 >= 80",
+              "description": "Puntos con mandatos constitucionales requieren alta viabilidad presupuestal"
+            },
+            {
+              "id": "critical_points_logic",
+              "expression": "IF priority = 'CRÍTICA' THEN DE1 >= 75",
+              "description": "Puntos críticos requieren lógica de intervención sólida"
+            }
+          ]
+        },
+        "PARTIAL": {
+          "min_aggregate_score": 50,
+          "required_dimensions_performance": {
+            "DE1": {"min_score": 50, "criticality": "ALTA"}
+          },
+          "additional_constraints": [
+            {
+              "id": "minimum_logic",
+              "expression": "DE1 >= 50 AND (DE2 >= 40 OR DE3 >= 40)",
+              "description": "Mínima lógica de intervención con algún nivel de inclusión o viabilidad"
+            }
+          ]
+        },
+        "UNSATISFIED": {
+          "condition": "No cumple criterios para PARTIAL",
+          "implications": [
+            "Requiere reformulación integral del punto",
+            "Prioridad alta para mejoramiento",
+            "Posible impacto negativo en evaluación global"
+          ]
+        }
+      }
+    },
+    "point_specific_constraints": {
+      "point_1_security": [
+        {
+          "id": "r1.1",
+          "expression": "DE1 >= 80 AND DE3 >= 70",
+          "required_for": "SATISFIED",
+          "justification": "Seguridad requiere lógica robusta y presupuesto adecuado para efectividad"
+        },
+        {
+          "id": "r1.2",
+          "expression": "DE2 >= 60",
+          "required_for": "SATISFIED",
+          "justification": "Enfoque diferencial esencial en seguridad para poblaciones vulnerables"
+        }
+      ],
+      "point_4_health": [
+        {
+          "id": "r4.1",
+          "expression": "DE3 >= 85 AND budget_compliance_25_percent = TRUE",
+          "required_for": "SATISFIED",
+          "justification": "Salud tiene mandato constitucional del 25% presupuestal"
+        },
+        {
+          "id": "r4.2",
+          "expression": "DE2 >= 70",
+          "required_for": "SATISFIED",
+          "justification": "Salud requiere alta inclusión para garantizar acceso universal"
+        }
+      ],
+      "point_5_education": [
+        {
+          "id": "r5.1",
+          "expression": "DE3 >= 80 AND budget_compliance_15_percent = TRUE",
+          "required_for": "SATISFIED",
+          "justification": "Educación tiene mandato constitucional del 15% presupuestal"
+        },
+        {
+          "id": "r5.2",
+          "expression": "DE1 >= 75 AND DE2 >= 65",
+          "required_for": "SATISFIED",
+          "justification": "Educación requiere lógica sólida e inclusión para cobertura universal"
+        }
+      ],
+      "point_8_leaders": [
+        {
+          "id": "r8.1",
+          "expression": "DE1 >= 85 AND DE4 >= 65",
+          "required_for": "SATISFIED",
+          "justification": "Protección líderes requiere máxima coherencia lógica y cadena valor completa"
+        },
+        {
+          "id": "r8.2",
+          "expression": "DE2 >= 70",
+          "required_for": "SATISFIED",
+          "justification": "Enfoque diferencial crítico para protección efectiva líderes"
+        }
+      ]
+    },
+    "cluster_aggregation_rules": {
+      "cluster_score_calculation": {
+        "method": "weighted_average_with_constraints",
+        "formula": "PA_cluster = (Σ(DE1_i + DE2_i + DE3_i + DE4_i) * weight_i) / (4 * N_points)",
+        "constraint_application": "Aplicar restricciones conjuntivas antes del cálculo final"
+      },
+      "cluster_satisfiability": {
+        "SATISFIED": "Todos los puntos del cluster en SATISFIED o PARTIAL con al menos 70% en SATISFIED",
+        "PARTIAL": "Al menos 50% de puntos en PARTIAL o superior",
+        "UNSATISFIED": "Más del 50% de puntos en UNSATISFIED"
+      }
+    }
+  },
+  "technical_specifications_advanced": {
+    "nlp_processing": {
+      "multilingual_models": [
+        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "dccuchile/bert-base-spanish-wwm-cased",
+        "PlanTL-GOB-ES/roberta-base-bne",
+        "mrm8488/bert-base-spanish-wwm-cased-finetuned-spa-squad2-es"
+      ],
+      "document_preprocessing": {
+        "text_cleaning": {
+          "remove_headers_footers": true,
+          "normalize_whitespace": true,
+          "handle_special_characters": true,
+          "preserve_table_structure": true
+        },
+        "chunking_strategy": {
+          "method": "semantic_chunking",
+          "max_size": 512,
+          "overlap": 100,
+          "preserve_sentence_boundaries": true,
+          "types_priority": ["heading", "paragraph", "table", "list", "footnote"]
+        }
+      },
+      "semantic_search": {
+        "embedding_dimensions": 384,
+        "similarity_threshold": 0.6,
+        "max_results_per_query": 10,
+        "reranking_enabled": true,
+        "cross_encoder_model": "cross-encoder/ms-marco-MiniLM-L-12-v2"
+      }
+    },
+    "evidence_extraction_engine": {
+      "multi_level_extraction": {
+        "paragraph_level": {
+          "context_window": 500,
+          "confidence_threshold": 0.4,
+          "max_evidences": 3
+        },
+        "section_level": {
+          "context_window": 1500,
+          "confidence_threshold": 0.3,
+          "cross_reference_enabled": true
+        },
+        "document_level": {
+          "global_patterns": true,
+          "trend_analysis": true,
+          "consistency_check": true
+        }
+      },
+      "evidence_scoring": {
+        "relevance_weight": 0.4,
+        "specificity_weight": 0.3,
+        "authority_weight": 0.2,
+        "recency_weight": 0.1
+      },
+      "source_attribution": {
+        "page_number_extraction": true,
+        "section_identification": true,
+        "table_cell_reference": true,
+        "confidence_score_attached": true
+      }
+    },
+    "quality_assurance": {
+      "validation_layers": [
+        {
+          "name": "syntactic_validation",
+          "checks": ["JSON structure", "required fields", "data types"]
+        },
+        {
+          "name": "semantic_validation",
+          "checks": ["logical consistency", "constraint satisfaction", "range validation"]
+        },
+        {
+          "name": "domain_validation",
+          "checks": ["PDT specific rules", "legal compliance", "methodological adherence"]
+        }
+      ],
+      "error_handling": {
+        "missing_sections": {
+          "strategy": "partial_evaluation_with_confidence_reduction",
+          "confidence_penalty": 0.3
+        },
+        "extraction_failures": {
+          "strategy": "fallback_to_keyword_search",
+          "retry_with_relaxed_thresholds": true
+        },
+        "inconsistent_data": {
+          "strategy": "flag_and_continue_with_uncertainty",
+          "uncertainty_propagation": true
+        }
+      }
+    }
+  },
+  "output_specifications_comprehensive": {
+    "evaluation_result_structure": {
+      "metadata": {
+        "required_fields": [
+          "pdt_id", "municipality", "department", "evaluation_date",
+          "methodology_version", "catalog_adherence_level", "processing_time"
+        ],
+        "optional_fields": [
+          "document_pages", "document_size_mb", "evaluator_id", "review_status"
+        ]
+      },
+      "global_assessment": {
+        "aggregate_scores": {
+          "overall_score": {"type": "float", "range": [0, 100]},
+          "cluster_scores": {"type": "dict", "keys": "cluster_1 to cluster_5"},
+          "dimension_scores": {"type": "dict", "keys": "DE1 to DE4"}
+        },
+        "satisfiability_summary": {
+          "global_classification": {"enum": ["SATISFIED", "PARTIAL", "UNSATISFIED"]},
+          "points_satisfied": {"type": "list", "items": "point_id"},
+          "points_partial": {"type": "list", "items": "point_id"},
+          "points_unsatisfied": {"type": "list", "items": "point_id"}
+        }
+      },
+      "detailed_results": {
+        "by_point": {
+          "structure": "nested_dict",
+          "levels": ["point_id", "dimension", "question_results"],
+          "required_fields_per_question": [
+            "question_id", "answer", "score", "evidence", "confidence",
+            "source_location", "prompt_reference"
+          ]
+        },
+        "by_dimension": {
+          "DE1_details": {
+            "causal_evaluation": {
+              "coherencia_diagnostico": {"score": "float", "evidence": "string"},
+              "articulacion_logica": {"score": "float", "evidence": "string"},
+              "consistencia_temporal": {"score": "float", "evidence": "string"},
+              "suficiencia_evidencia": {"score": "float", "evidence": "string"},
+              "causal_factor": {"value": "float", "range": [0.5, 1.0]}
+            },
+            "component_scores": {
+              "bienestar": {"score": "float", "weight": 0.6},
+              "resultado": {"score": "float", "weight": 0.3},
+              "gestion": {"score": "float", "weight": 0.1}
+            }
+          },
+          "DE2_details": {
+            "inclusion_analysis": {
+              "enfoque_diferencial": {"present": "boolean", "evidence": "string"},
+              "grupos_vulnerables": {"present": "boolean", "evidence": "string"},
+              "participacion_comunitaria": {"present": "boolean", "evidence": "string"},
+              "interseccionalidad": {"present": "boolean", "evidence": "string"}
+            }
+          },
+          "DE3_details": {
+            "budget_analysis": {
+              "general": {"G1": "score", "G2": "score"},
+              "asignacion": {"A1": "score", "A2": "score"},
+              "realismo": {"R1": "score", "R2": "score"},
+              "sostenibilidad": {"S1": "score", "S2": "score"},
+              "constitutional_compliance": {
+                "health_25_percent": {"compliant": "boolean", "actual_percentage": "float"},
+                "education_15_percent": {"compliant": "boolean", "actual_percentage": "float"}
+              }
+            }
+          },
+          "DE4_details": {
+            "value_chain_analysis": {
+              "links_verified": "integer",
+              "links_details": {
+                "diagnostico_linea_base": {"verified": "boolean", "evidence": "string"},
+                "causalidad_explicita": {"verified": "boolean", "evidence": "string"},
+                "metas_transformadoras": {"verified": "boolean", "evidence": "string"},
+                "programas_detallados": {"verified": "boolean", "evidence": "string"},
+                "territorializacion": {"verified": "boolean", "evidence": "string"},
+                "vinculacion_institucional": {"verified": "boolean", "evidence": "string"},
+                "seguimiento_indicadores": {"verified": "boolean", "evidence": "string"},
+                "proyeccion_impacto": {"verified": "boolean", "evidence": "string"}
+              },
+              "completeness_category": {"enum": ["alto", "medio", "bajo"]}
+            }
+          }
+        }
+      }
+    },
+    "report_generation": {
+      "executive_summary": {
+        "max_length": 2000,
+        "required_sections": [
+          "global_score_interpretation",
+          "top_3_strengths",
+          "top_3_weaknesses",
+          "priority_recommendations",
+          "constitutional_compliance_status"
+        ],
+        "template_structure": {
+          "header": "Resumen Ejecutivo - Evaluación PDT [Municipality]",
+          "score_summary": "Puntaje Global: [score]/100 - Clasificación: [classification]",
+          "cluster_performance": "Rendimiento por Cluster: [detailed_breakdown]",
+          "critical_findings": "Hallazgos Críticos: [constitutional_compliance + critical_gaps]",
+          "recommendations": "Recomendaciones Prioritarias: [top_5_recommendations]"
+        }
+      },
+      "technical_report": {
+        "max_length": 15000,
+        "detailed_sections": [
+          "methodology_explanation",
+          "prompt_catalog_adherence_analysis",
+          "dimension_by_dimension_analysis",
+          "evidence_summary_by_point",
+          "conjunctive_constraints_evaluation",
+          "budget_compliance_detailed_analysis",
+          "improvement_roadmap_with_timeline"
+        ],
+        "appendices": [
+          "complete_evidence_registry",
+          "scoring_calculations_detail",
+          "quality_assurance_report"
+        ]
+      },
+      "citizen_friendly_report": {
+        "max_length": 1500,
+        "language_level": "8th_grade_reading_level",
+        "visual_elements": {
+          "score_infographics": true,
+          "progress_bars": true,
+          "comparison_charts": true,
+          "priority_matrices": true
+        },
+        "sections": [
+          "what_was_evaluated",
+          "main_findings_in_simple_terms",
+          "whats_working_well",
+          "what_needs_improvement",
+          "how_citizens_can_participate",
+          "next_steps_timeline"
+        ]
+      }
+    }
+  },
+  "deployment_and_monitoring": {
+    "cloud_infrastructure": {
+      "computing_requirements": {
+        "minimum_specs": {
+          "cpu_cores": 4,
+          "ram_gb": 8,
+          "storage_gb": 50,
+          "gpu": "optional_for_large_models"
+        },
+        "recommended_specs": {
+          "cpu_cores": 8,
+          "ram_gb": 16,
+          "storage_gb": 100,
+          "gpu": "NVIDIA T4 or equivalent"
+        },
+        "scalability": {
+          "horizontal_scaling": true,
+          "load_balancing": true,
+          "auto_scaling_triggers": ["cpu_usage > 70%", "memory_usage > 80%"]
+        }
+      },
+      "data_storage": {
+        "document_storage": {
+          "type": "object_storage",
+          "provider": "Google Cloud Storage / AWS S3",
+          "structure": "pdt-documents/{year}/{department}/{municipality}/{pdt_id}/"
+        },
+        "results_storage": {
+          "primary": "BigQuery / PostgreSQL",
+          "backup": "Cloud Storage",
+          "retention_policy": "7 years active, 10 years archive"
+        },
+        "cache_storage": {
+          "type": "Redis",
+          "ttl_embeddings": "24 hours",
+          "ttl_results": "72 hours",
+          "max_cache_size": "2GB"
+        }
+      }
+    },
+    "monitoring_and_observability": {
+      "performance_metrics": [
+        {
+          "name": "document_processing_time",
+          "target": "<= 20 minutes per PDT",
+          "alert_threshold": "> 30 minutes"
+        },
+        {
+          "name": "evaluation_accuracy",
+          "target": ">= 85% agreement with human evaluators",
+          "measurement": "periodic_validation_samples"
+        },
+        {
+          "name": "system_availability",
+          "target": ">= 99.5%",
+          "measurement": "uptime_monitoring"
+        }
+      ],
+      "quality_metrics": [
+        {
+          "name": "evidence_extraction_precision",
+          "target": ">= 80%",
+          "measurement": "manual_validation_random_sample"
+        },
+        {
+          "name": "constraint_satisfaction_accuracy",
+          "target": ">= 95%",
+          "measurement": "automated_validation_rules"
+        }
+      ],
+      "alerting_system": {
+        "channels": ["email", "slack", "dashboard"],
+        "severity_levels": ["info", "warning", "critical"],
+        "escalation_rules": {
+          "critical": "immediate_notification_to_on_call",
+          "warning": "notification_within_15_minutes",
+          "info": "daily_summary_report"
+        }
+      }
+    }
+  },
+  "version_control_and_maintenance": {
+    "schema_versioning": {
+      "current_version": "2.0.0",
+      "versioning_scheme": "semantic_versioning",
+      "backward_compatibility": {
+        "supported_versions": ["1.9.x", "2.0.x"],
+        "migration_tools": true,
+        "deprecation_timeline": "6_months_notice"
+      }
+    },
+    "update_procedures": {
+      "methodology_updates": {
+        "trigger": "Changes in advanced_prompts_catalog",
+        "process": "Version control → Testing → Staged rollout → Full deployment",
+        "validation_required": "Comparison with previous version on test set"
+      },
+      "model_updates": {
+        "frequency": "Quarterly evaluation",
+        "criteria": "Performance improvement >= 2%",
+        "rollback_plan": "Automatic rollback if accuracy drops > 1%"
+      }
+    },
+    "documentation_maintenance": {
+      "api_documentation": {
+        "format": "OpenAPI 3.0",
+        "auto_generation": true,
+        "examples_included": true
+      },
+      "user_documentation": {
+        "formats": ["online_help", "pdf_manual", "video_tutorials"],
+        "languages": ["español", "english"],
+        "update_frequency": "With each minor version"
+      }
+    }
+  }
+}

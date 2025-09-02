@@ -1,0 +1,52 @@
+{
+  "chunks": [
+    {
+      "chunk_id": "chunk_e1a97d90f4ced264d442d4c838f256c3b5ae420d64a0632582f86f4e94",
+      "content": "Sample Document This is a sample document with UTF 8 content \u00e1\u00e9\u00ed\u00f3\u00fa \u00f1 \u4e2d\u6587 Content Main content section with emoji and unicode \u03bb\u03bc\u03bd\u03be\u03bf\u03c0\u03c1\u03c3 Introduction Sample introduction with special characters",
+      "metadata": {
+        "chunk_index": 0,
+        "creation_timestamp": "2025-08-26T21:50:38.385027",
+        "paragraph_count": 1,
+        "policy": "fixed_token_counts",
+        "provenance": {
+          "character_offsets": [
+            0,
+            189
+          ],
+          "document_stem": "sample_document",
+          "processing_timestamp": "2025-08-26T21:50:38.385021",
+          "section_path": [],
+          "source_document": "sample_document",
+          "source_hash": "e7d47d6087c8aa1160c7231f50b844e4c9c2dccb7d6566da758f6e97549c7bb8"
+        },
+        "sentence_count": 1,
+        "source_bundle_id": "bundle_e07838630345e2ff5c6068ddf9cde932c740d98b49d71f9d8ebcb4dec",
+        "token_count": 29,
+        "total_chunks": 1
+      },
+      "page_anchors": [
+        {
+          "end_char": 189,
+          "page_number": 1,
+          "page_text_hash": "page_3e973bfebbf33d7c2682318ead6ef47e8465fdfd2f4ffb250afd6a2d8cd",
+          "start_char": 0
+        }
+      ]
+    }
+  ],
+  "component_metadata": {
+    "class_name": "ChunkingProcessor",
+    "component_id": "comp_64e48b717b47d671f3ec46bc2f72917445c58b8ada67074c7cb98ccc034",
+    "component_name": "ChunkingProcessor",
+    "creation_timestamp": "2025-08-26T21:50:38.384714",
+    "last_operation_id": "op_085eb1a6b1dd345e72379ea64a269115b52e7623241e4ee894065bbaa6a3d",
+    "state_hash": "state_452807ebb1f0d34c6ddab31527709eed58177c8f92cbd7fa722782141f"
+  },
+  "document_stem": "sample_document",
+  "summary": {
+    "chunking_policy": "fixed_token_counts",
+    "processing_timestamp": "2025-08-26T21:50:38.385048",
+    "total_chunks": 1,
+    "total_tokens": 29
+  }
+}

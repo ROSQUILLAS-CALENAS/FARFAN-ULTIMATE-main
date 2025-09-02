@@ -1,0 +1,19 @@
+{
+  "title": "Sample Document",
+  "content": "This is a sample document with UTF-8 content: áéíóú ñ 中文 🚀",
+  "metadata": {
+    "source": "test_document",
+    "type": "sample",
+    "language": "multilingual"
+  },
+  "sections": [
+    {
+      "heading": "Introduction",
+      "text": "Sample introduction with special characters: © ® ™"
+    },
+    {
+      "heading": "Content",
+      "text": "Main content section with emoji: 😊 and unicode: λμνξοπρσ"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "document_stem": "nonexistent_document", 
+  "processing_status": "failed",
+  "processing_timestamp": "2025-08-27T02:05:15.123456+00:00",
+  "extracted_features": {},
+  "feature_metadata": {
+    "extraction_method": "hybrid_nlp_analysis",
+    "model_version": "v2.1",
+    "confidence_threshold": 0.7,
+    "feature_count": 0
+  },
+  "quality_metrics": {
+    "overall_quality": 0.0,
+    "content_completeness": 0.0,
+    "structure_clarity": 0.0,
+    "semantic_coherence": 0.0
+  },
+  "error_details": {
+    "has_errors": true,
+    "error_message": "No readable content found in document",
+    "warning_count": 2
+  },
+  "schema_version": "1.0"
+}

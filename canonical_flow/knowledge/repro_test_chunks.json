@@ -1,0 +1,52 @@
+{
+  "chunks": [
+    {
+      "chunk_id": "chunk_5546f8edc1f992d358dce36c61af2d0b2224df96b33b335da8c202ded2",
+      "content": "First sentence. Second sentence. Third sentence.",
+      "metadata": {
+        "chunk_index": 0,
+        "creation_timestamp": "2025-08-26T22:00:05.952854",
+        "paragraph_count": 1,
+        "policy": "sentence_boundaries",
+        "provenance": {
+          "character_offsets": [
+            0,
+            48
+          ],
+          "document_stem": "repro_test",
+          "processing_timestamp": "2025-08-26T22:00:05.952847",
+          "section_path": [],
+          "source_document": "repro_test",
+          "source_hash": "5c9ae659740732887bfb3ed79f4ae79efd35296a77092048bdec1a00684f43f5"
+        },
+        "sentence_count": 3,
+        "source_bundle_id": "",
+        "token_count": 6,
+        "total_chunks": 1
+      },
+      "page_anchors": [
+        {
+          "end_char": 48,
+          "page_number": 1,
+          "page_text_hash": "page_ef1a25a791ba94e55983ffdd1cc86690bdee239900a9fc20e9d52b51ba9",
+          "start_char": 0
+        }
+      ]
+    }
+  ],
+  "component_metadata": {
+    "class_name": "ChunkingProcessor",
+    "component_id": "comp_64e48b717b47d671f3ec46bc2f72917445c58b8ada67074c7cb98ccc034",
+    "component_name": "ChunkingProcessor",
+    "creation_timestamp": "2025-08-26T22:00:05.952728",
+    "last_operation_id": "op_231f4b4582b3fd196f0205aef21d2483f0298791ec59e9a7455fce1a15040",
+    "state_hash": "state_92bc31b5bc2a2cd5b739560f1962f56a49e61797e62c19b949f98d70a8"
+  },
+  "document_stem": "repro_test",
+  "summary": {
+    "chunking_policy": "sentence_boundaries",
+    "processing_timestamp": "2025-08-26T22:00:05.952872",
+    "total_chunks": 1,
+    "total_tokens": 6
+  }
+}

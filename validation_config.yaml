@@ -1,0 +1,90 @@
+# Comprehensive Validation Configuration
+# This file defines validation rules and thresholds for the CI system
+
+validation_rules:
+  decalogo_questions:
+    total_expected: 470
+    per_point_expected: 47
+    points_count: 10
+    required_dimensions: ["DE1", "DE2", "DE3", "DE4"]
+    
+  evidence_artifacts:
+    required_schema_fields:
+      - page_num
+      - exact_text
+      - source_document
+      - confidence_score
+      - dimension
+    field_constraints:
+      page_num:
+        type: int
+        min_value: 1
+      exact_text:
+        type: str
+        min_length: 10
+        max_length: 10000
+      confidence_score:
+        type: float
+        min_value: 0.0
+        max_value: 1.0
+    
+  score_bounds:
+    min_score: 0.0
+    max_score: 1.0
+    tolerance: 0.000001
+    levels:
+      - question
+      - dimension 
+      - point
+      - meso
+      - macro
+      
+  aggregation_consistency:
+    mathematical_precision: 0.001
+    weight_validation: true
+    hierarchy_levels:
+      - name: "dimension_to_point"
+        source_level: "dimension"
+        target_level: "point"
+      - name: "point_to_meso" 
+        source_level: "point"
+        target_level: "meso"
+      - name: "meso_to_macro"
+        source_level: "meso"
+        target_level: "macro"
+        
+  determinism_verification:
+    pipeline_runs: 3
+    comparison_tolerance: 0.0  # Byte-identical required
+    hash_algorithms: ["sha256", "md5"]
+    verify_components:
+      - scores
+      - artifacts
+      - classifications
+      - metadata
+
+reporting:
+  output_formats:
+    - json
+    - junit_xml
+    - html_dashboard
+    - status_badge
+  
+  artifact_retention_days: 30
+  
+  success_thresholds:
+    overall_pass_rate: 1.0  # 100% tests must pass
+    critical_test_pass_rate: 1.0
+    
+ci_integration:
+  fail_fast: false
+  parallel_execution: true
+  timeout_minutes: 30
+  
+  notification_channels:
+    - github_status
+    - artifacts
+    - dashboard
+    
+  badge_generation: true
+  dashboard_deployment: true

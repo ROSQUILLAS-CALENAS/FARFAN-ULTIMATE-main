@@ -1,0 +1,38 @@
+{
+  "calibration_quality_score": 0.88,
+  "coverage_percentage": 91.8,
+  "decisions_made": 95,
+  "quality_gate_status": "PASS",
+  "timestamp": "2025-08-27T03:32:01.612515",
+  "stage_version": "1.0.0",
+  "calibration_parameters": {
+    "aggregation_method": "consensus",
+    "convergence_tolerance": 1e-06,
+    "max_iterations": 1000,
+    "regularization_strength": 0.01,
+    "uncertainty_decomposition": true,
+    "spectral_analysis_enabled": true
+  },
+  "quality_thresholds": {
+    "calibration_quality_score": 0.8,
+    "coverage_percentage": 90.0,
+    "convergence_rate": 0.9,
+    "consensus_score": 0.85,
+    "aggregation_stability": 0.75
+  },
+  "convergence_rate": 0.94,
+  "aggregation_stability": 0.87,
+  "consensus_score": 0.89,
+  "uncertainty_quantification_quality": 0.82,
+  "spectral_gap": 0.0,
+  "eigenvalue_stability": 0.0,
+  "manifold_coherence": 0.0,
+  "aggregation_method": "consensus",
+  "convergence_tolerance": 1e-06,
+  "max_iterations": 1000,
+  "regularization_strength": 0.01,
+  "epistemic_uncertainty": 0.0,
+  "aleatoric_uncertainty": 0.0,
+  "total_uncertainty": 0.0,
+  "calibration_curve_auc": 0.0
+}

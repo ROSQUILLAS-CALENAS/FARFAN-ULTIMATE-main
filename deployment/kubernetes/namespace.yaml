@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: egw-pipeline
+  labels:
+    name: egw-pipeline
+    app: egw-query-expansion
+    version: v1

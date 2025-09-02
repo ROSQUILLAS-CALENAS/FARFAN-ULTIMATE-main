@@ -1,0 +1,18 @@
+{
+  "chunks": [],
+  "component_metadata": {
+    "class_name": "ChunkingProcessor",
+    "component_id": "comp_64e48b717b47d671f3ec46bc2f72917445c58b8ada67074c7cb98ccc034",
+    "component_name": "ChunkingProcessor",
+    "creation_timestamp": "2025-08-26T22:00:05.910363",
+    "last_operation_id": "op_72e2345c3eb5a055f9252972429c548bda8d8cc320af0216071d31c155ae3",
+    "state_hash": "state_26d8776d2fb701e57a41e5d9a2b05f74b7dda562061e89b01711adfd4a"
+  },
+  "document_stem": "empty",
+  "summary": {
+    "chunking_policy": "sentence_boundaries",
+    "processing_timestamp": "2025-08-26T22:00:05.910825",
+    "total_chunks": 0,
+    "total_tokens": 0
+  }
+}

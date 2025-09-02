@@ -1,0 +1,452 @@
+{
+  "action_recommendations": [
+    {
+      "current_score": 0.33,
+      "estimated_impact": 0.05,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1",
+        "Gap_2",
+        "Gap_3"
+      ],
+      "implementation_complexity": "medium",
+      "improvement_potential": 0.5,
+      "point_id": "P6",
+      "point_name": "Protección Ambiental",
+      "priority_rank": 1,
+      "required_actions": [
+        "Address evidence gap: Gap_0",
+        "Address evidence gap: Gap_1",
+        "Address evidence gap: Gap_2",
+        "Collect additional supporting evidence",
+        "Improve data quality and validation"
+      ]
+    },
+    {
+      "current_score": 0.42,
+      "estimated_impact": 0.03,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1",
+        "Gap_2"
+      ],
+      "implementation_complexity": "medium",
+      "improvement_potential": 0.5,
+      "point_id": "P10",
+      "point_name": "Transparencia",
+      "priority_rank": 2,
+      "required_actions": [
+        "Address evidence gap: Gap_0",
+        "Address evidence gap: Gap_1",
+        "Address evidence gap: Gap_2",
+        "Collect additional supporting evidence",
+        "Improve data quality and validation"
+      ]
+    },
+    {
+      "current_score": 0.45,
+      "estimated_impact": 0.04,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1",
+        "Gap_2"
+      ],
+      "implementation_complexity": "medium",
+      "improvement_potential": 0.5,
+      "point_id": "P3",
+      "point_name": "Igualdad",
+      "priority_rank": 3,
+      "required_actions": [
+        "Address evidence gap: Gap_0",
+        "Address evidence gap: Gap_1",
+        "Address evidence gap: Gap_2",
+        "Collect additional supporting evidence",
+        "Improve data quality and validation"
+      ]
+    },
+    {
+      "current_score": 0.59,
+      "estimated_impact": 0.020500000000000004,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1",
+        "Gap_2"
+      ],
+      "implementation_complexity": "medium",
+      "improvement_potential": 0.41000000000000003,
+      "point_id": "P8",
+      "point_name": "Derechos Culturales",
+      "priority_rank": 4,
+      "required_actions": [
+        "Address evidence gap: Gap_0",
+        "Address evidence gap: Gap_1",
+        "Address evidence gap: Gap_2",
+        "Improve data quality and validation"
+      ]
+    },
+    {
+      "current_score": 0.68,
+      "estimated_impact": 0.019199999999999995,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1"
+      ],
+      "implementation_complexity": "low",
+      "improvement_potential": 0.31999999999999995,
+      "point_id": "P4",
+      "point_name": "Participación",
+      "priority_rank": 5,
+      "required_actions": [
+        "Address evidence gap: Gap_0",
+        "Address evidence gap: Gap_1"
+      ]
+    }
+  ],
+  "audit_trail": {
+    "events": [
+      {
+        "data": {
+          "input_keys": [
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5",
+            "P6",
+            "P7",
+            "P8",
+            "P9",
+            "P10"
+          ],
+          "weights": {
+            "P1": 0.18,
+            "P10": 0.06,
+            "P2": 0.12,
+            "P3": 0.08,
+            "P4": 0.06,
+            "P5": 0.15,
+            "P6": 0.1,
+            "P7": 0.09,
+            "P8": 0.05,
+            "P9": 0.11
+          }
+        },
+        "event_type": "computation_start",
+        "timestamp": "2025-08-27T02:34:51.250905+00:00"
+      },
+      {
+        "data": {
+          "compliance_level": "CUMPLE_PARCIAL",
+          "global_score": 0.6972,
+          "weighted_scores": {
+            "P1": 0.135,
+            "P10": 0.025199999999999997,
+            "P2": 0.09839999999999999,
+            "P3": 0.036000000000000004,
+            "P4": 0.0408,
+            "P5": 0.1365,
+            "P6": 0.033,
+            "P7": 0.0693,
+            "P8": 0.0295,
+            "P9": 0.0935
+          }
+        },
+        "event_type": "score_computation",
+        "timestamp": "2025-08-27T02:34:51.251140+00:00"
+      },
+      {
+        "data": {
+          "by_type": {
+            "cluster_inconsistency": 0,
+            "evidence_conflict": 0,
+            "score_conflict": 2,
+            "temporal_contradiction": 0
+          },
+          "total_contradictions": 2
+        },
+        "event_type": "contradiction_detection",
+        "timestamp": "2025-08-27T02:34:51.251232+00:00"
+      },
+      {
+        "data": {
+          "compliance_level": "CUMPLE_PARCIAL",
+          "contradictions_found": 2,
+          "final_score": 0.6972,
+          "recommendations_generated": 5
+        },
+        "event_type": "computation_complete",
+        "timestamp": "2025-08-27T02:34:51.251361+00:00"
+      }
+    ]
+  },
+  "cluster_analysis": {
+    "1": {
+      "average_score": 0.75,
+      "completion_rate": 1.0,
+      "max_score": 0.91,
+      "min_score": 0.59,
+      "score_variance": 0.017066666666666674,
+      "weighted_contribution": 0.22499999999999998
+    },
+    "2": {
+      "average_score": 0.65,
+      "completion_rate": 1.0,
+      "max_score": 0.82,
+      "min_score": 0.45,
+      "score_variance": 0.02326666666666666,
+      "weighted_contribution": 0.1625
+    },
+    "3": {
+      "average_score": 0.55,
+      "completion_rate": 1.0,
+      "max_score": 0.77,
+      "min_score": 0.33,
+      "score_variance": 0.0484,
+      "weighted_contribution": 0.11000000000000001
+    },
+    "4": {
+      "average_score": 0.635,
+      "completion_rate": 1.0,
+      "max_score": 0.85,
+      "min_score": 0.42,
+      "score_variance": 0.046225,
+      "weighted_contribution": 0.15875
+    }
+  },
+  "compliance_level": "CUMPLE_PARCIAL",
+  "global_decalogo_score": 0.6972,
+  "point_scores": {
+    "P1": {
+      "cluster_id": 1,
+      "confidence": 0.85,
+      "evidence_count": 7,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1"
+      ],
+      "point_id": "P1",
+      "point_name": "Vida y Seguridad",
+      "score": 0.75,
+      "timestamp": "2025-08-27T02:34:51.250936+00:00"
+    },
+    "P10": {
+      "cluster_id": 4,
+      "confidence": 0.52,
+      "evidence_count": 4,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1",
+        "Gap_2"
+      ],
+      "point_id": "P10",
+      "point_name": "Transparencia",
+      "score": 0.42,
+      "timestamp": "2025-08-27T02:34:51.251122+00:00"
+    },
+    "P2": {
+      "cluster_id": 2,
+      "confidence": 0.9199999999999999,
+      "evidence_count": 8,
+      "evidence_gaps": [
+        "Gap_0"
+      ],
+      "point_id": "P2",
+      "point_name": "Dignidad Humana",
+      "score": 0.82,
+      "timestamp": "2025-08-27T02:34:51.251022+00:00"
+    },
+    "P3": {
+      "cluster_id": 2,
+      "confidence": 0.55,
+      "evidence_count": 4,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1",
+        "Gap_2"
+      ],
+      "point_id": "P3",
+      "point_name": "Igualdad",
+      "score": 0.45,
+      "timestamp": "2025-08-27T02:34:51.251033+00:00"
+    },
+    "P4": {
+      "cluster_id": 2,
+      "confidence": 0.78,
+      "evidence_count": 6,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1"
+      ],
+      "point_id": "P4",
+      "point_name": "Participación",
+      "score": 0.68,
+      "timestamp": "2025-08-27T02:34:51.251054+00:00"
+    },
+    "P5": {
+      "cluster_id": 1,
+      "confidence": 0.95,
+      "evidence_count": 9,
+      "evidence_gaps": [
+        "Gap_0"
+      ],
+      "point_id": "P5",
+      "point_name": "Servicios Básicos",
+      "score": 0.91,
+      "timestamp": "2025-08-27T02:34:51.251071+00:00"
+    },
+    "P6": {
+      "cluster_id": 3,
+      "confidence": 0.43000000000000005,
+      "evidence_count": 3,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1",
+        "Gap_2",
+        "Gap_3"
+      ],
+      "point_id": "P6",
+      "point_name": "Protección Ambiental",
+      "score": 0.33,
+      "timestamp": "2025-08-27T02:34:51.251090+00:00"
+    },
+    "P7": {
+      "cluster_id": 3,
+      "confidence": 0.87,
+      "evidence_count": 7,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1"
+      ],
+      "point_id": "P7",
+      "point_name": "Desarrollo Económico",
+      "score": 0.77,
+      "timestamp": "2025-08-27T02:34:51.251106+00:00"
+    },
+    "P8": {
+      "cluster_id": 1,
+      "confidence": 0.69,
+      "evidence_count": 5,
+      "evidence_gaps": [
+        "Gap_0",
+        "Gap_1",
+        "Gap_2"
+      ],
+      "point_id": "P8",
+      "point_name": "Derechos Culturales",
+      "score": 0.59,
+      "timestamp": "2025-08-27T02:34:51.251112+00:00"
+    },
+    "P9": {
+      "cluster_id": 4,
+      "confidence": 0.95,
+      "evidence_count": 8,
+      "evidence_gaps": [
+        "Gap_0"
+      ],
+      "point_id": "P9",
+      "point_name": "Acceso a Justicia",
+      "score": 0.85,
+      "timestamp": "2025-08-27T02:34:51.251117+00:00"
+    }
+  },
+  "processing_metadata": {
+    "cluster_definitions": {
+      "1": {
+        "name": "Paz, Seguridad y Protección",
+        "points": [
+          "P1",
+          "P5",
+          "P8"
+        ],
+        "weight": 0.3
+      },
+      "2": {
+        "name": "Derechos Sociales Fundamentales",
+        "points": [
+          "P2",
+          "P3",
+          "P4"
+        ],
+        "weight": 0.25
+      },
+      "3": {
+        "name": "Igualdad y No Discriminación",
+        "points": [
+          "P6",
+          "P7"
+        ],
+        "weight": 0.2
+      },
+      "4": {
+        "name": "Derechos Territoriales y Ambientales",
+        "points": [
+          "P9",
+          "P10"
+        ],
+        "weight": 0.25
+      }
+    },
+    "end_time": "2025-08-27T02:34:51.251322+00:00",
+    "processing_duration_seconds": 0.000424,
+    "processing_id": "macro_agg_1357f7ca",
+    "start_time": "2025-08-27T02:34:51.250898+00:00",
+    "thresholds_used": {
+      "CUMPLE": 0.8,
+      "CUMPLE_PARCIAL": 0.5,
+      "NO_CUMPLE": 0.0
+    },
+    "weights_used": {
+      "P1": 0.18,
+      "P10": 0.06,
+      "P2": 0.12,
+      "P3": 0.08,
+      "P4": 0.06,
+      "P5": 0.15,
+      "P6": 0.1,
+      "P7": 0.09,
+      "P8": 0.05,
+      "P9": 0.11
+    }
+  },
+  "systemic_contradictions": [
+    {
+      "affected_points": [
+        "P6",
+        "P7"
+      ],
+      "cluster_id": 3,
+      "confidence_score": 0.39999999999999997,
+      "conflicting_evidence": [],
+      "contradiction_id": "score_conflict_cluster_3_d499a3",
+      "contradiction_type": "score_conflict",
+      "description": "High score variation in cluster Igualdad y No Discriminación (CV=0.400)",
+      "severity": "medium"
+    },
+    {
+      "affected_points": [
+        "P10",
+        "P9"
+      ],
+      "cluster_id": 4,
+      "confidence_score": 0.33858267716535434,
+      "conflicting_evidence": [],
+      "contradiction_id": "score_conflict_cluster_4_9e22cb",
+      "contradiction_type": "score_conflict",
+      "description": "High score variation in cluster Derechos Territoriales y Ambientales (CV=0.339)",
+      "severity": "medium"
+    }
+  ],
+  "timestamp": "2025-08-27T02:34:51.251345+00:00",
+  "weighted_scores": {
+    "P1": 0.135,
+    "P10": 0.025199999999999997,
+    "P2": 0.09839999999999999,
+    "P3": 0.036000000000000004,
+    "P4": 0.0408,
+    "P5": 0.1365,
+    "P6": 0.033,
+    "P7": 0.0693,
+    "P8": 0.0295,
+    "P9": 0.0935
+  }
+}

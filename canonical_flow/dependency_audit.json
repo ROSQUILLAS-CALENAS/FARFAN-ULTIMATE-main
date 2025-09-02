@@ -1,0 +1,666 @@
+{
+  "project_root": "/Users/recovered/PycharmProjects/FARFAN-ULTIMATE",
+  "declared_dependencies": [
+    "GitPython>=3.1.0",
+    "POT>=0.9.1",
+    "PyMuPDF>=1.23.0",
+    "aioredis>=2.0.0",
+    "beir>=2.0.0",
+    "blake3>=0.3.3",
+    "camelot-py>=0.11.0",
+    "dask>=2023.8.0",
+    "datasets>=2.14.0",
+    "deap>=1.4.0",
+    "easyocr>=1.7.0",
+    "elasticsearch>=8.9.0",
+    "faiss-cpu>=1.7.4",
+    "ftfy>=6.1.0",
+    "fuzzywuzzy>=0.18.0",
+    "google-cloud-bigquery>=3.11.0",
+    "google-cloud-pubsub>=2.18.0",
+    "google-cloud-storage>=2.10.0",
+    "google-cloud-vision>=3.4.0",
+    "httpx>=0.24.0",
+    "hypothesis>=6.82.0",
+    "joblib>=1.3.0",
+    "jsonschema>=4.19.0",
+    "jupyter>=1.0.0",
+    "kafka-python>=2.0.2",
+    "kubernetes>=27.2.0",
+    "langdetect>=1.0.9",
+    "lark>=1.1.0",
+    "loguru>=0.7.0",
+    "matplotlib>=3.7.0",
+    "msgspec>=0.18.0",
+    "networkx>=3.1.0",
+    "nltk>=3.8.0",
+    "node2vec>=0.4.0",
+    "numpy>=1.24.0",
+    "opencv-python>=4.8.0",
+    "opentelemetry-api>=1.20.0",
+    "opentelemetry-sdk>=1.20.0",
+    "orjson>=3.8.0",
+    "pandas>=1.5.0",
+    "pdfplumber>=0.9.0",
+    "pillow>=10.0.0",
+    "pingouin>=0.5.0",
+    "plotly>=5.15.0",
+    "pm4py>=2.7.0",
+    "pre-commit>=3.6.0",
+    "prometheus-client>=0.17.0",
+    "psutil>=5.9.0",
+    "pydantic>=2.0.0",
+    "pyserini>=0.22.0",
+    "pyspellchecker>=0.7.0",
+    "pytesseract>=0.3.10",
+    "pytest-cov>=4.0.0",
+    "pytest>=7.0.0",
+    "python-Levenshtein>=0.21.0",
+    "python-consul>=1.1.0",
+    "pyyaml>=5.1",
+    "ray>=2.7.0",
+    "redis>=4.5.0",
+    "rich>=13.5.0",
+    "scikit-learn>=1.3.0",
+    "scipy>=1.11.0",
+    "seaborn>=0.12.0",
+    "sentence-transformers>=2.2.2",
+    "setuptools>=68.0.0",
+    "spacy[en_core_web_sm]>=3.7.0",
+    "sqlalchemy>=2.0.0",
+    "statsmodels>=0.14.0",
+    "tabula-py>=2.8.0",
+    "textstat>=0.7.0",
+    "toml>=0.10.2",
+    "torch-geometric>=2.3.0",
+    "torch>=2.0.0",
+    "tqdm>=4.66.0",
+    "transformers>=4.35.0",
+    "unidecode>=1.3.0",
+    "whoosh>=2.7.4",
+    "z3-solver>=4.12.0"
+  ],
+  "missing_dependencies": [
+    {
+      "import": "PIL",
+      "suggested_package": "pillow"
+    },
+    {
+      "import": "__future__",
+      "suggested_package": "__future__"
+    },
+    {
+      "import": "abc",
+      "suggested_package": "abc"
+    },
+    {
+      "import": "adaptive_analyzer",
+      "suggested_package": "adaptive_analyzer"
+    },
+    {
+      "import": "adaptive_controller",
+      "suggested_package": "adaptive_controller"
+    },
+    {
+      "import": "adaptive_scoring_engine",
+      "suggested_package": "adaptive_scoring_engine"
+    },
+    {
+      "import": "advanced_loader",
+      "suggested_package": "advanced_loader"
+    },
+    {
+      "import": "airflow",
+      "suggested_package": "airflow"
+    },
+    {
+      "import": "answer_formatter",
+      "suggested_package": "answer_formatter"
+    },
+    {
+      "import": "api",
+      "suggested_package": "api"
+    },
+    {
+      "import": "audit_trail",
+      "suggested_package": "audit_trail"
+    },
+    {
+      "import": "base64",
+      "suggested_package": "base64"
+    },
+    {
+      "import": "camelot",
+      "suggested_package": "camelot-py"
+    },
+    {
+      "import": "canonical_output_auditor",
+      "suggested_package": "canonical_output_auditor"
+    },
+    {
+      "import": "causal_dnp_framework",
+      "suggested_package": "causal_dnp_framework"
+    },
+    {
+      "import": "causal_graph",
+      "suggested_package": "causal_graph"
+    },
+    {
+      "import": "circuit_breaker",
+      "suggested_package": "circuit_breaker"
+    },
+    {
+      "import": "cluster_execution_controller",
+      "suggested_package": "cluster_execution_controller"
+    },
+    {
+      "import": "compensation_engine",
+      "suggested_package": "compensation_engine"
+    },
+    {
+      "import": "comprehensive_pipeline_orchestrator",
+      "suggested_package": "comprehensive_pipeline_orchestrator"
+    },
+    {
+      "import": "config_consolidated",
+      "suggested_package": "config_consolidated"
+    },
+    {
+      "import": "conformal_risk_control",
+      "suggested_package": "conformal_risk_control"
+    },
+    {
+      "import": "constraint_validator",
+      "suggested_package": "constraint_validator"
+    },
+    {
+      "import": "consul",
+      "suggested_package": "consul"
+    },
+    {
+      "import": "context_adapter",
+      "suggested_package": "context_adapter"
+    },
+    {
+      "import": "copy",
+      "suggested_package": "copy"
+    },
+    {
+      "import": "core",
+      "suggested_package": "core"
+    },
+    {
+      "import": "cv2",
+      "suggested_package": "opencv-python"
+    },
+    {
+      "import": "data_models",
+      "suggested_package": "data_models"
+    },
+    {
+      "import": "decision_engine",
+      "suggested_package": "decision_engine"
+    },
+    {
+      "import": "deterministic_hybrid_retrieval",
+      "suggested_package": "deterministic_hybrid_retrieval"
+    },
+    {
+      "import": "deterministic_router",
+      "suggested_package": "deterministic_router"
+    },
+    {
+      "import": "deterministic_shield",
+      "suggested_package": "deterministic_shield"
+    },
+    {
+      "import": "dnp_alignment_adapter",
+      "suggested_package": "dnp_alignment_adapter"
+    },
+    {
+      "import": "dnp_alignment_engine",
+      "suggested_package": "dnp_alignment_engine"
+    },
+    {
+      "import": "document_processor",
+      "suggested_package": "document_processor"
+    },
+    {
+      "import": "embedding_generator",
+      "suggested_package": "embedding_generator"
+    },
+    {
+      "import": "etcd3",
+      "suggested_package": "etcd3"
+    },
+    {
+      "import": "event_bus",
+      "suggested_package": "event_bus"
+    },
+    {
+      "import": "event_schemas",
+      "suggested_package": "event_schemas"
+    },
+    {
+      "import": "evidence_processor",
+      "suggested_package": "evidence_processor"
+    },
+    {
+      "import": "evidence_system",
+      "suggested_package": "evidence_system"
+    },
+    {
+      "import": "evidence_validation_model",
+      "suggested_package": "evidence_validation_model"
+    },
+    {
+      "import": "exception_monitoring",
+      "suggested_package": "exception_monitoring"
+    },
+    {
+      "import": "exception_telemetry",
+      "suggested_package": "exception_telemetry"
+    },
+    {
+      "import": "faiss",
+      "suggested_package": "faiss-cpu"
+    },
+    {
+      "import": "farfan",
+      "suggested_package": "farfan"
+    },
+    {
+      "import": "fault_injector",
+      "suggested_package": "fault_injector"
+    },
+    {
+      "import": "fitz",
+      "suggested_package": "pymupdf"
+    },
+    {
+      "import": "git",
+      "suggested_package": "git"
+    },
+    {
+      "import": "google",
+      "suggested_package": "google-cloud"
+    },
+    {
+      "import": "graph_ops",
+      "suggested_package": "graph_ops"
+    },
+    {
+      "import": "gudhi",
+      "suggested_package": "gudhi"
+    },
+    {
+      "import": "gw_alignment",
+      "suggested_package": "gw_alignment"
+    },
+    {
+      "import": "heapq",
+      "suggested_package": "heapq"
+    },
+    {
+      "import": "hmac",
+      "suggested_package": "hmac"
+    },
+    {
+      "import": "hybrid_retrieval",
+      "suggested_package": "hybrid_retrieval"
+    },
+    {
+      "import": "hybrid_retriever",
+      "suggested_package": "hybrid_retriever"
+    },
+    {
+      "import": "hyperbolic_tensor_networks",
+      "suggested_package": "hyperbolic_tensor_networks"
+    },
+    {
+      "import": "hypothesis_module",
+      "suggested_package": "hypothesis_module"
+    },
+    {
+      "import": "immutable_context",
+      "suggested_package": "immutable_context"
+    },
+    {
+      "import": "implementacion_mapeo",
+      "suggested_package": "implementacion_mapeo"
+    },
+    {
+      "import": "ingestion_engine",
+      "suggested_package": "ingestion_engine"
+    },
+    {
+      "import": "intelligent_recommendation_engine",
+      "suggested_package": "intelligent_recommendation_engine"
+    },
+    {
+      "import": "istio_client",
+      "suggested_package": "istio_client"
+    },
+    {
+      "import": "kafka",
+      "suggested_package": "kafka-python"
+    },
+    {
+      "import": "lexical_index",
+      "suggested_package": "lexical_index"
+    },
+    {
+      "import": "lineage_tracker",
+      "suggested_package": "lineage_tracker"
+    },
+    {
+      "import": "linear_type_enforcer",
+      "suggested_package": "linear_type_enforcer"
+    },
+    {
+      "import": "math_stage01_ingestion_enhancer",
+      "suggested_package": "math_stage01_ingestion_enhancer"
+    },
+    {
+      "import": "math_stage02_context_enhancer",
+      "suggested_package": "math_stage02_context_enhancer"
+    },
+    {
+      "import": "math_stage03_knowledge_enhancer",
+      "suggested_package": "math_stage03_knowledge_enhancer"
+    },
+    {
+      "import": "math_stage04_analysis_enhancer",
+      "suggested_package": "math_stage04_analysis_enhancer"
+    },
+    {
+      "import": "math_stage05_scoring_enhancer",
+      "suggested_package": "math_stage05_scoring_enhancer"
+    },
+    {
+      "import": "math_stage06_retrieval_enhancer",
+      "suggested_package": "math_stage06_retrieval_enhancer"
+    },
+    {
+      "import": "math_stage07_orchestration_enhancer",
+      "suggested_package": "math_stage07_orchestration_enhancer"
+    },
+    {
+      "import": "math_stage11_aggregation_enhancer",
+      "suggested_package": "math_stage11_aggregation_enhancer"
+    },
+    {
+      "import": "math_stage12_integration_enhancer",
+      "suggested_package": "math_stage12_integration_enhancer"
+    },
+    {
+      "import": "mathematical_compatibility_matrix",
+      "suggested_package": "mathematical_compatibility_matrix"
+    },
+    {
+      "import": "mathematical_foundations",
+      "suggested_package": "mathematical_foundations"
+    },
+    {
+      "import": "mathematical_pipeline_coordinator",
+      "suggested_package": "mathematical_pipeline_coordinator"
+    },
+    {
+      "import": "meso_aggregator",
+      "suggested_package": "meso_aggregator"
+    },
+    {
+      "import": "metrics_collector",
+      "suggested_package": "metrics_collector"
+    },
+    {
+      "import": "models",
+      "suggested_package": "models"
+    },
+    {
+      "import": "monitoring_stack",
+      "suggested_package": "monitoring_stack"
+    },
+    {
+      "import": "multiprocessing",
+      "suggested_package": "multiprocessing"
+    },
+    {
+      "import": "nlp_engine",
+      "suggested_package": "nlp_engine"
+    },
+    {
+      "import": "normalizer",
+      "suggested_package": "normalizer"
+    },
+    {
+      "import": "normative_validator",
+      "suggested_package": "normative_validator"
+    },
+    {
+      "import": "ocr",
+      "suggested_package": "ocr"
+    },
+    {
+      "import": "opentelemetry",
+      "suggested_package": "opentelemetry-sdk"
+    },
+    {
+      "import": "operator",
+      "suggested_package": "operator"
+    },
+    {
+      "import": "orchestration",
+      "suggested_package": "orchestration"
+    },
+    {
+      "import": "ot",
+      "suggested_package": "POT"
+    },
+    {
+      "import": "path_verification",
+      "suggested_package": "path_verification"
+    },
+    {
+      "import": "pattern_matcher",
+      "suggested_package": "pattern_matcher"
+    },
+    {
+      "import": "patterns",
+      "suggested_package": "patterns"
+    },
+    {
+      "import": "pdf_reader",
+      "suggested_package": "pdf_reader"
+    },
+    {
+      "import": "permutation_invariant_processor",
+      "suggested_package": "permutation_invariant_processor"
+    },
+    {
+      "import": "pickle",
+      "suggested_package": "pickle"
+    },
+    {
+      "import": "pipeline_orchestrator",
+      "suggested_package": "pipeline_orchestrator"
+    },
+    {
+      "import": "pipeline_orchestrator_audit",
+      "suggested_package": "pipeline_orchestrator_audit"
+    },
+    {
+      "import": "platform",
+      "suggested_package": "platform"
+    },
+    {
+      "import": "process_inventory",
+      "suggested_package": "process_inventory"
+    },
+    {
+      "import": "prometheus_async",
+      "suggested_package": "prometheus_async"
+    },
+    {
+      "import": "prometheus_client",
+      "suggested_package": "prometheus-client"
+    },
+    {
+      "import": "public_transformer_adapter",
+      "suggested_package": "public_transformer_adapter"
+    },
+    {
+      "import": "py_compile",
+      "suggested_package": "py_compile"
+    },
+    {
+      "import": "query_generator",
+      "suggested_package": "query_generator"
+    },
+    {
+      "import": "question_analyzer",
+      "suggested_package": "question_analyzer"
+    },
+    {
+      "import": "retrieval_trace",
+      "suggested_package": "retrieval_trace"
+    },
+    {
+      "import": "ripser",
+      "suggested_package": "ripser"
+    },
+    {
+      "import": "scoring",
+      "suggested_package": "scoring"
+    },
+    {
+      "import": "secrets",
+      "suggested_package": "secrets"
+    },
+    {
+      "import": "sentence_transformers",
+      "suggested_package": "sentence-transformers"
+    },
+    {
+      "import": "service_discovery",
+      "suggested_package": "service_discovery"
+    },
+    {
+      "import": "sklearn",
+      "suggested_package": "scikit-learn"
+    },
+    {
+      "import": "snapshot_manager",
+      "suggested_package": "snapshot_manager"
+    },
+    {
+      "import": "spellchecker",
+      "suggested_package": "spellchecker"
+    },
+    {
+      "import": "stable_gw_aligner",
+      "suggested_package": "stable_gw_aligner"
+    },
+    {
+      "import": "standards_alignment",
+      "suggested_package": "standards_alignment"
+    },
+    {
+      "import": "step_handlers",
+      "suggested_package": "step_handlers"
+    },
+    {
+      "import": "stream_processor",
+      "suggested_package": "stream_processor"
+    },
+    {
+      "import": "string",
+      "suggested_package": "string"
+    },
+    {
+      "import": "struct",
+      "suggested_package": "struct"
+    },
+    {
+      "import": "tabula",
+      "suggested_package": "tabula-py"
+    },
+    {
+      "import": "tarfile",
+      "suggested_package": "tarfile"
+    },
+    {
+      "import": "telemetry_collector",
+      "suggested_package": "telemetry_collector"
+    },
+    {
+      "import": "test_evidence_system",
+      "suggested_package": "test_evidence_system"
+    },
+    {
+      "import": "tools",
+      "suggested_package": "tools"
+    },
+    {
+      "import": "torch_geometric",
+      "suggested_package": "torch-geometric"
+    },
+    {
+      "import": "total_ordering",
+      "suggested_package": "total_ordering"
+    },
+    {
+      "import": "traceability",
+      "suggested_package": "traceability"
+    },
+    {
+      "import": "tracing",
+      "suggested_package": "tracing"
+    },
+    {
+      "import": "types",
+      "suggested_package": "types"
+    },
+    {
+      "import": "unicodedata",
+      "suggested_package": "unicodedata"
+    },
+    {
+      "import": "vector_index",
+      "suggested_package": "vector_index"
+    },
+    {
+      "import": "weakref",
+      "suggested_package": "weakref"
+    },
+    {
+      "import": "workflow_definitions",
+      "suggested_package": "workflow_definitions"
+    },
+    {
+      "import": "workflow_engine",
+      "suggested_package": "workflow_engine"
+    },
+    {
+      "import": "yaml",
+      "suggested_package": "pyyaml"
+    },
+    {
+      "import": "z3",
+      "suggested_package": "z3"
+    }
+  ],
+  "optional_or_experimental": [
+    "gudhi",
+    "ripser"
+  ],
+  "duplicates": [],
+  "potential_conflicts": [
+    "spacy[en_core_web_sm] specified: language models are not installed via pip extras. Run: python -m spacy download en_core_web_sm in deployment environments."
+  ],
+  "recommendations": [
+    "Add missing third-party dependencies to requirements.txt (see suggestions).",
+    "Consider moving TDA libraries (gudhi, ripser) to an optional extras or keep commented with instructions.",
+    "spacy[en_core_web_sm] specified: language models are not installed via pip extras. Run: python -m spacy download en_core_web_sm in deployment environments."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "document_stem": "empty_test",
+  "document_path": "",
+  "total_questions": 0,
+  "analyses": [],
+  "processing_metadata": {
+    "vocabulary_version": "1.0",
+    "dimension_taxonomy": "4D-DE",
+    "processing_timestamp": "2025-08-26T22:11:43.499519",
+    "deterministic_ordering": true
+  },
+  "dimension_summary": {
+    "DE-1": 0,
+    "DE-2": 0,
+    "DE-3": 0,
+    "DE-4": 0,
+    "unassigned_dimension": 0
+  },
+  "intent_summary": {
+    "causal_analysis": 0,
+    "comparative_analysis": 0,
+    "definitional_analysis": 0,
+    "descriptive_analysis": 0,
+    "evaluative_analysis": 0,
+    "predictive_analysis": 0,
+    "procedural_analysis": 0,
+    "quantitative_analysis": 0,
+    "unknown_intent": 0
+  }
+}

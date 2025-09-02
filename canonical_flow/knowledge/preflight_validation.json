@@ -1,0 +1,189 @@
+{
+  "overall_status": "WARNING",
+  "execution_time_seconds": 0.001259,
+  "timestamp": "2025-08-26T22:11:44.043908",
+  "summary": {
+    "total_checks": 4,
+    "passed": 3,
+    "failed": 0,
+    "warnings": 1
+  },
+  "detailed_results": [
+    {
+      "check_name": "chunking_compatibility",
+      "status": "pass",
+      "message": "Chunking policies are compatible",
+      "details": {
+        "knowledge_policy": {
+          "chunk_size": 512,
+          "overlap_size": 50,
+          "strategy": "semantic",
+          "max_chunk_size": 1024,
+          "min_chunk_size": 100,
+          "separator_patterns": [
+            "\n\n",
+            ". ",
+            "! ",
+            "? "
+          ]
+        },
+        "retrieval_policy": {
+          "chunk_size": 512,
+          "overlap_size": 50,
+          "strategy": "semantic",
+          "max_chunk_size": 1024,
+          "min_chunk_size": 100,
+          "separator_patterns": [
+            "\n\n",
+            ". ",
+            "! ",
+            "? "
+          ]
+        }
+      },
+      "error_details": null,
+      "timestamp": "2025-08-26T22:11:44.043913"
+    },
+    {
+      "check_name": "embedding_model_consistency",
+      "status": "pass",
+      "message": "Embedding models are consistent across stages",
+      "details": {
+        "knowledge_model": {
+          "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+          "model_version": "2.2.2",
+          "dimension": 384,
+          "max_sequence_length": 256,
+          "normalization": true,
+          "model_hash": null
+        },
+        "retrieval_model": {
+          "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+          "model_version": "2.2.2",
+          "dimension": 384,
+          "max_sequence_length": 256,
+          "normalization": true,
+          "model_hash": null
+        }
+      },
+      "error_details": null,
+      "timestamp": "2025-08-26T22:11:44.043917"
+    },
+    {
+      "check_name": "json_schema_availability",
+      "status": "pass",
+      "message": "All 3 required JSON schemas are available and valid",
+      "details": {
+        "valid_schemas": [
+          {
+            "schema": "knowledge_artifact",
+            "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_ixwRisUTmJgdSvGzGB3Uv/canonical_flow/schemas/knowledge_artifact.json",
+            "fields": [
+              "metadata",
+              "content",
+              "embeddings",
+              "timestamp",
+              "id"
+            ]
+          },
+          {
+            "schema": "causal_graph",
+            "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_ixwRisUTmJgdSvGzGB3Uv/canonical_flow/schemas/causal_graph.json",
+            "fields": [
+              "metadata",
+              "nodes",
+              "edges",
+              "version"
+            ]
+          },
+          {
+            "schema": "embedding_index",
+            "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_ixwRisUTmJgdSvGzGB3Uv/canonical_flow/schemas/embedding_index.json",
+            "fields": [
+              "index_type",
+              "document_ids",
+              "metadata",
+              "similarity_metrics",
+              "vectors",
+              "dimension"
+            ]
+          }
+        ]
+      },
+      "error_details": null,
+      "timestamp": "2025-08-26T22:11:44.044168"
+    },
+    {
+      "check_name": "k_stage_imports",
+      "status": "warning",
+      "message": "K-stage placeholder functions detected in: ['06K', '07K', '11K']",
+      "details": {
+        "successful_imports": [
+          "08K",
+          "09K",
+          "10K"
+        ],
+        "placeholder_functions": [
+          "06K",
+          "07K",
+          "11K"
+        ],
+        "import_results": {
+          "06K": {
+            "status": "warning",
+            "module_path": "canonical_flow.mathematical_enhancers.retrieval_enhancer",
+            "error": "Dependency missing: No module named 'numpy'"
+          },
+          "07K": {
+            "status": "warning",
+            "module_path": "canonical_flow.mathematical_enhancers.orchestration_enhancer",
+            "error": "Dependency missing: No module named 'numpy'"
+          },
+          "08K": {
+            "status": "success",
+            "module_path": "canonical_flow.L_classification_evaluation",
+            "key_symbols": [
+              "DimensionScore",
+              "PointScore",
+              "QuestionResponse",
+              "ScoringSystem",
+              "decalogo_scoring_system"
+            ],
+            "placeholder_detected": false
+          },
+          "09K": {
+            "status": "success",
+            "module_path": "canonical_flow.S_synthesis_output",
+            "key_symbols": [],
+            "placeholder_detected": false
+          },
+          "10K": {
+            "status": "success",
+            "module_path": "canonical_flow.T_integration_storage",
+            "key_symbols": [],
+            "placeholder_detected": false
+          },
+          "11K": {
+            "status": "success",
+            "module_path": "canonical_flow.K_knowledge_extraction.embedding_builder",
+            "key_symbols": [
+              "Path",
+              "alias_code",
+              "alias_source",
+              "alias_stage",
+              "importlib_util",
+              "original_file",
+              "process",
+              "project_root",
+              "sys",
+              "warnings"
+            ],
+            "placeholder_detected": true
+          }
+        }
+      },
+      "error_details": null,
+      "timestamp": "2025-08-26T22:11:44.045163"
+    }
+  ]
+}

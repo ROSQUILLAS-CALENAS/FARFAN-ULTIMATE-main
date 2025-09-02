@@ -1,0 +1,84 @@
+{
+  "validation": {
+    "schema_compliance": {
+      "minimum_fields_present": 0.95,
+      "required_field_completeness": 1.0,
+      "data_type_accuracy": 0.98
+    },
+    "library_compatibility": {
+      "version_mismatch_tolerance": 0.1,
+      "critical_dependency_alignment": 1.0,
+      "security_vulnerability_threshold": 0
+    },
+    "threshold_satisfaction": {
+      "mandatory_clause_compliance": 1.0,
+      "proxy_score_minimum": 0.7,
+      "confidence_alpha": 0.95,
+      "sigma_presence": 0.05,
+      "governance_completeness": 0.85
+    }
+  },
+  "stability_monitoring": {
+    "score_variance": {
+      "maximum_stddev": 0.15,
+      "variance_window": 10,
+      "drift_detection_threshold": 0.2,
+      "stability_coefficient": 0.8
+    },
+    "evidence_quality": {
+      "minimum_quality_score": 0.75,
+      "degradation_rate_threshold": 0.1,
+      "quality_consistency_minimum": 0.85,
+      "evidence_coverage_threshold": 0.9
+    },
+    "performance_regression": {
+      "response_time_increase": 1.5,
+      "accuracy_degradation": 0.05,
+      "throughput_decrease": 0.2,
+      "error_rate_increase": 0.02
+    }
+  },
+  "enhancement_activation": {
+    "auto_activation": {
+      "stability_requirement": 0.9,
+      "performance_baseline": 0.8,
+      "safety_margin": 0.95,
+      "confidence_threshold": 0.85
+    },
+    "feature_gates": {
+      "adaptive_scoring": {
+        "activation_threshold": 0.8,
+        "stability_requirement": 0.85
+      },
+      "dynamic_thresholding": {
+        "activation_threshold": 0.75,
+        "variance_stability": 0.1
+      },
+      "enhanced_validation": {
+        "activation_threshold": 0.9,
+        "error_rate_maximum": 0.01
+      }
+    }
+  },
+  "auto_deactivation": {
+    "triggers": {
+      "stability_breach": {
+        "consecutive_violations": 3,
+        "severity_threshold": 0.7
+      },
+      "performance_degradation": {
+        "consecutive_regressions": 2,
+        "degradation_magnitude": 0.1
+      },
+      "safety_violation": {
+        "single_critical_failure": true,
+        "risk_score_threshold": 0.9
+      }
+    },
+    "cooldown_periods": {
+      "minor_deactivation": "PT15M",
+      "major_deactivation": "PT1H",
+      "critical_deactivation": "PT24H"
+    }
+  }
+}

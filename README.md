@@ -1,0 +1,343 @@
+# EGW Query Expansion System
+
+**Entropic Gromov-Wasserstein Query Expansion with Deterministic Hybrid Retrieval Pipeline**
+
+A comprehensive, deterministic information retrieval and analysis system that implements Entropic Gromov-Wasserstein (EGW) optimal transport for query expansion through a canonical processing pipeline from PDF input through mathematical analysis to final synthesis outputs.
+
+## 🔒 System Architecture: Deterministic Processing Pipeline
+
+The system implements a **ComprehensivePipelineOrchestrator** that coordinates a fixed, deterministic workflow through 10 major processing stages, each containing specialized nodes with precise input/output specifications and dependency relationships.
+
+### Canonical Processing Path
+
+```
+PDF Input → Ingestion → Context Construction → Knowledge Extraction → Analysis & NLP → 
+Classification → Routing & Orchestration → Search & Retrieval → Integration → Synthesis → Final Output
+```
+
+### Core Processing Stages
+
+**Stage I - Ingestion & Preparation**: PDF extraction, document loading, feature extraction, normative validation
+- `pdf_reader.py`: Extracts text and metadata from PDF documents
+- `advanced_loader.py`: Advanced document loading with metadata enrichment  
+- `feature_extractor.py`: Feature vector generation from structured text
+- `normative_validator.py`: Document validation against compliance standards
+
+**Stage X - Context Construction**: Immutable context creation, adaptation, lineage tracking
+- `immutable_context.py`: Creates immutable QuestionContext objects with DAG structure and integrity hashing
+- `context_adapter.py`: Context adaptation for downstream processing
+- `lineage_tracker.py`: Merkle-chained lineage tracking with cryptographic integrity
+
+**Stage K - Knowledge Extraction**: Knowledge graph building, causal analysis, embedding generation
+- `Advanced Knowledge Graph Builder Component for Semantic Inference Engine.py`: Semantic inference and knowledge graph construction
+- `causal_graph.py`: Causal relationship analysis and graph construction
+- `math_stage3_knowledge_enhancer.py`: Topological validation using persistent homology
+- `causal_dnp_framework.py`: Dynamic programming framework application
+- `embedding_builder.py` → `embedding_generator.py`: Vector embedding pipeline (384-dimensional vectors)
+
+**Stage A - Analysis & NLP**: Adaptive analysis, question parsing, evidence processing, DNP alignment
+- `adaptive_analyzer.py`: Adaptive analysis with mathematical enhancement capabilities
+- `question_analyzer.py`: Question parsing and intent analysis
+- `implementacion_mapeo.py`: Question-Decálogo mapping implementation
+- `evidence_processor.py` → `EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py` → `evidence_validation_model.py`: Evidence processing pipeline
+- `evaluation_driven_processor.py`: Evaluation-based processing
+- `dnp_alignment_adapter.py`: DNP standards compliance evaluation
+
+**Stage L - Classification & Evaluation**: Adaptive scoring, risk control, conformal prediction
+- `adaptive_scoring_engine.py` → `score_calculator.py`: Scoring pipeline with adaptive algorithms
+- `conformal_risk_control.py`: Conformal prediction for distribution-free risk calibration
+
+**Stage O - Routing & Orchestration**: Deterministic routing, evidence routing, decision processing
+- `deterministic_router.py`: A*-based deterministic routing with lexicographic tie-breaking
+- `evidence_router.py`: Evidence categorization and routing
+- `decision_engine.py` → `adaptive_controller.py`: Decision processing and control signal generation
+
+**Stage R - Search & Retrieval**: Lexical indexing, vector indexing, hybrid retrieval, semantic reranking
+- `retrieval_engine/lexical_index.py`: BM25/sparse indexing implementation
+- `retrieval_engine/vector_index.py`: Dense vector indexing with FAISS
+- `retrieval_engine/hybrid_retriever.py`: Multi-modal retrieval fusion
+- `semantic_reranking/reranker.py`: Semantic reranking with stability guarantees
+- `deterministic_hybrid_retrieval.py`: Contract-validated deterministic hybrid retrieval
+
+**Stage G - Aggregation & Reporting**: Report compilation, meso-aggregation
+- `report_compiler.py`: Comprehensive report generation
+- `meso_aggregator.py`: Multi-level data aggregation
+
+**Stage T - Integration & Storage**: Metrics collection, analytics, feedback loops
+- `metrics_collector.py`: System metrics collection and analysis
+- `analytics_enhancement.py`: Advanced analytics processing
+- `feedback_loop.py`: Continuous improvement mechanisms
+
+**Stage S - Synthesis & Output**: Answer synthesis, formatting, final output generation
+- `answer_synthesizer.py` → `answer_formatter.py`: Final answer synthesis pipeline
+
+## 🎯 Node Interaction Flows & Data Transformations
+
+### Data Flow Architecture
+
+Each processing stage transforms data through well-defined interfaces:
+
+1. **Binary PDF → Structured Text** (Stage I)
+   - `pdf_reader.py` converts PDF binary to `{"text": str, "metadata": dict}`
+   - `advanced_loader.py` enriches to `{"loaded_docs": list, "metadata": dict}`
+   - `feature_extractor.py` generates `{"features": dict, "vectors": list}`
+   - `normative_validator.py` produces `{"validation_report": dict, "compliance": bool}`
+
+2. **Validated Data → Immutable Context** (Stage X)
+   - `immutable_context.py` creates QuestionContext objects with SHA-256 content hashing
+   - `context_adapter.py` adapts context for processing pipeline
+   - `lineage_tracker.py` maintains Merkle-chained audit trail
+
+3. **Context → Knowledge Structures** (Stage K)
+   - Knowledge graph construction from contextual entities
+   - Causal relationship mapping with graph algorithms
+   - Topological validation using persistent homology (Betti numbers, stability metrics)
+   - 384-dimensional embedding generation through SentenceTransformers
+
+4. **Knowledge → Analytical Insights** (Stage A)
+   - Adaptive analysis with mathematical enhancement
+   - Question intent classification and evidence extraction
+   - Contextual evidence validation with quality scoring
+   - DNP standards alignment assessment
+
+5. **Analysis → Risk-Calibrated Scores** (Stage L)
+   - Adaptive scoring with multiple algorithmic approaches
+   - Conformal prediction generating distribution-free confidence intervals
+   - Risk certificates with coverage guarantees
+
+6. **Scores → Deterministic Routes** (Stage O)
+   - A* routing with κ=(content_hash, lexicographic) tie-breaking for exact determinism
+   - Evidence-based decision processing
+   - Control signal generation for downstream stages
+
+7. **Routes → Retrieved Candidates** (Stage R)
+   - Multi-modal retrieval: BM25 (sparse), FAISS (dense), ColBERTv2 (late interaction)
+   - Hybrid fusion with learned weights
+   - Semantic reranking with stability guarantees
+
+8. **Candidates → Final Synthesis** (Stages G,T,S)
+   - Report compilation with full lineage preservation
+   - Answer synthesis with evidence support
+   - Formatted output with certificates and audit trails
+
+## 🔐 Deterministic Guarantees & Contract System
+
+### Core Contracts Implemented
+
+**Routing Contract (ρ)**: Byte-level determinism for identical inputs
+- Implementation: `deterministic_router.py` with A* algorithm
+- Tie-breaking: Lexicographic ordering κ=(content_hash, module_id)
+- Validation: Hash-based input/output verification
+
+**Snapshot Contract (σ)**: Immutable context snapshots
+- Implementation: `immutable_context.py` with SHA-256 hashing
+- Features: Append-only snapshot registry, integrity verification
+- Failure mode: Fail-closed on hash mismatches
+
+**Context Immutability Contract (CIC)**: QuestionContext integrity
+- Implementation: Linear type restrictions in `egw_query_expansion/core/immutable_context.py`
+- Features: HMAC authenticity verification, content hash validation
+- DAG tracking: Complete derivation lineage with cycle detection
+
+**Permutation-Invariance Contract (PIC)**: Set operation determinism
+- Implementation: EGW-based permutation-invariant processing
+- Features: Stable sorting for consistent output ordering
+- Mathematical basis: Category theory functors preserving structure
+
+**Conformal Risk Certificate Contract (RCC)**: Statistical guarantees
+- Implementation: `conformal_risk_control.py`
+- Features: Distribution-free confidence intervals, exchangeability-based coverage
+- Certificates: Attached to all synthesis outputs with validity attestation
+
+### Mathematical Enhancement System
+
+The system includes mathematical enhancers that apply rigorous frameworks:
+
+- **Differential Geometry** (Ingestion): Riemannian manifold theory for semantic preservation
+- **Category Theory** (Context): Functorial semantics ensuring morphism composition laws
+- **Topological Data Analysis** (Knowledge): Persistent homology with Bottleneck distance stability
+- **Information Theory** (Analysis): Shannon entropy with data processing inequalities
+- **Optimal Transport** (Scoring): EGW alignment with Sinkhorn convergence guarantees
+- **Spectral Methods** (Retrieval): Graph Laplacian eigenanalysis with spectral gap monitoring
+- **Control Theory** (Orchestration): Lyapunov stability analysis
+- **Statistical Learning** (Integration): PAC-Bayes bounds and VC dimension analysis
+
+### Hash-Based Integrity & Merkle Chains
+
+All processing maintains cryptographic integrity:
+
+- **Content Hashing**: SHA-256 for all data transformations
+- **Merkle Trees**: Hierarchical hash verification for audit trails
+- **Lineage Tracking**: Complete provenance from PDF input to final output
+- **Rollback Mechanisms**: Checkpoint-based recovery from validation failures
+- **Deterministic Seeds**: Hash-derived randomness for reproducible operations
+
+## 🚀 Operational Usage
+
+### Basic Pipeline Execution
+
+```python
+from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator
+from egw_query_expansion.core.immutable_context import create_question_context
+
+# Initialize orchestrator
+orchestrator = ComprehensivePipelineOrchestrator()
+
+# Create immutable question context
+question_context = create_question_context({
+    "question": "What are the key findings?",
+    "document_path": "/path/to/document.pdf",
+    "standards": ["standard1", "standard2"],
+    "timestamp": "2024-01-01T00:00:00Z"
+})
+
+# Execute deterministic pipeline
+result = orchestrator.execute_comprehensive_pipeline(
+    question_context=question_context,
+    apply_decalogo=True,
+    clusters=[1, 2, 3],  
+    points_per_cluster=10
+)
+
+# Access results with full lineage
+print(f"Final Answer: {result['summary']['final_answer']}")
+print(f"Confidence: {result['summary']['confidence_score']}")
+print(f"Evidence Count: {len(result['summary']['evidence_items'])}")
+print(f"Processing Hash: {result['summary']['processing_hash']}")
+```
+
+### Mathematical Enhancement Integration
+
+```python
+# Execute with mathematical enhancement
+if orchestrator.mathematical_coordinator:
+    result = orchestrator.execute_comprehensive_pipeline_with_math_enhancement(
+        question_context=question_context,
+        enable_all_stages=True
+    )
+
+    # Mathematical validation results
+    math_results = result.get('mathematical_enhancement', {})
+    print(f"Stability Metrics: {math_results.get('stability', {})}")
+    print(f"Convergence Status: {math_results.get('convergence', 'unknown')}")
+    print(f"Invariant Violations: {math_results.get('violations', [])}")
+```
+
+### Contract Validation
+
+```bash
+# Run routing contract verification
+pytest tests/test_rc.py -v
+
+# Run comprehensive contract validation  
+python validate_contract_imports.py
+
+# Verify deterministic processing
+python validate_orchestrator.py
+
+# Mathematical pipeline validation
+python validate_mathematical_pipeline.py
+```
+
+## 📊 Performance & Scalability
+
+### Computational Complexity
+
+| Stage | Time Complexity | Space Complexity | Critical Operations |
+|-------|----------------|------------------|-------------------|
+| I | O(n) | O(n) | PDF parsing, text extraction |
+| X | O(n²) | O(n) | DAG construction, hash computation |
+| K | O(n³) | O(n²) | Graph algorithms, persistent homology |
+| A | O(n²) | O(n) | NLP processing, evidence extraction |
+| L | O(n log n) | O(n) | Scoring, conformal prediction |
+| O | O(n²) | O(n) | A* search, deterministic routing |
+| R | O(n log n) | O(n) | Hybrid index search, reranking |
+| G,T,S | O(n) | O(n) | Aggregation, synthesis, formatting |
+
+### Memory Management
+
+- **Bounded Memory Usage**: Streaming algorithms prevent overflow
+- **Explicit Cleanup**: Garbage collection between stages
+- **LRU Caches**: Expensive computation memoization
+- **Checkpoint Storage**: Compressed snapshots for rollback capability
+
+## 🧪 Testing & Validation
+
+### Core Test Suites
+
+```bash
+# Smoke tests for basic functionality
+pytest smoke_tests.py -v
+
+# Mathematical pipeline validation
+python validate_mathematical_pipeline.py
+
+# Memory optimization validation
+python test_memory_optimizations_standalone.py
+
+# Contract verification
+python run_contract_validation.py
+
+# Installation validation
+python validate_installation.py
+```
+
+### Determinism Validation
+
+- **Byte-level Reproducibility**: Hash verification of identical inputs/outputs
+- **Concurrency Safety**: Parallel operation determinism through stable sorting
+- **Contract Compliance**: Runtime validation of all processing contracts
+- **Mathematical Consistency**: Invariant preservation across transformations
+
+## 📚 Documentation Structure
+
+- **README.md**: System overview and operational guide (this file)
+- **README.MATH**: Complete mathematical documentation with formal definitions
+- **canonical_flow/README.md**: Detailed module organization by processing stages
+- **TONKOTSU.md**: Repository-specific context for development assistance
+- **Contract Documentation**: Individual contract specifications and validation procedures
+
+## 🔧 Dependencies & Installation
+
+### Core Requirements
+```bash
+# Virtual environment setup
+python -m venv venv
+source venv/bin/activate  # Unix/macOS
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Development installation  
+pip install -e .
+
+# Validate installation
+python validate_installation.py
+```
+
+### Mathematical Dependencies
+- **NumPy ≥ 1.24.0**: Linear algebra and numerical computing
+- **SciPy ≥ 1.11.0**: Scientific computing and optimization
+- **PyTorch ≥ 2.0.0**: Tensor operations and automatic differentiation
+- **POT ≥ 0.9.1**: Python Optimal Transport for EGW alignment
+- **scikit-learn ≥ 1.3.0**: Machine learning algorithms and metrics
+
+### Retrieval Dependencies
+- **Transformers ≥ 4.35.0**: HuggingFace transformer models
+- **Sentence-Transformers ≥ 2.2.2**: Sentence embedding models
+- **FAISS-CPU ≥ 1.7.4**: Efficient similarity search and clustering
+
+## 🎯 Key Features
+
+- **✅ Fully Deterministic**: Byte-level reproducibility with fixed seeds and stable sorting
+- **🔐 Cryptographically Secure**: SHA-256 hashing and Merkle tree audit trails  
+- **📊 Contract-Governed**: Runtime contract validation ensuring processing guarantees
+- **🧮 Mathematically Rigorous**: Theorem-based validation across all pipeline stages
+- **🔍 Hybrid Retrieval**: Sparse (BM25), dense (E5), and late interaction (ColBERTv2) fusion
+- **⚖️ Risk-Calibrated**: Conformal prediction with distribution-free guarantees
+- **📋 Fully Auditable**: Complete lineage tracking from input to output
+- **🔄 Production-Ready**: Circuit breakers, exception monitoring, graceful degradation
+
+---
+
+**Built for deterministic, auditable information retrieval with mathematical rigor and production reliability.**

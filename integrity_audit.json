@@ -1,0 +1,161 @@
+{
+  "corruption_events": [
+    {
+      "actual_hash": null,
+      "actual_size": null,
+      "component_name": "CorruptionInjectingComponent",
+      "corruption_type": "parse_error",
+      "detected_at": "2025-08-26T23:00:39.220972",
+      "document_stem": "retry_test",
+      "error_message": "Simulated corruption error",
+      "expected_hash": null,
+      "expected_size": null,
+      "file_path": "process_execution",
+      "invalid_fields": {},
+      "missing_fields": [],
+      "retry_attempt": 1,
+      "stage_name": "test_stage"
+    },
+    {
+      "actual_hash": null,
+      "actual_size": null,
+      "component_name": "CorruptionInjectingComponent",
+      "corruption_type": "parse_error",
+      "detected_at": "2025-08-26T23:00:40.286353",
+      "document_stem": "retry_test",
+      "error_message": "Generated corrupt artifact: None",
+      "expected_hash": null,
+      "expected_size": null,
+      "file_path": "process_execution",
+      "invalid_fields": {},
+      "missing_fields": [],
+      "retry_attempt": 2,
+      "stage_name": "test_stage"
+    },
+    {
+      "actual_hash": null,
+      "actual_size": null,
+      "component_name": "CorruptionInjectingComponent",
+      "corruption_type": "parse_error",
+      "detected_at": "2025-08-26T23:00:42.537390",
+      "document_stem": "retry_test",
+      "error_message": "Generated corrupt artifact: None",
+      "expected_hash": null,
+      "expected_size": null,
+      "file_path": "process_execution",
+      "invalid_fields": {},
+      "missing_fields": [],
+      "retry_attempt": 3,
+      "stage_name": "test_stage"
+    },
+    {
+      "actual_hash": null,
+      "actual_size": null,
+      "component_name": "CorruptionInjectingComponent",
+      "corruption_type": "parse_error",
+      "detected_at": "2025-08-26T23:00:46.151011",
+      "document_stem": "retry_test",
+      "error_message": "Generated corrupt artifact: None",
+      "expected_hash": null,
+      "expected_size": null,
+      "file_path": "process_execution",
+      "invalid_fields": {},
+      "missing_fields": [],
+      "retry_attempt": 4,
+      "stage_name": "test_stage"
+    },
+    {
+      "actual_hash": null,
+      "actual_size": null,
+      "component_name": "EnhancedQuestionAnalyzer",
+      "corruption_type": "parse_error",
+      "detected_at": "2025-08-26T23:00:46.152281",
+      "document_stem": "demo_doc",
+      "error_message": "Generated corrupt artifact: None",
+      "expected_hash": null,
+      "expected_size": null,
+      "file_path": "process_execution",
+      "invalid_fields": {},
+      "missing_fields": [],
+      "retry_attempt": 1,
+      "stage_name": "A_analysis_nlp"
+    },
+    {
+      "actual_hash": null,
+      "actual_size": null,
+      "component_name": "EnhancedQuestionAnalyzer",
+      "corruption_type": "parse_error",
+      "detected_at": "2025-08-26T23:00:47.116876",
+      "document_stem": "demo_doc",
+      "error_message": "Generated corrupt artifact: None",
+      "expected_hash": null,
+      "expected_size": null,
+      "file_path": "process_execution",
+      "invalid_fields": {},
+      "missing_fields": [],
+      "retry_attempt": 2,
+      "stage_name": "A_analysis_nlp"
+    },
+    {
+      "actual_hash": null,
+      "actual_size": null,
+      "component_name": "EnhancedQuestionAnalyzer",
+      "corruption_type": "parse_error",
+      "detected_at": "2025-08-26T23:00:48.738501",
+      "document_stem": "demo_doc",
+      "error_message": "Generated corrupt artifact: None",
+      "expected_hash": null,
+      "expected_size": null,
+      "file_path": "process_execution",
+      "invalid_fields": {},
+      "missing_fields": [],
+      "retry_attempt": 3,
+      "stage_name": "A_analysis_nlp"
+    },
+    {
+      "actual_hash": null,
+      "actual_size": null,
+      "component_name": "EnhancedQuestionAnalyzer",
+      "corruption_type": "parse_error",
+      "detected_at": "2025-08-26T23:00:53.529630",
+      "document_stem": "demo_doc",
+      "error_message": "Generated corrupt artifact: None",
+      "expected_hash": null,
+      "expected_size": null,
+      "file_path": "process_execution",
+      "invalid_fields": {},
+      "missing_fields": [],
+      "retry_attempt": 4,
+      "stage_name": "A_analysis_nlp"
+    }
+  ],
+  "integrity_statistics": {
+    "corruption_events_detected": 8,
+    "failed_recoveries": 2,
+    "successful_recoveries": 0,
+    "total_artifacts_checked": 0
+  },
+  "metadata": {
+    "created_at": "2025-08-26T23:00:39.218537",
+    "description": "Data integrity audit trail",
+    "schema_version": "1.0"
+  },
+  "recovery_attempts": [
+    {
+      "attempts": 4,
+      "component_name": "CorruptionInjectingComponent",
+      "document_stem": "retry_test",
+      "failed_at": "2025-08-26T23:00:46.151444",
+      "stage_name": "test_stage",
+      "status": "failed"
+    },
+    {
+      "attempts": 4,
+      "component_name": "EnhancedQuestionAnalyzer",
+      "document_stem": "demo_doc",
+      "failed_at": "2025-08-26T23:00:53.531377",
+      "stage_name": "A_analysis_nlp",
+      "status": "failed"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "system_01b5ee3c7d36c3e3",
+    "text": "Processing System",
+    "type": "SYSTEM",
+    "confidence": 0.75,
+    "page_number": 1,
+    "chunk_id": "doc_1_chunk_1",
+    "document_id": "doc_1",
+    "start_position": 9,
+    "end_position": 26,
+    "context": "The Data Processing System implements the Advanced Analytics Framework to manage customer information. The System Administrato",
+    "aliases": [],
+    "properties": {},
+    "provenance": {
+      "extraction_timestamp": "2025-08-26T22:04:34.188135",
+      "extraction_method": "regex_pattern",
+      "pattern_used": "\\b[A-Z][a-zA-Z]*\\s+System\\b",
+      "confidence_score": 0.75
+    }
+  },
+  {
+    "id": "system_8c38c74fb04dcf71",
+    "text": "The System",
+    "type": "SYSTEM",
+    "confidence": 0.75,
+    "page_number": 1,
+    "chunk_id": "doc_1_chunk_1",
+    "document_id": "doc_1",
+    "start_position": 103,
+    "end_position": 113,
+    "context": " Data Processing System implements the Advanced Analytics Framework to manage customer information. The System Administrator manages the Processing System.",
+    "aliases": [],
+    "properties": {},
+    "provenance": {
+      "extraction_timestamp": "2025-08-26T22:04:34.188186",
+      "extraction_method": "regex_pattern",
+      "pattern_used": "\\b[A-Z][a-zA-Z]*\\s+System\\b",
+      "confidence_score": 0.75
+    }
+  },
+  {
+    "id": "system_3d63977ee56dab6a",
+    "text": "Analytics Framework",
+    "type": "SYSTEM",
+    "confidence": 0.75,
+    "page_number": 1,
+    "chunk_id": "doc_1_chunk_1",
+    "document_id": "doc_1",
+    "start_position": 51,
+    "end_position": 70,
+    "context": "The Data Processing System implements the Advanced Analytics Framework to manage customer information. The System Administrator manages the Processing System.",
+    "aliases": [],
+    "properties": {},
+    "provenance": {
+      "extraction_timestamp": "2025-08-26T22:04:34.188418",
+      "extraction_method": "regex_pattern",
+      "pattern_used": "\\b[A-Z][a-zA-Z]*\\s+Framework\\b",
+      "confidence_score": 0.75
+    }
+  },
+  {
+    "id": "system_43d81230805a3adf",
+    "text": "Analytics Framework",
+    "type": "SYSTEM",
+    "confidence": 0.75,
+    "page_number": 2,
+    "chunk_id": "doc_1_chunk_2",
+    "document_id": "doc_1",
+    "start_position": 4,
+    "end_position": 23,
+    "context": "The Analytics Framework depends on the Database Service for data storage and retrieval operations. The Database Service pro",
+    "aliases": [],
+    "properties": {},
+    "provenance": {
+      "extraction_timestamp": "2025-08-26T22:04:34.190543",
+      "extraction_method": "regex_pattern",
+      "pattern_used": "\\b[A-Z][a-zA-Z]*\\s+Framework\\b",
+      "confidence_score": 0.75
+    }
+  },
+  {
+    "id": "component_4a5daaff8f79d28b",
+    "text": "Database Service",
+    "type": "COMPONENT",
+    "confidence": 0.75,
+    "page_number": 2,
+    "chunk_id": "doc_1_chunk_2",
+    "document_id": "doc_1",
+    "start_position": 39,
+    "end_position": 55,
+    "context": "The Analytics Framework depends on the Database Service for data storage and retrieval operations. The Database Service produces analytical reports.",
+    "aliases": [],
+    "properties": {},
+    "provenance": {
+      "extraction_timestamp": "2025-08-26T22:04:34.190613",
+      "extraction_method": "regex_pattern",
+      "pattern_used": "\\b[A-Z][a-zA-Z]*\\s+Service\\b",
+      "confidence_score": 0.75
+    }
+  }
+]

@@ -1,0 +1,127 @@
+{
+  "timestamp": "2025-08-26T21:07:20.151818",
+  "total_components": 5,
+  "components_ready": 0,
+  "components_with_issues": 5,
+  "overall_status": "FAILED",
+  "component_results": {
+    "01I": {
+      "component_id": "01I",
+      "component_name": "pdf_reader",
+      "import_success": false,
+      "import_error": "Unexpected error: name 'alias_source' is not defined",
+      "methods_found": {},
+      "method_signatures": {},
+      "is_placeholder": false,
+      "smoke_test_passed": false,
+      "smoke_test_error": null,
+      "production_ready": false,
+      "issues": [
+        "Import error: name 'alias_source' is not defined"
+      ],
+      "warnings": []
+    },
+    "02I": {
+      "component_id": "02I",
+      "component_name": "advanced_loader",
+      "import_success": true,
+      "import_error": null,
+      "methods_found": {
+        "process": true,
+        "load_document": false,
+        "extract_content": false
+      },
+      "method_signatures": {
+        "process": "(data=None, context=None)"
+      },
+      "is_placeholder": false,
+      "smoke_test_passed": false,
+      "smoke_test_error": null,
+      "production_ready": false,
+      "issues": [
+        "Required method 'load_document' not found",
+        "Required method 'extract_content' not found"
+      ],
+      "warnings": [
+        "No sample PDF available for smoke test"
+      ]
+    },
+    "03I": {
+      "component_id": "03I",
+      "component_name": "feature_extractor",
+      "import_success": true,
+      "import_error": null,
+      "methods_found": {
+        "process": true,
+        "extract_features": false,
+        "generate_features": false
+      },
+      "method_signatures": {
+        "process": "(data=None, context=None)"
+      },
+      "is_placeholder": false,
+      "smoke_test_passed": false,
+      "smoke_test_error": null,
+      "production_ready": false,
+      "issues": [
+        "Required method 'extract_features' not found",
+        "Required method 'generate_features' not found"
+      ],
+      "warnings": [
+        "No sample PDF available for smoke test"
+      ]
+    },
+    "04I": {
+      "component_id": "04I",
+      "component_name": "normative_validator",
+      "import_success": true,
+      "import_error": null,
+      "methods_found": {
+        "process": true,
+        "validate": false,
+        "check_compliance": false
+      },
+      "method_signatures": {
+        "process": "(data=None, context=None)"
+      },
+      "is_placeholder": false,
+      "smoke_test_passed": false,
+      "smoke_test_error": null,
+      "production_ready": false,
+      "issues": [
+        "Required method 'validate' not found",
+        "Required method 'check_compliance' not found"
+      ],
+      "warnings": [
+        "No sample PDF available for smoke test"
+      ]
+    },
+    "05I": {
+      "component_id": "05I",
+      "component_name": "raw_data_generator",
+      "import_success": false,
+      "import_error": "ImportError: No module named 'faiss'",
+      "methods_found": {},
+      "method_signatures": {},
+      "is_placeholder": false,
+      "smoke_test_passed": false,
+      "smoke_test_error": null,
+      "production_ready": false,
+      "issues": [
+        "Failed to import: No module named 'faiss'"
+      ],
+      "warnings": []
+    }
+  },
+  "pipeline_recommendations": [
+    "🚫 Pipeline not ready for deployment. Multiple critical issues detected.",
+    "🔧 Address all import failures and placeholder implementations.",
+    "🧪 Ensure all components can process real PDF documents.",
+    "📦 Fix import issues in: 01I, 05I"
+  ],
+  "critical_issues": [
+    "02I: Missing required methods",
+    "03I: Missing required methods",
+    "04I: Missing required methods"
+  ]
+}

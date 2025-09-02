@@ -1,0 +1,26 @@
+{
+  "eigenvalues": [
+    3.3682531053180753e-07,
+    0.9717962282073598,
+    1.000032466192092,
+    1.3180927688542863
+  ],
+  "metrics": {
+    "similarity_method": "cosine",
+    "laplacian_type": "normalized",
+    "n_eigenvalues": 4,
+    "n_clusters": 5,
+    "rank_changes": 0,
+    "rank_change_ratio": 0.0,
+    "spectral_gap": 0.9717958913820492,
+    "condition_number": 3913271.4032142535,
+    "validation_passed": false
+  },
+  "validation": {
+    "weyl_bound": 2.8104693191740375e-06,
+    "max_eigenval_change": 8.854067821140177e-07,
+    "relative_error": 2.6286746445551383,
+    "stability_score": 6.888278774545572e-115,
+    "perturbation_norm": 2.8104693191740375e-06,
+    "symmetry_error": 0.0,
+    "is_symmetric": 

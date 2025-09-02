@@ -1,0 +1,96 @@
+{
+  "structured_evidence": [
+    {
+      "evidence_id": "ev_hash_2204207b2ddfd440",
+      "question_id": "q_blockchain_001",
+      "dimension": "decentralization",
+      "evidence_type": "EvidenceType.EXPERT_OPINION",
+      "chunk": {
+        "chunk_id": "chunk_ev_hash_2204207b2ddfd440",
+        "text": "Blockchain technology provides decentralized consensus mechanisms.",
+        "context_before": "",
+        "context_after": "",
+        "start_position": 0,
+        "end_position": 66,
+        "processing_timestamp": "2025-08-26 18:37:46.211847",
+        "raw_text": "Blockchain technology provides decentralized consensus mechanisms."
+      },
+      "citation": {
+        "citation_id": "cite_1e16e45d",
+        "formatted_reference": "Satoshi Nakamoto, (2008), \"Blockchain Fundamentals\"",
+        "short_reference": "Nakamoto 2008",
+        "inline_citation": "(Nakamoto, 2008)",
+        "metadata": {
+          "document_id": "blockchain_whitepaper_001",
+          "title": "Blockchain Fundamentals",
+          "author": "Satoshi Nakamoto",
+          "publication_date": "2008-10-31 00:00:00",
+          "page_number": null,
+          "section_header": null,
+          "subsection_header": null,
+          "document_type": "document",
+          "url": null,
+          "doi": null,
+          "isbn": null
+        }
+      },
+      "scoring": {
+        "relevance_score": 0.5,
+        "credibility_score": 0.7,
+        "recency_score": 0.4,
+        "authority_score": 0.7,
+        "overall_score": 0.56,
+        "confidence_level": "ConfidenceLevel.LOW",
+        "classification_labels": [
+          "decentralization"
+        ],
+        "processing_metadata": {
+          "scoring_timestamp": "2025-08-26T18:37:46.211878",
+          "weights_used": {
+            "relevance": 0.4,
+            "credibility": 0.3,
+            "recency": 0.2,
+            "authority": 0.1
+          }
+        }
+      },
+      "exact_text": "Blockchain technology provides decentralized consensus mechanisms.",
+      "context_text": "**Blockchain technology provides decentralized consensus mechanisms.**",
+      "supporting_snippets": [],
+      "contradicting_snippets": [],
+      "creation_timestamp": "2025-08-26 18:37:46.211883",
+      "audit_trail": [
+        {
+          "timestamp": "2025-08-26T18:37:46.211890",
+          "action": "created_from_raw",
+          "details": {
+            "processor": "EvidenceProcessor.process",
+            "evidence_id": "ev_hash_2204207b2ddfd440",
+            "raw_evidence_hash": "d5a9f5e8"
+          }
+        }
+      ],
+      "validation_result": null
+    }
+  ],
+  "processing_metadata": {
+    "processed_at": "2025-08-26T18:37:46.211813",
+    "total_candidates": 1,
+    "validation_hooks_applied": [],
+    "output_directory": "canonical_flow/analysis",
+    "structured_evidence_ids": [
+      "ev_hash_2204207b2ddfd440"
+    ]
+  },
+  "summary": {
+    "total_processed": 1,
+    "success": true,
+    "unique_dimensions": 1,
+    "unique_questions": 1,
+    "evidence_types": [
+      "expert_opinion"
+    ],
+    "validation_coverage": 0,
+    "average_score": 0.56
+  }
+}

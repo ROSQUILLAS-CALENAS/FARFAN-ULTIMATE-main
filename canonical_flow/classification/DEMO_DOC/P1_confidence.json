@@ -1,0 +1,291 @@
+{
+  "aggregated_prediction": {
+    "bootstrap_estimates": {
+      "ci_lower": 0.7249,
+      "ci_upper": 0.7451,
+      "mean": 0.735,
+      "std": 0.0051,
+      "var": 0.0000261
+    },
+    "calibration_metrics": {
+      "coverage_gap": 0.0,
+      "empirical_coverage": 0.95,
+      "expected_coverage": 0.95,
+      "interval_width_mean": 0.2156,
+      "interval_width_std": 0.0087,
+      "n_calibration_samples": 100,
+      "nonconformity_scores_mean": 0.0823,
+      "nonconformity_scores_std": 0.0477
+    },
+    "confidence_intervals": {
+      "90%": {
+        "confidence_level": 0.9,
+        "coverage_probability": 0.9,
+        "lower_bound": 0.6272,
+        "nonconformity_score": 0.1078,
+        "prediction_interval": 0.2156,
+        "upper_bound": 0.8428
+      },
+      "95%": {
+        "confidence_level": 0.95,
+        "coverage_probability": 0.95,
+        "lower_bound": 0.6115,
+        "nonconformity_score": 0.1235,
+        "prediction_interval": 0.247,
+        "upper_bound": 0.8585
+      },
+      "99%": {
+        "confidence_level": 0.99,
+        "coverage_probability": 0.99,
+        "lower_bound": 0.5723,
+        "nonconformity_score": 0.1627,
+        "prediction_interval": 0.3254,
+        "upper_bound": 0.8977
+      }
+    },
+    "predicted_score": 0.735,
+    "prediction_id": "DEMO_DOC_overall"
+  },
+  "calibration_dataset_size": 1500,
+  "confidence_levels": [0.9, 0.95, 0.99],
+  "dimension_predictions": {
+    "P1_DE-1": {
+      "bootstrap_estimates": {
+        "ci_lower": 0.7892,
+        "ci_upper": 0.8108,
+        "mean": 0.8,
+        "std": 0.0055,
+        "var": 0.000030
+      },
+      "calibration_metrics": {
+        "coverage_gap": 0.0,
+        "empirical_coverage": 0.95,
+        "expected_coverage": 0.95,
+        "interval_width_mean": 0.1985,
+        "interval_width_std": 0.0082,
+        "n_calibration_samples": 100,
+        "nonconformity_scores_mean": 0.0756,
+        "nonconformity_scores_std": 0.0441
+      },
+      "confidence_intervals": {
+        "90%": {
+          "confidence_level": 0.9,
+          "coverage_probability": 0.9,
+          "lower_bound": 0.6923,
+          "nonconformity_score": 0.0992,
+          "prediction_interval": 0.1985,
+          "upper_bound": 0.8908
+        },
+        "95%": {
+          "confidence_level": 0.95,
+          "coverage_probability": 0.95,
+          "lower_bound": 0.6785,
+          "nonconformity_score": 0.1138,
+          "prediction_interval": 0.2277,
+          "upper_bound": 0.9062
+        },
+        "99%": {
+          "confidence_level": 0.99,
+          "coverage_probability": 0.99,
+          "lower_bound": 0.6431,
+          "nonconformity_score": 0.1492,
+          "prediction_interval": 0.2985,
+          "upper_bound": 0.9416
+        }
+      },
+      "predicted_score": 0.7923,
+      "prediction_id": "DEMO_DOC_P1_DE-1"
+    },
+    "P1_DE-2": {
+      "bootstrap_estimates": {
+        "ci_lower": 0.6547,
+        "ci_upper": 0.6753,
+        "mean": 0.665,
+        "std": 0.0053,
+        "var": 0.000028
+      },
+      "calibration_metrics": {
+        "coverage_gap": 0.0,
+        "empirical_coverage": 0.95,
+        "expected_coverage": 0.95,
+        "interval_width_mean": 0.1923,
+        "interval_width_std": 0.0079,
+        "n_calibration_samples": 100,
+        "nonconformity_scores_mean": 0.0731,
+        "nonconformity_scores_std": 0.0427
+      },
+      "confidence_intervals": {
+        "90%": {
+          "confidence_level": 0.9,
+          "coverage_probability": 0.9,
+          "lower_bound": 0.5738,
+          "nonconformity_score": 0.0962,
+          "prediction_interval": 0.1923,
+          "upper_bound": 0.7661
+        },
+        "95%": {
+          "confidence_level": 0.95,
+          "coverage_probability": 0.95,
+          "lower_bound": 0.5608,
+          "nonconformity_score": 0.1103,
+          "prediction_interval": 0.2207,
+          "upper_bound": 0.7815
+        },
+        "99%": {
+          "confidence_level": 0.99,
+          "coverage_probability": 0.99,
+          "lower_bound": 0.5277,
+          "nonconformity_score": 0.1446,
+          "prediction_interval": 0.2892,
+          "upper_bound": 0.8169
+        }
+      },
+      "predicted_score": 0.67,
+      "prediction_id": "DEMO_DOC_P1_DE-2"
+    },
+    "P1_DE-3": {
+      "bootstrap_estimates": {
+        "ci_lower": 0.8823,
+        "ci_upper": 0.9077,
+        "mean": 0.895,
+        "std": 0.0065,
+        "var": 0.000042
+      },
+      "calibration_metrics": {
+        "coverage_gap": 0.0,
+        "empirical_coverage": 0.95,
+        "expected_coverage": 0.95,
+        "interval_width_mean": 0.2109,
+        "interval_width_std": 0.0087,
+        "n_calibration_samples": 100,
+        "nonconformity_scores_mean": 0.0802,
+        "nonconformity_scores_std": 0.0469
+      },
+      "confidence_intervals": {
+        "90%": {
+          "confidence_level": 0.9,
+          "coverage_probability": 0.9,
+          "lower_bound": 0.7946,
+          "nonconformity_score": 0.1054,
+          "prediction_interval": 0.2109,
+          "upper_bound": 1.0
+        },
+        "95%": {
+          "confidence_level": 0.95,
+          "coverage_probability": 0.95,
+          "lower_bound": 0.7800,
+          "nonconformity_score": 0.1208,
+          "prediction_interval": 0.22,
+          "upper_bound": 1.0
+        },
+        "99%": {
+          "confidence_level": 0.99,
+          "coverage_probability": 0.99,
+          "lower_bound": 0.7415,
+          "nonconformity_score": 0.1585,
+          "prediction_interval": 0.2585,
+          "upper_bound": 1.0
+        }
+      },
+      "predicted_score": 0.9008,
+      "prediction_id": "DEMO_DOC_P1_DE-3"
+    },
+    "P1_DE-4": {
+      "bootstrap_estimates": {
+        "ci_lower": 0.1692,
+        "ci_upper": 0.1908,
+        "mean": 0.18,
+        "std": 0.0055,
+        "var": 0.000030
+      },
+      "calibration_metrics": {
+        "coverage_gap": 0.0,
+        "empirical_coverage": 0.95,
+        "expected_coverage": 0.95,
+        "interval_width_mean": 0.1254,
+        "interval_width_std": 0.0052,
+        "n_calibration_samples": 100,
+        "nonconformity_scores_mean": 0.0477,
+        "nonconformity_scores_std": 0.0279
+      },
+      "confidence_intervals": {
+        "90%": {
+          "confidence_level": 0.9,
+          "coverage_probability": 0.9,
+          "lower_bound": 0.1173,
+          "nonconformity_score": 0.0627,
+          "prediction_interval": 0.1254,
+          "upper_bound": 0.2427
+        },
+        "95%": {
+          "confidence_level": 0.95,
+          "coverage_probability": 0.95,
+          "lower_bound": 0.1081,
+          "nonconformity_score": 0.0719,
+          "prediction_interval": 0.1438,
+          "upper_bound": 0.2519
+        },
+        "99%": {
+          "confidence_level": 0.99,
+          "coverage_probability": 0.99,
+          "lower_bound": 0.0864,
+          "nonconformity_score": 0.0936,
+          "prediction_interval": 0.1872,
+          "upper_bound": 0.2736
+        }
+      },
+      "predicted_score": 0.18,
+      "prediction_id": "DEMO_DOC_P1_DE-4"
+    }
+  },
+  "document_id": "DEMO_DOC",
+  "generation_timestamp": "2024-08-26T22:02:45.123456Z",
+  "point_id": "P1",
+  "point_prediction": {
+    "bootstrap_estimates": {
+      "ci_lower": 0.4546,
+      "ci_upper": 0.4754,
+      "mean": 0.465,
+      "std": 0.0053,
+      "var": 0.000028
+    },
+    "calibration_metrics": {
+      "coverage_gap": 0.0,
+      "empirical_coverage": 0.95,
+      "expected_coverage": 0.95,
+      "interval_width_mean": 0.1538,
+      "interval_width_std": 0.0063,
+      "n_calibration_samples": 100,
+      "nonconformity_scores_mean": 0.0585,
+      "nonconformity_scores_std": 0.0342
+    },
+    "confidence_intervals": {
+      "90%": {
+        "confidence_level": 0.9,
+        "coverage_probability": 0.9,
+        "lower_bound": 0.3881,
+        "nonconformity_score": 0.0769,
+        "prediction_interval": 0.1538,
+        "upper_bound": 0.5419
+      },
+      "95%": {
+        "confidence_level": 0.95,
+        "coverage_probability": 0.95,
+        "lower_bound": 0.3765,
+        "nonconformity_score": 0.0883,
+        "prediction_interval": 0.1765,
+        "upper_bound": 0.553
+      },
+      "99%": {
+        "confidence_level": 0.99,
+        "coverage_probability": 0.99,
+        "lower_bound": 0.3466,
+        "nonconformity_score": 0.1157,
+        "prediction_interval": 0.2315,
+        "upper_bound": 0.5781
+      }
+    },
+    "predicted_score": 0.4648,
+    "prediction_id": "DEMO_DOC_P1"
+  }
+}

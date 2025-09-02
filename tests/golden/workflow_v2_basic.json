@@ -1,0 +1,48 @@
+{
+  "schema": "2.0",
+  "steps": [
+    {
+      "step_id": "retrieve",
+      "handler": "handlers.retrieve",
+      "depends_on": [],
+      "metadata": {
+        "requires_snapshot": true,
+        "snapshot_id": "merkle:abc123",
+        "commutative": true,
+        "associative": true,
+        "ordered": false,
+        "join_semantics": "orset",
+        "routing_key": "qpattern",
+        "routing_hash": "rc:7e4b",
+        "cost": 1.0,
+        "gain_fn_id": "bm25_dense_fusion",
+        "risk": {"alpha": 0.1, "split_seed": 42, "scoring_fn": "abs_error"},
+        "timeout_s": 120,
+        "resources": {"cpu": 0.5, "mem_mb": 512},
+        "revision": 3
+      },
+      "effective_metadata": {
+        "commutative": true,
+        "associative": true,
+        "ordered": false,
+        "seed": null,
+        "idempotent": true,
+        "join_semantics": "orset",
+        "backoff": "expo",
+        "revision": 3,
+        "deprecated": false,
+        "timeout_s": 120,
+        "resources": {"cpu": 0.5, "mem_mb": 512},
+        "requires_snapshot": true,
+        "snapshot_id": "merkle:abc123",
+        "routing_key": "qpattern",
+        "routing_hash": "rc:7e4b",
+        "cost": 1.0,
+        "gain_fn_id": "bm25_dense_fusion",
+        "risk": {"alpha": 0.1, "split_seed": 42, "scoring_fn": "abs_error"}
+      }
+    }
+  ],
+  "topological_order": ["retrieve"],
+  "selected_step_ids": []
+}

@@ -1,0 +1,61 @@
+{
+  "dimension": "DE-1",
+  "edges": [
+    {
+      "confidence": 0.8,
+      "evidence_references": [
+        {
+          "confidence": 0.9,
+          "page_numbers": [
+            1
+          ],
+          "source_id": "doc1",
+          "text_snippet": "Rights violations lead to social unrest"
+        }
+      ],
+      "evidence_strength": 0.9500000000000001,
+      "relationship_type": "causes",
+      "source": "rights_violations",
+      "target": "social_unrest",
+      "validity_score": 0.7366666666666668
+    }
+  ],
+  "metadata": {
+    "component_id": "comp_fc386d2c64d26eae95f3eb0aca8fb922ca5466b3a92d1c65b690fb46ece",
+    "connected_components": 1,
+    "dimension": "DE-1",
+    "generation_timestamp": "2025-08-26T22:05:26.808042",
+    "is_acyclic": true,
+    "operation_id": "op_f00e6721251ad89e0027a2c7e9c7ba6b023663aa944e01aa77b18ebc25628",
+    "processing_thresholds": {
+      "min_confidence": 0.4,
+      "min_evidence_strength": 0.3
+    }
+  },
+  "nodes": [
+    {
+      "betweenness_centrality": 0.0,
+      "degree_centrality": 1.0,
+      "id": "rights_violations",
+      "in_degree": 0,
+      "label": "rights_violations",
+      "out_degree": 1
+    },
+    {
+      "betweenness_centrality": 0.0,
+      "degree_centrality": 1.0,
+      "id": "social_unrest",
+      "in_degree": 1,
+      "label": "social_unrest",
+      "out_degree": 0
+    }
+  ],
+  "validity_statistics": {
+    "edge_count": 1,
+    "graph_density": 0.5,
+    "max_validity": 0.7366666666666668,
+    "mean_validity": 0.7366666666666668,
+    "min_validity": 0.7366666666666668,
+    "node_count": 2
+  }
+}

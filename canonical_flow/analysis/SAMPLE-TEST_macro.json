@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "document_stem": "SAMPLE-TEST",
+    "artifact_type": "macro_alignment",
+    "generated_timestamp": "2025-08-27T02:46:41.097725Z"
+  },
+  "macro_alignment": {
+    "document_stem": "SAMPLE-TEST",
+    "overall_decalogo_score": 0.77,
+    "cluster_scores": {
+      "CLUSTER-1": 0.77
+    },
+    "dimensional_alignment": {
+      "DE-1": 0.77
+    },
+    "coverage_metrics": {
+      "total": 0.85
+    },
+    "compliance_distribution": {
+      "Satisfactory": 1
+    },
+    "recommendation_priority": [
+      "Priority 1"
+    ]
+  }
+}

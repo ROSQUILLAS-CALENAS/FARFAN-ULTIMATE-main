@@ -1,0 +1,350 @@
+[
+  {
+    "code": "01I",
+    "stage": "ingestion_preparation",
+    "alias_path": "canonical_flow/I_ingestion_preparation/01I_pdf_reader.py",
+    "original_path": "pdf_reader.py"
+  },
+  {
+    "code": "02I",
+    "stage": "ingestion_preparation",
+    "alias_path": "canonical_flow/I_ingestion_preparation/02I_advanced_loader.py",
+    "original_path": "advanced_loader.py"
+  },
+  {
+    "code": "03I",
+    "stage": "ingestion_preparation",
+    "alias_path": "canonical_flow/I_ingestion_preparation/03I_feature_extractor.py",
+    "original_path": "feature_extractor.py"
+  },
+  {
+    "code": "04I",
+    "stage": "ingestion_preparation",
+    "alias_path": "canonical_flow/I_ingestion_preparation/04I_normative_validator.py",
+    "original_path": "normative_validator.py"
+  },
+  {
+    "code": "05X",
+    "stage": "context_construction",
+    "alias_path": "canonical_flow/X_context_construction/05X_immutable_context.py",
+    "original_path": "immutable_context.py"
+  },
+  {
+    "code": "06X",
+    "stage": "context_construction",
+    "alias_path": "canonical_flow/X_context_construction/06X_context_adapter.py",
+    "original_path": "context_adapter.py"
+  },
+  {
+    "code": "07X",
+    "stage": "context_construction",
+    "alias_path": "canonical_flow/X_context_construction/07X_lineage_tracker.py",
+    "original_path": "lineage_tracker.py"
+  },
+  {
+    "code": "08K",
+    "stage": "knowledge_extraction",
+    "alias_path": "canonical_flow/K_knowledge_extraction/08K_Advanced_Knowledge_Graph_Builder_Component_for_Semantic_Inference_Engine.py",
+    "original_path": "Advanced Knowledge Graph Builder Component for Semantic Inference Engine.py"
+  },
+  {
+    "code": "09K",
+    "stage": "knowledge_extraction",
+    "alias_path": "canonical_flow/K_knowledge_extraction/09K_causal_graph.py",
+    "original_path": "causal_graph.py"
+  },
+  {
+    "code": "10K",
+    "stage": "knowledge_extraction",
+    "alias_path": "canonical_flow/K_knowledge_extraction/10K_causal_dnp_framework.py",
+    "original_path": "causal_dnp_framework.py"
+  },
+  {
+    "code": "11K",
+    "stage": "knowledge_extraction",
+    "alias_path": "canonical_flow/K_knowledge_extraction/11K_embedding_builder.py",
+    "original_path": "embedding_builder.py"
+  },
+  {
+    "code": "12K",
+    "stage": "knowledge_extraction",
+    "alias_path": "canonical_flow/K_knowledge_extraction/12K_embedding_generator.py",
+    "original_path": "embedding_generator.py"
+  },
+  {
+    "code": "13A",
+    "stage": "analysis_nlp",
+    "alias_path": "canonical_flow/A_analysis_nlp/13A_adaptive_analyzer.py",
+    "original_path": "adaptive_analyzer.py"
+  },
+  {
+    "code": "14A",
+    "stage": "analysis_nlp",
+    "alias_path": "canonical_flow/A_analysis_nlp/14A_question_analyzer.py",
+    "original_path": "question_analyzer.py"
+  },
+  {
+    "code": "15A",
+    "stage": "analysis_nlp",
+    "alias_path": "canonical_flow/A_analysis_nlp/15A_implementacion_mapeo.py",
+    "original_path": "implementacion_mapeo.py"
+  },
+  {
+    "code": "16A",
+    "stage": "analysis_nlp",
+    "alias_path": "canonical_flow/A_analysis_nlp/16A_evidence_processor.py",
+    "original_path": "evidence_processor.py"
+  },
+  {
+    "code": "17A",
+    "stage": "analysis_nlp",
+    "alias_path": "canonical_flow/A_analysis_nlp/17A_EXTRACTOR_DE_EVIDENCIAS_CONTEXTUAL.py",
+    "original_path": "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py"
+  },
+  {
+    "code": "18A",
+    "stage": "analysis_nlp",
+    "alias_path": "canonical_flow/A_analysis_nlp/18A_evidence_validation_model.py",
+    "original_path": "evidence_validation_model.py"
+  },
+  {
+    "code": "19A",
+    "stage": "analysis_nlp",
+    "alias_path": "canonical_flow/A_analysis_nlp/19A_evaluation_driven_processor.py",
+    "original_path": "evaluation_driven_processor.py"
+  },
+  {
+    "code": "20A",
+    "stage": "analysis_nlp",
+    "alias_path": "canonical_flow/A_analysis_nlp/20A_dnp_alignment_adapter.py",
+    "original_path": "dnp_alignment_adapter.py"
+  },
+  {
+    "code": "21L",
+    "stage": "classification_evaluation",
+    "alias_path": "canonical_flow/L_classification_evaluation/21L_adaptive_scoring_engine.py",
+    "original_path": "adaptive_scoring_engine.py"
+  },
+  {
+    "code": "22L",
+    "stage": "classification_evaluation",
+    "alias_path": "canonical_flow/L_classification_evaluation/22L_score_calculator.py",
+    "original_path": "score_calculator.py"
+  },
+  {
+    "code": "23L",
+    "stage": "classification_evaluation",
+    "alias_path": "canonical_flow/L_classification_evaluation/23L_conformal_risk_control.py",
+    "original_path": "conformal_risk_control.py"
+  },
+  {
+    "code": "24O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/24O_deterministic_router.py",
+    "original_path": "deterministic_router.py"
+  },
+  {
+    "code": "25O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/25O_evidence_router.py",
+    "original_path": "evidence_router.py"
+  },
+  {
+    "code": "26O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/26O_decision_engine.py",
+    "original_path": "decision_engine.py"
+  },
+  {
+    "code": "27O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/27O_adaptive_controller.py",
+    "original_path": "adaptive_controller.py"
+  },
+  {
+    "code": "28R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/28R_lexical_index.py",
+    "original_path": "retrieval_engine/lexical_index.py"
+  },
+  {
+    "code": "29R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/29R_vector_index.py",
+    "original_path": "retrieval_engine/vector_index.py"
+  },
+  {
+    "code": "30R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/30R_hybrid_retriever.py",
+    "original_path": "retrieval_engine/hybrid_retriever.py"
+  },
+  {
+    "code": "31R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/31R_reranker.py",
+    "original_path": "semantic_reranking/reranker.py"
+  },
+  {
+    "code": "32R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/32R_hybrid_retrieval.py",
+    "original_path": "hybrid_retrieval.py"
+  },
+  {
+    "code": "33R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/33R_deterministic_hybrid_retrieval.py",
+    "original_path": "deterministic_hybrid_retrieval.py"
+  },
+  {
+    "code": "34R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/34R_hybrid_retrieval_bridge.py",
+    "original_path": "hybrid_retrieval_bridge.py"
+  },
+  {
+    "code": "35R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/35R_lexical_index.py",
+    "original_path": "lexical_index.py"
+  },
+  {
+    "code": "36R",
+    "stage": "search_retrieval",
+    "alias_path": "canonical_flow/R_search_retrieval/36R_intelligent_recommendation_engine.py",
+    "original_path": "intelligent_recommendation_engine.py"
+  },
+  {
+    "code": "37O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/37O_confluent_orchestrator.py",
+    "original_path": "confluent_orchestrator.py"
+  },
+  {
+    "code": "38O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/38O_core_orchestrator.py",
+    "original_path": "core_orchestrator.py"
+  },
+  {
+    "code": "39O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/39O_enhanced_core_orchestrator.py",
+    "original_path": "enhanced_core_orchestrator.py"
+  },
+  {
+    "code": "40O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/40O_distributed_processor.py",
+    "original_path": "distributed_processor.py"
+  },
+  {
+    "code": "41O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/41O_airflow_orchestrator.py",
+    "original_path": "airflow_orchestrator.py"
+  },
+  {
+    "code": "42O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/42O_circuit_breaker.py",
+    "original_path": "circuit_breaker.py"
+  },
+  {
+    "code": "43O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/43O_backpressure_manager.py",
+    "original_path": "backpressure_manager.py"
+  },
+  {
+    "code": "44O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/44O_alert_system.py",
+    "original_path": "alert_system.py"
+  },
+  {
+    "code": "45O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/45O_exception_monitoring.py",
+    "original_path": "exception_monitoring.py"
+  },
+  {
+    "code": "46O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/46O_exception_telemetry.py",
+    "original_path": "exception_telemetry.py"
+  },
+  {
+    "code": "47O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/47O_contract_validator.py",
+    "original_path": "contract_validator.py"
+  },
+  {
+    "code": "48O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/48O_constraint_validator.py",
+    "original_path": "constraint_validator.py"
+  },
+  {
+    "code": "49O",
+    "stage": "orchestration_control",
+    "alias_path": "canonical_flow/O_orchestration_control/49O_rubric_validator.py",
+    "original_path": "rubric_validator.py"
+  },
+  {
+    "code": "50S",
+    "stage": "synthesis_output",
+    "alias_path": "canonical_flow/S_synthesis_output/50S_answer_synthesizer.py",
+    "original_path": "answer_synthesizer.py"
+  },
+  {
+    "code": "51S",
+    "stage": "synthesis_output",
+    "alias_path": "canonical_flow/S_synthesis_output/51S_answer_formatter.py",
+    "original_path": "answer_formatter.py"
+  },
+  {
+    "code": "52G",
+    "stage": "aggregation_reporting",
+    "alias_path": "canonical_flow/G_aggregation_reporting/52G_report_compiler.py",
+    "original_path": "report_compiler.py"
+  },
+  {
+    "code": "53G",
+    "stage": "aggregation_reporting",
+    "alias_path": "canonical_flow/G_aggregation_reporting/53G_meso_aggregator.py",
+    "original_path": "meso_aggregator.py"
+  },
+  {
+    "code": "54T",
+    "stage": "integration_storage",
+    "alias_path": "canonical_flow/T_integration_storage/54T_metrics_collector.py",
+    "original_path": "metrics_collector.py"
+  },
+  {
+    "code": "55T",
+    "stage": "integration_storage",
+    "alias_path": "canonical_flow/T_integration_storage/55T_analytics_enhancement.py",
+    "original_path": "analytics_enhancement.py"
+  },
+  {
+    "code": "56T",
+    "stage": "integration_storage",
+    "alias_path": "canonical_flow/T_integration_storage/56T_feedback_loop.py",
+    "original_path": "feedback_loop.py"
+  },
+  {
+    "code": "57T",
+    "stage": "integration_storage",
+    "alias_path": "canonical_flow/T_integration_storage/57T_compensation_engine.py",
+    "original_path": "compensation_engine.py"
+  },
+  {
+    "code": "58T",
+    "stage": "integration_storage",
+    "alias_path": "canonical_flow/T_integration_storage/58T_optimization_engine.py",
+    "original_path": "optimization_engine.py"
+  }
+]

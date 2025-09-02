@@ -1,0 +1,660 @@
+{
+  "objective": "Chain all pipeline modules (ingestion ➜ context ➜ knowledge ➜ analysis ➜ classification ➜ routing ➜ retrieval ➜ orchestration ➜ validation ➜ synthesis ➜ integration) as a single DAG, execute them in topological order, ensure each step adds value, and provide a full trace.",
+  "required": {
+    "objective": "Chain all pipeline modules (ingestion ➜ context ➜ knowledge ➜ analysis ➜ classification ➜ routing ➜ retrieval ➜ orchestration ➜ validation ➜ synthesis ➜ integration) as a single DAG, execute them in topological order, ensure each step adds value, and provide a full trace.",
+    "modules": [
+      {
+        "node": "pdf_reader.py",
+        "file_path": "pdf_reader.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": []
+      },
+      {
+        "node": "advanced_loader.py",
+        "file_path": "advanced_loader.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "pdf_reader.py"
+        ]
+      },
+      {
+        "node": "feature_extractor.py",
+        "file_path": "feature_extractor.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "advanced_loader.py"
+        ]
+      },
+      {
+        "node": "normative_validator.py",
+        "file_path": "normative_validator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "feature_extractor.py"
+        ]
+      },
+      {
+        "node": "immutable_context.py",
+        "file_path": "immutable_context.py",
+        "exists": false,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "normative_validator.py"
+        ]
+      },
+      {
+        "node": "context_adapter.py",
+        "file_path": "context_adapter.py",
+        "exists": false,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "immutable_context.py"
+        ]
+      },
+      {
+        "node": "lineage_tracker.py",
+        "file_path": "lineage_tracker.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "context_adapter.py"
+        ]
+      },
+      {
+        "node": "Advanced Knowledge Graph Builder Component for Semantic Inference En",
+        "file_path": "Advanced Knowledge Graph Builder Component for Semantic Inference En",
+        "exists": false,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "lineage_tracker.py"
+        ]
+      },
+      {
+        "node": "causal_graph.py",
+        "file_path": "causal_graph.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "Advanced Knowledge Graph Builder Component for Semantic Inference En"
+        ]
+      },
+      {
+        "node": "causal_dnp_framework.py",
+        "file_path": "causal_dnp_framework.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "causal_graph.py"
+        ]
+      },
+      {
+        "node": "embedding_builder.py",
+        "file_path": "embedding_builder.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "causal_dnp_framework.py"
+        ]
+      },
+      {
+        "node": "embedding_generator.py",
+        "file_path": "embedding_generator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "embedding_builder.py"
+        ]
+      },
+      {
+        "node": "adaptive_analyzer.py",
+        "file_path": "adaptive_analyzer.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "embedding_generator.py"
+        ]
+      },
+      {
+        "node": "question_analyzer.py",
+        "file_path": "question_analyzer.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "adaptive_analyzer.py"
+        ]
+      },
+      {
+        "node": "evidence_processor.py",
+        "file_path": "evidence_processor.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "question_analyzer.py"
+        ]
+      },
+      {
+        "node": "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py",
+        "file_path": "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "evidence_processor.py"
+        ]
+      },
+      {
+        "node": "evidence_validation_model.py",
+        "file_path": "evidence_validation_model.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py"
+        ]
+      },
+      {
+        "node": "evaluation_driven_processor.py",
+        "file_path": "evaluation_driven_processor.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "evidence_validation_model.py"
+        ]
+      },
+      {
+        "node": "adaptive_scoring_engine.py",
+        "file_path": "adaptive_scoring_engine.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "evaluation_driven_processor.py"
+        ]
+      },
+      {
+        "node": "score_calculator.py",
+        "file_path": "score_calculator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "adaptive_scoring_engine.py"
+        ]
+      },
+      {
+        "node": "conformal_risk_control.py",
+        "file_path": "conformal_risk_control.py",
+        "exists": false,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "score_calculator.py"
+        ]
+      },
+      {
+        "node": "deterministic_router.py",
+        "file_path": "deterministic_router.py",
+        "exists": false,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "conformal_risk_control.py"
+        ]
+      },
+      {
+        "node": "evidence_router.py",
+        "file_path": "evidence_router.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "deterministic_router.py"
+        ]
+      },
+      {
+        "node": "decision_engine.py",
+        "file_path": "decision_engine.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "evidence_router.py"
+        ]
+      },
+      {
+        "node": "adaptive_controller.py",
+        "file_path": "adaptive_controller.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "decision_engine.py"
+        ]
+      },
+      {
+        "node": "hybrid_retrieval.py",
+        "file_path": "hybrid_retrieval.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "adaptive_controller.py"
+        ]
+      },
+      {
+        "node": "deterministic_hybrid_retrieval.py",
+        "file_path": "deterministic_hybrid_retrieval.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "hybrid_retrieval.py"
+        ]
+      },
+      {
+        "node": "hybrid_retrieval_bridge.py",
+        "file_path": "hybrid_retrieval_bridge.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "deterministic_hybrid_retrieval.py"
+        ]
+      },
+      {
+        "node": "lexical_index.py",
+        "file_path": "lexical_index.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "hybrid_retrieval_bridge.py"
+        ]
+      },
+      {
+        "node": "intelligent_recommendation_engine.py",
+        "file_path": "intelligent_recommendation_engine.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "lexical_index.py"
+        ]
+      },
+      {
+        "node": "confluent_orchestrator.py",
+        "file_path": "confluent_orchestrator.py",
+        "exists": false,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "intelligent_recommendation_engine.py"
+        ]
+      },
+      {
+        "node": "core_orchestrator.py",
+        "file_path": "core_orchestrator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "confluent_orchestrator.py"
+        ]
+      },
+      {
+        "node": "enhanced_core_orchestrator.py",
+        "file_path": "enhanced_core_orchestrator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "core_orchestrator.py"
+        ]
+      },
+      {
+        "node": "distributed_processor.py",
+        "file_path": "distributed_processor.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "enhanced_core_orchestrator.py"
+        ]
+      },
+      {
+        "node": "airflow_orchestrator.py",
+        "file_path": "airflow_orchestrator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "distributed_processor.py"
+        ]
+      },
+      {
+        "node": "circuit_breaker.py",
+        "file_path": "circuit_breaker.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "airflow_orchestrator.py"
+        ]
+      },
+      {
+        "node": "backpressure_manager.py",
+        "file_path": "backpressure_manager.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "circuit_breaker.py"
+        ]
+      },
+      {
+        "node": "alert_system.py",
+        "file_path": "alert_system.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "backpressure_manager.py"
+        ]
+      },
+      {
+        "node": "exception_monitoring.py",
+        "file_path": "exception_monitoring.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "alert_system.py"
+        ]
+      },
+      {
+        "node": "exception_telemetry.py",
+        "file_path": "exception_telemetry.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "exception_monitoring.py"
+        ]
+      },
+      {
+        "node": "contract_validator.py",
+        "file_path": "contract_validator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "exception_telemetry.py"
+        ]
+      },
+      {
+        "node": "constraint_validator.py",
+        "file_path": "constraint_validator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "contract_validator.py"
+        ]
+      },
+      {
+        "node": "rubric_validator.py",
+        "file_path": "rubric_validator.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "constraint_validator.py"
+        ]
+      },
+      {
+        "node": "answer_synthesizer.py",
+        "file_path": "answer_synthesizer.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "rubric_validator.py"
+        ]
+      },
+      {
+        "node": "answer_formatter.py",
+        "file_path": "answer_formatter.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "answer_synthesizer.py"
+        ]
+      },
+      {
+        "node": "report_compiler.py",
+        "file_path": "report_compiler.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "answer_formatter.py"
+        ]
+      },
+      {
+        "node": "metrics_collector.py",
+        "file_path": "metrics_collector.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "report_compiler.py"
+        ]
+      },
+      {
+        "node": "analytics_enhancement.py",
+        "file_path": "analytics_enhancement.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "metrics_collector.py"
+        ]
+      },
+      {
+        "node": "feedback_loop.py",
+        "file_path": "feedback_loop.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "analytics_enhancement.py"
+        ]
+      },
+      {
+        "node": "compensation_engine.py",
+        "file_path": "compensation_engine.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "feedback_loop.py"
+        ]
+      },
+      {
+        "node": "optimization_engine.py",
+        "file_path": "optimization_engine.py",
+        "exists": true,
+        "expected_functions": [
+          "process",
+          "main"
+        ],
+        "dependencies": [
+          "compensation_engine.py"
+        ]
+      }
+    ],
+    "parse_errors": []
+  },
+  "validation": {
+    "errors": [
+      {
+        "type": "missing_files",
+        "details": [
+          {
+            "node": "immutable_context.py",
+            "file_path": "immutable_context.py"
+          },
+          {
+            "node": "context_adapter.py",
+            "file_path": "context_adapter.py"
+          },
+          {
+            "node": "Advanced Knowledge Graph Builder Component for Semantic Inference En",
+            "file_path": "Advanced Knowledge Graph Builder Component for Semantic Inference En"
+          },
+          {
+            "node": "conformal_risk_control.py",
+            "file_path": "conformal_risk_control.py"
+          },
+          {
+            "node": "deterministic_router.py",
+            "file_path": "deterministic_router.py"
+          },
+          {
+            "node": "confluent_orchestrator.py",
+            "file_path": "confluent_orchestrator.py"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "summary": {
+      "total_nodes": 51,
+      "missing_files": 6,
+      "dangling_deps": 0,
+      "cycles": 0
+    },
+    "parse_errors": []
+  }
+}

@@ -1,0 +1,97 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: egw-service
+  namespace: egw-pipeline
+  labels:
+    app: egw-service
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8000"
+    prometheus.io/path: "/metrics"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: egw-service
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: egw-worker-service
+  namespace: egw-pipeline
+  labels:
+    app: egw-worker
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8001
+    targetPort: 8001
+    protocol: TCP
+    name: worker-port
+  selector:
+    app: egw-worker
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: egw-pipeline
+  labels:
+    app: redis
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6379
+    targetPort: 6379
+    protocol: TCP
+    name: redis-port
+  selector:
+    app: redis
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: egw-pipeline
+  labels:
+    app: nginx
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: https
+  selector:
+    app: nginx
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: egw-headless
+  namespace: egw-pipeline
+  labels:
+    app: egw-service
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: egw-service

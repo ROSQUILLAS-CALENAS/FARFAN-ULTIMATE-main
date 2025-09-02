@@ -1,0 +1,174 @@
+{
+  "extraction_type": "terms",
+  "terms": {
+    "ciudadana": {
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "positions": [
+            68
+          ]
+        }
+      },
+      "term": "ciudadana"
+    },
+    "desarrollo": {
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "positions": [
+            0
+          ]
+        }
+      },
+      "term": "desarrollo"
+    },
+    "estratégico": {
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "positions": [
+            49
+          ]
+        }
+      },
+      "term": "estratégico"
+    },
+    "gestión": {
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "positions": [
+            15
+          ]
+        }
+      },
+      "term": "gestión"
+    },
+    "incluye": {
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "positions": [
+            31
+          ]
+        }
+      },
+      "term": "incluye"
+    },
+    "indicadores": {
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "positions": [
+            39
+          ]
+        }
+      },
+      "term": "indicadores"
+    },
+    "municipal": {
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "positions": [
+            70
+          ]
+        }
+      },
+      "term": "municipal"
+    },
+    "objetivo": {
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "positions": [
+            40
+          ]
+        }
+      },
+      "term": "objetivo"
+    },
+    "plan": {
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "positions": [
+            65
+          ]
+        }
+      },
+      "term": "plan"
+    },
+    "proyecto": {
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "positions": [
+            3
+          ]
+        }
+      },
+      "term": "proyecto"
+    },
+    "pública": {
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "positions": [
+            23
+          ]
+        }
+      },
+      "term": "pública"
+    },
+    "sostenible": {
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "positions": [
+            23
+          ]
+        }
+      },
+      "term": "sostenible"
+    },
+    "territorial": {
+      "frequency": 1,
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "positions": [
+            11
+          ]
+        }
+      },
+      "term": "territorial"
+    },
+    "transparencia": {
+      "frequency": 1,
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "positions": [
+            54
+          ]
+        }
+      },
+      "term": "transparencia"
+    }
+  },
+  "total_terms": 14
+}

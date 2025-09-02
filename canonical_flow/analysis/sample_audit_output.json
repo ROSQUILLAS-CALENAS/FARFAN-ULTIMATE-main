@@ -1,0 +1,224 @@
+{
+  "audit_metadata": {
+    "generated_timestamp": "2025-01-20T23:45:12.123456+00:00",
+    "execution_id": "EGW_DEMO_20250120_234512",
+    "total_components_invoked": 9,
+    "total_events_recorded": 18,
+    "audit_format_version": "1.0"
+  },
+  "system_events": [
+    {
+      "event_id": "SYSTEM_0000_1737413112123",
+      "event_type": "component_start",
+      "timestamp": "2025-01-20T23:45:12.123456+00:00",
+      "context_data": {
+        "execution_id": "EGW_DEMO_20250120_234512"
+      }
+    }
+  ],
+  "components": {
+    "13A": {
+      "component_name": "adaptive_analyzer",
+      "events": [
+        {
+          "event_id": "13A_0001_1737413112150",
+          "event_type": "component_start",
+          "timestamp": "2025-01-20T23:45:12.150000+00:00",
+          "traceability_id": "EGW_DEMO_20250120_234512",
+          "input_schema": {
+            "data_type": "dict",
+            "schema_keys": ["models_count", "analysis_mode", "thresholds_configured"],
+            "data_size_bytes": 87,
+            "record_count": 1,
+            "validation_status": "captured",
+            "sample_data": {
+              "models_count": 5,
+              "analysis_mode": "predictive",
+              "thresholds_configured": 6
+            }
+          }
+        },
+        {
+          "event_id": "13A_0002_1737413112250",
+          "event_type": "component_end",
+          "timestamp": "2025-01-20T23:45:12.250000+00:00",
+          "traceability_id": "EGW_DEMO_20250120_234512",
+          "performance_metrics": {
+            "duration_seconds": 0.1,
+            "cpu_percent": 15.2,
+            "memory_metrics": {
+              "rss_mb": 142.5,
+              "vms_mb": 1024.8,
+              "percent": 3.2,
+              "available_mb": 8192.0
+            },
+            "io_operations": {
+              "cpu_usage": 45.2,
+              "memory_usage": 67.8
+            }
+          },
+          "output_schema": {
+            "data_type": "dict",
+            "schema_keys": ["overall_state", "health_score", "recommendations_count", "anomalies_detected"],
+            "data_size_bytes": 125,
+            "record_count": 1,
+            "validation_status": "captured",
+            "sample_data": {
+              "overall_state": "stable",
+              "health_score": 85.3,
+              "recommendations_count": 3,
+              "anomalies_detected": 0
+            }
+          },
+          "context_data": {
+            "start_event_id": "13A_0001_1737413112150",
+            "success": true
+          }
+        }
+      ],
+      "metrics_summary": {
+        "total_events": 2,
+        "total_duration_seconds": 0.1,
+        "success_count": 1,
+        "error_count": 0,
+        "avg_memory_usage_mb": 142.5,
+        "max_memory_usage_mb": 142.5
+      }
+    },
+    "14A": {
+      "component_name": "question_analyzer",
+      "events": [
+        {
+          "event_id": "14A_0003_1737413112300",
+          "event_type": "component_start",
+          "timestamp": "2025-01-20T23:45:12.300000+00:00",
+          "traceability_id": "EGW_DEMO_20250120_234512",
+          "input_schema": {
+            "data_type": "dict",
+            "schema_keys": ["question", "question_id", "question_length"],
+            "data_size_bytes": 156,
+            "record_count": 1,
+            "validation_status": "captured",
+            "sample_data": {
+              "question": "¿Cuál es el nivel de cumplimiento en transparencia municipal?",
+              "question_id": "Q001",
+              "question_length": 58
+            }
+          }
+        },
+        {
+          "event_id": "14A_0004_1737413112450",
+          "event_type": "component_end",
+          "timestamp": "2025-01-20T23:45:12.450000+00:00",
+          "traceability_id": "EGW_DEMO_20250120_234512",
+          "performance_metrics": {
+            "duration_seconds": 0.15,
+            "cpu_percent": 22.1,
+            "memory_metrics": {
+              "rss_mb": 158.2,
+              "vms_mb": 1045.6,
+              "percent": 3.5,
+              "available_mb": 8175.3
+            },
+            "io_operations": {}
+          },
+          "output_schema": {
+            "data_type": "dict",
+            "schema_keys": ["question_type", "dimensions_count", "causal_posture", "confidence_score"],
+            "data_size_bytes": 112,
+            "record_count": 1,
+            "validation_status": "captured",
+            "sample_data": {
+              "question_type": "evaluative",
+              "dimensions_count": 2,
+              "causal_posture": "observational",
+              "confidence_score": 0.89
+            }
+          },
+          "context_data": {
+            "start_event_id": "14A_0003_1737413112300",
+            "success": true
+          }
+        }
+      ],
+      "metrics_summary": {
+        "total_events": 2,
+        "total_duration_seconds": 0.15,
+        "success_count": 1,
+        "error_count": 0,
+        "avg_memory_usage_mb": 158.2,
+        "max_memory_usage_mb": 158.2
+      }
+    },
+    "16A": {
+      "component_name": "evidence_processor",
+      "events": [
+        {
+          "event_id": "16A_0007_1737413112600",
+          "event_type": "component_start",
+          "timestamp": "2025-01-20T23:45:12.600000+00:00",
+          "traceability_id": "EGW_DEMO_20250120_234512",
+          "input_schema": {
+            "data_type": "dict",
+            "schema_keys": ["chunks_count", "metadata_count", "question_id", "dimension", "evidence_type"],
+            "data_size_bytes": 198,
+            "record_count": 1,
+            "validation_status": "captured",
+            "sample_data": {
+              "chunks_count": 25,
+              "metadata_count": 25,
+              "question_id": "Q001",
+              "dimension": "transparency",
+              "evidence_type": "direct_quote"
+            }
+          }
+        },
+        {
+          "event_id": "16A_0008_1737413112800",
+          "event_type": "component_end", 
+          "timestamp": "2025-01-20T23:45:12.800000+00:00",
+          "traceability_id": "EGW_DEMO_20250120_234512",
+          "performance_metrics": {
+            "duration_seconds": 0.2,
+            "cpu_percent": 31.7,
+            "memory_metrics": {
+              "rss_mb": 187.4,
+              "vms_mb": 1089.2,
+              "percent": 4.1,
+              "available_mb": 8141.8
+            },
+            "io_operations": {}
+          },
+          "output_schema": {
+            "data_type": "dict",
+            "schema_keys": ["structured_evidence_count", "total_validations"],
+            "data_size_bytes": 67,
+            "record_count": 1,
+            "validation_status": "captured",
+            "sample_data": {
+              "structured_evidence_count": 18,
+              "total_validations": 15
+            }
+          },
+          "context_data": {
+            "start_event_id": "16A_0007_1737413112600",
+            "success": true
+          }
+        }
+      ],
+      "metrics_summary": {
+        "total_events": 2,
+        "total_duration_seconds": 0.2,
+        "success_count": 1,
+        "error_count": 0,
+        "avg_memory_usage_mb": 187.4,
+        "max_memory_usage_mb": 187.4
+      }
+    }
+  },
+  "execution_summary": {
+    "total_execution_time": 0.45,
+    "components_with_errors": [],
+    "successful_components": ["13A", "14A", "16A"]
+  }
+}

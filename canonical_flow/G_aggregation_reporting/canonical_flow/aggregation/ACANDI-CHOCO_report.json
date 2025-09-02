@@ -1,0 +1,68 @@
+{
+  "document_stem": "ACANDI-CHOCO",
+  "processing_id": "35f91076-d442-4c8a-80a3-4eec184872e6",
+  "report_data": {
+    "compliance_assessment": {
+      "assessment_narrative": "Compliance assessment reveals 0.0% coverage across development plan components. 0 components show full implementation, while 0 components require attention. No critical gaps detected.",
+      "component_metrics": {
+        "fully_compliant": 0,
+        "non_compliant": 0,
+        "partially_compliant": 0,
+        "total_components": 0
+      },
+      "overall_compliance_score": 0.0,
+      "recommendations": [],
+      "risk_assessment": {
+        "coverage_gaps": [],
+        "critical_gaps": [],
+        "risk_level": "low"
+      }
+    },
+    "detailed_findings": {
+      "detailed_findings": [],
+      "evidence_references": [],
+      "findings_summary": "Comprehensive analysis of 0 evaluation areas with 0 evidence reference points.",
+      "total_findings": 0
+    },
+    "executive_summary": {
+      "consensus_analysis": "Cross-cluster divergence analysis shows an average Jensen-Shannon divergence of 0.000, suggesting high consensus in evaluation perspectives across operational domains.",
+      "key_metrics": {
+        "clusters_active": 0,
+        "components_covered": 0,
+        "consensus_score": 1.0,
+        "coverage_percentage": 0.0,
+        "questions_evaluated": 0
+      },
+      "overview": "Analysis encompasses 0 evaluation questions across 0 operational clusters. Coverage assessment reveals 0 of 0 development plan components are fully addressed, indicating moderate implementation scope."
+    },
+    "key_highlights": {
+      "key_achievements": [
+        "Consistent evaluation patterns observed across operational clusters."
+      ],
+      "performance_indicators": {
+        "consensus_questions": 0,
+        "evaluation_consistency": "moderate",
+        "most_active_cluster": "None",
+        "well_covered_components": 0
+      },
+      "strategic_insights": [
+        "Multi-cluster evaluation approach provides comprehensive coverage validation.",
+        "Divergence analysis enables identification of evaluation perspective gaps.",
+        "Component coverage matrix supports strategic planning alignment assessment."
+      ]
+    },
+    "metadata": {
+      "data_quality": "partial",
+      "generation_timestamp": "2025-08-26T21:04:39.459154",
+      "input_file": "canonical_flow/aggregation/ACANDI-CHOCO_meso.json",
+      "processing_id": "35f91076-d442-4c8a-80a3-4eec184872e6",
+      "processing_warnings": 1,
+      "source_questions": 0
+    }
+  },
+  "status": "partial",
+  "timestamp": "2025-08-26T21:04:39.459154",
+  "warnings": [
+    "Insufficient evidence for complete analysis"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "calibration_quality_score": 0.78,
+  "coverage_percentage": 87.2,
+  "decisions_made": 120,
+  "quality_gate_status": "WARNING",
+  "timestamp": "2025-08-27T03:32:01.612253",
+  "stage_version": "1.0.0",
+  "calibration_parameters": {
+    "confidence_level": 0.9,
+    "alpha_significance": 0.1,
+    "adaptive_quantile_level": 0.9,
+    "conformal_prediction_enabled": true,
+    "distribution_monitoring": true
+  },
+  "quality_thresholds": {
+    "calibration_quality_score": 0.75,
+    "coverage_percentage": 85.0,
+    "interval_coverage": 0.9,
+    "calibration_error": 0.1,
+    "reliability_score": 0.8
+  },
+  "interval_coverage": 0.91,
+  "calibration_error": 0.065,
+  "sharpness_score": 0.83,
+  "reliability_score": 0.79,
+  "prediction_efficiency": 0.85,
+  "adaptive_coverage_gap": 0.0,
+  "prediction_set_size_avg": 0.0,
+  "nonconformity_score_stats": {},
+  "confidence_level": 0.9,
+  "alpha_significance": 0.1,
+  "adaptive_quantile_level": 0.9,
+  "distribution_shift_detected": false,
+  "ks_test_p_value": 1.0,
+  "bootstrap_intervals": {}
+}

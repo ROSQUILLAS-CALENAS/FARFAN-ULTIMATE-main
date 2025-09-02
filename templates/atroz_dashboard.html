@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtroZ Analysis Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='atroz_dashboard.css') }}">
+</head>
+<body>
+    <div id="dashboard-container">
+        <header class="dashboard-header">
+            <h1>AtroZ Analysis Dashboard</h1>
+            <div class="controls">
+                <button id="refresh-data">Refresh Data</button>
+                <div class="data-source-indicator" id="data-source">Static Data</div>
+            </div>
+        </header>
+        
+        <div class="dashboard-content">
+            <div class="panel particle-panel">
+                <h2>PDET Region Analysis</h2>
+                <canvas id="particle-canvas" width="800" height="400"></canvas>
+                <div class="particle-controls">
+                    <div class="control-group">
+                        <label>Evidence Threshold:</label>
+                        <input type="range" id="evidence-threshold" min="0" max="1" step="0.1" value="0.5">
+                        <span id="threshold-value">0.5</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel neural-panel">
+                <h2>Neural Network Connections</h2>
+                <canvas id="neural-canvas" width="800" height="400"></canvas>
+                <div class="neural-info">
+                    <div class="metric">
+                        <span class="label">Active Connections:</span>
+                        <span id="active-connections">0</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">Avg Weight:</span>
+                        <span id="avg-weight">0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="data-config" style="display: none;">
+            <!-- Configuration embedded by backend template -->
+            <script type="application/json" id="dashboard-config">{{ config | safe }}</script>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='atroz_particle_system.js') }}"></script>
+    <script src="{{ url_for('static', filename='atroz_neural_network.js') }}"></script>
+    <script src="{{ url_for('static', filename='atroz_dashboard.js') }}"></script>
+</body>
+</html>

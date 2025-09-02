@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "document_stem": "UTF8-DEMO",
+    "artifact_type": "question_evaluations",
+    "generated_timestamp": "2025-08-27T02:51:36.684323Z",
+    "total_questions": 1,
+    "dimensions_included": [
+      "DE-1"
+    ]
+  },
+  "questions_by_dimension": {
+    "DE-1": [
+      {
+        "question_id": "DE-1-Q-UTF8",
+        "question_text": "¿Se garantiza la atención integral a la población vulnerable?",
+        "response": "Sí",
+        "base_score": 1.0,
+        "evidence_completeness": 0.9,
+        "page_reference_quality": 0.85,
+        "final_score": 1.08,
+        "evidence_references": [
+          {
+            "evidence_id": "EV-UTF8-001",
+            "source_type": "documento_institucional",
+            "page_reference": "p. 23",
+            "text_excerpt": "Descripción con acentos: atención, evaluación, población",
+            "confidence_score": 0.87
+          },
+          {
+            "evidence_id": "EV-UTF8-002",
+            "source_type": "entrevista_comunidad",
+            "page_reference": "p. 15",
+            "text_excerpt": "Testimonio: 'La niñez necesita protección especial'",
+            "confidence_score": 0.92
+          }
+        ]
+      }
+    ]
+  }
+}

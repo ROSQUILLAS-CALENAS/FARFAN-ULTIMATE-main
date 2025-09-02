@@ -1,0 +1,1115 @@
+{
+  "final_output": {
+    "initial_data": "development_plan.pdf",
+    "processed_by": "optimization_engine.py",
+    "stage": "integration_storage",
+    "reason": "No module named 'pm4py'",
+    "outputs_schema": [
+      "optimizations"
+    ],
+    "dnp_guardian": {
+      "enforced": true,
+      "timestamp": "2025-08-24T01:17:22.597190",
+      "engine": "DNPAlignmentEngine",
+      "context": {
+        "stage": "analysis_nlp",
+        "file": "dnp_alignment_adapter.py",
+        "timestamp": "2025-08-24T01:17:22.597168"
+      }
+    },
+    "dnp_compliance": {
+      "gpr_001": {
+        "standard_id": "gpr_001",
+        "compliance_level": "NON_COMPLIANT",
+        "score": 0.0,
+        "evidence": [],
+        "gaps": [
+          "Falta eslabón: insumos",
+          "Falta eslabón: actividades",
+          "Falta eslabón: productos",
+          "Falta eslabón: resultados",
+          "Falta eslabón: impactos"
+        ],
+        "recommendations": [
+          "Completar la cadena de valor con todos los eslabones: insumos, actividades, productos, resultados e impactos"
+        ],
+        "risk_level": "CRITICAL"
+      },
+      "gpr_002": {
+        "standard_id": "gpr_002",
+        "compliance_level": "NON_COMPLIANT",
+        "score": 0.0,
+        "evidence": [],
+        "gaps": [
+          "No se encontraron indicadores para evaluar"
+        ],
+        "recommendations": [
+          "Mejorar calidad de indicadores aplicando criterios CREMA del DNP",
+          "Definir fórmulas de cálculo explícitas para todos los indicadores",
+          "Establecer fuentes de datos y periodicidad de medición"
+        ],
+        "risk_level": "CRITICAL"
+      },
+      "sgp_001": {
+        "standard_id": "sgp_001",
+        "compliance_level": "NON_COMPLIANT",
+        "score": 0.0,
+        "evidence": [],
+        "gaps": [
+          "Salud: 0.0% NO cumple mínimo 25%",
+          "Educación: 0.0% NO cumple mínimo 15%",
+          "Agua y saneamiento: 0.0% NO cumple mínimo 5.4%"
+        ],
+        "recommendations": [
+          "CRÍTICO: Asignar mínimo 25% del presupuesto a salud según mandato constitucional",
+          "Revisar plan de inversiones para garantizar recursos suficientes al sector salud",
+          "CRÍTICO: Asignar mínimo 15% del presupuesto a educación según Ley 715/2001",
+          "Priorizar inversión educativa en infraestructura y calidad",
+          "Asignar recursos suficientes para agua potable y saneamiento básico",
+          "Cumplir con destinación específica SGP para servicios públicos"
+        ],
+        "risk_level": "CRITICAL"
+      },
+      "sinergia_001": {
+        "standard_id": "sinergia_001",
+        "compliance_level": "ERROR",
+        "score": 0.0,
+        "evidence": [],
+        "gaps": [
+          "Error en evaluación: '>=' not supported between instances of 'int' and 'str'"
+        ],
+        "recommendations": [
+          "Revisar evaluación del estándar sinergia_001"
+        ],
+        "risk_level": "HIGH"
+      },
+      "competencias_001": {
+        "standard_id": "competencias_001",
+        "compliance_level": "NON_COMPLIANT",
+        "score": 0.0,
+        "evidence": [],
+        "gaps": [],
+        "recommendations": [
+          "CRÍTICO: Asignar mínimo 25% del presupuesto a salud según mandato constitucional",
+          "Revisar plan de inversiones para garantizar recursos suficientes al sector salud",
+          "CRÍTICO: Asignar mínimo 15% del presupuesto a educación según Ley 715/2001",
+          "Priorizar inversión educativa en infraestructura y calidad",
+          "Asignar recursos suficientes para agua potable y saneamiento básico",
+          "Cumplir con destinación específica SGP para servicios públicos"
+        ],
+        "risk_level": "CRITICAL"
+      }
+    },
+    "dnp_report": {
+      "metadata": {
+        "evaluation_date": "2025-08-24T01:17:22.718293",
+        "dnp_framework_version": "2025",
+        "standards_evaluated": 5,
+        "evaluation_scope": "comprehensive_dnp_alignment"
+      },
+      "global_assessment": {
+        "compliance_score": 0.0,
+        "classification": "NO_CONFORME_DNP",
+        "summary_statistics": {
+          "full_compliance": 0,
+          "partial_compliance": 0,
+          "non_compliance": 4,
+          "compliance_rate": 0.0
+        }
+      },
+      "risk_assessment": {
+        "critical_risks_count": 4,
+        "high_risks_count": 1,
+        "critical_standards": [
+          "gpr_001",
+          "gpr_002",
+          "sgp_001",
+          "competencias_001"
+        ],
+        "risk_mitigation_priority": "immediate_action"
+      },
+      "framework_performance": {
+        "gestion_por_resultados": {
+          "standards_count": 2,
+          "avg_score": 0.0,
+          "compliance_rate": 0.0
+        },
+        "sistema_general_participaciones": {
+          "standards_count": 2,
+          "avg_score": 0.0,
+          "compliance_rate": 0.0
+        },
+        "sistema_nacional_evaluacion_gestion_resultados": {
+          "standards_count": 1,
+          "avg_score": 0.0,
+          "compliance_rate": 0.0
+        }
+      },
+      "detailed_results": {
+        "gpr_001": {
+          "standard_name": "Cadena de Valor Completa (Insumos → Impactos)",
+          "framework": "gestion_por_resultados",
+          "compliance_level": "NON_COMPLIANT",
+          "score": 0.0,
+          "risk_level": "CRITICAL",
+          "evidence_count": 0,
+          "gaps_count": 5,
+          "recommendations_count": 1
+        },
+        "gpr_002": {
+          "standard_name": "Indicadores CREMA (Criterios DNP)",
+          "framework": "gestion_por_resultados",
+          "compliance_level": "NON_COMPLIANT",
+          "score": 0.0,
+          "risk_level": "CRITICAL",
+          "evidence_count": 0,
+          "gaps_count": 1,
+          "recommendations_count": 3
+        },
+        "sgp_001": {
+          "standard_name": "Cumplimiento Porcentajes Mínimos Sectoriales",
+          "framework": "sistema_general_participaciones",
+          "compliance_level": "NON_COMPLIANT",
+          "score": 0.0,
+          "risk_level": "CRITICAL",
+          "evidence_count": 0,
+          "gaps_count": 3,
+          "recommendations_count": 6
+        },
+        "sinergia_001": {
+          "standard_name": "Alineación con Política Nacional y ODS",
+          "framework": "sistema_nacional_evaluacion_gestion_resultados",
+          "compliance_level": "ERROR",
+          "score": 0.0,
+          "risk_level": "HIGH",
+          "evidence_count": 0,
+          "gaps_count": 1,
+          "recommendations_count": 1
+        },
+        "competencias_001": {
+          "standard_name": "Respeto Marco de Competencias Territoriales",
+          "framework": "sistema_general_participaciones",
+          "compliance_level": "NON_COMPLIANT",
+          "score": 0.0,
+          "risk_level": "CRITICAL",
+          "evidence_count": 0,
+          "gaps_count": 0,
+          "recommendations_count": 6
+        }
+      },
+      "priority_actions": {
+        "immediate": [
+          [
+            "Completar la cadena de valor con todos los eslabones: insumos, actividades, productos, resultados e impactos"
+          ],
+          [
+            "Mejorar calidad de indicadores aplicando criterios CREMA del DNP",
+            "Definir fórmulas de cálculo explícitas para todos los indicadores",
+            "Establecer fuentes de datos y periodicidad de medición"
+          ],
+          [
+            "CRÍTICO: Asignar mínimo 25% del presupuesto a salud según mandato constitucional",
+            "Revisar plan de inversiones para garantizar recursos suficientes al sector salud",
+            "CRÍTICO: Asignar mínimo 15% del presupuesto a educación según Ley 715/2001",
+            "Priorizar inversión educativa en infraestructura y calidad",
+            "Asignar recursos suficientes para agua potable y saneamiento básico",
+            "Cumplir con destinación específica SGP para servicios públicos"
+          ],
+          [
+            "CRÍTICO: Asignar mínimo 25% del presupuesto a salud según mandato constitucional",
+            "Revisar plan de inversiones para garantizar recursos suficientes al sector salud",
+            "CRÍTICO: Asignar mínimo 15% del presupuesto a educación según Ley 715/2001",
+            "Priorizar inversión educativa en infraestructura y calidad",
+            "Asignar recursos suficientes para agua potable y saneamiento básico",
+            "Cumplir con destinación específica SGP para servicios públicos"
+          ]
+        ],
+        "short_term": [
+          [
+            "Revisar evaluación del estándar sinergia_001"
+          ]
+        ],
+        "continuous": [
+          "Mantener seguimiento periódico del cumplimiento DNP",
+          "Actualizar según cambios normativos",
+          "Fortalecer capacidades institucionales en GPR"
+        ]
+      },
+      "regulatory_compliance": {
+        "constitutional_mandates": {
+          "health_25_percent": false,
+          "education_15_percent": false,
+          "territorial_autonomy_respected": true,
+          "fundamental_rights_addressed": true
+        },
+        "legal_requirements": {
+          "ley_152_compliance": true,
+          "ley_715_compliance": true,
+          "sectoral_laws_compliance": true,
+          "overall_legal_risk": "HIGH"
+        },
+        "dnp_methodologies": {
+          "gpr_methodology": "NON_COMPLIANT",
+          "crema_indicators": "NON_COMPLIANT",
+          "sinergia_integration": "PARTIAL",
+          "overall_methodological_score": 0.0
+        }
+      }
+    }
+  },
+  "execution_trace": [
+    {
+      "node": "pdf_reader.py",
+      "stage": "ingestion_preparation",
+      "evento_inicio": "PDF file loaded",
+      "timestamp_inicio": "2025-08-24T01:17:00.566378",
+      "evento_cierre": "Text extracted and structured",
+      "timestamp_cierre": "2025-08-24T01:17:00.577096",
+      "value_added": 0.010000000000000009
+    },
+    {
+      "node": "advanced_loader.py",
+      "stage": "ingestion_preparation",
+      "evento_inicio": "Document loading request",
+      "timestamp_inicio": "2025-08-24T01:17:00.577106",
+      "evento_cierre": "Documents loaded with metadata",
+      "timestamp_cierre": "2025-08-24T01:17:00.577570",
+      "value_added": 0.0
+    },
+    {
+      "node": "feature_extractor.py",
+      "stage": "ingestion_preparation",
+      "evento_inicio": "Structured text available",
+      "timestamp_inicio": "2025-08-24T01:17:00.577576",
+      "evento_cierre": "Feature vector generated",
+      "timestamp_cierre": "2025-08-24T01:17:01.153337",
+      "value_added": 0.0
+    },
+    {
+      "node": "normative_validator.py",
+      "stage": "ingestion_preparation",
+      "evento_inicio": "Document processed",
+      "timestamp_inicio": "2025-08-24T01:17:01.153384",
+      "evento_cierre": "Validation report generated",
+      "timestamp_cierre": "2025-08-24T01:17:01.170473",
+      "value_added": 0.0
+    },
+    {
+      "node": "immutable_context.py",
+      "stage": "context_construction",
+      "evento_inicio": "Validated data available",
+      "timestamp_inicio": "2025-08-24T01:17:01.170520",
+      "evento_cierre": "Immutable context created",
+      "timestamp_cierre": "2025-08-24T01:17:01.170649",
+      "value_added": 0.0
+    },
+    {
+      "node": "context_adapter.py",
+      "stage": "context_construction",
+      "evento_inicio": "Context created",
+      "timestamp_inicio": "2025-08-24T01:17:01.170656",
+      "evento_cierre": "Context adapted for processing",
+      "timestamp_cierre": "2025-08-24T01:17:01.170708",
+      "value_added": 0.12749999999999995
+    },
+    {
+      "node": "lineage_tracker.py",
+      "stage": "context_construction",
+      "evento_inicio": "Processing started",
+      "timestamp_inicio": "2025-08-24T01:17:01.170713",
+      "evento_cierre": "Lineage recorded",
+      "timestamp_cierre": "2025-08-24T01:17:01.298188",
+      "value_added": -0.12749999999999995
+    },
+    {
+      "node": "Advanced Knowledge Graph Builder Component for Semantic Inference Engine.py",
+      "stage": "knowledge_extraction",
+      "evento_inicio": "Context available",
+      "timestamp_inicio": "2025-08-24T01:17:01.298201",
+      "evento_cierre": "Knowledge graph built",
+      "timestamp_cierre": "2025-08-24T01:17:01.305528",
+      "value_added": 0.0
+    },
+    {
+      "node": "causal_graph.py",
+      "stage": "knowledge_extraction",
+      "evento_inicio": "Entities extracted",
+      "timestamp_inicio": "2025-08-24T01:17:01.305536",
+      "evento_cierre": "Causal graph constructed",
+      "timestamp_cierre": "2025-08-24T01:17:01.688748",
+      "value_added": 0.12749999999999995
+    },
+    {
+      "node": "causal_dnp_framework.py",
+      "stage": "knowledge_extraction",
+      "evento_inicio": "Causal relations identified",
+      "timestamp_inicio": "2025-08-24T01:17:01.688763",
+      "evento_cierre": "DNP framework applied",
+      "timestamp_cierre": "2025-08-24T01:17:05.062428",
+      "value_added": 0.0
+    },
+    {
+      "node": "embedding_builder.py",
+      "stage": "knowledge_extraction",
+      "evento_inicio": "Text processed",
+      "timestamp_inicio": "2025-08-24T01:17:05.062508",
+      "evento_cierre": "Embeddings created",
+      "timestamp_cierre": "2025-08-24T01:17:05.072305",
+      "value_added": 0.0
+    },
+    {
+      "node": "embedding_generator.py",
+      "stage": "knowledge_extraction",
+      "evento_inicio": "Text available",
+      "timestamp_inicio": "2025-08-24T01:17:05.072316",
+      "evento_cierre": "384-dim vectors generated",
+      "timestamp_cierre": "2025-08-24T01:17:06.276452",
+      "value_added": 0.0
+    },
+    {
+      "node": "adaptive_analyzer.py",
+      "stage": "analysis_nlp",
+      "evento_inicio": "Data ready for analysis",
+      "timestamp_inicio": "2025-08-24T01:17:06.277239",
+      "evento_cierre": "Analysis completed",
+      "timestamp_cierre": "2025-08-24T01:17:06.770051",
+      "value_added": 0.0
+    },
+    {
+      "node": "question_analyzer.py",
+      "stage": "analysis_nlp",
+      "evento_inicio": "Text available",
+      "timestamp_inicio": "2025-08-24T01:17:06.770075",
+      "evento_cierre": "Questions analyzed",
+      "timestamp_cierre": "2025-08-24T01:17:21.569880",
+      "value_added": 0.0
+    },
+    {
+      "node": "implementacion_mapeo.py",
+      "stage": "analysis_nlp",
+      "evento_inicio": "Question-Decálogo mapping initialized",
+      "timestamp_inicio": "2025-08-24T01:17:21.570193",
+      "evento_cierre": "Mapping ready",
+      "timestamp_cierre": "2025-08-24T01:17:21.573593",
+      "value_added": 0.0
+    },
+    {
+      "node": "evidence_processor.py",
+      "stage": "analysis_nlp",
+      "evento_inicio": "Evidence extracted",
+      "timestamp_inicio": "2025-08-24T01:17:21.573601",
+      "evento_cierre": "Evidence processed",
+      "timestamp_cierre": "2025-08-24T01:17:21.578446",
+      "value_added": 0.0
+    },
+    {
+      "node": "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py",
+      "stage": "analysis_nlp",
+      "evento_inicio": "Context available",
+      "timestamp_inicio": "2025-08-24T01:17:21.578473",
+      "evento_cierre": "Contextual evidence extracted",
+      "timestamp_cierre": "2025-08-24T01:17:21.589578",
+      "value_added": 0.0
+    },
+    {
+      "node": "evidence_validation_model.py",
+      "stage": "analysis_nlp",
+      "evento_inicio": "Evidence available",
+      "timestamp_inicio": "2025-08-24T01:17:21.589587",
+      "evento_cierre": "Evidence validated",
+      "timestamp_cierre": "2025-08-24T01:17:21.640339",
+      "value_added": -0.07083333333333319
+    },
+    {
+      "node": "evaluation_driven_processor.py",
+      "stage": "analysis_nlp",
+      "evento_inicio": "Evidence validated",
+      "timestamp_inicio": "2025-08-24T01:17:21.640350",
+      "evento_cierre": "Evaluation completed",
+      "timestamp_cierre": "2025-08-24T01:17:22.579408",
+      "value_added": 0.07083333333333319
+    },
+    {
+      "node": "dnp_alignment_adapter.py",
+      "stage": "analysis_nlp",
+      "evento_inicio": "DNP standards enforcement started",
+      "timestamp_inicio": "2025-08-24T01:17:22.579533",
+      "evento_cierre": "DNP compliance evaluated",
+      "timestamp_cierre": "2025-08-24T01:17:22.718379",
+      "value_added": 0.0
+    },
+    {
+      "node": "adaptive_scoring_engine.py",
+      "stage": "classification_evaluation",
+      "evento_inicio": "Evidence classified",
+      "timestamp_inicio": "2025-08-24T01:17:22.718389",
+      "evento_cierre": "Adaptive score calculated",
+      "timestamp_cierre": "2025-08-24T01:17:24.087613",
+      "value_added": 0.0
+    },
+    {
+      "node": "score_calculator.py",
+      "stage": "classification_evaluation",
+      "evento_inicio": "Components identified",
+      "timestamp_inicio": "2025-08-24T01:17:24.087723",
+      "evento_cierre": "Scores calculated",
+      "timestamp_cierre": "2025-08-24T01:17:24.124522",
+      "value_added": 0.0
+    },
+    {
+      "node": "conformal_risk_control.py",
+      "stage": "classification_evaluation",
+      "evento_inicio": "Scores available",
+      "timestamp_inicio": "2025-08-24T01:17:24.124538",
+      "evento_cierre": "Risk bounds established",
+      "timestamp_cierre": "2025-08-24T01:17:24.124675",
+      "value_added": -0.12749999999999995
+    },
+    {
+      "node": "deterministic_router.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Query received",
+      "timestamp_inicio": "2025-08-24T01:17:24.124683",
+      "evento_cierre": "Route determined",
+      "timestamp_cierre": "2025-08-24T01:17:24.124763",
+      "value_added": 0.12749999999999995
+    },
+    {
+      "node": "evidence_router.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Evidence categorized",
+      "timestamp_inicio": "2025-08-24T01:17:24.124769",
+      "evento_cierre": "Evidence routed",
+      "timestamp_cierre": "2025-08-24T01:17:24.127045",
+      "value_added": 0.0
+    },
+    {
+      "node": "decision_engine.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Data analyzed",
+      "timestamp_inicio": "2025-08-24T01:17:24.127115",
+      "evento_cierre": "Decision made",
+      "timestamp_cierre": "2025-08-24T01:17:24.139562",
+      "value_added": 0.0
+    },
+    {
+      "node": "adaptive_controller.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Decision made",
+      "timestamp_inicio": "2025-08-24T01:17:24.139620",
+      "evento_cierre": "Control applied",
+      "timestamp_cierre": "2025-08-24T01:17:24.145959",
+      "value_added": 0.0
+    },
+    {
+      "node": "hybrid_retrieval.py",
+      "stage": "search_retrieval",
+      "evento_inicio": "Query received",
+      "timestamp_inicio": "2025-08-24T01:17:24.145984",
+      "evento_cierre": "Results merged",
+      "timestamp_cierre": "2025-08-24T01:17:24.371265",
+      "value_added": -0.12749999999999995
+    },
+    {
+      "node": "deterministic_hybrid_retrieval.py",
+      "stage": "search_retrieval",
+      "evento_inicio": "Query processed",
+      "timestamp_inicio": "2025-08-24T01:17:24.371277",
+      "evento_cierre": "Deterministic results returned",
+      "timestamp_cierre": "2025-08-24T01:17:24.381407",
+      "value_added": 0.12749999999999995
+    },
+    {
+      "node": "hybrid_retrieval_bridge.py",
+      "stage": "search_retrieval",
+      "evento_inicio": "Multiple retrievers ready",
+      "timestamp_inicio": "2025-08-24T01:17:24.381416",
+      "evento_cierre": "Results bridged",
+      "timestamp_cierre": "2025-08-24T01:17:25.653992",
+      "value_added": 0.0
+    },
+    {
+      "node": "lexical_index.py",
+      "stage": "search_retrieval",
+      "evento_inicio": "Text tokenized",
+      "timestamp_inicio": "2025-08-24T01:17:25.654239",
+      "evento_cierre": "Inverted index created",
+      "timestamp_cierre": "2025-08-24T01:17:25.681255",
+      "value_added": 0.0
+    },
+    {
+      "node": "intelligent_recommendation_engine.py",
+      "stage": "search_retrieval",
+      "evento_inicio": "User profile available",
+      "timestamp_inicio": "2025-08-24T01:17:25.681270",
+      "evento_cierre": "Recommendations generated",
+      "timestamp_cierre": "2025-08-24T01:17:25.703521",
+      "value_added": 0.0
+    },
+    {
+      "node": "confluent_orchestrator.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Tasks received",
+      "timestamp_inicio": "2025-08-24T01:17:25.703538",
+      "evento_cierre": "Tasks orchestrated",
+      "timestamp_cierre": "2025-08-24T01:17:25.703680",
+      "value_added": 0.0
+    },
+    {
+      "node": "core_orchestrator.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "System initialized",
+      "timestamp_inicio": "2025-08-24T01:17:25.703689",
+      "evento_cierre": "Core orchestration complete",
+      "timestamp_cierre": "2025-08-24T01:17:25.707386",
+      "value_added": 0.0
+    },
+    {
+      "node": "enhanced_core_orchestrator.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Core ready",
+      "timestamp_inicio": "2025-08-24T01:17:25.707403",
+      "evento_cierre": "Enhanced orchestration complete",
+      "timestamp_cierre": "2025-08-24T01:17:26.961272",
+      "value_added": 0.0
+    },
+    {
+      "node": "distributed_processor.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Batch received",
+      "timestamp_inicio": "2025-08-24T01:17:26.961371",
+      "evento_cierre": "Tasks completed",
+      "timestamp_cierre": "2025-08-24T01:17:28.125035",
+      "value_added": 0.0
+    },
+    {
+      "node": "airflow_orchestrator.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Workflow defined",
+      "timestamp_inicio": "2025-08-24T01:17:28.125235",
+      "evento_cierre": "DAG executed",
+      "timestamp_cierre": "2025-08-24T01:17:28.134452",
+      "value_added": 0.0
+    },
+    {
+      "node": "circuit_breaker.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Error threshold monitored",
+      "timestamp_inicio": "2025-08-24T01:17:28.134471",
+      "evento_cierre": "Circuit state updated",
+      "timestamp_cierre": "2025-08-24T01:17:30.207572",
+      "value_added": 0.0
+    },
+    {
+      "node": "backpressure_manager.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Load detected",
+      "timestamp_inicio": "2025-08-24T01:17:30.207717",
+      "evento_cierre": "Pressure managed",
+      "timestamp_cierre": "2025-08-24T01:17:30.512757",
+      "value_added": 0.0
+    },
+    {
+      "node": "alert_system.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Threshold exceeded",
+      "timestamp_inicio": "2025-08-24T01:17:30.512769",
+      "evento_cierre": "Alert sent",
+      "timestamp_cierre": "2025-08-24T01:17:30.536346",
+      "value_added": 0.0
+    },
+    {
+      "node": "exception_monitoring.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Exception raised",
+      "timestamp_inicio": "2025-08-24T01:17:30.536380",
+      "evento_cierre": "Exception logged",
+      "timestamp_cierre": "2025-08-24T01:17:30.664207",
+      "value_added": 0.0
+    },
+    {
+      "node": "exception_telemetry.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Event occurred",
+      "timestamp_inicio": "2025-08-24T01:17:30.664244",
+      "evento_cierre": "Telemetry recorded",
+      "timestamp_cierre": "2025-08-24T01:17:30.679786",
+      "value_added": 0.0
+    },
+    {
+      "node": "contract_validator.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Contract defined",
+      "timestamp_inicio": "2025-08-24T01:17:30.679802",
+      "evento_cierre": "Contract validated",
+      "timestamp_cierre": "2025-08-24T01:17:35.933420",
+      "value_added": 0.0
+    },
+    {
+      "node": "constraint_validator.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Constraints defined",
+      "timestamp_inicio": "2025-08-24T01:17:35.933443",
+      "evento_cierre": "Constraints validated",
+      "timestamp_cierre": "2025-08-24T01:17:36.080646",
+      "value_added": 0.0
+    },
+    {
+      "node": "rubric_validator.py",
+      "stage": "orchestration_control",
+      "evento_inicio": "Rubric applied",
+      "timestamp_inicio": "2025-08-24T01:17:36.080662",
+      "evento_cierre": "Scores assigned",
+      "timestamp_cierre": "2025-08-24T01:17:38.761540",
+      "value_added": 0.0
+    },
+    {
+      "node": "answer_synthesizer.py",
+      "stage": "synthesis_output",
+      "evento_inicio": "Components ready",
+      "timestamp_inicio": "2025-08-24T01:17:38.761651",
+      "evento_cierre": "Answer synthesized",
+      "timestamp_cierre": "2025-08-24T01:17:40.528557",
+      "value_added": 0.0
+    },
+    {
+      "node": "answer_formatter.py",
+      "stage": "synthesis_output",
+      "evento_inicio": "Answer synthesized",
+      "timestamp_inicio": "2025-08-24T01:17:40.528661",
+      "evento_cierre": "Answer formatted",
+      "timestamp_cierre": "2025-08-24T01:17:40.603244",
+      "value_added": 0.0
+    },
+    {
+      "node": "report_compiler.py",
+      "stage": "aggregation_reporting",
+      "evento_inicio": "Data processed",
+      "timestamp_inicio": "2025-08-24T01:17:40.603257",
+      "evento_cierre": "Report PDF generated",
+      "timestamp_cierre": "2025-08-24T01:17:42.792686",
+      "value_added": 0.0
+    },
+    {
+      "node": "metrics_collector.py",
+      "stage": "integration_storage",
+      "evento_inicio": "Process running",
+      "timestamp_inicio": "2025-08-24T01:17:42.792796",
+      "evento_cierre": "Metrics collected",
+      "timestamp_cierre": "2025-08-24T01:17:42.829161",
+      "value_added": 0.0
+    },
+    {
+      "node": "analytics_enhancement.py",
+      "stage": "integration_storage",
+      "evento_inicio": "Metrics available",
+      "timestamp_inicio": "2025-08-24T01:17:42.829175",
+      "evento_cierre": "Analytics enhanced",
+      "timestamp_cierre": "2025-08-24T01:17:46.118442",
+      "value_added": 0.0
+    },
+    {
+      "node": "feedback_loop.py",
+      "stage": "integration_storage",
+      "evento_inicio": "Results available",
+      "timestamp_inicio": "2025-08-24T01:17:46.120310",
+      "evento_cierre": "Feedback incorporated",
+      "timestamp_cierre": "2025-08-24T01:17:46.145741",
+      "value_added": 0.0
+    },
+    {
+      "node": "compensation_engine.py",
+      "stage": "integration_storage",
+      "evento_inicio": "Errors detected",
+      "timestamp_inicio": "2025-08-24T01:17:46.145752",
+      "evento_cierre": "Compensation applied",
+      "timestamp_cierre": "2025-08-24T01:17:46.171787",
+      "value_added": 0.0
+    },
+    {
+      "node": "optimization_engine.py",
+      "stage": "integration_storage",
+      "evento_inicio": "Performance analyzed",
+      "timestamp_inicio": "2025-08-24T01:17:46.171798",
+      "evento_cierre": "System optimized",
+      "timestamp_cierre": "2025-08-24T01:17:47.359964",
+      "value_added": 0.0
+    }
+  ],
+  "value_chain": {
+    "pdf_reader.py": {
+      "input_value": 0.5,
+      "output_value": 0.51,
+      "value_added": 0.010000000000000009,
+      "efficiency": 1.02
+    },
+    "advanced_loader.py": {
+      "input_value": 0.51,
+      "output_value": 0.51,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "feature_extractor.py": {
+      "input_value": 0.51,
+      "output_value": 0.51,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "normative_validator.py": {
+      "input_value": 0.51,
+      "output_value": 0.51,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "immutable_context.py": {
+      "input_value": 0.51,
+      "output_value": 0.51,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "context_adapter.py": {
+      "input_value": 0.51,
+      "output_value": 0.6375,
+      "value_added": 0.12749999999999995,
+      "efficiency": 1.25
+    },
+    "lineage_tracker.py": {
+      "input_value": 0.6375,
+      "output_value": 0.51,
+      "value_added": -0.12749999999999995,
+      "efficiency": 0.8
+    },
+    "Advanced Knowledge Graph Builder Component for Semantic Inference Engine.py": {
+      "input_value": 0.51,
+      "output_value": 0.51,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "causal_graph.py": {
+      "input_value": 0.51,
+      "output_value": 0.6375,
+      "value_added": 0.12749999999999995,
+      "efficiency": 1.25
+    },
+    "causal_dnp_framework.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "embedding_builder.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "embedding_generator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "adaptive_analyzer.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "question_analyzer.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "implementacion_mapeo.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "evidence_processor.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "evidence_validation_model.py": {
+      "input_value": 0.6375,
+      "output_value": 0.5666666666666668,
+      "value_added": -0.07083333333333319,
+      "efficiency": 0.8888888888888891
+    },
+    "evaluation_driven_processor.py": {
+      "input_value": 0.5666666666666668,
+      "output_value": 0.6375,
+      "value_added": 0.07083333333333319,
+      "efficiency": 1.1249999999999998
+    },
+    "dnp_alignment_adapter.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "adaptive_scoring_engine.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "score_calculator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "conformal_risk_control.py": {
+      "input_value": 0.6375,
+      "output_value": 0.51,
+      "value_added": -0.12749999999999995,
+      "efficiency": 0.8
+    },
+    "deterministic_router.py": {
+      "input_value": 0.51,
+      "output_value": 0.6375,
+      "value_added": 0.12749999999999995,
+      "efficiency": 1.25
+    },
+    "evidence_router.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "decision_engine.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "adaptive_controller.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "hybrid_retrieval.py": {
+      "input_value": 0.6375,
+      "output_value": 0.51,
+      "value_added": -0.12749999999999995,
+      "efficiency": 0.8
+    },
+    "deterministic_hybrid_retrieval.py": {
+      "input_value": 0.51,
+      "output_value": 0.6375,
+      "value_added": 0.12749999999999995,
+      "efficiency": 1.25
+    },
+    "hybrid_retrieval_bridge.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "lexical_index.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "intelligent_recommendation_engine.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "confluent_orchestrator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "core_orchestrator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "enhanced_core_orchestrator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "distributed_processor.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "airflow_orchestrator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "circuit_breaker.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "backpressure_manager.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "alert_system.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "exception_monitoring.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "exception_telemetry.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "contract_validator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "constraint_validator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "rubric_validator.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "answer_synthesizer.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "answer_formatter.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "report_compiler.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "metrics_collector.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "analytics_enhancement.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "feedback_loop.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "compensation_engine.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    },
+    "optimization_engine.py": {
+      "input_value": 0.6375,
+      "output_value": 0.6375,
+      "value_added": 0.0,
+      "efficiency": 1.0
+    }
+  },
+  "total_value_added": 0.13749999999999996,
+  "execution_order": [
+    "pdf_reader.py",
+    "advanced_loader.py",
+    "feature_extractor.py",
+    "normative_validator.py",
+    "immutable_context.py",
+    "context_adapter.py",
+    "lineage_tracker.py",
+    "Advanced Knowledge Graph Builder Component for Semantic Inference Engine.py",
+    "causal_graph.py",
+    "causal_dnp_framework.py",
+    "embedding_builder.py",
+    "embedding_generator.py",
+    "adaptive_analyzer.py",
+    "question_analyzer.py",
+    "implementacion_mapeo.py",
+    "evidence_processor.py",
+    "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py",
+    "evidence_validation_model.py",
+    "evaluation_driven_processor.py",
+    "dnp_alignment_adapter.py",
+    "adaptive_scoring_engine.py",
+    "score_calculator.py",
+    "conformal_risk_control.py",
+    "deterministic_router.py",
+    "evidence_router.py",
+    "decision_engine.py",
+    "adaptive_controller.py",
+    "hybrid_retrieval.py",
+    "deterministic_hybrid_retrieval.py",
+    "hybrid_retrieval_bridge.py",
+    "lexical_index.py",
+    "intelligent_recommendation_engine.py",
+    "confluent_orchestrator.py",
+    "core_orchestrator.py",
+    "enhanced_core_orchestrator.py",
+    "distributed_processor.py",
+    "airflow_orchestrator.py",
+    "circuit_breaker.py",
+    "backpressure_manager.py",
+    "alert_system.py",
+    "exception_monitoring.py",
+    "exception_telemetry.py",
+    "contract_validator.py",
+    "constraint_validator.py",
+    "rubric_validator.py",
+    "answer_synthesizer.py",
+    "answer_formatter.py",
+    "report_compiler.py",
+    "metrics_collector.py",
+    "analytics_enhancement.py",
+    "feedback_loop.py",
+    "compensation_engine.py",
+    "optimization_engine.py"
+  ]
+}

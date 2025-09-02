@@ -1,0 +1,52 @@
+{
+  "chunks": [
+    {
+      "chunk_id": "chunk_4fd64ab837337829d35a41ca1fc23741b48b540a6bbb794acd1ccc52a1",
+      "content": "None",
+      "metadata": {
+        "chunk_index": 0,
+        "creation_timestamp": "2025-08-26T22:00:05.916174",
+        "paragraph_count": 1,
+        "policy": "sentence_boundaries",
+        "provenance": {
+          "character_offsets": [
+            0,
+            4
+          ],
+          "document_stem": "bad",
+          "processing_timestamp": "2025-08-26T22:00:05.916163",
+          "section_path": [],
+          "source_document": "bad",
+          "source_hash": ""
+        },
+        "sentence_count": 1,
+        "source_bundle_id": "",
+        "token_count": 1,
+        "total_chunks": 1
+      },
+      "page_anchors": [
+        {
+          "end_char": 4,
+          "page_number": 1,
+          "page_text_hash": "page_f2953d2931e36d0c55640f51865f8394ebe52194765d04e521017232558",
+          "start_char": 0
+        }
+      ]
+    }
+  ],
+  "component_metadata": {
+    "class_name": "ChunkingProcessor",
+    "component_id": "comp_64e48b717b47d671f3ec46bc2f72917445c58b8ada67074c7cb98ccc034",
+    "component_name": "ChunkingProcessor",
+    "creation_timestamp": "2025-08-26T22:00:05.910363",
+    "last_operation_id": "op_f440bdb3d0763cd18eaf05e54cacab743724f54628a77d7265c6778688287",
+    "state_hash": "state_f9920210f05e73de2ead4799d5ed92fac5f206a079787546effbba15b5"
+  },
+  "document_stem": "bad",
+  "summary": {
+    "chunking_policy": "sentence_boundaries",
+    "processing_timestamp": "2025-08-26T22:00:05.916266",
+    "total_chunks": 1,
+    "total_tokens": 1
+  }
+}

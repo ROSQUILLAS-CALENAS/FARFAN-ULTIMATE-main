@@ -1,0 +1,62 @@
+{
+  "document_id": "DEMO_DOCUMENT",
+  "point_number": 7,
+  "point_name": "Ordenamiento territorial, tierras y desarrollo rural",
+  "total_expected_questions": 47,
+  "dimensions": {
+    "DE-1": {
+      "expected_count": 6,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 6,
+      "answered_questions": [],
+      "unanswered_count": 6
+    },
+    "DE-2": {
+      "expected_count": 21,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 21,
+      "answered_questions": [],
+      "unanswered_count": 21
+    },
+    "DE-3": {
+      "expected_count": 8,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 8,
+      "answered_questions": [],
+      "unanswered_count": 8
+    },
+    "DE-4": {
+      "expected_count": 8,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 8,
+      "answered_questions": [],
+      "unanswered_count": 8
+    },
+    "GEN": {
+      "expected_count": 4,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 4,
+      "answered_questions": [],
+      "unanswered_count": 4
+    }
+  },
+  "summary": {
+    "total_answered": 0,
+    "completion_percentage": 0.0,
+    "has_gaps": true,
+    "total_gaps": 47,
+    "dimensions_with_gaps": 5,
+    "fully_completed_dimensions": 0
+  },
+  "timestamp": "2025-08-26T22:17:34.405567"
+}

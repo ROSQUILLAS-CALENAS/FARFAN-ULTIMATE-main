@@ -1,0 +1,1 @@
+"""Schema definitions for the pipeline validation system."""

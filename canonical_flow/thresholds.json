@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "Unified DNP Baseline Thresholds and Compliance Configuration",
+  "version": "1.0.0",
+  "description": "Centralized configuration for DNP baseline thresholds, compliance classification boundaries, and correction factors",
+  "dnp_baseline_standards": {
+    "human_rights_baseline": {
+      "P1": {
+        "value": 0.75,
+        "title": "Derecho a la vida, libertad, integridad y seguridad",
+        "weight": 0.12,
+        "min_evidence": 3
+      },
+      "P2": {
+        "value": 0.70,
+        "title": "Derechos de las mujeres",
+        "weight": 0.11,
+        "min_evidence": 2
+      },
+      "P3": {
+        "value": 0.72,
+        "title": "Derechos de la niñez y la adolescencia",
+        "weight": 0.10,
+        "min_evidence": 3
+      },
+      "P4": {
+        "value": 0.68,
+        "title": "Derechos de los jóvenes",
+        "weight": 0.09,
+        "min_evidence": 2
+      },
+      "P5": {
+        "value": 0.73,
+        "title": "Derechos de las personas adultas mayores",
+        "weight": 0.08,
+        "min_evidence": 4
+      },
+      "P6": {
+        "value": 0.71,
+        "title": "Personas con discapacidad",
+        "weight": 0.10,
+        "min_evidence": 3
+      },
+      "P7": {
+        "value": 0.74,
+        "title": "Grupos étnicos: pueblos indígenas y comunidades negras",
+        "weight": 0.09,
+        "min_evidence": 3
+      },
+      "P8": {
+        "value": 0.69,
+        "title": "Personas LGTBI",
+        "weight": 0.11,
+        "min_evidence": 2
+      },
+      "P9": {
+        "value": 0.76,
+        "title": "Víctimas del conflicto armado",
+        "weight": 0.10,
+        "min_evidence": 3
+      },
+      "P10": {
+        "value": 0.67,
+        "title": "Líderes y defensores de derechos humanos",
+        "weight": 0.10,
+        "min_evidence": 4
+      }
+    },
+    "dimensional_baselines": {
+      "DE-1": {
+        "value": 0.75,
+        "title": "Dimensión Institucional - Productos",
+        "weight": 0.30
+      },
+      "DE-2": {
+        "value": 0.70,
+        "title": "Dimensión Social - Diagnóstico",
+        "weight": 0.25
+      },
+      "DE-3": {
+        "value": 0.80,
+        "title": "Dimensión Económica - Seguimiento",
+        "weight": 0.25
+      },
+      "DE-4": {
+        "value": 0.65,
+        "title": "Dimensión Ambiental - Evaluación",
+        "weight": 0.20
+      }
+    },
+    "causal_strength_requirements": {
+      "minimum_causal_validity": 0.6,
+      "evidence_alignment_threshold": 0.5,
+      "robustness_requirement": 0.4
+    }
+  },
+  "compliance_classification_boundaries": {
+    "scoring_system_responses": {
+      "Sí": 1.0,
+      "Parcial": 0.5,
+      "No": 0.0,
+      "NI": 0.0
+    },
+    "evidence_quality_multipliers": {
+      "min_multiplier": 0.5,
+      "max_multiplier": 1.2,
+      "completeness_weight": 0.7,
+      "reference_quality_weight": 0.3
+    },
+    "dimensional_compliance_thresholds": {
+      "DE-1": {
+        "CUMPLE": 0.75,
+        "CUMPLE_PARCIAL": 0.50,
+        "NO_CUMPLE": 0.0
+      },
+      "DE-2": {
+        "CUMPLE": 0.70,
+        "CUMPLE_PARCIAL": 0.45,
+        "NO_CUMPLE": 0.0
+      },
+      "DE-3": {
+        "CUMPLE": 0.80,
+        "CUMPLE_PARCIAL": 0.55,
+        "NO_CUMPLE": 0.0
+      },
+      "DE-4": {
+        "CUMPLE": 0.65,
+        "CUMPLE_PARCIAL": 0.40,
+        "NO_CUMPLE": 0.0
+      }
+    },
+    "decalogo_compliance_thresholds": {
+      "P1": {
+        "CUMPLE": 0.75,
+        "CUMPLE_PARCIAL": 0.50,
+        "NO_CUMPLE": 0.0
+      },
+      "P2": {
+        "CUMPLE": 0.70,
+        "CUMPLE_PARCIAL": 0.45,
+        "NO_CUMPLE": 0.0
+      },
+      "P3": {
+        "CUMPLE": 0.72,
+        "CUMPLE_PARCIAL": 0.47,
+        "NO_CUMPLE": 0.0
+      },
+      "P4": {
+        "CUMPLE": 0.68,
+        "CUMPLE_PARCIAL": 0.43,
+        "NO_CUMPLE": 0.0
+      },
+      "P5": {
+        "CUMPLE": 0.73,
+        "CUMPLE_PARCIAL": 0.48,
+        "NO_CUMPLE": 0.0
+      },
+      "P6": {
+        "CUMPLE": 0.71,
+        "CUMPLE_PARCIAL": 0.46,
+        "NO_CUMPLE": 0.0
+      },
+      "P7": {
+        "CUMPLE": 0.74,
+        "CUMPLE_PARCIAL": 0.49,
+        "NO_CUMPLE": 0.0
+      },
+      "P8": {
+        "CUMPLE": 0.69,
+        "CUMPLE_PARCIAL": 0.44,
+        "NO_CUMPLE": 0.0
+      },
+      "P9": {
+        "CUMPLE": 0.76,
+        "CUMPLE_PARCIAL": 0.51,
+        "NO_CUMPLE": 0.0
+      },
+      "P10": {
+        "CUMPLE": 0.67,
+        "CUMPLE_PARCIAL": 0.42,
+        "NO_CUMPLE": 0.0
+      }
+    },
+    "global_compliance_thresholds": {
+      "CUMPLE": 0.75,
+      "CUMPLE_PARCIAL": 0.50,
+      "NO_CUMPLE": 0.0
+    }
+  },
+  "correction_factors": {
+    "deviation_severity_thresholds": {
+      "severe_deviation": 0.3,
+      "moderate_deviation": 0.5,
+      "minor_deviation": 0.7,
+      "acceptable_range": 0.8
+    },
+    "causal_distance_calculations": {
+      "method": "euclidean_weighted",
+      "robustness_weight": 0.2,
+      "validity_correction_min": 0.5,
+      "distance_penalty_exp": true,
+      "deviation_correction_min": 0.3
+    },
+    "correction_factor_bounds": {
+      "minimum": 0.1,
+      "maximum": 2.0
+    },
+    "evidence_reference_tracking": {
+      "required_evidence_types": [
+        "documentary",
+        "testimonial",
+        "statistical",
+        "observational"
+      ],
+      "evidence_quality_weights": {
+        "high_quality": 1.0,
+        "medium_quality": 0.7,
+        "low_quality": 0.3
+      },
+      "minimum_evidence_per_point": 2,
+      "reference_quality_factors": {
+        "page_specificity": 0.3,
+        "context_relevance": 0.4,
+        "source_credibility": 0.3
+      }
+    }
+  },
+  "validation_schema": {
+    "precision_decimals": 4,
+    "rounding_method": "ROUND_HALF_UP",
+    "expected_questions_per_point": 47,
+    "validation_rules": {
+      "score_range": [0.0, 1.0],
+      "weight_sum_tolerance": 0.001,
+      "evidence_completeness_range": [0.0, 1.0],
+      "page_reference_quality_range": [0.0, 1.0]
+    }
+  },
+  "artifact_serialization": {
+    "output_formats": ["json", "csv", "xml"],
+    "compression": "gzip",
+    "include_metadata": true,
+    "include_timestamps": true,
+    "schema_validation_on_write": true,
+    "artifact_fields": {
+      "causal_distance": {
+        "type": "float",
+        "precision": 6,
+        "required": true
+      },
+      "correction_factor": {
+        "type": "float",
+        "precision": 4,
+        "required": true
+      },
+      "evidence_references": {
+        "type": "array",
+        "items": {
+          "page_number": "integer",
+          "context_excerpt": "string",
+          "quality_score": "float",
+          "reference_type": "string"
+        },
+        "required": true
+      },
+      "dnp_deviation_scores": {
+        "type": "object",
+        "properties": {
+          "dimensional_deviations": "object",
+          "decalogo_deviations": "object"
+        },
+        "required": true
+      }
+    }
+  }
+}

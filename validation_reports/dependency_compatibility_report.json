@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-27T05:10:27.461251+00:00",
+    "python_version": "3.13.7",
+    "platform": "darwin",
+    "fail_fast_enabled": false
+  },
+  "summary": {
+    "total_libraries_tested": 0,
+    "compatible_libraries": 0,
+    "critical_failures": 7,
+    "total_errors": 8,
+    "total_warnings": 1
+  },
+  "compatibility_results": {},
+  "import_validation": {
+    "modules_tested": 12,
+    "successful_imports": 7,
+    "failed_imports": 5,
+    "results": {
+      "egw_query_expansion": {
+        "status": "success",
+        "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_n4m5HDI48X3uxQfPHb-LZ/egw_query_expansion/__init__.py",
+        "submodules": [
+          "ActionType",
+          "ConfluentOrchestrator",
+          "CoverageUtility",
+          "DeterministicGainFunction",
+          "DeterministicRouter",
+          "ImmutableConfig",
+          "MonotonicTaskSelector",
+          "NodeType",
+          "RoutingContext",
+          "RoutingDecision",
+          "SelectionDecision",
+          "SubmodularFunction",
+          "Task",
+          "TaskNode",
+          "core",
+          "create_deterministic_router"
+        ]
+      },
+      "egw_query_expansion.core": {
+        "status": "success",
+        "path": null,
+        "submodules": [
+          "confluent_orchestrator",
+          "deterministic_router",
+          "submodular_task_selector"
+        ]
+      },
+      "egw_query_expansion.core.gw_alignment": {
+        "status": "error",
+        "error": "No module named 'numpy'",
+        "optional": false
+      },
+      "egw_query_expansion.core.query_generator": {
+        "status": "success",
+        "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_n4m5HDI48X3uxQfPHb-LZ/egw_query_expansion/core/query_generator.py",
+        "submodules": [
+          "QueryGenerator"
+        ]
+      },
+      "egw_query_expansion.core.hybrid_retrieval": {
+        "status": "success",
+        "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_n4m5HDI48X3uxQfPHb-LZ/egw_query_expansion/core/hybrid_retrieval.py",
+        "submodules": [
+          "HybridRetriever"
+        ]
+      },
+      "egw_query_expansion.core.pattern_matcher": {
+        "status": "error",
+        "error": "No module named 'numpy'",
+        "optional": false
+      },
+      "egw_query_expansion.core.deterministic_router": {
+        "status": "success",
+        "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_n4m5HDI48X3uxQfPHb-LZ/egw_query_expansion/core/deterministic_router.py",
+        "submodules": [
+          "ABC",
+          "ActionType",
+          "Any",
+          "ConvexProjector",
+          "DeterministicRouter",
+          "Dict",
+          "Enum",
+          "HAS_NUMPY",
+          "ImmutableConfig",
+          "LexicographicComparator",
+          "List",
+          "MockNumPy",
+          "Optional",
+          "RoutingContext",
+          "RoutingDecision",
+          "SeedDerivation",
+          "Tuple",
+          "Union",
+          "abstractmethod",
+          "create_deterministic_router",
+          "dataclass",
+          "datetime",
+          "field",
+          "hashlib",
+          "json",
+          "logging",
+          "lru_cache",
+          "math",
+          "np"
+        ]
+      },
+      "egw_query_expansion.core.conformal_risk_control": {
+        "status": "error",
+        "error": "No module named 'numpy'",
+        "optional": false
+      },
+      "egw_query_expansion.core.immutable_context": {
+        "status": "success",
+        "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_n4m5HDI48X3uxQfPHb-LZ/egw_query_expansion/core/immutable_context.py",
+        "submodules": [
+          "ABC",
+          "Any",
+          "ContextHash",
+          "DerivationDAG",
+          "DerivationEdge",
+          "DerivationId",
+          "Dict",
+          "FrozenSet",
+          "ImmutableContextManager",
+          "ImmutableDict",
+          "ImmutableMetadata",
+          "LinearRef",
+          "List",
+          "Mapping",
+          "Optional",
+          "QuestionContext",
+          "SecretKey",
+          "Set",
+          "Tuple",
+          "Union",
+          "abstractmethod",
+          "assert_linear_reference",
+          "create_expanded_context",
+          "create_question_context",
+          "dataclass",
+          "datetime",
+          "field",
+          "hashlib",
+          "hmac",
+          "is_valid_context",
+          "json",
+          "timezone",
+          "uuid"
+        ]
+      },
+      "egw_query_expansion.core.permutation_invariant_processor": {
+        "status": "error",
+        "error": "No module named 'numpy'",
+        "optional": false
+      },
+      "egw_query_expansion.core.submodular_task_selector": {
+        "status": "success",
+        "path": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_n4m5HDI48X3uxQfPHb-LZ/egw_query_expansion/core/submodular_task_selector.py",
+        "submodules": [
+          "ABC",
+          "Any",
+          "CoverageUtility",
+          "DeterministicGainFunction",
+          "Dict",
+          "HeapItem",
+          "Iterable",
+          "List",
+          "MonotonicTaskSelector",
+          "Optional",
+          "SelectionDecision",
+          "SelectionTrace",
+          "Set",
+          "SubmodularFunction",
+          "Task",
+          "Tuple",
+          "Union",
+          "abstractmethod",
+          "dataclass",
+          "defaultdict",
+          "field",
+          "heapq",
+          "logging"
+        ]
+      },
+      "egw_query_expansion.mathematical_foundations": {
+        "status": "error",
+        "error": "No module named 'numpy'",
+        "optional": false
+      }
+    }
+  },
+  "mock_validation": {
+    "torch": {
+      "consistent": true,
+      "tested": true
+    },
+    "faiss": {
+      "consistent": true,
+      "tested": true
+    },
+    "transformers": {
+      "consistent": true,
+      "tested": true
+    }
+  },
+  "upgrade_recommendations": [],
+  "fallback_usage_patterns": {
+    "torch_fallbacks": {
+      "cpu_only": true,
+      "mock_usage": true
+    },
+    "faiss_fallbacks": {
+      "cpu_variant": false,
+      "mock_usage": true
+    },
+    "optional_dependencies": {
+      "control_theory": false,
+      "topological_analysis": false,
+      "advanced_optimization": false
+    }
+  },
+  "errors": [
+    "Failed to execute check_library_compatibility(): No module named 'numpy'",
+    "No FAISS variant installed",
+    "No PyTorch variant installed",
+    "Import failed for egw_query_expansion.core.gw_alignment: No module named 'numpy'",
+    "Import failed for egw_query_expansion.core.pattern_matcher: No module named 'numpy'",
+    "Import failed for egw_query_expansion.core.conformal_risk_control: No module named 'numpy'",
+    "Import failed for egw_query_expansion.core.permutation_invariant_processor: No module named 'numpy'",
+    "Import failed for egw_query_expansion.mathematical_foundations: No module named 'numpy'"
+  ],
+  "warnings": [
+    "Python 3.13 not in officially supported versions: ['3.8', '3.9', '3.10', '3.11', '3.12']"
+  ]
+}

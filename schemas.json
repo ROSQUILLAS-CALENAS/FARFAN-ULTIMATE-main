@@ -1,0 +1,229 @@
+{
+  "versions": {
+    "ingestion_preparation": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "context_construction": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "knowledge_extraction": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "analysis_nlp": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "classification_evaluation": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "routing_decision": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "search_retrieval": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "orchestration_control": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "monitoring_validation": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "validation_contracts": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "aggregation_reporting": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "integration_storage": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    }
+  },
+  "evolution_rules": [
+    {
+      "stage": "ingestion_preparation",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_ingestion_v1_0_to_v1_1",
+      "field_mappings": {
+        "old_file_path": "file_path",
+        "extraction_options": "processing_options"
+      },
+      "default_values": {
+        "processing_options": {},
+        "extraction_metrics": {}
+      },
+      "removed_fields": ["deprecated_flag"]
+    },
+    {
+      "stage": "context_construction", 
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_context_v1_0_to_v1_1",
+      "field_mappings": {
+        "context": "immutable_context"
+      },
+      "default_values": {
+        "adapted_context": {},
+        "trace": []
+      },
+      "removed_fields": ["legacy_context"]
+    },
+    {
+      "stage": "knowledge_extraction",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_knowledge_v1_0_to_v1_1",
+      "field_mappings": {
+        "graph": "knowledge_graph",
+        "relations": "causal_relations"
+      },
+      "default_values": {
+        "topological_features": {},
+        "dnp_model": null
+      },
+      "removed_fields": ["simple_graph"]
+    },
+    {
+      "stage": "analysis_nlp",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_analysis_v1_0_to_v1_1",
+      "field_mappings": {
+        "results": "analysis_results"
+      },
+      "default_values": {
+        "contextual_evidence": {},
+        "dnp_compliance": {}
+      },
+      "removed_fields": ["old_analysis"]
+    },
+    {
+      "stage": "classification_evaluation",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_classification_v1_0_to_v1_1",
+      "field_mappings": {
+        "scores": "adaptive_scores"
+      },
+      "default_values": {
+        "certificates": [],
+        "risk_bounds": {}
+      },
+      "removed_fields": ["simple_scores"]
+    },
+    {
+      "stage": "routing_decision",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_routing_v1_0_to_v1_1",
+      "field_mappings": {
+        "decisions": "routing_decisions"
+      },
+      "default_values": {
+        "control_signals": {}
+      },
+      "removed_fields": ["old_routing"]
+    },
+    {
+      "stage": "search_retrieval",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_search_v1_0_to_v1_1",
+      "field_mappings": {
+        "results": "search_results"
+      },
+      "default_values": {
+        "reranked_candidates": [],
+        "recommendations": []
+      },
+      "removed_fields": ["basic_results"]
+    },
+    {
+      "stage": "orchestration_control",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_orchestration_v1_0_to_v1_1",
+      "field_mappings": {
+        "state": "orchestration_state"
+      },
+      "default_values": {
+        "workflow_status": {}
+      },
+      "removed_fields": ["simple_state"]
+    },
+    {
+      "stage": "monitoring_validation",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_monitoring_v1_0_to_v1_1",
+      "field_mappings": {
+        "state": "circuit_state"
+      },
+      "default_values": {
+        "telemetry": {}
+      },
+      "removed_fields": ["old_monitoring"]
+    },
+    {
+      "stage": "validation_contracts",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_validation_v1_0_to_v1_1",
+      "field_mappings": {},
+      "default_values": {
+        "rubric_scores": {}
+      },
+      "removed_fields": ["legacy_validation"]
+    },
+    {
+      "stage": "aggregation_reporting",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_aggregation_v1_0_to_v1_1",
+      "field_mappings": {
+        "answer": "synthesized_answer"
+      },
+      "default_values": {
+        "report_pdf": null
+      },
+      "removed_fields": ["simple_answer"]
+    },
+    {
+      "stage": "integration_storage",
+      "from_version": {"major": 1, "minor": 0, "patch": 0},
+      "to_version": {"major": 1, "minor": 1, "patch": 0},
+      "migration_function": "migrate_integration_v1_0_to_v1_1",
+      "field_mappings": {
+        "metrics": "collected_metrics"
+      },
+      "default_values": {
+        "compensations": {},
+        "optimizations": {}
+      },
+      "removed_fields": ["simple_metrics"]
+    }
+  ]
+}

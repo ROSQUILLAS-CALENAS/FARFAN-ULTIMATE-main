@@ -1,0 +1,74 @@
+# Default Configuration for EGW Query Expansion
+
+# Model configurations
+models:
+  # E5 model for multilingual embeddings
+  e5_model: "intfloat/e5-base-v2"
+
+  # SPLADE proxy model (using E5 as fallback)
+  splade_model: "intfloat/e5-base-v2"
+
+  # ColBERTv2 proxy model (using E5 as fallback)
+  colbert_model: "intfloat/e5-base-v2"
+
+  # Device configuration
+  device: "cpu"  # Change to "cuda" if GPU available
+
+# Gromov-Wasserstein alignment parameters
+gw_alignment:
+  epsilon: 0.1          # Entropic regularization parameter
+  lambda_reg: 0.01      # GW regularization parameter
+  max_iter: 1000        # Maximum Sinkhorn iterations
+  tolerance: 1e-6       # Convergence tolerance
+  stability_logging: true
+
+# Query generation parameters
+query_generation:
+  max_query_length: 128     # Maximum query length in tokens
+  k_canonical: 5            # Number of canonical queries per facet
+  max_expansions: 5         # Maximum synonym expansions
+  similarity_threshold: 0.7  # Similarity threshold for expansions
+
+# Hybrid retrieval parameters
+hybrid_retrieval:
+  # FAISS index configuration
+  index_type: "IVF"  # Options: Flat, IVF, HNSW
+
+  # Hybrid weighting (must sum to 1.0)
+  sparse_alpha: 0.3           # Weight for sparse component
+  dense_alpha: 0.4            # Weight for dense component
+  late_interaction_alpha: 0.3 # Weight for late interaction component
+
+  # Index parameters
+  max_docs: 10000
+  ivf_clusters: 100
+
+# Pattern matching parameters
+pattern_matching:
+  similarity_threshold: 0.7
+  max_patterns: 1000
+  case_sensitive: false
+  min_facet_size: 5
+
+# DNP vocabulary settings
+dnp_vocabulary:
+  enable: true
+  transport_mass_threshold: 0.05
+  max_terms_per_query: 3
+
+# Evaluation settings
+evaluation:
+  datasets: ["scifact", "trec-covid"]  # BEIR datasets
+  metrics: ["ndcg@10", "recall@100", "map"]
+  baseline_methods: ["bm25", "dense_e5"]
+
+# Reproducibility settings
+reproducibility:
+  random_seed: 42
+  deterministic: true
+
+# Logging configuration
+logging:
+  level: "INFO"
+  enable_stability_logging: true
+  log_file: "egw_expansion.log"

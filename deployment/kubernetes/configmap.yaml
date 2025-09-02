@@ -1,0 +1,271 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: egw-data-config
+  namespace: egw-pipeline
+  labels:
+    app: egw-service
+data:
+  standards.json: |
+    {
+      "zoning_requirements": {
+        "residential": {
+          "R1": {
+            "min_lot_size": 8000,
+            "max_height": 35,
+            "front_setback": 25,
+            "side_setback": 8,
+            "rear_setback": 30,
+            "max_coverage": 0.4
+          },
+          "R2": {
+            "min_lot_size": 6000,
+            "max_height": 40,
+            "front_setback": 20,
+            "side_setback": 6,
+            "rear_setback": 25,
+            "max_coverage": 0.5
+          }
+        },
+        "commercial": {
+          "C1": {
+            "max_height": 45,
+            "front_setback": 0,
+            "side_setback": 10,
+            "parking_ratio": 0.003333
+          }
+        }
+      },
+      "permit_requirements": {
+        "building_permits": {
+          "required_for": [
+            "new_construction",
+            "structural_alterations", 
+            "additions_over_120_sqft",
+            "occupancy_changes"
+          ],
+          "documentation": [
+            "site_plan",
+            "architectural_plans",
+            "structural_plans",
+            "utility_plans",
+            "landscape_plan"
+          ],
+          "processing_time": {
+            "plan_review": 15,
+            "permit_issuance": 5
+          }
+        },
+        "special_permits": [
+          "conditional_use",
+          "variance",
+          "site_plan_approval",
+          "subdivision_approval"
+        ]
+      }
+    }
+  vector_state.json: |
+    {
+      "embeddings": {
+        "municipal_development": [0.1, 0.2, 0.3],
+        "zoning_requirements": [0.4, 0.5, 0.6],
+        "permit_procedures": [0.7, 0.8, 0.9]
+      },
+      "index_metadata": {
+        "dimension": 384,
+        "total_vectors": 1000,
+        "last_updated": "2024-01-01T00:00:00Z"
+      }
+    }
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: egw-config
+  namespace: egw-pipeline
+  labels:
+    app: egw-service
+data:
+  config.yaml: |
+    # EGW Query Expansion Configuration
+    pipeline:
+      batch_size: 32
+      max_concurrent_tasks: 8
+      chunk_size: 1000
+      processing_timeout: 300
+      
+    quality:
+      min_relevance_score: 0.7
+      min_coherence_score: 0.8
+      min_consistency_score: 0.75
+      
+    performance:
+      target_documents_per_hour: 170
+      max_processing_time_per_doc: 21.2
+      max_memory_usage_mb: 2048
+      max_cpu_usage_percent: 85
+      
+    models:
+      sentence_transformer: "sentence-transformers/all-MiniLM-L6-v2"
+      embedding_dimension: 384
+      
+    retrieval:
+      top_k: 10
+      similarity_threshold: 0.7
+      
+    gw_alignment:
+      regularization: 0.1
+      max_iterations: 100
+      convergence_threshold: 1e-6
+      
+    redis:
+      url: "redis://redis-service:6379"
+      result_ttl: 3600
+      task_timeout: 300
+      
+    monitoring:
+      metrics_enabled: true
+      prometheus_port: 8000
+      log_level: "INFO"
+
+---
+apiVersion: v1
+kind: ConfigMap  
+metadata:
+  name: nginx-config
+  namespace: egw-pipeline
+  labels:
+    app: nginx
+data:
+  nginx.conf: |
+    events {
+        worker_connections 1024;
+    }
+    
+    http {
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+        
+        log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                        '$status $body_bytes_sent "$http_referer" '
+                        '"$http_user_agent" "$http_x_forwarded_for" '
+                        'rt=$request_time uct="$upstream_connect_time" '
+                        'uht="$upstream_header_time" urt="$upstream_response_time"';
+        
+        access_log /var/log/nginx/access.log main;
+        error_log /var/log/nginx/error.log warn;
+        
+        upstream egw_backend {
+            least_conn;
+            server egw-service:8000 max_fails=3 fail_timeout=30s;
+            keepalive 32;
+        }
+        
+        server {
+            listen 80;
+            
+            location /health {
+                proxy_pass http://egw_backend;
+                proxy_connect_timeout 5s;
+                proxy_send_timeout 5s;
+                proxy_read_timeout 5s;
+            }
+            
+            location /api/ {
+                proxy_pass http://egw_backend;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_connect_timeout 30s;
+                proxy_send_timeout 60s;
+                proxy_read_timeout 60s;
+            }
+            
+            location / {
+                proxy_pass http://egw_backend;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            }
+        }
+    }
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-data-config
+  namespace: egw-pipeline
+  labels:
+    app: egw-service
+data:
+  sample_municipal_plan.txt: |
+    MUNICIPAL DEVELOPMENT PLAN
+    
+    SECTION 1: ZONING REGULATIONS
+    
+    1.1 Residential Zones
+    R-1 Single Family Residential Zone requirements:
+    - Minimum lot size: 8,000 square feet
+    - Maximum building height: 35 feet
+    - Front yard setback: 25 feet minimum
+    - Side yard setback: 8 feet minimum each side
+    - Rear yard setback: 30 feet minimum
+    - Maximum lot coverage: 40%
+    
+    1.2 Commercial Zones
+    C-1 Neighborhood Commercial Zone requirements:
+    - Permitted uses: retail stores, offices, restaurants
+    - Maximum building height: 45 feet
+    - No front yard setback required
+    - Side yard setback: 10 feet where adjacent to residential
+    - Parking requirement: 1 space per 300 square feet of floor area
+    
+    SECTION 2: PERMIT PROCEDURES
+    
+    2.1 Building Permits
+    Required documentation:
+    - Site plan showing building location and setbacks
+    - Architectural plans and elevations
+    - Structural engineering plans (if required)
+    - Utility connection plans
+    - Landscape and parking plan
+    
+    2.2 Processing Timeline
+    - Plan review: 15 business days
+    - Permit issuance: 5 business days after approval
+    - Total processing time: 20 business days maximum
+    
+    SECTION 3: ENVIRONMENTAL REQUIREMENTS
+    
+    3.1 Environmental Impact Assessment
+    Required for projects that:
+    - Disturb more than 1 acre of land
+    - Are within 500 feet of wetlands or water bodies
+    - Generate more than 100 vehicle trips per day
+    - Involve hazardous materials storage or use
+    
+    3.2 Stormwater Management
+    - On-site retention required for first inch of rainfall
+    - Green infrastructure solutions preferred
+    - Bioretention areas encouraged
+    - Tree preservation: minimum 30% canopy coverage
+    
+    This document provides the framework for all municipal development
+    activities and ensures consistent, high-quality development that
+    serves the community's needs while protecting environmental resources.
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: egw-secrets
+  namespace: egw-pipeline
+  labels:
+    app: egw-service
+type: Opaque
+data:
+  # Base64 encoded values
+  redis-password: ""  # Empty for now - add if Redis auth is enabled
+  api-key: ""         # Empty for now - add if external APIs are used

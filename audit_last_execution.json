@@ -1,0 +1,507 @@
+{
+  "source_file": "/Users/recovered/PycharmProjects/FARFAN-ULTIMATE/execution_trace.json",
+  "generated_at": 1756088967.498514,
+  "flow": {
+    "steps_count": 53,
+    "flow_ok": false
+  },
+  "steps": [
+    {
+      "module": "ingestion_preparation",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "ingestion_preparation",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "ingestion_preparation",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "ingestion_preparation",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "context_construction",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "context_construction",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "context_construction",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "knowledge_extraction",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "knowledge_extraction",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "knowledge_extraction",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "knowledge_extraction",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "knowledge_extraction",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "analysis_nlp",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "analysis_nlp",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "analysis_nlp",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "analysis_nlp",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "analysis_nlp",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "analysis_nlp",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "analysis_nlp",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "analysis_nlp",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "classification_evaluation",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "classification_evaluation",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "classification_evaluation",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "search_retrieval",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "search_retrieval",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "search_retrieval",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "search_retrieval",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "search_retrieval",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "orchestration_control",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "synthesis_output",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "synthesis_output",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "aggregation_reporting",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "integration_storage",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "integration_storage",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "integration_storage",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "integration_storage",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    },
+    {
+      "module": "integration_storage",
+      "status": "unknown",
+      "timestamp": null,
+      "error": null
+    }
+  ],
+  "canonical_audit": {
+    "four_clusters_confirmed": true,
+    "clusters_complete": true,
+    "non_redundant": true,
+    "evidence_linked_micro": true,
+    "uses_dnp_standards": true,
+    "causal_correction_signals": true,
+    "recalibration_required": false,
+    "reporting_levels": {
+      "micro": true,
+      "meso": true,
+      "macro": true
+    },
+    "raw_data_presence": {
+      "features": false,
+      "vectors": false,
+      "bm25_index": false,
+      "vector_index": false,
+      "evidence_store": true
+    },
+    "replicability": {
+      "cluster_audit_hash": "33f5ba41a9e49b77",
+      "meso_summary_hash": "f880ed340773be44",
+      "macro_synthesis_hash": "2507c789adbe3579"
+    },
+    "public_adapter_available": true,
+    "evidence_traceability": {
+      "per_cluster": {
+        "C1": {
+          "checked": 2,
+          "unresolved": 0
+        },
+        "C2": {
+          "checked": 1,
+          "unresolved": 0
+        },
+        "C3": {
+          "checked": 1,
+          "unresolved": 0
+        },
+        "C4": {
+          "checked": 1,
+          "unresolved": 0
+        }
+      },
+      "unresolved_sample": []
+    },
+    "calibration_trigger": null,
+    "gaps": [],
+    "timestamp": 1756088967.496319
+  },
+  "orchestrator_graph_validation": {
+    "errors": [],
+    "warnings": [],
+    "summary": {
+      "total_nodes": 0,
+      "missing_files": 0,
+      "dangling_deps": 0,
+      "cycles": 0
+    },
+    "parse_errors": [
+      "No nodes parsed from PIPELINEORCHESTRATOR.py"
+    ]
+  },
+  "enhancements": [],
+  "applied_improvements": {
+    "enrichment_applied": true,
+    "enrichment_context": "audit_last_execution"
+  },
+  "calibration": {
+    "calibration_report": {
+      "timestamp": 1756088967.498503,
+      "context": {
+        "source": "audit_last_execution"
+      },
+      "obstacles": [],
+      "segmented_tasks": [
+        {
+          "id": 1,
+          "name": "Normalización de Evidencias (IDs Canónicos)",
+          "depends_on": [],
+          "status": "completed",
+          "success_criteria": "EvidenceSystem presente y todas las evidence_ids resueltas."
+        },
+        {
+          "id": 2,
+          "name": "Cobertura de 4 Clústeres (C1..C4)",
+          "depends_on": [
+            1
+          ],
+          "status": "completed",
+          "success_criteria": "cluster_audit.complete=True y non_redundant=True."
+        },
+        {
+          "id": 3,
+          "name": "Agregado Meso y Cálculo de Divergencias",
+          "depends_on": [
+            2
+          ],
+          "status": "completed",
+          "success_criteria": "meso_summary.divergence_stats.count>0"
+        },
+        {
+          "id": 4,
+          "name": "Inyección de Señales Causales",
+          "depends_on": [
+            3
+          ],
+          "status": "completed",
+          "success_criteria": "causal_graph y causal_adjusted_scores presentes."
+        },
+        {
+          "id": 5,
+          "name": "Recalibración Determinista de Puntajes",
+          "depends_on": [
+            4
+          ],
+          "status": "completed",
+          "success_criteria": "calibrated_scores por pregunta y cluster_scores calculados."
+        },
+        {
+          "id": 6,
+          "name": "Síntesis Macro y Alineación DNP",
+          "depends_on": [
+            5
+          ],
+          "status": "completed",
+          "success_criteria": "macro_synthesis actualizado con uses_dnp_standards=True."
+        },
+        {
+          "id": 7,
+          "name": "Reporte Público Pedagógico",
+          "depends_on": [
+            6
+          ],
+          "status": "completed",
+          "success_criteria": "public_report generado y replicability presente."
+        }
+      ],
+      "inputs": {
+        "avg_divergence": 0.0,
+        "uses_dnp": true,
+        "causal_signals": true
+      },
+      "outputs": {
+        "calibrated_scores": {
+          "gpr_001": 0.0,
+          "competencias_001": 0.0,
+          "gpr_002": 0.0,
+          "sgp_001": 0.0,
+          "sinergia_001": 0.0
+        },
+        "cluster_scores": {
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0
+        },
+        "global_score": 0.0,
+        "rationale": {
+          "causal_factor": 1.0,
+          "dnp_weighting": {
+            "gpr_001": 1.1,
+            "competencias_001": 1.15,
+            "gpr_002": 1.1,
+            "sgp_001": 1.15,
+            "sinergia_001": 1.0
+          }
+        }
+      }
+    },
+    "calibrated_scores": {
+      "gpr_001": 0.0,
+      "competencias_001": 0.0,
+      "gpr_002": 0.0,
+      "sgp_001": 0.0,
+      "sinergia_001": 0.0
+    }
+  }
+}

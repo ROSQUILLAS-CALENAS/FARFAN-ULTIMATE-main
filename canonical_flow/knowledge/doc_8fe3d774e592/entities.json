@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Desarrollo|PERSON": {
+      "frequency": 1,
+      "label": "PERSON",
+      "pages": {
+        "1": {
+          "frequency": 1,
+          "positions": [
+            {
+              "context": "Desarrollo territorial sostenible es un objetivo estratégico",
+              "end": 10,
+              "start": 0
+            }
+          ]
+        }
+      },
+      "text": "Desarrollo"
+    },
+    "El|PERSON": {
+      "frequency": 1,
+      "label": "PERSON",
+      "pages": {
+        "2": {
+          "frequency": 1,
+          "positions": [
+            {
+              "context": "El proyecto de gestión pública incluye indicadores d",
+              "end": 2,
+              "start": 0
+            }
+          ]
+        }
+      },
+      "text": "El"
+    }
+  },
+  "extraction_type": "entities_fallback",
+  "total_entities": 2
+}

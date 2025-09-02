@@ -1,0 +1,83 @@
+{
+  "dimension_id": "DE-1",
+  "result": {
+    "correction_factors": [],
+    "dimension_id": "DE-1",
+    "evidence_metrics": {
+      "average_evidence_quality": 0.725,
+      "evidence_density": 5.5
+    },
+    "metadata": {
+      "artifact_id": "e96b593d",
+      "processing_timestamp": "2025-08-27T02:36:32.270601"
+    },
+    "question_breakdown": [
+      {
+        "contribution_percentage": 14.29,
+        "evidence_count": 3,
+        "evidence_quality": 0.6,
+        "question_id": "DE1_Q01",
+        "raw_score": 0.75,
+        "weight": 1.0,
+        "weighted_score": 0.75
+      },
+      {
+        "contribution_percentage": 15.24,
+        "evidence_count": 4,
+        "evidence_quality": 0.65,
+        "question_id": "DE1_Q02",
+        "raw_score": 0.8,
+        "weight": 1.0,
+        "weighted_score": 0.8
+      },
+      {
+        "contribution_percentage": 16.19,
+        "evidence_count": 5,
+        "evidence_quality": 0.7,
+        "question_id": "DE1_Q03",
+        "raw_score": 0.85,
+        "weight": 1.0,
+        "weighted_score": 0.85
+      },
+      {
+        "contribution_percentage": 17.14,
+        "evidence_count": 6,
+        "evidence_quality": 0.75,
+        "question_id": "DE1_Q04",
+        "raw_score": 0.9,
+        "weight": 1.0,
+        "weighted_score": 0.9
+      },
+      {
+        "contribution_percentage": 18.1,
+        "evidence_count": 7,
+        "evidence_quality": 0.8,
+        "question_id": "DE1_Q05",
+        "raw_score": 0.95,
+        "weight": 1.0,
+        "weighted_score": 0.95
+      },
+      {
+        "contribution_percentage": 19.05,
+        "evidence_count": 8,
+        "evidence_quality": 0.85,
+        "question_id": "DE1_Q06",
+        "raw_score": 1.0,
+        "weight": 1.0,
+        "weighted_score": 1.0
+      }
+    ],
+    "question_metrics": {
+      "completion_percentage": 100.0,
+      "expected_question_count": 6,
+      "question_count": 6
+    },
+    "scores": {
+      "adjusted_score": 0.875,
+      "quality_penalty_applied": 0.0,
+      "raw_score": 0.875
+    },
+    "status": "complete"
+  },
+  "timestamp": "20250827_023632"
+}

@@ -1,0 +1,26 @@
+
+Traceback (most recent call last):
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/validate_dependencies.py", line 34, in <module>
+    from canonical_flow.mathematical_enhancers.mathematical_compatibility_matrix import (
+        LibraryStatusReporter, MathematicalCompatibilityMatrix
+    )
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/canonical_flow/mathematical_enhancers/__init__.py", line 27, in <module>
+    from .mathematical_pipeline_coordinator import (
+    ...<4 lines>...
+    )
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/canonical_flow/mathematical_enhancers/mathematical_pipeline_coordinator.py", line 42, in <module>
+    from egw_query_expansion.mathematical_foundations import (
+    ...<6 lines>...
+    )
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/egw_query_expansion/mathematical_foundations.py", line 22, in <module>
+    from .core.import_safety import safe_import
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/egw_query_expansion/core/__init__.py", line 27, in <module>
+    from .conformal_risk_control import (
+    ...<7 lines>...
+    )
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/egw_query_expansion/core/conformal_risk_control.py", line 37, in <module>
+    from config_loader import get_thresholds
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/config_loader.py", line 1084
+    """
+    ^
+SyntaxError: unterminated triple-quoted string literal (detected at line 1129)

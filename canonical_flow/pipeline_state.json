@@ -1,0 +1,215 @@
+{
+  "version": "1.0",
+  "saved_at": "2025-08-26T23:07:32.164367",
+  "documents": {
+    "demo_document_001": {
+      "document_id": "demo_document_001",
+      "document_path": "demo_files/sample_document.pdf",
+      "pipeline_version": "1.0",
+      "created_at": "2025-08-26T23:07:32.146784",
+      "updated_at": "2025-08-26T23:07:32.154348",
+      "stages": {
+        "ingestion_preparation": {
+          "stage_name": "ingestion_preparation",
+          "status": "completed",
+          "start_time": "2025-08-26T23:07:32.150395",
+          "end_time": "2025-08-26T23:07:32.150466",
+          "duration_seconds": 7.1e-05,
+          "error_message": null,
+          "artifacts": [
+            {
+              "file_path": "canonical_flow/artifacts/ingestion_preparation_output.json",
+              "artifact_type": "json",
+              "file_size": 3124,
+              "checksum": null,
+              "created_at": "2025-08-26T23:07:32.150451"
+            },
+            {
+              "file_path": "canonical_flow/artifacts/ingestion_preparation_log.txt",
+              "artifact_type": "text",
+              "file_size": 512,
+              "checksum": null,
+              "created_at": "2025-08-26T23:07:32.150459"
+            }
+          ],
+          "metrics": {
+            "processing_time": 4.6,
+            "items_processed": 31,
+            "quality_score": 0.88,
+            "memory_usage_mb": 296
+          }
+        },
+        "context_construction": {
+          "stage_name": "context_construction",
+          "status": "completed",
+          "start_time": "2025-08-26T23:07:32.151504",
+          "end_time": "2025-08-26T23:07:32.151544",
+          "duration_seconds": 4e-05,
+          "error_message": null,
+          "artifacts": [
+            {
+              "file_path": "canonical_flow/artifacts/context_construction_output.json",
+              "artifact_type": "json",
+              "file_size": 3024,
+              "checksum": null,
+              "created_at": "2025-08-26T23:07:32.151537"
+            },
+            {
+              "file_path": "canonical_flow/artifacts/context_construction_log.txt",
+              "artifact_type": "text",
+              "file_size": 512,
+              "checksum": null,
+              "created_at": "2025-08-26T23:07:32.151540"
+            }
+          ],
+          "metrics": {
+            "processing_time": 4.5,
+            "items_processed": 30,
+            "quality_score": 0.85,
+            "memory_usage_mb": 288
+          }
+        },
+        "knowledge_extraction": {
+          "stage_name": "knowledge_extraction",
+          "status": "completed",
+          "start_time": "2025-08-26T23:07:32.152535",
+          "end_time": "2025-08-26T23:07:32.152573",
+          "duration_seconds": 3.8e-05,
+          "error_message": null,
+          "artifacts": [
+            {
+              "file_path": "canonical_flow/artifacts/knowledge_extraction_output.json",
+              "artifact_type": "json",
+              "file_size": 3024,
+              "checksum": null,
+              "created_at": "2025-08-26T23:07:32.152567"
+            },
+            {
+              "file_path": "canonical_flow/artifacts/knowledge_extraction_log.txt",
+              "artifact_type": "text",
+              "file_size": 512,
+              "checksum": null,
+              "created_at": "2025-08-26T23:07:32.152570"
+            }
+          ],
+          "metrics": {
+            "processing_time": 4.5,
+            "items_processed": 30,
+            "quality_score": 0.85,
+            "memory_usage_mb": 288
+          }
+        },
+        "analysis_nlp": {
+          "stage_name": "analysis_nlp",
+          "status": "completed",
+          "start_time": "2025-08-26T23:07:32.154311",
+          "end_time": "2025-08-26T23:07:32.154346",
+          "duration_seconds": 3.5e-05,
+          "error_message": null,
+          "artifacts": [
+            {
+              "file_path": "canonical_flow/artifacts/analysis_nlp_output.json",
+              "artifact_type": "json",
+              "file_size": 2224,
+              "checksum": null,
+              "created_at": "2025-08-26T23:07:32.154341"
+            },
+            {
+              "file_path": "canonical_flow/artifacts/analysis_nlp_log.txt",
+              "artifact_type": "text",
+              "file_size": 512,
+              "checksum": null,
+              "created_at": "2025-08-26T23:07:32.154343"
+            }
+          ],
+          "metrics": {
+            "processing_time": 3.7,
+            "items_processed": 22,
+            "quality_score": 0.9099999999999999,
+            "memory_usage_mb": 224
+          }
+        },
+        "classification_evaluation": {
+          "stage_name": "classification_evaluation",
+          "status": "pending",
+          "start_time": null,
+          "end_time": null,
+          "duration_seconds": null,
+          "error_message": null,
+          "artifacts": [],
+          "metrics": {}
+        },
+        "routing_decision": {
+          "stage_name": "routing_decision",
+          "status": "pending",
+          "start_time": null,
+          "end_time": null,
+          "duration_seconds": null,
+          "error_message": null,
+          "artifacts": [],
+          "metrics": {}
+        },
+        "search_retrieval": {
+          "stage_name": "search_retrieval",
+          "status": "pending",
+          "start_time": null,
+          "end_time": null,
+          "duration_seconds": null,
+          "error_message": null,
+          "artifacts": [],
+          "metrics": {}
+        },
+        "orchestration_control": {
+          "stage_name": "orchestration_control",
+          "status": "pending",
+          "start_time": null,
+          "end_time": null,
+          "duration_seconds": null,
+          "error_message": null,
+          "artifacts": [],
+          "metrics": {}
+        },
+        "monitoring_validation": {
+          "stage_name": "monitoring_validation",
+          "status": "pending",
+          "start_time": null,
+          "end_time": null,
+          "duration_seconds": null,
+          "error_message": null,
+          "artifacts": [],
+          "metrics": {}
+        },
+        "aggregation_reporting": {
+          "stage_name": "aggregation_reporting",
+          "status": "pending",
+          "start_time": null,
+          "end_time": null,
+          "duration_seconds": null,
+          "error_message": null,
+          "artifacts": [],
+          "metrics": {}
+        },
+        "integration_storage": {
+          "stage_name": "integration_storage",
+          "status": "pending",
+          "start_time": null,
+          "end_time": null,
+          "duration_seconds": null,
+          "error_message": null,
+          "artifacts": [],
+          "metrics": {}
+        },
+        "synthesis_output": {
+          "stage_name": "synthesis_output",
+          "status": "pending",
+          "start_time": null,
+          "end_time": null,
+          "duration_seconds": null,
+          "error_message": null,
+          "artifacts": [],
+          "metrics": {}
+        }
+      }
+    }
+  }
+}

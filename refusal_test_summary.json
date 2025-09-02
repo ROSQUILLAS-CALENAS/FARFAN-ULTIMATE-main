@@ -1,0 +1,19 @@
+{
+  "total_tests": 11,
+  "refusal_tests": 10,
+  "acceptance_tests": 1,
+  "passed_tests": 11,
+  "failed_tests": 0,
+  "refusal_types_tested": [
+    "mandatory_missing",
+    "proxy_insufficient",
+    "alpha_violated",
+    "sigma_absent"
+  ],
+  "coverage": {
+    "mandatory_missing": 4,
+    "proxy_insufficient": 3,
+    "alpha_violated": 2,
+    "sigma_absent": 1
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "total_python_files": 360,
+  "total_imports": 2504,
+  "missing_dependencies": 73,
+  "circular_imports": 0,
+  "pdf_libraries_status": true,
+  "fixes_applied": [
+    "Installed pre-commit",
+    "Installed prometheus-client"
+  ],
+  "details": {
+    "missing_deps": [
+      {
+        "module": "airflow",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 12
+      },
+      {
+        "module": "airflow",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 13
+      },
+      {
+        "module": "airflow.operators.python",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 14
+      },
+      {
+        "module": "airflow.operators.bash",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 15
+      },
+      {
+        "module": "airflow.providers.kubernetes.operators.pod",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 16
+      },
+      {
+        "module": "airflow.providers.kafka.operators.produce",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 17
+      },
+      {
+        "module": "airflow.providers.celery.operators.celery",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 18
+      },
+      {
+        "module": "airflow.models",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 19
+      },
+      {
+        "module": "airflow.utils.dates",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 20
+      },
+      {
+        "module": "airflow.utils.task_group",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 21
+      },
+      {
+        "module": "airflow.providers.postgres.operators.postgres",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 22
+      },
+      {
+        "module": "airflow.providers.postgres.hooks.postgres",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 23
+      },
+      {
+        "module": "airflow.models",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 371
+      },
+      {
+        "module": "airflow.api.client.local_client",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 372
+      },
+      {
+        "module": "airflow.models",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/airflow_orchestrator.py",
+        "line": 400
+      },
+      {
+        "module": "node2vec",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/causal_graph.py",
+        "line": 442
+      },
+      {
+        "module": "test_evidence_system",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/run_tests.py",
+        "line": 4
+      },
+      {
+        "module": "hyperbolic_tensor_networks",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/simple_test_hyperbolic.py",
+        "line": 221
+      },
+      {
+        "module": "math_stage06_retrieval_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/simple_test_hyperbolic.py",
+        "line": 281
+      },
+      {
+        "module": "math_stage03_knowledge_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/test_sheaf_derived_integration.py",
+        "line": 13
+      },
+      {
+        "module": "pyserini.search",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/hybrid_retrieval_bridge.py",
+        "line": 13
+      },
+      {
+        "module": "pyserini.search.lucene",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/hybrid_retrieval_bridge.py",
+        "line": 14
+      },
+      {
+        "module": "etcd3",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/process_inventory.py",
+        "line": 16
+      },
+      {
+        "module": "hyperbolic_tensor_networks",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/test_hyperbolic_tensor_networks.py",
+        "line": 18
+      },
+      {
+        "module": "math_stage06_retrieval_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/test_hyperbolic_tensor_networks.py",
+        "line": 19
+      },
+      {
+        "module": "prometheus_async.aio",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/metrics_collector.py",
+        "line": 17
+      },
+      {
+        "module": "istio_client",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/kubernetes_istio_integration.py",
+        "line": 16
+      },
+      {
+        "module": "etcd3",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/service_discovery.py",
+        "line": 13
+      },
+      {
+        "module": "api",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/standards_alignment/__init__.py",
+        "line": 8
+      },
+      {
+        "module": "graph_ops",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/standards_alignment/__init__.py",
+        "line": 14
+      },
+      {
+        "module": "patterns",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/standards_alignment/__init__.py",
+        "line": 16
+      },
+      {
+        "module": "stable_gw_aligner",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/standards_alignment/__init__.py",
+        "line": 17
+      },
+      {
+        "module": "graph_ops",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/standards_alignment/gw_alignment.py",
+        "line": 10
+      },
+      {
+        "module": "graph_ops",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/standards_alignment/api.py",
+        "line": 10
+      },
+      {
+        "module": "patterns",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/standards_alignment/api.py",
+        "line": 11
+      },
+      {
+        "module": "patterns",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/standards_alignment/graph_ops.py",
+        "line": 8
+      },
+      {
+        "module": "vector_index",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/retrieval_engine/__init__.py",
+        "line": 4
+      },
+      {
+        "module": "hybrid_retriever",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/retrieval_engine/__init__.py",
+        "line": 5
+      },
+      {
+        "module": "core.submodular_task_selector",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 19
+      },
+      {
+        "module": "core.confluent_orchestrator",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 34
+      },
+      {
+        "module": "core",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 42
+      },
+      {
+        "module": "core.deterministic_router",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 58
+      },
+      {
+        "module": "core.gw_alignment",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 66
+      },
+      {
+        "module": "core.hybrid_retrieval",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 67
+      },
+      {
+        "module": "core.pattern_matcher",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 68
+      },
+      {
+        "module": "core.query_generator",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 69
+      },
+      {
+        "module": "core.permutation_invariant_processor",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 77
+      },
+      {
+        "module": "core.conformal_risk_control",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 91
+      },
+      {
+        "module": "mathematical_foundations",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/__init__.py",
+        "line": 184
+      },
+      {
+        "module": "immutable_context",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/__init__.py",
+        "line": 9
+      },
+      {
+        "module": "context_adapter",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/__init__.py",
+        "line": 21
+      },
+      {
+        "module": "linear_type_enforcer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/__init__.py",
+        "line": 27
+      },
+      {
+        "module": "deterministic_router",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/__init__.py",
+        "line": 45
+      },
+      {
+        "module": "conformal_risk_control",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/__init__.py",
+        "line": 53
+      },
+      {
+        "module": "permutation_invariant_processor",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/__init__.py",
+        "line": 73
+      },
+      {
+        "module": "total_ordering",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/__init__.py",
+        "line": 79
+      },
+      {
+        "module": "immutable_context",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/context_adapter.py",
+        "line": 10
+      },
+      {
+        "module": "immutable_context",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/egw_query_expansion/core/linear_type_enforcer.py",
+        "line": 21
+      },
+      {
+        "module": "hyperbolic_tensor_networks",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/retrieval_enhancer.py",
+        "line": 37
+      },
+      {
+        "module": "mathematical_pipeline_coordinator",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 27
+      },
+      {
+        "module": "mathematical_compatibility_matrix",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 34
+      },
+      {
+        "module": "math_stage01_ingestion_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 40
+      },
+      {
+        "module": "math_stage02_context_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 41
+      },
+      {
+        "module": "math_stage03_knowledge_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 49
+      },
+      {
+        "module": "math_stage04_analysis_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 50
+      },
+      {
+        "module": "math_stage05_scoring_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 51
+      },
+      {
+        "module": "math_stage06_retrieval_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 52
+      },
+      {
+        "module": "math_stage07_orchestration_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 53
+      },
+      {
+        "module": "math_stage11_aggregation_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 54
+      },
+      {
+        "module": "math_stage12_integration_enhancer",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/__init__.py",
+        "line": 55
+      },
+      {
+        "module": "gudhi",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/knowledge_enhancer.py",
+        "line": 36
+      },
+      {
+        "module": "ripser",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/knowledge_enhancer.py",
+        "line": 43
+      },
+      {
+        "module": "mathematical_pipeline_coordinator",
+        "file": "/Users/recovered/Library/Application Support/Tonkotsu/tasks/FARFAN-ULTIMATE_Ngu_Gul22vFEcnsXtRlo8/canonical_flow/mathematical_enhancers/ingestion_enhancer.py",
+        "line": 82
+      }
+    ],
+    "circular_imports": [],
+    "pdf_status": "\u2713 PyMuPDF (fitz) is available\n\u2713 pdfplumber is available\n\u2713 pytesseract is available\n\u2713 camelot is available\n\u2713 tabula is available"
+  }
+}

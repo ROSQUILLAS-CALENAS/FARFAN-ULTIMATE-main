@@ -1,0 +1,32 @@
+{
+  "temperature_violations": [],
+  "entropy_stats": {
+    "lexical_entropy": 1.5087949230355981,
+    "vector_entropy": 1.4502450866345042,
+    "late_entropy": 0.0,
+    "raw_lexical_entropy": 1.8464393446710154,
+    "raw_vector_entropy": 1.675143246409987,
+    "raw_late_entropy": 0.0
+  },
+  "rank_stability_metrics": {
+    "overall_stability": 1.0,
+    "pairwise_correlations": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "avg_position_variance": 0.3333333333333333,
+    "position_variances": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ]
+  },
+  "page_coverage_gaps": [],
+  "summary": {
+    "total_violations": 0,
+    "total_gaps": 0,
+    "stability_score": 1.0
+  }
+}

@@ -1,0 +1,285 @@
+🔍 Contract Files Validation Report
+==================================================
+Found 19 contract files
+
+📁 .venv/lib/python3.13/site-packages/hypothesis/extra/dpcontracts.py
+  From imports:
+    Line 19: from dpcontracts
+    Line 21: from hypothesis
+    Line 22: from hypothesis.errors
+    Line 23: from hypothesis.internal.reflection
+  ✅ No issues found
+
+📁 .venv/lib/python3.13/site-packages/networkx/algorithms/minors/contraction.py
+  From imports:
+    Line 3: from itertools
+    Line 6: from networkx
+    Line 7: from networkx.exception
+    Line 8: from networkx.utils
+  Import statements:
+    Line 5: import networkx
+  ✅ No issues found
+
+📁 .venv/lib/python3.13/site-packages/networkx/algorithms/minors/tests/test_contraction.py
+  From imports:
+    Line 6: from networkx.utils
+  Import statements:
+    Line 3: import pytest
+    Line 5: import networkx
+  ✅ No issues found
+
+📁 .venv/lib/python3.13/site-packages/pm4py/algo/organizational_mining/sna/variants/log/subcontracting.py
+  From imports:
+    Line 24: from pm4py.statistics.variants.log
+    Line 25: from pm4py.util
+    Line 26: from enum
+    Line 27: from pm4py.util
+    Line 28: from pm4py.util
+    Line 30: from typing
+    Line 31: from pm4py.objects.log.obj
+    Line 32: from pm4py.objects.org.sna.obj
+  Import statements:
+    Line 22: import numpy
+  ✅ No issues found
+
+📁 .venv/lib/python3.13/site-packages/pm4py/algo/organizational_mining/sna/variants/pandas/subcontracting.py
+  From imports:
+    Line 22: from pm4py.util
+    Line 23: from enum
+    Line 24: from pm4py.util
+    Line 25: from pm4py.util
+    Line 27: from typing
+    Line 29: from pm4py.objects.org.sna.obj
+    Line 66: from pm4py.statistics.traces.generic.pandas
+  Import statements:
+    Line 28: import pandas
+    Line 65: import numpy
+  ✅ No issues found
+
+📁 .venv/lib/python3.13/site-packages/psutil/tests/test_contracts.py
+  From imports:
+    Line 16: from psutil
+    Line 17: from psutil
+    Line 18: from psutil
+    Line 19: from psutil
+    Line 20: from psutil
+    Line 21: from psutil
+    Line 22: from psutil
+    Line 23: from psutil
+    Line 24: from psutil
+    Line 25: from psutil.tests
+    Line 26: from psutil.tests
+    Line 27: from psutil.tests
+    Line 28: from psutil.tests
+    Line 29: from psutil.tests
+    Line 30: from psutil.tests
+    Line 31: from psutil.tests
+    Line 32: from psutil.tests
+    Line 33: from psutil.tests
+    Line 34: from psutil.tests
+    Line 35: from psutil.tests
+    Line 36: from psutil.tests
+  Import statements:
+    Line 12: import platform
+    Line 13: import signal
+    Line 15: import psutil
+  ✅ No issues found
+
+📁 .venv/lib/python3.13/site-packages/torch/distributed/_composable/contract.py
+  From imports:
+    Line 3: from collections
+    Line 4: from functools
+    Line 5: from typing
+    Line 6: from typing_extensions
+    Line 10: from torch.distributed._composable_state
+    Line 11: from torch.distributed.utils
+  Import statements:
+    Line 2: import uuid
+    Line 8: import torch
+    Line 9: import torch.nn
+  ✅ No issues found
+
+📁 canonical_flow/O_orchestration_control/contract_validator.py
+  From imports:
+    Line 13: from pathlib
+    Line 14: from importlib
+  Import statements:
+    Line 12: import sys
+    Line 50: import warnings
+  ✅ No issues found
+
+📁 contract_system.py
+  From imports:
+    Line 21: from abc
+    Line 22: from dataclasses
+    Line 23: from datetime
+    Line 24: from enum
+    Line 25: from pathlib
+    Line 26: from typing
+  Import statements:
+    Line 16: import hashlib
+    Line 17: import json
+    Line 18: import logging
+    Line 19: import os
+    Line 20: import time
+  ✅ No issues found
+
+📁 contract_validator.py
+  From imports:
+    Line 10: from dataclasses
+    Line 11: from datetime
+    Line 12: from enum
+    Line 13: from typing
+    Line 17: from pydantic
+  Import statements:
+    Line 6: import asyncio
+    Line 7: import hashlib
+    Line 8: import json
+    Line 9: import logging
+    Line 15: import jsonschema
+    Line 16: import yaml
+  ✅ No issues found
+
+📁 contracts_validation_utility.py
+  From imports:
+    Line 11: from pathlib
+    Line 12: from typing
+    Line 15: from dataclasses
+  Import statements:
+    Line 8: import ast
+    Line 9: import importlib.util
+    Line 10: import sys
+    Line 13: import json
+    Line 14: import re
+    Line 345: import argparse
+  ⚠️  Issues found:
+    Line 83: Non-canonical import: r"from\s+canonical_flow\..*\.(\w+)\s+import": r"from \1 import",
+    Line 84: Non-canonical import: r"import\s+canonical_flow\..*\.(\w+)": r"import \1",
+    Line 88: Missing path setup for import: r"from egw_query_expansion.core.deterministic_router import",
+    Line 90: Missing path setup for import: r"from egw_query_expansion.core.immutable_context import",
+    Line 215: Missing path setup for import: "deterministic_router",  # Should be from egw_query_expansion.core
+
+📁 run_contract_validation.py
+  From imports:
+    Line 8: from pathlib
+    Line 10: from typing
+  Import statements:
+    Line 6: import ast
+    Line 7: import sys
+    Line 9: import re
+  ⚠️  Issues found:
+    Line 54: Non-canonical import: # Check for canonical_flow imports
+    Line 55: Non-canonical import: if "canonical_flow" in line and "import" in line:
+    Line 129: Non-canonical import: print("  2. Replace canonical_flow imports with direct canonical imports")
+
+📁 simple_contract_test.py
+  From imports:
+    Line 9: from pathlib
+    Line 15: from contract_system
+  Import statements:
+    Line 8: import sys
+  ✅ No issues found
+
+📁 tests/test_contract_validation.py
+  From imports:
+    Line 20: from pathlib
+    Line 21: from typing
+  Import statements:
+    Line 13: import importlib.util
+    Line 14: import inspect
+    Line 15: import json
+    Line 16: import sys
+    Line 17: import warnings
+    Line 18: import threading
+    Line 19: import time
+    Line 704: import pytest
+    Line 123: import datetime
+  ✅ No issues found
+
+📁 tests/test_routing_contract.py
+  From imports:
+    Line 3: from pathlib
+    Line 10: from egw_query_expansion.core.deterministic_router
+  Import statements:
+    Line 1: import unittest
+    Line 2: import sys
+  ✅ No issues found
+
+📁 tests/test_snapshot.py
+  From imports:
+    Line 14: from pathlib
+    Line 15: from unittest.mock
+    Line 28: from snapshot_manager
+    Line 194: from snapshot_manager
+  Import statements:
+    Line 8: import hashlib
+    Line 9: import json
+    Line 10: import os
+    Line 11: import tempfile
+    Line 12: import unittest
+    Line 13: import sys
+    Line 23: import blake3
+    Line 85: import snapshot_manager
+  ⚠️  Issues found:
+    Line 194: Missing path setup for import: from snapshot_manager import compute_snapshot_id
+
+📁 tests/test_snapshot_contract.py
+  From imports:
+    Line 3: from pathlib
+    Line 10: from snapshot_manager
+  Import statements:
+    Line 1: import unittest
+    Line 2: import sys
+  ✅ No issues found
+
+📁 tests/test_snapshot_integration.py
+  From imports:
+    Line 15: from pathlib
+    Line 20: from snapshot_manager
+    Line 21: from tools.certificate_generator
+  Import statements:
+    Line 12: import subprocess
+    Line 13: import sys
+    Line 14: import json
+  ✅ No issues found
+
+📁 validate_contract_imports.py
+  From imports:
+    Line 7: from pathlib
+    Line 17: from snapshot_manager
+    Line 33: from egw_query_expansion.core.deterministic_router
+    Line 46: from egw_query_expansion.core.immutable_context
+  Import statements:
+    Line 6: import sys
+  ⚠️  Issues found:
+    Line 33: Missing path setup for import: from egw_query_expansion.core.deterministic_router import (
+    Line 46: Missing path setup for import: from egw_query_expansion.core.immutable_context import (
+
+==================================================
+📊 Summary: 11 total issues found
+
+🔧 Issues to fix:
+  - contracts_validation_utility.py: Line 83: Non-canonical import: r"from\s+canonical_flow\..*\.(\w+)\s+import": r"from \1 import",
+  - contracts_validation_utility.py: Line 84: Non-canonical import: r"import\s+canonical_flow\..*\.(\w+)": r"import \1",
+  - contracts_validation_utility.py: Line 88: Missing path setup for import: r"from egw_query_expansion.core.deterministic_router import",
+  - contracts_validation_utility.py: Line 90: Missing path setup for import: r"from egw_query_expansion.core.immutable_context import",
+  - contracts_validation_utility.py: Line 215: Missing path setup for import: "deterministic_router",  # Should be from egw_query_expansion.core
+  - run_contract_validation.py: Line 54: Non-canonical import: # Check for canonical_flow imports
+  - run_contract_validation.py: Line 55: Non-canonical import: if "canonical_flow" in line and "import" in line:
+  - run_contract_validation.py: Line 129: Non-canonical import: print("  2. Replace canonical_flow imports with direct canonical imports")
+  - tests/test_snapshot.py: Line 194: Missing path setup for import: from snapshot_manager import compute_snapshot_id
+  - validate_contract_imports.py: Line 33: Missing path setup for import: from egw_query_expansion.core.deterministic_router import (
+  - validate_contract_imports.py: Line 46: Missing path setup for import: from egw_query_expansion.core.immutable_context import (
+
+💡 Recommended fixes:
+  1. Add canonical path setup to files missing it:
+     ```python
+     import sys
+     from pathlib import Path
+     project_root = Path(__file__).resolve().parents[1]
+     if str(project_root) not in sys.path:
+         sys.path.insert(0, str(project_root))
+     ```
+  2. Replace canonical_flow imports with direct canonical imports
+  3. Use egw_query_expansion.core.* for core modules
+

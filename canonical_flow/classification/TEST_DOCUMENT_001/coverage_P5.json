@@ -1,0 +1,76 @@
+{
+  "document_id": "TEST_DOCUMENT_001",
+  "point_number": 5,
+  "point_name": "Derechos de las víctimas y construcción de paz",
+  "total_expected_questions": 47,
+  "dimensions": {
+    "DE-1": {
+      "expected_count": 6,
+      "actual_answered": 6,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_05_DE-1_9c1bcb93",
+        "DQ_05_DE-1_48b85354",
+        "DQ_05_DE-1_52502e90",
+        "DQ_05_DE-1_d4963156",
+        "DQ_05_DE-1_1a8791b6",
+        "DQ_05_DE-1_bfb5d59e"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-2": {
+      "expected_count": 21,
+      "actual_answered": 6,
+      "completion_percentage": 28.57142857142857,
+      "has_gap": true,
+      "gap_size": 15,
+      "answered_questions": [
+        "DQ_05_DE-2_71603479",
+        "DQ_05_DE-2_440bbf89",
+        "DQ_05_DE-2_2186c53b",
+        "DQ_05_DE-2_7b51b966",
+        "DQ_05_DE-2_c63d55d2",
+        "DQ_05_DE-2_5da05c6c"
+      ],
+      "unanswered_count": 15
+    },
+    "DE-3": {
+      "expected_count": 8,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 8,
+      "answered_questions": [],
+      "unanswered_count": 8
+    },
+    "DE-4": {
+      "expected_count": 8,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 8,
+      "answered_questions": [],
+      "unanswered_count": 8
+    },
+    "GEN": {
+      "expected_count": 4,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 4,
+      "answered_questions": [],
+      "unanswered_count": 4
+    }
+  },
+  "summary": {
+    "total_answered": 12,
+    "completion_percentage": 25.53191489361702,
+    "has_gaps": true,
+    "total_gaps": 35,
+    "dimensions_with_gaps": 4,
+    "fully_completed_dimensions": 1
+  },
+  "timestamp": "2025-08-26T22:10:35.774706"
+}

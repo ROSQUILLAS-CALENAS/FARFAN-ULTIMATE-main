@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "document_stem": "SAMPLE-TEST",
+    "artifact_type": "dimension_summaries",
+    "generated_timestamp": "2025-08-27T02:46:41.095657Z",
+    "total_dimensions": 1,
+    "dimensions_included": [
+      "DE-1"
+    ]
+  },
+  "dimension_summaries": {
+    "DE-1": {
+      "dimension_id": "DE-1",
+      "dimension_name": "Productos",
+      "weighted_average": 0.77,
+      "total_questions": 2,
+      "confidence_interval": {
+        "lower": 0.65,
+        "upper": 0.89
+      },
+      "aggregation_weights": {
+        "equal_weight": 1.0
+      },
+      "questions": [
+        {
+          "question_id": "DE-1-Q1",
+          "question_text": "Sample question 1?",
+          "response": "Sí",
+          "base_score": 1.0,
+          "evidence_completeness": 0.8,
+          "page_reference_quality": 0.9,
+          "final_score": 0.95,
+          "evidence_references": [
+            {
+              "evidence_id": "E001",
+              "source_type": "document",
+              "page_reference": "p. 15",
+              "text_excerpt": "Sample evidence text",
+              "confidence_score": 0.85
+            },
+            {
+              "evidence_id": "E002",
+              "source_type": "interview",
+              "page_reference": "p. 23",
+              "text_excerpt": "Additional evidence",
+              "confidence_score": 0.92
+            }
+          ]
+        },
+        {
+          "question_id": "DE-1-Q2",
+          "question_text": "Sample question 2?",
+          "response": "Parcial",
+          "base_score": 0.5,
+          "evidence_completeness": 0.6,
+          "page_reference_quality": 0.7,
+          "final_score": 0.58,
+          "evidence_references": [
+            {
+              "evidence_id": "E001",
+              "source_type": "document",
+              "page_reference": "p. 15",
+              "text_excerpt": "Sample evidence text",
+              "confidence_score": 0.85
+            },
+            {
+              "evidence_id": "E002",
+              "source_type": "interview",
+              "page_reference": "p. 23",
+              "text_excerpt": "Additional evidence",
+              "confidence_score": 0.92
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

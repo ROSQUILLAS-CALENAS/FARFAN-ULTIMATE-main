@@ -1,0 +1,280 @@
+{
+  "alert_rules": [
+    {
+      "rule_id": "high_error_rate",
+      "name": "High Error Rate",
+      "description": "Alert when error rate exceeds thresholds per stage",
+      "stage_filter": null,
+      "thresholds": [
+        {
+          "metric_name": "error_rate",
+          "operator": ">=",
+          "value": 5.0,
+          "window_minutes": 5,
+          "consecutive_breaches": 2,
+          "severity": "warning"
+        },
+        {
+          "metric_name": "error_rate",
+          "operator": ">=",
+          "value": 10.0,
+          "window_minutes": 5,
+          "consecutive_breaches": 1,
+          "severity": "critical"
+        }
+      ],
+      "enabled": true,
+      "escalation_minutes": 30,
+      "max_alerts_per_hour": 10,
+      "notification_channels": ["email", "slack"]
+    },
+    {
+      "rule_id": "slow_processing",
+      "name": "Slow Processing Time",
+      "description": "Alert when average processing time exceeds thresholds",
+      "stage_filter": null,
+      "thresholds": [
+        {
+          "metric_name": "processing_time_avg",
+          "operator": ">=",
+          "value": 5.0,
+          "window_minutes": 10,
+          "consecutive_breaches": 3,
+          "severity": "warning"
+        },
+        {
+          "metric_name": "processing_time_avg",
+          "operator": ">=",
+          "value": 10.0,
+          "window_minutes": 5,
+          "consecutive_breaches": 2,
+          "severity": "critical"
+        }
+      ],
+      "enabled": true,
+      "escalation_minutes": 45,
+      "max_alerts_per_hour": 8,
+      "notification_channels": ["email"]
+    },
+    {
+      "rule_id": "schema_compliance_drop",
+      "name": "Low Schema Compliance",
+      "description": "Alert when schema compliance rate drops below acceptable levels",
+      "stage_filter": null,
+      "thresholds": [
+        {
+          "metric_name": "schema_compliance_rate",
+          "operator": "<=",
+          "value": 95.0,
+          "window_minutes": 15,
+          "consecutive_breaches": 2,
+          "severity": "warning"
+        },
+        {
+          "metric_name": "schema_compliance_rate",
+          "operator": "<=",
+          "value": 90.0,
+          "window_minutes": 10,
+          "consecutive_breaches": 1,
+          "severity": "critical"
+        }
+      ],
+      "enabled": true,
+      "escalation_minutes": 20,
+      "max_alerts_per_hour": 5,
+      "notification_channels": ["email", "slack"]
+    },
+    {
+      "rule_id": "data_integrity_failures",
+      "name": "Data Integrity Issues",
+      "description": "Alert when checksum validation or data integrity checks fail",
+      "stage_filter": null,
+      "thresholds": [
+        {
+          "metric_name": "checksum_matches",
+          "operator": "<=",
+          "value": 98.0,
+          "window_minutes": 15,
+          "consecutive_breaches": 2,
+          "severity": "warning"
+        },
+        {
+          "metric_name": "checksum_matches",
+          "operator": "<=",
+          "value": 95.0,
+          "window_minutes": 10,
+          "consecutive_breaches": 1,
+          "severity": "critical"
+        }
+      ],
+      "enabled": true,
+      "escalation_minutes": 25,
+      "max_alerts_per_hour": 6,
+      "notification_channels": ["email", "slack"]
+    },
+    {
+      "rule_id": "high_memory_usage",
+      "name": "High System Memory Usage",
+      "description": "Alert when system memory usage exceeds safe thresholds",
+      "stage_filter": "system",
+      "thresholds": [
+        {
+          "metric_name": "memory_usage",
+          "operator": ">=",
+          "value": 80.0,
+          "window_minutes": 5,
+          "consecutive_breaches": 3,
+          "severity": "warning"
+        },
+        {
+          "metric_name": "memory_usage",
+          "operator": ">=",
+          "value": 90.0,
+          "window_minutes": 3,
+          "consecutive_breaches": 2,
+          "severity": "critical"
+        },
+        {
+          "metric_name": "memory_usage",
+          "operator": ">=",
+          "value": 95.0,
+          "window_minutes": 1,
+          "consecutive_breaches": 1,
+          "severity": "emergency"
+        }
+      ],
+      "enabled": true,
+      "escalation_minutes": 15,
+      "max_alerts_per_hour": 12,
+      "notification_channels": ["email", "slack", "webhook"]
+    },
+    {
+      "rule_id": "pipeline_throughput_drop",
+      "name": "Pipeline Throughput Drop",
+      "description": "Alert when overall pipeline throughput drops significantly",
+      "stage_filter": null,
+      "thresholds": [
+        {
+          "metric_name": "throughput",
+          "operator": "<=",
+          "value": 30.0,
+          "window_minutes": 20,
+          "consecutive_breaches": 2,
+          "severity": "warning"
+        },
+        {
+          "metric_name": "throughput",
+          "operator": "<=",
+          "value": 20.0,
+          "window_minutes": 10,
+          "consecutive_breaches": 1,
+          "severity": "critical"
+        }
+      ],
+      "enabled": true,
+      "escalation_minutes": 30,
+      "max_alerts_per_hour": 4,
+      "notification_channels": ["email", "slack"]
+    },
+    {
+      "rule_id": "validation_failure_spike",
+      "name": "Validation Failure Spike",
+      "description": "Alert when validation failures spike across stages",
+      "stage_filter": null,
+      "thresholds": [
+        {
+          "metric_name": "validation_failures",
+          "operator": ">=",
+          "value": 10,
+          "window_minutes": 15,
+          "consecutive_breaches": 2,
+          "severity": "warning"
+        },
+        {
+          "metric_name": "validation_failures",
+          "operator": ">=",
+          "value": 25,
+          "window_minutes": 10,
+          "consecutive_breaches": 1,
+          "severity": "critical"
+        }
+      ],
+      "enabled": true,
+      "escalation_minutes": 35,
+      "max_alerts_per_hour": 6,
+      "notification_channels": ["email"]
+    },
+    {
+      "rule_id": "stage_failure_cascade",
+      "name": "Stage Failure Cascade",
+      "description": "Alert when multiple pipeline stages report errors simultaneously",
+      "stage_filter": null,
+      "thresholds": [
+        {
+          "metric_name": "failed_stages_count",
+          "operator": ">=",
+          "value": 3,
+          "window_minutes": 5,
+          "consecutive_breaches": 1,
+          "severity": "critical"
+        },
+        {
+          "metric_name": "failed_stages_count",
+          "operator": ">=",
+          "value": 5,
+          "window_minutes": 3,
+          "consecutive_breaches": 1,
+          "severity": "emergency"
+        }
+      ],
+      "enabled": true,
+      "escalation_minutes": 10,
+      "max_alerts_per_hour": 3,
+      "notification_channels": ["email", "slack", "webhook"]
+    }
+  ],
+  "notification_channels": [
+    {
+      "type": "email",
+      "channel_id": "email",
+      "config": {
+        "smtp_server": "localhost",
+        "smtp_port": 587,
+        "from_email": "pipeline-alerts@company.com",
+        "to_emails": [
+          "devops@company.com",
+          "pipeline-admin@company.com"
+        ],
+        "username": null,
+        "password": null
+      }
+    },
+    {
+      "type": "slack",
+      "channel_id": "slack",
+      "config": {
+        "webhook_url": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
+        "channel": "#pipeline-alerts"
+      }
+    },
+    {
+      "type": "webhook",
+      "channel_id": "webhook",
+      "config": {
+        "url": "https://your-monitoring-system.com/api/alerts",
+        "headers": {
+          "Authorization": "Bearer YOUR_API_TOKEN",
+          "Content-Type": "application/json"
+        },
+        "timeout": 10
+      }
+    }
+  ],
+  "global_settings": {
+    "default_escalation_minutes": 30,
+    "default_max_alerts_per_hour": 10,
+    "alert_retention_days": 30,
+    "enable_alert_deduplication": true,
+    "minimum_silence_period_minutes": 5
+  }
+}

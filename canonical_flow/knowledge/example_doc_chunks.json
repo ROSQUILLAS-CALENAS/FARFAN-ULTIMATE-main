@@ -1,0 +1,52 @@
+{
+  "chunks": [
+    {
+      "chunk_id": "chunk_fbd73df33815d668871291489ea3b1b71e1257066cff41c884a40f8d6e",
+      "content": "Example Document\n\nThis is the first paragraph with some sample content. It contains multiple sentences to demonstrate chunking. This is the second paragraph. It also has multiple sentences for testing purposes. This is the third paragraph with additional content for comprehensive testing.",
+      "metadata": {
+        "chunk_index": 0,
+        "creation_timestamp": "2025-08-26T21:47:56.964649",
+        "paragraph_count": 2,
+        "policy": "sentence_boundaries",
+        "provenance": {
+          "character_offsets": [
+            0,
+            289
+          ],
+          "document_stem": "example_doc",
+          "processing_timestamp": "2025-08-26T21:47:56.964639",
+          "section_path": [],
+          "source_document": "example_doc",
+          "source_hash": "example_hash"
+        },
+        "sentence_count": 5,
+        "source_bundle_id": "example_bundle_123",
+        "token_count": 42,
+        "total_chunks": 1
+      },
+      "page_anchors": [
+        {
+          "end_char": 289,
+          "page_number": 1,
+          "page_text_hash": "page_ca43f759edc32ac8d4800f34566da8ba9315b62af30adf15fa29052f0a7",
+          "start_char": 0
+        }
+      ]
+    }
+  ],
+  "component_metadata": {
+    "class_name": "ChunkingProcessor",
+    "component_id": "comp_64e48b717b47d671f3ec46bc2f72917445c58b8ada67074c7cb98ccc034",
+    "component_name": "ChunkingProcessor",
+    "creation_timestamp": "2025-08-26T21:47:56.964215",
+    "last_operation_id": "op_74b22af18f8655945cb4ba6f82150a012ee34241342bfbe5efffd58ba0ffa",
+    "state_hash": "state_26d8776d2fb701e57a41e5d9a2b05f74b7dda562061e89b01711adfd4a"
+  },
+  "document_stem": "example_doc",
+  "summary": {
+    "chunking_policy": "sentence_boundaries",
+    "processing_timestamp": "2025-08-26T21:47:56.964726",
+    "total_chunks": 1,
+    "total_tokens": 42
+  }
+}

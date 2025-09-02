@@ -1,0 +1,1192 @@
+[
+  {
+    "document_id": "doc_0000",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0001",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0002",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0003",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0004",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0005",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0006",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0007",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0008",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0009",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0010",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0011",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0012",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0013",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0014",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0015",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0016",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0017",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0018",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0019",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0020",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0021",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0022",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0023",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0024",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0025",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0026",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0027",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0028",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0029",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0030",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0031",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0032",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0033",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0034",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0035",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0036",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0037",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0038",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0039",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0040",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0041",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0042",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0043",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0044",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0045",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0046",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0047",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0048",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0049",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0050",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0051",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0052",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0053",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0054",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0055",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0056",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0057",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0058",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0059",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0060",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0061",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0062",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0063",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0064",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0065",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0066",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0067",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0068",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0069",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0070",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0071",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0072",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0073",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0074",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0075",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0076",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0077",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0078",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0079",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0080",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0081",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0082",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0083",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0084",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0085",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0086",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0087",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0088",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0089",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0090",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0091",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0092",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0093",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0094",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0095",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0096",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0097",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0098",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0099",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0100",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0101",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0102",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0103",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0104",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0105",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0106",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0107",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0108",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0109",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0110",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0111",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0112",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0113",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0114",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0115",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0116",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0117",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0118",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0119",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0120",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0121",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0122",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0123",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0124",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0125",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0126",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0127",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0128",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0129",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0130",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0131",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0132",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0133",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0134",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0135",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0136",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0137",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0138",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0139",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0140",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0141",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0142",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0143",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0144",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0145",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0146",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0147",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0148",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0149",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0150",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0151",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0152",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0153",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0154",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0155",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0156",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0157",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0158",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0159",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0160",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0161",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0162",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0163",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0164",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0165",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0166",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0167",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0168",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  },
+  {
+    "document_id": "doc_0169",
+    "success": false,
+    "error": "Executor error: Can't pickle <function process_document at 0x1314b7ce0>: import of module 'module_distributed_processor' failed",
+    "processing_time": 0.0,
+    "memory_used": 0.0
+  }
+]

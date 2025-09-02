@@ -1,0 +1,86 @@
+{
+  "plan": "municipal_development_plan.pdf",
+  "checkpoints_passed": [],
+  "compliance_reports": [
+    {
+      "checkpoint": "checkpoint_1_mapeo",
+      "compliant": false,
+      "report": {
+        "process": "feature_extractor.py",
+        "compliant": false,
+        "standards_checked": [
+          "improved_mapeo.py"
+        ],
+        "violations": [
+          {
+            "standard": "improved_mapeo.py",
+            "criterion": "spatial_coverage",
+            "required": 1.0,
+            "actual": 0,
+            "severity": "CRITICAL"
+          },
+          {
+            "standard": "improved_mapeo.py",
+            "criterion": "sectoral_completeness",
+            "required": 0.95,
+            "actual": 0,
+            "severity": "CRITICAL"
+          },
+          {
+            "standard": "improved_mapeo.py",
+            "criterion": "mapping_accuracy",
+            "required": 0.9,
+            "actual": 0,
+            "severity": "CRITICAL"
+          },
+          {
+            "standard": "improved_mapeo.py",
+            "criterion": "standard_compliance",
+            "required": 0.85,
+            "actual": 0,
+            "severity": "CRITICAL"
+          },
+          {
+            "standard": "improved_mapeo.py",
+            "rule": "Custom validation rule failed",
+            "severity": "CRITICAL"
+          },
+          {
+            "standard": "improved_mapeo.py",
+            "rule": "Custom validation rule failed",
+            "severity": "CRITICAL"
+          },
+          {
+            "standard": "improved_mapeo.py",
+            "rule": "Custom validation rule failed",
+            "severity": "CRITICAL"
+          }
+        ],
+        "remediation_required": [
+          {
+            "action": "Increase spatial_coverage from 0 to 1.0",
+            "standard": "improved_mapeo.py",
+            "mandatory": true
+          },
+          {
+            "action": "Increase sectoral_completeness from 0 to 0.95",
+            "standard": "improved_mapeo.py",
+            "mandatory": true
+          },
+          {
+            "action": "Increase mapping_accuracy from 0 to 0.9",
+            "standard": "improved_mapeo.py",
+            "mandatory": true
+          },
+          {
+            "action": "Increase standard_compliance from 0 to 0.85",
+            "standard": "improved_mapeo.py",
+            "mandatory": true
+          }
+        ]
+      }
+    }
+  ],
+  "final_output": null,
+  "governance_status": "FAILED"
+}

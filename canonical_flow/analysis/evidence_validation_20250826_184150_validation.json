@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "processing_time": 6.008148193359375e-05,
+    "model_status": "model_based",
+    "timestamp": "2025-08-26T18:41:50.652187",
+    "total_evidence": 3,
+    "errors": []
+  },
+  "summary": {
+    "total_evidence": 3,
+    "validation_rate": 0.0,
+    "average_validation_score": 0.0,
+    "average_dnp_score": 0.0,
+    "severity_distribution": {
+      "critical": 3,
+      "warning": 0,
+      "info": 0
+    },
+    "top_violations": [
+      {
+        "violation": "validation_error: 'NoneType' object has no attribute 'isoformat'",
+        "count": 3
+      }
+    ]
+  },
+  "results": [
+    {
+      "evidence_id": "evidence_001",
+      "is_valid": false,
+      "validation_score": 0.0,
+      "dnp_compliance_score": 0.0,
+      "validation_messages": [
+        "Validation error: 'NoneType' object has no attribute 'isoformat'"
+      ],
+      "severity_level": "critical",
+      "timestamp": "2025-08-26T18:41:50.652090",
+      "traceability_id": null,
+      "rule_violations": [
+        "validation_error: 'NoneType' object has no attribute 'isoformat'"
+      ]
+    },
+    {
+      "evidence_id": "evidence_002",
+      "is_valid": false,
+      "validation_score": 0.0,
+      "dnp_compliance_score": 0.0,
+      "validation_messages": [
+        "Validation error: 'NoneType' object has no attribute 'isoformat'"
+      ],
+      "severity_level": "critical",
+      "timestamp": "2025-08-26T18:41:50.652111",
+      "traceability_id": null,
+      "rule_violations": [
+        "validation_error: 'NoneType' object has no attribute 'isoformat'"
+      ]
+    },
+    {
+      "evidence_id": "evidence_003",
+      "is_valid": false,
+      "validation_score": 0.0,
+      "dnp_compliance_score": 0.0,
+      "validation_messages": [
+        "Validation error: 'NoneType' object has no attribute 'isoformat'"
+      ],
+      "severity_level": "critical",
+      "timestamp": "2025-08-26T18:41:50.652121",
+      "traceability_id": null,
+      "rule_violations": [
+        "validation_error: 'NoneType' object has no attribute 'isoformat'"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1970 @@
+{
+  "decalogo_point": 4,
+  "point_name": "Punto 4",
+  "total_questions": 47,
+  "generation_timestamp": "2025-01-20T10:00:00Z",
+  "dimensions": {
+    "DE-1": [
+      {
+        "question_id": "DE1_P4_Q1",
+        "question_text": "Pregunta 1 para Punto 4 Dimensión DE1",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q1_E1",
+            "page_num": 23,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.89,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE1_P4_Q1_E2",
+            "page_num": 153,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.61,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE1_P4_Q1_E3",
+            "page_num": 100,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.81,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q2",
+        "question_text": "Pregunta 2 para Punto 4 Dimensión DE1",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q2_E1",
+            "page_num": 100,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.75,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE1_P4_Q2_E2",
+            "page_num": 129,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.69,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q2_E3",
+            "page_num": 18,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.81,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q3",
+        "question_text": "Pregunta 3 para Punto 4 Dimensión DE1",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q3_E1",
+            "page_num": 45,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.92,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q3_E2",
+            "page_num": 104,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.97,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE1_P4_Q3_E3",
+            "page_num": 188,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.77,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q4",
+        "question_text": "Pregunta 4 para Punto 4 Dimensión DE1",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q4_E1",
+            "page_num": 54,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.98,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE1_P4_Q4_E2",
+            "page_num": 154,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.74,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE1_P4_Q4_E3",
+            "page_num": 84,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.83,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q5",
+        "question_text": "Pregunta 5 para Punto 4 Dimensión DE1",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q5_E1",
+            "page_num": 165,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.71,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE1_P4_Q5_E2",
+            "page_num": 86,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.76,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q5_E3",
+            "page_num": 145,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.82,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE1_P4_Q5_E4",
+            "page_num": 77,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.73,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q6",
+        "question_text": "Pregunta 6 para Punto 4 Dimensión DE1",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q6_E1",
+            "page_num": 53,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.94,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE1_P4_Q6_E2",
+            "page_num": 122,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.61,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q6_E3",
+            "page_num": 53,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.77,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q6_E4",
+            "page_num": 64,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.66,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q7",
+        "question_text": "Pregunta 7 para Punto 4 Dimensión DE1",
+        "answer_classification": "No",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q7_E1",
+            "page_num": 19,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.64,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE1_P4_Q7_E2",
+            "page_num": 63,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.95,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q8",
+        "question_text": "Pregunta 8 para Punto 4 Dimensión DE1",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q8_E1",
+            "page_num": 159,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.96,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE1_P4_Q8_E2",
+            "page_num": 117,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.82,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q9",
+        "question_text": "Pregunta 9 para Punto 4 Dimensión DE1",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q9_E1",
+            "page_num": 101,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE1...",
+            "relevance_score": 1.0,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q9_E2",
+            "page_num": 72,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.9,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q9_E3",
+            "page_num": 58,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.77,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q10",
+        "question_text": "Pregunta 10 para Punto 4 Dimensión DE1",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q10_E1",
+            "page_num": 152,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.62,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE1_P4_Q10_E2",
+            "page_num": 43,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.75,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE1_P4_Q10_E3",
+            "page_num": 15,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.83,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q11",
+        "question_text": "Pregunta 11 para Punto 4 Dimensión DE1",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q11_E1",
+            "page_num": 162,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.67,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q11_E2",
+            "page_num": 48,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.94,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE1_P4_Q12",
+        "question_text": "Pregunta 12 para Punto 4 Dimensión DE1",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE1_P4_Q12_E1",
+            "page_num": 176,
+            "exact_text": "Evidencia textual específica para Pregunta 12 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.85,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE1_P4_Q12_E2",
+            "page_num": 181,
+            "exact_text": "Evidencia textual específica para Pregunta 12 para Punto 4 Dimensión DE1...",
+            "relevance_score": 0.9,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE1",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      }
+    ],
+    "DE-2": [
+      {
+        "question_id": "DE2_P4_Q1",
+        "question_text": "Pregunta 1 para Punto 4 Dimensión DE2",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q1_E1",
+            "page_num": 177,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.99,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q1_E2",
+            "page_num": 53,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.85,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE2_P4_Q1_E3",
+            "page_num": 85,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.9,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE2_P4_Q1_E4",
+            "page_num": 26,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.97,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q2",
+        "question_text": "Pregunta 2 para Punto 4 Dimensión DE2",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q2_E1",
+            "page_num": 10,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.73,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE2_P4_Q2_E2",
+            "page_num": 63,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.72,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE2_P4_Q2_E3",
+            "page_num": 193,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.84,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q3",
+        "question_text": "Pregunta 3 para Punto 4 Dimensión DE2",
+        "answer_classification": "No",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q3_E1",
+            "page_num": 10,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.69,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE2_P4_Q3_E2",
+            "page_num": 135,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.89,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q3_E3",
+            "page_num": 59,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.91,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q4",
+        "question_text": "Pregunta 4 para Punto 4 Dimensión DE2",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q4_E1",
+            "page_num": 47,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.9,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE2_P4_Q4_E2",
+            "page_num": 108,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.83,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE2_P4_Q4_E3",
+            "page_num": 187,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.93,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q5",
+        "question_text": "Pregunta 5 para Punto 4 Dimensión DE2",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q5_E1",
+            "page_num": 118,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.69,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q5_E2",
+            "page_num": 139,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.8,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q6",
+        "question_text": "Pregunta 6 para Punto 4 Dimensión DE2",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q6_E1",
+            "page_num": 58,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.77,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE2_P4_Q6_E2",
+            "page_num": 128,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.75,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q7",
+        "question_text": "Pregunta 7 para Punto 4 Dimensión DE2",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q7_E1",
+            "page_num": 173,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.97,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE2_P4_Q7_E2",
+            "page_num": 145,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.8,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE2_P4_Q7_E3",
+            "page_num": 130,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.86,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q7_E4",
+            "page_num": 63,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.63,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q8",
+        "question_text": "Pregunta 8 para Punto 4 Dimensión DE2",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q8_E1",
+            "page_num": 103,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.72,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q8_E2",
+            "page_num": 189,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.96,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE2_P4_Q8_E3",
+            "page_num": 142,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.82,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q9",
+        "question_text": "Pregunta 9 para Punto 4 Dimensión DE2",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q9_E1",
+            "page_num": 67,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.75,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q9_E2",
+            "page_num": 19,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.73,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE2_P4_Q9_E3",
+            "page_num": 130,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.62,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q9_E4",
+            "page_num": 153,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.72,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q10",
+        "question_text": "Pregunta 10 para Punto 4 Dimensión DE2",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q10_E1",
+            "page_num": 110,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.97,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE2_P4_Q10_E2",
+            "page_num": 140,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.97,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE2_P4_Q10_E3",
+            "page_num": 163,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.73,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q11",
+        "question_text": "Pregunta 11 para Punto 4 Dimensión DE2",
+        "answer_classification": "No",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q11_E1",
+            "page_num": 85,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.83,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE2_P4_Q11_E2",
+            "page_num": 188,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.69,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q11_E3",
+            "page_num": 128,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.63,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE2_P4_Q11_E4",
+            "page_num": 61,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.85,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE2_P4_Q12",
+        "question_text": "Pregunta 12 para Punto 4 Dimensión DE2",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE2_P4_Q12_E1",
+            "page_num": 163,
+            "exact_text": "Evidencia textual específica para Pregunta 12 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.81,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE2_P4_Q12_E2",
+            "page_num": 122,
+            "exact_text": "Evidencia textual específica para Pregunta 12 para Punto 4 Dimensión DE2...",
+            "relevance_score": 0.72,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE2",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      }
+    ],
+    "DE-3": [
+      {
+        "question_id": "DE3_P4_Q1",
+        "question_text": "Pregunta 1 para Punto 4 Dimensión DE3",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q1_E1",
+            "page_num": 195,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.96,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE3_P4_Q1_E2",
+            "page_num": 117,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.65,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE3_P4_Q1_E3",
+            "page_num": 88,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.61,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q2",
+        "question_text": "Pregunta 2 para Punto 4 Dimensión DE3",
+        "answer_classification": "No",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q2_E1",
+            "page_num": 32,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.88,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE3_P4_Q2_E2",
+            "page_num": 50,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.81,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE3_P4_Q2_E3",
+            "page_num": 137,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.76,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q3",
+        "question_text": "Pregunta 3 para Punto 4 Dimensión DE3",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q3_E1",
+            "page_num": 126,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.88,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE3_P4_Q3_E2",
+            "page_num": 157,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.92,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE3_P4_Q3_E3",
+            "page_num": 23,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.62,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q4",
+        "question_text": "Pregunta 4 para Punto 4 Dimensión DE3",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q4_E1",
+            "page_num": 90,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.62,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE3_P4_Q4_E2",
+            "page_num": 176,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.84,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE3_P4_Q4_E3",
+            "page_num": 139,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.66,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE3_P4_Q4_E4",
+            "page_num": 56,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.95,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q5",
+        "question_text": "Pregunta 5 para Punto 4 Dimensión DE3",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q5_E1",
+            "page_num": 25,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.7,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE3_P4_Q5_E2",
+            "page_num": 43,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.82,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q6",
+        "question_text": "Pregunta 6 para Punto 4 Dimensión DE3",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q6_E1",
+            "page_num": 30,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.74,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE3_P4_Q6_E2",
+            "page_num": 123,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.83,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE3_P4_Q6_E3",
+            "page_num": 180,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.85,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q7",
+        "question_text": "Pregunta 7 para Punto 4 Dimensión DE3",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q7_E1",
+            "page_num": 80,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.96,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE3_P4_Q7_E2",
+            "page_num": 28,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.72,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE3_P4_Q7_E3",
+            "page_num": 140,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.79,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE3_P4_Q7_E4",
+            "page_num": 60,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.66,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q8",
+        "question_text": "Pregunta 8 para Punto 4 Dimensión DE3",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q8_E1",
+            "page_num": 67,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.73,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE3_P4_Q8_E2",
+            "page_num": 117,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.72,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE3_P4_Q8_E3",
+            "page_num": 74,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.9,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE3_P4_Q8_E4",
+            "page_num": 79,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.85,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q9",
+        "question_text": "Pregunta 9 para Punto 4 Dimensión DE3",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q9_E1",
+            "page_num": 43,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.8,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE3_P4_Q9_E2",
+            "page_num": 105,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.91,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q10",
+        "question_text": "Pregunta 10 para Punto 4 Dimensión DE3",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q10_E1",
+            "page_num": 78,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.65,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE3_P4_Q10_E2",
+            "page_num": 29,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.92,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE3_P4_Q10_E3",
+            "page_num": 40,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.71,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q11",
+        "question_text": "Pregunta 11 para Punto 4 Dimensión DE3",
+        "answer_classification": "No",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q11_E1",
+            "page_num": 186,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.73,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE3_P4_Q11_E2",
+            "page_num": 196,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.9,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE3_P4_Q11_E3",
+            "page_num": 136,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.67,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE3_P4_Q12",
+        "question_text": "Pregunta 12 para Punto 4 Dimensión DE3",
+        "answer_classification": "No",
+        "evidence_items": [
+          {
+            "evidence_id": "DE3_P4_Q12_E1",
+            "page_num": 32,
+            "exact_text": "Evidencia textual específica para Pregunta 12 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.67,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE3_P4_Q12_E2",
+            "page_num": 112,
+            "exact_text": "Evidencia textual específica para Pregunta 12 para Punto 4 Dimensión DE3...",
+            "relevance_score": 0.62,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE3",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      }
+    ],
+    "DE-4": [
+      {
+        "question_id": "DE4_P4_Q1",
+        "question_text": "Pregunta 1 para Punto 4 Dimensión DE4",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q1_E1",
+            "page_num": 117,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.73,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE4_P4_Q1_E2",
+            "page_num": 23,
+            "exact_text": "Evidencia textual específica para Pregunta 1 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.69,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q2",
+        "question_text": "Pregunta 2 para Punto 4 Dimensión DE4",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q2_E1",
+            "page_num": 131,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.76,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE4_P4_Q2_E2",
+            "page_num": 191,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.62,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE4_P4_Q2_E3",
+            "page_num": 37,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.86,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE4_P4_Q2_E4",
+            "page_num": 136,
+            "exact_text": "Evidencia textual específica para Pregunta 2 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.85,
+            "evidence_type": "impact_measure"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q3",
+        "question_text": "Pregunta 3 para Punto 4 Dimensión DE4",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q3_E1",
+            "page_num": 52,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.89,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE4_P4_Q3_E2",
+            "page_num": 195,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.71,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE4_P4_Q3_E3",
+            "page_num": 155,
+            "exact_text": "Evidencia textual específica para Pregunta 3 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.96,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q4",
+        "question_text": "Pregunta 4 para Punto 4 Dimensión DE4",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q4_E1",
+            "page_num": 65,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.87,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE4_P4_Q4_E2",
+            "page_num": 145,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.62,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE4_P4_Q4_E3",
+            "page_num": 160,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.71,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE4_P4_Q4_E4",
+            "page_num": 164,
+            "exact_text": "Evidencia textual específica para Pregunta 4 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.81,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q5",
+        "question_text": "Pregunta 5 para Punto 4 Dimensión DE4",
+        "answer_classification": "Parcial",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q5_E1",
+            "page_num": 31,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.69,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE4_P4_Q5_E2",
+            "page_num": 81,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.88,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE4_P4_Q5_E3",
+            "page_num": 125,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.9,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE4_P4_Q5_E4",
+            "page_num": 162,
+            "exact_text": "Evidencia textual específica para Pregunta 5 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.77,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.5,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q6",
+        "question_text": "Pregunta 6 para Punto 4 Dimensión DE4",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q6_E1",
+            "page_num": 119,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.97,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE4_P4_Q6_E2",
+            "page_num": 45,
+            "exact_text": "Evidencia textual específica para Pregunta 6 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.7,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q7",
+        "question_text": "Pregunta 7 para Punto 4 Dimensión DE4",
+        "answer_classification": "No",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q7_E1",
+            "page_num": 93,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.71,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE4_P4_Q7_E2",
+            "page_num": 110,
+            "exact_text": "Evidencia textual específica para Pregunta 7 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.65,
+            "evidence_type": "policy_description"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q8",
+        "question_text": "Pregunta 8 para Punto 4 Dimensión DE4",
+        "answer_classification": "No",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q8_E1",
+            "page_num": 157,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.62,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE4_P4_Q8_E2",
+            "page_num": 14,
+            "exact_text": "Evidencia textual específica para Pregunta 8 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.99,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q9",
+        "question_text": "Pregunta 9 para Punto 4 Dimensión DE4",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q9_E1",
+            "page_num": 193,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.79,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE4_P4_Q9_E2",
+            "page_num": 146,
+            "exact_text": "Evidencia textual específica para Pregunta 9 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.65,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q10",
+        "question_text": "Pregunta 10 para Punto 4 Dimensión DE4",
+        "answer_classification": "Sí",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q10_E1",
+            "page_num": 174,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.89,
+            "evidence_type": "statistical_data"
+          },
+          {
+            "evidence_id": "DE4_P4_Q10_E2",
+            "page_num": 30,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.66,
+            "evidence_type": "impact_measure"
+          },
+          {
+            "evidence_id": "DE4_P4_Q10_E3",
+            "page_num": 101,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.8,
+            "evidence_type": "program_detail"
+          },
+          {
+            "evidence_id": "DE4_P4_Q10_E4",
+            "page_num": 51,
+            "exact_text": "Evidencia textual específica para Pregunta 10 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.92,
+            "evidence_type": "statistical_data"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 1.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      },
+      {
+        "question_id": "DE4_P4_Q11",
+        "question_text": "Pregunta 11 para Punto 4 Dimensión DE4",
+        "answer_classification": "NI",
+        "evidence_items": [
+          {
+            "evidence_id": "DE4_P4_Q11_E1",
+            "page_num": 66,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.91,
+            "evidence_type": "policy_description"
+          },
+          {
+            "evidence_id": "DE4_P4_Q11_E2",
+            "page_num": 21,
+            "exact_text": "Evidencia textual específica para Pregunta 11 para Punto 4 Dimensión DE4...",
+            "relevance_score": 0.69,
+            "evidence_type": "program_detail"
+          }
+        ],
+        "scoring": {
+          "numeric_score": 0.0,
+          "scale": "1.0/0.5/0.0",
+          "criteria": {}
+        },
+        "metadata": {
+          "dimension": "DE4",
+          "weight": 1.0,
+          "keywords": [
+            "mock",
+            "question"
+          ]
+        }
+      }
+    ]
+  },
+  "dimension_scores": {
+    "DE-1": {
+      "total_questions": 12,
+      "average_score": 0.5833333333333334,
+      "max_possible_score": 12,
+      "score_distribution": {
+        "1.0": 5,
+        "0.5": 4,
+        "0.0": 3
+      }
+    },
+    "DE-2": {
+      "total_questions": 12,
+      "average_score": 0.5416666666666666,
+      "max_possible_score": 12,
+      "score_distribution": {
+        "1.0": 4,
+        "0.5": 5,
+        "0.0": 3
+      }
+    },
+    "DE-3": {
+      "total_questions": 12,
+      "average_score": 0.3333333333333333,
+      "max_possible_score": 12,
+      "score_distribution": {
+        "1.0": 3,
+        "0.5": 2,
+        "0.0": 7
+      }
+    },
+    "DE-4": {
+      "total_questions": 11,
+      "average_score": 0.36363636363636365,
+      "max_possible_score": 11,
+      "score_distribution": {
+        "1.0": 3,
+        "0.5": 2,
+        "0.0": 6
+      }
+    }
+  },
+  "overall_score": 0.45549242424242425,
+  "metadata": {
+    "encoding": "UTF-8",
+    "format_version": "1.0",
+    "validator": "QuestionAnalyzer"
+  }
+}

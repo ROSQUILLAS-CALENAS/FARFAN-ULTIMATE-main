@@ -1,0 +1,51 @@
+🚀 EGW Query Expansion with Conformal Risk Control - Installation Validation
+======================================================================
+🔍 Testing module imports...
+✅ NumPy and SciPy imported successfully
+✅ PyTorch imported successfully
+✅ FAISS imported successfully
+✅ POT (Python Optimal Transport) imported successfully
+✅ Transformers and Sentence-Transformers imported successfully
+
+🧪 Testing basic functionality...
+✅ Basic NumPy operations work
+✅ Basic FAISS operations work
+✅ Basic POT operations work
+
+🎯 Testing EGW module imports...
+❌ EGW Modules failed with exception: unterminated triple-quoted string literal (detected at line 1129) (config_loader.py, line 1084)
+
+🔬 Testing Conformal Risk Control functionality...
+❌ Conformal functionality test failed: unterminated triple-quoted string literal (detected at line 1129) (config_loader.py, line 1084)
+
+⚙️  Testing configuration...
+✅ Configuration file loaded successfully
+   - Models configured: ['e5_model', 'splade_model', 'colbert_model', 'device']
+   - GW epsilon: 0.1
+
+📊 Validation Summary
+==================================================
+✅ PASS Import Tests
+✅ PASS Basic Functionality
+❌ FAIL EGW Modules
+❌ FAIL Conformal Functionality
+✅ PASS Configuration
+
+Overall: 3/5 tests passed
+⚠️  2 tests failed. Please check the installation.
+
+Traceback (most recent call last):
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/validate_installation.py", line 181, in test_conformal_functionality
+    from egw_query_expansion.core.conformal_risk_control import (
+    ...<3 lines>...
+    )
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/egw_query_expansion/core/__init__.py", line 27, in <module>
+    from .conformal_risk_control import (
+    ...<7 lines>...
+    )
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/egw_query_expansion/core/conformal_risk_control.py", line 37, in <module>
+    from config_loader import get_thresholds
+  File "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/config_loader.py", line 1084
+    """
+    ^
+SyntaxError: unterminated triple-quoted string literal (detected at line 1129)

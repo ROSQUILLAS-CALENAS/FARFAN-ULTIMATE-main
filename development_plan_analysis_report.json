@@ -1,0 +1,249 @@
+{
+  "execution_results": {
+    "phases": [
+      {
+        "sequence": 1,
+        "purpose": "Extract and validate development plan document",
+        "files_executed": [
+          "pdf_reader.py",
+          "advanced_loader.py",
+          "normative_validator.py"
+        ],
+        "value_before": 0.5,
+        "value_after": 0.7324999999999999,
+        "value_added": 0.23249999999999993,
+        "guarantee_status": false,
+        "guarantee_message": "Quality below threshold: 0.73",
+        "components_extracted": [
+          "DevelopmentPlanComponent.OBJECTIVES",
+          "DevelopmentPlanComponent.COMPLIANCE"
+        ]
+      },
+      {
+        "sequence": 2,
+        "purpose": "Build contextual understanding of the plan",
+        "files_executed": [
+          "immutable_context.py",
+          "context_adapter.py",
+          "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py"
+        ],
+        "value_before": 0.7324999999999999,
+        "value_after": 0.7324999999999999,
+        "value_added": 0.0,
+        "guarantee_status": false,
+        "guarantee_message": "Insufficient value increase: 0.00%",
+        "components_extracted": [
+          "DevelopmentPlanComponent.STRATEGIES",
+          "DevelopmentPlanComponent.STAKEHOLDERS"
+        ]
+      },
+      {
+        "sequence": 3,
+        "purpose": "Analyze causal relationships in the plan",
+        "files_executed": [
+          "causal_graph.py",
+          "causal_dnp_framework.py",
+          "Advanced Knowledge Graph Builder Component for Semantic Inference En"
+        ],
+        "value_before": 0.7324999999999999,
+        "value_after": 0.7413,
+        "value_added": 0.00880000000000003,
+        "guarantee_status": false,
+        "guarantee_message": "Insufficient value increase: 1.20%",
+        "components_extracted": [
+          "DevelopmentPlanComponent.IMPACT",
+          "DevelopmentPlanComponent.RISKS"
+        ]
+      },
+      {
+        "sequence": 4,
+        "purpose": "Score and evaluate plan components",
+        "files_executed": [
+          "adaptive_scoring_engine.py",
+          "score_calculator.py",
+          "conformal_risk_control.py",
+          "rubric_validator.py"
+        ],
+        "value_before": 0.7413,
+        "value_after": 0.7486,
+        "value_added": 0.007300000000000084,
+        "guarantee_status": false,
+        "guarantee_message": "Insufficient value increase: 0.98%",
+        "components_extracted": [
+          "DevelopmentPlanComponent.INDICATORS",
+          "DevelopmentPlanComponent.BUDGET"
+        ]
+      },
+      {
+        "sequence": 5,
+        "purpose": "Synthesize findings and generate reports",
+        "files_executed": [
+          "answer_synthesizer.py",
+          "report_compiler.py",
+          "analytics_enhancement.py"
+        ],
+        "value_before": 0.7486,
+        "value_after": 0.7486,
+        "value_added": 0.0,
+        "guarantee_status": false,
+        "guarantee_message": "Insufficient value increase: 0.00%",
+        "components_extracted": [
+          "DevelopmentPlanComponent.TIMELINES",
+          "DevelopmentPlanComponent.SUSTAINABILITY"
+        ]
+      }
+    ],
+    "components": {
+      "objectives": {},
+      "compliance": {},
+      "strategies": {},
+      "stakeholders": {},
+      "impact": {},
+      "risks": {},
+      "indicators": {},
+      "budget": {},
+      "timelines": {},
+      "sustainability": {}
+    },
+    "value_chain": [
+      {
+        "sequence": 1,
+        "value_before": 0.5,
+        "value_after": 0.7324999999999999,
+        "value_added": 0.23249999999999993,
+        "efficiency": 1.4649999999999999,
+        "components": [
+          "DevelopmentPlanComponent.OBJECTIVES",
+          "DevelopmentPlanComponent.COMPLIANCE"
+        ]
+      },
+      {
+        "sequence": 2,
+        "value_before": 0.7324999999999999,
+        "value_after": 0.7324999999999999,
+        "value_added": 0.0,
+        "efficiency": 1.0,
+        "components": [
+          "DevelopmentPlanComponent.STRATEGIES",
+          "DevelopmentPlanComponent.STAKEHOLDERS"
+        ],
+        "value_flow_efficiency": 0.0
+      },
+      {
+        "sequence": 3,
+        "value_before": 0.7324999999999999,
+        "value_after": 0.7413,
+        "value_added": 0.00880000000000003,
+        "efficiency": 1.0120136518771332,
+        "components": [
+          "DevelopmentPlanComponent.IMPACT",
+          "DevelopmentPlanComponent.RISKS"
+        ],
+        "value_flow_efficiency": 0.880000000000003
+      },
+      {
+        "sequence": 4,
+        "value_before": 0.7413,
+        "value_after": 0.7486,
+        "value_added": 0.007300000000000084,
+        "efficiency": 1.0098475650883585,
+        "components": [
+          "DevelopmentPlanComponent.INDICATORS",
+          "DevelopmentPlanComponent.BUDGET"
+        ],
+        "value_flow_efficiency": 0.7300000000000084
+      },
+      {
+        "sequence": 5,
+        "value_before": 0.7486,
+        "value_after": 0.7486,
+        "value_added": 0.0,
+        "efficiency": 1.0,
+        "components": [
+          "DevelopmentPlanComponent.TIMELINES",
+          "DevelopmentPlanComponent.SUSTAINABILITY"
+        ],
+        "value_flow_efficiency": 0.0
+      }
+    ],
+    "guarantees": [],
+    "total_value_added": 0.24860000000000004,
+    "analysis_quality": 0.7486
+  },
+  "metrics_history": [
+    {
+      "timestamp": "2025-08-23T23:47:58.982641",
+      "total_value_added": 0.24860000000000004,
+      "analysis_quality": 0.7486,
+      "phase_metrics": [
+        {
+          "sequence": 1,
+          "value_added": 0.23249999999999993,
+          "guarantee_status": false
+        },
+        {
+          "sequence": 2,
+          "value_added": 0.0,
+          "guarantee_status": false
+        },
+        {
+          "sequence": 3,
+          "value_added": 0.00880000000000003,
+          "guarantee_status": false
+        },
+        {
+          "sequence": 4,
+          "value_added": 0.007300000000000084,
+          "guarantee_status": false
+        },
+        {
+          "sequence": 5,
+          "value_added": 0.0,
+          "guarantee_status": false
+        }
+      ]
+    }
+  ],
+  "feedback_loops": [
+    {
+      "timestamp": "2025-08-23T23:47:58.982651",
+      "improvements": [
+        {
+          "phase": 2,
+          "recommendation": "Enhance processing algorithms",
+          "priority": "high"
+        },
+        {
+          "phase": 3,
+          "recommendation": "Enhance processing algorithms",
+          "priority": "high"
+        },
+        {
+          "phase": 4,
+          "recommendation": "Enhance processing algorithms",
+          "priority": "high"
+        },
+        {
+          "phase": 5,
+          "recommendation": "Enhance processing algorithms",
+          "priority": "high"
+        }
+      ]
+    }
+  ],
+  "recommendations": [
+    "Consider additional validation steps",
+    "Review and enhance processing pipeline",
+    "Missing data for objectives - review extraction",
+    "Missing data for compliance - review extraction",
+    "Missing data for strategies - review extraction",
+    "Missing data for stakeholders - review extraction",
+    "Missing data for impact - review extraction",
+    "Missing data for risks - review extraction",
+    "Missing data for indicators - review extraction",
+    "Missing data for budget - review extraction",
+    "Missing data for timelines - review extraction",
+    "Missing data for sustainability - review extraction"
+  ],
+  "quality_score": 0.39265714285714287
+}

@@ -1,0 +1,7 @@
+2025-08-26 21:36:32,710 - __main__ - INFO - Starting comprehensive validation system
+2025-08-26 21:36:32,710 - __main__ - INFO - Starting comprehensive validation test suite
+2025-08-26 21:36:32,711 - __main__ - ERROR - Error generating CI artifacts: 'execution_time_seconds'
+2025-08-26 21:36:32,711 - __main__ - ERROR - Critical error in validation system: 'execution_time_seconds'
+2025-08-26 21:38:47,432 - __main__ - INFO - Starting comprehensive validation system
+2025-08-26 21:38:47,433 - __main__ - INFO - Starting comprehensive validation test suite
+2025-08-26 21:38:47,438 - __main__ - ERROR - Critical error in validation system: [Errno 28] No space left on device: 'validation_reports/validation_summary.json'

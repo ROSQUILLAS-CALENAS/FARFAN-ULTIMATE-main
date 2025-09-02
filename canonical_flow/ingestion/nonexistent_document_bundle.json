@@ -1,0 +1,22 @@
+{
+  "bundle_id": "bundle_9b8ebda07426b703fbf012a044214348a9446f156b10f82c18596cc43",
+  "content_metadata": {
+    "content_type": "application/json",
+    "file_path": null,
+    "file_size": null
+  },
+  "document_content": {},
+  "document_hash": null,
+  "document_stem": "nonexistent_document",
+  "encoding_info": {
+    "charset_detection": {},
+    "output_encoding": "utf-8"
+  },
+  "error_details": {
+    "error_message": "Text file not found for document stem 'nonexistent_document': Text file not found: canonical_flow/ingestion/nonexistent_document_text.json",
+    "has_errors": true
+  },
+  "processing_status": "error",
+  "processing_timestamp": "2025-08-27T02:04:31.682676+00:00",
+  "schema_version": "1.0"
+}

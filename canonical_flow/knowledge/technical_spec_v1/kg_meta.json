@@ -1,0 +1,28 @@
+{
+  "document_id": "technical_spec_v1",
+  "processing_timestamp": "2025-08-26T22:04:34.196158",
+  "processing_duration_seconds": 0.001066,
+  "total_nodes": 5,
+  "total_edges": 0,
+  "validation_errors": [],
+  "validation_warnings": 0,
+  "chunks_processed": 2,
+  "ontology_version": "1.0.0",
+  "extraction_methods": [
+    "regex_pattern"
+  ],
+  "confidence_distribution": {
+    "mean": 0.75,
+    "min": 0.75,
+    "max": 0.75
+  },
+  "validation_status": "PASSED",
+  "output_files": {
+    "nodes_file": "kg_nodes.json",
+    "edges_file": "kg_edges.json",
+    "metadata_file": "kg_meta.json"
+  },
+  "schema_version": "1.0.0",
+  "generator": "AdvancedKnowledgeGraphBuilder",
+  "generator_version": "4.0.0"
+}

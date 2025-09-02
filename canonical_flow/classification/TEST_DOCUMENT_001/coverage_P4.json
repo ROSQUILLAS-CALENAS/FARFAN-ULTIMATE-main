@@ -1,0 +1,114 @@
+{
+  "document_id": "TEST_DOCUMENT_001",
+  "point_number": 4,
+  "point_name": "Derecho humano a la salud",
+  "total_expected_questions": 47,
+  "dimensions": {
+    "DE-1": {
+      "expected_count": 6,
+      "actual_answered": 6,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_04_DE-1_71daf764",
+        "DQ_04_DE-1_a5309224",
+        "DQ_04_DE-1_5f3b1f51",
+        "DQ_04_DE-1_48f397b5",
+        "DQ_04_DE-1_79e713cf",
+        "DQ_04_DE-1_d9b1c5ec"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-2": {
+      "expected_count": 21,
+      "actual_answered": 21,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_04_DE-2_fbacf21d",
+        "DQ_04_DE-2_b5a08986",
+        "DQ_04_DE-2_34040b8f",
+        "DQ_04_DE-2_469cec09",
+        "DQ_04_DE-2_cc94dfe8",
+        "DQ_04_DE-2_980ce149",
+        "DQ_04_DE-2_34812ae7",
+        "DQ_04_DE-2_792f690d",
+        "DQ_04_DE-2_e921a13d",
+        "DQ_04_DE-2_f40208f9",
+        "DQ_04_DE-2_792e602e",
+        "DQ_04_DE-2_85dad5a5",
+        "DQ_04_DE-2_7adc0b3e",
+        "DQ_04_DE-2_89ccbc56",
+        "DQ_04_DE-2_6d411248",
+        "DQ_04_DE-2_4e37d008",
+        "DQ_04_DE-2_29613b07",
+        "DQ_04_DE-2_1049f7d7",
+        "DQ_04_DE-2_44c09473",
+        "DQ_04_DE-2_e53940ac",
+        "DQ_04_DE-2_093ae804"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-3": {
+      "expected_count": 8,
+      "actual_answered": 8,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_04_DE-3_5b7fbe83",
+        "DQ_04_DE-3_46663cb3",
+        "DQ_04_DE-3_facc9e29",
+        "DQ_04_DE-3_fabc0d5a",
+        "DQ_04_DE-3_9181b8ea",
+        "DQ_04_DE-3_25f600e1",
+        "DQ_04_DE-3_3f278589",
+        "DQ_04_DE-3_0f0678d5"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-4": {
+      "expected_count": 8,
+      "actual_answered": 8,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_04_DE-4_12328807",
+        "DQ_04_DE-4_6a4d260d",
+        "DQ_04_DE-4_11e97669",
+        "DQ_04_DE-4_c5b7495c",
+        "DQ_04_DE-4_57eec200",
+        "DQ_04_DE-4_1cb41f32",
+        "DQ_04_DE-4_eaecf52f",
+        "DQ_04_DE-4_8325826f"
+      ],
+      "unanswered_count": 0
+    },
+    "GEN": {
+      "expected_count": 4,
+      "actual_answered": 4,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_04_GEN_60ef496e",
+        "DQ_04_GEN_06ac4366",
+        "DQ_04_GEN_8cf76a7b",
+        "DQ_04_GEN_c637221b"
+      ],
+      "unanswered_count": 0
+    }
+  },
+  "summary": {
+    "total_answered": 47,
+    "completion_percentage": 100.0,
+    "has_gaps": false,
+    "total_gaps": 0,
+    "dimensions_with_gaps": 0,
+    "fully_completed_dimensions": 5
+  },
+  "timestamp": "2025-08-26T22:10:35.760733"
+}

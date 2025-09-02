@@ -1,0 +1,291 @@
+{
+  "clusters": {
+    "C1": {
+      "cluster_id": "C1",
+      "components_addressed": [
+        "OBJECTIVES",
+        "TIMELINES"
+      ],
+      "contradiction_analysis": {
+        "contradiction_details": [],
+        "contradictions_by_severity": {
+          "HIGH": 0,
+          "LOW": 0,
+          "MEDIUM": 0
+        },
+        "total_contradictions": 0
+      },
+      "coverage_metrics": {
+        "answered_percentage": 100.0,
+        "answered_question_ids": [
+          "Q1"
+        ],
+        "answered_questions": 1,
+        "total_questions": 1,
+        "unanswered_questions": 0
+      },
+      "decalogo_points": [
+        1,
+        5,
+        8
+      ],
+      "evidence_aggregation": {
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "evidence_items": [],
+        "page_references": {
+          "individual_pages": [],
+          "page_ranges": [],
+          "total_pages": 0
+        },
+        "total_evidence_count": 0
+      },
+      "processing_metadata": {
+        "answers_processed": 1,
+        "invalid_answers": 0
+      },
+      "scoring_metrics": {
+        "max_score": 0.8,
+        "min_score": 0.8,
+        "score_count": 1,
+        "simple_average": 0.8,
+        "total_weight": 1.5,
+        "weighted_average": 0.8000000000000002
+      },
+      "total_answers": 1
+    },
+    "C2": {
+      "cluster_id": "C2",
+      "components_addressed": [
+        "STRATEGIES"
+      ],
+      "contradiction_analysis": {
+        "contradiction_details": [],
+        "contradictions_by_severity": {
+          "HIGH": 0,
+          "LOW": 0,
+          "MEDIUM": 0
+        },
+        "total_contradictions": 0
+      },
+      "coverage_metrics": {
+        "answered_percentage": 100.0,
+        "answered_question_ids": [
+          "Q1"
+        ],
+        "answered_questions": 1,
+        "total_questions": 1,
+        "unanswered_questions": 0
+      },
+      "decalogo_points": [
+        2,
+        3,
+        4
+      ],
+      "evidence_aggregation": {
+        "evidence_ids": [
+          "E3"
+        ],
+        "evidence_items": [],
+        "page_references": {
+          "individual_pages": [],
+          "page_ranges": [],
+          "total_pages": 0
+        },
+        "total_evidence_count": 0
+      },
+      "processing_metadata": {
+        "answers_processed": 1,
+        "invalid_answers": 0
+      },
+      "scoring_metrics": {
+        "max_score": 0.3,
+        "min_score": 0.3,
+        "score_count": 1,
+        "simple_average": 0.3,
+        "total_weight": 2.0,
+        "weighted_average": 0.3
+      },
+      "total_answers": 1
+    },
+    "C3": {
+      "cluster_id": "C3",
+      "components_addressed": [],
+      "contradiction_analysis": {
+        "contradiction_details": [],
+        "contradictions_by_severity": {
+          "HIGH": 0,
+          "LOW": 0,
+          "MEDIUM": 0
+        },
+        "total_contradictions": 0
+      },
+      "coverage_metrics": {
+        "answered_percentage": 0.0,
+        "answered_question_ids": [],
+        "answered_questions": 0,
+        "total_questions": 1,
+        "unanswered_questions": 1
+      },
+      "decalogo_points": [
+        6,
+        7
+      ],
+      "evidence_aggregation": {
+        "evidence_ids": [],
+        "evidence_items": [],
+        "page_references": {
+          "individual_pages": [],
+          "page_ranges": [],
+          "total_pages": 0
+        },
+        "total_evidence_count": 0
+      },
+      "processing_metadata": {
+        "answers_processed": 0,
+        "invalid_answers": 0
+      },
+      "scoring_metrics": {
+        "max_score": 0.0,
+        "min_score": 0.0,
+        "score_count": 0,
+        "simple_average": 0.0,
+        "total_weight": 0.0,
+        "weighted_average": 0.0
+      },
+      "total_answers": 0
+    },
+    "C4": {
+      "cluster_id": "C4",
+      "components_addressed": [],
+      "contradiction_analysis": {
+        "contradiction_details": [],
+        "contradictions_by_severity": {
+          "HIGH": 0,
+          "LOW": 0,
+          "MEDIUM": 0
+        },
+        "total_contradictions": 0
+      },
+      "coverage_metrics": {
+        "answered_percentage": 0.0,
+        "answered_question_ids": [],
+        "answered_questions": 0,
+        "total_questions": 1,
+        "unanswered_questions": 1
+      },
+      "decalogo_points": [
+        9,
+        10
+      ],
+      "evidence_aggregation": {
+        "evidence_ids": [],
+        "evidence_items": [],
+        "page_references": {
+          "individual_pages": [],
+          "page_ranges": [],
+          "total_pages": 0
+        },
+        "total_evidence_count": 0
+      },
+      "processing_metadata": {
+        "answers_processed": 0,
+        "invalid_answers": 0
+      },
+      "scoring_metrics": {
+        "max_score": 0.0,
+        "min_score": 0.0,
+        "score_count": 0,
+        "simple_average": 0.0,
+        "total_weight": 0.0,
+        "weighted_average": 0.0
+      },
+      "total_answers": 0
+    }
+  },
+  "metadata": {
+    "cluster_mapping_source": "Decálogo de Derechos Humanos",
+    "processing_stage": "meso_aggregation",
+    "total_decalogo_points": 10
+  },
+  "overall_metrics": {
+    "active_clusters": 2,
+    "decalogo_distribution": {
+      "C1": {
+        "point_count": 3,
+        "point_names": [
+          "Prevención de la violencia y protección de la población frente al conflicto armado y la violencia generada por GDO",
+          "Derechos de las víctimas y construcción de paz",
+          "Líderes y defensores de derechos humanos sociales y ambientales"
+        ],
+        "points": [
+          1,
+          5,
+          8
+        ]
+      },
+      "C2": {
+        "point_count": 3,
+        "point_names": [
+          "Derecho a la salud",
+          "Derecho a la educación",
+          "Derecho a la alimentación"
+        ],
+        "points": [
+          2,
+          3,
+          4
+        ]
+      },
+      "C3": {
+        "point_count": 2,
+        "point_names": [
+          "Derechos de las mujeres",
+          "Derechos de niñas, niños y adolescentes"
+        ],
+        "points": [
+          6,
+          7
+        ]
+      },
+      "C4": {
+        "point_count": 2,
+        "point_names": [
+          "Derechos de los pueblos étnicos",
+          "Derecho a un ambiente sano"
+        ],
+        "points": [
+          9,
+          10
+        ]
+      }
+    },
+    "global_contradiction_summary": {
+      "by_cluster": {
+        "C1": 0,
+        "C2": 0,
+        "C3": 0,
+        "C4": 0
+      },
+      "severity_distribution": {
+        "HIGH": 0,
+        "LOW": 0,
+        "MEDIUM": 0
+      },
+      "total_contradictions": 0
+    },
+    "global_coverage_summary": {
+      "average_coverage": 50.0,
+      "by_cluster": {
+        "C1": 100.0,
+        "C2": 100.0,
+        "C3": 0.0,
+        "C4": 0.0
+      }
+    },
+    "total_clusters": 4,
+    "total_questions_processed": 1
+  }
+}

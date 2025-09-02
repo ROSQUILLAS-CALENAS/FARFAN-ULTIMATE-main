@@ -1,0 +1,119 @@
+{
+  "timestamp": "2025-09-01 08:37:41",
+  "mode": "fast",
+  "overall_ok": false,
+  "checks": [
+    {
+      "name": "environment_verification",
+      "ok": true,
+      "result": {
+        "cmd": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/.venv/bin/python",
+          "EnvironmentVerification.py"
+        ],
+        "returncode": 0,
+        "stdout_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/logs/env_verification.log",
+        "duration_sec": 0.51
+      }
+    },
+    {
+      "name": "dependency_validation",
+      "ok": false,
+      "result": {
+        "cmd": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/.venv/bin/python",
+          "validate_dependencies.py",
+          "--verbose",
+          "--status-report",
+          "--aggregate-results"
+        ],
+        "returncode": 1,
+        "stdout_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/logs/dependency_validation.log",
+        "duration_sec": 2.12
+      }
+    },
+    {
+      "name": "installation_validation",
+      "ok": false,
+      "result": {
+        "cmd": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/.venv/bin/python",
+          "validate_installation.py"
+        ],
+        "returncode": 1,
+        "stdout_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/logs/installation_validation.log",
+        "duration_sec": 5.36
+      }
+    },
+    {
+      "name": "canonical_flow_stability",
+      "ok": true,
+      "result": {
+        "cmd": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/.venv/bin/python",
+          "run_canonical_stability.py",
+          "-n",
+          "2"
+        ],
+        "returncode": 0,
+        "stdout_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/logs/canonical_stability.log",
+        "duration_sec": 0.09
+      }
+    },
+    {
+      "name": "contract_validation",
+      "ok": false,
+      "result": {
+        "cmd": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/.venv/bin/python",
+          "run_contract_validation.py"
+        ],
+        "returncode": 1,
+        "stdout_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/logs/contract_validation.log",
+        "duration_sec": 2.79
+      }
+    },
+    {
+      "name": "basic_tests",
+      "ok": false,
+      "result": {
+        "cmd": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/.venv/bin/python",
+          "run_basic_tests.py"
+        ],
+        "returncode": 1,
+        "stdout_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/logs/basic_tests.log",
+        "duration_sec": 1.24
+      }
+    },
+    {
+      "name": "evidence_tests",
+      "ok": false,
+      "result": {
+        "cmd": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/.venv/bin/python",
+          "run_tests.py"
+        ],
+        "returncode": 1,
+        "stdout_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/logs/evidence_tests.log",
+        "duration_sec": 0.04
+      }
+    },
+    {
+      "name": "compile_check",
+      "ok": false,
+      "result": {
+        "checked": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/egw_query_expansion",
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/retrieval_engine",
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/semantic_reranking",
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/canonical_flow"
+        ],
+        "failures": [
+          "/Users/recovered/Downloads/FARFAN-ULTIMATE-main/canonical_flow"
+        ],
+        "success": false
+      }
+    }
+  ]
+}

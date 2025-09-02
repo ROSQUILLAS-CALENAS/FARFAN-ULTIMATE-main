@@ -1,0 +1,187 @@
+{
+  "cluster_participation": {
+    "by_question": {
+      "Q1": {
+        "cluster_count": 2,
+        "participating_clusters": [
+          "C1",
+          "C2"
+        ]
+      }
+    },
+    "participation_counts": {
+      "C1": 1,
+      "C2": 1,
+      "C3": 0,
+      "C4": 0
+    }
+  },
+  "coverage_metrics": {
+    "component_coverage_summary": {
+      "fully_covered": 0,
+      "total_components": 10,
+      "well_covered": [
+        "OBJECTIVES",
+        "STRATEGIES",
+        "TIMELINES"
+      ]
+    },
+    "coverage_matrix": {
+      "BUDGET": {
+        "clusters_evaluating": [],
+        "coverage_percentage": 0.0,
+        "questions_addressing": [],
+        "total_evaluations": 0
+      },
+      "COMPLIANCE": {
+        "clusters_evaluating": [],
+        "coverage_percentage": 0.0,
+        "questions_addressing": [],
+        "total_evaluations": 0
+      },
+      "IMPACT": {
+        "clusters_evaluating": [],
+        "coverage_percentage": 0.0,
+        "questions_addressing": [],
+        "total_evaluations": 0
+      },
+      "INDICATORS": {
+        "clusters_evaluating": [],
+        "coverage_percentage": 0.0,
+        "questions_addressing": [],
+        "total_evaluations": 0
+      },
+      "OBJECTIVES": {
+        "clusters_evaluating": [
+          "C1"
+        ],
+        "coverage_percentage": 25.0,
+        "questions_addressing": [
+          "Q1"
+        ],
+        "total_evaluations": 1
+      },
+      "RISKS": {
+        "clusters_evaluating": [],
+        "coverage_percentage": 0.0,
+        "questions_addressing": [],
+        "total_evaluations": 0
+      },
+      "STAKEHOLDERS": {
+        "clusters_evaluating": [],
+        "coverage_percentage": 0.0,
+        "questions_addressing": [],
+        "total_evaluations": 0
+      },
+      "STRATEGIES": {
+        "clusters_evaluating": [
+          "C2"
+        ],
+        "coverage_percentage": 25.0,
+        "questions_addressing": [
+          "Q1"
+        ],
+        "total_evaluations": 1
+      },
+      "SUSTAINABILITY": {
+        "clusters_evaluating": [],
+        "coverage_percentage": 0.0,
+        "questions_addressing": [],
+        "total_evaluations": 0
+      },
+      "TIMELINES": {
+        "clusters_evaluating": [
+          "C1"
+        ],
+        "coverage_percentage": 25.0,
+        "questions_addressing": [
+          "Q1"
+        ],
+        "total_evaluations": 1
+      }
+    }
+  },
+  "dimension_groupings": {
+    "by_component": {
+      "OBJECTIVES": [
+        "Q1"
+      ],
+      "STRATEGIES": [
+        "Q1"
+      ],
+      "TIMELINES": [
+        "Q1"
+      ]
+    },
+    "by_question": {
+      "Q1": [
+        "OBJECTIVES",
+        "STRATEGIES",
+        "TIMELINES"
+      ]
+    }
+  },
+  "divergence_scores": {
+    "divergence_stats": {
+      "jensen_shannon": {
+        "avg": 0.0,
+        "std": 0.0
+      },
+      "question_count": 1
+    },
+    "question_divergences": {
+      "Q1": {
+        "cosine_similarity_min": 0.8,
+        "jensen_shannon_max": 0.0
+      }
+    }
+  },
+  "doc_stem": "test_document",
+  "meso_summary": {
+    "cluster_participation": {
+      "C1": 1,
+      "C2": 1,
+      "C3": 0,
+      "C4": 0
+    },
+    "component_coverage_summary": {
+      "fully_covered": 0,
+      "total_components": 10,
+      "well_covered": [
+        "OBJECTIVES",
+        "STRATEGIES",
+        "TIMELINES"
+      ]
+    },
+    "divergence_stats": {
+      "jensen_shannon": {
+        "avg": 0.0,
+        "std": 0.0
+      },
+      "question_count": 1
+    },
+    "items": {
+      "Q1": {
+        "by_cluster": {
+          "C1": {
+            "score": 0.8000000000000002,
+            "verdict": "YES"
+          },
+          "C2": {
+            "score": 0.3,
+            "verdict": "YES"
+          }
+        },
+        "components_addressed": [
+          "OBJECTIVES",
+          "STRATEGIES",
+          "TIMELINES"
+        ],
+        "divergence_metrics": {
+          "cosine_similarity_min": 0.8,
+          "jensen_shannon_max": 0.0
+        }
+      }
+    }
+  }
+}

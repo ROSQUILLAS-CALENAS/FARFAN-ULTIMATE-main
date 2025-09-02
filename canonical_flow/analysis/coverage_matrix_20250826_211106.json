@@ -1,0 +1,752 @@
+{
+  "document_id": "test_document_001",
+  "matrix": {
+    "P1_DE-1": {
+      "point": 1,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P1_DE-2": {
+      "point": 1,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P1_DE-3": {
+      "point": 1,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P1_DE-4": {
+      "point": 1,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P2_DE-1": {
+      "point": 2,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P2_DE-2": {
+      "point": 2,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P2_DE-3": {
+      "point": 2,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P2_DE-4": {
+      "point": 2,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P3_DE-1": {
+      "point": 3,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P3_DE-2": {
+      "point": 3,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P3_DE-3": {
+      "point": 3,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P3_DE-4": {
+      "point": 3,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P4_DE-1": {
+      "point": 4,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P4_DE-2": {
+      "point": 4,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P4_DE-3": {
+      "point": 4,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P4_DE-4": {
+      "point": 4,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P5_DE-1": {
+      "point": 5,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P5_DE-2": {
+      "point": 5,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P5_DE-3": {
+      "point": 5,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P5_DE-4": {
+      "point": 5,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P6_DE-1": {
+      "point": 6,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P6_DE-2": {
+      "point": 6,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P6_DE-3": {
+      "point": 6,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P6_DE-4": {
+      "point": 6,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P7_DE-1": {
+      "point": 7,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P7_DE-2": {
+      "point": 7,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P7_DE-3": {
+      "point": 7,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P7_DE-4": {
+      "point": 7,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P8_DE-1": {
+      "point": 8,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P8_DE-2": {
+      "point": 8,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P8_DE-3": {
+      "point": 8,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P8_DE-4": {
+      "point": 8,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P9_DE-1": {
+      "point": 9,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P9_DE-2": {
+      "point": 9,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P9_DE-3": {
+      "point": 9,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P9_DE-4": {
+      "point": 9,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P10_DE-1": {
+      "point": 10,
+      "dimension": "DE-1",
+      "expected_count": 6,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P10_DE-2": {
+      "point": 10,
+      "dimension": "DE-2",
+      "expected_count": 21,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P10_DE-3": {
+      "point": 10,
+      "dimension": "DE-3",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    },
+    "P10_DE-4": {
+      "point": 10,
+      "dimension": "DE-4",
+      "expected_count": 8,
+      "actual_count": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "questions": []
+    }
+  },
+  "summary": {
+    "total_expected": 470,
+    "total_actual": 0,
+    "completion_percentage": 0.0,
+    "gaps_count": 40,
+    "cells_with_gaps": 40
+  },
+  "validation": {
+    "expected_total": 470,
+    "actual_total": 0,
+    "is_valid": false,
+    "difference": -470
+  },
+  "gaps": [
+    {
+      "cell": "P1_DE-1",
+      "point": 1,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P1_DE-2",
+      "point": 1,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P1_DE-3",
+      "point": 1,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P1_DE-4",
+      "point": 1,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P2_DE-1",
+      "point": 2,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P2_DE-2",
+      "point": 2,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P2_DE-3",
+      "point": 2,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P2_DE-4",
+      "point": 2,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P3_DE-1",
+      "point": 3,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P3_DE-2",
+      "point": 3,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P3_DE-3",
+      "point": 3,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P3_DE-4",
+      "point": 3,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P4_DE-1",
+      "point": 4,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P4_DE-2",
+      "point": 4,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P4_DE-3",
+      "point": 4,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P4_DE-4",
+      "point": 4,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P5_DE-1",
+      "point": 5,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P5_DE-2",
+      "point": 5,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P5_DE-3",
+      "point": 5,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P5_DE-4",
+      "point": 5,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P6_DE-1",
+      "point": 6,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P6_DE-2",
+      "point": 6,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P6_DE-3",
+      "point": 6,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P6_DE-4",
+      "point": 6,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P7_DE-1",
+      "point": 7,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P7_DE-2",
+      "point": 7,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P7_DE-3",
+      "point": 7,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P7_DE-4",
+      "point": 7,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P8_DE-1",
+      "point": 8,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P8_DE-2",
+      "point": 8,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P8_DE-3",
+      "point": 8,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P8_DE-4",
+      "point": 8,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P9_DE-1",
+      "point": 9,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P9_DE-2",
+      "point": 9,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P9_DE-3",
+      "point": 9,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P9_DE-4",
+      "point": 9,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P10_DE-1",
+      "point": 10,
+      "dimension": "DE-1",
+      "expected": 6,
+      "actual": 0,
+      "gap": 6,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P10_DE-2",
+      "point": 10,
+      "dimension": "DE-2",
+      "expected": 21,
+      "actual": 0,
+      "gap": 21,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P10_DE-3",
+      "point": 10,
+      "dimension": "DE-3",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    },
+    {
+      "cell": "P10_DE-4",
+      "point": 10,
+      "dimension": "DE-4",
+      "expected": 8,
+      "actual": 0,
+      "gap": 8,
+      "completion_percentage": 0.0
+    }
+  ],
+  "distribution_per_dimension": {
+    "DE-1": 0,
+    "DE-2": 0,
+    "DE-3": 0,
+    "DE-4": 0
+  },
+  "timestamp": "2025-08-26T21:11:06.336583",
+  "warnings": [
+    "COVERAGE WARNING: Missing 470 questions (0/470)",
+    "COVERAGE WARNING: 40 cells have coverage gaps",
+    "COVERAGE WARNING: 40 cells have severe gaps (<50% completion)"
+  ]
+}

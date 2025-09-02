@@ -1,0 +1,33 @@
+{
+  "metrics": {
+    "entropy_HQ": 0.0,
+    "mutual_info_IQC": 0.0,
+    "kl_divergences": [
+      0.0
+    ],
+    "bm25_scores": [
+      0.0
+    ],
+    "maxent_expansion": [],
+    "ig_filter_order": [
+      "lang_en",
+      "sec_ml",
+      "type_pdf",
+      "year_2025"
+    ],
+    "regret_bound": "O(sqrt(T) * log T)",
+    "approximation_factor": 1.5,
+    "lipschitz_L": 2.0
+  },
+  "explain": {
+    "method": "BM25 + InfoTheory",
+    "tokens": 0,
+    "docs": 1,
+    "bm25_top": [
+      [
+        0,
+        0.0
+      ]
+    ]
+  }
+}

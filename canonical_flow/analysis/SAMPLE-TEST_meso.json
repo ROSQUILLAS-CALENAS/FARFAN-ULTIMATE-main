@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "document_stem": "SAMPLE-TEST",
+    "artifact_type": "meso_cluster_analysis",
+    "generated_timestamp": "2025-08-27T02:46:41.096902Z",
+    "total_clusters": 1,
+    "clusters_included": [
+      "CLUSTER-1"
+    ]
+  },
+  "cluster_analysis": {
+    "CLUSTER-1": {
+      "cluster_id": "CLUSTER-1",
+      "cluster_name": "Sample Cluster",
+      "points": [
+        1
+      ],
+      "cluster_score": 0.77,
+      "coherence_metrics": {
+        "coherence": 0.85,
+        "consistency": 0.78
+      },
+      "evidence_density": {
+        "high": 5,
+        "medium": 3
+      },
+      "cross_point_linkages": {
+        "external": [
+          "link2"
+        ],
+        "internal": [
+          "link1"
+        ]
+      }
+    }
+  }
+}

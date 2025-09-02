@@ -1,0 +1,365 @@
+{
+  "operation_id": "op_bff4e94554d7d34e93d5242e254b2f5657d1b9f870b5c090320e5f5615596",
+  "component_metadata": {
+    "component_name": "DNPAlignmentAnalyzer",
+    "component_id": "comp_33bc4bdca9ab3700c92ca6d96dfd7e33e95a58533b5e54d28587e48529c",
+    "class_name": "DNPAlignmentAnalyzer",
+    "creation_timestamp": "2025-08-26T23:57:13.850014",
+    "last_operation_id": "op_bff4e94554d7d34e93d5242e254b2f5657d1b9f870b5c090320e5f5615596",
+    "state_hash": "state_cbdd569bda0b883ebdad9ba59bc0333fc54325f8cf990ca62046b046b5"
+  },
+  "baseline_validation": {
+    "has_baseline_data": false,
+    "baseline_version": "unknown",
+    "validation_status": "missing",
+    "validation_issues": [
+      "No DNP baseline data available"
+    ],
+    "fallback_applied": true
+  },
+  "alignment_results": {
+    "1": {
+      "deviation_score": {
+        "point_id": 1,
+        "point_name": "Derecho a la vida, a la seguridad y a la convivencia",
+        "compliance_score": 0.728888888888889,
+        "deviation_magnitude": 0.22888888888888903,
+        "baseline_score": 0.5,
+        "evidence_count": 2,
+        "confidence": 0.22666666666666668
+      },
+      "evidence_references": [
+        {
+          "text": "seguridad ciudadana",
+          "source_page": 1,
+          "source_document": "unknown",
+          "confidence": 0.8,
+          "evidence_type": "entity",
+          "page_anchor": "p1"
+        },
+        {
+          "text": "El proyecto incluye medidas de seguridad y protección para la población vulnerable",
+          "source_page": 1,
+          "source_document": "unknown",
+          "confidence": 0.3333333333333333,
+          "evidence_type": "text_match",
+          "page_anchor": "p1_chunk0"
+        }
+      ],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.728888888888889,
+        "deviation": 0.22888888888888903,
+        "status": "moderate"
+      }
+    },
+    "2": {
+      "deviation_score": {
+        "point_id": 2,
+        "point_name": "Igualdad de la mujer y equidad de género",
+        "compliance_score": 0.0,
+        "deviation_magnitude": 0.5,
+        "baseline_score": 0.5,
+        "evidence_count": 0,
+        "confidence": 0.0
+      },
+      "evidence_references": [],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.0,
+        "deviation": 0.5,
+        "status": "critical"
+      }
+    },
+    "3": {
+      "deviation_score": {
+        "point_id": 3,
+        "point_name": "Derecho humano al agua, ambiente sano y gestión del riesgo",
+        "compliance_score": 0.0,
+        "deviation_magnitude": 0.5,
+        "baseline_score": 0.5,
+        "evidence_count": 0,
+        "confidence": 0.0
+      },
+      "evidence_references": [],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.0,
+        "deviation": 0.5,
+        "status": "critical"
+      }
+    },
+    "4": {
+      "deviation_score": {
+        "point_id": 4,
+        "point_name": "Derecho humano a la salud",
+        "compliance_score": 0.8505691056910569,
+        "deviation_magnitude": 0.3505691056910569,
+        "baseline_score": 0.5,
+        "evidence_count": 2,
+        "confidence": 0.21333333333333335
+      },
+      "evidence_references": [
+        {
+          "text": "salud comunitaria",
+          "source_page": 2,
+          "source_document": "unknown",
+          "confidence": 0.9,
+          "evidence_type": "entity",
+          "page_anchor": "p2"
+        },
+        {
+          "text": "Se establecerán programas de salud comunitaria",
+          "source_page": 2,
+          "source_document": "unknown",
+          "confidence": 0.16666666666666666,
+          "evidence_type": "text_match",
+          "page_anchor": "p2_chunk1"
+        }
+      ],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.8505691056910569,
+        "deviation": 0.3505691056910569,
+        "status": "significant"
+      }
+    },
+    "5": {
+      "deviation_score": {
+        "point_id": 5,
+        "point_name": "Derechos de las víctimas y construcción de paz",
+        "compliance_score": 0.0,
+        "deviation_magnitude": 0.5,
+        "baseline_score": 0.5,
+        "evidence_count": 0,
+        "confidence": 0.0
+      },
+      "evidence_references": [],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.0,
+        "deviation": 0.5,
+        "status": "critical"
+      }
+    },
+    "6": {
+      "deviation_score": {
+        "point_id": 6,
+        "point_name": "Derechos de las mujeres",
+        "compliance_score": 0.0,
+        "deviation_magnitude": 0.5,
+        "baseline_score": 0.5,
+        "evidence_count": 0,
+        "confidence": 0.0
+      },
+      "evidence_references": [],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.0,
+        "deviation": 0.5,
+        "status": "critical"
+      }
+    },
+    "7": {
+      "deviation_score": {
+        "point_id": 7,
+        "point_name": "Derechos de niñas, niños y adolescentes",
+        "compliance_score": 0.18666666666666662,
+        "deviation_magnitude": 0.31333333333333335,
+        "baseline_score": 0.5,
+        "evidence_count": 1,
+        "confidence": 0.03333333333333333
+      },
+      "evidence_references": [
+        {
+          "text": "El componente de educación contempla mejoras en infraestructura escolar",
+          "source_page": 3,
+          "source_document": "unknown",
+          "confidence": 0.16666666666666666,
+          "evidence_type": "text_match",
+          "page_anchor": "p3_chunk2"
+        }
+      ],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.18666666666666662,
+        "deviation": 0.31333333333333335,
+        "status": "significant"
+      }
+    },
+    "8": {
+      "deviation_score": {
+        "point_id": 8,
+        "point_name": "Líderes y defensores de derechos humanos sociales y ambientales",
+        "compliance_score": 0.0,
+        "deviation_magnitude": 0.5,
+        "baseline_score": 0.5,
+        "evidence_count": 0,
+        "confidence": 0.0
+      },
+      "evidence_references": [],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.0,
+        "deviation": 0.5,
+        "status": "critical"
+      }
+    },
+    "9": {
+      "deviation_score": {
+        "point_id": 9,
+        "point_name": "Derechos de los pueblos étnicos",
+        "compliance_score": 0.0,
+        "deviation_magnitude": 0.5,
+        "baseline_score": 0.5,
+        "evidence_count": 0,
+        "confidence": 0.0
+      },
+      "evidence_references": [],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.0,
+        "deviation": 0.5,
+        "status": "critical"
+      }
+    },
+    "10": {
+      "deviation_score": {
+        "point_id": 10,
+        "point_name": "Derecho a un ambiente sano",
+        "compliance_score": 0.0,
+        "deviation_magnitude": 0.5,
+        "baseline_score": 0.5,
+        "evidence_count": 0,
+        "confidence": 0.0
+      },
+      "evidence_references": [],
+      "baseline_comparison": {
+        "expected": 0.5,
+        "actual": 0.0,
+        "deviation": 0.5,
+        "status": "critical"
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "category": "decalogo_point_4",
+      "description": "Optimizar: Ajustar estrategias para Derecho humano a la salud y mantener el nivel de cumplimiento actual.",
+      "impact_estimate": 0.4206829268292683,
+      "implementation_complexity": "high",
+      "resources_required": [
+        "infraestructura_salud",
+        "personal_medico",
+        "equipos_medicos",
+        "medicamentos"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "decalogo_point_7",
+      "description": "Urgente: Implementar medidas inmediatas para mejorar Derechos de niñas, niños y adolescentes. El nivel de cumplimiento actual (0.19) está muy por debajo del estándar requerido.",
+      "impact_estimate": 0.376,
+      "implementation_complexity": "high",
+      "resources_required": [
+        "programas_infancia",
+        "personal_especializado",
+        "espacios_protegidos"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "decalogo_point_2",
+      "description": "Urgente: Implementar medidas inmediatas para mejorar Igualdad de la mujer y equidad de género. El nivel de cumplimiento actual (0.00) está muy por debajo del estándar requerido.",
+      "impact_estimate": 0.6,
+      "implementation_complexity": "medium",
+      "resources_required": [
+        "recursos_generales",
+        "personal_capacitado",
+        "coordinacion"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "decalogo_point_3",
+      "description": "Urgente: Implementar medidas inmediatas para mejorar Derecho humano al agua, ambiente sano y gestión del riesgo. El nivel de cumplimiento actual (0.00) está muy por debajo del estándar requerido.",
+      "impact_estimate": 0.6,
+      "implementation_complexity": "medium",
+      "resources_required": [
+        "estudios_ambientales",
+        "personal_tecnico",
+        "equipos_monitoreo"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "decalogo_point_5",
+      "description": "Urgente: Implementar medidas inmediatas para mejorar Derechos de las víctimas y construcción de paz. El nivel de cumplimiento actual (0.00) está muy por debajo del estándar requerido.",
+      "impact_estimate": 0.6,
+      "implementation_complexity": "medium",
+      "resources_required": [
+        "recursos_generales",
+        "personal_capacitado",
+        "coordinacion"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "decalogo_point_6",
+      "description": "Urgente: Implementar medidas inmediatas para mejorar Derechos de las mujeres. El nivel de cumplimiento actual (0.00) está muy por debajo del estándar requerido.",
+      "impact_estimate": 0.6,
+      "implementation_complexity": "medium",
+      "resources_required": [
+        "programas_especializados",
+        "personal_capacitado",
+        "refugios"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "decalogo_point_8",
+      "description": "Urgente: Implementar medidas inmediatas para mejorar Líderes y defensores de derechos humanos sociales y ambientales. El nivel de cumplimiento actual (0.00) está muy por debajo del estándar requerido.",
+      "impact_estimate": 0.6,
+      "implementation_complexity": "medium",
+      "resources_required": [
+        "recursos_generales",
+        "personal_capacitado",
+        "coordinacion"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "decalogo_point_9",
+      "description": "Urgente: Implementar medidas inmediatas para mejorar Derechos de los pueblos étnicos. El nivel de cumplimiento actual (0.00) está muy por debajo del estándar requerido.",
+      "impact_estimate": 0.6,
+      "implementation_complexity": "medium",
+      "resources_required": [
+        "recursos_generales",
+        "personal_capacitado",
+        "coordinacion"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "decalogo_point_10",
+      "description": "Urgente: Implementar medidas inmediatas para mejorar Derecho a un ambiente sano. El nivel de cumplimiento actual (0.00) está muy por debajo del estándar requerido.",
+      "impact_estimate": 0.6,
+      "implementation_complexity": "medium",
+      "resources_required": [
+        "recursos_generales",
+        "personal_capacitado",
+        "coordinacion"
+      ]
+    }
+  ],
+  "processing_stats": {
+    "total_chunks": 3,
+    "total_entities": 2,
+    "total_concepts": 0,
+    "has_knowledge_graph": false,
+    "has_causal_graphs": false,
+    "processed_points": 10
+  },
+  "timestamp": "2025-08-26T23:57:13.850372"
+}

@@ -1,0 +1,333 @@
+{
+  "refusal_matrix": {
+    "total_clauses": 6,
+    "total_triggers": 18,
+    "evaluation_order": [
+      "mandatory_missing",
+      "proxy_insufficient",
+      "alpha_violated",
+      "sigma_absent",
+      "compliance_failed",
+      "validation_error"
+    ],
+    "clause_details": {
+      "mandatory_missing": {
+        "precedence": 1,
+        "trigger_count": 3,
+        "triggers": [
+          {
+            "id": "MAND_001",
+            "description": "Required field completely absent",
+            "function": "check_field_presence",
+            "threshold": null,
+            "required_fields": [
+              "diagnostic",
+              "programs",
+              "budget",
+              "indicators"
+            ],
+            "error_patterns": null
+          },
+          {
+            "id": "MAND_002",
+            "description": "Required field has null/empty value",
+            "function": "check_field_validity",
+            "threshold": null,
+            "required_fields": [
+              "diagnostic",
+              "programs",
+              "budget",
+              "indicators"
+            ],
+            "error_patterns": null
+          },
+          {
+            "id": "MAND_003",
+            "description": "Critical governance components missing",
+            "function": "check_governance_completeness",
+            "threshold": null,
+            "required_fields": [
+              "compliance_matrix",
+              "regulatory_framework"
+            ],
+            "error_patterns": null
+          }
+        ],
+        "response": {
+          "message_template": "Mandatory criteria missing: {missing_fields}",
+          "severity": "CRITICAL",
+          "stable": true,
+          "remediation_steps": [
+            "Identify missing mandatory fields",
+            "Gather required information",
+            "Validate field completeness",
+            "Resubmit complete request"
+          ]
+        },
+        "test_scenarios": [
+          "REF001",
+          "REF002",
+          "REF003",
+          "REF009"
+        ]
+      },
+      "proxy_insufficient": {
+        "precedence": 2,
+        "trigger_count": 3,
+        "triggers": [
+          {
+            "id": "PROX_001",
+            "description": "Proxy score below minimum threshold",
+            "function": "check_proxy_threshold",
+            "threshold": 0.7,
+            "required_fields": null,
+            "error_patterns": null
+          },
+          {
+            "id": "PROX_002",
+            "description": "Proxy variables insufficient for causal inference",
+            "function": "check_causal_proxy_sufficiency",
+            "threshold": 0.6,
+            "required_fields": null,
+            "error_patterns": null
+          },
+          {
+            "id": "PROX_003",
+            "description": "Bridge assumption test failed",
+            "function": "check_bridge_assumption",
+            "threshold": 0.05,
+            "required_fields": null,
+            "error_patterns": null
+          }
+        ],
+        "response": {
+          "message_template": "Proxy insufficient: {proxy_score:.3f} < {threshold}",
+          "severity": "HIGH",
+          "stable": true,
+          "remediation_steps": [
+            "Review proxy variable selection",
+            "Improve proxy measurement quality",
+            "Validate causal identification assumptions",
+            "Rerun with sufficient proxies"
+          ]
+        },
+        "test_scenarios": [
+          "REF004",
+          "REF005",
+          "REF011"
+        ]
+      },
+      "alpha_violated": {
+        "precedence": 3,
+        "trigger_count": 3,
+        "triggers": [
+          {
+            "id": "ALPH_001",
+            "description": "Confidence level below alpha threshold",
+            "function": "check_alpha_confidence",
+            "threshold": 0.95,
+            "required_fields": null,
+            "error_patterns": null
+          },
+          {
+            "id": "ALPH_002",
+            "description": "Statistical significance violated",
+            "function": "check_statistical_significance",
+            "threshold": 0.05,
+            "required_fields": null,
+            "error_patterns": null
+          },
+          {
+            "id": "ALPH_003",
+            "description": "Conformal risk control bound exceeded",
+            "function": "check_crc_risk_bound",
+            "threshold": 0.1,
+            "required_fields": null,
+            "error_patterns": null
+          }
+        ],
+        "response": {
+          "message_template": "Alpha violated: confidence {confidence:.3f} < {required:.3f}",
+          "severity": "HIGH",
+          "stable": true,
+          "remediation_steps": [
+            "Review statistical methodology",
+            "Increase sample size if needed",
+            "Validate confidence calculations",
+            "Adjust alpha parameter if appropriate"
+          ]
+        },
+        "test_scenarios": [
+          "REF006",
+          "REF007"
+        ]
+      },
+      "sigma_absent": {
+        "precedence": 4,
+        "trigger_count": 3,
+        "triggers": [
+          {
+            "id": "SIGM_001",
+            "description": "Sigma parameter missing from request",
+            "function": "check_sigma_presence",
+            "threshold": null,
+            "required_fields": null,
+            "error_patterns": null
+          },
+          {
+            "id": "SIGM_002",
+            "description": "Sigma parameter invalid or out of range",
+            "function": "check_sigma_validity",
+            "threshold": [
+              0.01,
+              1.0
+            ],
+            "required_fields": null,
+            "error_patterns": null
+          },
+          {
+            "id": "SIGM_003",
+            "description": "Uncertainty estimation requires sigma",
+            "function": "check_uncertainty_requirements",
+            "threshold": null,
+            "required_fields": null,
+            "error_patterns": null
+          }
+        ],
+        "response": {
+          "message_template": "Sigma parameter absent from request",
+          "severity": "MEDIUM",
+          "stable": true,
+          "remediation_steps": [
+            "Add sigma parameter to request",
+            "Use recommended default value: 0.1",
+            "Validate sigma is within acceptable range",
+            "Resubmit with complete parameters"
+          ]
+        },
+        "test_scenarios": [
+          "REF008"
+        ]
+      },
+      "compliance_failed": {
+        "precedence": 5,
+        "trigger_count": 3,
+        "triggers": [
+          {
+            "id": "COMP_001",
+            "description": "DNP compliance standards not met",
+            "function": "check_dnp_compliance",
+            "threshold": 0.85,
+            "required_fields": null,
+            "error_patterns": null
+          },
+          {
+            "id": "COMP_002",
+            "description": "Regulatory framework violations",
+            "function": "check_regulatory_compliance",
+            "threshold": null,
+            "required_fields": [
+              "law_152",
+              "law_1454",
+              "decree_1082"
+            ],
+            "error_patterns": null
+          },
+          {
+            "id": "COMP_003",
+            "description": "Technical standard violations",
+            "function": "check_technical_standards",
+            "threshold": null,
+            "required_fields": null,
+            "error_patterns": [
+              "MAPEO_VIOLATION",
+              "ALIGNMENT_FAILURE"
+            ]
+          }
+        ],
+        "response": {
+          "message_template": "Compliance failed: {violations}",
+          "severity": "CRITICAL",
+          "stable": true,
+          "remediation_steps": [
+            "Review compliance requirements",
+            "Address identified violations",
+            "Validate against all standards",
+            "Obtain compliance certification"
+          ]
+        },
+        "test_scenarios": [
+          "COMP_001",
+          "COMP_002"
+        ]
+      },
+      "validation_error": {
+        "precedence": 6,
+        "trigger_count": 3,
+        "triggers": [
+          {
+            "id": "VALD_001",
+            "description": "Data format validation failed",
+            "function": "check_data_format",
+            "threshold": null,
+            "required_fields": null,
+            "error_patterns": [
+              "INVALID_JSON",
+              "SCHEMA_VIOLATION"
+            ]
+          },
+          {
+            "id": "VALD_002",
+            "description": "Business logic validation failed",
+            "function": "check_business_rules",
+            "threshold": null,
+            "required_fields": null,
+            "error_patterns": [
+              "INCONSISTENT_DATA",
+              "LOGICAL_CONTRADICTION"
+            ]
+          },
+          {
+            "id": "VALD_003",
+            "description": "Constraint satisfaction failed",
+            "function": "check_constraint_satisfaction",
+            "threshold": 0.8,
+            "required_fields": null,
+            "error_patterns": null
+          }
+        ],
+        "response": {
+          "message_template": "Validation error: {error_details}",
+          "severity": "MEDIUM",
+          "stable": true,
+          "remediation_steps": [
+            "Review validation errors",
+            "Fix data format issues",
+            "Resolve business logic conflicts",
+            "Validate constraints are satisfied"
+          ]
+        },
+        "test_scenarios": [
+          "VALD_001",
+          "VALD_002"
+        ]
+      }
+    }
+  },
+  "validation": {
+    "complete": true,
+    "issues": [],
+    "coverage": {
+      "mandatory_triggers": 0,
+      "threshold_triggers": 9,
+      "field_triggers": 4,
+      "pattern_triggers": 3
+    }
+  },
+  "metadata": {
+    "total_clauses": 8,
+    "implemented_clauses": 6,
+    "coverage_percentage": 75.0,
+    "precedence_levels": 6
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "document_stem": "test_sample_questions",
+  "document_path": "test_sample_questions.json",
+  "total_questions": 11,
+  "analyses": [
+    {
+      "question_id": "test_sample_questions_q001",
+      "question_text": "What causes increased productivity in software teams?",
+      "intent": "causal_analysis",
+      "dimension": "DE-3",
+      "confidence_score": 0.313,
+      "keywords": [
+        "cause"
+      ],
+      "metadata": {
+        "has_question_mark": true,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 53
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q002",
+      "question_text": "How do we compare performance metrics between different teams?",
+      "intent": "comparative_analysis",
+      "dimension": "DE-2",
+      "confidence_score": 0.333,
+      "keywords": [
+        "compare"
+      ],
+      "metadata": {
+        "has_question_mark": true,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 62
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q003",
+      "question_text": "Define the scope of deliverables for this project.",
+      "intent": "definitional_analysis",
+      "dimension": "DE-1",
+      "confidence_score": 0.247,
+      "keywords": [
+        "define"
+      ],
+      "metadata": {
+        "has_question_mark": false,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 50
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q004",
+      "question_text": "What are the key characteristics of successful implementations?",
+      "intent": "descriptive_analysis",
+      "dimension": "DE-1",
+      "confidence_score": 0.38,
+      "keywords": [
+        "characteristics"
+      ],
+      "metadata": {
+        "has_question_mark": true,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 63
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q005",
+      "question_text": "How should we evaluate the effectiveness of our approach?",
+      "intent": "evaluative_analysis",
+      "dimension": "DE-3",
+      "confidence_score": 0.523,
+      "keywords": [
+        "effectiveness",
+        "evaluate"
+      ],
+      "metadata": {
+        "has_question_mark": true,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 57
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q006",
+      "question_text": "What will be the expected outcome in the next quarter?",
+      "intent": "predictive_analysis",
+      "dimension": "DE-4",
+      "confidence_score": 0.533,
+      "keywords": [
+        "expected",
+        "will"
+      ],
+      "metadata": {
+        "has_question_mark": true,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 54
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q007",
+      "question_text": "What is the step-by-step process for deployment?",
+      "intent": "definitional_analysis",
+      "dimension": "DE-1",
+      "confidence_score": 0.337,
+      "keywords": [
+        "what is"
+      ],
+      "metadata": {
+        "has_question_mark": true,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 48
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q008",
+      "question_text": "How many users are expected to use this system?",
+      "intent": "quantitative_analysis",
+      "dimension": "DE-1",
+      "confidence_score": 0.357,
+      "keywords": [
+        "how many"
+      ],
+      "metadata": {
+        "has_question_mark": true,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 47
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q009",
+      "question_text": "This is not a question",
+      "intent": "unknown_intent",
+      "dimension": "unassigned_dimension",
+      "confidence_score": 0.0,
+      "keywords": [],
+      "metadata": {
+        "has_question_mark": false,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 22
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q010",
+      "question_text": "¿Cuál es el impacto esperado?",
+      "intent": "causal_analysis",
+      "dimension": "DE-3",
+      "confidence_score": 0.293,
+      "keywords": [
+        "impact"
+      ],
+      "metadata": {
+        "has_question_mark": true,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 29
+      }
+    },
+    {
+      "question_id": "test_sample_questions_q011",
+      "question_text": "Malformed question without proper structure",
+      "intent": "unknown_intent",
+      "dimension": "unassigned_dimension",
+      "confidence_score": 0.0,
+      "keywords": [],
+      "metadata": {
+        "has_question_mark": false,
+        "processing_method": "frozen_vocabulary",
+        "text_length": 43
+      }
+    }
+  ],
+  "processing_metadata": {
+    "vocabulary_version": "1.0",
+    "dimension_taxonomy": "4D-DE",
+    "processing_timestamp": "2025-08-26T22:11:43.498003",
+    "deterministic_ordering": true
+  },
+  "dimension_summary": {
+    "DE-1": 4,
+    "DE-2": 1,
+    "DE-3": 3,
+    "DE-4": 1,
+    "unassigned_dimension": 2
+  },
+  "intent_summary": {
+    "causal_analysis": 2,
+    "comparative_analysis": 1,
+    "definitional_analysis": 2,
+    "descriptive_analysis": 1,
+    "evaluative_analysis": 1,
+    "predictive_analysis": 1,
+    "procedural_analysis": 0,
+    "quantitative_analysis": 1,
+    "unknown_intent": 2
+  }
+}

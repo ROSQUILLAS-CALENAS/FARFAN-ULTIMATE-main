@@ -1,0 +1,125 @@
+{
+  "composition_calculation": {
+    "capping_applied": false,
+    "capping_details": null,
+    "dimension_scores": {
+      "DE-1": 0.4355,
+      "DE-2": 1.151,
+      "DE-3": 0.0,
+      "DE-4": 1.011
+    },
+    "final_score": 0.6206,
+    "point_id": 9,
+    "total_weight": 1.0,
+    "weighted_contributions": {
+      "DE-1": 0.1307,
+      "DE-2": 0.2878,
+      "DE-3": 0.0,
+      "DE-4": 0.2022
+    },
+    "weighted_sum": 0.6206,
+    "weights": {
+      "DE-1": 0.3,
+      "DE-2": 0.25,
+      "DE-3": 0.25,
+      "DE-4": 0.2
+    }
+  },
+  "dimension_details": [
+    {
+      "aggregated_score": 0.4355,
+      "dimension_id": "DE-1",
+      "question_breakdown": [
+        {
+          "base_score": 0.5,
+          "evidence_completeness": 0.5,
+          "evidence_multiplier": 0.871,
+          "final_score": 0.4355,
+          "page_reference_quality": 0.6,
+          "question_id": "DE1_Q1",
+          "response": "Parcial"
+        }
+      ],
+      "total_questions": 1
+    },
+    {
+      "aggregated_score": 1.151,
+      "dimension_id": "DE-2",
+      "question_breakdown": [
+        {
+          "base_score": 1.0,
+          "evidence_completeness": 0.9,
+          "evidence_multiplier": 1.151,
+          "final_score": 1.151,
+          "page_reference_quality": 1.0,
+          "question_id": "DE2_Q1",
+          "response": "Sí"
+        }
+      ],
+      "total_questions": 1
+    },
+    {
+      "aggregated_score": 0.0,
+      "dimension_id": "DE-3",
+      "question_breakdown": [
+        {
+          "base_score": 0.0,
+          "evidence_completeness": 0.1,
+          "evidence_multiplier": 0.591,
+          "final_score": 0.0,
+          "page_reference_quality": 0.2,
+          "question_id": "DE3_Q1",
+          "response": "No"
+        }
+      ],
+      "total_questions": 1
+    },
+    {
+      "aggregated_score": 1.011,
+      "dimension_id": "DE-4",
+      "question_breakdown": [
+        {
+          "base_score": 1.0,
+          "evidence_completeness": 0.7,
+          "evidence_multiplier": 1.011,
+          "final_score": 1.011,
+          "page_reference_quality": 0.8,
+          "question_id": "DE4_Q1",
+          "response": "Sí"
+        }
+      ],
+      "total_questions": 1
+    }
+  ],
+  "mathematical_audit": {
+    "precision_consistency": true,
+    "weight_sum_validation": true,
+    "weighted_sum_validation": false
+  },
+  "metadata": {
+    "deterministic": true,
+    "document_id": "DETERMINISTIC_TEST_RUN_2",
+    "point_id": 9,
+    "system_version": "1.0.0",
+    "timestamp": "2025-08-27T03:18:37.660113+00:00"
+  },
+  "scoring_configuration": {
+    "base_scores": {
+      "NI": 0.0,
+      "No": 0.0,
+      "Parcial": 0.5,
+      "Sí": 1.0
+    },
+    "decalogo_weights": {
+      "DE-1": 0.3,
+      "DE-2": 0.25,
+      "DE-3": 0.25,
+      "DE-4": 0.2
+    },
+    "evidence_multiplier_range": [
+      0.5,
+      1.2
+    ],
+    "precision": 4
+  }
+}

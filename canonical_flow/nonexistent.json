@@ -1,0 +1,7 @@
+{
+  "file": "nonexistent.pdf",
+  "text": "",
+  "pages": 0,
+  "status": "failed",
+  "error": "File not found: /Users/recovered/PycharmProjects/FARFAN-ULTIMATE/planes_input/nonexistent.pdf"
+}

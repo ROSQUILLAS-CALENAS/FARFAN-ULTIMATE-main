@@ -1,0 +1,96 @@
+{
+  "structured_evidence": [
+    {
+      "evidence_id": "ev_hash_2a103ede41dee204",
+      "question_id": "q_001",
+      "dimension": "test",
+      "evidence_type": "EvidenceType.DIRECT_QUOTE",
+      "chunk": {
+        "chunk_id": "chunk_ev_hash_2a103ede41dee204",
+        "text": "Test evidence",
+        "context_before": "",
+        "context_after": "",
+        "start_position": 0,
+        "end_position": 13,
+        "processing_timestamp": "2025-08-26 18:38:25.356091",
+        "raw_text": "Test evidence"
+      },
+      "citation": {
+        "citation_id": "cite_1600e70a",
+        "formatted_reference": "\"Untitled Document\"",
+        "short_reference": "Unknown n.d.",
+        "inline_citation": "(Unknown, n.d.)",
+        "metadata": {
+          "document_id": "unknown_doc",
+          "title": "Untitled Document",
+          "author": "",
+          "publication_date": null,
+          "page_number": null,
+          "section_header": null,
+          "subsection_header": null,
+          "document_type": "document",
+          "url": null,
+          "doi": null,
+          "isbn": null
+        }
+      },
+      "scoring": {
+        "relevance_score": 0.8,
+        "credibility_score": 0.5,
+        "recency_score": 0.3,
+        "authority_score": 0.5,
+        "overall_score": 0.5800000000000001,
+        "confidence_level": "ConfidenceLevel.LOW",
+        "classification_labels": [
+          "test"
+        ],
+        "processing_metadata": {
+          "scoring_timestamp": "2025-08-26T18:38:25.356115",
+          "weights_used": {
+            "relevance": 0.4,
+            "credibility": 0.3,
+            "recency": 0.2,
+            "authority": 0.1
+          }
+        }
+      },
+      "exact_text": "Test evidence",
+      "context_text": "**Test evidence**",
+      "supporting_snippets": [],
+      "contradicting_snippets": [],
+      "creation_timestamp": "2025-08-26 18:38:25.356120",
+      "audit_trail": [
+        {
+          "timestamp": "2025-08-26T18:38:25.356125",
+          "action": "created_from_raw",
+          "details": {
+            "processor": "EvidenceProcessor.process",
+            "evidence_id": "ev_hash_2a103ede41dee204",
+            "raw_evidence_hash": "7d279e17"
+          }
+        }
+      ],
+      "validation_result": null
+    }
+  ],
+  "processing_metadata": {
+    "processed_at": "2025-08-26T18:38:25.356060",
+    "total_candidates": 1,
+    "validation_hooks_applied": [],
+    "output_directory": "canonical_flow/analysis",
+    "structured_evidence_ids": [
+      "ev_hash_2a103ede41dee204"
+    ]
+  },
+  "summary": {
+    "total_processed": 1,
+    "success": true,
+    "unique_dimensions": 1,
+    "unique_questions": 1,
+    "evidence_types": [
+      "direct_quote"
+    ],
+    "validation_coverage": 0,
+    "average_score": 0.5800000000000001
+  }
+}

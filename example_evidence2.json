@@ -1,0 +1,7 @@
+{
+  "facts": ["a", "c"],
+  "clauses": [
+    {"body": ["a"], "head": "b"},
+    {"body": ["b", "c"], "head": "goal"}
+  ]
+}

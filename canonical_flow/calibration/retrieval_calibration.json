@@ -1,0 +1,48 @@
+{
+  "calibration_quality_score": 0.85,
+  "coverage_percentage": 82.5,
+  "decisions_made": 150,
+  "quality_gate_status": "PASS",
+  "timestamp": "2025-08-27T03:32:01.611244",
+  "stage_version": "1.0.0",
+  "calibration_parameters": {
+    "temperature_parameter": 1.0,
+    "fusion_weights": [
+      0.33,
+      0.33,
+      0.34
+    ],
+    "retrieval_k_values": [
+      10,
+      50,
+      100
+    ],
+    "entropy_calibration_enabled": true
+  },
+  "quality_thresholds": {
+    "calibration_quality_score": 0.7,
+    "coverage_percentage": 80.0,
+    "temperature_stability": 0.8,
+    "retrieval_precision": 0.6,
+    "retrieval_recall": 0.5
+  },
+  "temperature_stability": 0.92,
+  "entropy_calibration_score": 0.78,
+  "retrieval_precision": 0.72,
+  "retrieval_recall": 0.68,
+  "fusion_coherence": 0.85,
+  "temperature_parameter": 1.0,
+  "fusion_weights": [
+    0.33,
+    0.33,
+    0.34
+  ],
+  "retrieval_k_values": [
+    10,
+    50,
+    100
+  ],
+  "retrieval_latency_ms": 0.0,
+  "index_coherence_score": 0.0,
+  "cross_encoder_agreement": 0.0
+}

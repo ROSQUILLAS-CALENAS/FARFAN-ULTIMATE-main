@@ -1,0 +1,114 @@
+{
+  "document_id": "TEST_DOCUMENT_001",
+  "point_number": 3,
+  "point_name": "Derecho humano al agua, ambiente sano y gestión del riesgo",
+  "total_expected_questions": 47,
+  "dimensions": {
+    "DE-1": {
+      "expected_count": 6,
+      "actual_answered": 6,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_03_DE-1_7ade0bf5",
+        "DQ_03_DE-1_e4a04a33",
+        "DQ_03_DE-1_5f0de185",
+        "DQ_03_DE-1_c511659e",
+        "DQ_03_DE-1_2d683cd5",
+        "DQ_03_DE-1_0bf64738"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-2": {
+      "expected_count": 21,
+      "actual_answered": 21,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_03_DE-2_f05551d3",
+        "DQ_03_DE-2_219a53bd",
+        "DQ_03_DE-2_af21d9c2",
+        "DQ_03_DE-2_c89ae441",
+        "DQ_03_DE-2_c5acd7f2",
+        "DQ_03_DE-2_53aea027",
+        "DQ_03_DE-2_7d5a66a2",
+        "DQ_03_DE-2_afc3174a",
+        "DQ_03_DE-2_909a6ca2",
+        "DQ_03_DE-2_f4415321",
+        "DQ_03_DE-2_05cc5771",
+        "DQ_03_DE-2_2721ed87",
+        "DQ_03_DE-2_73e97c95",
+        "DQ_03_DE-2_80a56b65",
+        "DQ_03_DE-2_a0a58bca",
+        "DQ_03_DE-2_a369fc6a",
+        "DQ_03_DE-2_4198d0fd",
+        "DQ_03_DE-2_2af28749",
+        "DQ_03_DE-2_959f5e5e",
+        "DQ_03_DE-2_e192ded9",
+        "DQ_03_DE-2_3519a9c2"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-3": {
+      "expected_count": 8,
+      "actual_answered": 8,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_03_DE-3_efba4242",
+        "DQ_03_DE-3_8efbdf80",
+        "DQ_03_DE-3_d75fa53d",
+        "DQ_03_DE-3_cda76b0e",
+        "DQ_03_DE-3_dd8a2532",
+        "DQ_03_DE-3_bc62712a",
+        "DQ_03_DE-3_2ed0ed09",
+        "DQ_03_DE-3_49d34a0b"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-4": {
+      "expected_count": 8,
+      "actual_answered": 8,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_03_DE-4_8d7c6e9b",
+        "DQ_03_DE-4_f8d8de40",
+        "DQ_03_DE-4_7c88b280",
+        "DQ_03_DE-4_036cbc2e",
+        "DQ_03_DE-4_98c5855f",
+        "DQ_03_DE-4_3bb2aa01",
+        "DQ_03_DE-4_545055ae",
+        "DQ_03_DE-4_118d83d8"
+      ],
+      "unanswered_count": 0
+    },
+    "GEN": {
+      "expected_count": 4,
+      "actual_answered": 4,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_03_GEN_42cb4b6c",
+        "DQ_03_GEN_b0771cf2",
+        "DQ_03_GEN_a85a48ef",
+        "DQ_03_GEN_751ac8b3"
+      ],
+      "unanswered_count": 0
+    }
+  },
+  "summary": {
+    "total_answered": 47,
+    "completion_percentage": 100.0,
+    "has_gaps": false,
+    "total_gaps": 0,
+    "dimensions_with_gaps": 0,
+    "fully_completed_dimensions": 5
+  },
+  "timestamp": "2025-08-26T22:10:35.759295"
+}

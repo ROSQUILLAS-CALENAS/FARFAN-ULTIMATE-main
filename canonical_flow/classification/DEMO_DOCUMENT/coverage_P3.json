@@ -1,0 +1,69 @@
+{
+  "document_id": "DEMO_DOCUMENT",
+  "point_number": 3,
+  "point_name": "Derecho humano al agua, ambiente sano y gestión del riesgo",
+  "total_expected_questions": 47,
+  "dimensions": {
+    "DE-1": {
+      "expected_count": 6,
+      "actual_answered": 6,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_03_DE-1_7ade0bf5",
+        "DQ_03_DE-1_e4a04a33",
+        "DQ_03_DE-1_5f0de185",
+        "DQ_03_DE-1_c511659e",
+        "DQ_03_DE-1_2d683cd5",
+        "DQ_03_DE-1_0bf64738"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-2": {
+      "expected_count": 21,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 21,
+      "answered_questions": [],
+      "unanswered_count": 21
+    },
+    "DE-3": {
+      "expected_count": 8,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 8,
+      "answered_questions": [],
+      "unanswered_count": 8
+    },
+    "DE-4": {
+      "expected_count": 8,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 8,
+      "answered_questions": [],
+      "unanswered_count": 8
+    },
+    "GEN": {
+      "expected_count": 4,
+      "actual_answered": 0,
+      "completion_percentage": 0.0,
+      "has_gap": true,
+      "gap_size": 4,
+      "answered_questions": [],
+      "unanswered_count": 4
+    }
+  },
+  "summary": {
+    "total_answered": 6,
+    "completion_percentage": 12.76595744680851,
+    "has_gaps": true,
+    "total_gaps": 41,
+    "dimensions_with_gaps": 4,
+    "fully_completed_dimensions": 1
+  },
+  "timestamp": "2025-08-26T22:17:34.404445"
+}

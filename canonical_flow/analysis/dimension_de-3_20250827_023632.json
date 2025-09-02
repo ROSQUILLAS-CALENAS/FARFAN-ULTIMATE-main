@@ -1,0 +1,101 @@
+{
+  "dimension_id": "DE-3",
+  "result": {
+    "correction_factors": [],
+    "dimension_id": "DE-3",
+    "evidence_metrics": {
+      "average_evidence_quality": 0.63,
+      "evidence_density": 7.5
+    },
+    "metadata": {
+      "artifact_id": "e17af134",
+      "processing_timestamp": "2025-08-27T02:36:32.270688"
+    },
+    "question_breakdown": [
+      {
+        "contribution_percentage": 13.7,
+        "evidence_count": 4,
+        "evidence_quality": 0.7,
+        "question_id": "DE3_Q01",
+        "raw_score": 0.8,
+        "weight": 1.0,
+        "weighted_score": 0.8
+      },
+      {
+        "contribution_percentage": 13.36,
+        "evidence_count": 5,
+        "evidence_quality": 0.68,
+        "question_id": "DE3_Q02",
+        "raw_score": 0.78,
+        "weight": 1.0,
+        "weighted_score": 0.78
+      },
+      {
+        "contribution_percentage": 13.01,
+        "evidence_count": 6,
+        "evidence_quality": 0.66,
+        "question_id": "DE3_Q03",
+        "raw_score": 0.76,
+        "weight": 1.0,
+        "weighted_score": 0.76
+      },
+      {
+        "contribution_percentage": 12.67,
+        "evidence_count": 7,
+        "evidence_quality": 0.64,
+        "question_id": "DE3_Q04",
+        "raw_score": 0.74,
+        "weight": 1.0,
+        "weighted_score": 0.74
+      },
+      {
+        "contribution_percentage": 12.33,
+        "evidence_count": 8,
+        "evidence_quality": 0.62,
+        "question_id": "DE3_Q05",
+        "raw_score": 0.72,
+        "weight": 1.0,
+        "weighted_score": 0.72
+      },
+      {
+        "contribution_percentage": 11.99,
+        "evidence_count": 9,
+        "evidence_quality": 0.6,
+        "question_id": "DE3_Q06",
+        "raw_score": 0.7,
+        "weight": 1.0,
+        "weighted_score": 0.7
+      },
+      {
+        "contribution_percentage": 11.64,
+        "evidence_count": 10,
+        "evidence_quality": 0.58,
+        "question_id": "DE3_Q07",
+        "raw_score": 0.68,
+        "weight": 1.0,
+        "weighted_score": 0.68
+      },
+      {
+        "contribution_percentage": 11.3,
+        "evidence_count": 11,
+        "evidence_quality": 0.56,
+        "question_id": "DE3_Q08",
+        "raw_score": 0.66,
+        "weight": 1.0,
+        "weighted_score": 0.66
+      }
+    ],
+    "question_metrics": {
+      "completion_percentage": 100.0,
+      "expected_question_count": 8,
+      "question_count": 8
+    },
+    "scores": {
+      "adjusted_score": 0.73,
+      "quality_penalty_applied": 0.0,
+      "raw_score": 0.73
+    },
+    "status": "complete"
+  },
+  "timestamp": "20250827_023632"
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/embedding_index.json",
+  "title": "Embedding Index Schema",
+  "description": "Schema for embedding indices used in knowledge extraction and retrieval",
+  "type": "object",
+  "properties": {
+    "vectors": {
+      "type": "array",
+      "description": "Array of embedding vectors",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 1
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Metadata about the embedding index",
+      "properties": {
+        "model_name": {
+          "type": "string",
+          "description": "Name of the embedding model used"
+        },
+        "model_version": {
+          "type": "string",
+          "description": "Version of the embedding model"
+        },
+        "creation_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "total_vectors": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "normalization": {
+          "type": "boolean",
+          "description": "Whether vectors are normalized"
+        },
+        "index_algorithm": {
+          "type": "string",
+          "enum": ["brute_force", "kd_tree", "ball_tree", "hnsw", "ivf", "faiss"]
+        }
+      },
+      "required": ["model_name", "model_version"]
+    },
+    "index_type": {
+      "type": "string",
+      "enum": ["dense", "sparse", "hybrid"],
+      "description": "Type of the embedding index"
+    },
+    "dimension": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Dimensionality of the embedding vectors"
+    },
+    "document_ids": {
+      "type": "array",
+      "description": "Array of document IDs corresponding to each vector",
+      "items": {
+        "type": "string"
+      }
+    },
+    "similarity_metrics": {
+      "type": "array",
+      "description": "Supported similarity metrics",
+      "items": {
+        "type": "string",
+        "enum": ["cosine", "euclidean", "manhattan", "dot_product"]
+      }
+    }
+  },
+  "required": ["vectors", "metadata", "index_type", "dimension"],
+  "additionalProperties": false
+}

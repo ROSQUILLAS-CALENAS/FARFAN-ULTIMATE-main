@@ -1,0 +1,179 @@
+{
+  "metrics": {
+    "fusion_method": "RRF + Weighted + Temperature Calibrated",
+    "candidate_count": 5,
+    "score_variance": 0.08298246692474756,
+    "rank_correlation": 0.9,
+    "weights_used": {
+      "lexical": 0.35,
+      "vector": 0.45,
+      "late": 0.15,
+      "rrf": 0.05
+    },
+    "top_score": 0.31466836970016754,
+    "score_distribution": {
+      "mean": 0.4974785387263281,
+      "std": 0.2880667751142911
+    },
+    "normalization_metrics": {
+      "lexical": {
+        "entropy_before": 2.0762417496702192,
+        "entropy_after": 1.6739597059678837,
+        "normalization_factor": 1.0,
+        "target_entropy": 2.321928094887362
+      },
+      "vector": {
+        "entropy_before": 1.9441341315061238,
+        "entropy_after": 1.6574796107663237,
+        "normalization_factor": 1.0,
+        "target_entropy": 2.321928094887362
+      },
+      "late": {
+        "entropy_before": 0.0,
+        "entropy_after": 2.321928094887362,
+        "normalization_factor": 1.05,
+        "target_entropy": 0.5
+      }
+    },
+    "temperatures": {
+      "retrieval": 1.1,
+      "fusion": 0.9
+    }
+  },
+  "explain": {
+    "fusion_algorithm": "RRF + Weighted Combination + Temperature Calibration",
+    "normalization_method": "entropy_based",
+    "modalities_used": [
+      "lexical",
+      "vector",
+      "late_interaction"
+    ],
+    "weights": {
+      "lexical": 0.35,
+      "vector": 0.45,
+      "late": 0.15,
+      "rrf": 0.05
+    },
+    "candidates_processed": 5,
+    "temperature_validation": "enabled",
+    "stability_tracking": "enabled",
+    "deterministic_filtering": "enabled"
+  },
+  "top_candidates": [
+    {
+      "doc_id": 0,
+      "page_num": 1,
+      "lexical_score": 0.85,
+      "vector_score": 0.92,
+      "late_interaction_score": 0.0,
+      "raw_scores": {
+        "bm25": 0.85,
+        "dense": 0.92,
+        "late": 0.0
+      },
+      "normalized_scores": {
+        "lexical": 1.0,
+        "vector": 1.0,
+        "late": 1.0
+      },
+      "rrf_score": 0.04918032786885246,
+      "hybrid_score": 0.9524590163934427,
+      "calibrated_score": 0.31466836970016754,
+      "final_rank": 1
+    },
+    {
+      "doc_id": 2,
+      "page_num": 3,
+      "lexical_score": 0.43,
+      "vector_score": 0.71,
+      "late_interaction_score": 0.0,
+      "raw_scores": {
+        "bm25": 0.43,
+        "dense": 0.71,
+        "late": 0.0
+      },
+      "normalized_scores": {
+        "lexical": 0.4000000000000001,
+        "vector": 0.7469879518072289,
+        "late": 1.0
+      },
+      "rrf_score": 0.04787506400409626,
+      "hybrid_score": 0.6285383315134578,
+      "calibrated_score": 0.2195560202640463,
+      "final_rank": 2
+    },
+    {
+      "doc_id": 1,
+      "page_num": 2,
+      "lexical_score": 0.62,
+      "vector_score": 0.34,
+      "late_interaction_score": 0.0,
+      "raw_scores": {
+        "bm25": 0.62,
+        "dense": 0.34,
+        "late": 0.0
+      },
+      "normalized_scores": {
+        "lexical": 0.6714285714285715,
+        "vector": 0.3012048192771084,
+        "late": 1.0
+      },
+      "rrf_score": 0.048131080389144903,
+      "hybrid_score": 0.522948722694156,
+      "calibrated_score": 0.1952509452582664,
+      "final_rank": 3
+    },
+    {
+      "doc_id": 3,
+      "page_num": 4,
+      "lexical_score": 0.21,
+      "vector_score": 0.18,
+      "late_interaction_score": 0.0,
+      "raw_scores": {
+        "bm25": 0.21,
+        "dense": 0.18,
+        "late": 0.0
+      },
+      "normalized_scores": {
+        "lexical": 0.08571428571428572,
+        "vector": 0.10843373493975902,
+        "late": 1.0
+      },
+      "rrf_score": 0.046875,
+      "hybrid_score": 0.23113893072289157,
+      "calibrated_score": 0.14118237972500422,
+      "final_rank": 4
+    },
+    {
+      "doc_id": 4,
+      "page_num": 5,
+      "lexical_score": 0.15,
+      "vector_score": 0.09,
+      "late_interaction_score": 0.0,
+      "raw_scores": {
+        "bm25": 0.15,
+        "dense": 0.09,
+        "late": 0.0
+      },
+      "normalized_scores": {
+        "lexical": 0.0,
+        "vector": 0.0,
+        "late": 1.0
+      },
+      "rrf_score": 0.046153846153846156,
+      "hybrid_score": 0.1523076923076923,
+      "calibrated_score": 0.1293422850525155,
+      "final_rank": 5
+    }
+  ],
+  "stability": {
+    "average_movement": 0.0,
+    "stability_score": 1.0,
+    "max_displacement": 0
+  },
+  "gaps": {
+    "gap_count": 0,
+    "largest_gap": 0,
+    "valid_ratio": 1.0
+  }
+}

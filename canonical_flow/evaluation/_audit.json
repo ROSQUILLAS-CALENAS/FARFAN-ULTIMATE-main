@@ -1,0 +1,230 @@
+{
+  "session_id": "example_session_123",
+  "audit_timestamp": "2025-01-20T10:30:45.123456+00:00", 
+  "session_duration_s": 45.678,
+  "decalogo_traces": {
+    "eval_001_p1": {
+      "point_id": 1,
+      "point_name": "Derecho a la vida, a la seguridad y a la convivencia",
+      "evaluation_id": "eval_001_p1",
+      "start_timestamp": 1642679400.123,
+      "end_timestamp": 1642679445.801,
+      "total_duration_ms": 45678.0,
+      "components": {
+        "question_analyzer_0": {
+          "component_name": "question_analyzer",
+          "entry_timestamp": 1642679400.200,
+          "exit_timestamp": 1642679405.150,
+          "duration_ms": 4950.0,
+          "status": "completed",
+          "inputs": {
+            "dimension": "DE1",
+            "question_count": 8
+          },
+          "outputs": {
+            "processed_questions": 8,
+            "analysis_complete": true
+          },
+          "errors": [],
+          "metadata": {
+            "dimension": "DE1"
+          }
+        },
+        "evidence_processor_1": {
+          "component_name": "evidence_processor", 
+          "entry_timestamp": 1642679405.200,
+          "exit_timestamp": 1642679420.100,
+          "duration_ms": 14900.0,
+          "status": "completed",
+          "inputs": {
+            "evidence_items": 15,
+            "validation_level": "strict"
+          },
+          "outputs": {
+            "validated_evidence": 12,
+            "rejected_evidence": 3
+          },
+          "errors": [],
+          "metadata": {
+            "dimension": "DE1"
+          }
+        },
+        "score_calculator_2": {
+          "component_name": "score_calculator",
+          "entry_timestamp": 1642679420.150,
+          "exit_timestamp": 1642679425.050,
+          "duration_ms": 4900.0,
+          "status": "completed",
+          "inputs": {
+            "scoring_method": "weighted_average",
+            "criteria_count": 6
+          },
+          "outputs": {
+            "final_score": 0.847,
+            "classification": "good",
+            "confidence": 0.92
+          },
+          "errors": [],
+          "metadata": {
+            "dimension": "DE1"
+          }
+        }
+      },
+      "question_processing": {
+        "Q1_P1_DE1": 145.2,
+        "Q2_P1_DE1": 167.8,
+        "Q3_P1_DE1": 198.5,
+        "Q4_P1_DE1": 132.1,
+        "Q5_P1_DE1": 189.3,
+        "Q6_P1_DE1": 156.7,
+        "Q7_P1_DE1": 174.9,
+        "Q8_P1_DE1": 201.2
+      },
+      "evidence_validation": {
+        "EVD_001_legal": 256.4,
+        "EVD_002_statistical": 189.7,
+        "EVD_003_testimonial": 298.1,
+        "EVD_004_documentary": 234.8,
+        "EVD_005_observational": 187.3
+      },
+      "scoring_computation": {
+        "DE1": {
+          "raw_scores": [0.82, 0.89, 0.91, 0.78, 0.85],
+          "weighted_scores": [0.164, 0.178, 0.182, 0.156, 0.170],
+          "weights": [0.2, 0.2, 0.2, 0.2, 0.2],
+          "final_score": 0.847,
+          "classification": "good",
+          "computation_timestamp": 1642679425.000
+        }
+      },
+      "status": "completed",
+      "errors": []
+    }
+  },
+  "coverage_validation": {
+    "DE1": {
+      "dimension": "DE1",
+      "expected_question_count": 10,
+      "actual_question_count": 8,
+      "missing_question_ids": ["Q9_P1_DE1", "Q10_P1_DE1"],
+      "extra_question_ids": [],
+      "coverage_percentage": 80.0,
+      "incomplete_evidence_count": 1,
+      "missing_page_references": [
+        {
+          "evidence_id": "EVD_003_testimonial",
+          "evaluation_id": "eval_001_p1",
+          "timestamp": 1642679415.500
+        }
+      ],
+      "validation_status": "good"
+    },
+    "DE2": {
+      "dimension": "DE2",
+      "expected_question_count": 12,
+      "actual_question_count": 7,
+      "missing_question_ids": ["Q4_P1_DE2", "Q6_P1_DE2", "Q8_P1_DE2", "Q10_P1_DE2", "Q12_P1_DE2"],
+      "extra_question_ids": [],
+      "coverage_percentage": 58.3,
+      "incomplete_evidence_count": 3,
+      "missing_page_references": [
+        {
+          "evidence_id": "EVD_007_field_study",
+          "evaluation_id": "eval_001_p1",
+          "timestamp": 1642679418.200
+        },
+        {
+          "evidence_id": "EVD_009_survey",
+          "evaluation_id": "eval_001_p1", 
+          "timestamp": 1642679420.100
+        }
+      ],
+      "validation_status": "fair"
+    }
+  },
+  "scoring_consistency": {
+    "DE1": {
+      "dimension": "DE1",
+      "raw_scores": [0.82, 0.89, 0.91, 0.78, 0.85],
+      "weighted_scores": [0.164, 0.178, 0.182, 0.156, 0.170],
+      "final_classification": "good",
+      "expected_classification": "good",
+      "score_variance": 0.00278,
+      "inconsistencies": [],
+      "diagnostic_info": {
+        "score_count": 5,
+        "score_mean": 0.85,
+        "score_min": 0.78,
+        "score_max": 0.91,
+        "classification_match": true
+      },
+      "consistency_status": "consistent"
+    },
+    "DE2": {
+      "dimension": "DE2",
+      "raw_scores": [0.45, 0.82, 0.91, 0.23, 0.67],
+      "weighted_scores": [0.090, 0.164, 0.182, 0.046, 0.134],
+      "final_classification": "fair",
+      "expected_classification": "good",
+      "score_variance": 0.0735,
+      "inconsistencies": [
+        {
+          "type": "high_score_variance",
+          "range": 0.68,
+          "scores": [0.45, 0.82, 0.91, 0.23, 0.67],
+          "evaluation_id": "eval_001_p1",
+          "timestamp": 1642679425.100
+        },
+        {
+          "type": "classification_mismatch",
+          "expected": "good",
+          "actual": "fair",
+          "scores": [0.45, 0.82, 0.91, 0.23, 0.67],
+          "timestamp": 1642679426.000
+        }
+      ],
+      "diagnostic_info": {
+        "score_count": 5,
+        "score_mean": 0.616,
+        "score_min": 0.23,
+        "score_max": 0.91,
+        "classification_match": false
+      },
+      "consistency_status": "inconsistent"
+    }
+  },
+  "metrics": {
+    "total_points_evaluated": 1,
+    "total_questions_processed": 8,
+    "total_evidence_validated": 5,
+    "average_processing_time_ms": 45678.0,
+    "error_count": 0,
+    "warning_count": 1
+  },
+  "summary": {
+    "overall_status": "coverage_warning",
+    "points_evaluated": 1,
+    "dimensions_covered": 2,
+    "average_coverage_percentage": 69.15,
+    "consistency_issues": 2,
+    "error_rate": 0.0
+  },
+  "recommendations": [
+    {
+      "type": "coverage_improvement",
+      "priority": "medium",
+      "dimension": "DE2",
+      "message": "Improve question coverage for DE2: 58.3%",
+      "missing_questions": 5,
+      "action": "Add missing questions or validate mapping"
+    },
+    {
+      "type": "scoring_consistency",
+      "priority": "high",
+      "dimension": "DE2",
+      "message": "Address scoring inconsistencies in DE2",
+      "inconsistencies": 2,
+      "action": "Review scoring algorithms and weight distributions"
+    }
+  ]
+}

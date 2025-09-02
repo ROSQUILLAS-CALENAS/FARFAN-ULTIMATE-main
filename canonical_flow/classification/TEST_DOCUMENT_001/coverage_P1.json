@@ -1,0 +1,114 @@
+{
+  "document_id": "TEST_DOCUMENT_001",
+  "point_number": 1,
+  "point_name": "Derecho a la vida, a la seguridad y a la convivencia",
+  "total_expected_questions": 47,
+  "dimensions": {
+    "DE-1": {
+      "expected_count": 6,
+      "actual_answered": 6,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_01_DE-1_b7493589",
+        "DQ_01_DE-1_db7fab1f",
+        "DQ_01_DE-1_66d58df6",
+        "DQ_01_DE-1_0e777dd1",
+        "DQ_01_DE-1_f8952b52",
+        "DQ_01_DE-1_8849400c"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-2": {
+      "expected_count": 21,
+      "actual_answered": 21,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_01_DE-2_3062f249",
+        "DQ_01_DE-2_0679937c",
+        "DQ_01_DE-2_e974ccd5",
+        "DQ_01_DE-2_e7078669",
+        "DQ_01_DE-2_8278661a",
+        "DQ_01_DE-2_a240d3d9",
+        "DQ_01_DE-2_ab9f0926",
+        "DQ_01_DE-2_8fd2feec",
+        "DQ_01_DE-2_6a563d7c",
+        "DQ_01_DE-2_35c69cae",
+        "DQ_01_DE-2_22cd0ae4",
+        "DQ_01_DE-2_97c254d3",
+        "DQ_01_DE-2_eba6efd7",
+        "DQ_01_DE-2_b22ea936",
+        "DQ_01_DE-2_058447a6",
+        "DQ_01_DE-2_931a1135",
+        "DQ_01_DE-2_080c59ce",
+        "DQ_01_DE-2_78fb47be",
+        "DQ_01_DE-2_9c036f44",
+        "DQ_01_DE-2_7239b4e2",
+        "DQ_01_DE-2_4d3a46db"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-3": {
+      "expected_count": 8,
+      "actual_answered": 8,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_01_DE-3_52ebeca4",
+        "DQ_01_DE-3_9dfa1b44",
+        "DQ_01_DE-3_6611421c",
+        "DQ_01_DE-3_1c396d86",
+        "DQ_01_DE-3_4207ee63",
+        "DQ_01_DE-3_979b600e",
+        "DQ_01_DE-3_2be6a56a",
+        "DQ_01_DE-3_a49cc685"
+      ],
+      "unanswered_count": 0
+    },
+    "DE-4": {
+      "expected_count": 8,
+      "actual_answered": 8,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_01_DE-4_77a784f6",
+        "DQ_01_DE-4_ac6d6ab6",
+        "DQ_01_DE-4_d8a32f2b",
+        "DQ_01_DE-4_b2ab715d",
+        "DQ_01_DE-4_fc1c18ea",
+        "DQ_01_DE-4_0f4f337c",
+        "DQ_01_DE-4_ead4f45c",
+        "DQ_01_DE-4_3f8ce445"
+      ],
+      "unanswered_count": 0
+    },
+    "GEN": {
+      "expected_count": 4,
+      "actual_answered": 4,
+      "completion_percentage": 100.0,
+      "has_gap": false,
+      "gap_size": 0,
+      "answered_questions": [
+        "DQ_01_GEN_08b3517d",
+        "DQ_01_GEN_1879113a",
+        "DQ_01_GEN_b0a74888",
+        "DQ_01_GEN_a105c379"
+      ],
+      "unanswered_count": 0
+    }
+  },
+  "summary": {
+    "total_answered": 47,
+    "completion_percentage": 100.0,
+    "has_gaps": false,
+    "total_gaps": 0,
+    "dimensions_with_gaps": 0,
+    "fully_completed_dimensions": 5
+  },
+  "timestamp": "2025-08-26T22:10:35.748820"
+}
