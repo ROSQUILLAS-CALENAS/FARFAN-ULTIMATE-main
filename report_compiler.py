@@ -1593,3 +1593,25 @@ def _count_questions_analyzed(data: Dict) -> int:
             count += len(answers)
     
     return count
+
+
+if __name__ == "__main__":
+    # Minimal, resilient demo run: compile a tiny report even if optional deps are missing
+    compiler = ReportCompiler()
+    # Create minimal structures
+    demo_evidence = []
+    demo_clusters: List[EvidenceCluster] = []
+    demo_scores: Dict[str, Any] = {}
+    demo_analysis: Dict[str, Any] = {"insights": {"summary": "Demo analysis"}}
+
+    # Build ReportData safely
+    rd = ReportData(
+        plan_name="DEMO-PLAN",
+        analysis_results=demo_analysis,
+        evidence_clusters=demo_clusters,
+        scoring_outputs=demo_scores,  # type: ignore[arg-type]
+        metadata={"generated_at": datetime.now().isoformat()}
+    )
+
+    compiled = compiler.compile_report(rd, ReportType.MACRO)
+    print(compiled.to_json())

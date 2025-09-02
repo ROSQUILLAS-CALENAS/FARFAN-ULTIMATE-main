@@ -378,3 +378,15 @@ def process(data=None, context=None):
         analyzer.save_artifact(result, data['document_stem'])
     
     return result
+
+
+if __name__ == "__main__":
+    # Minimal demo: run with a tiny deterministic input and print JSON
+    demo_input = {
+        "document_stem": "demo",
+        "performance": {"latency_ms": 120.0, "throughput": 85.0},
+        "resources": {"cpu_usage": 42.0, "memory_usage": 61.5},
+        "errors": []
+    }
+    output = process(demo_input, context={"mode": "predictive"})
+    print(json.dumps(output, indent=2, ensure_ascii=False))

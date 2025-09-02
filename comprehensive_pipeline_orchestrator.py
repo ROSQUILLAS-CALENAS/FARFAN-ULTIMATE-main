@@ -29,7 +29,14 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor
 
-import psutil
+try:
+    import psutil  # type: ignore
+except Exception:
+    class _PsutilStub:
+        def Process(self, *a, **kw): return None
+        def cpu_percent(self, *a, **kw): return 0.0
+        def virtual_memory(self): return type("M", (), {"percent": 0.0})()
+    psutil = _PsutilStub()  # type: ignore
 
 from circuit_breaker import CircuitBreaker, CircuitState, BreakerOpenError
 from exception_monitoring import ExceptionMonitor
@@ -3597,22 +3604,56 @@ def write_deterministic_flux_report(path: str = "DETERMINISTIC_FLUX.md", include
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
+    # Simple CLI flags without argparse to keep import-safety
+    argv = sys.argv[1:]
+    json_only = "--json" in argv
+    quick = "--quick" in argv or "-q" in argv
+
     orch = ComprehensivePipelineOrchestrator()
     ok = orch.guarantee_value_chain()
-    if ok:
-        print("✓ Value chain guaranteed for all nodes")
+    status_msg = {
+        True: "\u2713 Value chain guaranteed for all nodes",
+        False: "\u26A0 Some nodes needed value enhancement (applied)",
+    }[ok]
+
+    # Minimal demo input
+    input_payload = {"initial_data": "development_plan.pdf"}
+
+    if quick:
+        # Quick-run: do not process heavy PDF paths; just compute execution order and a dry-run summary
+        topo = orch._topological_sort()
+        summary = {
+            "ok": ok,
+            "nodes": len(topo),
+            "first": topo[0] if topo else None,
+            "last": topo[-1] if topo else None,
+            "execution_order": topo,
+        }
+        if json_only:
+            print(json.dumps({"status": status_msg, "summary": summary}))
+            sys.exit(0 if ok else 1)
+        else:
+            print(status_msg)
+            print(f"Deterministic order length: {len(topo)}")
+            print(f"First: {summary['first']}, Last: {summary['last']}")
+            # Also write deterministic flux report quickly
+            report_path = write_deterministic_flux_report()
+            print(f"Deterministic flux report written to {report_path}")
+            sys.exit(0 if ok else 1)
     else:
-        print("⚠ Some nodes needed value enhancement (applied)")
-
-    # Execute with a minimal input stub; adapt as needed
-    result = orch.execute_pipeline({"initial_data": "development_plan.pdf"})
-
-    # Save execution trace
-    out_path = Path("execution_trace.json")
-    with out_path.open("w", encoding="utf-8") as f:
-        json.dump(result, f, indent=2, ensure_ascii=False)
-    print(f"Execution trace written to {out_path.resolve()}")
-
-    # Save deterministic flux report
-    report_path = write_deterministic_flux_report()
-    print(f"Deterministic flux report written to {report_path}")
+        # Standard execution
+        result = orch.execute_pipeline(input_payload)
+        if json_only:
+            print(json.dumps({"status": status_msg, "result": result}))
+            sys.exit(0 if ok else 1)
+        else:
+            print(status_msg)
+            # Save execution trace
+            out_path = Path("execution_trace.json")
+            with out_path.open("w", encoding="utf-8") as f:
+                json.dump(result, f, indent=2, ensure_ascii=False)
+            print(f"Execution trace written to {out_path.resolve()}")
+            # Save deterministic flux report
+            report_path = write_deterministic_flux_report()
+            print(f"Deterministic flux report written to {report_path}")
+            sys.exit(0 if ok else 1)

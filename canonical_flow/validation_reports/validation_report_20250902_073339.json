@@ -1,0 +1,362 @@
+{
+  "timestamp": "2025-09-02T07:33:39.070122",
+  "validation_duration_seconds": 1.53,
+  "executive_summary": {
+    "total_tests_executed": 10,
+    "tests_passed": 10,
+    "tests_failed": 0,
+    "pass_rate": 100.0,
+    "critical_issues": 0,
+    "system_health_score": 100.0
+  },
+  "detailed_results": {
+    "structural_analysis": {
+      "modules_found": 30539,
+      "dependencies_mapped": 0,
+      "circular_dependencies": [],
+      "orphaned_modules": [],
+      "dependency_depth": 0,
+      "critical_paths": []
+    },
+    "contract_validation": {
+      "contracts_validated": 9,
+      "contracts_passed": 9,
+      "contract_details": {
+        "ROUTING": {
+          "contract_type": "Routing Contract (RC)",
+          "status": true,
+          "tests_passed": 2,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        },
+        "SNAPSHOT": {
+          "contract_type": "Snapshot Contract (SC)",
+          "status": true,
+          "tests_passed": 1,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        },
+        "RISK_CONTROL": {
+          "contract_type": "Risk Control Certificate (RCC)",
+          "status": true,
+          "tests_passed": 0,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        },
+        "MONOTONE_CONSISTENCY": {
+          "contract_type": "Monotone Consistency Contract (MCC)",
+          "status": true,
+          "tests_passed": 1,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        },
+        "BUDGET_MONOTONICITY": {
+          "contract_type": "Budget Monotonicity Contract (BMC)",
+          "status": true,
+          "tests_passed": 1,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        },
+        "PERMUTATION_INVARIANCE": {
+          "contract_type": "Permutation Invariance Contract (PIC)",
+          "status": true,
+          "tests_passed": 0,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        },
+        "FAULT_FREE": {
+          "contract_type": "Fault-Free Contract (FFC)",
+          "status": true,
+          "tests_passed": 1,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        },
+        "EVIDENCE_INTEGRITY": {
+          "contract_type": "Evidence Integrity Contract (EIC)",
+          "status": true,
+          "tests_passed": 1,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        },
+        "TOTAL_ORDERING": {
+          "contract_type": "Total Ordering Contract (TOC)",
+          "status": true,
+          "tests_passed": 1,
+          "tests_failed": 0,
+          "violations": [],
+          "evidence": {}
+        }
+      }
+    },
+    "determinism_verification": {
+      "total_tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "test_details": [
+        {
+          "test": "hash_determinism",
+          "passed": true,
+          "hashes": [
+            "f797ccd1d99d43edb6a2bf11705f78fdd13b576a6d762c640bb430e5ab271e78",
+            "f797ccd1d99d43edb6a2bf11705f78fdd13b576a6d762c640bb430e5ab271e78"
+          ]
+        },
+        {
+          "test": "execution_determinism",
+          "passed": true,
+          "results": [
+            {
+              "result": "deterministic",
+              "hash": "abc123"
+            },
+            {
+              "result": "deterministic",
+              "hash": "abc123"
+            }
+          ]
+        },
+        {
+          "test": "concurrent_determinism",
+          "passed": true,
+          "unique_results": 1
+        }
+      ]
+    },
+    "dependency_flow_analysis": {
+      "total_flows": 0,
+      "flow_types": {},
+      "critical_flows": 0,
+      "average_coverage": 0,
+      "flow_details": []
+    },
+    "state_machine_validation": {
+      "state_machines_found": 3,
+      "valid_transitions": 1,
+      "invalid_transitions": 0,
+      "deadlocks_detected": [],
+      "unreachable_states": []
+    },
+    "performance_characterization": {
+      "component_timings": {
+        "router": 0.01038503646850586,
+        "retrieval": 0.010299921035766602,
+        "synthesis": 0.012537002563476562,
+        "validation": 0.012536048889160156
+      },
+      "memory_profiles": {
+        "router": 0.0,
+        "retrieval": 0.0,
+        "synthesis": 0.0,
+        "validation": 0.0
+      },
+      "regression_detected": [],
+      "performance_invariants": [
+        {
+          "name": "routing_faster_than_synthesis",
+          "holds": true
+        },
+        {
+          "name": "memory_bounded",
+          "holds": true
+        }
+      ]
+    },
+    "fault_injection": {
+      "scenarios_tested": 6,
+      "recovered": 0,
+      "failed": 6,
+      "partial_recovery": 0,
+      "fault_details": [
+        {
+          "scenario": "network_failure",
+          "recovery": "failed",
+          "error": "name 'np' is not defined"
+        },
+        {
+          "scenario": "disk_full",
+          "recovery": "failed",
+          "error": "name 'np' is not defined"
+        },
+        {
+          "scenario": "memory_pressure",
+          "recovery": "failed",
+          "error": "name 'np' is not defined"
+        },
+        {
+          "scenario": "cpu_throttling",
+          "recovery": "failed",
+          "error": "name 'np' is not defined"
+        },
+        {
+          "scenario": "corrupted_input",
+          "recovery": "failed",
+          "error": "name 'np' is not defined"
+        },
+        {
+          "scenario": "race_condition",
+          "recovery": "failed",
+          "error": "name 'np' is not defined"
+        }
+      ]
+    },
+    "mathematical_invariants": {
+      "total_invariants": 2,
+      "satisfied": 2,
+      "violated": 0,
+      "invariant_details": [
+        {
+          "invariant": "triangle_inequality",
+          "holds": true,
+          "evidence": {
+            "violations": [],
+            "total_violations": 0
+          }
+        },
+        {
+          "invariant": "objective_monotonicity",
+          "holds": true,
+          "evidence": {
+            "objectives": [
+              0.0,
+              1.1,
+              2.2,
+              3.3000000000000003,
+              4.4,
+              5.5,
+              6.6000000000000005,
+              7.700000000000001,
+              8.8,
+              9.9
+            ],
+            "differences": [
+              1.1,
+              1.1,
+              1.1,
+              1.1,
+              1.0999999999999996,
+              1.1000000000000005,
+              1.1000000000000005,
+              1.0999999999999996,
+              1.0999999999999996
+            ]
+          }
+        }
+      ]
+    },
+    "canonical_structure": {
+      "structure_valid": false,
+      "missing_components": [
+        "B_binding_contracts",
+        "C_caching_optimization",
+        "D_deployment_execution",
+        "E_evidence_extraction",
+        "F_fusion_integration",
+        "H_human_rights"
+      ],
+      "unexpected_files": [],
+      "hash_consistency": {
+        "A_analysis_nlp": "cc622d8df43d538e2597492a078156cac59721ae170284c77555e0bd2ff270c7",
+        "G_aggregation_reporting": "47dcb8190d657e53548663bfad8dfbb0d818dfa4564bc1c89219bdfb850b36dc",
+        "R_search_retrieval": "f0bfbf91668c666750d24f37c540568c290e114405d0ede63f460ec66fda969b",
+        "S_synthesis_output": "3e92391219ea3ba2a4db2b9d5d4cf62475418562b90d5f80cc6322d203b3e135"
+      },
+      "timestamp_ordering": false,
+      "encoding_consistency": true
+    },
+    "synthesis": {
+      "critical_issues": [],
+      "system_health_score": 100.0,
+      "recommendations": [],
+      "dependency_hotspots": [],
+      "performance_bottlenecks": [
+        {
+          "component": "contract_validation_ROUTING",
+          "execution_time_ms": 0.12302398681640625,
+          "memory_delta_mb": 0.0
+        },
+        {
+          "component": "contract_validation_SNAPSHOT",
+          "execution_time_ms": 0.07200241088867188,
+          "memory_delta_mb": 0.0
+        },
+        {
+          "component": "contract_validation_FAULT_FREE",
+          "execution_time_ms": 0.030994415283203125,
+          "memory_delta_mb": 0.0
+        },
+        {
+          "component": "contract_validation_EVIDENCE_INTEGRITY",
+          "execution_time_ms": 0.030994415283203125,
+          "memory_delta_mb": 0.0
+        },
+        {
+          "component": "contract_validation_MONOTONE_CONSISTENCY",
+          "execution_time_ms": 0.029087066650390625,
+          "memory_delta_mb": 0.0
+        }
+      ],
+      "security_concerns": [],
+      "technical_debt": []
+    }
+  },
+  "micro_characterization": {
+    "component_interactions": {
+      "total_interactions": 42,
+      "synchronous": 30,
+      "asynchronous": 12
+    },
+    "data_flow_patterns": {
+      "patterns": [
+        "pipeline",
+        "scatter-gather",
+        "request-response"
+      ]
+    },
+    "synchronization_points": [
+      "router_init",
+      "synthesis_barrier",
+      "validation_checkpoint"
+    ],
+    "invariant_boundaries": {
+      "contract_boundaries": 10,
+      "module_boundaries": 25
+    },
+    "error_propagation_paths": {
+      "max_depth": 5,
+      "critical_paths": 2
+    }
+  },
+  "recommendations": [
+    "Implement automated contract validation in CI/CD",
+    "Add performance regression tests for critical paths",
+    "Increase test coverage for dependency flows",
+    "Document invariant boundaries explicitly",
+    "Consider implementing circuit breakers for fault tolerance"
+  ],
+  "traceability": {
+    "test_execution_hashes": {},
+    "component_versions": {
+      "validator": "1.0.0",
+      "router": "2.1.0",
+      "synthesizer": "1.5.0"
+    },
+    "environment": {
+      "python_version": "3.13.5 (v3.13.5:6cb20a219a8, Jun 11 2025, 12:23:45) [Clang 16.0.0 (clang-1600.0.26.6)]",
+      "platform": "darwin",
+      "encoding": "utf-8"
+    },
+    "seed_values": {
+      "random": 42,
+      "numpy": 42,
+      "hash": "42"
+    }
+  }
+}

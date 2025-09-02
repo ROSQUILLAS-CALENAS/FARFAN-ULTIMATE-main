@@ -881,8 +881,26 @@ class DeterministicPipelineValidator:
             "unexpected_files": [],
             "hash_consistency": {},
             "timestamp_ordering": True,
-            "encoding_consistency": True
+            "encoding_consistency": True,
+            "auditor": {}
         }
+        
+        # Try to run canonical path auditor for deeper checks (non-fatal)
+        try:
+            import subprocess, sys
+            auditor = subprocess.run([sys.executable, str(self.project_root / "tools" / "canonical_path_auditor.py"), "--json"],
+                                     cwd=str(self.project_root), text=True, capture_output=True, timeout=120)
+            if auditor.stdout:
+                import json as _json
+                auditor_json = _json.loads(auditor.stdout.strip())
+                canonical_checks["auditor"] = auditor_json
+                # propagate some key findings to top-level canonical checks
+                canonical_checks["structure_valid"] = canonical_checks["structure_valid"] and bool(auditor_json.get("ok", False))
+                canonical_checks.setdefault("missing_files_overall", auditor_json.get("missing_files", []))
+                canonical_checks.setdefault("isolated_nodes", auditor_json.get("isolated_nodes", []))
+                canonical_checks.setdefault("unused_assets", auditor_json.get("unused_assets", []))
+        except Exception:
+            pass
         
         # Expected canonical structure
         expected_structure = {
@@ -1390,7 +1408,9 @@ class DeterministicPipelineValidator:
 
 def main():
     """Main entry point for validation"""
-    print("\n🔬 Initializing Comprehensive Pipeline Validator...")
+    json_only = "--json" in sys.argv
+    if not json_only:
+        print("\n🔬 Initializing Comprehensive Pipeline Validator...")
     
     # Determine project root
     project_root = Path(__file__).parent if "__file__" in globals() else Path(".")
@@ -1401,25 +1421,30 @@ def main():
     # Run comprehensive validation
     report = validator.run_comprehensive_validation()
     
-    # Print summary
-    print("\n" + "="*80)
-    print("VALIDATION COMPLETE")
-    print("="*80)
+    if json_only:
+        # Emit JSON-only machine-readable summary for CI or tooling
+        print(json.dumps(report))
+    else:
+        # Print human-readable summary
+        print("\n" + "="*80)
+        print("VALIDATION COMPLETE")
+        print("="*80)
+        
+        es = report["executive_summary"]
+        print(f"\n📊 Results Summary:")
+        print(f"  • System Health Score: {es['system_health_score']}/100")
+        print(f"  • Pass Rate: {es['pass_rate']}%")
+        print(f"  • Critical Issues: {es['critical_issues']}")
+        
+        if es['critical_issues'] > 0:
+            print(f"\n⚠️  WARNING: {es['critical_issues']} critical issues detected!")
+            print("  Review the detailed report for recommendations.")
+        else:
+            print("\n✅ No critical issues detected.")
+        
+        print(f"\n📁 Detailed reports saved to: canonical_flow/validation_reports/")
     
     es = report["executive_summary"]
-    print(f"\n📊 Results Summary:")
-    print(f"  • System Health Score: {es['system_health_score']}/100")
-    print(f"  • Pass Rate: {es['pass_rate']}%")
-    print(f"  • Critical Issues: {es['critical_issues']}")
-    
-    if es['critical_issues'] > 0:
-        print(f"\n⚠️  WARNING: {es['critical_issues']} critical issues detected!")
-        print("  Review the detailed report for recommendations.")
-    else:
-        print("\n✅ No critical issues detected.")
-    
-    print(f"\n📁 Detailed reports saved to: canonical_flow/validation_reports/")
-    
     return 0 if es['critical_issues'] == 0 else 1
 
 

@@ -206,9 +206,18 @@ def main():
         checks.append({"name": "integration_tests_quick", "result": step6c, "ok": step6c_ok})
         overall_ok = overall_ok and step6c_ok
 
-    # 7) Lightweight compile check for key directories
+    # 7) Canonical path audit (non-blocking)
     if not args.json:
-        print(color("[7/7] Syntax/Compile Check", Ansi.CYAN))
+        print(color("[7/8] Canonical Path Audit", Ansi.CYAN))
+    audit_log = LOG_DIR / "canonical_path_audit.log"
+    step7 = run_cmd([sys.executable, "tools/canonical_path_auditor.py", "--json"], audit_log, timeout=300)
+    step7_ok = step7.get("returncode", 1) == 0
+    checks.append({"name": "canonical_path_audit", "result": step7, "ok": step7_ok})
+    overall_ok = overall_ok and step7_ok
+
+    # 8) Lightweight compile check for key directories
+    if not args.json:
+        print(color("[8/8] Syntax/Compile Check", Ansi.CYAN))
     to_check = [
         ROOT / "egw_query_expansion",
         ROOT / "retrieval_engine",
