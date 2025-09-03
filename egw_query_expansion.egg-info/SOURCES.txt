@@ -188,6 +188,8 @@ tests/test_api.py
 tests/test_basic_functionality.py
 tests/test_bmc.py
 tests/test_calibration_ci.py
+tests/test_code_quality_fixes.py
+tests/test_code_quality_fixes_minimal.py
 tests/test_comprehensive_validation_ci.py
 tests/test_conformal_risk_system.py
 tests/test_constraint_validator.py
@@ -231,6 +233,7 @@ tools/__init__.py
 tools/apply_academic_essay.py
 tools/apply_adv_graphics_stack.py
 tools/audit_trail.py
+tools/canonical_path_auditor.py
 tools/certificate_generator.py
 tools/dependency_audit.py
 tools/fault_injector.py
