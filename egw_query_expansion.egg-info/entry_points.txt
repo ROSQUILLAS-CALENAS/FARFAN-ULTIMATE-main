@@ -1,3 +1,0 @@
-[console_scripts]
-egw-expand = egw_query_expansion.cli:main
-egw-troubleshoot = egw_query_expansion.cli.troubleshoot:main

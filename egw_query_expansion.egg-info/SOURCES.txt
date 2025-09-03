@@ -1,9 +1,14 @@
 README.md
+pyproject.toml
 setup.py
 G_aggregation_reporting/__init__.py
 G_aggregation_reporting/meso_aggregator.py
 G_aggregation_reporting/report_compiler.py
 analysis_nlp/__init__.py
+architecture_tests/__init__.py
+architecture_tests/conftest.py
+architecture_tests/test_import_graph_analysis.py
+architecture_tests/test_phase_enforcement.py
 calibration_safety_governance/__init__.py
 calibration_safety_governance/auto_deactivation_monitor.py
 calibration_safety_governance/demo_orchestration.py
@@ -160,7 +165,6 @@ egw_query_expansion/mathematical_foundations.py
 egw_query_expansion.egg-info/PKG-INFO
 egw_query_expansion.egg-info/SOURCES.txt
 egw_query_expansion.egg-info/dependency_links.txt
-egw_query_expansion.egg-info/entry_points.txt
 egw_query_expansion.egg-info/requires.txt
 egw_query_expansion.egg-info/top_level.txt
 egw_query_expansion/cli/__init__.py
@@ -237,6 +241,7 @@ standards_alignment/gw_alignment.py
 standards_alignment/patterns.py
 standards_alignment/stable_gw_aligner.py
 tests/__init__.py
+tests/conftest.py
 tests/test_answer_formatter.py
 tests/test_api.py
 tests/test_basic_functionality.py
@@ -270,6 +275,7 @@ tests/test_mcc.py
 tests/test_meso_aggregator.py
 tests/test_ot_alignment.py
 tests/test_pdf_error_handling.py
+tests/test_phase_integration.py
 tests/test_pic.py
 tests/test_rc.py
 tests/test_refusal.py

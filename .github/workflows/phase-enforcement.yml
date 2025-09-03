@@ -1,0 +1,267 @@
+name: Phase Layer Enforcement
+
+on:
+  push:
+    branches: [ main, develop, feature/* ]
+    paths:
+      - 'canonical_flow/**/*.py'
+      - 'architecture_tests/**/*.py'
+      - 'pyproject.toml'
+      - '.github/workflows/phase-enforcement.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'canonical_flow/**/*.py'
+      - 'architecture_tests/**/*.py'
+      - 'pyproject.toml'
+      - '.github/workflows/phase-enforcement.yml'
+  workflow_dispatch:
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  import-linter-check:
+    name: Import Linter Phase Enforcement
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+    
+    - name: Install import-linter
+      run: |
+        python -m pip install --upgrade pip
+        pip install import-linter>=1.12.0
+    
+    - name: Run import-linter phase enforcement checks
+      run: |
+        echo "Running import-linter with phase enforcement rules..."
+        import-linter --config pyproject.toml
+        echo "✅ All phase layering constraints validated successfully!"
+    
+    - name: Upload import-linter report
+      if: failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: import-linter-violations
+        path: |
+          .import-linter-cache/
+        retention-days: 7
+
+  architecture-fitness-tests:
+    name: Architecture Fitness Function Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: import-linter-check
+    
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.11']
+      fail-fast: false
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+    
+    - name: Create virtual environment
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+        echo "$VIRTUAL_ENV/bin" >> $GITHUB_PATH
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pytest-cov pytest-xdist networkx
+        # Install only essential dependencies for architecture tests
+        pip install pathlib ast-tools || true
+    
+    - name: Verify canonical_flow structure
+      run: |
+        echo "Verifying canonical_flow directory structure..."
+        ls -la canonical_flow/ || echo "canonical_flow directory not found"
+        
+        expected_phases=(
+          "I_ingestion_preparation"
+          "X_context_construction"
+          "K_knowledge_extraction"
+          "A_analysis_nlp"
+          "L_classification_evaluation"
+          "R_search_retrieval"
+          "O_orchestration_control"
+          "G_aggregation_reporting"
+          "T_integration_storage"
+          "S_synthesis_output"
+        )
+        
+        missing_phases=()
+        for phase in "${expected_phases[@]}"; do
+          if [[ ! -d "canonical_flow/$phase" ]]; then
+            missing_phases+=("$phase")
+          fi
+        done
+        
+        if [[ ${#missing_phases[@]} -gt 0 ]]; then
+          echo "⚠️  Missing phase directories: ${missing_phases[*]}"
+          echo "Available directories:"
+          ls -la canonical_flow/
+        else
+          echo "✅ All expected phase directories found"
+        fi
+    
+    - name: Run architecture fitness function tests
+      run: |
+        echo "Running architecture fitness function tests..."
+        
+        # Run phase enforcement tests with detailed output
+        pytest architecture_tests/test_phase_enforcement.py \
+          -v \
+          --tb=long \
+          --junit-xml=architecture-test-results.xml \
+          --cov=architecture_tests \
+          --cov-report=term-missing \
+          --cov-report=html:architecture-coverage \
+          -m "architecture or phase_enforcement" || {
+            echo "❌ Phase enforcement tests failed!"
+            echo "This indicates violations of the canonical phase flow: I→X→K→A→L→R→O→G→T→S"
+            exit 1
+          }
+        
+        echo "✅ Architecture fitness function tests passed!"
+    
+    - name: Run import graph analysis tests
+      run: |
+        echo "Running import graph analysis tests..."
+        
+        pytest architecture_tests/test_import_graph_analysis.py \
+          -v \
+          --tb=long \
+          --junit-xml=graph-analysis-results.xml \
+          -m "architecture" || {
+            echo "❌ Import graph analysis tests failed!"
+            echo "This indicates circular dependencies or complex phase violations"
+            exit 1
+          }
+        
+        echo "✅ Import graph analysis tests passed!"
+    
+    - name: Generate architecture violations report
+      if: failure()
+      run: |
+        echo "Generating detailed architecture violations report..."
+        
+        python -c "
+        import sys
+        sys.path.insert(0, '.')
+        from architecture_tests.test_phase_enforcement import ImportAnalyzer
+        
+        analyzer = ImportAnalyzer()
+        violations = analyzer.analyze_phase_dependencies()
+        
+        print('\\n' + '='*60)
+        print('ARCHITECTURE VIOLATIONS REPORT')
+        print('='*60)
+        
+        total_violations = sum(len(v) for v in violations.values())
+        print(f'Total violations found: {total_violations}\\n')
+        
+        if total_violations > 0:
+            print('PHASE FLOW VIOLATIONS (I→X→K→A→L→R→O→G→T→S):')
+            print('-' * 50)
+            
+            for phase, phase_violations in violations.items():
+                if phase_violations:
+                    print(f'\\n{phase} ({len(phase_violations)} violations):')
+                    for file_path, import_name, target_phase in phase_violations:
+                        print(f'  ❌ {file_path}')
+                        print(f'     imports {import_name} from {target_phase}')
+            
+            print('\\n' + '='*60)
+            print('REMEDIATION STEPS:')
+            print('1. Remove backward imports from later to earlier phases')
+            print('2. Use dependency injection or event patterns instead')
+            print('3. Move shared code to a common utilities module')
+            print('4. Consider refactoring phase boundaries')
+            print('='*60)
+        else:
+            print('✅ No phase layering violations found!')
+        "
+    
+    - name: Upload architecture test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: architecture-test-results-py${{ matrix.python-version }}
+        path: |
+          architecture-test-results.xml
+          graph-analysis-results.xml
+          architecture-coverage/
+        retention-days: 14
+    
+    - name: Publish architecture test results
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Architecture Tests (Python ${{ matrix.python-version }})
+        path: |
+          architecture-test-results.xml
+          graph-analysis-results.xml
+        reporter: java-junit
+        fail-on-error: true
+
+  phase-enforcement-summary:
+    name: Phase Enforcement Summary
+    runs-on: ubuntu-latest
+    needs: [import-linter-check, architecture-fitness-tests]
+    if: always()
+    
+    steps:
+    - name: Phase Enforcement Results
+      run: |
+        echo "Phase Layer Enforcement Results:"
+        echo "==============================="
+        
+        if [[ "${{ needs.import-linter-check.result }}" == "success" ]]; then
+          echo "✅ Import Linter: PASSED"
+        else
+          echo "❌ Import Linter: FAILED"
+        fi
+        
+        if [[ "${{ needs.architecture-fitness-tests.result }}" == "success" ]]; then
+          echo "✅ Architecture Fitness Tests: PASSED"
+        else
+          echo "❌ Architecture Fitness Tests: FAILED"
+        fi
+        
+        echo ""
+        echo "Canonical Phase Flow: I → X → K → A → L → R → O → G → T → S"
+        echo ""
+        
+        if [[ "${{ needs.import-linter-check.result }}" == "success" && \
+              "${{ needs.architecture-fitness-tests.result }}" == "success" ]]; then
+          echo "🎉 All phase layering constraints are properly enforced!"
+          echo "The architecture maintains proper separation of concerns."
+        else
+          echo "⚠️  Phase layering violations detected!"
+          echo "Please review the test results and fix backward dependencies."
+          exit 1
+        fi

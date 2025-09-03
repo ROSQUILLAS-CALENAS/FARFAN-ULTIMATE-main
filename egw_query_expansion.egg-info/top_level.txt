@@ -1,5 +1,6 @@
 G_aggregation_reporting
 analysis_nlp
+architecture_tests
 calibration_safety_governance
 canonical_flow
 contracts

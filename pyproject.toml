@@ -1,0 +1,300 @@
+[build-system]
+requires = ["setuptools>=68.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "egw-query-expansion"
+version = "0.1.0"
+description = "EGW Query Expansion system with hybrid retrieval and phase layering enforcement"
+authors = [
+    {name = "EGW Team", email = "team@egw.ai"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "faiss-cpu>=1.7.4",
+    "transformers>=4.35.0",
+    "sentence-transformers>=2.2.2",
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+    "scipy>=1.11.0",
+    "POT>=0.9.1",
+    "scikit-learn>=1.3.0",
+    "packaging>=21.0",
+    "datasets>=2.14.0",
+    "pandas>=1.5.0",
+    "pyyaml>=5.1",
+    "tqdm>=4.66.0",
+    "spacy>=3.7.0",
+    "nltk>=3.8.0",
+    "pingouin>=0.5.0",
+    "statsmodels>=0.14.0",
+    "networkx>=3.1.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.15.0",
+    "beir>=2.0.0",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "jupyter>=1.0.0",
+    "pre-commit>=3.6.0",
+    "z3-solver>=4.12.0",
+    "msgspec>=0.18.0",
+    "pydantic>=2.0.0",
+    "orjson>=3.8.0",
+    "dill>=0.3.7",
+    "cloudpickle>=2.2.0",
+    "blake3>=0.3.3",
+    "psutil>=5.9.0",
+    "GitPython>=3.1.0",
+    "python-consul>=1.1.0",
+    "aioredis>=2.0.0",
+    "httpx>=0.24.0",
+    "redis>=4.5.0",
+    "PyMuPDF>=1.23.0",
+    "pdfplumber>=0.9.0",
+    "PyPDF2>=3.0.1",
+    "pytesseract>=0.3.10",
+    "easyocr>=1.7.0",
+    "opencv-python>=4.8.0",
+    "camelot-py>=0.11.0",
+    "ftfy>=6.1.0",
+    "unidecode>=1.3.0",
+    "pyspellchecker>=0.7.0",
+    "langdetect>=1.0.9",
+    "textstat>=0.7.0",
+    "pm4py>=2.7.0",
+    "deap>=1.4.0",
+    "whoosh>=2.7.4",
+    "ray>=2.7.0",
+    "torch-geometric>=2.3.0",
+    "elasticsearch>=8.9.0",
+    "joblib>=1.3.0",
+    "dask>=2023.8.0",
+    "sqlalchemy>=2.0.0",
+    "lark>=1.1.0",
+    "jsonschema>=4.19.0",
+    "toml>=0.10.2",
+    "prometheus-client>=0.17.0",
+    "opentelemetry-api>=1.20.0",
+    "opentelemetry-sdk>=1.20.0",
+    "loguru>=0.7.0",
+    "rich>=13.5.0",
+    "tabula-py>=2.8.0",
+    "fuzzywuzzy>=0.18.0",
+    "python-Levenshtein>=0.21.0",
+    "kubernetes>=27.2.0",
+    "kafka-python>=2.0.2",
+    "hypothesis>=6.82.0",
+    "setuptools>=68.0.0",
+    "pillow>=10.0.0",
+    "import-linter>=1.12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+    "pre-commit>=3.6.0",
+]
+
+[tool.import-linter]
+root_package = "canonical_flow"
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Ingestion → Context Construction"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.X_context_construction",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Context Construction → Knowledge Extraction"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.K_knowledge_extraction",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Knowledge Extraction → Analysis NLP"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.A_analysis_nlp",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction",
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Analysis NLP → Classification Evaluation"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.L_classification_evaluation",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction",
+    "canonical_flow.A_analysis_nlp",
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Classification Evaluation → Search Retrieval"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.R_search_retrieval",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction",
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Search Retrieval → Orchestration Control"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.O_orchestration_control",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction",
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+    "canonical_flow.R_search_retrieval",
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Orchestration Control → Aggregation Reporting"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.G_aggregation_reporting",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction",
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+    "canonical_flow.R_search_retrieval",
+    "canonical_flow.O_orchestration_control",
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Aggregation Reporting → Integration Storage"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.T_integration_storage",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction",
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+    "canonical_flow.R_search_retrieval",
+    "canonical_flow.O_orchestration_control",
+    "canonical_flow.G_aggregation_reporting",
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase Layer Enforcement: Integration Storage → Synthesis Output"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.S_synthesis_output",
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction",
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+    "canonical_flow.R_search_retrieval",
+    "canonical_flow.O_orchestration_control",
+    "canonical_flow.G_aggregation_reporting",
+    "canonical_flow.T_integration_storage",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["canonical_flow", "egw_query_expansion"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+disallow_untyped_decorators = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "architecture_tests"]
+python_files = ["test_*.py", "*_test.py", "test*.py"]
+python_classes = ["Test*", "*Test"]
+python_functions = ["test_*", "*_test"]
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--tb=short",
+    "--cov=canonical_flow",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+markers = [
+    "architecture: marks tests as architecture fitness function tests",
+    "phase_enforcement: marks tests as phase layer enforcement tests",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+]

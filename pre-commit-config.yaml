@@ -1,0 +1,90 @@
+repos:
+  # Code formatting
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3
+        args: [--line-length=88]
+
+  # Import sorting
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black]
+
+  # Linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: [--max-line-length=88, --extend-ignore=E203,W503]
+
+  # Type checking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-all]
+        args: [--ignore-missing-imports, --no-strict-optional]
+
+  # Phase enforcement with import-linter
+  - repo: local
+    hooks:
+      - id: import-linter-phase-enforcement
+        name: Phase Layer Enforcement (import-linter)
+        entry: import-linter
+        language: python
+        args: [--config, pyproject.toml]
+        files: ^canonical_flow/.*\.py$
+        additional_dependencies: [import-linter>=1.12.0]
+        pass_filenames: false
+        description: "Enforce phase layering constraints: I→X→K→A→L→R→O→G→T→S"
+
+  # Architecture fitness function tests
+  - repo: local
+    hooks:
+      - id: architecture-fitness-tests
+        name: Architecture Fitness Function Tests
+        entry: pytest
+        language: python
+        args: [architecture_tests/, -x, -q, -m, "architecture or phase_enforcement"]
+        files: ^(canonical_flow|architecture_tests)/.*\.py$
+        additional_dependencies: [pytest>=7.0.0, networkx>=3.1.0]
+        pass_filenames: false
+        description: "Run architecture fitness function tests for phase constraints"
+
+  # Phase enforcement validation script
+  - repo: local
+    hooks:
+      - id: phase-enforcement-validation
+        name: Phase Enforcement Validation
+        entry: python
+        language: system
+        args: [scripts/validate_phase_enforcement.py]
+        files: ^canonical_flow/.*\.py$
+        pass_filenames: false
+        description: "Comprehensive phase enforcement validation"
+
+  # Standard checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: debug-statements
+
+  # Security checks
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        args: [-r, canonical_flow/, egw_query_expansion/, -f, json, -o, bandit-report.json]
+        files: ^(canonical_flow|egw_query_expansion)/.*\.py$

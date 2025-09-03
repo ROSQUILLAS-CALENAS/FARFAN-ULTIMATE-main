@@ -1,0 +1,143 @@
+{
+  "phase_violations": {
+    "I_ingestion_preparation": [],
+    "X_context_construction": [],
+    "K_knowledge_extraction": [],
+    "A_analysis_nlp": [],
+    "L_classification_evaluation": [],
+    "R_search_retrieval": [],
+    "O_orchestration_control": [],
+    "G_aggregation_reporting": [],
+    "T_integration_storage": [],
+    "S_synthesis_output": []
+  },
+  "circular_dependencies": [],
+  "connectivity_matrix": {
+    "I_ingestion_preparation": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "X_context_construction": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "K_knowledge_extraction": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "A_analysis_nlp": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "L_classification_evaluation": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "R_search_retrieval": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "O_orchestration_control": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "G_aggregation_reporting": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "T_integration_storage": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    },
+    "S_synthesis_output": {
+      "I_ingestion_preparation": 0,
+      "X_context_construction": 0,
+      "K_knowledge_extraction": 0,
+      "A_analysis_nlp": 0,
+      "L_classification_evaluation": 0,
+      "R_search_retrieval": 0,
+      "O_orchestration_control": 0,
+      "G_aggregation_reporting": 0,
+      "T_integration_storage": 0,
+      "S_synthesis_output": 0
+    }
+  },
+  "summary": {
+    "total_phase_violations": 0,
+    "total_circular_dependencies": 0,
+    "phases_with_violations": 0,
+    "overall_status": "PASS"
+  }
+}

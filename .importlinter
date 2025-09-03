@@ -1,0 +1,10 @@
+[importlinter]
+root_packages = 
+    canonical_flow
+
+[[importlinter.contracts]]
+name = "Basic Phase Test"
+type = "independence"
+modules = 
+    canonical_flow.I_ingestion_preparation
+    canonical_flow.X_context_construction
