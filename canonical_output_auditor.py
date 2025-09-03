@@ -7,11 +7,12 @@ Canonical Output Auditor
 
 Usage: process(data: Dict[str, Any], context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]
 """
-# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
+from __future__ import annotations
 
-# # # from typing import Any, Dict, List, Optional, Set  # Module not found  # Module not found  # Module not found
+from typing import Any, Dict, List, Optional, Set, Union
 import hashlib
 import time
+import json
 
 # Best-effort imports of optional modules; auditor degrades gracefully
 try:
@@ -29,13 +30,55 @@ REQUIRED_CLUSTERS_LABEL = ("C1", "C2", "C3", "C4")
 REQUIRED_CLUSTERS_NUM = (1, 2, 3, 4)
 
 
+def _deterministic_serialize(obj: Any) -> str:
+    """Recursively serialize any object with deterministic ordering."""
+    if obj is None:
+        return "null"
+    elif isinstance(obj, bool):
+        return "true" if obj else "false"
+    elif isinstance(obj, (int, float)):
+        return str(obj)
+    elif isinstance(obj, str):
+        return json.dumps(obj, ensure_ascii=False)
+    elif isinstance(obj, (list, tuple)):
+        # Sort lists only if they contain hashable types for stability
+        try:
+            # Try to sort if all elements are comparable
+            sorted_obj = sorted(obj, key=lambda x: (type(x).__name__, x))
+            items = [_deterministic_serialize(item) for item in sorted_obj]
+        except (TypeError, AttributeError):
+            # If not sortable, serialize in original order
+            items = [_deterministic_serialize(item) for item in obj]
+        return "[" + ",".join(items) + "]"
+    elif isinstance(obj, set):
+        # Convert sets to sorted lists
+        try:
+            sorted_items = sorted(obj, key=lambda x: (type(x).__name__, x))
+        except (TypeError, AttributeError):
+            sorted_items = sorted(obj, key=str)
+        return _deterministic_serialize(sorted_items)
+    elif isinstance(obj, dict):
+        # Recursively sort dictionary keys
+        sorted_items = []
+        for key in sorted(obj.keys()):
+            key_str = _deterministic_serialize(key)
+            value_str = _deterministic_serialize(obj[key])
+            sorted_items.append(f"{key_str}:{value_str}")
+        return "{" + ",".join(sorted_items) + "}"
+    else:
+        # Fallback for other types
+        return json.dumps(str(obj), ensure_ascii=False)
+
+
+def deterministic_hash(obj: Any) -> str:
+    """Generate a deterministic hash for any object using stable serialization."""
+    serialized = _deterministic_serialize(obj)
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+
 def _stable_hash_dict(d: Dict[str, Any]) -> str:
-    try:
-        import json
-        content = json.dumps(d, sort_keys=True, ensure_ascii=False)
-    except Exception:
-        content = str(d)
-    return hashlib.sha256(content.encode("utf-8")).hexdigest()[:16]
+    """Legacy function, now uses deterministic_hash for consistency."""
+    return deterministic_hash(d)[:16]
 
 
 def _collect_evidence_ids_from_answers(answers: List[Dict[str, Any]]) -> Set[str]:
@@ -202,10 +245,6 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
 
     # Evidence resolution against evidence store
     unresolved_evidence: List[str] = []
-    try:
-        import json as _json
-    except Exception:
-        _json = None  # type: ignore
 
     evidence_index_by_qid: Dict[str, set] = {}
     # Try evidence_system first
@@ -214,8 +253,8 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
         try:
             if hasattr(evsys, "serialize_canonical") and callable(evsys.serialize_canonical):
                 raw = evsys.serialize_canonical()
-                if isinstance(raw, str) and _json:
-                    doc = _json.loads(raw)
+                if isinstance(raw, str):
+                    doc = json.loads(raw)
                     store = doc.get("store", {})
                     for qid, items in store.items():
                         ids = set()
@@ -283,6 +322,7 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
     if not raw_presence.get("evidence_store"):
         gaps.append("insufficient_raw_evidence_store")
 
+<<<<<<< HEAD
     # Replicability hash on key outputs (deterministic when flag set)
     if deterministic_mode:
         # Use deterministic hashes for replicability when in deterministic mode
@@ -297,6 +337,14 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
             "meso_summary_hash": _stable_hash_dict(out.get("meso_summary", {})) if out.get("meso_summary") else None,
             "macro_synthesis_hash": _stable_hash_dict(macro) if macro else None,
         }
+=======
+    # Replicability hash on key outputs using deterministic hashing
+    replicability = {
+        "cluster_audit_hash": deterministic_hash(out.get("cluster_audit", {}))[:16] if out.get("cluster_audit") else None,
+        "meso_summary_hash": deterministic_hash(out.get("meso_summary", {}))[:16] if out.get("meso_summary") else None,
+        "macro_synthesis_hash": deterministic_hash(macro)[:16] if macro else None,
+    }
+>>>>>>> a2a5f38 (Implement deterministic hash computation with stable ordering for nested data structures in canonical output auditor)
 
     # External transformation path availability
     try:
