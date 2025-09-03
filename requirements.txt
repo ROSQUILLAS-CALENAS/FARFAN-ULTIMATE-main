@@ -18,6 +18,14 @@ tqdm>=4.66.0
 # Advanced NLP and mathematical foundations
 spacy[en_core_web_sm]>=3.7.0
 nltk>=3.8.0
+
+# OpenTelemetry tracing
+opentelemetry-api>=1.20.0
+opentelemetry-sdk>=1.20.0
+opentelemetry-instrumentation>=0.41b0
+opentelemetry-exporter-jaeger>=1.20.0
+opentelemetry-exporter-otlp-proto-grpc>=1.20.0
+opentelemetry-instrumentation-logging>=0.41b0
 # gensim>=4.3.0  # Temporarily disabled due to build issues with Python 3.13
 pingouin>=0.5.0
 statsmodels>=0.14.0
