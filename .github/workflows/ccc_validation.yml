@@ -1,0 +1,380 @@
+name: Continuous Canonical Compliance Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'canonical_flow/**'
+      - 'tools/ccc_validator.py'
+      - 'tools/ci_ccc_integration.py'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'canonical_flow/**'
+      - 'tools/ccc_validator.py' 
+      - 'tools/ci_ccc_integration.py'
+  workflow_dispatch:
+    inputs:
+      strict_mode:
+        description: 'Enable strict validation mode'
+        required: false
+        default: 'false'
+      generate_artifacts:
+        description: 'Generate and upload validation artifacts'
+        required: false
+        default: 'true'
+
+jobs:
+  ccc-validation:
+    name: CCC Validation Gates
+    runs-on: ubuntu-latest
+    
+    outputs:
+      ccc_status: ${{ steps.validation.outputs.ccc_status }}
+      ccc_success_rate: ${{ steps.validation.outputs.ccc_success_rate }}
+      ccc_gates_passed: ${{ steps.validation.outputs.ccc_gates_passed }}
+      ccc_gates_total: ${{ steps.validation.outputs.ccc_gates_total }}
+      ccc_should_fail: ${{ steps.validation.outputs.ccc_should_fail }}
+      ccc_html_report: ${{ steps.validation.outputs.ccc_html_report }}
+      ccc_json_report: ${{ steps.validation.outputs.ccc_json_report }}
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for dependency analysis
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install matplotlib networkx numpy
+          # Install optional visualization dependencies
+          pip install plotly kaleido || echo "Optional dependencies failed, continuing..."
+
+      - name: ⚙️  Setup CCC Configuration
+        run: |
+          # Create CI-specific configuration
+          python tools/ci_ccc_integration.py --create-config
+          
+          # Override with strict mode if requested
+          if [ "${{ github.event.inputs.strict_mode }}" = "true" ]; then
+            python -c "
+          import json
+          with open('ccc_ci_config.json', 'r') as f:
+              config = json.load(f)
+          # Set strict thresholds
+          for gate in config['failure_thresholds']:
+              config['failure_thresholds'][gate]['max_violations'] = 0
+          with open('ccc_ci_config.json', 'w') as f:
+              json.dump(config, f, indent=2)
+          "
+          fi
+
+      - name: 🔍 Run CCC Validation
+        id: validation
+        run: |
+          echo "🚀 Starting Continuous Canonical Compliance validation..."
+          
+          # Run validation with CI integration
+          python tools/ci_ccc_integration.py \
+            --config ccc_ci_config.json \
+            --summary-only \
+            --set-ci-outputs
+          
+          echo "✅ CCC validation completed"
+
+      - name: 📊 Generate Validation Report
+        if: always()
+        run: |
+          echo "📈 Generating detailed validation report..."
+          
+          # Run validator directly for detailed artifacts
+          python -c "
+          from tools.ccc_validator import CCCValidator
+          from pathlib import Path
+          import json
+          
+          validator = CCCValidator(Path('.'))
+          report = validator.validate_all()
+          artifacts = validator.export_artifacts(Path('ccc_reports'))
+          
+          print('Validation artifacts generated:')
+          print(f'  HTML Report: {artifacts[\"html_report\"]}')
+          print(f'  JSON Report: {artifacts[\"json_report\"]}')
+          print(f'  Output Dir: {artifacts[\"output_directory\"]}')
+          "
+
+      - name: 📋 Display CCC Summary
+        if: always()
+        run: |
+          echo "## 🔍 Continuous Canonical Compliance Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "ccc_reports/ccc_validation_report.json" ]; then
+            python -c "
+          import json
+          with open('ccc_reports/ccc_validation_report.json', 'r') as f:
+              report = json.load(f)
+          
+          summary = report['summary']
+          print(f'| Metric | Value |')
+          print(f'|--------|-------|')
+          print(f'| Overall Status | **{summary[\"overall_status\"]}** |')
+          print(f'| Success Rate | {summary[\"success_rate\"]:.1%} |')
+          print(f'| Gates Passed | {summary[\"passed_gates\"]}/{summary[\"total_gates\"]} |')
+          print(f'| Components | {len(report[\"components\"])} |')
+          print('')
+          
+          print('### 🚦 Gate Results')
+          for gate in report['gate_results']:
+              status = '✅' if gate['status'] == 'PASS' else '❌'
+              print(f'- {status} **{gate[\"gate\"].replace(\"_\", \" \").title()}**: {gate[\"message\"]}')
+          " >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 📄 Upload Validation Reports
+        if: always() && github.event.inputs.generate_artifacts != 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ccc-validation-reports-${{ github.run_number }}
+          path: |
+            ccc_reports/
+            ccc_dag_visualization.*
+            ccc_ci_config.json
+          retention-days: 30
+
+      - name: 🎨 Upload DAG Visualizations
+        if: always() && github.event.inputs.generate_artifacts != 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ccc-dag-visualizations-${{ github.run_number }}
+          path: |
+            ccc_dag_visualization.png
+            ccc_dag_visualization.svg
+          retention-days: 14
+
+      - name: 💬 Comment PR with Results
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            let comment = '## 🔍 Continuous Canonical Compliance Results\n\n';
+            
+            try {
+              const reportPath = 'ccc_reports/ccc_validation_report.json';
+              if (fs.existsSync(reportPath)) {
+                const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+                const summary = report.summary;
+                
+                const statusIcon = summary.overall_status === 'PASS' ? '✅' : '❌';
+                comment += `${statusIcon} **Status**: ${summary.overall_status}\n`;
+                comment += `📊 **Success Rate**: ${(summary.success_rate * 100).toFixed(1)}%\n`;
+                comment += `🚦 **Gates**: ${summary.passed_gates}/${summary.total_gates} passed\n`;
+                comment += `📦 **Components**: ${Object.keys(report.components).length}\n\n`;
+                
+                comment += '### 🚦 Validation Gates\n\n';
+                for (const gate of report.gate_results) {
+                  const gateIcon = gate.status === 'PASS' ? '✅' : '❌';
+                  comment += `${gateIcon} **${gate.gate.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}**: ${gate.message}\n`;
+                }
+                
+                // Add artifact links
+                comment += '\n### 📄 Reports\n';
+                comment += `- [📊 HTML Report](${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID})\n`;
+                comment += `- [📋 JSON Report](${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID})\n`;
+              } else {
+                comment += '❌ Could not load validation report\n';
+              }
+            } catch (error) {
+              comment += `❌ Error generating report summary: ${error.message}\n`;
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      - name: 🚨 Fail Pipeline on Violations
+        if: steps.validation.outputs.ccc_should_fail == 'true'
+        run: |
+          echo "🚨 CCC validation failed - threshold violations detected"
+          echo "Pipeline configured to fail on violations"
+          exit 1
+
+  dependency-analysis:
+    name: Advanced Dependency Analysis
+    runs-on: ubuntu-latest
+    needs: ccc-validation
+    if: always()
+    
+    steps:
+      - name: 📥 Checkout Repository  
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Analysis Dependencies
+        run: |
+          pip install matplotlib networkx numpy plotly kaleido
+
+      - name: 🕸️ Generate Dependency Matrix
+        run: |
+          python -c "
+          from tools.ccc_validator import CCCValidator
+          from pathlib import Path
+          import json
+          import networkx as nx
+          import matplotlib.pyplot as plt
+          import numpy as np
+          
+          # Generate dependency matrix
+          validator = CCCValidator(Path('.'))
+          validator.validate_all()
+          
+          G = validator.dependency_graph
+          if G.number_of_nodes() > 0:
+              # Create adjacency matrix visualization
+              plt.figure(figsize=(12, 12))
+              
+              nodes = list(G.nodes())
+              adj_matrix = nx.adjacency_matrix(G, nodelist=nodes).toarray()
+              
+              plt.imshow(adj_matrix, cmap='RdYlBu_r', interpolation='nearest')
+              plt.colorbar(label='Dependencies')
+              plt.title('Canonical Flow Dependency Matrix')
+              plt.xlabel('Target Components')
+              plt.ylabel('Source Components')
+              
+              # Add node labels
+              plt.xticks(range(len(nodes)), nodes, rotation=45, ha='right')
+              plt.yticks(range(len(nodes)), nodes)
+              
+              plt.tight_layout()
+              plt.savefig('dependency_matrix.png', dpi=300, bbox_inches='tight')
+              
+              print(f'Generated dependency matrix with {len(nodes)} nodes')
+          else:
+              print('No dependency graph available')
+          "
+
+      - name: 📊 Upload Dependency Analysis
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-analysis-${{ github.run_number }}
+          path: |
+            dependency_matrix.png
+          retention-days: 14
+
+  integration-tests:
+    name: CCC Integration Tests
+    runs-on: ubuntu-latest
+    needs: ccc-validation
+    if: needs.ccc-validation.outputs.ccc_status == 'PASS'
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install matplotlib networkx numpy pytest
+
+      - name: 🧪 Run CCC Integration Tests
+        run: |
+          # Create and run integration tests
+          python -c "
+          from tools.ccc_validator import CCCValidator
+          from pathlib import Path
+          import sys
+          
+          def test_ccc_validator():
+              '''Basic integration test for CCC Validator.'''
+              validator = CCCValidator(Path('.'))
+              report = validator.validate_all()
+              
+              assert 'summary' in report
+              assert 'gate_results' in report
+              assert 'components' in report
+              
+              print('✅ CCC Validator integration test passed')
+              return True
+          
+          def test_ci_integration():
+              '''Test CI integration functionality.'''
+              from tools.ci_ccc_integration import CCCCIIntegration
+              
+              ci = CCCCIIntegration()
+              report = ci.run_validation()
+              
+              assert 'ci_metadata' in report
+              assert 'thresholds_applied' in report['ci_metadata']
+              
+              print('✅ CI integration test passed')
+              return True
+          
+          # Run tests
+          try:
+              test_ccc_validator()
+              test_ci_integration()
+              print('🎉 All integration tests passed')
+          except Exception as e:
+              print(f'❌ Integration test failed: {e}')
+              sys.exit(1)
+          "
+
+      - name: 📈 Performance Benchmark
+        run: |
+          python -c "
+          from tools.ccc_validator import CCCValidator
+          from pathlib import Path
+          import time
+          
+          # Benchmark validation performance
+          start_time = time.time()
+          validator = CCCValidator(Path('.'))
+          report = validator.validate_all()
+          end_time = time.time()
+          
+          duration = end_time - start_time
+          component_count = len(validator.components)
+          
+          print(f'📊 Performance Metrics:')
+          print(f'   Duration: {duration:.2f} seconds')
+          print(f'   Components: {component_count}')
+          print(f'   Rate: {component_count/duration:.1f} components/second')
+          
+          # Performance thresholds
+          if duration > 30:
+              print('⚠️  Warning: Validation took longer than 30 seconds')
+          if component_count == 0:
+              print('❌ Error: No components found')
+              exit(1)
+          "
+
+      - name: ✅ Integration Test Summary
+        if: always()
+        run: |
+          echo "## 🧪 CCC Integration Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Status**: Integration tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "📊 **CCC Validation Status**: ${{ needs.ccc-validation.outputs.ccc_status }}" >> $GITHUB_STEP_SUMMARY
+          echo "🎯 **Success Rate**: ${{ needs.ccc-validation.outputs.ccc_success_rate }}" >> $GITHUB_STEP_SUMMARY
+          echo "🚦 **Gates Passed**: ${{ needs.ccc-validation.outputs.ccc_gates_passed }}/${{ needs.ccc-validation.outputs.ccc_gates_total }}" >> $GITHUB_STEP_SUMMARY
