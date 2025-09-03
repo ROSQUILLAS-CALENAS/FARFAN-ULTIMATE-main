@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from egw_query_expansion import DeterministicGainFunction, MonotonicTaskSelector, Task
+# # # from egw_query_expansion import DeterministicGainFunction, MonotonicTaskSelector, Task  # Module not found  # Module not found  # Module not found
 
 print("✓ Successfully imported MonotonicTaskSelector")
 print("✓ Successfully imported DeterministicGainFunction")

@@ -3,7 +3,7 @@ Ingestion Preparation Stage (I) - Canonical Flow
 
 This module provides the gate validation system and orchestration for the 
 I_ingestion_preparation stage, ensuring strict sequential execution order
-from 01I through 05I with proper dependency validation.
+# # # from 01I through 05I with proper dependency validation.  # Module not found  # Module not found  # Module not found
 
 Components:
 - 01I: pdf_reader.py - PDF text extraction
@@ -21,7 +21,7 @@ The ArtifactManager provides standardized JSON artifact writing with
 enforced naming conventions and consistent formatting.
 """
 
-from .gate_validation_system import (
+# # # from .gate_validation_system import (  # Module not found  # Module not found  # Module not found
     IngestionPipelineGatekeeper,
     ComponentGate,
     GateValidationReport,
@@ -33,10 +33,10 @@ from .gate_validation_system import (
     JSONArtifactValidator
 )
 
-from .ingestion_orchestrator import IngestionPreparationOrchestrator
+# # # from .ingestion_orchestrator import IngestionPreparationOrchestrator  # Module not found  # Module not found  # Module not found
 
-# Import ArtifactManager from the ingestion module
-from ..ingestion import ArtifactManager
+# # # # Import ArtifactManager from the ingestion module  # Module not found  # Module not found  # Module not found
+# # # from ..ingestion import ArtifactManager  # Module not found  # Module not found  # Module not found
 
 __all__ = [
     'IngestionPipelineGatekeeper',

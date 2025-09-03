@@ -1,11 +1,11 @@
 """Graph operations for standards and document representations."""
 
-from typing import Any, Dict
+# # # from typing import Any, Dict  # Module not found  # Module not found  # Module not found
 
 import networkx as nx
 import numpy as np
 
-from .patterns import Criterion, PatternSpec, Requirement
+# # # from .patterns import Criterion, PatternSpec, Requirement  # Module not found  # Module not found  # Module not found
 
 
 class StandardsGraph:
@@ -88,7 +88,7 @@ class DocumentGraph:
         self.node_features[table_id] = self._extract_table_features(data)
 
     def _extract_features(self, title: str, content: str) -> Dict[str, float]:
-        """Extract basic features from text."""
+# # #         """Extract basic features from text."""  # Module not found  # Module not found  # Module not found
         text = (title + " " + content).lower()
         return {
             "word_count": len(text.split()),
@@ -101,7 +101,7 @@ class DocumentGraph:
         }
 
     def _extract_table_features(self, data: Dict[str, Any]) -> Dict[str, float]:
-        """Extract features from table data."""
+# # #         """Extract features from table data."""  # Module not found  # Module not found  # Module not found
         if not isinstance(data, dict):
             return {"row_count": 0.0, "col_count": 0.0}
 

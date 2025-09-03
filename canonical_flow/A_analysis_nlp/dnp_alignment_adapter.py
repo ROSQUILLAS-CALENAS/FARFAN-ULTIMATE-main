@@ -9,15 +9,15 @@ Code: 18A
 
 import sys
 import json
-from pathlib import Path
-from datetime import datetime
-from typing import Any, Dict, Optional, Tuple
-from collections import OrderedDict
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 import logging
 
 # Import total ordering base
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin
+# # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -167,7 +167,7 @@ class DNPAlignmentAdapter(TotalOrderingBase, DeterministicCollectionMixin):
             return self.sort_dict_by_keys(error_output)
     
     def _extract_pdt_and_eval_deterministic(self, payload: Any) -> tuple[Dict[str, Any], Dict[str, Any]]:
-        """Best-effort extraction of PDT data and evaluation results from arbitrary payloads"""
+# # #         """Best-effort extraction of PDT data and evaluation results from arbitrary payloads"""  # Module not found  # Module not found  # Module not found
         pdt_data = {}
         eval_results = {}
         
@@ -214,7 +214,7 @@ class DNPAlignmentAdapter(TotalOrderingBase, DeterministicCollectionMixin):
         # Combine data for analysis
         combined_text = ""
         
-        # Extract text from PDT data
+# # #         # Extract text from PDT data  # Module not found  # Module not found  # Module not found
         if "text" in pdt_data:
             combined_text += str(pdt_data["text"]) + " "
         if "content" in pdt_data:
@@ -222,7 +222,7 @@ class DNPAlignmentAdapter(TotalOrderingBase, DeterministicCollectionMixin):
         if "raw" in pdt_data:
             combined_text += str(pdt_data["raw"]) + " "
         
-        # Extract text from evaluation results
+# # #         # Extract text from evaluation results  # Module not found  # Module not found  # Module not found
         if "text" in eval_results:
             combined_text += str(eval_results["text"]) + " "
         if "summary" in eval_results:

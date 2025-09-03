@@ -23,16 +23,16 @@ import hashlib
 import json
 import uuid
 import numpy as np
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Callable, Dict, Generic, List, Optional, Set, Tuple, TypeVar, Union
-from collections import defaultdict
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, Generic, List, Optional, Set, Tuple, TypeVar, Union  # Module not found  # Module not found  # Module not found
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
 import itertools
 
 # Try to import QuestionContext, fall back to basic implementation if not available
 try:
-    from egw_query_expansion.core.immutable_context import QuestionContext, DerivationId, ContextHash
+# # #     from egw_query_expansion.core.immutable_context import QuestionContext, DerivationId, ContextHash  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Minimal fallback definitions for testing
     DerivationId = str
@@ -63,7 +63,7 @@ class ContextMorphism:
     """
     Morphism in the context category - represents a transformation between context objects.
     
-    In category theory, a morphism f: A → B is an arrow from object A to object B.
+# # #     In category theory, a morphism f: A → B is an arrow from object A to object B.  # Module not found  # Module not found  # Module not found
     Here, morphisms represent transformations between different context states.
     """
     source_id: DerivationId
@@ -197,12 +197,12 @@ class ContextFunctor(Generic[A, B], ABC):
     
     @abstractmethod
     def map_object(self, obj: DerivationId) -> DerivationId:
-        """Map object from source to target category"""
+# # #         """Map object from source to target category"""  # Module not found  # Module not found  # Module not found
         pass
         
     @abstractmethod  
     def map_morphism(self, morphism: ContextMorphism) -> ContextMorphism:
-        """Map morphism from source to target category"""
+# # #         """Map morphism from source to target category"""  # Module not found  # Module not found  # Module not found
         pass
         
     def verify_identity_preservation(self, source_category: ContextCategory, 
@@ -383,7 +383,7 @@ class MathematicalStage2ContextEnhancer:
         Integration point with comprehensive_pipeline_orchestrator.py.
         Provides mathematical validation of context immutability using category theory.
         """
-        # Extract QuestionContext from orchestrator if available
+# # #         # Extract QuestionContext from orchestrator if available  # Module not found  # Module not found  # Module not found
         question_context = orchestrator_context.get('question_context')
         if not isinstance(question_context, QuestionContext):
             raise ValueError("No valid QuestionContext found in orchestrator context")
@@ -540,7 +540,7 @@ class KnotInvariant:
     def __post_init__(self):
         """Initialize polynomial invariants if not provided"""
         if not self.alexander_polynomial and not self.jones_polynomial:
-            # Generate basic invariants from knot_id hash
+# # #             # Generate basic invariants from knot_id hash  # Module not found  # Module not found  # Module not found
             hash_val = hash(self.knot_id)
             
             # Alexander polynomial: typically Δ_K(t) = det(V - tV^T)
@@ -549,7 +549,7 @@ class KnotInvariant:
                 alex_coeffs[i] = (hash_val >> (i + 5)) & 0xFF
             object.__setattr__(self, 'alexander_polynomial', alex_coeffs)
             
-            # Jones polynomial: V_K(q) from skein relation
+# # #             # Jones polynomial: V_K(q) from skein relation  # Module not found  # Module not found  # Module not found
             jones_coeffs = {}
             for i in range(-3, 4):
                 jones_coeffs[i] = (hash_val >> (i + 10)) & 0x3F
@@ -964,14 +964,14 @@ def validate_context_immutability_mathematically(context: QuestionContext) -> Di
 if __name__ == "__main__":
     # Demonstration of mathematical context enhancement
     import sys
-    from pathlib import Path
+# # #     from pathlib import Path  # Module not found  # Module not found  # Module not found
     
     # Add project root to path for canonical imports
     project_root = Path(__file__).resolve().parents[2]
     if str(project_root) not in sys.path:
         sys.path.insert(0, str(project_root))
     
-    from egw_query_expansion.core.immutable_context import create_question_context
+# # #     from egw_query_expansion.core.immutable_context import create_question_context  # Module not found  # Module not found  # Module not found
     
     print("🔬 Mathematical Stage 2 Context Enhancer Demonstration")
     

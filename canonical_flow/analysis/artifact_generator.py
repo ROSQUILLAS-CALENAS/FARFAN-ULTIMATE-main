@@ -11,12 +11,12 @@ Implements deterministic ordering and UTF-8 encoding with consistent formatting.
 
 import json
 import os
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Union, Tuple
-from dataclasses import dataclass, asdict
-from datetime import datetime
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Any, Optional, Union, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import logging
-from collections import OrderedDict
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -433,7 +433,7 @@ class ArtifactGenerator:
         return dict(sorted(artifacts_by_document.items()))
     
     def _extract_dimension_id(self, question_id: str) -> str:
-        """Extract dimension ID from question ID."""
+# # #         """Extract dimension ID from question ID."""  # Module not found  # Module not found  # Module not found
         # Assume question IDs follow pattern like "DE-1-Q1", "DE-2-Q5", etc.
         parts = question_id.split('-')
         if len(parts) >= 2:

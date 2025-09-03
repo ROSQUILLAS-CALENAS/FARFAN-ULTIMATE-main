@@ -9,8 +9,8 @@ e incluye certificación integral de riesgo.
 """
 
 import warnings
-from pathlib import Path
-from typing import Dict, List, Tuple
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -18,7 +18,7 @@ import numpy as np
 warnings.filterwarnings("ignore")
 
 # Import the enhanced conformal risk control system
-from egw_query_expansion.core.conformal_risk_control import (
+# # # from egw_query_expansion.core.conformal_risk_control import (  # Module not found  # Module not found  # Module not found
     ClassificationNonconformityScorer,
     CoverageAnalysis,
     EnhancedConformalRiskController,
@@ -45,7 +45,7 @@ def generate_synthetic_regression_data(
     noise = np.random.normal(0, noise_std * (1 + 0.2 * np.abs(y_true)), n_samples)
     y = y_true + noise
 
-    # Predictions from an imperfect model (with slight bias)
+# # #     # Predictions from an imperfect model (with slight bias)  # Module not found  # Module not found  # Module not found
     y_pred = y_true + 0.1 * np.random.normal(0, 1, n_samples)
 
     return X, y, y_pred

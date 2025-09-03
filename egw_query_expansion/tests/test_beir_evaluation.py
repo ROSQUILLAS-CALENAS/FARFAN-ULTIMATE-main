@@ -55,18 +55,18 @@ except ImportError:
     
     np = MockNumpy()
 
-from typing import Dict, List, Tuple
+# # # from typing import Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 import logging
 
 try:
-    from beir import util
-    # from beir.datasets.data_loader import GenericDataLoader
-    # from beir.retrieval.evaluation import EvaluateRetrieval
+# # #     from beir import util  # Module not found  # Module not found  # Module not found
+# # #     # from beir.datasets.data_loader import GenericDataLoader  # Module not found  # Module not found  # Module not found
+# # #     # from beir.retrieval.evaluation import EvaluateRetrieval  # Module not found  # Module not found  # Module not found
     BEIR_AVAILABLE = True
 except ImportError:
     BEIR_AVAILABLE = False
 
-from egw_query_expansion import (
+# # # from egw_query_expansion import (  # Module not found  # Module not found  # Module not found
     GromovWassersteinAligner,
     QueryGenerator, 
     HybridRetriever,

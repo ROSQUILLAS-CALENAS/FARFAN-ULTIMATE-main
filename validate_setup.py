@@ -5,7 +5,7 @@ import sys
 
 import numpy as np
 
-from question_analyzer import CausalPosture, QuestionAnalyzer
+# # # from question_analyzer import CausalPosture, QuestionAnalyzer  # Module not found  # Module not found  # Module not found
 
 
 def test_core_functionality():
@@ -49,17 +49,17 @@ def test_libraries():
     print("✅ NumPy works")
 
     # Test transformers
-    from transformers import AutoTokenizer
+# # #     from transformers import AutoTokenizer  # Module not found  # Module not found  # Module not found
 
     print("✅ Transformers works")
 
     # Test sentence-transformers
-    from sentence_transformers import SentenceTransformer
+# # #     from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
 
     print("✅ Sentence-transformers works")
 
     # Test Lark
-    from lark import Lark
+# # #     from lark import Lark  # Module not found  # Module not found  # Module not found
 
     print("✅ Lark works")
 
@@ -69,7 +69,7 @@ def test_libraries():
     print("✅ NetworkX works")
 
     # Test Pydantic
-    from pydantic import BaseModel
+# # #     from pydantic import BaseModel  # Module not found  # Module not found  # Module not found
 
     print("✅ Pydantic works")
 

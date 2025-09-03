@@ -7,8 +7,8 @@ behavior and realistic return types for testing and fallback scenarios.
 """
 
 import math
-from typing import Any, List, Tuple, Union, Optional, Dict
-from .mock_utils import MockRandomState, DeterministicHasher, create_deterministic_data
+# # # from typing import Any, List, Tuple, Union, Optional, Dict  # Module not found  # Module not found  # Module not found
+# # # from .mock_utils import MockRandomState, DeterministicHasher, create_deterministic_data  # Module not found  # Module not found  # Module not found
 
 
 class MockEstimator:

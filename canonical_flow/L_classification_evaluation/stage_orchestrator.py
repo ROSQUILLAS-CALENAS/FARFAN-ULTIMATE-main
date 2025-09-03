@@ -15,27 +15,27 @@ import json
 import logging
 import traceback
 import uuid
-from collections import OrderedDict
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Union
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
 
 # Import base classes for deterministic behavior
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin
+# # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 
 # Import L-stage components
 try:
-    from .decalogo_scoring_system import ScoringSystem, PointScore
-    from ..A_analysis_nlp.evidence_validation_model import EvidenceValidationModel as EvidenceValidator
-    from ..A_analysis_nlp.dnp_alignment_adapter import DNPAlignmentAdapter
+# # #     from .decalogo_scoring_system import ScoringSystem, PointScore  # Module not found  # Module not found  # Module not found
+# # #     from ..A_analysis_nlp.evidence_validation_model import EvidenceValidationModel as EvidenceValidator  # Module not found  # Module not found  # Module not found
+# # #     from ..A_analysis_nlp.dnp_alignment_adapter import DNPAlignmentAdapter  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback for standalone execution
-    from decalogo_scoring_system import ScoringSystem, PointScore
+# # #     from decalogo_scoring_system import ScoringSystem, PointScore  # Module not found  # Module not found  # Module not found
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "A_analysis_nlp"))
-    from evidence_validation_model import EvidenceValidationModel as EvidenceValidator
-    from dnp_alignment_adapter import DNPAlignmentAdapter
+# # #     from evidence_validation_model import EvidenceValidationModel as EvidenceValidator  # Module not found  # Module not found  # Module not found
+# # #     from dnp_alignment_adapter import DNPAlignmentAdapter  # Module not found  # Module not found  # Module not found
 
 
 class LClassificationStageOrchestrator(TotalOrderingBase, DeterministicCollectionMixin):
@@ -168,7 +168,7 @@ class LClassificationStageOrchestrator(TotalOrderingBase, DeterministicCollectio
     
     def _resolve_input_files(self, data: Any, context: Any) -> List[Path]:
         """
-        Resolve input files from data and context.
+# # #         Resolve input files from data and context.  # Module not found  # Module not found  # Module not found
         
         Args:
             data: Input data (can be dict, list, or path)
@@ -212,7 +212,7 @@ class LClassificationStageOrchestrator(TotalOrderingBase, DeterministicCollectio
     
     def _extract_point_id(self, file_path: Path) -> int:
         """
-        Extract point ID from file path.
+# # #         Extract point ID from file path.  # Module not found  # Module not found  # Module not found
         
         Args:
             file_path: Path to P{n}_questions.json file
@@ -220,13 +220,13 @@ class LClassificationStageOrchestrator(TotalOrderingBase, DeterministicCollectio
         Returns:
             Point ID as integer
         """
-        # Extract from filename pattern P{n}_questions.json
+# # #         # Extract from filename pattern P{n}_questions.json  # Module not found  # Module not found  # Module not found
         filename = file_path.name
         if filename.startswith("P") and "_questions.json" in filename:
             point_str = filename[1:filename.index("_questions.json")]
             return int(point_str)
         
-        raise ValueError(f"Cannot extract point ID from filename: {filename}")
+# # #         raise ValueError(f"Cannot extract point ID from filename: {filename}")  # Module not found  # Module not found  # Module not found
     
     def _process_point(self, file_path: Path, point_id: int) -> Dict[str, Any]:
         """

@@ -7,13 +7,13 @@ Provides:
 - Decorator to enforce requires_snapshot=True for handlers.
 - Deterministic, canonical serialization for replay.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import hashlib
 import json
 import threading
-from dataclasses import dataclass
-from typing import Any, Callable, Dict, Optional
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, Optional  # Module not found  # Module not found  # Module not found
 
 _lock = threading.Lock()
 _current_snapshot_id: Optional[str] = None

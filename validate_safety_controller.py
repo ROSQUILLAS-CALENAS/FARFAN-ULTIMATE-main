@@ -15,7 +15,7 @@ def validate_imports():
     
     try:
         # Test basic import
-        from egw_query_expansion.core.safety_controller import (
+# # #         from egw_query_expansion.core.safety_controller import (  # Module not found  # Module not found  # Module not found
             MathEnhancementSafetyController,
             EnhancementStatus, 
             StabilityLevel,
@@ -24,7 +24,7 @@ def validate_imports():
         print("✓ Core safety controller classes imported successfully")
         
         # Test exception imports
-        from egw_query_expansion.core.safety_controller import (
+# # #         from egw_query_expansion.core.safety_controller import (  # Module not found  # Module not found  # Module not found
             NumericalInstabilityError,
             IterationLimitExceededError,
             ConvergenceError
@@ -32,7 +32,7 @@ def validate_imports():
         print("✓ Safety controller exceptions imported successfully")
         
         # Test decorator import
-        from egw_query_expansion.core.safety_controller import safe_enhancement
+# # #         from egw_query_expansion.core.safety_controller import safe_enhancement  # Module not found  # Module not found  # Module not found
         print("✓ Safety decorator imported successfully")
         
         return True
@@ -47,7 +47,7 @@ def validate_basic_functionality():
     print("\nValidating basic functionality...")
     
     try:
-        from egw_query_expansion.core.safety_controller import (
+# # #         from egw_query_expansion.core.safety_controller import (  # Module not found  # Module not found  # Module not found
             MathEnhancementSafetyController,
             EnhancementStatus,
             StabilityLevel,

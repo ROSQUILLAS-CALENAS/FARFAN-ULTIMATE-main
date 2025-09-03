@@ -2,12 +2,12 @@ import json
 import logging
 import os
 import re
-from pathlib import Path
-from typing import Dict, List, Optional, Any
-from datetime import datetime
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Optional, Any  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 
-from total_ordering_base import TotalOrderingBase
-from json_canonicalizer import JSONCanonicalizer
+# # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
+# # # from json_canonicalizer import JSONCanonicalizer  # Module not found  # Module not found  # Module not found
 
 # Optional heavy deps (guarded imports)
 try:
@@ -18,7 +18,7 @@ except ImportError:
     textstat = None
 
 try:
-    from langdetect import detect, detect_langs
+# # #     from langdetect import detect, detect_langs  # Module not found  # Module not found  # Module not found
     LANGDETECT_AVAILABLE = True
 except ImportError:
     LANGDETECT_AVAILABLE = False
@@ -221,7 +221,7 @@ class DocumentFeatureExtractor(TotalOrderingBase):
     
     def _extract_text_content(self, bundle_data: Dict[str, Any]) -> str:
         """
-        Extract text content from bundle data with fallback strategies.
+# # #         Extract text content from bundle data with fallback strategies.  # Module not found  # Module not found  # Module not found
         
         Args:
             bundle_data: Bundle data dictionary
@@ -261,7 +261,7 @@ class DocumentFeatureExtractor(TotalOrderingBase):
     
     def _extract_textual_features(self, text: str) -> Dict[str, Any]:
         """
-        Extract comprehensive textual features from document content.
+# # #         Extract comprehensive textual features from document content.  # Module not found  # Module not found  # Module not found
         
         Args:
             text: Document text content
@@ -566,7 +566,7 @@ class _EmbeddingEngine:
 def extract_features(data=None, context=None):
     """
     Deterministic, state-of-the-art feature extraction with canonicalization.
-    Extract features from text content with comprehensive audit logging.
+# # #     Extract features from text content with comprehensive audit logging.  # Module not found  # Module not found  # Module not found
     
     Theory backbone (peer-reviewed ≥2021): SimCSE (Gao, Yao, and Chen). "SimCSE: Simple Contrastive Learning of Sentence Embeddings." EMNLP 2021.
     Implementation uses open-source libraries only (sentence-transformers, scikit-learn) and is self-contained with graceful fallbacks to avoid refactors.
@@ -676,7 +676,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     """
     Process API for feature extractor component (03I).
     
-    Extracts features from document bundles and writes standardized 
+# # #     Extracts features from document bundles and writes standardized   # Module not found  # Module not found  # Module not found
     artifacts using ArtifactManager.
     
     Args:
@@ -688,7 +688,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     """
     # Import ArtifactManager locally to avoid circular imports
     try:
-        from canonical_flow.ingestion import ArtifactManager
+# # #         from canonical_flow.ingestion import ArtifactManager  # Module not found  # Module not found  # Module not found
     except ImportError:
         return {"error": "ArtifactManager not available"}
     
@@ -702,7 +702,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     
     # Handle different input formats
     if isinstance(data, dict) and 'results' in data:
-        # Input from 02I component
+# # #         # Input from 02I component  # Module not found  # Module not found  # Module not found
         bundle_results = data['results']
     elif isinstance(data, list):
         bundle_results = data

@@ -17,11 +17,11 @@ import subprocess
 import importlib
 import json
 import logging
-from pathlib import Path
-from typing import Dict, List, Tuple, Set, Optional
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Tuple, Set, Optional  # Module not found  # Module not found  # Module not found
 import tempfile
 import shutil
-from packaging import version
+# # # from packaging import version  # Module not found  # Module not found  # Module not found
 
 
 # Configure logging
@@ -54,7 +54,7 @@ def detect_partial_installation() -> Dict[str, any]:
         'recommendations': []
     }
     
-    # Core dependencies from requirements.txt
+# # #     # Core dependencies from requirements.txt  # Module not found  # Module not found  # Module not found
     core_packages = [
         ('faiss', 'faiss-cpu>=1.7.4'),
         ('transformers', 'transformers>=4.35.0'),
@@ -89,7 +89,7 @@ def detect_partial_installation() -> Dict[str, any]:
             # Check version if available
             if hasattr(module, '__version__'):
                 current_version = module.__version__
-                # Extract minimum version from spec
+# # #                 # Extract minimum version from spec  # Module not found  # Module not found  # Module not found
                 min_version = package_spec.split('>=')[1] if '>=' in package_spec else None
                 
                 if min_version and version.parse(current_version) < version.parse(min_version):
@@ -169,7 +169,7 @@ def clean_corrupted_environment() -> bool:
                                capture_output=True, text=True, check=True)
         installed_packages = json.loads(result.stdout)
         
-        # Identify potentially corrupted packages from requirements.txt
+# # #         # Identify potentially corrupted packages from requirements.txt  # Module not found  # Module not found  # Module not found
         requirements_file = Path("requirements.txt")
         corrupted_packages = []
         
@@ -177,7 +177,7 @@ def clean_corrupted_environment() -> bool:
             with open(requirements_file, 'r') as f:
                 requirements = f.readlines()
             
-            # Extract package names from requirements
+# # #             # Extract package names from requirements  # Module not found  # Module not found  # Module not found
             req_packages = set()
             for line in requirements:
                 line = line.strip()
@@ -240,7 +240,7 @@ def clean_corrupted_environment() -> bool:
 
 def reinstall_dependencies_ordered() -> bool:
     """
-    Reinstall packages following dependency hierarchy from requirements.txt.
+# # #     Reinstall packages following dependency hierarchy from requirements.txt.  # Module not found  # Module not found  # Module not found
     
     Returns:
         bool: True if reinstallation successful, False otherwise

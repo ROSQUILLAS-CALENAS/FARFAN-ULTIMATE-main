@@ -13,10 +13,10 @@ Includes preflight validation and coverage artifact generation.
 import json
 import hashlib
 import datetime
-from pathlib import Path
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set
-from collections import OrderedDict
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 
 class DecalogoQuestionValidationError(Exception):
@@ -26,7 +26,7 @@ class DecalogoQuestionValidationError(Exception):
 
 @dataclass 
 class DecalogoQuestion:
-    """Single question from Decálogo registry"""
+# # #     """Single question from Decálogo registry"""  # Module not found  # Module not found  # Module not found
     question_id: str
     point_number: int
     dimension_code: str

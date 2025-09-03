@@ -3,7 +3,7 @@
 Comprehensive Integration Tests for K_knowledge_extraction Workflow
 
 Tests the complete knowledge extraction pipeline (06K→07K→11K→08K→09K→10K)
-using real PDF files from planes_input directory to validate all required
+# # # using real PDF files from planes_input directory to validate all required  # Module not found  # Module not found  # Module not found
 artifacts are generated with proper schemas and deterministic behavior.
 
 Expected workflow components:
@@ -31,24 +31,24 @@ import shutil
 import tempfile
 import time
 import unittest
-from pathlib import Path
-from typing import Any, Dict, List, Tuple
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import pytest
 
-# Import components from the canonical flow
+# # # # Import components from the canonical flow  # Module not found  # Module not found  # Module not found
 try:
-    from canonical_flow.K_knowledge_extraction.advanced_knowledge_graph_builder import (
+# # #     from canonical_flow.K_knowledge_extraction.advanced_knowledge_graph_builder import (  # Module not found  # Module not found  # Module not found
         KnowledgeGraphBuilder,
         create_knowledge_graph_builder
     )
 except ImportError as e:
-    # Fallback to direct import from original module
+# # #     # Fallback to direct import from original module  # Module not found  # Module not found  # Module not found
     try:
         import sys
         sys.path.insert(0, '.')
-        from Advanced_Knowledge_Graph_Builder_Component_for_Semantic_Inference_Engine import (
+# # #         from Advanced_Knowledge_Graph_Builder_Component_for_Semantic_Inference_Engine import (  # Module not found  # Module not found  # Module not found
             KnowledgeGraphBuilder,
             create_knowledge_graph_builder
         )
@@ -58,30 +58,30 @@ except ImportError as e:
         print(f"Warning: Could not import KnowledgeGraphBuilder: {e}")
 
 try:
-    from canonical_flow.K_knowledge_extraction.causal_dnp_framework import (
+# # #     from canonical_flow.K_knowledge_extraction.causal_dnp_framework import (  # Module not found  # Module not found  # Module not found
         CausalDNPFramework,
         CausalAnalyzer
     )
 except ImportError:
     try:
-        from causal_dnp_framework import CausalDNPFramework, CausalAnalyzer
+# # #         from causal_dnp_framework import CausalDNPFramework, CausalAnalyzer  # Module not found  # Module not found  # Module not found
     except ImportError:
         CausalDNPFramework = None
         CausalAnalyzer = None
 
 try:
-    from canonical_flow.K_knowledge_extraction.embedding_builder import EmbeddingBuilder
+# # #     from canonical_flow.K_knowledge_extraction.embedding_builder import EmbeddingBuilder  # Module not found  # Module not found  # Module not found
 except ImportError:
     try:
-        from embedding_builder import EmbeddingBuilder
+# # #         from embedding_builder import EmbeddingBuilder  # Module not found  # Module not found  # Module not found
     except ImportError:
         EmbeddingBuilder = None
 
 # Import PDF processing utilities
 try:
-    from pdf_reader import PDFReader
-    from text_analyzer import TextAnalyzer
-    from document_processor import DocumentProcessor
+# # #     from pdf_reader import PDFReader  # Module not found  # Module not found  # Module not found
+# # #     from text_analyzer import TextAnalyzer  # Module not found  # Module not found  # Module not found
+# # #     from document_processor import DocumentProcessor  # Module not found  # Module not found  # Module not found
 except ImportError as e:
     print(f"Warning: Could not import PDF processing utilities: {e}")
     PDFReader = None
@@ -93,13 +93,13 @@ class MockPDFProcessor:
     """Mock PDF processor for testing when real one is not available"""
     
     def process_pdf(self, pdf_path: Path) -> Dict[str, Any]:
-        """Extract text and basic metadata from PDF"""
+# # #         """Extract text and basic metadata from PDF"""  # Module not found  # Module not found  # Module not found
         return {
-            'text': f"Mock extracted text from {pdf_path.name}",
+# # #             'text': f"Mock extracted text from {pdf_path.name}",  # Module not found  # Module not found  # Module not found
             'pages': [
                 {
                     'page_num': 1,
-                    'text': f"Sample page content from {pdf_path.name}",
+# # #                     'text': f"Sample page content from {pdf_path.name}",  # Module not found  # Module not found  # Module not found
                     'metadata': {'char_count': 100}
                 }
             ],
@@ -125,7 +125,7 @@ class MockComponent:
             'processed': True,
             'input_hash': self._hash_input(input_data),
             'timestamp': time.time(),
-            'mock_data': f"Mock output from {self.name}"
+# # #             'mock_data': f"Mock output from {self.name}"  # Module not found  # Module not found  # Module not found
         }
     
     def _hash_input(self, data: Dict[str, Any]) -> str:
@@ -279,7 +279,7 @@ class TestKKnowledgeExtractionWorkflow(unittest.TestCase):
         return components
     
     def test_complete_workflow_execution(self):
-        """Test complete workflow execution from PDF input to all artifacts"""
+# # #         """Test complete workflow execution from PDF input to all artifacts"""  # Module not found  # Module not found  # Module not found
         self.logger.info("Testing complete K_knowledge_extraction workflow")
         
         # Run workflow on test PDFs
@@ -458,7 +458,7 @@ class TestKKnowledgeExtractionWorkflow(unittest.TestCase):
         if hasattr(component, 'process'):
             return component.process(input_data)
         else:
-            return {'mock_output': f'Output from {component_id}'}
+# # #             return {'mock_output': f'Output from {component_id}'}  # Module not found  # Module not found  # Module not found
     
     def _generate_stage_artifacts(self, stage: str, stage_output: Dict[str, Any]):
         """Generate artifacts specific to each workflow stage"""
@@ -632,7 +632,7 @@ class TestKKnowledgeExtractionWorkflow(unittest.TestCase):
         if 'error' in output_data:
             return False
         
-        # Check that output contains processed information from input
+# # #         # Check that output contains processed information from input  # Module not found  # Module not found  # Module not found
         if not output_data or output_data == input_data:
             return False
         

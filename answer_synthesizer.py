@@ -19,22 +19,22 @@ Design notes:
   {verdict, rationale, citations, confidence, risk_certificate} as specified.
 
 This module is self-contained and does not require changes elsewhere. It optionally
-accepts StructuredEvidence objects from evidence_processor.py but works with any evidence
+# # # accepts StructuredEvidence objects from evidence_processor.py but works with any evidence  # Module not found  # Module not found  # Module not found
 objects that expose minimal fields (text, citation metadata).
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import json
 import math
 import random
 import statistics
-from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 # Optional heavy deps; we guard imports for graceful fallback
 try:
     import torch
-    from transformers import AutoModelForSequenceClassification, AutoTokenizer
+# # #     from transformers import AutoModelForSequenceClassification, AutoTokenizer  # Module not found  # Module not found  # Module not found
 
     _TRANSFORMERS_AVAILABLE = True
 except Exception:
@@ -43,8 +43,8 @@ except Exception:
 import numpy as np
 # Optional sklearn components with graceful fallback
 try:
-    from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore
-    from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
+# # #     from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.metrics.pairwise import cosine_similarity  # type: ignore  # Module not found  # Module not found  # Module not found
     _SKLEARN_AVAILABLE = True
 except Exception:
     _SKLEARN_AVAILABLE = False
@@ -68,7 +68,7 @@ except Exception:
             return tokens
 
         def fit(self, corpus):
-            from collections import Counter
+# # #             from collections import Counter  # Module not found  # Module not found  # Module not found
             df = Counter()
             vocab = {}
             for doc in corpus:
@@ -133,10 +133,10 @@ class SynthesizedAnswer:
 
 
 class AnswerSynthesizer:
-    """Synthesize answers from evidence with DNP-aware logic and conformal confidence.
+# # #     """Synthesize answers from evidence with DNP-aware logic and conformal confidence.  # Module not found  # Module not found  # Module not found
 
     Conformal prediction approach:
-    - We compute nonconformity scores from validation/calibration evidence (user may call
+# # #     - We compute nonconformity scores from validation/calibration evidence (user may call  # Module not found  # Module not found  # Module not found
       fit_calibrator with (q, ev, label) tuples). We then compute a quantile of the scores
       at level 1 - alpha to produce an uncertainty radius and map to [0,1] confidence.
     - If no calibration is provided, we fallback to a heuristic mapping of alignment
@@ -199,7 +199,7 @@ class AnswerSynthesizer:
     def synthesize_answer(
         self, question: str, evidence: List[Any]
     ) -> SynthesizedAnswer:
-        """Compose claims from evidence with explicit premises and citations.
+# # #         """Compose claims from evidence with explicit premises and citations.  # Module not found  # Module not found  # Module not found
 
         Evidence items may be:
         - evidence_processor.StructuredEvidence
@@ -349,7 +349,7 @@ class AnswerSynthesizer:
         standards: Optional[Dict[str, Any]] = None,
         question: Optional[str] = None,
     ) -> Tuple[float, Tuple[float, float], Dict[str, Any]]:
-        """Compute conformal confidence from alignment scores.
+# # #         """Compute conformal confidence from alignment scores.  # Module not found  # Module not found  # Module not found
 
         Returns (confidence_point, confidence_interval, rcps_metadata)
         - confidence_point in [0,1]

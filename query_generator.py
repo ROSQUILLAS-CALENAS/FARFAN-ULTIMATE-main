@@ -7,18 +7,18 @@ GW alignment results with SPLADE and ColBERTv2 integration.
 
 import numpy as np
 import torch
-from typing import Dict, List, Tuple, Optional, Set, Union
-from transformers import AutoTokenizer, AutoModel
-from sentence_transformers import SentenceTransformer
+# # # from typing import Dict, List, Tuple, Optional, Set, Union  # Module not found  # Module not found  # Module not found
+# # # from transformers import AutoTokenizer, AutoModel  # Module not found  # Module not found  # Module not found
+# # # from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
 import re
 import logging
-from collections import defaultdict
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
 
 class QueryGenerator:
     """
     Pattern-based query generator with EGW-guided expansion.
     
-    Generates canonical queries from patterns, expands with synonyms using
+# # #     Generates canonical queries from patterns, expands with synonyms using  # Module not found  # Module not found  # Module not found
     optimal transport, and creates semantic variants for hybrid retrieval.
     """
     
@@ -116,7 +116,7 @@ class QueryGenerator:
         corpus_features: Optional[np.ndarray] = None
     ) -> List[str]:
         """
-        Generate canonical queries from patterns using GW alignment.
+# # #         Generate canonical queries from patterns using GW alignment.  # Module not found  # Module not found  # Module not found
         
         Args:
             patterns: List of query patterns
@@ -145,7 +145,7 @@ class QueryGenerator:
             # Generate queries based on transport plan
             canonical_queries = self._generate_from_transport(patterns, transport_plan)
         else:
-            # Generate queries directly from patterns
+# # #             # Generate queries directly from patterns  # Module not found  # Module not found  # Module not found
             canonical_queries = self._generate_direct_queries(patterns)
         
         self.logger.info(f"Generated {len(canonical_queries)} canonical queries")
@@ -198,7 +198,7 @@ class QueryGenerator:
     
     def _generate_direct_queries(self, patterns: List[str]) -> List[str]:
         """
-        Generate queries directly from patterns without alignment.
+# # #         Generate queries directly from patterns without alignment.  # Module not found  # Module not found  # Module not found
         
         Args:
             patterns: Pattern strings
@@ -307,7 +307,7 @@ class QueryGenerator:
         Returns:
             Expanded query
         """
-        # Extract key terms from both
+# # #         # Extract key terms from both  # Module not found  # Module not found  # Module not found
         original_terms = set(original_query.lower().split())
         pattern_terms = set(similar_pattern.lower().split())
         

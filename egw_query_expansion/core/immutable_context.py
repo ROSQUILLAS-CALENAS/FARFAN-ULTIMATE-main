@@ -19,11 +19,11 @@ import hashlib
 import hmac
 import json
 import uuid
-from abc import ABC, abstractmethod
-from collections.abc import Mapping
-from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Dict, FrozenSet, List, Optional, Set, Tuple, Union
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from collections.abc import Mapping  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, FrozenSet, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 # Type aliases for linear type system compliance
 LinearRef = str  # Linear reference identifier
@@ -76,7 +76,7 @@ class DerivationDAG:
         self._validate_acyclic()
 
     def _compute_nodes(self) -> FrozenSet[DerivationId]:
-        """Compute all nodes from edges"""
+# # #         """Compute all nodes from edges"""  # Module not found  # Module not found  # Module not found
         nodes = set()
         for edge in self._edges:
             nodes.add(edge.parent_id)
@@ -385,7 +385,7 @@ class QuestionContext:
         return self._derivation_dag
 
     def get_lineage(self) -> List[DerivationId]:
-        """Get complete derivation lineage from root to current context"""
+# # #         """Get complete derivation lineage from root to current context"""  # Module not found  # Module not found  # Module not found
         return self._derivation_dag.get_lineage(self._metadata.derivation_id)
 
     def __hash__(self) -> int:
@@ -450,7 +450,7 @@ def create_question_context(
 def create_expanded_context(
     base_context: QuestionContext, expansion_results: Dict[str, Any]
 ) -> QuestionContext:
-    """Factory function for creating expanded context from base context"""
+# # #     """Factory function for creating expanded context from base context"""  # Module not found  # Module not found  # Module not found
     return base_context.derive_with_expansion(expansion_results)
 
 

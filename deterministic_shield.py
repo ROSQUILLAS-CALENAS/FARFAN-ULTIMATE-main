@@ -15,13 +15,13 @@ This module is self-contained and does not alter existing pipelines. It can be
 adopted by wrapping any synthesizer function/callable.
 """
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import hashlib
 import json
-from dataclasses import dataclass, field
-from enum import Enum
-from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Tuple
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 # ----------------------------- Canonicalization ----------------------------- #
 
@@ -480,7 +480,7 @@ class EvaluationReport:
         """Validate composition trace mathematical correctness."""
         violations = []
         
-        # Decálogo weights from the scoring system
+# # #         # Decálogo weights from the scoring system  # Module not found  # Module not found  # Module not found
         DECALOGO_WEIGHTS = {
             "DE-1": 0.30,
             "DE-2": 0.25,
@@ -613,7 +613,7 @@ class GuardEvaluator:
 
 
 class RejectionRenderer:
-    """Produces canonical, typed rejection responses from evaluation results."""
+# # #     """Produces canonical, typed rejection responses from evaluation results."""  # Module not found  # Module not found  # Module not found
 
     def __init__(self, mechanism: str = "deterministic_shield"):
         self.mechanism = mechanism

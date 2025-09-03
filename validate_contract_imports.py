@@ -4,7 +4,7 @@ Quick validation script to test contract imports
 """
 
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Add project root to path
 project_root = Path(__file__).resolve().parent
@@ -14,7 +14,7 @@ if str(project_root) not in sys.path:
 def test_snapshot_contract_imports():
     """Test snapshot contract imports"""
     try:
-        from snapshot_manager import (
+# # #         from snapshot_manager import (  # Module not found  # Module not found  # Module not found
             get_current_snapshot_id,
             mount_snapshot,
             replay_output,
@@ -30,7 +30,7 @@ def test_snapshot_contract_imports():
 def test_routing_contract_imports():
     """Test routing contract imports"""
     try:
-        from egw_query_expansion.core.deterministic_router import (
+# # #         from egw_query_expansion.core.deterministic_router import (  # Module not found  # Module not found  # Module not found
             DeterministicRouter,
             RoutingContext,
         )
@@ -43,7 +43,7 @@ def test_routing_contract_imports():
 def test_immutable_context_imports():
     """Test immutable context imports"""
     try:
-        from egw_query_expansion.core.immutable_context import (
+# # #         from egw_query_expansion.core.immutable_context import (  # Module not found  # Module not found  # Module not found
             QuestionContext,
             create_question_context,
         )

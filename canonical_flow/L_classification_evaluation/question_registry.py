@@ -5,12 +5,12 @@ for ensuring schema-data consistency across classification components.
 """
 
 import json
-from datetime import datetime
-from typing import Dict, List, Any, Optional, Set
-from dataclasses import dataclass
-from pathlib import Path
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Any, Optional, Set  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
-from schemas import (
+# # # from schemas import (  # Module not found  # Module not found  # Module not found
     RegistryChecksumValidator, 
     DimensionType, 
     ResponseType,
@@ -69,7 +69,7 @@ class DecalogoQuestionRegistry:
             "checksum": ""
         }
         
-        # Load questions from file or initialize defaults
+# # #         # Load questions from file or initialize defaults  # Module not found  # Module not found  # Module not found
         if registry_file and Path(registry_file).exists():
             self.load_from_file(registry_file)
         else:
@@ -143,7 +143,7 @@ class DecalogoQuestionRegistry:
         self.registry_metadata["last_modified"] = datetime.utcnow().isoformat()
     
     def load_from_file(self, file_path: str) -> None:
-        """Load registry from JSON file"""
+# # #         """Load registry from JSON file"""  # Module not found  # Module not found  # Module not found
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -181,7 +181,7 @@ class DecalogoQuestionRegistry:
                 self.dimensions[dimension.dimension_id] = dimension
                 
         except Exception as e:
-            raise RuntimeError(f"Failed to load registry from {file_path}: {e}")
+# # #             raise RuntimeError(f"Failed to load registry from {file_path}: {e}")  # Module not found  # Module not found  # Module not found
     
     def save_to_file(self, file_path: str) -> None:
         """Save registry to JSON file"""
@@ -409,5 +409,5 @@ def get_default_registry() -> DecalogoQuestionRegistry:
 
 
 def create_custom_registry(registry_file: str) -> DecalogoQuestionRegistry:
-    """Create a custom registry from file"""
+# # #     """Create a custom registry from file"""  # Module not found  # Module not found  # Module not found
     return DecalogoQuestionRegistry(registry_file)

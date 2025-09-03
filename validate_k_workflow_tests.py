@@ -9,7 +9,7 @@ def validate_test_structure():
     print("🔍 Validating K_knowledge_extraction workflow test structure...")
     
     import importlib.util
-    from pathlib import Path
+# # #     from pathlib import Path  # Module not found  # Module not found  # Module not found
     
     test_file = Path("tests/integration/test_k_knowledge_extraction_workflow.py")
     
@@ -75,7 +75,7 @@ def validate_output_structure():
     """Validate expected output structure"""
     print("\n📁 Validating output structure...")
     
-    from pathlib import Path
+# # #     from pathlib import Path  # Module not found  # Module not found  # Module not found
     
     # Check canonical_flow structure
     canonical_flow = Path("canonical_flow")
@@ -121,7 +121,7 @@ def main():
             print("✅ VALIDATION PASSED")
             print("\n📋 Test Suite Summary:")
             print("   - Complete workflow testing (06K→07K→11K→08K→09K→10K)")
-            print("   - Real PDF processing from planes_input directory")
+# # #             print("   - Real PDF processing from planes_input directory")  # Module not found  # Module not found  # Module not found
             print("   - Artifact generation validation")
             print("   - Schema compliance testing") 
             print("   - Deterministic behavior verification")

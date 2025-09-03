@@ -12,12 +12,12 @@ This example shows:
 """
 
 import logging
-from typing import List, Tuple
+# # # from typing import List, Tuple  # Module not found  # Module not found  # Module not found
 
 import matplotlib.pyplot as plt
 import numpy as np
 
-from egw_query_expansion.core.conformal_risk_control import (
+# # # from egw_query_expansion.core.conformal_risk_control import (  # Module not found  # Module not found  # Module not found
     ClassificationNonconformityScorer,
     ConformalRiskController,
     RegressionNonconformityScorer,

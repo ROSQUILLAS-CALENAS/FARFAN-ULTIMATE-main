@@ -2,7 +2,7 @@
 Deterministic Embedding Generator Module
 
 This module provides a standardized, deterministic embedding generation system
-that inherits from TotalOrderingBase and implements reproducible embedding 
+# # # that inherits from TotalOrderingBase and implements reproducible embedding   # Module not found  # Module not found  # Module not found
 generation with fixed random seeds, disabled dropout modes, and pinned model versions.
 
 The module generates three artifacts:
@@ -21,16 +21,16 @@ import random
 import numpy as np
 import torch
 import faiss
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Union, Tuple
-from dataclasses import dataclass, asdict
-from collections import OrderedDict
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Import base class
 import sys
 sys.path.append(str(Path(__file__).resolve().parents[3]))
-from total_ordering_base import TotalOrderingBase
+# # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -70,7 +70,7 @@ class DeterministicEmbedder(TotalOrderingBase):
     """
     Deterministic embedding generator with standardized process() API.
     
-    Inherits from TotalOrderingBase to ensure deterministic behavior across
+# # #     Inherits from TotalOrderingBase to ensure deterministic behavior across  # Module not found  # Module not found  # Module not found
     all operations including ID generation, sorting, and serialization.
     """
     
@@ -141,7 +141,7 @@ class DeterministicEmbedder(TotalOrderingBase):
             
             # For this implementation, we'll simulate model loading
             # In production, you would load actual models like:
-            # from sentence_transformers import SentenceTransformer
+# # #             # from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
             # self._model = SentenceTransformer(self.config.model_name, device=self.config.device)
             # self._model.eval()  # Set to evaluation mode to disable dropout
             
@@ -207,9 +207,9 @@ class DeterministicEmbedder(TotalOrderingBase):
         logger.debug(f"Validated {len(chunks)} chunk inputs successfully")
     
     def _load_chunk_data_from_07k(self) -> List[ChunkData]:
-        """Load chunk data from 07K stage (simulated for demonstration)"""
+# # #         """Load chunk data from 07K stage (simulated for demonstration)"""  # Module not found  # Module not found  # Module not found
         try:
-            # In a real implementation, this would read from the 07K output
+# # #             # In a real implementation, this would read from the 07K output  # Module not found  # Module not found  # Module not found
             # For now, we'll simulate some chunk data
             chunks = [
                 ChunkData(
@@ -222,11 +222,11 @@ class DeterministicEmbedder(TotalOrderingBase):
                 for i in range(100)  # Simulate 100 chunks
             ]
             
-            logger.info(f"Loaded {len(chunks)} chunks from 07K stage")
+# # #             logger.info(f"Loaded {len(chunks)} chunks from 07K stage")  # Module not found  # Module not found  # Module not found
             return chunks
             
         except Exception as e:
-            raise DeterministicEmbeddingError(f"Failed to load chunk data from 07K: {str(e)}")
+# # #             raise DeterministicEmbeddingError(f"Failed to load chunk data from 07K: {str(e)}")  # Module not found  # Module not found  # Module not found
     
     def _generate_embeddings(self, chunks: List[ChunkData]) -> Tuple[np.ndarray, List[str]]:
         """Generate embeddings for chunks with deterministic behavior"""
@@ -374,7 +374,7 @@ class DeterministicEmbedder(TotalOrderingBase):
         Main processing method implementing standardized API.
         
         Args:
-            input_data: Optional input data (if None, loads from 07K stage)
+# # #             input_data: Optional input data (if None, loads from 07K stage)  # Module not found  # Module not found  # Module not found
             
         Returns:
             Dictionary containing processing results and artifact paths

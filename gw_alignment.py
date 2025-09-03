@@ -6,15 +6,15 @@ and DNP vocabulary, creating fused lexical+semantic costs.
 """
 
 import logging
-from typing import Dict, List, Optional, Tuple, Union
+# # # from typing import Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import ot
 import torch
-from scipy.spatial.distance import cdist
+# # # from scipy.spatial.distance import cdist  # Module not found  # Module not found  # Module not found
 # Optional sklearn cosine_distances with fallback
 try:
-    from sklearn.metrics.pairwise import cosine_distances  # type: ignore
+# # #     from sklearn.metrics.pairwise import cosine_distances  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:
     def cosine_distances(A, B):
         import numpy as np

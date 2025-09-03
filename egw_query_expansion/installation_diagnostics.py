@@ -11,8 +11,8 @@ import platform
 import subprocess
 import sys
 import warnings
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 try:
     import pkg_resources
@@ -68,7 +68,7 @@ class EnvironmentDiagnostics:
             result["version"] = getattr(module, "__version__", "unknown")
             result["location"] = getattr(module, "__file__", None)
             
-            # Try to get package info from pkg_resources
+# # #             # Try to get package info from pkg_resources  # Module not found  # Module not found  # Module not found
             if pkg_resources:
                 try:
                     dist = pkg_resources.get_distribution(package_name)

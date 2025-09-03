@@ -5,7 +5,7 @@ Validation script for AuditLogger using only built-in Python syntax validation.
 
 import ast
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 
 def validate_python_syntax(file_path):

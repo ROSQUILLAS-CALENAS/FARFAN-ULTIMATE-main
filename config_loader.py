@@ -2,18 +2,18 @@
 <<<<<<< HEAD
 Centralized Configuration Loader for Threshold Management
 
-Provides typed access to threshold values from thresholds.json with validation,
+# # # Provides typed access to threshold values from thresholds.json with validation,  # Module not found  # Module not found  # Module not found
 error handling, and caching for consistent parameter usage across the pipeline.
 """
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import hashlib
 import json
 import os
-from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Dict, Optional, Type, TypeVar, Union
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, Optional, Type, TypeVar, Union  # Module not found  # Module not found  # Module not found
 
 T = TypeVar('T')
 
@@ -95,7 +95,7 @@ class TemperatureRanges:
     
     @classmethod
     def from_dict(cls, data: Dict[str, Dict[str, float]]) -> 'TemperatureRanges':
-        """Create TemperatureRanges from dictionary data."""
+# # #         """Create TemperatureRanges from dictionary data."""  # Module not found  # Module not found  # Module not found
         ranges = {}
         for name, range_data in data.items():
             if 'range' in range_data:
@@ -238,7 +238,7 @@ class ConfigurationLoader:
         )
     
     def _load_config(self) -> None:
-        """Load and validate configuration from file."""
+# # #         """Load and validate configuration from file."""  # Module not found  # Module not found  # Module not found
         try:
             with open(self.config_path, 'r', encoding='utf-8') as f:
                 content = f.read()
@@ -256,9 +256,9 @@ class ConfigurationLoader:
             self._config_hash = config_hash
             
         except json.JSONDecodeError as e:
-            raise ConfigValidationError(f"Invalid JSON in configuration file: {e}") from e
+# # #             raise ConfigValidationError(f"Invalid JSON in configuration file: {e}") from e  # Module not found  # Module not found  # Module not found
         except Exception as e:
-            raise ConfigError(f"Failed to load configuration: {e}") from e
+# # #             raise ConfigError(f"Failed to load configuration: {e}") from e  # Module not found  # Module not found  # Module not found
     
     def _parse_configuration(self, data: Dict[str, Any]) -> ThresholdConfiguration:
         """Parse raw configuration data into typed objects."""
@@ -336,9 +336,9 @@ class ConfigurationLoader:
             )
             
         except KeyError as e:
-            raise ConfigValidationError(f"Missing required configuration key: {e}") from e
+# # #             raise ConfigValidationError(f"Missing required configuration key: {e}") from e  # Module not found  # Module not found  # Module not found
         except Exception as e:
-            raise ConfigValidationError(f"Configuration validation failed: {e}") from e
+# # #             raise ConfigValidationError(f"Configuration validation failed: {e}") from e  # Module not found  # Module not found  # Module not found
     
     def get_config(self) -> ThresholdConfiguration:
         """Get the complete configuration object."""
@@ -509,22 +509,22 @@ def get_config_loader(config_path: Optional[Union[str, Path]] = None) -> Configu
 
 # Convenience functions for common access patterns
 def get_scoring_bounds() -> ScoringBounds:
-    """Get scoring bounds from global configuration."""
+# # #     """Get scoring bounds from global configuration."""  # Module not found  # Module not found  # Module not found
     return get_config_loader().get_scoring_bounds()
 
 
 def get_evidence_multipliers() -> EvidenceMultipliers:
-    """Get evidence multipliers from global configuration."""
+# # #     """Get evidence multipliers from global configuration."""  # Module not found  # Module not found  # Module not found
     return get_config_loader().get_evidence_multipliers()
 
 
 def get_fusion_weights(category: str) -> Dict[str, float]:
-    """Get fusion weights for category from global configuration."""
+# # #     """Get fusion weights for category from global configuration."""  # Module not found  # Module not found  # Module not found
     return get_config_loader().get_fusion_weights(category)
 
 
 def get_temperature_range(component: str) -> TemperatureRange:
-    """Get temperature range for component from global configuration."""
+# # #     """Get temperature range for component from global configuration."""  # Module not found  # Module not found  # Module not found
     return get_config_loader().get_temperature_range(component)
 
 
@@ -560,13 +560,13 @@ Provides typed access to threshold configuration parameters with:
 import json
 import logging
 import os
-from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Union
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
 
 try:
     import jsonschema
-    from jsonschema import ValidationError
+# # #     from jsonschema import ValidationError  # Module not found  # Module not found  # Module not found
     JSONSCHEMA_AVAILABLE = True
 except ImportError:
     JSONSCHEMA_AVAILABLE = False
@@ -927,7 +927,7 @@ class ConfigLoader:
     
     def load_config(self, validate_schema: bool = True) -> ThresholdsConfig:
         """
-        Load and validate configuration from file.
+# # #         Load and validate configuration from file.  # Module not found  # Module not found  # Module not found
         
         Args:
             validate_schema: Whether to validate against JSON schema
@@ -964,14 +964,14 @@ class ConfigLoader:
                     logger.info("Configuration schema validation passed")
                 except ValidationError as e:
                     logger.error(f"Configuration validation failed: {e.message}")
-                    raise ValueError(f"Invalid configuration: {e.message}") from e
+# # #                     raise ValueError(f"Invalid configuration: {e.message}") from e  # Module not found  # Module not found  # Module not found
             elif validate_schema and not JSONSCHEMA_AVAILABLE:
                 logger.warning("jsonschema not available, skipping schema validation")
             
             # Convert to typed configuration
             self._config = self._convert_to_dataclass(raw_config)
             
-            logger.info(f"Successfully loaded configuration from {self.config_path}")
+# # #             logger.info(f"Successfully loaded configuration from {self.config_path}")  # Module not found  # Module not found  # Module not found
             return self._config
             
         except Exception as e:
@@ -988,7 +988,7 @@ class ConfigLoader:
         return self._config
     
     def reload_config(self) -> ThresholdsConfig:
-        """Force reload configuration from file."""
+# # #         """Force reload configuration from file."""  # Module not found  # Module not found  # Module not found
         self._config = None
         self._raw_config = None
         return self.load_config()
@@ -1071,7 +1071,7 @@ def get_thresholds() -> ThresholdsConfig:
 
 
 def reload_thresholds() -> ThresholdsConfig:
-    """Reload thresholds configuration from file."""
+# # #     """Reload thresholds configuration from file."""  # Module not found  # Module not found  # Module not found
     return get_config_loader().reload_config()
 
 

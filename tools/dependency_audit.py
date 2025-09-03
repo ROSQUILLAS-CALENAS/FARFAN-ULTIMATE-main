@@ -8,12 +8,12 @@ Static dependency auditor for FARFAN-ULTIMATE.
 
 This tool does not install or import external packages; it uses only stdlib and JSON inputs.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 import json
 import re
 import sys
-from pathlib import Path
-from typing import Dict, List, Set, Tuple
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Set, Tuple  # Module not found  # Module not found  # Module not found
 
 REQUIREMENT_FILES = ("requirements.txt",)
 
@@ -72,7 +72,7 @@ OPTIONAL_IMPORTS = {
 # Known compatibility heuristics to flag potential issues (not authoritative)
 def detect_potential_conflicts(pins: Dict[str, str]) -> List[str]:
     issues = []
-    # Extract versions (if any) from pins like ">=1.2.3" or "==1.2.3"
+# # #     # Extract versions (if any) from pins like ">=1.2.3" or "==1.2.3"  # Module not found  # Module not found  # Module not found
     def ver(pkg: str) -> str:
         spec = pins.get(pkg)
         return spec or ""
@@ -127,7 +127,7 @@ def top_level_import(name: str) -> str:
 
 
 def load_project_imports(project_root: Path) -> Dict[str, Set[str]]:
-    """Load imports mapping from project_analysis_report.json if available.
+# # #     """Load imports mapping from project_analysis_report.json if available.  # Module not found  # Module not found  # Module not found
     Returns mapping: file->set(import_names)
     """
     report_path = project_root / "project_analysis_report.json"

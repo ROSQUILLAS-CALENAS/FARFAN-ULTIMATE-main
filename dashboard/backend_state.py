@@ -3,9 +3,9 @@ Backend state management for real-time analysis pipeline data.
 Handles optimistic updates with rollback capabilities.
 """
 
-from typing import Dict, Any, Optional, List, Tuple
-from dataclasses import dataclass, asdict
-from datetime import datetime, timedelta
+# # # from typing import Dict, Any, Optional, List, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
 import threading
 import json
 import logging
@@ -13,7 +13,7 @@ import logging
 
 @dataclass
 class DataUpdate:
-    """Represents a single data update from the backend."""
+# # #     """Represents a single data update from the backend."""  # Module not found  # Module not found  # Module not found
     id: str
     data: Any
     timestamp: datetime
@@ -133,7 +133,7 @@ class BackendStateManager:
         return True
     
     def _apply_confirmed_update(self, updates: Dict[str, Any]) -> bool:
-        """Apply confirmed update from backend."""
+# # #         """Apply confirmed update from backend."""  # Module not found  # Module not found  # Module not found
         # Apply updates
         self._apply_state_updates(updates)
         self._version += 1
@@ -264,7 +264,7 @@ class BackendStateManager:
                 self.logger.warning(f"Optimistic update {update_id} expired")
     
     def restore_state(self, state: Dict[str, Any]):
-        """Restore state from external source."""
+# # #         """Restore state from external source."""  # Module not found  # Module not found  # Module not found
         with self._lock:
             self._state = self._deep_copy_state(state)
             self._version += 1

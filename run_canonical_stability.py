@@ -20,19 +20,19 @@ Notes:
 - It only inspects canonical_flow/<stem>.json artifacts for determinism. It intentionally
   ignores files like canonical_flow/execution_summary.json which contain timestamps.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import argparse
 import hashlib
 import json
 import sys
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 # Project-local imports (minimal canonical component)
 try:
-    from pdf_text_reader import process as pdf_text_process
+# # #     from pdf_text_reader import process as pdf_text_process  # Module not found  # Module not found  # Module not found
 except Exception as e:
     pdf_text_process = None  # type: ignore
     _IMPORT_ERROR = e

@@ -25,13 +25,13 @@ import importlib
 import importlib.metadata
 import sys
 import traceback
-from pathlib import Path
-from typing import Dict, List, Tuple, Any, Optional
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Tuple, Any, Optional  # Module not found  # Module not found  # Module not found
 import warnings
 
 # Import the LibraryStatusReporter
 try:
-    from canonical_flow.mathematical_enhancers.mathematical_compatibility_matrix import (
+# # #     from canonical_flow.mathematical_enhancers.mathematical_compatibility_matrix import (  # Module not found  # Module not found  # Module not found
         LibraryStatusReporter, MathematicalCompatibilityMatrix
     )
     STATUS_REPORTER_AVAILABLE = True
@@ -55,7 +55,7 @@ class DependencyValidator:
         self.status_reporter = None
         self.aggregated_results = {}
         
-        # Expected core components from egw_query_expansion
+# # #         # Expected core components from egw_query_expansion  # Module not found  # Module not found  # Module not found
         self.expected_components = {
             "egw_query_expansion": [
                 "GromovWassersteinAligner",
@@ -81,7 +81,7 @@ class DependencyValidator:
             ]
         }
         
-        # Critical dependencies from requirements.txt
+# # #         # Critical dependencies from requirements.txt  # Module not found  # Module not found  # Module not found
         self.critical_dependencies = {
             "torch": ">=2.0.0",
             "transformers": ">=4.35.0", 
@@ -345,7 +345,7 @@ class DependencyValidator:
         
         if self.status_reporter:
             try:
-                # Get comprehensive report from status reporter
+# # #                 # Get comprehensive report from status reporter  # Module not found  # Module not found  # Module not found
                 full_report = self.status_reporter.generate_comprehensive_report()
                 
                 aggregated['total_components_checked'] = len(egw_stages)

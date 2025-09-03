@@ -5,7 +5,7 @@ Minimal PDF text reader - text extraction only (no OCR)
 
 Entrypoints
 - Python API: process(data: dict | str, context: dict | None = None) -> dict
-- Optional CLI wrapper via: python -c "from pdf_text_reader import process; import json; print(json.dumps(process({'pdf_path': 'planes_input/plan.pdf'}), ensure_ascii=False, indent=2))"
+# # # - Optional CLI wrapper via: python -c "from pdf_text_reader import process; import json; print(json.dumps(process({'pdf_path': 'planes_input/plan.pdf'}), ensure_ascii=False, indent=2))"  # Module not found  # Module not found  # Module not found
 
 Input Contract
 - data: dict with key 'pdf_path' or a string path to a PDF
@@ -23,11 +23,11 @@ Failure Semantics
 Notes
 - This component is idempotent; reruns overwrite the same artifact for the same input path.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import json
-from pathlib import Path
-from typing import Any, Dict, Optional
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, Optional  # Module not found  # Module not found  # Module not found
 
 try:
     import PyPDF2  # type: ignore
@@ -39,7 +39,7 @@ else:
 
 
 def _resolve_pdf_path(data: Any) -> Optional[Path]:
-    """Resolve PDF path from dict or string; return absolute Path or None."""
+# # #     """Resolve PDF path from dict or string; return absolute Path or None."""  # Module not found  # Module not found  # Module not found
     if isinstance(data, dict):
         candidate = data.get("pdf_path") or data.get("path") or data.get("file")
     else:
@@ -64,7 +64,7 @@ def _write_artifact(out_path: Path, payload: Dict[str, Any]) -> Optional[str]:
 
 
 def _extract_text_with_pypdf2(pdf_path: Path) -> Dict[str, Any]:
-    """Extract text from PDF using PyPDF2; tolerate per-page errors."""
+# # #     """Extract text from PDF using PyPDF2; tolerate per-page errors."""  # Module not found  # Module not found  # Module not found
     if PyPDF2 is None:
         return {
             "file": pdf_path.name,
@@ -107,7 +107,7 @@ def _extract_text_with_pypdf2(pdf_path: Path) -> Dict[str, Any]:
 
 def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
-    Extract plain text from a single PDF and persist canonical artifact.
+# # #     Extract plain text from a single PDF and persist canonical artifact.  # Module not found  # Module not found  # Module not found
 
     Args:
         data: dict with 'pdf_path' or a string path

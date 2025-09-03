@@ -61,7 +61,7 @@ def validate_meso_aggregator():
             if field in result:
                 print(f"✓ Required field '{field}' present in result")
             else:
-                print(f"✗ Required field '{field}' missing from result")
+# # #                 print(f"✗ Required field '{field}' missing from result")  # Module not found  # Module not found  # Module not found
                 return False
         
         # Check if artifacts directory was created
@@ -88,7 +88,7 @@ def validate_meso_aggregator():
                         if field in artifact:
                             print(f"✓ Schema field '{field}' present in artifact")
                         else:
-                            print(f"✗ Schema field '{field}' missing from artifact")
+# # #                             print(f"✗ Schema field '{field}' missing from artifact")  # Module not found  # Module not found  # Module not found
                             return False
                     
                     # Check JSON formatting (sorted keys, proper indentation)

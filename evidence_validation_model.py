@@ -14,14 +14,14 @@ import hashlib
 import hmac
 import secrets
 import time
-from base64 import urlsafe_b64encode
-from datetime import datetime
-from enum import Enum
-from typing import Any, Dict, FrozenSet, List, Literal, Optional, Set, Tuple, Union
+# # # from base64 import urlsafe_b64encode  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, FrozenSet, List, Literal, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
 try:
-    from canonical_flow.analysis.audit_logger import get_audit_logger
+# # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback when audit logger is not available
     get_audit_logger = None
@@ -67,8 +67,8 @@ except ImportError:
 
 
 try:
-    from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
-    from pydantic.dataclasses import dataclass
+# # #     from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator  # Module not found  # Module not found  # Module not found
+# # #     from pydantic.dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Minimal fallback implementation for testing syntax
     class ConfigDict:
@@ -363,7 +363,7 @@ class EvidenceValidationModel(BaseModel):
         # Use current time as salt for uniqueness
         time_salt = str(int(time.time() * 1000000))  # microsecond precision
 
-        # Create HMAC key from context
+# # #         # Create HMAC key from context  # Module not found  # Module not found  # Module not found
         key_material = f"{self.context_hash}:{time_salt}".encode()
         key = hashlib.sha256(key_material).digest()
 
@@ -421,8 +421,8 @@ import json
 import logging
 import os
 import traceback
-from dataclasses import dataclass, field
-from pathlib import Path
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 @dataclass
 class EvidenceValidationRequest:

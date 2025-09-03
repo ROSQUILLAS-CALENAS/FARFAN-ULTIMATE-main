@@ -5,9 +5,9 @@ Run contract validation utility with minimal dependencies
 
 import ast
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 import re
-from typing import List, Dict, Set, Optional
+# # # from typing import List, Dict, Set, Optional  # Module not found  # Module not found  # Module not found
 
 # Add project root to path
 project_root = Path(__file__).resolve().parent
@@ -56,7 +56,7 @@ def analyze_imports(file_path: Path) -> Dict[str, List[str]]:
                 imports["issues"].append(f"Line {i}: Non-canonical import: {line.strip()}")
             
             # Check for missing sys.path setup
-            if "from egw_query_expansion" in line or "from snapshot_manager" in line:
+# # #             if "from egw_query_expansion" in line or "from snapshot_manager" in line:  # Module not found  # Module not found  # Module not found
                 # Look for sys.path setup in nearby lines
                 setup_found = False
                 for j in range(max(0, i-10), min(len(lines), i+5)):
@@ -86,11 +86,11 @@ def main():
         
         imports = analyze_imports(file_path)
         
-        # Show from imports
+# # #         # Show from imports  # Module not found  # Module not found  # Module not found
         if imports["from"]:
             print("  From imports:")
             for line_no, module in imports["from"]:
-                print(f"    Line {line_no}: from {module}")
+# # #                 print(f"    Line {line_no}: from {module}")  # Module not found  # Module not found  # Module not found
         
         # Show regular imports  
         if imports["import"]:
@@ -121,7 +121,7 @@ def main():
         print("  1. Add canonical path setup to files missing it:")
         print("     ```python")
         print("     import sys")
-        print("     from pathlib import Path")
+# # #         print("     from pathlib import Path")  # Module not found  # Module not found  # Module not found
         print("     project_root = Path(__file__).resolve().parents[1]")
         print("     if str(project_root) not in sys.path:")
         print("         sys.path.insert(0, str(project_root))")

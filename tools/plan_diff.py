@@ -3,18 +3,18 @@
 Plan Diff Tool
 
 Compares and visualizes inclusion relationships between task selection plans
-from different budget scenarios. Shows whether B↑ maintains monotonic inclusion.
+# # # from different budget scenarios. Shows whether B↑ maintains monotonic inclusion.  # Module not found  # Module not found  # Module not found
 """
 
 import argparse
 import json
 import sys
-from typing import Dict, List, Set, Tuple, Any
-from dataclasses import dataclass
+# # # from typing import Dict, List, Set, Tuple, Any  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from egw_query_expansion.core.submodular_task_selector import (
+# # # from egw_query_expansion.core.submodular_task_selector import (  # Module not found  # Module not found  # Module not found
     MonotonicTaskSelector,
     CoverageUtility,
     Task,

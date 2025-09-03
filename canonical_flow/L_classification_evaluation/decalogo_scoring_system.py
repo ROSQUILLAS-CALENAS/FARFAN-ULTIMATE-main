@@ -4,16 +4,16 @@ Implements deterministic scoring with exact values, evidence quality multipliers
 dimension-level aggregation, and point-level composition for the Decálogo framework.
 """
 
-from dataclasses import dataclass
-from typing import Dict, List, Any, Optional, Tuple
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
 import logging
-from decimal import Decimal, ROUND_HALF_UP
+# # # from decimal import Decimal, ROUND_HALF_UP  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
 # Try to import centralized configuration
 try:
-    from config_loader import get_thresholds
+# # #     from config_loader import get_thresholds  # Module not found  # Module not found  # Module not found
     THRESHOLDS_AVAILABLE = True
 except ImportError:
     THRESHOLDS_AVAILABLE = False
@@ -58,7 +58,7 @@ class ScoringSystem:
     def __init__(self, precision: int = 4):
         """
         Initialize scoring system with specified precision for rounding.
-        Load configuration from centralized thresholds if available.
+# # #         Load configuration from centralized thresholds if available.  # Module not found  # Module not found  # Module not found
         
         Args:
             precision: Number of decimal places for consistent rounding
@@ -70,7 +70,7 @@ class ScoringSystem:
         self._load_configuration()
     
     def _load_configuration(self):
-        """Load configuration from centralized thresholds or use defaults."""
+# # #         """Load configuration from centralized thresholds or use defaults."""  # Module not found  # Module not found  # Module not found
         if THRESHOLDS_AVAILABLE:
             try:
                 config = get_thresholds()
@@ -99,7 +99,7 @@ class ScoringSystem:
                 self.completeness_weight = Decimal(str(evidence_config.completeness_weight))
                 self.reference_quality_weight = Decimal(str(evidence_config.reference_quality_weight))
                 
-                logger.info("Loaded Decálogo scoring configuration from centralized thresholds")
+# # #                 logger.info("Loaded Decálogo scoring configuration from centralized thresholds")  # Module not found  # Module not found  # Module not found
                 
             except Exception as e:
                 logger.warning(f"Failed to load centralized configuration: {e}, using defaults")

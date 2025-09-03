@@ -9,7 +9,7 @@ import sys
 import platform
 import json
 import os
-from typing import List, Dict, Any, Optional, Tuple
+# # # from typing import List, Dict, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
 import importlib
 import pkg_resources
 
@@ -183,7 +183,7 @@ class DependencyResolver:
         return results
     
     def install_additional_dependencies(self) -> Dict[str, Any]:
-        """Install additional dependencies from requirements."""
+# # #         """Install additional dependencies from requirements."""  # Module not found  # Module not found  # Module not found
         additional_packages = [
             'transformers>=4.35.0',
             'sentence-transformers>=2.2.2',

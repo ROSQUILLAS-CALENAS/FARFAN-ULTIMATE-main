@@ -15,16 +15,16 @@ import os
 import tempfile
 import shutil
 import pytest
-from pathlib import Path
-from typing import Dict, Any, List, Optional
-from unittest.mock import patch, MagicMock
-from datetime import datetime
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, Any, List, Optional  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import patch, MagicMock  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import hashlib
 
 # Import the components under test
-from meso_aggregator import process as meso_process
-from report_compiler import ReportCompiler, ReportData, ReportType, CompiledReport
-from canonical_flow.analysis.audit_logger import AuditLogger, get_audit_logger, set_audit_logger
+# # # from meso_aggregator import process as meso_process  # Module not found  # Module not found  # Module not found
+# # # from report_compiler import ReportCompiler, ReportData, ReportType, CompiledReport  # Module not found  # Module not found  # Module not found
+# # # from canonical_flow.analysis.audit_logger import AuditLogger, get_audit_logger, set_audit_logger  # Module not found  # Module not found  # Module not found
 
 
 class TestGAggregationIntegration:
@@ -41,7 +41,7 @@ class TestGAggregationIntegration:
     
     @pytest.fixture
     def sample_cluster_data(self) -> Dict[str, Any]:
-        """Sample analysis outputs from four clusters for testing."""
+# # #         """Sample analysis outputs from four clusters for testing."""  # Module not found  # Module not found  # Module not found
         return {
             "cluster_audit": {
                 "micro": {
@@ -247,7 +247,7 @@ class TestGAggregationIntegration:
         
         assert meso_file.exists()
         
-        # Step 2: Prepare report data from meso results
+# # #         # Step 2: Prepare report data from meso results  # Module not found  # Module not found  # Module not found
         report_data = ReportData(
             plan_name=sample_cluster_data.get("plan_metadata", {}).get("plan_name", "Test Plan"),
             analysis_results=meso_result,

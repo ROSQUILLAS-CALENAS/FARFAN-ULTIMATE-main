@@ -9,29 +9,29 @@ import logging
 import time
 import traceback
 import uuid
-from dataclasses import dataclass, field
-from datetime import datetime, timedelta
-from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Union
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
 
-from pydantic import BaseModel, Field
+# # # from pydantic import BaseModel, Field  # Module not found  # Module not found  # Module not found
 
 # OpenTelemetry imports
 try:
-    from opentelemetry import metrics, trace
-    from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import (
+# # #     from opentelemetry import metrics, trace  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import (  # Module not found  # Module not found  # Module not found
         OTLPMetricExporter,
     )
-    from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-    from opentelemetry.instrumentation.asyncio import AsyncioInstrumentor
-    from opentelemetry.instrumentation.requests import RequestsInstrumentor
-    from opentelemetry.propagate import set_global_textmap
-    from opentelemetry.propagators.b3 import B3MultiFormat
-    from opentelemetry.sdk.metrics import MeterProvider
-    from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
-    from opentelemetry.sdk.resources import Resource
-    from opentelemetry.sdk.trace import Span, TracerProvider
-    from opentelemetry.sdk.trace.export import BatchSpanProcessor
+# # #     from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.instrumentation.asyncio import AsyncioInstrumentor  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.instrumentation.requests import RequestsInstrumentor  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.propagate import set_global_textmap  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.propagators.b3 import B3MultiFormat  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.sdk.metrics import MeterProvider  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.sdk.resources import Resource  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.sdk.trace import Span, TracerProvider  # Module not found  # Module not found  # Module not found
+# # #     from opentelemetry.sdk.trace.export import BatchSpanProcessor  # Module not found  # Module not found  # Module not found
 
     OTEL_AVAILABLE = True
 except ImportError:

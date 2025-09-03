@@ -6,8 +6,8 @@ por orden lexicográfico de κ (uids).
 """
 
 import unittest
-from typing import List, Tuple
-from egw_query_expansion.core.total_ordering import (
+# # # from typing import List, Tuple  # Module not found  # Module not found  # Module not found
+# # # from egw_query_expansion.core.total_ordering import (  # Module not found  # Module not found  # Module not found
     OrderedRecord,
     sort_total,
     make_total_key,

@@ -18,13 +18,13 @@ Usage:
     
 Or standalone: process(data: Dict[str, Any], context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import hashlib
 import logging
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Union
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
 
 try:
     import numpy as np
@@ -110,7 +110,7 @@ class LocalTransformerBackend(TransformerBackend):
         return text
     
     def extract_features(self, text: str):
-        """Extract simple features from text"""
+# # #         """Extract simple features from text"""  # Module not found  # Module not found  # Module not found
         if not text:
             return np.zeros(384)  # Default embedding size
         
@@ -148,7 +148,7 @@ class HuggingFaceTransformerBackend(TransformerBackend):
             
             model_name = config.get("model_name", "sentence-transformers/all-MiniLM-L6-v2")
             
-            from sentence_transformers import SentenceTransformer
+# # #             from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
             self.model = SentenceTransformer(model_name)
             self.initialized = True
             logger.info(f"HuggingFace backend initialized with {model_name}")
@@ -277,7 +277,7 @@ class PublicTransformerAdapter:
         supports four-cluster processing workflow.
         
         Args:
-            data: Input data from pipeline
+# # #             data: Input data from pipeline  # Module not found  # Module not found  # Module not found
             context: Optional context information
             
         Returns:
@@ -309,7 +309,7 @@ class PublicTransformerAdapter:
         data: Dict[str, Any], 
         context: Optional[Dict[str, Any]]
     ) -> TransformationContext:
-        """Create transformation context from input data and context"""
+# # #         """Create transformation context from input data and context"""  # Module not found  # Module not found  # Module not found
         
         # Detect four-cluster workflow
         four_cluster_workflow = (

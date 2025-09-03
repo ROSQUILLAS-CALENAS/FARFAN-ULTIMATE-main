@@ -6,23 +6,23 @@ Integrates with scoring and classification systems for full audit trails.
 import json
 import hashlib
 import os
-from dataclasses import dataclass, field, asdict
-from datetime import datetime
-from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Union, Callable
-from uuid import uuid4
+# # # from dataclasses import dataclass, field, asdict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union, Callable  # Module not found  # Module not found  # Module not found
+# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
 try:
-    from canonical_flow.analysis.audit_logger import get_audit_logger
+# # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback when audit logger is not available
     get_audit_logger = None
 
 # Import validation model for integration
 try:
-    from evidence_validation_model import (
+# # #     from evidence_validation_model import (  # Module not found  # Module not found  # Module not found
         EvidenceValidationModel, 
         ValidationSeverity,
         DNPEvidenceValidator,
@@ -111,7 +111,7 @@ class Citation:
         )
 
         if self.metadata.url:
-            return f"{author} ({year}). {title}. Retrieved from {self.metadata.url}"
+# # #             return f"{author} ({year}). {title}. Retrieved from {self.metadata.url}"  # Module not found  # Module not found  # Module not found
         else:
             return f"{author} ({year}). {title}."
 
@@ -188,7 +188,7 @@ class StructuredEvidence:
         self.audit_trail.append(entry)
 
     def get_traceability_path(self) -> Dict[str, str]:
-        """Get the full traceability path from source to evidence."""
+# # #         """Get the full traceability path from source to evidence."""  # Module not found  # Module not found  # Module not found
         return {
             "document_id": self.citation.metadata.document_id,
             "chunk_id": self.chunk.chunk_id,
@@ -641,7 +641,7 @@ class EvidenceProcessor:
         return f"ev_{timestamp_part}_{self._evidence_id_counter:04d}_{unique_part}"
     
     def _generate_hash_based_id(self, raw_evidence: Dict[str, Any]) -> str:
-        """Generate deterministic hash-based identifier from raw evidence."""
+# # #         """Generate deterministic hash-based identifier from raw evidence."""  # Module not found  # Module not found  # Module not found
         # Create a consistent string representation
         hash_content = json.dumps(raw_evidence, sort_keys=True, default=str)
         
@@ -803,7 +803,7 @@ class CitationFormatter:
     """Handles creation and formatting of citations."""
 
     def create_citation(self, metadata: SourceMetadata) -> Citation:
-        """Create a standardized citation from metadata."""
+# # #         """Create a standardized citation from metadata."""  # Module not found  # Module not found  # Module not found
         citation_id = f"cite_{uuid4().hex[:8]}"
 
         # Generate formatted reference
@@ -1111,7 +1111,7 @@ class EvidenceScoringSystem:
         if metadata.isbn:
             score += 0.15
 
-        # Institutional authority (from URL or title)
+# # #         # Institutional authority (from URL or title)  # Module not found  # Module not found  # Module not found
         if metadata.url:
             url_lower = metadata.url.lower()
             if any(domain in url_lower for domain in [".edu", ".gov"]):
@@ -1182,7 +1182,7 @@ def create_sample_evidence_with_validation() -> List[StructuredEvidence]:
     """Create sample structured evidence with DNP validation for demonstration."""
     # Create sample validation model
     if EvidenceValidationModel:
-        from evidence_validation_model import create_validation_model, EvidenceType as VEvidenceType, QuestionType, ValidationSeverity
+# # #         from evidence_validation_model import create_validation_model, EvidenceType as VEvidenceType, QuestionType, ValidationSeverity  # Module not found  # Module not found  # Module not found
         
         validation_model = create_validation_model(
             questions=[(QuestionType.TECHNICAL, "medical_ai", 1, "AI accuracy in medical diagnosis")],

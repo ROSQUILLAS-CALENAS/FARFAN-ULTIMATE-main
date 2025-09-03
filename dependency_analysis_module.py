@@ -13,11 +13,11 @@ import json
 import os
 import re
 import sys
-from collections import defaultdict, deque
-from dataclasses import dataclass, asdict
-from pathlib import Path
-from typing import Dict, List, Set, Tuple, Optional, Any
-from datetime import datetime
+# # # from collections import defaultdict, deque  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Set, Tuple, Optional, Any  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 
 
 @dataclass
@@ -199,7 +199,7 @@ class DependencyAnalyzer:
             return 'unknown'
     
     def _extract_imports(self, tree: ast.AST) -> List[str]:
-        """Extract import statements from AST."""
+# # #         """Extract import statements from AST."""  # Module not found  # Module not found  # Module not found
         imports = []
         
         for node in ast.walk(tree):
@@ -215,7 +215,7 @@ class DependencyAnalyzer:
         return imports
     
     def _extract_function_calls(self, tree: ast.AST) -> List[str]:
-        """Extract function calls from AST."""
+# # #         """Extract function calls from AST."""  # Module not found  # Module not found  # Module not found
         function_calls = []
         
         for node in ast.walk(tree):
@@ -229,7 +229,7 @@ class DependencyAnalyzer:
         return list(set(function_calls))
     
     def _extract_data_flow(self, tree: ast.AST, content: str) -> Tuple[List[str], List[str]]:
-        """Extract data input/output patterns from code."""
+# # #         """Extract data input/output patterns from code."""  # Module not found  # Module not found  # Module not found
         inputs = []
         outputs = []
         
@@ -335,7 +335,7 @@ class DependencyAnalyzer:
         """Resolve an import statement to potential component names."""
         components = []
         
-        # Extract potential component names from import
+# # #         # Extract potential component names from import  # Module not found  # Module not found  # Module not found
         parts = import_stmt.split('.')
         for part in parts:
             if part in self.components:

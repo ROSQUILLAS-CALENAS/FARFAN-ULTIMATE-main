@@ -9,7 +9,7 @@ It orchestrates a three-phase process:
 2. Contextual Knowledge Graph Construction - Entity and relation extraction.
 3. LLM-Powered Reasoning & Synthesis - Deep inference and answer generation.
 
-The engine aims to derive deep insights and coherent answers from vast amounts
+# # # The engine aims to derive deep insights and coherent answers from vast amounts  # Module not found  # Module not found  # Module not found
 of text, not merely to retrieve information, ensuring traceability and verifiable analysis.
 
 Author: Semantic Inference Engine Team
@@ -18,8 +18,8 @@ License: MIT
 """
 
 import os
-from pathlib import Path
-from typing import Any, Dict, List, Optional
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional  # Module not found  # Module not found  # Module not found
 
 import faiss
 import networkx as nx
@@ -28,15 +28,15 @@ import yaml
 # --- Internal Imports ---
 # Ensure these imports are correct based on your project structure.
 # If Chunk and InferenceResult are in a separate 'common' submodule, adjust accordingly.
-# from common.chunk import Chunk
-# from common.inference_result import InferenceResult
-# from components.hybrid_retriever import HybridRetriever
-# from components.knowledge_graph_builder import KnowledgeGraphBuilder
-# from components.reasoning_agent import ReasoningAgent
-# from utils.logger import setup_logger
+# # # # from common.chunk import Chunk  # Module not found  # Module not found  # Module not found
+# # # # from common.inference_result import InferenceResult  # Module not found  # Module not found  # Module not found
+# # # # from components.hybrid_retriever import HybridRetriever  # Module not found  # Module not found  # Module not found
+# # # # from components.knowledge_graph_builder import KnowledgeGraphBuilder  # Module not found  # Module not found  # Module not found
+# # # # from components.reasoning_agent import ReasoningAgent  # Module not found  # Module not found  # Module not found
+# # # # from utils.logger import setup_logger  # Module not found  # Module not found  # Module not found
 
 
-# --- Mock Imports (Replace with actual imports from your project) ---
+# # # # --- Mock Imports (Replace with actual imports from your project) ---  # Module not found  # Module not found  # Module not found
 class Chunk:  # Mock Chunk class for standalone context
     def __init__(self, text: str, chunk_id: str, metadata: Dict[str, Any]):
         self.text = text
@@ -121,7 +121,7 @@ class SemanticInferenceEngine:
     2. Contextual Knowledge Graph Construction: Entity and relation extraction.
     3. LLM-Powered Reasoning & Synthesis: Deep inference and answer generation.
 
-    It aims to derive deep insights and coherent answers from vast amounts of text,
+# # #     It aims to derive deep insights and coherent answers from vast amounts of text,  # Module not found  # Module not found  # Module not found
     not merely to retrieve information, ensuring traceability and verifiable analysis.
 
     Attributes:
@@ -165,20 +165,20 @@ class SemanticInferenceEngine:
             logger.error(f"Configuration file not found: {config_path}")
             raise FileNotFoundError(
                 f"Configuration file not found at path: {config_path}"
-            ) from e
+# # #             ) from e  # Module not found  # Module not found  # Module not found
         except yaml.YAMLError as e:
             logger.error(f"Invalid YAML in configuration file: {e}")
-            raise yaml.YAMLError(f"Failed to parse YAML configuration: {e}") from e
+# # #             raise yaml.YAMLError(f"Failed to parse YAML configuration: {e}") from e  # Module not found  # Module not found  # Module not found
         except KeyError as e:
             logger.error(f"Missing required configuration key: {e}")
-            raise KeyError(f"Configuration missing required key: {e}") from e
+# # #             raise KeyError(f"Configuration missing required key: {e}") from e  # Module not found  # Module not found  # Module not found
         except Exception as e:
             logger.error(f"Failed to initialize SemanticInferenceEngine: {e}")
-            raise Exception(f"Critical initialization error: {e}") from e
+# # #             raise Exception(f"Critical initialization error: {e}") from e  # Module not found  # Module not found  # Module not found
 
     def _load_configuration(self, config_path: str) -> None:
         """
-        Load configuration from YAML file with comprehensive error handling.
+# # #         Load configuration from YAML file with comprehensive error handling.  # Module not found  # Module not found  # Module not found
 
         Args:
             config_path (str): Path to the configuration file.
@@ -201,13 +201,13 @@ class SemanticInferenceEngine:
             if self.config is None:
                 raise yaml.YAMLError("Configuration file is empty")
 
-            logger.debug(f"Configuration loaded successfully from {config_path}")
+# # #             logger.debug(f"Configuration loaded successfully from {config_path}")  # Module not found  # Module not found  # Module not found
         except yaml.YAMLError as e:
             logger.error(f"YAML parsing error: {e}")
             raise
         except Exception as e:
             logger.error(f"Unexpected error loading configuration: {e}")
-            raise yaml.YAMLError(f"Failed to load configuration: {e}") from e
+# # #             raise yaml.YAMLError(f"Failed to load configuration: {e}") from e  # Module not found  # Module not found  # Module not found
 
     def _initialize_components(self) -> None:
         """
@@ -243,7 +243,7 @@ class SemanticInferenceEngine:
             logger.info("HybridRetriever initialized successfully.")
         except Exception as e:
             logger.error(f"Failed to initialize HybridRetriever: {e}", exc_info=True)
-            raise Exception(f"HybridRetriever initialization failed: {e}") from e
+# # #             raise Exception(f"HybridRetriever initialization failed: {e}") from e  # Module not found  # Module not found  # Module not found
 
         # Initialize KnowledgeGraphBuilder
         try:
@@ -268,7 +268,7 @@ class SemanticInferenceEngine:
             logger.error(
                 f"Failed to initialize KnowledgeGraphBuilder: {e}", exc_info=True
             )
-            raise Exception(f"KnowledgeGraphBuilder initialization failed: {e}") from e
+# # #             raise Exception(f"KnowledgeGraphBuilder initialization failed: {e}") from e  # Module not found  # Module not found  # Module not found
 
         # Initialize ReasoningAgent
         try:
@@ -290,7 +290,7 @@ class SemanticInferenceEngine:
             logger.info("ReasoningAgent initialized successfully.")
         except Exception as e:
             logger.error(f"Failed to initialize ReasoningAgent: {e}", exc_info=True)
-            raise Exception(f"ReasoningAgent initialization failed: {e}") from e
+# # #             raise Exception(f"ReasoningAgent initialization failed: {e}") from e  # Module not found  # Module not found  # Module not found
 
         logger.info("All pipeline components initialized successfully")
 
@@ -302,7 +302,7 @@ class SemanticInferenceEngine:
 
         This method executes a three-phase analysis process:
         1. Hybrid retrieval to find relevant chunks.
-        2. Knowledge graph construction from retrieved chunks.
+# # #         2. Knowledge graph construction from retrieved chunks.  # Module not found  # Module not found  # Module not found
         3. LLM-powered reasoning and synthesis.
 
         Args:
@@ -442,7 +442,7 @@ class SemanticInferenceEngine:
                 else:
                     # Fallback: If graph is empty, provide a response based on retrieved chunks only
                     logger.warning(
-                        "Knowledge graph is empty. Providing fallback answer from retrieved chunks."
+# # #                         "Knowledge graph is empty. Providing fallback answer from retrieved chunks."  # Module not found  # Module not found  # Module not found
                     )
                     synthesized_answer = (
                         "Analysis did not yield a structured knowledge graph. "
@@ -450,7 +450,7 @@ class SemanticInferenceEngine:
                     )
                     if relevant_chunks:
                         key_sentences = []
-                        # Extract first sentence from top 3 chunks as basic context
+# # #                         # Extract first sentence from top 3 chunks as basic context  # Module not found  # Module not found  # Module not found
                         for chunk in relevant_chunks[:3]:
                             sentences = chunk.text.split(".")
                             if sentences and sentences[0].strip():
@@ -482,7 +482,7 @@ class SemanticInferenceEngine:
 
             # Ensure synthesized answer is not empty/null
             if not synthesized_answer or not synthesized_answer.strip():
-                synthesized_answer = "Unable to generate a meaningful answer from the available information."
+# # #                 synthesized_answer = "Unable to generate a meaningful answer from the available information."  # Module not found  # Module not found  # Module not found
                 confidence_score = 0.0
 
             # Clamp confidence score to [0.0, 1.0]

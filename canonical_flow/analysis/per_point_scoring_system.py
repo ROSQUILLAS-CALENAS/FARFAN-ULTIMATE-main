@@ -19,12 +19,12 @@ Compliance classifications:
 
 import json
 import logging
-from datetime import datetime
-from decimal import Decimal, ROUND_HALF_UP
-from enum import Enum
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple
-from dataclasses import dataclass, asdict
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from decimal import Decimal, ROUND_HALF_UP  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -203,9 +203,9 @@ class PerPointScoringSystem:
         questions = dim_data.get("questions", [])
         question_count = len(questions) if questions else self.DIMENSION_QUESTION_COUNTS.get(dimension, 0)
         
-        # Calculate raw score from questions
+# # #         # Calculate raw score from questions  # Module not found  # Module not found  # Module not found
         if questions:
-            # Sum scores from answered questions
+# # #             # Sum scores from answered questions  # Module not found  # Module not found  # Module not found
             total_score = Decimal("0")
             answered_count = 0
             contributors = []
@@ -236,7 +236,7 @@ class PerPointScoringSystem:
             # Calculate average score
             raw_score = float(total_score / answered_count) if answered_count > 0 else 0.0
         else:
-            # Use completion percentage from existing data
+# # #             # Use completion percentage from existing data  # Module not found  # Module not found  # Module not found
             raw_score = dim_data.get("completion_percentage", 0.0) / 100.0
             answered_count = dim_data.get("actual_count", 0)
             contributors = []
@@ -427,7 +427,7 @@ class PerPointScoringSystem:
         Generate detailed explainability report for all points.
         
         Args:
-            results: Results from process_all_points()
+# # #             results: Results from process_all_points()  # Module not found  # Module not found  # Module not found
             output_filename: Optional custom filename
             
         Returns:

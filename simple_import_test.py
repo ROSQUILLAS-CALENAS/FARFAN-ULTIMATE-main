@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'egw_query_expansion'
 def test_import():
     try:
         # Test basic import
-        from import_safety import ImportSafety, safe_import
+# # #         from import_safety import ImportSafety, safe_import  # Module not found  # Module not found  # Module not found
         print("✓ Basic import successful")
         
         # Test singleton
@@ -27,7 +27,7 @@ def test_import():
         print(f"✓ nonexistent_module import: success={result.success}, error={result.error is not None}")
         
         # Test specialized imports
-        from import_safety import (
+# # #         from import_safety import (  # Module not found  # Module not found  # Module not found
             safe_import_numpy, safe_import_scipy, safe_import_torch,
             safe_import_sklearn, safe_import_faiss
         )
@@ -48,7 +48,7 @@ def test_import():
         print(f"✓ FAISS: success={faiss_result.success}, fallback={faiss_result.fallback_used}")
         
         # Test report generation
-        from import_safety import get_import_report
+# # #         from import_safety import get_import_report  # Module not found  # Module not found  # Module not found
         report = get_import_report()
         print(f"✓ Import report: {report['summary']['total_attempts']} attempts, "
               f"{report['summary']['successful_imports']} successful, "

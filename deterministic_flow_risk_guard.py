@@ -15,14 +15,14 @@ Design constraints:
 - Safe to import in any environment.
 - Zero side-effects unless explicitly invoked by host orchestrator.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import hashlib
 import json
 import os
-from dataclasses import dataclass, field
-from datetime import datetime
-from typing import Any, Dict, List, Optional, Tuple
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 
 def _stable_json_dumps(obj: Any) -> str:

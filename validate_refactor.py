@@ -6,7 +6,7 @@ Tests the structure without requiring external dependencies
 
 import ast
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 def validate_pdf_reader_structure():
     """Validate the PDFReader class structure"""
@@ -47,7 +47,7 @@ def validate_pdf_reader_structure():
         expected_bases = ['TotalOrderingBase', 'DeterministicCollectionMixin']
         for base in expected_bases:
             if base not in str(pdf_reader_class['bases']):
-                print(f"ERROR: PDFReader does not inherit from {base}")
+# # #                 print(f"ERROR: PDFReader does not inherit from {base}")  # Module not found  # Module not found  # Module not found
                 return False
         
         # Check for process method
@@ -57,7 +57,7 @@ def validate_pdf_reader_structure():
         
         # Check imports
         if 'total_ordering_base' not in imports:
-            print("ERROR: Missing import from total_ordering_base")
+# # #             print("ERROR: Missing import from total_ordering_base")  # Module not found  # Module not found  # Module not found
             return False
         
         # Check for json import in the content (it's a standard library import, not ImportFrom)
@@ -107,7 +107,7 @@ if __name__ == "__main__":
     if structure_ok and directory_ok:
         print("\n🎉 REFACTORING VALIDATION SUCCESSFUL!")
         print("PDFReader has been successfully refactored to:")
-        print("- Inherit from TotalOrderingBase and DeterministicCollectionMixin")
+# # #         print("- Inherit from TotalOrderingBase and DeterministicCollectionMixin")  # Module not found  # Module not found  # Module not found
         print("- Implement standardized process() method")
         print("- Generate artifacts in canonical_flow/ingestion/")
         print("- Handle errors gracefully with structured responses")

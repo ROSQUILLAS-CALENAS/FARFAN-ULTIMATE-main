@@ -12,7 +12,7 @@ def validate_imports():
     print("🔍 Validating imports...")
     
     try:
-        from dashboard import (
+# # #         from dashboard import (  # Module not found  # Module not found  # Module not found
             StateManager, DashboardStore, UIStateManager, 
             BackendStateManager, StatePersistence, TransitionManager
         )
@@ -29,7 +29,7 @@ def validate_functionality():
     print("🔍 Validating core functionality...")
     
     try:
-        from dashboard import StateManager
+# # #         from dashboard import StateManager  # Module not found  # Module not found  # Module not found
         
         # Test state manager creation
         with StateManager('validation_test', auto_save_interval=0) as sm:
@@ -65,7 +65,7 @@ def validate_architecture():
     print("🔍 Validating architecture...")
     
     try:
-        from dashboard import StateManager
+# # #         from dashboard import StateManager  # Module not found  # Module not found  # Module not found
         
         sm = StateManager('arch_test', auto_save_interval=0)
         
@@ -116,7 +116,7 @@ def validate_features():
     print("🔍 Validating key features...")
     
     try:
-        from dashboard import StateManager
+# # #         from dashboard import StateManager  # Module not found  # Module not found  # Module not found
         import time
         
         with StateManager('features_test', auto_save_interval=0) as sm:

@@ -9,13 +9,13 @@ Generates deterministic artifacts in canonical_flow/analysis/.
 import json
 import logging
 import os
-from collections import OrderedDict
-from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
-from uuid import uuid4
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple  # Module not found  # Module not found  # Module not found
+# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 import hashlib
 
 # import numpy as np  # Removed to avoid dependency
@@ -118,7 +118,7 @@ class DimensionAggregator:
     MIN_EVIDENCE_QUALITY = 0.5
     
     # Correction factor parameters
-    BASELINE_DEVIATION_THRESHOLD = 0.15  # 15% deviation from baseline
+# # #     BASELINE_DEVIATION_THRESHOLD = 0.15  # 15% deviation from baseline  # Module not found  # Module not found  # Module not found
     CAUSAL_CORRECTION_FACTOR = 0.1  # 10% adjustment for DE-1
     QUALITY_PENALTY_FACTOR = 0.2   # 20% penalty for low quality
     

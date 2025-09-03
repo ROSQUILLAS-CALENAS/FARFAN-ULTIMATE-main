@@ -11,8 +11,8 @@ import importlib
 import inspect
 import logging
 import sys
-from pathlib import Path
-from typing import Any, Dict, List, Set, Tuple, Union
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -216,7 +216,7 @@ class ComponentValidator:
         issues = []
         
         try:
-            # First try to load from canonical flow (alias)
+# # #             # First try to load from canonical flow (alias)  # Module not found  # Module not found  # Module not found
             module = self._load_component_module(component_name)
             if module is None:
                 issues.append(f'Could not load module {component_name}')
@@ -224,7 +224,7 @@ class ComponentValidator:
             
             # Check if it's just an alias that failed to load the original
             if hasattr(module, 'process') and callable(module.process):
-                # Check if it's the placeholder function from failed import
+# # #                 # Check if it's the placeholder function from failed import  # Module not found  # Module not found  # Module not found
                 try:
                     result = module.process()
                     if isinstance(result, dict) and 'error' in result and 'failed to load' in str(result['error']).lower():
@@ -283,7 +283,7 @@ class ComponentValidator:
         return len(issues) == 0, issues
     
     def _load_component_module(self, component_name: str) -> Optional[Any]:
-        """Load component module from canonical flow or project root."""
+# # #         """Load component module from canonical flow or project root."""  # Module not found  # Module not found  # Module not found
         module: Optional[Any] = None
         
         # Try canonical flow first (alias files)

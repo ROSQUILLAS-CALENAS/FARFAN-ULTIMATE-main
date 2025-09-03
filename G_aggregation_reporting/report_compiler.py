@@ -10,16 +10,16 @@ Code: GB
 import json
 import logging
 import sys
-from pathlib import Path
-from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
-from typing import Any, Dict, List, Optional, Union
-from collections import OrderedDict
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Import total ordering base
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin
+# # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -221,10 +221,10 @@ class ReportCompiler(TotalOrderingBase, DeterministicCollectionMixin):
             output = self._generate_final_output(formatted_output, compiled_report, operation_id)
             
             # Add confidence and quality metrics to report
-            from confidence_quality_metrics import ArtifactMetricsIntegrator
+# # #             from confidence_quality_metrics import ArtifactMetricsIntegrator  # Module not found  # Module not found  # Module not found
             
             integrator = ArtifactMetricsIntegrator()
-            meso_scores = []  # Would be populated from meso-level artifacts  
+# # #             meso_scores = []  # Would be populated from meso-level artifacts    # Module not found  # Module not found  # Module not found
             macro_metrics = integrator.calculator.propagate_to_macro_level(meso_scores, output)
             
             output.update({
@@ -402,7 +402,7 @@ class ReportCompiler(TotalOrderingBase, DeterministicCollectionMixin):
     def _compile_recommendations(self, data: Dict[str, Any], config: Dict[str, Any]) -> Dict[str, Any]:
         """Compile recommendations section"""
         
-        # Extract recommendations from findings
+# # #         # Extract recommendations from findings  # Module not found  # Module not found  # Module not found
         all_recommendations = []
         findings_list = data.get("findings", [])
         
@@ -435,7 +435,7 @@ class ReportCompiler(TotalOrderingBase, DeterministicCollectionMixin):
         """Compile appendices section"""
         
         appendices_content = {
-            "raw_data": data if config.get("include_raw_data", False) else "Raw data excluded from report",
+# # #             "raw_data": data if config.get("include_raw_data", False) else "Raw data excluded from report",  # Module not found  # Module not found  # Module not found
             "evidence_citations": self._generate_evidence_citations(data) if config.get("include_citations", True) else [],
             "processing_metadata": {
                 "component": self.component_name,
@@ -447,7 +447,7 @@ class ReportCompiler(TotalOrderingBase, DeterministicCollectionMixin):
         return self.sort_dict_by_keys(appendices_content)
     
     def _generate_findings_deterministic(self, data: Dict[str, Any], config: Dict[str, Any]) -> List[ReportFinding]:
-        """Generate findings from aggregation results"""
+# # #         """Generate findings from aggregation results"""  # Module not found  # Module not found  # Module not found
         
         findings = []
         aggregation_results = data.get("results", [])
@@ -468,7 +468,7 @@ class ReportCompiler(TotalOrderingBase, DeterministicCollectionMixin):
                 ),
                 title=f"Evidence Analysis Result {i+1}",
                 severity=severity,
-                description=f"Aggregated evidence score: {score:.3f} from {result.get('evidence_count', 0)} evidence items",
+# # #                 description=f"Aggregated evidence score: {score:.3f} from {result.get('evidence_count', 0)} evidence items",  # Module not found  # Module not found  # Module not found
                 evidence_ids=result.get("evidence_ids", []),
                 confidence_score=result.get("aggregated_score", 0.0),
                 supporting_data={
@@ -637,7 +637,7 @@ class ReportCompiler(TotalOrderingBase, DeterministicCollectionMixin):
         return f"Analysis completed with {total_evidence} evidence items resulting in {findings_count} findings."
     
     def _extract_data_sources(self, data: Dict[str, Any]) -> List[str]:
-        """Extract unique data sources from evidence"""
+# # #         """Extract unique data sources from evidence"""  # Module not found  # Module not found  # Module not found
         sources = set()
         evidence_list = data.get("evidence_list", [])
         

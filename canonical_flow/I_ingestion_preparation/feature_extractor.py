@@ -1,7 +1,7 @@
 """
 Canonical Flow Component: Feature Extractor (03I)
 
-This module handles feature extraction from document bundles
+# # # This module handles feature extraction from document bundles  # Module not found  # Module not found  # Module not found
 for the ingestion preparation stage of the canonical flow.
 
 Component: 03I
@@ -11,8 +11,8 @@ Stage: ingestion_preparation
 
 import sys
 import warnings
-from pathlib import Path
-from importlib import util as importlib_util
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Component metadata
 source_module = r"feature_extractor.py"
@@ -22,7 +22,7 @@ component_id = "03I"
 # Dynamically load and re-export the original module
 try:
     # Add project root to path for imports
-    project_root = Path(__file__).resolve().parents[2]  # Go up two levels from canonical_flow/I_ingestion_preparation/
+# # #     project_root = Path(__file__).resolve().parents[2]  # Go up two levels from canonical_flow/I_ingestion_preparation/  # Module not found  # Module not found  # Module not found
     if str(project_root) not in sys.path:
         sys.path.insert(0, str(project_root))
     
@@ -51,7 +51,7 @@ except Exception as e:
     warnings.warn(f"Failed to load original module {source_module}: {e}")
     
     # Import ArtifactManager for process API
-    from . import ArtifactManager
+# # #     from . import ArtifactManager  # Module not found  # Module not found  # Module not found
     
     # Create placeholder functions to prevent import errors
     def process(data=None, context=None):
@@ -71,7 +71,7 @@ except Exception as e:
                 "timestamp": str(__import__('datetime').datetime.now())
             }
             
-            # Determine stem from context or use default
+# # #             # Determine stem from context or use default  # Module not found  # Module not found  # Module not found
             stem = "unknown"
             if context and isinstance(context, dict):
                 stem = context.get('document_stem', context.get('filename', 'unknown'))

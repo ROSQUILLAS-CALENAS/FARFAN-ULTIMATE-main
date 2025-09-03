@@ -1,6 +1,6 @@
 import unittest
 
-from egw_query_expansion.core import (
+# # # from egw_query_expansion.core import (  # Module not found  # Module not found  # Module not found
     OrderedRecord,
     explain_comparison,
     explain_tie_breaks,

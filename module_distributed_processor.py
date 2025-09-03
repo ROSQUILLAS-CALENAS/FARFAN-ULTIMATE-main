@@ -9,19 +9,19 @@ It acts as a standalone module to ensure proper serialization/pickling support.
 
 import logging
 import time
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import torch
-from transformers import AutoTokenizer, AutoModel
+# # # from transformers import AutoTokenizer, AutoModel  # Module not found  # Module not found  # Module not found
 
 # Import EGW components
-from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval
-from egw_query_expansion.core.gw_alignment import GWAlignment
-from egw_query_expansion.core.query_generator import QueryGenerator
-from evidence_processor import EvidenceProcessor
-from answer_synthesizer import AnswerSynthesizer
+# # # from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval  # Module not found  # Module not found  # Module not found
+# # # from egw_query_expansion.core.gw_alignment import GWAlignment  # Module not found  # Module not found  # Module not found
+# # # from egw_query_expansion.core.query_generator import QueryGenerator  # Module not found  # Module not found  # Module not found
+# # # from evidence_processor import EvidenceProcessor  # Module not found  # Module not found  # Module not found
+# # # from answer_synthesizer import AnswerSynthesizer  # Module not found  # Module not found  # Module not found
 
 # Global components for reuse across process calls
 _hybrid_retrieval = None
@@ -47,7 +47,7 @@ def _initialize_components():
 
 
 def _read_document(document_path: str) -> str:
-    """Read document content from file"""
+# # #     """Read document content from file"""  # Module not found  # Module not found  # Module not found
     try:
         with open(document_path, 'r', encoding='utf-8') as f:
             return f.read()

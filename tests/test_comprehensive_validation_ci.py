@@ -16,11 +16,11 @@ import os
 import sys
 import tempfile
 import unittest
-from collections import defaultdict
-from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
-from unittest import TestCase
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from unittest import TestCase  # Module not found  # Module not found  # Module not found
 
 # import numpy as np  # Optional dependency
 try:
@@ -34,10 +34,10 @@ except ImportError:
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 try:
-    from canonical_flow.A_analysis_nlp.implementacion_mapeo import QuestionDecalogoMapper
-    from evidence_processor import EvidenceProcessor, Evidence, SourceMetadata
-    from meso_aggregator import process as meso_process
-    from scoring import MultiCriteriaScorer
+# # #     from canonical_flow.A_analysis_nlp.implementacion_mapeo import QuestionDecalogoMapper  # Module not found  # Module not found  # Module not found
+# # #     from evidence_processor import EvidenceProcessor, Evidence, SourceMetadata  # Module not found  # Module not found  # Module not found
+# # #     from meso_aggregator import process as meso_process  # Module not found  # Module not found  # Module not found
+# # #     from scoring import MultiCriteriaScorer  # Module not found  # Module not found  # Module not found
     IMPORTS_AVAILABLE = True
 except ImportError as e:
     print(f"Warning: Some imports not available: {e}")

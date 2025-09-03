@@ -2,7 +2,7 @@
 Canonical Flow Alias: 13K
 Chunking Processor with Deterministic Chunk Generation
 
-Implements standardized process() API to consume page-anchored text from ingestion artifacts
+# # # Implements standardized process() API to consume page-anchored text from ingestion artifacts  # Module not found  # Module not found  # Module not found
 and generate deterministic chunks with stable IDs based on content hashing and position.
 
 Stage: K_knowledge_extraction
@@ -14,15 +14,15 @@ import json
 import logging
 import re
 import sys
-from dataclasses import dataclass, field
-from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Union, Tuple
-from collections import OrderedDict
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union, Tuple  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Import total ordering base
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin
+# # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -133,7 +133,7 @@ class ChunkingProcessor(TotalOrderingBase, DeterministicCollectionMixin):
     """
     Deterministic text chunking processor with standardized process() API.
     
-    Consumes page-anchored text from ingestion artifacts and generates 
+# # #     Consumes page-anchored text from ingestion artifacts and generates   # Module not found  # Module not found  # Module not found
     deterministic chunks with stable IDs based on content hashing and position.
     """
     
@@ -230,7 +230,7 @@ class ChunkingProcessor(TotalOrderingBase, DeterministicCollectionMixin):
     
     def _extract_document_info(self, data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         """
-        Extract document information from input data.
+# # #         Extract document information from input data.  # Module not found  # Module not found  # Module not found
         
         Args:
             data: Input data dictionary
@@ -252,7 +252,7 @@ class ChunkingProcessor(TotalOrderingBase, DeterministicCollectionMixin):
         if "content" in data:
             document_stem = data.get("document_stem", "unknown")
             if not document_stem or document_stem == "unknown":
-                # Generate document stem from content hash
+# # #                 # Generate document stem from content hash  # Module not found  # Module not found  # Module not found
                 content_hash = hashlib.sha256(str(data["content"]).encode()).hexdigest()[:16]
                 document_stem = f"doc_{content_hash}"
             
@@ -279,7 +279,7 @@ class ChunkingProcessor(TotalOrderingBase, DeterministicCollectionMixin):
     
     def _extract_text_content(self, document_content: Any) -> str:
         """
-        Extract text content from document content structure.
+# # #         Extract text content from document content structure.  # Module not found  # Module not found  # Module not found
         
         Args:
             document_content: Document content structure

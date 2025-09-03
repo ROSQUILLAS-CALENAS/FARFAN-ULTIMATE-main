@@ -6,9 +6,9 @@ Verifies B↑ only adds tasks and maintains stable prefix ordering.
 """
 
 import json
-from typing import Dict, List, Set
+# # # from typing import Dict, List, Set  # Module not found  # Module not found  # Module not found
 import pytest
-from egw_query_expansion.core.submodular_task_selector import (
+# # # from egw_query_expansion.core.submodular_task_selector import (  # Module not found  # Module not found  # Module not found
     MonotonicTaskSelector,
     CoverageUtility,
     Task,
@@ -102,7 +102,7 @@ class TestBMCMonotonicity:
             
             # Verify monotonic expansion
             assert len(selected) >= len(previous_selection), (
-                f"Selection contracted from {len(previous_selection)} to {len(selected)}"
+# # #                 f"Selection contracted from {len(previous_selection)} to {len(selected)}"  # Module not found  # Module not found  # Module not found
             )
             
             # Verify prefix stability

@@ -10,9 +10,9 @@ import shutil
 import subprocess
 import sys
 import traceback
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 
 @dataclass
@@ -50,7 +50,7 @@ class PreInstallationValidator:
                     "Visit https://python.org/downloads/ to download the latest version",
                     "On Ubuntu/Debian: sudo apt update && sudo apt install python3.9 python3.9-venv python3.9-pip",
                     "On macOS with Homebrew: brew install python@3.9",
-                    "On Windows: Download from python.org and run the installer",
+# # #                     "On Windows: Download from python.org and run the installer",  # Module not found  # Module not found  # Module not found
                     "After installation, create a new virtual environment with the updated Python version"
                 ]
             ))
@@ -146,7 +146,7 @@ class PreInstallationValidator:
                             "  - Ubuntu/Debian: sudo apt update && sudo apt install build-essential",
                             "  - CentOS/RHEL: sudo yum groupinstall 'Development Tools'",
                             "  - macOS: xcode-select --install",
-                            "  - Or install Xcode from the App Store"
+# # #                             "  - Or install Xcode from the App Store"  # Module not found  # Module not found  # Module not found
                         ]
                     ))
                     issues_found = True
@@ -263,7 +263,7 @@ class PreInstallationValidator:
                 message=f"pip validation failed: {e}",
                 remediation=[
                     "Reinstall pip: python -m ensurepip --upgrade",
-                    "Or download get-pip.py from https://bootstrap.pypa.io/get-pip.py"
+# # #                     "Or download get-pip.py from https://bootstrap.pypa.io/get-pip.py"  # Module not found  # Module not found  # Module not found
                 ]
             ))
             return False
@@ -426,7 +426,7 @@ def test_egw_modules():
         sys.path.append(".")
 
         # Test conformal risk control module
-        from egw_query_expansion.core.conformal_risk_control import (
+# # #         from egw_query_expansion.core.conformal_risk_control import (  # Module not found  # Module not found  # Module not found
             ConformalRiskController,
             RiskControlConfig,
             create_conformal_system,
@@ -435,25 +435,25 @@ def test_egw_modules():
 
         # Test other core modules if they exist
         try:
-            from egw_query_expansion.core.gw_alignment import GromovWassersteinAligner
+# # #             from egw_query_expansion.core.gw_alignment import GromovWassersteinAligner  # Module not found  # Module not found  # Module not found
             print("✅ GromovWassersteinAligner imported successfully")
         except ImportError:
             print("ℹ️  GromovWassersteinAligner not available (module not implemented)")
 
         try:
-            from egw_query_expansion.core.query_generator import QueryGenerator
+# # #             from egw_query_expansion.core.query_generator import QueryGenerator  # Module not found  # Module not found  # Module not found
             print("✅ QueryGenerator imported successfully")
         except ImportError:
             print("ℹ️  QueryGenerator not available (module not implemented)")
 
         try:
-            from egw_query_expansion.core.hybrid_retrieval import HybridRetriever
+# # #             from egw_query_expansion.core.hybrid_retrieval import HybridRetriever  # Module not found  # Module not found  # Module not found
             print("✅ HybridRetriever imported successfully")
         except ImportError:
             print("ℹ️  HybridRetriever not available (module not implemented)")
 
         try:
-            from egw_query_expansion.core.pattern_matcher import PatternMatcher
+# # #             from egw_query_expansion.core.pattern_matcher import PatternMatcher  # Module not found  # Module not found  # Module not found
             print("✅ PatternMatcher imported successfully")
         except ImportError:
             print("ℹ️  PatternMatcher not available (module not implemented)")
@@ -499,7 +499,7 @@ def test_conformal_functionality():
 
     try:
         import numpy as np
-        from egw_query_expansion.core.conformal_risk_control import (
+# # #         from egw_query_expansion.core.conformal_risk_control import (  # Module not found  # Module not found  # Module not found
             ClassificationScore,
             RegressionScore,
             create_conformal_system,

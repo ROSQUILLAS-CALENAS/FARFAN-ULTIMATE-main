@@ -10,11 +10,11 @@ import json
 import re
 import sys
 import subprocess
-from typing import Dict, List, Set, Tuple, Optional, Union, Any
-from dataclasses import dataclass, field
-from enum import Enum
+# # # from typing import Dict, List, Set, Tuple, Optional, Union, Any  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 import importlib.util
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 
 class ConflictSeverity(Enum):
@@ -59,7 +59,7 @@ class VersionConstraint:
         try:
             return int(parts[0]), int(parts[1]), int(parts[2])
         except ValueError as e:
-            raise ValueError(f"Invalid version format: {version}") from e
+# # #             raise ValueError(f"Invalid version format: {version}") from e  # Module not found  # Module not found  # Module not found
     
     def satisfies(self, version: str) -> bool:
         """Check if a version satisfies this constraint"""
@@ -122,7 +122,7 @@ class CompatibilityMatrixValidator:
         self.installed_packages = self._get_installed_packages()
     
     def _load_matrix(self) -> Dict[str, Any]:
-        """Load the compatibility matrix from JSON"""
+# # #         """Load the compatibility matrix from JSON"""  # Module not found  # Module not found  # Module not found
         try:
             with open(self.matrix_path, 'r') as f:
                 return json.load(f)

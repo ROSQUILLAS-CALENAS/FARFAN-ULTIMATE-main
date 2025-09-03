@@ -9,32 +9,32 @@ particle systems, and interactive elements using browser automation.
 import asyncio
 import json
 import time
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
-from dataclasses import dataclass
-from datetime import datetime
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Optional, Tuple, Any  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import logging
 
 # Browser automation imports
 try:
-    from playwright.async_api import async_playwright, Page, Browser
+# # #     from playwright.async_api import async_playwright, Page, Browser  # Module not found  # Module not found  # Module not found
     PLAYWRIGHT_AVAILABLE = True
 except ImportError:
     PLAYWRIGHT_AVAILABLE = False
     
 try:
-    from selenium import webdriver
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    from selenium.webdriver.chrome.options import Options
+# # #     from selenium import webdriver  # Module not found  # Module not found  # Module not found
+# # #     from selenium.webdriver.common.by import By  # Module not found  # Module not found  # Module not found
+# # #     from selenium.webdriver.support.ui import WebDriverWait  # Module not found  # Module not found  # Module not found
+# # #     from selenium.webdriver.support import expected_conditions as EC  # Module not found  # Module not found  # Module not found
+# # #     from selenium.webdriver.chrome.options import Options  # Module not found  # Module not found  # Module not found
     SELENIUM_AVAILABLE = True
 except ImportError:
     SELENIUM_AVAILABLE = False
 
 # Image comparison
 try:
-    from PIL import Image, ImageChops
+# # #     from PIL import Image, ImageChops  # Module not found  # Module not found  # Module not found
     import numpy as np
     IMAGE_COMPARISON_AVAILABLE = True
 except ImportError:

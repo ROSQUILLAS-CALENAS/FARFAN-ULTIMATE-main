@@ -1,15 +1,15 @@
 """
 Evidence Adapter Module
-Transforms structured evidence outputs from EvidenceProcessor into QuestionEvalInput objects
+# # # Transforms structured evidence outputs from EvidenceProcessor into QuestionEvalInput objects  # Module not found  # Module not found  # Module not found
 with deterministic evidence_completeness and page_reference_quality scores.
 """
 
 import json
 import logging
-from dataclasses import dataclass, field, asdict
-from typing import Dict, List, Any, Optional, Tuple
-from decimal import Decimal
-from collections import OrderedDict
+# # # from dataclasses import dataclass, field, asdict  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from decimal import Decimal  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -64,7 +64,7 @@ class EvidenceQualityMetrics:
 
 class EvidenceAdapter:
     """
-    Adapter that transforms structured evidence outputs from EvidenceProcessor
+# # #     Adapter that transforms structured evidence outputs from EvidenceProcessor  # Module not found  # Module not found  # Module not found
     into QuestionEvalInput objects with deterministic quality metrics.
     """
 
@@ -92,13 +92,13 @@ class EvidenceAdapter:
         Transform evidence processor output into evaluation inputs with calculated quality metrics.
         
         Args:
-            evidence_data: Structured output from EvidenceProcessor
+# # #             evidence_data: Structured output from EvidenceProcessor  # Module not found  # Module not found  # Module not found
             question_responses: Dictionary mapping question_id to response ("Sí", "Parcial", "No", "NI")
         
         Returns:
             Tuple of (list of QuestionEvalInput objects, aggregated quality metrics)
         """
-        # Extract evidence items from evidence_data
+# # #         # Extract evidence items from evidence_data  # Module not found  # Module not found  # Module not found
         evidence_items = self._extract_evidence_items(evidence_data)
         
         # Calculate aggregated quality metrics
@@ -123,7 +123,7 @@ class EvidenceAdapter:
 
     def _extract_evidence_items(self, evidence_data: Dict[str, Any]) -> List[Dict[str, Any]]:
         """
-        Extract evidence items from EvidenceProcessor output.
+# # #         Extract evidence items from EvidenceProcessor output.  # Module not found  # Module not found  # Module not found
         
         Args:
             evidence_data: Raw evidence processor output
@@ -146,7 +146,7 @@ class EvidenceAdapter:
             evidence_items.append(self._standardize_evidence_item(evidence_data["evidence"]))
         
         else:
-            # Try to extract any evidence-like objects from the data
+# # #             # Try to extract any evidence-like objects from the data  # Module not found  # Module not found  # Module not found
             for key, value in evidence_data.items():
                 if isinstance(value, dict) and ("text" in value or "processed_text" in value):
                     evidence_items.append(self._standardize_evidence_item(value))
@@ -176,7 +176,7 @@ class EvidenceAdapter:
             "source_metadata": {}
         }
         
-        # Extract page number from various possible locations
+# # #         # Extract page number from various possible locations  # Module not found  # Module not found  # Module not found
         if "source_metadata" in evidence:
             source_meta = evidence["source_metadata"]
             standardized["page_num"] = source_meta.get("page_number")
@@ -316,7 +316,7 @@ class EvidenceAdapter:
         Returns:
             QuestionEvalInput object
         """
-        from datetime import datetime
+# # #         from datetime import datetime  # Module not found  # Module not found  # Module not found
         
         return QuestionEvalInput(
             question_id=question_id,

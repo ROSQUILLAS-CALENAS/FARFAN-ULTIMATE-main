@@ -7,14 +7,14 @@ through property-based testing with random shuffling of inputs.
 
 import json
 import logging
-from typing import Any, Dict, List, Optional, Tuple
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import pytest
 import torch
-from hypothesis_module import given, settings
-from hypothesis_module import strategies as st
+# # # from hypothesis_module import given, settings  # Module not found  # Module not found  # Module not found
+# # # from hypothesis_module import strategies as st  # Module not found  # Module not found  # Module not found
 
-from egw_query_expansion.core.permutation_invariant_processor import (
+# # # from egw_query_expansion.core.permutation_invariant_processor import (  # Module not found  # Module not found  # Module not found
     AggregationType, DeterministicPooler, MultisetSerializer,
     PermutationInvariantProcessor)
 

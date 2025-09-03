@@ -3,9 +3,9 @@ Refusal Matrix: Comprehensive mapping of refusal clauses and triggers
 Maps all governance failure conditions to their refusal triggers and recovery paths.
 """
 
-from enum import Enum
-from dataclasses import dataclass
-from typing import Dict, List, Any, Optional, Callable
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Any, Optional, Callable  # Module not found  # Module not found  # Module not found
 import json
 
 
@@ -192,7 +192,7 @@ class RefusalMatrix:
                 triggers=[
                     TriggerCondition(
                         condition_id="SIGM_001",
-                        description="Sigma parameter missing from request",
+# # #                         description="Sigma parameter missing from request",  # Module not found  # Module not found  # Module not found
                         check_function="check_sigma_presence"
                     ),
                     TriggerCondition(
@@ -209,7 +209,7 @@ class RefusalMatrix:
                 ],
                 response=RefusalResponse(
                     refusal_type=RefusalClause.SIGMA_ABSENT,
-                    message_template="Sigma parameter absent from request",
+# # #                     message_template="Sigma parameter absent from request",  # Module not found  # Module not found  # Module not found
                     recovery_instructions="Provide sigma parameter (recommended: {default_sigma})",
                     severity="MEDIUM",
                     stable=True,

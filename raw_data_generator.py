@@ -18,8 +18,8 @@ import json
 import os
 import random
 import struct
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 import faiss
 import numpy as np
@@ -27,7 +27,7 @@ import pandas as pd
 import torch
 # Optional sklearn with fallback for TF-IDF
 try:
-    from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore
+# # #     from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:
     class TfidfVectorizer:  # minimal fallback
         def __init__(self, ngram_range=(1, 1), min_df=1, max_features=None, lowercase=True, stop_words=None):
@@ -45,7 +45,7 @@ except Exception:
                 tokens = [t for t in tokens if t not in self.stop_words]
             return tokens
         def fit(self, corpus):
-            from collections import Counter
+# # #             from collections import Counter  # Module not found  # Module not found  # Module not found
             df = Counter()
             for doc in corpus:
                 for t in set(self._tokenize(doc)):
@@ -67,9 +67,9 @@ except Exception:
             return X / norms
         def fit_transform(self, corpus):
             return self.fit(corpus).transform(corpus)
-from transformers import AutoModel, AutoTokenizer
+# # # from transformers import AutoModel, AutoTokenizer  # Module not found  # Module not found  # Module not found
 
-from total_ordering_base import TotalOrderingBase
+# # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 # Set deterministic seeds for all random number generators
 DETERMINISTIC_SEED = 42
@@ -79,11 +79,11 @@ class HashStableRandom(TotalOrderingBase):
     """Hash-stable random number generator for deterministic artifacts."""
 
     def __init__(self, seed_data: Union[str, bytes, int]):
-        """Initialize with deterministic seed from input data."""
+# # #         """Initialize with deterministic seed from input data."""  # Module not found  # Module not found  # Module not found
         super().__init__(component_name="HashStableRandom")
 
         if isinstance(seed_data, (str, bytes)):
-            # Create deterministic seed from hash of input data
+# # #             # Create deterministic seed from hash of input data  # Module not found  # Module not found  # Module not found
             hash_digest = hashlib.sha256(
                 seed_data.encode() if isinstance(seed_data, str) else seed_data
             ).digest()
@@ -138,7 +138,7 @@ class HashStableRandom(TotalOrderingBase):
 
 
 class DeterministicFeatureGenerator(TotalOrderingBase):
-    """Generates deterministic feature matrices from text data."""
+# # #     """Generates deterministic feature matrices from text data."""  # Module not found  # Module not found  # Module not found
 
     def __init__(self, seed_data: Union[str, bytes]):
         super().__init__(component_name="DeterministicFeatureGenerator")
@@ -678,7 +678,7 @@ class RawDataArtifactGenerator(TotalOrderingBase):
             }
         )
 
-        # Create deterministic seed from all input documents (sorted)
+# # #         # Create deterministic seed from all input documents (sorted)  # Module not found  # Module not found  # Module not found
         sorted_documents = sorted(documents)
         combined_content = "\n".join(sorted_documents)
         seed_data = hashlib.sha256(combined_content.encode()).digest()

@@ -5,12 +5,12 @@ Manages update queuing during active transitions and smooth application afterwar
 
 import threading
 import time
-from typing import Dict, Any, List, Tuple, Optional, Set
-from dataclasses import dataclass
-from datetime import datetime, timedelta
+# # # from typing import Dict, Any, List, Tuple, Optional, Set  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
 import logging
-from queue import Queue
-from enum import Enum
+# # # from queue import Queue  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 
 
 class TransitionState(Enum):
@@ -218,7 +218,7 @@ class TransitionManager:
             except:
                 break
         
-        self.logger.warning(f"Dropped {dropped} oldest updates from queue")
+# # #         self.logger.warning(f"Dropped {dropped} oldest updates from queue")  # Module not found  # Module not found  # Module not found
     
     def _update_performance_stats(self, duration_ms: float):
         """Update performance statistics."""
@@ -295,7 +295,7 @@ class TransitionManager:
             self._blocking_transition_types.add(transition_type)
     
     def remove_blocking_type(self, transition_type: str):
-        """Remove a transition type from blocking updates."""
+# # #         """Remove a transition type from blocking updates."""  # Module not found  # Module not found  # Module not found
         with self._lock:
             self._blocking_transition_types.discard(transition_type)
     

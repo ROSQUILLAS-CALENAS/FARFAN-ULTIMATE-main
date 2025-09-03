@@ -6,17 +6,17 @@ technical analysis into SEO-optimized, engaging prose suitable for non-technical
 audiences while maintaining rigorous traceability to evidence.
 """
 
-from typing import Dict, List, Any, Optional, Tuple, Union
-from dataclasses import dataclass, field
-from enum import Enum
+# # # from typing import Dict, List, Any, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 import uuid
-from datetime import datetime
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import re
 
 try:
-    from data_models import ScoreResult
-    from evidence_processor import EvidenceChunk
-    from scoring import MultiCriteriaScorer, QualityDimension
+# # #     from data_models import ScoreResult  # Module not found  # Module not found  # Module not found
+# # #     from evidence_processor import EvidenceChunk  # Module not found  # Module not found  # Module not found
+# # #     from scoring import MultiCriteriaScorer, QualityDimension  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback for testing - these will be mocked
     ScoreResult = None
@@ -260,7 +260,7 @@ class NarrativeGenerator:
         return None
     
     def _select_pattern(self, pattern_type: str, filter_type: str = None) -> str:
-        """Select pattern from available options."""
+# # #         """Select pattern from available options."""  # Module not found  # Module not found  # Module not found
         patterns = self.clarity_patterns.get(pattern_type, [])
         if not patterns:
             patterns = self.engagement_patterns.get(pattern_type, [])
@@ -286,7 +286,7 @@ class ReportCompiler:
     def create_narrative_from_evidence_clusters(self, 
                                               evidence_clusters: List[EvidenceCluster],
                                               narrative_type: str = "analytical") -> List[StructuredNarrative]:
-        """Create narrative paragraphs from meso-level evidence clusters."""
+# # #         """Create narrative paragraphs from meso-level evidence clusters."""  # Module not found  # Module not found  # Module not found
         # Sort clusters deterministically by coherence score and theme
         sorted_clusters = sorted(evidence_clusters, 
                                key=lambda c: (-c.coherence_score, c.theme))
@@ -586,7 +586,7 @@ class ReportCompiler:
         
         # Synthesizing conclusion
         if len(sorted_evidence) > 3:
-            conclusion = f"Additional evidence from {len(sorted_evidence) - 3} sources corroborates these findings."
+# # #             conclusion = f"Additional evidence from {len(sorted_evidence) - 3} sources corroborates these findings."  # Module not found  # Module not found  # Module not found
             body_paragraphs.append(conclusion)
         
         body_text = " ".join(body_paragraphs)
@@ -694,7 +694,7 @@ class ReportCompiler:
     
     def _create_evidence_paragraph(self, evidence: CitedEvidence) -> str:
         """Create paragraph integrating specific evidence."""
-        return f"Evidence from {evidence.source_document} (page {evidence.page_number or 'N/A'}) indicates: {evidence.context_snippet} This finding has a confidence level of {evidence.confidence_level}."
+# # #         return f"Evidence from {evidence.source_document} (page {evidence.page_number or 'N/A'}) indicates: {evidence.context_snippet} This finding has a confidence level of {evidence.confidence_level}."  # Module not found  # Module not found  # Module not found
     
     def _create_evidence_highlight(self, evidence: CitedEvidence, rank: int) -> Dict[str, Any]:
         """Create highlight summary for key evidence."""
@@ -733,7 +733,7 @@ class ReportCompiler:
         }
     
     def _get_unique_sources(self, evidence_list: List[CitedEvidence]) -> List[str]:
-        """Get unique source documents from evidence."""
+# # #         """Get unique source documents from evidence."""  # Module not found  # Module not found  # Module not found
         sources = set()
         for evidence in evidence_list:
             # Extract document stem (remove extensions, paths)
@@ -852,7 +852,7 @@ class ReportCompiler:
         return " ".join(summary_parts)
     
     def _determine_confidence_level(self, confidence_score: float) -> str:
-        """Determine confidence level from numeric score."""
+# # #         """Determine confidence level from numeric score."""  # Module not found  # Module not found  # Module not found
         if confidence_score >= 0.8:
             return "high"
         elif confidence_score >= 0.6:
@@ -1020,7 +1020,7 @@ class ReportCompiler:
             "normative_alignment": {}
         }
         
-        # Performance summary from scoring outputs
+# # #         # Performance summary from scoring outputs  # Module not found  # Module not found  # Module not found
         for criterion, score_result in report_data.scoring_outputs.items():
             insights["performance_summary"][criterion] = {
                 "score": score_result.total_score,
@@ -1040,7 +1040,7 @@ class ReportCompiler:
         return insights
     
     def _create_technical_summary(self, insights: Dict[str, Any], report_data: ReportData) -> str:
-        """Create technical summary from insights."""
+# # #         """Create technical summary from insights."""  # Module not found  # Module not found  # Module not found
         summary_parts = [f"Analysis of {report_data.plan_name} reveals:"]
         
         # Performance overview
@@ -1098,8 +1098,8 @@ def process(data: Any, context: Dict[str, Any] = None) -> Dict[str, Any]:
     """
     import json
     import os
-    from datetime import datetime
-    from pathlib import Path
+# # #     from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # #     from pathlib import Path  # Module not found  # Module not found  # Module not found
     
     # Initialize timing and audit
     start_time = datetime.now()
@@ -1114,7 +1114,7 @@ def process(data: Any, context: Dict[str, Any] = None) -> Dict[str, Any]:
         if not isinstance(data, dict):
             data = {}
         
-        # Extract inputs from canonical flow artifacts
+# # #         # Extract inputs from canonical flow artifacts  # Module not found  # Module not found  # Module not found
         point_specific_data = data.get("point_specific_analysis", {})
         coverage_matrix = data.get("coverage_matrix", {})
         meso_summary = data.get("meso_summary", {})
@@ -1305,7 +1305,7 @@ def _extract_questions_for_point(punto_id: str, cluster_audit: Dict) -> List[Dic
     """Extract 47 questions for a specific Decálogo point."""
     questions = []
     
-    # Extract from cluster audit data
+# # #     # Extract from cluster audit data  # Module not found  # Module not found  # Module not found
     micro_data = cluster_audit.get("micro", {})
     
     for cluster_id in ["C1", "C2", "C3", "C4"]:
@@ -1346,8 +1346,8 @@ def _extract_associated_evidence(question: Dict) -> List[Dict]:
 
 
 def _extract_page_references(question: Dict) -> List[str]:
-    """Extract page references from question evidence."""
-    # Mock implementation - would extract from actual evidence
+# # #     """Extract page references from question evidence."""  # Module not found  # Module not found  # Module not found
+# # #     # Mock implementation - would extract from actual evidence  # Module not found  # Module not found  # Module not found
     return [f"p. {i}" for i in range(1, 4)]
 
 
@@ -1565,7 +1565,7 @@ def _count_evidence_items(data: Dict) -> int:
     """Count total evidence items processed."""
     count = 0
     
-    # Count from cluster audit
+# # #     # Count from cluster audit  # Module not found  # Module not found  # Module not found
     cluster_audit = data.get("cluster_audit", {})
     micro_data = cluster_audit.get("micro", {})
     
@@ -1583,7 +1583,7 @@ def _count_questions_analyzed(data: Dict) -> int:
     """Count total questions analyzed."""
     count = 0
     
-    # Count from cluster audit
+# # #     # Count from cluster audit  # Module not found  # Module not found  # Module not found
     cluster_audit = data.get("cluster_audit", {})
     micro_data = cluster_audit.get("micro", {})
     

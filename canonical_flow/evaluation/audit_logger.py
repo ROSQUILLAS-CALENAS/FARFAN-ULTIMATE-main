@@ -8,11 +8,11 @@ validation with comprehensive diagnostic information.
 import json
 import time
 import hashlib
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Union
-from dataclasses import dataclass, field, asdict
-from collections import defaultdict
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Union  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field, asdict  # Module not found  # Module not found  # Module not found
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
 import logging
 
 logger = logging.getLogger(__name__)
@@ -223,11 +223,11 @@ class AuditLogger:
     def log_component_exit(self, component_name: str, outputs: Optional[Dict[str, Any]] = None,
                           errors: Optional[List[str]] = None, evaluation_id: Optional[str] = None):
         """
-        Log exit from a component during evaluation.
+# # #         Log exit from a component during evaluation.  # Module not found  # Module not found  # Module not found
         
         Args:
             component_name: Name of the component being exited
-            outputs: Output data from the component
+# # #             outputs: Output data from the component  # Module not found  # Module not found  # Module not found
             errors: Any errors encountered during execution
             evaluation_id: Optional evaluation ID (uses active if not provided)
         """
@@ -479,7 +479,7 @@ class AuditLogger:
         if evaluation_id not in self.decalogo_traces:
             return None
         
-        # Extract dimension from active component traces
+# # #         # Extract dimension from active component traces  # Module not found  # Module not found  # Module not found
         trace = self.decalogo_traces[evaluation_id]
         for component_trace in trace.components.values():
             if "dimension" in component_trace.metadata:
@@ -632,7 +632,7 @@ class AuditLogger:
 
     def load_audit(self, file_path: Optional[str] = None) -> Dict[str, Any]:
         """
-        Load previous audit report from JSON file.
+# # #         Load previous audit report from JSON file.  # Module not found  # Module not found  # Module not found
         
         Args:
             file_path: Optional custom file path

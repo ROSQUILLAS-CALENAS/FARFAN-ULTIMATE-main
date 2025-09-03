@@ -15,13 +15,13 @@ import hashlib
 import json
 import logging
 import sys
-from typing import Any, Dict, List, Optional, Union
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import torch
 
 try:
-    from egw_query_expansion.core.permutation_invariant_processor import (
+# # #     from egw_query_expansion.core.permutation_invariant_processor import (  # Module not found  # Module not found  # Module not found
         AggregationType,
         DeterministicPooler,
     )
@@ -218,7 +218,7 @@ class PICProbe:
         Probe a multiset and generate comprehensive digest.
 
         Args:
-            multiset_data: Multiset data (string, list, or loaded from file)
+# # #             multiset_data: Multiset data (string, list, or loaded from file)  # Module not found  # Module not found  # Module not found
             aggregation_type: Type of aggregation to use
             multiplicities: Optional multiplicities
             output_file: Optional file to write results
@@ -326,7 +326,7 @@ def main():
         help="Multiset data as JSON string (e.g., '[[1,2], [3,4]]')",
     )
     input_group.add_argument(
-        "--file", type=str, help="Load multiset data from JSON file"
+# # #         "--file", type=str, help="Load multiset data from JSON file"  # Module not found  # Module not found  # Module not found
     )
 
     # Configuration options

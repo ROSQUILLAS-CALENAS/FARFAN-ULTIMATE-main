@@ -5,11 +5,11 @@ Preserves radial menu configurations and focus mode preferences across sessions.
 
 import json
 import os
-from typing import Dict, Any, Optional, List
-from datetime import datetime
+# # # from typing import Dict, Any, Optional, List  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import logging
 import threading
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 
 class StatePersistence:
@@ -77,7 +77,7 @@ class StatePersistence:
                 return False
     
     def load_state(self) -> Optional[Dict[str, Any]]:
-        """Load state from persistent storage."""
+# # #         """Load state from persistent storage."""  # Module not found  # Module not found  # Module not found
         with self._lock:
             try:
                 if not self.storage_file.exists():
@@ -98,12 +98,12 @@ class StatePersistence:
                 # Deserialize special types
                 deserialized_state = self._prepare_after_deserialization(state)
                 
-                self.logger.debug(f"State loaded from {self.storage_file}")
+# # #                 self.logger.debug(f"State loaded from {self.storage_file}")  # Module not found  # Module not found  # Module not found
                 return deserialized_state
                 
             except Exception as e:
                 self.logger.error(f"Failed to load state: {e}")
-                # Try to load from backup
+# # #                 # Try to load from backup  # Module not found  # Module not found  # Module not found
                 return self._load_from_backup()
     
     def clear_state(self) -> bool:
@@ -157,7 +157,7 @@ class StatePersistence:
             self.logger.warning(f"Failed to cleanup old backups: {e}")
     
     def _load_from_backup(self) -> Optional[Dict[str, Any]]:
-        """Attempt to load state from most recent backup."""
+# # #         """Attempt to load state from most recent backup."""  # Module not found  # Module not found  # Module not found
         try:
             backup_files = list(self.backup_dir.glob(f"{self.storage_key}_*.json"))
             
@@ -172,11 +172,11 @@ class StatePersistence:
             
             if isinstance(full_state, dict) and 'state' in full_state:
                 state = self._prepare_after_deserialization(full_state['state'])
-                self.logger.info(f"State recovered from backup: {most_recent}")
+# # #                 self.logger.info(f"State recovered from backup: {most_recent}")  # Module not found  # Module not found  # Module not found
                 return state
                 
         except Exception as e:
-            self.logger.error(f"Failed to load from backup: {e}")
+# # #             self.logger.error(f"Failed to load from backup: {e}")  # Module not found  # Module not found  # Module not found
         
         return None
     
@@ -266,7 +266,7 @@ class StatePersistence:
         return backup_files
     
     def restore_from_backup(self, backup_filename: str) -> Optional[Dict[str, Any]]:
-        """Restore state from specific backup file."""
+# # #         """Restore state from specific backup file."""  # Module not found  # Module not found  # Module not found
         try:
             backup_file = self.backup_dir / backup_filename
             
@@ -279,14 +279,14 @@ class StatePersistence:
             
             if isinstance(full_state, dict) and 'state' in full_state:
                 state = self._prepare_after_deserialization(full_state['state'])
-                self.logger.info(f"State restored from backup: {backup_filename}")
+# # #                 self.logger.info(f"State restored from backup: {backup_filename}")  # Module not found  # Module not found  # Module not found
                 return state
             else:
                 self.logger.error(f"Invalid backup file format: {backup_filename}")
                 return None
                 
         except Exception as e:
-            self.logger.error(f"Failed to restore from backup {backup_filename}: {e}")
+# # #             self.logger.error(f"Failed to restore from backup {backup_filename}: {e}")  # Module not found  # Module not found  # Module not found
             return None
     
     def export_state(self, export_path: str) -> bool:
@@ -318,7 +318,7 @@ class StatePersistence:
             return False
     
     def import_state(self, import_path: str) -> Optional[Dict[str, Any]]:
-        """Import state from external file."""
+# # #         """Import state from external file."""  # Module not found  # Module not found  # Module not found
         try:
             import_file = Path(import_path)
             

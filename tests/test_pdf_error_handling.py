@@ -9,11 +9,11 @@ import json
 import tempfile
 import time
 import unittest
-from datetime import datetime
-from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import Mock, patch, MagicMock  # Module not found  # Module not found  # Module not found
 
-from pdf_processing_error_handler import (
+# # # from pdf_processing_error_handler import (  # Module not found  # Module not found  # Module not found
     PDFErrorHandler,
     PDFValidator,
     ResourceMonitor,
@@ -218,7 +218,7 @@ class TestProcessingState(unittest.TestCase):
     """Test processing state serialization"""
     
     def test_state_serialization(self):
-        """Test ProcessingState to/from dict conversion"""
+# # #         """Test ProcessingState to/from dict conversion"""  # Module not found  # Module not found  # Module not found
         state = ProcessingState(
             batch_id="test_batch",
             total_documents=10,
@@ -236,7 +236,7 @@ class TestProcessingState(unittest.TestCase):
         self.assertIsInstance(state_dict['start_time'], str)
         self.assertIsInstance(state_dict['last_checkpoint_time'], str)
         
-        # Convert back from dict
+# # #         # Convert back from dict  # Module not found  # Module not found  # Module not found
         restored_state = ProcessingState.from_dict(state_dict)
         self.assertEqual(restored_state.batch_id, state.batch_id)
         self.assertEqual(restored_state.total_documents, state.total_documents)
@@ -310,7 +310,7 @@ class TestCheckpointManager(unittest.TestCase):
         self.assertEqual(len(checkpoints), 4)  # 2 pkl + 2 json files
     
     def test_invalid_checkpoint_path(self):
-        """Test loading from invalid checkpoint path"""
+# # #         """Test loading from invalid checkpoint path"""  # Module not found  # Module not found  # Module not found
         with self.assertRaises(CheckpointError):
             self.manager.load_checkpoint("/nonexistent/checkpoint.pkl")
 

@@ -14,8 +14,8 @@ import copy
 import json
 import time
 import unittest
-from typing import Any, Dict, List
-from unittest.mock import patch, MagicMock
+# # # from typing import Any, Dict, List  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import patch, MagicMock  # Module not found  # Module not found  # Module not found
 
 # Mock numpy and scipy modules to avoid dependencies
 class MockNumpyArray:
@@ -104,7 +104,7 @@ class MockSciPy:
                 return 1.0 - cos_sim  # Convert similarity to distance
 
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 PROJECT_ROOT = Path(__file__).parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -116,7 +116,7 @@ sys.modules['scipy.spatial'] = MockSciPy.spatial
 sys.modules['scipy.spatial.distance'] = MockSciPy.spatial.distance
 
 import meso_aggregator
-from meso_aggregator import (
+# # # from meso_aggregator import (  # Module not found  # Module not found  # Module not found
     process, jensen_shannon_divergence, cosine_similarity_score,
     extract_components_from_answer, build_coverage_matrix,
     calculate_cluster_divergences, DEVELOPMENT_PLAN_COMPONENTS, REQUIRED_CLUSTERS

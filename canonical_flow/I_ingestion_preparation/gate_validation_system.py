@@ -1,7 +1,7 @@
 """
 Gate Validation System for I_ingestion_preparation Stage
 
-This module enforces strict sequential execution order from 01I through 05I by checking 
+# # # This module enforces strict sequential execution order from 01I through 05I by checking   # Module not found  # Module not found  # Module not found
 for required input artifacts before each component runs. The system verifies dependencies
 and prevents execution of downstream components when required inputs are missing or corrupted.
 
@@ -22,16 +22,16 @@ import hashlib
 import logging
 import os
 import time
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple, Union
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 # Import LibraryStatusReporter for pre-flight validation
 try:
-    from ..mathematical_enhancers.mathematical_compatibility_matrix import (
+# # #     from ..mathematical_enhancers.mathematical_compatibility_matrix import (  # Module not found  # Module not found  # Module not found
         LibraryStatusReporter, MathematicalCompatibilityMatrix
     )
     LIBRARY_STATUS_REPORTER_AVAILABLE = True
@@ -300,34 +300,34 @@ class IngestionPipelineGatekeeper:
     # Component dependency specifications
     COMPONENT_DEPENDENCIES = {
         "01I": [],  # pdf_reader has no dependencies
-        "02I": [    # advanced_loader requires text files from pdf_reader
+# # #         "02I": [    # advanced_loader requires text files from pdf_reader  # Module not found  # Module not found  # Module not found
             ArtifactSpec(
                 pattern="*_text.json",
-                description="Text extraction results from PDF reader",
+# # #                 description="Text extraction results from PDF reader",  # Module not found  # Module not found  # Module not found
                 required_fields=["text", "pages", "metadata"],
                 min_size_bytes=100
             )
         ],
-        "03I": [    # feature_extractor requires bundle files from advanced_loader
+# # #         "03I": [    # feature_extractor requires bundle files from advanced_loader  # Module not found  # Module not found  # Module not found
             ArtifactSpec(
                 pattern="*_bundle.json", 
-                description="Document bundles from advanced loader",
+# # #                 description="Document bundles from advanced loader",  # Module not found  # Module not found  # Module not found
                 required_fields=["document_features", "structure", "content"],
                 min_size_bytes=200
             )
         ],
-        "04I": [    # normative_validator requires feature files from feature_extractor
+# # #         "04I": [    # normative_validator requires feature files from feature_extractor  # Module not found  # Module not found  # Module not found
             ArtifactSpec(
                 pattern="*_features.json",
-                description="Extracted features from feature extractor", 
+# # #                 description="Extracted features from feature extractor",   # Module not found  # Module not found  # Module not found
                 required_fields=["textual_features", "structural_features", "compliance_score"],
                 min_size_bytes=150
             )
         ],
-        "05I": [    # raw_data_generator requires validation files from normative_validator
+# # #         "05I": [    # raw_data_generator requires validation files from normative_validator  # Module not found  # Module not found  # Module not found
             ArtifactSpec(
                 pattern="*_validation.json",
-                description="Validation results from normative validator",
+# # #                 description="Validation results from normative validator",  # Module not found  # Module not found  # Module not found
                 required_fields=["compliance_score", "checklist", "summary"], 
                 min_size_bytes=300
             )

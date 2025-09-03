@@ -7,19 +7,19 @@ import io
 import logging
 import tempfile
 import weakref
-from contextlib import contextmanager
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+# # # from contextlib import contextmanager  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, Iterator, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import time
 import fitz  # PyMuPDF
 import pdfplumber
-from PIL import Image
+# # # from PIL import Image  # Module not found  # Module not found  # Module not found
 
-from ocr import IntelligentOCRProcessor, needs_ocr
-from pdf_processing_error_handler import PDFErrorHandler, process_pdf_batch_with_error_handling
-from total_ordering_base import TotalOrderingBase
+# # # from ocr import IntelligentOCRProcessor, needs_ocr  # Module not found  # Module not found  # Module not found
+# # # from pdf_processing_error_handler import PDFErrorHandler, process_pdf_batch_with_error_handling  # Module not found  # Module not found  # Module not found
+# # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -430,7 +430,7 @@ def stream_pdf_documents(pdf_paths: List[str],
                     yield (pdf_path, page_content)
                     page_count += 1
                 
-                logger.info(f"Completed processing {page_count} pages from {pdf_path}")
+# # #                 logger.info(f"Completed processing {page_count} pages from {pdf_path}")  # Module not found  # Module not found  # Module not found
                 
                 # Call optional callback after each document
                 if callback_func:
@@ -565,7 +565,7 @@ class PDFBatchProcessor(TotalOrderingBase):
         Args:
             file_paths: List of PDF file paths
             batch_id: Optional batch identifier
-            resume_from_checkpoint: Whether to resume from existing checkpoint
+# # #             resume_from_checkpoint: Whether to resume from existing checkpoint  # Module not found  # Module not found  # Module not found
             
         Returns:
             Processing results summary
@@ -695,7 +695,7 @@ class PDFBatchProcessor(TotalOrderingBase):
         })
     
     def resume_from_checkpoint(self, checkpoint_path: str) -> Dict[str, Any]:
-        """Resume processing from a checkpoint"""
+# # #         """Resume processing from a checkpoint"""  # Module not found  # Module not found  # Module not found
         return self.error_handler.resume_from_checkpoint(
             checkpoint_path=checkpoint_path,
             processing_function=self._process_single_pdf
@@ -712,7 +712,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     """
     Process API for PDF reader component (01I).
     
-    Extracts text from PDF files and writes standardized artifacts using ArtifactManager.
+# # #     Extracts text from PDF files and writes standardized artifacts using ArtifactManager.  # Module not found  # Module not found  # Module not found
     
     Args:
         data: Input data (file paths or file content)
@@ -723,13 +723,13 @@ def process(data=None, context=None) -> Dict[str, Any]:
     """
     # Import ArtifactManager locally to avoid circular imports
     try:
-        from canonical_flow.ingestion import ArtifactManager
+# # #         from canonical_flow.ingestion import ArtifactManager  # Module not found  # Module not found  # Module not found
     except ImportError:
         return {"error": "ArtifactManager not available"}
     
     artifact_manager = ArtifactManager()
     
-    # Extract file paths from input
+# # #     # Extract file paths from input  # Module not found  # Module not found  # Module not found
     file_paths = []
     if isinstance(data, str):
         file_paths = [data]
@@ -746,7 +746,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     
     for file_path in file_paths:
         try:
-            # Determine stem from file path
+# # #             # Determine stem from file path  # Module not found  # Module not found  # Module not found
             stem = Path(file_path).stem
             
             # Process PDF
@@ -847,7 +847,7 @@ def extract_content_from_pdf_with_retry(file_path: str,
                                       max_attempts: int = 3,
                                       enable_ocr: bool = True) -> Dict[str, Any]:
     """
-    Extract content from a single PDF with retry logic
+# # #     Extract content from a single PDF with retry logic  # Module not found  # Module not found  # Module not found
     
     Args:
         file_path: PDF file path

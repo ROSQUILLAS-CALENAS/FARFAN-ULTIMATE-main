@@ -8,12 +8,12 @@ stage pairs, providing early failure detection and detailed logging for validati
 import json
 import logging
 import hashlib
-from datetime import datetime
-from typing import Any, Dict, List, Optional, Tuple, Union, Type
-from pathlib import Path
-from dataclasses import dataclass, field
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union, Type  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
 
-from schemas.pipeline_schemas import (
+# # # from schemas.pipeline_schemas import (  # Module not found  # Module not found  # Module not found
     StageType, DataIntegrityLevel, ValidationError, StageHandoffValidationResult,
     IngestionOutput, ContextOutput, KnowledgeOutput, AnalysisOutput, 
     ClassificationOutput, RetrievalOutput, DocumentMetadata,
@@ -154,7 +154,7 @@ class SchemaValidator:
                         errors.append(ValidationError(
                             field_name=field,
                             error_type="schema_violation",
-                            error_message=f"Schema field '{field}' missing from data",
+# # #                             error_message=f"Schema field '{field}' missing from data",  # Module not found  # Module not found  # Module not found
                             severity="error" if integrity_level == DataIntegrityLevel.STRICT else "warning",
                             suggested_fix=f"Ensure stage outputs include '{field}' field"
                         ))
@@ -200,7 +200,7 @@ class CrossStageValidator:
             errors.append(ValidationError(
                 field_name="stage_pair",
                 error_type="unsupported_handoff",
-                error_message=f"Handoff from {source_stage.value} to {target_stage.value} is not supported",
+# # #                 error_message=f"Handoff from {source_stage.value} to {target_stage.value} is not supported",  # Module not found  # Module not found  # Module not found
                 severity="error",
                 suggested_fix="Review pipeline configuration for valid stage transitions"
             ))
@@ -347,7 +347,7 @@ class HandoffValidationSystem:
                     integrity_level=DataIntegrityLevel.MODERATE
                 )
         
-        self.logger.info(f"Validating handoff from {source_stage.value} to {target_stage.value}")
+# # #         self.logger.info(f"Validating handoff from {source_stage.value} to {target_stage.value}")  # Module not found  # Module not found  # Module not found
         
         # Initialize validation result
         validation_result = StageHandoffValidationResult(
@@ -392,7 +392,7 @@ class HandoffValidationSystem:
                 error_messages = [error.error_message for error in validation_result.validation_errors 
                                 if error.severity == "error"]
                 raise HandoffValidationError(
-                    f"Critical handoff validation failure from {source_stage.value} to {target_stage.value}: {'; '.join(error_messages)}",
+# # #                     f"Critical handoff validation failure from {source_stage.value} to {target_stage.value}: {'; '.join(error_messages)}",  # Module not found  # Module not found  # Module not found
                     validation_result
                 )
                 
@@ -595,7 +595,7 @@ class HandoffValidationError(Exception):
 # Convenience functions for common validation scenarios
 
 def validate_ingestion_to_context(output_data: Dict[str, Any]) -> StageHandoffValidationResult:
-    """Validate handoff from I_ingestion_preparation to C_context_establishment"""
+# # #     """Validate handoff from I_ingestion_preparation to C_context_establishment"""  # Module not found  # Module not found  # Module not found
     system = HandoffValidationSystem()
     return system.validate_handoff(
         StageType.INGESTION_PREPARATION,
@@ -605,7 +605,7 @@ def validate_ingestion_to_context(output_data: Dict[str, Any]) -> StageHandoffVa
 
 
 def validate_knowledge_to_analysis(output_data: Dict[str, Any]) -> StageHandoffValidationResult:
-    """Validate handoff from K_knowledge_extraction to A_analysis_nlp"""
+# # #     """Validate handoff from K_knowledge_extraction to A_analysis_nlp"""  # Module not found  # Module not found  # Module not found
     system = HandoffValidationSystem()
     return system.validate_handoff(
         StageType.KNOWLEDGE_EXTRACTION,
@@ -615,7 +615,7 @@ def validate_knowledge_to_analysis(output_data: Dict[str, Any]) -> StageHandoffV
 
 
 def validate_classification_to_retrieval(output_data: Dict[str, Any]) -> StageHandoffValidationResult:
-    """Validate handoff from L_classification_evaluation to S_search_retrieval"""
+# # #     """Validate handoff from L_classification_evaluation to S_search_retrieval"""  # Module not found  # Module not found  # Module not found
     system = HandoffValidationSystem()
     return system.validate_handoff(
         StageType.CLASSIFICATION_EVALUATION,
@@ -631,7 +631,7 @@ def create_checkpoint_validator() -> HandoffValidationSystem:
 
 if __name__ == "__main__":
     # Demo usage
-    from datetime import datetime
+# # #     from datetime import datetime  # Module not found  # Module not found  # Module not found
     
     logging.basicConfig(level=logging.INFO)
     

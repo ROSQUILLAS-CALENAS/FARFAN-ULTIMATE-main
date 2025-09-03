@@ -12,22 +12,22 @@ Stage: I_ingestion_preparation
 import json
 import logging
 import sys
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Union
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
 
 # Import gate validation system
-from .gate_validation_system import (
+# # # from .gate_validation_system import (  # Module not found  # Module not found  # Module not found
     IngestionPipelineGatekeeper,
     ComponentState, 
     GateStatus
 )
 
 # Import component modules
-from . import pdf_reader as component_01I
-from . import advanced_loader as component_02I  
-from . import feature_extractor as component_03I
-from . import normative_validator as component_04I
-from . import raw_data_generator as component_05I
+# # # from . import pdf_reader as component_01I  # Module not found  # Module not found  # Module not found
+# # # from . import advanced_loader as component_02I    # Module not found  # Module not found  # Module not found
+# # # from . import feature_extractor as component_03I  # Module not found  # Module not found  # Module not found
+# # # from . import normative_validator as component_04I  # Module not found  # Module not found  # Module not found
+# # # from . import raw_data_generator as component_05I  # Module not found  # Module not found  # Module not found
 
 
 class IngestionPreparationOrchestrator:
@@ -254,7 +254,7 @@ class IngestionPreparationOrchestrator:
         Args:
             component_id: Target component ID
             original_input: Original pipeline input
-            execution_results: Results from previous components
+# # #             execution_results: Results from previous components  # Module not found  # Module not found  # Module not found
             
         Returns:
             Component-specific input data
@@ -266,7 +266,7 @@ class IngestionPreparationOrchestrator:
             'upstream_results': {}
         }
         
-        # Add results from completed upstream components
+# # #         # Add results from completed upstream components  # Module not found  # Module not found  # Module not found
         component_order = self.gatekeeper.COMPONENT_ORDER
         current_index = component_order.index(component_id)
         
@@ -280,7 +280,7 @@ class IngestionPreparationOrchestrator:
         return component_input
     
     def _generate_execution_summary(self, execution_results: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate execution summary from component results."""
+# # #         """Generate execution summary from component results."""  # Module not found  # Module not found  # Module not found
         component_results = execution_results.get('component_results', {})
         
         summary = {
@@ -379,7 +379,7 @@ class IngestionPreparationOrchestrator:
             if not upstream_results.get('results'):
                 return {
                     'success': False,
-                    'error': 'No text extraction results from PDF reader (01I)',
+# # #                     'error': 'No text extraction results from PDF reader (01I)',  # Module not found  # Module not found  # Module not found
                     'component': '02I'
                 }
             
@@ -453,7 +453,7 @@ class IngestionPreparationOrchestrator:
             if not upstream_results.get('results'):
                 return {
                     'success': False,
-                    'error': 'No bundle results from advanced loader (02I)',
+# # #                     'error': 'No bundle results from advanced loader (02I)',  # Module not found  # Module not found  # Module not found
                     'component': '03I'
                 }
             
@@ -530,7 +530,7 @@ class IngestionPreparationOrchestrator:
             if not upstream_results.get('results'):
                 return {
                     'success': False,
-                    'error': 'No features results from feature extractor (03I)',
+# # #                     'error': 'No features results from feature extractor (03I)',  # Module not found  # Module not found  # Module not found
                     'component': '04I'
                 }
             
@@ -605,7 +605,7 @@ class IngestionPreparationOrchestrator:
             if not upstream_results.get('results'):
                 return {
                     'success': False,
-                    'error': 'No validation results from normative validator (04I)',
+# # #                     'error': 'No validation results from normative validator (04I)',  # Module not found  # Module not found  # Module not found
                     'component': '05I'
                 }
             

@@ -5,15 +5,15 @@ Extractor de tablas con sistema de fallback inteligente
 import camelot
 import tabula
 import pandas as pd
-from typing import List, Optional, Union, Dict, Any, Tuple
-from PIL import Image
+# # # from typing import List, Optional, Union, Dict, Any, Tuple  # Module not found  # Module not found  # Module not found
+# # # from PIL import Image  # Module not found  # Module not found  # Module not found
 import tempfile
 import os
 import logging
 import time
-from datetime import datetime
-from models import TableArtifact
-from ocr import run_ocr, get_ocr_confidence, preprocess_image
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from models import TableArtifact  # Module not found  # Module not found  # Module not found
+# # # from ocr import run_ocr, get_ocr_confidence, preprocess_image  # Module not found  # Module not found  # Module not found
 import cv2
 import numpy as np
 
@@ -409,7 +409,7 @@ class TableExtractor:
                 img_data = pix.tobytes("ppm")
                 
                 # Convertir a PIL Image
-                from io import BytesIO
+# # #                 from io import BytesIO  # Module not found  # Module not found  # Module not found
                 image = Image.open(BytesIO(img_data))
                 
                 # Detectar áreas de tabla usando OCR

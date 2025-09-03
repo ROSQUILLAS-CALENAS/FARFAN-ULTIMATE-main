@@ -5,7 +5,7 @@ Tests for Deterministic Hybrid Retrieval System
 import numpy as np
 import pytest
 
-from deterministic_hybrid_retrieval import (
+# # # from deterministic_hybrid_retrieval import (  # Module not found  # Module not found  # Module not found
     DeterministicHybridRetriever,
     DNPConstraint,
     DocumentHash,
@@ -278,7 +278,7 @@ class TestDeterministicHybridRetrieval:
 
     def test_learned_projection_determinism(self):
         """Test that learned projections are deterministic"""
-        from deterministic_hybrid_retrieval import LearnedProjection
+# # #         from deterministic_hybrid_retrieval import LearnedProjection  # Module not found  # Module not found  # Module not found
 
         # Create two projections with same seed
         proj1 = LearnedProjection(384, 100, seed=42)

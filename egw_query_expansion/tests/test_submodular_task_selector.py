@@ -5,13 +5,13 @@ Test suite covering monotonicity guarantees, approximation bounds,
 lazy evaluation correctness, and edge cases.
 """
 
-from typing import Dict, Set
-from unittest.mock import Mock, patch
+# # # from typing import Dict, Set  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import Mock, patch  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import pytest
 
-from egw_query_expansion.core.submodular_task_selector import (
+# # # from egw_query_expansion.core.submodular_task_selector import (  # Module not found  # Module not found  # Module not found
     CoverageUtility,
     HeapItem,
     MonotonicTaskSelector,

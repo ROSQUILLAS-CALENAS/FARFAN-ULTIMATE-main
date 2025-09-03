@@ -13,11 +13,11 @@ import logging
 import os
 import time
 import uuid
-from dataclasses import dataclass, asdict
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
-from concurrent.futures import ThreadPoolExecutor, as_completed
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from concurrent.futures import ThreadPoolExecutor, as_completed  # Module not found  # Module not found  # Module not found
 import argparse
 
 try:
@@ -31,7 +31,7 @@ except ImportError:
     np = None
 
 try:
-    from transformers import AutoTokenizer, AutoModel
+# # #     from transformers import AutoTokenizer, AutoModel  # Module not found  # Module not found  # Module not found
 except ImportError:
     AutoTokenizer = None
     AutoModel = None
@@ -125,7 +125,7 @@ class SerializationManager:
         }
 # Optional sklearn cosine_similarity with fallback
 try:
-    from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
+# # #     from sklearn.metrics.pairwise import cosine_similarity  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:
     def cosine_similarity(A, B):
         if np is None:
@@ -138,11 +138,11 @@ except Exception:
 
 # Import EGW components with fallbacks and serializable wrappers
 try:
-    from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval
-    from egw_query_expansion.core.gw_alignment import GWAlignment
-    from egw_query_expansion.core.query_generator import QueryGenerator
-    from evidence_processor import EvidenceProcessor
-    from answer_synthesizer import AnswerSynthesizer
+# # #     from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval  # Module not found  # Module not found  # Module not found
+# # #     from egw_query_expansion.core.gw_alignment import GWAlignment  # Module not found  # Module not found  # Module not found
+# # #     from egw_query_expansion.core.query_generator import QueryGenerator  # Module not found  # Module not found  # Module not found
+# # #     from evidence_processor import EvidenceProcessor  # Module not found  # Module not found  # Module not found
+# # #     from answer_synthesizer import AnswerSynthesizer  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Create placeholder classes if EGW components aren't available
     class HybridRetrieval:
@@ -165,7 +165,7 @@ except ImportError:
         def __init__(self, config): pass
         def synthesize(self, query, evidence, context): return {"answer": "", "summary": ""}
 
-from serializable_wrappers import (
+# # # from serializable_wrappers import (  # Module not found  # Module not found  # Module not found
     ProcessingConfig, 
     create_multiprocessing_safe_wrapper, 
     process_document_serializable,
@@ -194,7 +194,7 @@ class ProcessingTask:
 
 @dataclass
 class ProcessingResult:
-    """Result from distributed processing"""
+# # #     """Result from distributed processing"""  # Module not found  # Module not found  # Module not found
     task_id: str
     worker_id: str
     status: str
@@ -211,7 +211,7 @@ class ProcessingResult:
 
 @dataclass
 class AggregatedResult:
-    """Aggregated results from multiple processing instances"""
+# # #     """Aggregated results from multiple processing instances"""  # Module not found  # Module not found  # Module not found
     request_id: str
     task_ids: List[str]
     combined_results: Dict[str, Any]
@@ -377,7 +377,7 @@ class QualityValidator:
 
 
 class ResultAggregator:
-    """Aggregates results from multiple processing instances"""
+# # #     """Aggregates results from multiple processing instances"""  # Module not found  # Module not found  # Module not found
 
     def __init__(self, config: Dict[str, Any]):
         self.config = config
@@ -449,7 +449,7 @@ class ResultAggregator:
         return sum(consistency_scores) / len(consistency_scores) if consistency_scores else 0.0
 
     def _combine_result_data(self, results: List[ProcessingResult]) -> Dict[str, Any]:
-        """Combine result data from multiple processing instances"""
+# # #         """Combine result data from multiple processing instances"""  # Module not found  # Module not found  # Module not found
         combined = {
             'contents': [],
             'evidence': [],
@@ -542,7 +542,7 @@ class ResultAggregator:
         return wrapper(document_path, query)
 
     def _generate_consensus_content(self, contents: List[str]) -> str:
-        """Generate consensus content from multiple content strings"""
+# # #         """Generate consensus content from multiple content strings"""  # Module not found  # Module not found  # Module not found
         if not contents or not any(contents):
             return ""
 
@@ -554,7 +554,7 @@ class ResultAggregator:
         return ""
 
     def _generate_consensus_evidence(self, evidence_list: List[Any]) -> List[Any]:
-        """Generate consensus evidence from multiple evidence lists"""
+# # #         """Generate consensus evidence from multiple evidence lists"""  # Module not found  # Module not found  # Module not found
         # Remove duplicates while preserving order
         seen = set()
         consensus = []
@@ -659,7 +659,7 @@ class DistributedProcessor:
 
         # Initialize recovery mechanism if available
         try:
-            from recovery_system import FailedDocumentsTracker, DocumentRecoveryManager
+# # #             from recovery_system import FailedDocumentsTracker, DocumentRecoveryManager  # Module not found  # Module not found  # Module not found
             self.failed_docs_tracker = FailedDocumentsTracker(
                 redis_client=self.redis_client,
                 retention_days=self.config.get('failed_docs_retention_days', 7)
@@ -756,13 +756,13 @@ class DistributedProcessor:
             await self._store_aggregated_result(aggregated)
             return aggregated
         else:
-            raise RuntimeError("No results received from distributed processing")
+# # #             raise RuntimeError("No results received from distributed processing")  # Module not found  # Module not found  # Module not found
 
     async def _processing_loop(self):
         """Main processing loop for worker"""
         while self.is_running:
             try:
-                # Get next task from queue
+# # #                 # Get next task from queue  # Module not found  # Module not found  # Module not found
                 task_data = await self._get_next_task()
 
                 if task_data:
@@ -828,7 +828,7 @@ class DistributedProcessor:
             self.processed_count += 1
             self.total_processing_time += processing_time
 
-            # Remove from failed documents if it was previously failed
+# # #             # Remove from failed documents if it was previously failed  # Module not found  # Module not found  # Module not found
             await self.failed_docs_tracker.remove_failed_document(task.document_path)
 
             self.logger.info(
@@ -953,7 +953,7 @@ class DistributedProcessor:
             self.redis_client.expire(f"worker:{self.worker_id}", 300)
 
     async def _unregister_worker(self):
-        """Unregister worker from Redis"""
+# # #         """Unregister worker from Redis"""  # Module not found  # Module not found  # Module not found
         self.redis_client.hdel("workers", self.worker_id)
         self.redis_client.delete(f"worker:{self.worker_id}")
 
@@ -976,7 +976,7 @@ class DistributedProcessor:
         pipe.execute()
 
     async def _get_next_task(self) -> Optional[Dict[str, Any]]:
-        """Get next task from Redis queue using advanced serialization"""
+# # #         """Get next task from Redis queue using advanced serialization"""  # Module not found  # Module not found  # Module not found
         task_data = self.redis_client.brpop("task_queue", timeout=10)
 
         if task_data:

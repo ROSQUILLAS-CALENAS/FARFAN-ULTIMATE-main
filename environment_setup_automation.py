@@ -25,9 +25,9 @@ import logging
 import tempfile
 import json
 import argparse
-from pathlib import Path
-from typing import Optional, Dict, List, Tuple, Any
-from datetime import datetime
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Optional, Dict, List, Tuple, Any  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import venv
 import platform
 
@@ -81,7 +81,7 @@ class EnvironmentBackup:
             raise EnvironmentSetupError(f"Backup creation failed: {e}")
     
     def restore_backup(self, backup_name: str, target_path: Path) -> bool:
-        """Restore environment from backup."""
+# # #         """Restore environment from backup."""  # Module not found  # Module not found  # Module not found
         backup_path = self.backup_dir / backup_name
         
         if not backup_path.exists():
@@ -89,13 +89,13 @@ class EnvironmentBackup:
             return False
             
         try:
-            logging.info(f"Restoring environment from backup {backup_name}")
+# # #             logging.info(f"Restoring environment from backup {backup_name}")  # Module not found  # Module not found  # Module not found
             
             # Remove current environment if exists
             if target_path.exists():
                 shutil.rmtree(target_path)
                 
-            # Restore from backup
+# # #             # Restore from backup  # Module not found  # Module not found  # Module not found
             shutil.copytree(backup_path, target_path)
             logging.info(f"Environment restored successfully to {target_path}")
             return True
@@ -299,7 +299,7 @@ class EnvironmentSetupAutomation:
     
     def install_requirements(self, requirements_file: Path, 
                            retry_count: int = 3) -> bool:
-        """Install requirements from a file with retry logic."""
+# # #         """Install requirements from a file with retry logic."""  # Module not found  # Module not found  # Module not found
         try:
             self.log_step(f"Installing {requirements_file.name}", "STARTED")
             

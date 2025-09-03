@@ -10,8 +10,8 @@ Verifies identical fallbacks and no side effects across error scenarios.
 import json
 import sys
 import os
-from typing import Any, Dict, List, Type
-from dataclasses import dataclass
+# # # from typing import Any, Dict, List, Type  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 import hashlib
 import time
 
@@ -29,7 +29,7 @@ except ImportError:
 # Add tools to path for fault injector
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'tools'))
 
-from fault_injector import (
+# # # from fault_injector import (  # Module not found  # Module not found  # Module not found
     FaultInjector, 
     FaultProfile, 
     FaultType,

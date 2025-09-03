@@ -2,7 +2,7 @@
 Deterministic Hybrid Retrieval System
 
 Implementation of deterministic hybrid retrieval based on Bruch et al. (2023)
-optimal ranking fusion theorem from "Bridging Dense and Sparse Maximum Inner Product Search".
+# # # optimal ranking fusion theorem from "Bridging Dense and Sparse Maximum Inner Product Search".  # Module not found  # Module not found  # Module not found
 
 This system unifies dense and sparse retrieval methods through learned projections
 while maintaining complete determinism in fusion and reranking.
@@ -11,9 +11,9 @@ while maintaining complete determinism in fusion and reranking.
 import hashlib
 import json
 import logging
-from abc import ABC, abstractmethod
-from dataclasses import asdict, dataclass
-from typing import Any, Dict, List, Optional, Set, Tuple, Union
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import asdict, dataclass  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 # Heavy/optional dependencies (guarded)
 try:
@@ -32,13 +32,13 @@ try:
 except Exception:
     HAS_TORCH = False
 try:
-    from sentence_transformers import SentenceTransformer  # type: ignore
+# # #     from sentence_transformers import SentenceTransformer  # type: ignore  # Module not found  # Module not found  # Module not found
     HAS_ST = True
 except Exception:
     HAS_ST = False
 # Optional sklearn with fallback
 try:
-    from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore
+# # #     from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore  # Module not found  # Module not found  # Module not found
     _SKLEARN_AVAILABLE = True
 except Exception:
     _SKLEARN_AVAILABLE = False
@@ -60,7 +60,7 @@ except Exception:
             return tokens
 
         def fit(self, corpus):
-            from collections import Counter
+# # #             from collections import Counter  # Module not found  # Module not found  # Module not found
             df = Counter()
             for doc in corpus:
                 for t in set(self._tokenize(doc)):
@@ -103,7 +103,7 @@ class DocumentHash:
 
     @classmethod
     def from_content(cls, content: str, doc_id: str) -> "DocumentHash":
-        """Create hash from document content"""
+# # #         """Create hash from document content"""  # Module not found  # Module not found  # Module not found
         content_hash = hashlib.sha256(content.encode("utf-8")).hexdigest()
         return cls(content_hash=content_hash, doc_id=doc_id)
 
@@ -122,7 +122,7 @@ class IndexSnapshot:
     def create(
         cls, documents: List[str], embedding_dim: int, sparse_dim: int
     ) -> "IndexSnapshot":
-        """Create snapshot from document collection"""
+# # #         """Create snapshot from document collection"""  # Module not found  # Module not found  # Module not found
         import time
 
         # Create deterministic hash of all documents
@@ -219,7 +219,7 @@ class RetrievalResult:
 
 @dataclass(frozen=True)
 class FusionResult:
-    """Result from optimal ranking fusion"""
+# # #     """Result from optimal ranking fusion"""  # Module not found  # Module not found  # Module not found
 
     doc_hash: DocumentHash
     sparse_score: float

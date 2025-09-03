@@ -9,7 +9,7 @@ import platform
 import sys
 import subprocess
 import json
-from typing import Dict, List, Any, Tuple, Optional
+# # # from typing import Dict, List, Any, Tuple, Optional  # Module not found  # Module not found  # Module not found
 import os
 
 
@@ -147,7 +147,7 @@ class InstallationDiagnostics:
         
         # Test Transformers
         try:
-            from transformers import AutoTokenizer
+# # #             from transformers import AutoTokenizer  # Module not found  # Module not found  # Module not found
             tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased', use_fast=False)
             tokens = tokenizer.tokenize("Hello world")
             tests['transformers_operations'] = {

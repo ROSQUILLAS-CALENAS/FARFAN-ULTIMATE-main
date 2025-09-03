@@ -5,7 +5,7 @@ Validation script for ParallelPDFProcessor implementation.
 import ast
 import os
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 def check_syntax(filename):
     """Check Python syntax of a file."""
@@ -22,7 +22,7 @@ def check_syntax(filename):
 def validate_imports():
     """Validate that all required modules can be imported."""
     try:
-        from parallel_processor import (
+# # #         from parallel_processor import (  # Module not found  # Module not found  # Module not found
             ParallelPDFProcessor, 
             PDFChunk, 
             ProcessingResult, 
@@ -38,7 +38,7 @@ def validate_imports():
 def validate_class_interfaces():
     """Validate that classes have expected methods and attributes."""
     try:
-        from parallel_processor import ParallelPDFProcessor, PDFChunk, ProcessingResult, ProgressTracker
+# # #         from parallel_processor import ParallelPDFProcessor, PDFChunk, ProcessingResult, ProgressTracker  # Module not found  # Module not found  # Module not found
         
         # Test PDFChunk
         chunk = PDFChunk(
@@ -94,7 +94,7 @@ def validate_orchestrator_integration():
     try:
         # Check if orchestrator can be imported with graceful fallback
         try:
-            from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator
+# # #             from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator  # Module not found  # Module not found  # Module not found
         except ImportError as e:
             if any(dep in str(e) for dep in ['numpy', 'scipy', 'sklearn', 'torch']):
                 print("⚠ Orchestrator validation skipped (missing ML dependencies)")
@@ -132,7 +132,7 @@ def validate_orchestrator_integration():
 def validate_performance_requirements():
     """Validate performance and design requirements."""
     try:
-        from parallel_processor import ParallelPDFProcessor
+# # #         from parallel_processor import ParallelPDFProcessor  # Module not found  # Module not found  # Module not found
         import concurrent.futures
         
         # Test worker count constraints (4-8 workers)

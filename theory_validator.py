@@ -4,10 +4,10 @@ against expected logical sequences.
 """
 
 import json
-from typing import List, Dict, Any, Tuple, Optional
-from dataclasses import dataclass
-from enum import Enum
-from causal_graph import CausalGraph, CausalRelationType
+# # # from typing import List, Dict, Any, Tuple, Optional  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from causal_graph import CausalGraph, CausalRelationType  # Module not found  # Module not found  # Module not found
 
 
 class ValidationResult(Enum):
@@ -50,7 +50,7 @@ class TheoryOfChangeValidator:
         self.validation_threshold = 0.6
     
     def load_theory_of_change(self, theory_data: Dict[str, Any]) -> None:
-        """Load theory of change from structured data."""
+# # #         """Load theory of change from structured data."""  # Module not found  # Module not found  # Module not found
         self.theory_steps = []
         
         for step_data in theory_data.get('steps', []):
@@ -66,7 +66,7 @@ class TheoryOfChangeValidator:
             self.theory_steps.append(step)
     
     def load_theory_from_file(self, file_path: str) -> None:
-        """Load theory of change from JSON file."""
+# # #         """Load theory of change from JSON file."""  # Module not found  # Module not found  # Module not found
         with open(file_path, 'r') as f:
             theory_data = json.load(f)
         self.load_theory_of_change(theory_data)
@@ -143,7 +143,7 @@ class TheoryOfChangeValidator:
                     expected_step=step,
                     detected_chain=best_path,
                     confidence=path_confidence,
-                    explanation=f"Found consistent causal path from '{step.intervention}' to '{step.expected_outcome}'",
+# # #                     explanation=f"Found consistent causal path from '{step.intervention}' to '{step.expected_outcome}'",  # Module not found  # Module not found  # Module not found
                     evidence_spans=self._get_path_evidence_spans(best_path, graph)
                 )
             else:
@@ -241,7 +241,7 @@ class TheoryOfChangeValidator:
         """Detect causal chains that don't match any theory step."""
         findings = []
         
-        # Get all causal chains from the graph
+# # #         # Get all causal chains from the graph  # Module not found  # Module not found  # Module not found
         all_chains = graph.get_causal_chains(min_length=2)
         
         # Check each chain against theory steps

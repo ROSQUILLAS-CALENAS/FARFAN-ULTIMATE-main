@@ -3,10 +3,10 @@ import json
 import os
 import sys
 import traceback
-from pathlib import Path
-from typing import List, Dict, Any
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import List, Dict, Any  # Module not found  # Module not found  # Module not found
 import tarfile
-from datetime import datetime
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 
 # Add project root to path for canonical imports
 project_root = Path(__file__).resolve().parent
@@ -127,7 +127,7 @@ def process_canonical_pdf(pdf_path: Path, verbose: bool = False) -> dict:
     """
     try:
         # Import the orchestrator
-        from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator
+# # #         from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator  # Module not found  # Module not found  # Module not found
         
         if verbose:
             print(f"[CANONICAL] Initializing ComprehensivePipelineOrchestrator...")
@@ -149,7 +149,7 @@ def process_canonical_pdf(pdf_path: Path, verbose: bool = False) -> dict:
         }
         
         # Optional: Add question context if you want specific analysis
-        question_text = f"Analyze the municipal development plan from {pdf_path.name}"
+# # #         question_text = f"Analyze the municipal development plan from {pdf_path.name}"  # Module not found  # Module not found  # Module not found
         
         if verbose:
             print(f"[CANONICAL] Processing PDF: {pdf_path}")
@@ -236,7 +236,7 @@ def run_canonical_mode(args):
 
         # Minimal text-only extraction to canonical_flow via pdf_text_reader (CF-INGEST-PDF-TEXT)
         try:
-            from pdf_text_reader import process as pdf_text_process
+# # #             from pdf_text_reader import process as pdf_text_process  # Module not found  # Module not found  # Module not found
             txt_res = pdf_text_process({"pdf_path": str(pdf_path)})
             if args.verbose:
                 print(f"[CANONICAL][TEXT] {pdf_path.name}: {txt_res.get('status')}")
@@ -309,7 +309,7 @@ def run_canonical_mode(args):
     if getattr(args, 'excellence', False):
         print("\n[EXCELLENCE] Generating pipeline excellence analysis...")
         try:
-            from comprehensive_pipeline_orchestrator import generate_excellence_analysis_report
+# # #             from comprehensive_pipeline_orchestrator import generate_excellence_analysis_report  # Module not found  # Module not found  # Module not found
             excellence_report = generate_excellence_analysis_report()
             
             excellence_file = output_dir / "excellence_analysis.json"
@@ -382,7 +382,7 @@ def main():
     if getattr(args, "recover", False):
         try:
             import asyncio
-            from recovery_system import run_document_recovery
+# # #             from recovery_system import run_document_recovery  # Module not found  # Module not found  # Module not found
             
             if args.verbose:
                 print("[RECOVERY] Starting document recovery...")
@@ -415,8 +415,8 @@ def main():
     if getattr(args, "canonical", False):
         # First try the enhanced processing with error handling
         try:
-            from pdf_reader import process_pdf_files_with_error_handling
-            from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator
+# # #             from pdf_reader import process_pdf_files_with_error_handling  # Module not found  # Module not found  # Module not found
+# # #             from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator  # Module not found  # Module not found  # Module not found
             
             input_dir = project_root / "planes_input"
             if not input_dir.exists():
@@ -518,7 +518,7 @@ def main():
     global ProjectAnalyzer
     if ProjectAnalyzer is None:
         try:
-            from egw_query_expansion.core.project_analyzer import ProjectAnalyzer as _PA
+# # #             from egw_query_expansion.core.project_analyzer import ProjectAnalyzer as _PA  # Module not found  # Module not found  # Module not found
             ProjectAnalyzer = _PA
         except Exception as e:
             if args.verbose:
@@ -571,7 +571,7 @@ def main():
             with open(canonical_dir / "project_analysis_report.json", "w") as wf:
                 json.dump(data, wf, indent=2)
         else:
-            # Generate a minimal analysis dump from analyzer state
+# # #             # Generate a minimal analysis dump from analyzer state  # Module not found  # Module not found  # Module not found
             snapshot = {
                 "project_root": str(analyzer.project_root),
                 "summary": {
@@ -589,7 +589,7 @@ def main():
     # Dependency audit (non-fatal)
     try:
         try:
-            from tools.dependency_audit import run as run_dep_audit
+# # #             from tools.dependency_audit import run as run_dep_audit  # Module not found  # Module not found  # Module not found
             dep_path = run_dep_audit(str(project_root))
             if args.verbose:
                 print(f"Saved dependency audit to {dep_path}")

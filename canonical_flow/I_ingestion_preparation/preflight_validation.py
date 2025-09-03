@@ -6,7 +6,7 @@ Comprehensive validation system that systematically validates all 5 ingestion
 components (01I-05I) by:
 1. Testing import capabilities and dependency resolution
 2. Verifying critical method existence and signatures
-3. Running smoke tests with real PDF documents from planes_input
+# # # 3. Running smoke tests with real PDF documents from planes_input  # Module not found  # Module not found  # Module not found
 4. Detecting placeholder vs real implementations
 5. Generating comprehensive readiness reports
 
@@ -20,10 +20,10 @@ import logging
 import sys
 import time
 import traceback
-from dataclasses import dataclass, field
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Callable, Union
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Callable, Union  # Module not found  # Module not found  # Module not found
 import warnings
 
 # Configure logging to suppress warnings during validation
@@ -603,7 +603,7 @@ Common Issues and Fixes:
    - Add proper error handling
 
 4. Smoke Test Failures:
-   - Test with real PDF documents from planes_input/
+# # #    - Test with real PDF documents from planes_input/  # Module not found  # Module not found  # Module not found
    - Handle edge cases and exceptions
    - Return meaningful results (not None or error dicts)
 

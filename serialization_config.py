@@ -6,8 +6,8 @@ in distributed processing pipelines.
 """
 
 import os
-from typing import Dict, Any, Optional
-from dataclasses import dataclass
+# # # from typing import Dict, Any, Optional  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 
 
 @dataclass
@@ -23,7 +23,7 @@ class SerializationConfig:
     
     @classmethod
     def from_environment(cls) -> 'SerializationConfig':
-        """Create configuration from environment variables."""
+# # #         """Create configuration from environment variables."""  # Module not found  # Module not found  # Module not found
         return cls(
             backend=os.getenv('SERIALIZATION_BACKEND', 'dill'),
             fallback_enabled=os.getenv('SERIALIZATION_FALLBACK', 'true').lower() == 'true',

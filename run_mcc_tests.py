@@ -6,11 +6,11 @@ Runs without pytest dependency for basic validation.
 
 import json
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Import test components
 sys.path.append(str(Path(__file__).parent))
-from tests.test_mcc import (
+# # # from tests.test_mcc import (  # Module not found  # Module not found  # Module not found
     SatLabel, Clause, Evidence, HornEvaluator,
     test_monotone_consistency_basic,
     test_monotone_consistency_comprehensive,

@@ -11,14 +11,14 @@ import logging
 import time
 import sys
 import json
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple
-from datetime import datetime
-from collections import OrderedDict
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Import total ordering base
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin
+# # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -29,12 +29,12 @@ except ImportError:
     adaptive_scoring_engine = None
 
 try:
-    from intelligent_recommendation_engine import IntelligentRecommendationEngine
+# # #     from intelligent_recommendation_engine import IntelligentRecommendationEngine  # Module not found  # Module not found  # Module not found
 except ImportError:
     IntelligentRecommendationEngine = None
 
 try:
-    from models import DocumentPackage, PDTContext, AdaptiveScoringResults, IntelligentRecommendations
+# # #     from models import DocumentPackage, PDTContext, AdaptiveScoringResults, IntelligentRecommendations  # Module not found  # Module not found  # Module not found
 except ImportError:
     DocumentPackage = None
     PDTContext = None
@@ -214,7 +214,7 @@ class EvaluationDrivenProcessor(TotalOrderingBase, DeterministicCollectionMixin)
             return self.sort_dict_by_keys(error_output)
     
     def _extract_evaluation_data_deterministic(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Extract evaluation data from input with stable ordering"""
+# # #         """Extract evaluation data from input with stable ordering"""  # Module not found  # Module not found  # Module not found
         
         evaluation_data = {
             "document_content": "",
@@ -472,7 +472,7 @@ class EvaluationDrivenProcessor(TotalOrderingBase, DeterministicCollectionMixin)
         question_lower = question_text.lower()
         content_lower = document_content.lower()
         
-        # Extract key terms from question
+# # #         # Extract key terms from question  # Module not found  # Module not found  # Module not found
         key_terms = self._extract_key_terms_from_question(question_lower)
         
         # Check for term presence in content
@@ -498,7 +498,7 @@ class EvaluationDrivenProcessor(TotalOrderingBase, DeterministicCollectionMixin)
         return max(0.0, min(1.0, base_score))
     
     def _extract_key_terms_from_question(self, question_text: str) -> List[str]:
-        """Extract key terms from question deterministically"""
+# # #         """Extract key terms from question deterministically"""  # Module not found  # Module not found  # Module not found
         
         # Remove question words and common terms
         stop_words = {"qué", "cuál", "cómo", "dónde", "cuándo", "por", "para", "con", "sin", "el", "la", "los", "las", "un", "una", "de", "del", "se", "es", "son", "está", "están"}
@@ -513,7 +513,7 @@ class EvaluationDrivenProcessor(TotalOrderingBase, DeterministicCollectionMixin)
         return sorted(list(set(key_terms)))
     
     def _extract_dimension_from_question(self, question_id: str) -> str:
-        """Extract dimension from question ID"""
+# # #         """Extract dimension from question ID"""  # Module not found  # Module not found  # Module not found
         for dim in ["DE1", "DE2", "DE3", "DE4"]:
             if dim in question_id:
                 return dim
@@ -551,7 +551,7 @@ class EvaluationDrivenProcessor(TotalOrderingBase, DeterministicCollectionMixin)
         """Update processing metrics"""
         self.processing_metrics["documents_processed"] += 1
         
-        # Extract overall score from results
+# # #         # Extract overall score from results  # Module not found  # Module not found  # Module not found
         results = output.get("results", {})
         initial_eval = results.get("initial_evaluation", {})
         overall_score = initial_eval.get("overall_score", 0.0)

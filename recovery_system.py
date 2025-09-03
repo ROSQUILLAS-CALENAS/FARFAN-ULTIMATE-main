@@ -12,10 +12,10 @@ import json
 import logging
 import time
 import uuid
-from dataclasses import dataclass, asdict
-from datetime import datetime, timedelta
-from typing import Any, Dict, List, Optional, Set, Tuple
-from pathlib import Path
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 try:
     import redis
@@ -83,7 +83,7 @@ class FailedDocumentRecord:
     
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'FailedDocumentRecord':
-        """Create from dictionary"""
+# # #         """Create from dictionary"""  # Module not found  # Module not found  # Module not found
         return cls(**data)
     
     def get_failure_age_hours(self) -> float:
@@ -171,16 +171,16 @@ class FailedDocumentsTracker:
             self.logger.error(f"Failed to track failed document {document_path}: {e}")
     
     async def remove_failed_document(self, document_path: str) -> bool:
-        """Remove a document from failed tracking (successful processing)"""
+# # #         """Remove a document from failed tracking (successful processing)"""  # Module not found  # Module not found  # Module not found
         try:
-            # Remove from Redis
+# # #             # Remove from Redis  # Module not found  # Module not found  # Module not found
             await asyncio.to_thread(
                 self.redis_client.hdel, 
                 self.failed_docs_key, 
                 document_path
             )
             
-            self.logger.info(f"Removed successfully processed document from failed tracking: {document_path}")
+# # #             self.logger.info(f"Removed successfully processed document from failed tracking: {document_path}")  # Module not found  # Module not found  # Module not found
             return True
             
         except Exception as e:
@@ -347,7 +347,7 @@ class FailedDocumentsTracker:
             self.logger.error(f"Failed to update recovery metrics: {e}")
     
     async def _get_failed_document_record(self, document_path: str) -> Optional[FailedDocumentRecord]:
-        """Get failed document record from Redis"""
+# # #         """Get failed document record from Redis"""  # Module not found  # Module not found  # Module not found
         try:
             record_data = await asyncio.to_thread(
                 self.redis_client.hget,
@@ -531,7 +531,7 @@ class DocumentRecoveryManager:
         """Recover a single failed document"""
         try:
             # Create recovery task
-            from distributed_processor import ProcessingTask  # Import here to avoid circular import
+# # #             from distributed_processor import ProcessingTask  # Import here to avoid circular import  # Module not found  # Module not found  # Module not found
             
             recovery_task = ProcessingTask(
                 task_id=f"recovery-{uuid.uuid4().hex[:8]}",
@@ -593,7 +593,7 @@ class DocumentRecoveryManager:
                 
                 if result_data:
                     result_dict = json.loads(result_data.decode('utf-8'))
-                    from distributed_processor import ProcessingResult  # Import here to avoid circular import
+# # #                     from distributed_processor import ProcessingResult  # Import here to avoid circular import  # Module not found  # Module not found  # Module not found
                     return ProcessingResult(**result_dict)
                 
                 # Wait briefly before checking again

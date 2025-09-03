@@ -5,11 +5,11 @@ Demo: Canonical Audit End-to-End
 - Runs the canonical_output_auditor and public_transformer_adapter.
 - Prints audit summary and public report hash.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
-from typing import Dict, Any, List
+# # # from typing import Dict, Any, List  # Module not found  # Module not found  # Module not found
 
-from evidence_system import Evidence, EvidenceSystem
+# # # from evidence_system import Evidence, EvidenceSystem  # Module not found  # Module not found  # Module not found
 import canonical_output_auditor as coa
 import public_transformer_adapter as pta
 
@@ -21,7 +21,7 @@ def build_demo_payload() -> Dict[str, Any]:
     def add(qid: str, txt: str, dim: str, score: float) -> Evidence:
         e = Evidence(qid=qid, content=txt, dimension=dim, score=score)
         evsys.add_evidence(qid, e)
-        # The canonical id will be stable from serialize_canonical
+# # #         # The canonical id will be stable from serialize_canonical  # Module not found  # Module not found  # Module not found
         # but for simplicity the answers will reference the computed id via serialize
         return e
 
@@ -30,7 +30,7 @@ def build_demo_payload() -> Dict[str, Any]:
     e2 = add("Q1", "Texto de evidencia Q1-B", "programa", 0.7)
     e3 = add("Q2", "Texto de evidencia Q2-A", "presupuesto", 0.9)
 
-    # Build evidence id index from the system
+# # #     # Build evidence id index from the system  # Module not found  # Module not found  # Module not found
     import json
     store = json.loads(evsys.serialize_canonical())["store"]
     def ids_for(qid: str) -> List[str]:

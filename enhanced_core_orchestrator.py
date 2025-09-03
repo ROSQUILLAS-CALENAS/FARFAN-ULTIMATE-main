@@ -9,34 +9,34 @@ import asyncio
 import logging
 import hashlib
 import json
-from typing import Dict, List, Optional, Any, Set, Callable
-from datetime import datetime, timezone, timedelta
-from dataclasses import dataclass, field
-from collections import defaultdict, deque
+# # # from typing import Dict, List, Optional, Any, Set, Callable  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timezone, timedelta  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from collections import defaultdict, deque  # Module not found  # Module not found  # Module not found
 import uuid
-from functools import wraps
-from enum import Enum
+# # # from functools import wraps  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 
 import networkx as nx
-from opentelemetry import trace
-from opentelemetry.trace import Status, StatusCode
+# # # from opentelemetry import trace  # Module not found  # Module not found  # Module not found
+# # # from opentelemetry.trace import Status, StatusCode  # Module not found  # Module not found  # Module not found
 import redis
-from prometheus_client import Counter, Histogram, Gauge
+# # # from prometheus_client import Counter, Histogram, Gauge  # Module not found  # Module not found  # Module not found
 
-from models import (
+# # # from models import (  # Module not found  # Module not found  # Module not found
     Event, EventType, WorkflowDefinition, ProcessingContext,
     SystemHealthMetrics, WorkflowStatus, ProcessDefinition
 )
-from event_bus import EventBus
-from workflow_engine import WorkflowEngine
-from compensation_engine import CompensationEngine, register_default_compensation_handlers
-from workflow_definitions import WORKFLOW_REGISTRY, get_workflow_definition
-from step_handlers import register_default_step_handlers
-# from monitoring_stack import MonitoringStack  # Module not found
-from service_discovery import ServiceDiscoveryManager
-from process_inventory import ProcessInventoryManager
-from circuit_breaker import CircuitBreakerManager
-from telemetry_collector import TelemetryCollector
+# # # from event_bus import EventBus  # Module not found  # Module not found  # Module not found
+# # # from workflow_engine import WorkflowEngine  # Module not found  # Module not found  # Module not found
+# # # from compensation_engine import CompensationEngine, register_default_compensation_handlers  # Module not found  # Module not found  # Module not found
+# # # from workflow_definitions import WORKFLOW_REGISTRY, get_workflow_definition  # Module not found  # Module not found  # Module not found
+# # # from step_handlers import register_default_step_handlers  # Module not found  # Module not found  # Module not found
+# # # # from monitoring_stack import MonitoringStack  # Module not found  # Module not found  # Module not found  # Module not found
+# # # from service_discovery import ServiceDiscoveryManager  # Module not found  # Module not found  # Module not found
+# # # from process_inventory import ProcessInventoryManager  # Module not found  # Module not found  # Module not found
+# # # from circuit_breaker import CircuitBreakerManager  # Module not found  # Module not found  # Module not found
+# # # from telemetry_collector import TelemetryCollector  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 tracer = trace.get_tracer(__name__)
@@ -171,7 +171,7 @@ class DeadLetterQueueManager:
         return dlq_item['id']
     
     async def process_dlq_items(self, queue_name: str, processor: Callable):
-        """Process items from dead letter queue"""
+# # #         """Process items from dead letter queue"""  # Module not found  # Module not found  # Module not found
         processed = []
         failed = []
         
@@ -187,7 +187,7 @@ class DeadLetterQueueManager:
                 processed.append(item)
                 queue.remove(item)
                 
-                # Remove from Redis
+# # #                 # Remove from Redis  # Module not found  # Module not found  # Module not found
                 if self.redis_client:
                     key = f"dlq:{queue_name}:{item['id']}"
                     self.redis_client.delete(key)
@@ -353,7 +353,7 @@ class HyperAdvancedOrchestrator:
     def _setup_dlq_processors(self):
         """Setup dead letter queue processors"""
         async def workflow_dlq_processor(item):
-            """Process failed workflow from DLQ"""
+# # #             """Process failed workflow from DLQ"""  # Module not found  # Module not found  # Module not found
             workflow_id = item.get('workflow_id')
             context = item.get('context', {})
             
@@ -477,7 +477,7 @@ class HyperAdvancedOrchestrator:
                     
                     if result['processed'] > 0:
                         logger.info(
-                            f"Processed {result['processed']} items from DLQ {queue_name}"
+# # #                             f"Processed {result['processed']} items from DLQ {queue_name}"  # Module not found  # Module not found  # Module not found
                         )
                     
                     # Record metrics

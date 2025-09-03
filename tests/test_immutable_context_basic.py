@@ -9,15 +9,15 @@ import sys
 sys.path.insert(0, ".")
 
 try:
-    from egw_query_expansion.core.context_adapter import ContextAdapter
-    from egw_query_expansion.core.immutable_context import (
+# # #     from egw_query_expansion.core.context_adapter import ContextAdapter  # Module not found  # Module not found  # Module not found
+# # #     from egw_query_expansion.core.immutable_context import (  # Module not found  # Module not found  # Module not found
         DerivationDAG,
         ImmutableDict,
         QuestionContext,
         create_expanded_context,
         create_question_context,
     )
-    from egw_query_expansion.core.linear_type_enforcer import (
+# # #     from egw_query_expansion.core.linear_type_enforcer import (  # Module not found  # Module not found  # Module not found
         LinearTypeEnforcer,
         linear_context_scope,
     )

@@ -1,7 +1,7 @@
 """
 Entity and Concept Extractor Component for Knowledge Extraction Stage
 
-This component extracts terms, entities, and concepts from document text with page metadata,
+# # # This component extracts terms, entities, and concepts from document text with page metadata,  # Module not found  # Module not found  # Module not found
 generating deterministic and reproducible inventories with stable tokenization and entity recognition.
 
 Outputs:
@@ -15,12 +15,12 @@ All outputs use UTF-8 encoding and consistent JSON formatting for deterministic 
 import json
 import logging
 import re
-from collections import Counter, defaultdict
-from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple, Set
+# # # from collections import Counter, defaultdict  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Optional, Any, Tuple, Set  # Module not found  # Module not found  # Module not found
 import os
 
-from total_ordering_base import TotalOrderingBase
+# # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 # Optional NLP dependencies with fallbacks
 try:
@@ -32,9 +32,9 @@ except ImportError:
 
 try:
     import nltk
-    from nltk.tokenize import word_tokenize, sent_tokenize
-    from nltk.corpus import stopwords
-    from nltk.stem import SnowballStemmer
+# # #     from nltk.tokenize import word_tokenize, sent_tokenize  # Module not found  # Module not found  # Module not found
+# # #     from nltk.corpus import stopwords  # Module not found  # Module not found  # Module not found
+# # #     from nltk.stem import SnowballStemmer  # Module not found  # Module not found  # Module not found
     NLTK_AVAILABLE = True
     
     # Download required NLTK data if needed
@@ -54,7 +54,7 @@ logger = logging.getLogger(__name__)
 
 class EntityConceptExtractor(TotalOrderingBase):
     """
-    Extracts terms, entities, and concepts from document text with deterministic results.
+# # #     Extracts terms, entities, and concepts from document text with deterministic results.  # Module not found  # Module not found  # Module not found
     
     Features:
     - Stable tokenization using consistent algorithms
@@ -265,7 +265,7 @@ class EntityConceptExtractor(TotalOrderingBase):
             
         except Exception as e:
             logger.error(f"Error in entity/concept extraction: {str(e)}")
-            raise ValueError(f"Failed to process document: {str(e)}") from e
+# # #             raise ValueError(f"Failed to process document: {str(e)}") from e  # Module not found  # Module not found  # Module not found
     
     def _validate_inputs(self, document_text: str, page_metadata: List[Dict[str, Any]]):
         """Validate input parameters."""

@@ -9,7 +9,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath("."))
 
-from egw_query_expansion.core.submodular_task_selector import (
+# # # from egw_query_expansion.core.submodular_task_selector import (  # Module not found  # Module not found  # Module not found
     CoverageUtility,
     HeapItem,
     MonotonicTaskSelector,

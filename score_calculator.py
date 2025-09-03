@@ -8,25 +8,25 @@ Public API:
 - ScoreCalculator.calculate_conjunctive_score(scores: Dict, rules: List) -> float
 
 Notes:
-- Works with StructuredEvidence from evidence_processor.py but also accepts
+# # # - Works with StructuredEvidence from evidence_processor.py but also accepts  # Module not found  # Module not found  # Module not found
   dict-like or generic objects exposing similar fields.
 - All outputs are normalized to [0, 1].
 - Integrated with contracts schema validation system.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
-from typing import Any, Dict, List, Optional
-from datetime import datetime
+# # # from typing import Any, Dict, List, Optional  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 
 # Optional import for typing/Enum usage; keep robust if not available
 try:
-    from evidence_processor import ConfidenceLevel
+# # #     from evidence_processor import ConfidenceLevel  # Module not found  # Module not found  # Module not found
 except Exception:  # pragma: no cover
     ConfidenceLevel = None  # type: ignore
 
 # Import schema validation components
 try:
-    from contracts.schemas import (
+# # #     from contracts.schemas import (  # Module not found  # Module not found  # Module not found
         DimensionEvalOutput,
         PointEvalOutput,
         StageMeta,
@@ -191,7 +191,7 @@ class ScoreCalculator:
     def calculate_conjunctive_score(
         self, scores: Dict[str, float], rules: List[Any]
     ) -> float:
-        """Calculate a conjunctive (AND) score from rule scores.
+# # #         """Calculate a conjunctive (AND) score from rule scores.  # Module not found  # Module not found  # Module not found
 
         rules: list of dicts or strings. Dict format example:
         {"id": "R1", "mandatory": True, "threshold": 0.6}

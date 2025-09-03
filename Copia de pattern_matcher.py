@@ -7,9 +7,9 @@ with support for regex patterns and semantic similarity matching.
 
 import logging
 import re
-from collections import defaultdict
-from dataclasses import dataclass
-from typing import Dict, List, Optional, Pattern, Set, Tuple, Union
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Optional, Pattern, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 
@@ -316,7 +316,7 @@ class PatternMatcher:
 
     def _extract_phrases(self, text: str) -> List[Tuple[str, int, int]]:
         """
-        Extract phrases from text for semantic matching.
+# # #         Extract phrases from text for semantic matching.  # Module not found  # Module not found  # Module not found
 
         Args:
             text: Input text
@@ -341,7 +341,7 @@ class PatternMatcher:
 
             phrases.append((sentence, start_pos, end_pos))
 
-            # Also extract n-grams from sentence
+# # #             # Also extract n-grams from sentence  # Module not found  # Module not found  # Module not found
             words = sentence.split()
             for n in [2, 3, 4]:  # bi-grams, tri-grams, 4-grams
                 for i in range(len(words) - n + 1):
@@ -450,7 +450,7 @@ class PatternMatcher:
 
     def remove_pattern(self, pattern: str) -> bool:
         """
-        Remove a pattern from the matcher.
+# # #         Remove a pattern from the matcher.  # Module not found  # Module not found  # Module not found
 
         Args:
             pattern: Pattern to remove

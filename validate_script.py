@@ -11,7 +11,7 @@ try:
     print("✅ Import successful")
     
     # Test class instantiation 
-    from pathlib import Path
+# # #     from pathlib import Path  # Module not found  # Module not found  # Module not found
     import tempfile
     
     temp_dir = Path(tempfile.mkdtemp())

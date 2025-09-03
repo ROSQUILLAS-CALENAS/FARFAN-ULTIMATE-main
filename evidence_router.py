@@ -8,13 +8,13 @@ Design goals:
 - Return string names of processors/pipelines present in this repo (normative_validator, rubric_validator,
   adaptive_scoring_engine, evidence_processor) and generic pipeline names for orchestration.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
-from typing import Any, Optional
+# # # from typing import Any, Optional  # Module not found  # Module not found  # Module not found
 
-# Optional imports from evidence_processor for better typing and field access
+# # # # Optional imports from evidence_processor for better typing and field access  # Module not found  # Module not found  # Module not found
 try:
-    from evidence_processor import EvidenceType, ConfidenceLevel
+# # #     from evidence_processor import EvidenceType, ConfidenceLevel  # Module not found  # Module not found  # Module not found
 except Exception:  # pragma: no cover - make router resilient if import path differs
     EvidenceType = None  # type: ignore
     ConfidenceLevel = None  # type: ignore

@@ -4,15 +4,15 @@ BM25-based Text Retrieval Module
 Implements traditional lexical search using BM25 scoring algorithm.
 Provides standardized retrieval interface for query processing and document ranking.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import json
 import math
 import os
 import pickle
-from collections import Counter, defaultdict
-from pathlib import Path
-from typing import Any, Dict, List, Tuple, Optional
+# # # from collections import Counter, defaultdict  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Tuple, Optional  # Module not found  # Module not found  # Module not found
 
 try:
     import numpy as np
@@ -169,7 +169,7 @@ class BM25Index:
             pickle.dump(index_data, f)
     
     def load_index(self, path: str) -> None:
-        """Load the index from disk."""
+# # #         """Load the index from disk."""  # Module not found  # Module not found  # Module not found
         with open(path, 'rb') as f:
             index_data = pickle.load(f)
         
@@ -219,11 +219,11 @@ class LexicalRetriever:
             try:
                 self.index.load_index(self.index_path)
             except Exception as e:
-                print(f"Warning: Could not load index from {self.index_path}: {e}")
+# # #                 print(f"Warning: Could not load index from {self.index_path}: {e}")  # Module not found  # Module not found  # Module not found
     
     def build_index(self, documents: List[Tuple[str, str]]) -> None:
         """
-        Build BM25 index from documents.
+# # #         Build BM25 index from documents.  # Module not found  # Module not found  # Module not found
         
         Args:
             documents: List of (doc_id, text) tuples
@@ -293,14 +293,14 @@ def process(data: Any, context: Dict[str, Any] = None) -> Dict[str, Any]:
     """
     ctx = context or {}
     
-    # Extract query and documents from input data
+# # #     # Extract query and documents from input data  # Module not found  # Module not found  # Module not found
     query = ""
     documents = []
     
     if isinstance(data, dict):
         query = data.get("query", "") or ctx.get("query", "")
         
-        # Try to extract documents from various possible keys
+# # #         # Try to extract documents from various possible keys  # Module not found  # Module not found  # Module not found
         docs = data.get("documents") or data.get("loaded_docs") or data.get("text", "")
         if isinstance(docs, str) and docs:
             documents = [("doc_0", docs)]

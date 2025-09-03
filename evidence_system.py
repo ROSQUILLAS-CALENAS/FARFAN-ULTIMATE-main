@@ -3,15 +3,15 @@ Evidence Collection System with Conformal Coverage using Jackknife+
 """
 import hashlib
 import logging
-from collections import defaultdict
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set, Tuple
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple  # Module not found  # Module not found  # Module not found
 
 import matplotlib.pyplot as plt
 import msgspec
 import numpy as np
 import plotly.graph_objects as go
-from scipy.stats import norm
+# # # from scipy.stats import norm  # Module not found  # Module not found  # Module not found
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -70,7 +70,7 @@ class EvidenceSystem:
         Identity depends only on (qid, content, dimension). Score is not used to avoid
         double-counting slightly different scores for identical content.
         """
-        from deterministic_shield import canonical_json
+# # #         from deterministic_shield import canonical_json  # Module not found  # Module not found  # Module not found
 
         key = {"qid": e.qid, "content": e.content, "dimension": e.dimension}
         import hashlib
@@ -164,7 +164,7 @@ class EvidenceSystem:
 
     def serialize_canonical(self) -> str:
         """Canonical JSON of current state independent of insertion order."""
-        from deterministic_shield import canonical_json
+# # #         from deterministic_shield import canonical_json  # Module not found  # Module not found  # Module not found
 
         state = {
             "alpha": float(self.alpha),

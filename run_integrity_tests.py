@@ -7,9 +7,9 @@ import traceback
 def run_simple_test():
     """Run the simple integrity test"""
     try:
-        from data_integrity_checker import DataIntegrityChecker
+# # #         from data_integrity_checker import DataIntegrityChecker  # Module not found  # Module not found  # Module not found
         import tempfile
-        from pathlib import Path
+# # #         from pathlib import Path  # Module not found  # Module not found  # Module not found
         
         print("🔧 Testing DataIntegrityChecker...")
         
@@ -63,10 +63,10 @@ def run_simple_test():
 def run_corruption_test():
     """Test corruption detection"""
     try:
-        from data_integrity_checker import DataIntegrityChecker, CorruptionType
+# # #         from data_integrity_checker import DataIntegrityChecker, CorruptionType  # Module not found  # Module not found  # Module not found
         import tempfile
         import json
-        from pathlib import Path
+# # #         from pathlib import Path  # Module not found  # Module not found  # Module not found
         
         print("\n🔧 Testing corruption detection...")
         

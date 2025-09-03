@@ -3,8 +3,8 @@ Parser de estructura semántica para detectar secciones de PDT
 """
 
 import re
-from typing import Dict, List, Tuple, Optional
-from models import SectionBlock, SectionType
+# # # from typing import Dict, List, Tuple, Optional  # Module not found  # Module not found  # Module not found
+# # # from models import SectionBlock, SectionType  # Module not found  # Module not found  # Module not found
 import spacy
 
 

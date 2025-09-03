@@ -6,7 +6,7 @@ This demonstrates how to add integrity checking to existing pipeline components
 with minimal code changes.
 """
 
-from data_integrity_checker import (
+# # # from data_integrity_checker import (  # Module not found  # Module not found  # Module not found
     DataIntegrityChecker,
     integrity_validation_hook,
     add_artifact_generation_hook,
@@ -135,7 +135,7 @@ class ManualIntegrationComponent:
         """Process with manual integrity handling"""
         logger.info("Processing synthesis with manual integrity checks...")
         
-        # Extract document stem from context
+# # #         # Extract document stem from context  # Module not found  # Module not found  # Module not found
         document_stem = context.get('document_stem', 'unknown') if context else 'unknown'
         
         # Validate input artifacts at stage boundary

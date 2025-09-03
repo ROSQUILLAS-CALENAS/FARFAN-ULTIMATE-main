@@ -3,7 +3,7 @@
 # Simple validation test for deterministic_shield module
 
 try:
-    from deterministic_shield import EvaluationReport
+# # #     from deterministic_shield import EvaluationReport  # Module not found  # Module not found  # Module not found
     print("✓ Successfully imported EvaluationReport")
     
     # Create instance

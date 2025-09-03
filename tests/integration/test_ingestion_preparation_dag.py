@@ -3,7 +3,7 @@
 Integration Tests for I_ingestion_preparation DAG
 
 Tests the complete ingestion preparation pipeline (01I-05I) execution sequence
-against real PDFs from planes_input directory, validating all expected artifacts
+# # # against real PDFs from planes_input directory, validating all expected artifacts  # Module not found  # Module not found  # Module not found
 are generated in canonical_flow/ingestion/ with proper status propagation,
 deterministic output consistency, and audit trail validation.
 
@@ -17,7 +17,7 @@ Components tested:
 Test Coverage:
 - Sequential component execution with proper dependencies
 - Deterministic output by running pipeline twice and comparing artifacts
-- Status propagation from ready/not-ready documents through pipeline
+# # # - Status propagation from ready/not-ready documents through pipeline  # Module not found  # Module not found  # Module not found
 - Corpus-level artifacts generation (features.parquet, embeddings.faiss, etc.)
 - Audit JSON files validation with execution traces and timing metrics
 - Graceful failure with clear error messages for missing/malformed artifacts
@@ -29,8 +29,8 @@ import shutil
 import tempfile
 import time
 import unittest
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 import logging
 
 # Test framework imports
@@ -72,7 +72,7 @@ def safe_import(module_name, package=None):
             return importlib.import_module(module_name)
     except ImportError:
         try:
-            # Try from different locations
+# # #             # Try from different locations  # Module not found  # Module not found  # Module not found
             alt_paths = [".", "canonical_flow/I_ingestion_preparation"]
             for path in alt_paths:
                 full_path = PROJECT_ROOT / path
@@ -112,7 +112,7 @@ class MockIngestionComponent:
                     "component_id": self.component_id,
                     "component_name": self.component_name,
                     "file": Path(pdf_path).name,
-                    "text": f"Mock extracted text from {Path(pdf_path).name}",
+# # #                     "text": f"Mock extracted text from {Path(pdf_path).name}",  # Module not found  # Module not found  # Module not found
                     "pages": 10,
                     "execution_duration_ms": (time.time() - start_time) * 1000,
                     "output_files": [f"canonical_flow/{Path(pdf_path).stem}.json"]
@@ -164,7 +164,7 @@ class MockIngestionComponent:
                     "status": "failed",
                     "component_id": self.component_id,
                     "component_name": self.component_name,
-                    "error": "Missing required dependency from previous component",
+# # #                     "error": "Missing required dependency from previous component",  # Module not found  # Module not found  # Module not found
                     "execution_duration_ms": (time.time() - start_time) * 1000
                 }
 
@@ -387,7 +387,7 @@ class IngestionPreparationDAGTest(unittest.TestCase):
         else:
             result = {
                 "status": "failed",
-                "error": f"Invalid result type from {component_name}: {type(result)}",
+# # #                 "error": f"Invalid result type from {component_name}: {type(result)}",  # Module not found  # Module not found  # Module not found
                 "execution_duration_ms": execution_duration
             }
             
@@ -645,7 +645,7 @@ class IngestionPreparationDAGTest(unittest.TestCase):
             
             current_status = result.get("status")
             
-            # Status should not improve from failed to success without manual intervention
+# # #             # Status should not improve from failed to success without manual intervention  # Module not found  # Module not found  # Module not found
             if previous_status == "failed":
                 self.assertNotEqual(current_status, "success",
                                   f"Component {component_id} should not succeed after previous failure")

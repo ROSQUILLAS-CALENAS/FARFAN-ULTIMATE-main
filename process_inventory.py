@@ -5,11 +5,11 @@ Process inventory management system for workflow tracking and dependency analysi
 import json
 import logging
 import hashlib
-from typing import Dict, List, Optional, Set, Tuple, Any
-from datetime import datetime
-from pathlib import Path
-from dataclasses import dataclass, asdict
-from collections import defaultdict, deque
+# # # from typing import Dict, List, Optional, Set, Tuple, Any  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from collections import defaultdict, deque  # Module not found  # Module not found  # Module not found
 
 # Optional external service clients (guarded imports)
 try:
@@ -22,14 +22,14 @@ except Exception:  # pragma: no cover - optional dependency
     consul = None
 # Optional GitPython
 try:
-    from git import Repo  # type: ignore
+# # #     from git import Repo  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:
     Repo = None
 import networkx as nx
 
 # Optional model classes (guarded)
 try:
-    from models import ProcessDefinition, WorkflowDefinition, DependencyNode  # type: ignore
+# # #     from models import ProcessDefinition, WorkflowDefinition, DependencyNode  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:  # pragma: no cover - optional typing fallback
     ProcessDefinition = dict  # type: ignore
     WorkflowDefinition = dict  # type: ignore
@@ -206,7 +206,7 @@ class GitIntegration:
                 # Get current hash
                 current_hash = self.get_file_hash(file_path)
                 
-                # Get previous hash from git
+# # #                 # Get previous hash from git  # Module not found  # Module not found  # Module not found
                 try:
                     previous_content = self.repo.git.show(f"HEAD~1:{file_path}")
                     previous_hash = hashlib.sha256(previous_content.encode()).hexdigest()
@@ -311,7 +311,7 @@ class ProcessInventoryManager:
         if process_key in self.process_cache and process_key not in self.cache_invalidation_keys:
             return self.process_cache[process_key]
         
-        # Retrieve from storage
+# # #         # Retrieve from storage  # Module not found  # Module not found  # Module not found
         process_def = self._retrieve_process(process_key)
         
         if process_def:
@@ -395,7 +395,7 @@ class ProcessInventoryManager:
                 json.dump(data, f, indent=2, default=str)
     
     def _retrieve_process(self, process_key: str) -> Optional[ProcessDefinition]:
-        """Retrieve process from the selected backend"""
+# # #         """Retrieve process from the selected backend"""  # Module not found  # Module not found  # Module not found
         try:
             data = None
             
@@ -425,7 +425,7 @@ class ProcessInventoryManager:
         return None
     
     def _retrieve_all_processes(self) -> List[ProcessDefinition]:
-        """Retrieve all processes from storage backend"""
+# # #         """Retrieve all processes from storage backend"""  # Module not found  # Module not found  # Module not found
         processes = []
         
         try:
@@ -480,7 +480,7 @@ class ProcessInventoryManager:
                 if storage_dir.exists():
                     pattern = f"{process_id}_*.json"
                     for json_file in storage_dir.glob(pattern):
-                        # Extract version from filename
+# # #                         # Extract version from filename  # Module not found  # Module not found  # Module not found
                         filename = json_file.stem
                         version = filename.split('_', 1)[1].replace('_', ':')
                         if ':' in version:

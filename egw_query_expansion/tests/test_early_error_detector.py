@@ -5,10 +5,10 @@ Tests for Early Error Detection System
 import json
 import pytest
 import time
-from unittest.mock import Mock, patch
-from typing import Any, Dict, List
+# # # from unittest.mock import Mock, patch  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List  # Module not found  # Module not found  # Module not found
 
-from egw_query_expansion.core.early_error_detector import (
+# # # from egw_query_expansion.core.early_error_detector import (  # Module not found  # Module not found  # Module not found
     EarlyErrorDetector, 
     ValidationError, 
     ValidationResult,

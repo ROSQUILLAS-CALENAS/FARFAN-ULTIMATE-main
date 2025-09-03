@@ -1,7 +1,7 @@
 """
 Report Compiler Module
 
-Generates structured narrative reports from meso aggregation data containing:
+# # # Generates structured narrative reports from meso aggregation data containing:  # Module not found  # Module not found  # Module not found
 - Executive summary paragraphs
 - Detailed findings sections with evidence references
 - Compliance assessment metrics
@@ -12,12 +12,12 @@ Maintains standardized API contract interface with comprehensive error handling.
 
 import json
 import logging
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Union
-from datetime import datetime
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Union  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import uuid
 
-from json_canonicalizer import JSONCanonicalizer
+# # # from json_canonicalizer import JSONCanonicalizer  # Module not found  # Module not found  # Module not found
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -70,7 +70,7 @@ def safe_get_nested(data: Dict[str, Any], *keys, default=None) -> Any:
 
 
 def generate_executive_summary(meso_data: Dict[str, Any]) -> Dict[str, Any]:
-    """Generate executive summary from meso aggregation data."""
+# # #     """Generate executive summary from meso aggregation data."""  # Module not found  # Module not found  # Module not found
     try:
         meso_summary = meso_data.get("meso_summary", {})
         coverage_matrix = meso_data.get("coverage_matrix", {})
@@ -265,7 +265,7 @@ def generate_compliance_assessment(meso_data: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def generate_key_highlights(meso_data: Dict[str, Any]) -> Dict[str, Any]:
-    """Generate key highlights from the analysis."""
+# # #     """Generate key highlights from the analysis."""  # Module not found  # Module not found  # Module not found
     try:
         meso_summary = meso_data.get("meso_summary", {})
         coverage_matrix = meso_data.get("coverage_matrix", {})

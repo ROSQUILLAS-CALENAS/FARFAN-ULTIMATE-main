@@ -10,8 +10,8 @@ module-level state issues.
 import functools
 import pickle
 import logging
-from typing import Any, Dict, Optional, Callable, Union
-from dataclasses import dataclass, asdict
+# # # from typing import Any, Dict, Optional, Callable, Union  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
 import json
 import time
 
@@ -54,7 +54,7 @@ class ProcessingConfig:
     
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'ProcessingConfig':
-        """Create from dictionary"""
+# # #         """Create from dictionary"""  # Module not found  # Module not found  # Module not found
         return cls(**data)
 
 
@@ -77,11 +77,11 @@ def process_document_serializable(document_path: str, query: str, config: Proces
     
     # Import components within function to avoid module-level dependencies
     try:
-        from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval
-        from egw_query_expansion.core.gw_alignment import GWAlignment
-        from egw_query_expansion.core.query_generator import QueryGenerator
-        from evidence_processor import EvidenceProcessor
-        from answer_synthesizer import AnswerSynthesizer
+# # #         from egw_query_expansion.core.hybrid_retrieval import HybridRetrieval  # Module not found  # Module not found  # Module not found
+# # #         from egw_query_expansion.core.gw_alignment import GWAlignment  # Module not found  # Module not found  # Module not found
+# # #         from egw_query_expansion.core.query_generator import QueryGenerator  # Module not found  # Module not found  # Module not found
+# # #         from evidence_processor import EvidenceProcessor  # Module not found  # Module not found  # Module not found
+# # #         from answer_synthesizer import AnswerSynthesizer  # Module not found  # Module not found  # Module not found
     except ImportError as e:
         logging.warning(f"Failed to import EGW components: {e}")
         # Fallback to mock processing

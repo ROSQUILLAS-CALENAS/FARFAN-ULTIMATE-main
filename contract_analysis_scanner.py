@@ -8,11 +8,11 @@ import ast
 import json
 import sys
 import textwrap
-from collections import defaultdict
-from pathlib import Path
-from typing import Dict, List, Tuple, Any, Optional, Set
-from dataclasses import dataclass, asdict
-from enum import Enum
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Tuple, Any, Optional, Set  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 
 
 class SeverityLevel(Enum):
@@ -377,8 +377,8 @@ class ContractAnalyzer:
     def _generate_unified_interface(self) -> str:
         """Generate unified interface specification"""
         return textwrap.dedent("""
-        from abc import ABC, abstractmethod
-        from typing import Any, Dict, Optional
+# # #         from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # #         from typing import Any, Dict, Optional  # Module not found  # Module not found  # Module not found
         
         class CanonicalProcessor(ABC):
             \"\"\"Unified interface for canonical pipeline components\"\"\"

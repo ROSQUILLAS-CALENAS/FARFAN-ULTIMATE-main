@@ -11,16 +11,16 @@ Validates post-execution state:
 
 import json
 import pytest
-from typing import Dict, List, Any, Optional, Tuple
-from pathlib import Path
-from decimal import Decimal
+# # # from typing import Dict, List, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from decimal import Decimal  # Module not found  # Module not found  # Module not found
 import sys
 
 # Add canonical_flow to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "canonical_flow"))
 
-from canonical_flow.A_analysis_nlp.question_analyzer import DecalogoQuestionRegistry, get_decalogo_question_registry
-from canonical_flow.L_classification_evaluation.decalogo_scoring_system import (
+# # # from canonical_flow.A_analysis_nlp.question_analyzer import DecalogoQuestionRegistry, get_decalogo_question_registry  # Module not found  # Module not found  # Module not found
+# # # from canonical_flow.L_classification_evaluation.decalogo_scoring_system import (  # Module not found  # Module not found  # Module not found
     ScoringSystem, 
     QuestionResponse, 
     DimensionScore, 

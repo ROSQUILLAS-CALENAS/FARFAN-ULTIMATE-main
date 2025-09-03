@@ -8,7 +8,7 @@ import os
 sys.path.insert(0, os.path.join(os.getcwd(), 'egw_query_expansion', 'core'))
 
 try:
-    from import_safety import (
+# # #     from import_safety import (  # Module not found  # Module not found  # Module not found
         ImportSafety, safe_import, get_import_report, 
         safe_import_numpy, safe_import_scipy, safe_import_torch,
         safe_import_sklearn, safe_import_faiss, safe_import_transformers,

@@ -5,13 +5,13 @@ Service discovery and coordination system using etcd/Consul
 import asyncio
 import json
 import logging
-from dataclasses import asdict, dataclass
-from datetime import datetime, timedelta
-from typing import Any, Callable, Dict, List, Optional, Set
+# # # from dataclasses import asdict, dataclass  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Set  # Module not found  # Module not found  # Module not found
 
 import consul
 import etcd3
-from kubernetes import client, config, watch
+# # # from kubernetes import client, config, watch  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -235,20 +235,20 @@ class ConsulServiceRegistry(ServiceRegistry):
             return False
 
     async def deregister_service(self, service_id: str) -> bool:
-        """Deregister a service from Consul"""
+# # #         """Deregister a service from Consul"""  # Module not found  # Module not found  # Module not found
         if not self.client:
             return False
 
         try:
             self.client.agent.service.deregister(service_id)
-            logger.info(f"Deregistered service {service_id} from Consul")
+# # #             logger.info(f"Deregistered service {service_id} from Consul")  # Module not found  # Module not found  # Module not found
             return True
         except Exception as e:
-            logger.error(f"Failed to deregister service from Consul: {e}")
+# # #             logger.error(f"Failed to deregister service from Consul: {e}")  # Module not found  # Module not found  # Module not found
             return False
 
     async def get_service(self, service_name: str) -> List[ServiceInstance]:
-        """Get service instances from Consul"""
+# # #         """Get service instances from Consul"""  # Module not found  # Module not found  # Module not found
         if not self.client:
             return []
 
@@ -271,12 +271,12 @@ class ConsulServiceRegistry(ServiceRegistry):
                 )
 
         except Exception as e:
-            logger.error(f"Failed to get service from Consul: {e}")
+# # #             logger.error(f"Failed to get service from Consul: {e}")  # Module not found  # Module not found  # Module not found
 
         return instances
 
     async def get_all_services(self) -> Dict[str, List[ServiceInstance]]:
-        """Get all services from Consul"""
+# # #         """Get all services from Consul"""  # Module not found  # Module not found  # Module not found
         if not self.client:
             return {}
 
@@ -302,7 +302,7 @@ class ConsulServiceRegistry(ServiceRegistry):
                 )
 
         except Exception as e:
-            logger.error(f"Failed to get all services from Consul: {e}")
+# # #             logger.error(f"Failed to get all services from Consul: {e}")  # Module not found  # Module not found  # Module not found
 
         return services
 
@@ -333,7 +333,7 @@ class KubernetesServiceDiscovery:
             self.v1 = None
 
     async def get_kubernetes_services(self) -> Dict[str, List[ServiceInstance]]:
-        """Get services from Kubernetes"""
+# # #         """Get services from Kubernetes"""  # Module not found  # Module not found  # Module not found
         if not self.v1:
             return {}
 
@@ -458,7 +458,7 @@ class ServiceDiscoveryManager:
         return False
 
     async def deregister_service(self, service_id: str) -> bool:
-        """Deregister a service from the primary registry"""
+# # #         """Deregister a service from the primary registry"""  # Module not found  # Module not found  # Module not found
         primary_registry = self.registries.get(self.discovery_backend)
 
         if primary_registry:
@@ -480,13 +480,13 @@ class ServiceDiscoveryManager:
         else:
             instances = []
 
-            # Aggregate from all registries
+# # #             # Aggregate from all registries  # Module not found  # Module not found  # Module not found
             for registry_name, registry in self.registries.items():
                 try:
                     registry_instances = await registry.get_service(service_name)
                     instances.extend(registry_instances)
                 except Exception as e:
-                    logger.warning(f"Failed to get service from {registry_name}: {e}")
+# # #                     logger.warning(f"Failed to get service from {registry_name}: {e}")  # Module not found  # Module not found  # Module not found
 
             # Cache results
             self.service_cache[service_name] = instances
@@ -512,7 +512,7 @@ class ServiceDiscoveryManager:
         return lb_func(service_name, instances)
 
     async def get_available_services(self) -> Dict[str, List[ServiceInstance]]:
-        """Get all available services from all registries"""
+# # #         """Get all available services from all registries"""  # Module not found  # Module not found  # Module not found
         all_services = {}
 
         for registry_name, registry in self.registries.items():
@@ -526,7 +526,7 @@ class ServiceDiscoveryManager:
                     all_services[service_name].extend(instances)
 
             except Exception as e:
-                logger.warning(f"Failed to get services from {registry_name}: {e}")
+# # #                 logger.warning(f"Failed to get services from {registry_name}: {e}")  # Module not found  # Module not found  # Module not found
 
         return all_services
 

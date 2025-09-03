@@ -9,13 +9,13 @@ para verificar el comportamiento determinístico.
 import sys
 import argparse
 import json
-from typing import List, Dict, Any
-from pathlib import Path
+# # # from typing import List, Dict, Any  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Agregar el path del proyecto para imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from egw_query_expansion.core.total_ordering import (
+# # # from egw_query_expansion.core.total_ordering import (  # Module not found  # Module not found  # Module not found
     OrderedRecord,
     sort_total,
     explain_tie_breaks,

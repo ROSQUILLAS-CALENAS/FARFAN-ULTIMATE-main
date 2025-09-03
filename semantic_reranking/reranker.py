@@ -13,14 +13,14 @@ Returns merged payload with:
   - rerank_metrics: dict with distances, stability, weights
   - rerank_explain_plan: dict
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import math
-from typing import Any, Dict, List, Tuple
+# # # from typing import Any, Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 
 try:
     pass  # Added to fix syntax
-#     from orchestration.event_bus import publish_metric  # type: ignore  # Module not found
+# # # #     from orchestration.event_bus import publish_metric  # type: ignore  # Module not found  # Module not found  # Module not found  # Module not found
 except Exception:  # noqa: BLE001
     def publish_metric(topic: str, payload: Dict[str, Any]) -> None:  # type: ignore
         return None
@@ -74,14 +74,14 @@ def process(data: Any, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
     candidates: List[Dict[str, Any]] = []
     if isinstance(data, dict):
         candidates = data.get("candidates") or []
-    # Distributions from lexical stage if available
+# # #     # Distributions from lexical stage if available  # Module not found  # Module not found  # Module not found
     q_terms = []
     q_dist = {}
     coll_dist = {}
     if isinstance(data, dict):
         q_terms = data.get("lexical_query_terms") or []
         lm = data.get("lexical_metrics") or {}
-        # approximate distro from query terms (uniform over terms)
+# # #         # approximate distro from query terms (uniform over terms)  # Module not found  # Module not found  # Module not found
         if q_terms:
             q_dist = _normalize({t: 1.0 for t in q_terms})
         # approximate collection distro via token frequencies in bm25 index if available

@@ -21,14 +21,14 @@ Key features:
 import sys
 import warnings
 import logging
-from typing import Dict, List, Optional, Tuple, Any, Set
-from dataclasses import dataclass, field
-from enum import Enum
+# # # from typing import Dict, List, Optional, Tuple, Any, Set  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 import importlib.util
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Import the existing compatibility matrix
-from .mathematical_compatibility_matrix import (
+# # # from .mathematical_compatibility_matrix import (  # Module not found  # Module not found  # Module not found
     MathematicalCompatibilityMatrix,
     PythonVersion,
     StageEnhancer,
@@ -82,7 +82,7 @@ class MockFallbackRegistry:
         if "faiss" not in self.active_mocks:
             try:
                 import numpy as np
-                from sklearn.neighbors import NearestNeighbors
+# # #                 from sklearn.neighbors import NearestNeighbors  # Module not found  # Module not found  # Module not found
                 
                 class MockFAISS:
                     """Mock FAISS implementation using sklearn"""

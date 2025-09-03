@@ -3,9 +3,9 @@ Lightweight orjson compatibility shim for environments without orjson.
 Provides minimal dumps/loads and OPT_INDENT_2 used in this repository's tests.
 Note: orjson.dumps returns bytes; this shim mirrors that behavior.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 import json
-from typing import Any, Union
+# # # from typing import Any, Union  # Module not found  # Module not found  # Module not found
 
 # Options (subset)
 OPT_INDENT_2 = 2

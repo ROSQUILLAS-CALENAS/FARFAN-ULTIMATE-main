@@ -1,9 +1,9 @@
 """Pattern specifications and requirement types for standards matching."""
 
 import re
-from dataclasses import dataclass
-from enum import Enum
-from typing import List, Optional
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import List, Optional  # Module not found  # Module not found  # Module not found
 
 
 class PatternType(Enum):

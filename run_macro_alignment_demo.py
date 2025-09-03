@@ -5,12 +5,12 @@ Comprehensive demonstration of the Macro Alignment System
 
 import sys
 import json
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Add current directory to path
 sys.path.insert(0, '.')
 
-from canonical_flow.analysis.macro_alignment import MacroAggregationSystem, create_sample_data
+# # # from canonical_flow.analysis.macro_alignment import MacroAggregationSystem, create_sample_data  # Module not found  # Module not found  # Module not found
 
 def main():
     """Run comprehensive macro alignment demonstration"""

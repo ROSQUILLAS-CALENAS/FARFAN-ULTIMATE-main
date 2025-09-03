@@ -11,14 +11,14 @@ import hashlib
 import json
 import logging
 import math
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
-from functools import lru_cache
-from typing import Any, Dict, List, Optional, Tuple, Union
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from functools import lru_cache  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
-from .import_safety import safe_import
+# # # from .import_safety import safe_import  # Module not found  # Module not found  # Module not found
 
 # Safe imports with fallbacks
 numpy_result = safe_import('numpy', attributes=['array', 'linalg'])
@@ -132,7 +132,7 @@ class RoutingContext:
         corpus_size: int,
         mode: str,
     ) -> "RoutingContext":
-        """Create routing context from query data"""
+# # #         """Create routing context from query data"""  # Module not found  # Module not found  # Module not found
         query_hash = hashlib.sha256(query.encode()).hexdigest()
 
         # Handle different embedding formats
@@ -258,7 +258,7 @@ class SeedDerivation:
     def derive_seed(
         context: RoutingContext, step_id: int, module_id: str, config_hash: str
     ) -> int:
-        """Derive deterministic seed from context and traceability info (backward compatible).
+# # #         """Derive deterministic seed from context and traceability info (backward compatible).  # Module not found  # Module not found  # Module not found
         Note: Retained for compatibility; prefers derive_step_seed when trace_id is known.
         """
         seed_string = f"{context.query_hash}:{step_id}:{module_id}:{config_hash}"
@@ -495,7 +495,7 @@ class DeterministicRouter:
           - 'content' or 'content_hash': content used for hashing
         Returns list of step_id strings in chosen order.
         """
-        # Build decision vector deterministically from context
+# # #         # Build decision vector deterministically from context  # Module not found  # Module not found  # Module not found
         weights = list(
             self._compute_routing_weights(
                 context.query_hash, context.corpus_size, context.retrieval_mode
@@ -569,7 +569,7 @@ class DeterministicRouter:
         return gradient
 
     def reconstruct_path(self, query_hash: str) -> List[Dict[str, Any]]:
-        """Reconstruct complete routing path from logs"""
+# # #         """Reconstruct complete routing path from logs"""  # Module not found  # Module not found  # Module not found
         path_decisions = [d for d in self.decisions if d.context_hash == query_hash]
 
         return [

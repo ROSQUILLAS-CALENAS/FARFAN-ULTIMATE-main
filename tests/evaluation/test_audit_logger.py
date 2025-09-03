@@ -7,13 +7,13 @@ import json
 import tempfile
 import time
 import unittest
-from pathlib import Path
-from unittest.mock import patch
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import patch  # Module not found  # Module not found  # Module not found
 
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from canonical_flow.evaluation.audit_logger import (
+# # # from canonical_flow.evaluation.audit_logger import (  # Module not found  # Module not found  # Module not found
     AuditLogger, ComponentTrace, DecalogoPointTrace,
     CoverageValidationResult, ScoringConsistencyResult
 )
@@ -353,7 +353,7 @@ class TestGlobalAuditFunctions(unittest.TestCase):
     
     def test_global_audit_logger(self):
         """Test global audit logger functionality."""
-        from canonical_flow.evaluation.audit_logger import (
+# # #         from canonical_flow.evaluation.audit_logger import (  # Module not found  # Module not found  # Module not found
             get_audit_logger, start_point_evaluation, 
             log_component_entry, log_component_exit, save_audit_report
         )

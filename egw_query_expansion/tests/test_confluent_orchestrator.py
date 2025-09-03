@@ -7,12 +7,12 @@ Verifies reproducibility across different parallelism degrees and scheduling pol
 
 import asyncio
 import random
-from concurrent.futures import ThreadPoolExecutor
-from typing import List
+# # # from concurrent.futures import ThreadPoolExecutor  # Module not found  # Module not found  # Module not found
+# # # from typing import List  # Module not found  # Module not found  # Module not found
 
 import pytest
 
-from egw_query_expansion.core.confluent_orchestrator import (
+# # # from egw_query_expansion.core.confluent_orchestrator import (  # Module not found  # Module not found  # Module not found
     ConfluentOrchestrator,
     NodeType,
     TaskNode,
@@ -234,7 +234,7 @@ class TestConfluentOrchestrator:
     @pytest.mark.asyncio
     async def test_crdt_state_merge(self):
         """Test CvRDT state merging"""
-        from egw_query_expansion.core.confluent_orchestrator import CvRDTState
+# # #         from egw_query_expansion.core.confluent_orchestrator import CvRDTState  # Module not found  # Module not found  # Module not found
 
         state1 = CvRDTState()
         state1.version_vector = {"actor1": 2, "actor2": 1}

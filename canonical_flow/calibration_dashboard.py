@@ -9,10 +9,10 @@ __all__ = ['CalibrationDashboard', 'CalibrationReport']
 
 import json
 import logging
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, Any, Optional, List
-from dataclasses import dataclass, asdict
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, Any, Optional, List  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +61,7 @@ class CalibrationDashboard:
         
         Args:
             stage_name: Name of the pipeline stage
-            calibration_data: Raw calibration data from the stage
+# # #             calibration_data: Raw calibration data from the stage  # Module not found  # Module not found  # Module not found
             
         Returns:
             CalibrationReport object
@@ -101,7 +101,7 @@ class CalibrationDashboard:
             )
     
     def _extract_quality_score(self, data: Dict[str, Any]) -> float:
-        """Extract quality score from calibration data with fallbacks"""
+# # #         """Extract quality score from calibration data with fallbacks"""  # Module not found  # Module not found  # Module not found
         # Try multiple possible field names
         score_fields = ['quality_score', 'score', 'quality', 'metric_score', 'value']
         
@@ -125,7 +125,7 @@ class CalibrationDashboard:
         return 0.0
     
     def _extract_calibration_decision(self, data: Dict[str, Any]) -> str:
-        """Extract calibration decision from data"""
+# # #         """Extract calibration decision from data"""  # Module not found  # Module not found  # Module not found
         decision_fields = ['calibration_decision', 'decision', 'action', 'recommendation']
         
         for field in decision_fields:
@@ -150,7 +150,7 @@ class CalibrationDashboard:
         return 'unknown'
     
     def _extract_coverage_percentage(self, data: Dict[str, Any]) -> float:
-        """Extract coverage percentage from data"""
+# # #         """Extract coverage percentage from data"""  # Module not found  # Module not found  # Module not found
         coverage_fields = ['coverage_percentage', 'coverage', 'percent_covered', 'completeness']
         
         for field in coverage_fields:
@@ -179,7 +179,7 @@ class CalibrationDashboard:
             if field in data:
                 return bool(data[field])
                 
-        # Infer from quality score if available
+# # #         # Infer from quality score if available  # Module not found  # Module not found  # Module not found
         quality_score = self._extract_quality_score(data)
         threshold = data.get('quality_threshold', 0.8)
         
@@ -220,7 +220,7 @@ class CalibrationDashboard:
         
         Args:
             stage_name: Name of the pipeline stage
-            calibration_data: Raw calibration data from the stage
+# # #             calibration_data: Raw calibration data from the stage  # Module not found  # Module not found  # Module not found
             
         Returns:
             Path to the written report file
@@ -230,7 +230,7 @@ class CalibrationDashboard:
     
     def read_report(self, stage_name: str) -> Optional[CalibrationReport]:
         """
-        Read an existing calibration report from disk.
+# # #         Read an existing calibration report from disk.  # Module not found  # Module not found  # Module not found
         
         Args:
             stage_name: Name of the pipeline stage
@@ -251,7 +251,7 @@ class CalibrationDashboard:
             return CalibrationReport(**report_data)
             
         except Exception as e:
-            logger.error(f"Failed to read calibration report from {file_path}: {e}")
+# # #             logger.error(f"Failed to read calibration report from {file_path}: {e}")  # Module not found  # Module not found  # Module not found
             return None
     
     def list_reports(self) -> List[str]:

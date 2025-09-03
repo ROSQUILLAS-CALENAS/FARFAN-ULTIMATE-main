@@ -6,10 +6,10 @@ Demo script for the Per-Point Scoring System
 import sys
 import json
 import random
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Import the scoring system
-from per_point_scoring_system import PerPointScoringSystem, ComplianceLevel
+# # # from per_point_scoring_system import PerPointScoringSystem, ComplianceLevel  # Module not found  # Module not found  # Module not found
 
 def create_demo_data():
     """Create realistic demo data for testing."""

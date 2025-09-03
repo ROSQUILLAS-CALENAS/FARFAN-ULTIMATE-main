@@ -4,7 +4,7 @@ Simple validation script for mathematical pipeline coordinator
 """
 
 try:
-    from canonical_flow.mathematical_enhancers.mathematical_pipeline_coordinator import (
+# # #     from canonical_flow.mathematical_enhancers.mathematical_pipeline_coordinator import (  # Module not found  # Module not found  # Module not found
         MathematicalPipelineCoordinator,
         MathStageType, 
         create_mathematical_pipeline_coordinator

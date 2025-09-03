@@ -6,14 +6,14 @@ import asyncio
 import logging
 import threading
 import time
-from datetime import datetime, timedelta
-from typing import Any, Callable, Dict, List, Optional
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional  # Module not found  # Module not found  # Module not found
 
 import ray
-from ray.exceptions import RaySystemError
-from ray.util.state import list_nodes
+# # # from ray.exceptions import RaySystemError  # Module not found  # Module not found  # Module not found
+# # # from ray.util.state import list_nodes  # Module not found  # Module not found  # Module not found
 
-from .decision_engine import ScalingAction, ScalingDecision
+# # # from .decision_engine import ScalingAction, ScalingDecision  # Module not found  # Module not found  # Module not found
 
 
 class RayWorkerPool:
@@ -126,7 +126,7 @@ class RayWorkerPool:
                 self.logger.error(f"Failed to create worker {i}: {e}")
 
     async def _remove_workers(self, count: int):
-        """Remove workers from the pool (graceful shutdown)"""
+# # #         """Remove workers from the pool (graceful shutdown)"""  # Module not found  # Module not found  # Module not found
         workers_to_remove = self.active_workers[-count:]
 
         for worker in workers_to_remove:
@@ -508,7 +508,7 @@ class AdaptiveController:
             raise
 
     async def apply_scaling_decision(self, decision: ScalingDecision) -> bool:
-        """Apply scaling decision from decision engine"""
+# # #         """Apply scaling decision from decision engine"""  # Module not found  # Module not found  # Module not found
         if not self.is_active:
             self.logger.warning("Controller not active, ignoring scaling decision")
             return False

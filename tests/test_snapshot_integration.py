@@ -12,13 +12,13 @@ Tests the full workflow:
 import subprocess
 import sys
 import json
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Add current dir to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from snapshot_manager import mount_snapshot, get_current_snapshot_id
-from tools.certificate_generator import CertificateGenerator
+# # # from snapshot_manager import mount_snapshot, get_current_snapshot_id  # Module not found  # Module not found  # Module not found
+# # # from tools.certificate_generator import CertificateGenerator  # Module not found  # Module not found  # Module not found
 
 
 def test_integration():

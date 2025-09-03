@@ -1,13 +1,13 @@
 """Gromov-Wasserstein alignment with stability guarantees."""
 
 import logging
-from typing import Dict
+# # # from typing import Dict  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import ot
-from scipy.optimize import linear_sum_assignment
+# # # from scipy.optimize import linear_sum_assignment  # Module not found  # Module not found  # Module not found
 
-from .graph_ops import DocumentGraph, StandardsGraph
+# # # from .graph_ops import DocumentGraph, StandardsGraph  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +29,7 @@ class GWAlignmentResult:
         self.matching_pairs = self._extract_matching_pairs()
 
     def _extract_matching_pairs(self) -> list:
-        """Extract matching pairs from transport plan."""
+# # #         """Extract matching pairs from transport plan."""  # Module not found  # Module not found  # Module not found
         pairs = []
         threshold = np.max(self.transport_plan) * 0.1  # 10% of max
         rows, cols = np.where(self.transport_plan > threshold)
@@ -95,7 +95,7 @@ def gw_align(
         "total_cost": float(total_cost),
     }
 
-    # Stability bound from JMLR 2024 (simplified)
+# # #     # Stability bound from JMLR 2024 (simplified)  # Module not found  # Module not found  # Module not found
     # ε ≤ C * sqrt(λ * log(max(n1, n2)))
     C_const = 2.0  # Problem-dependent constant
     stability_bound = C_const * np.sqrt(reg * np.log(max(n1, n2)))

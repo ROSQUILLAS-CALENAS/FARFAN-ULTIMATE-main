@@ -11,16 +11,16 @@ import json
 import logging
 import re
 import sys
-from pathlib import Path
-from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple, Union
-from collections import OrderedDict
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Import total ordering base
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin
+# # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -231,7 +231,7 @@ class ExtractorEvidenciasContextual(TotalOrderingBase, DeterministicCollectionMi
             return self.sort_dict_by_keys(error_output)
     
     def _extract_documents_deterministic(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """Extract documents from input data with stable ordering"""
+# # #         """Extract documents from input data with stable ordering"""  # Module not found  # Module not found  # Module not found
         documents = []
         
         # Handle single document
@@ -285,7 +285,7 @@ class ExtractorEvidenciasContextual(TotalOrderingBase, DeterministicCollectionMi
         return documents
     
     def _extract_evidences_from_document_deterministic(self, document: Dict[str, Any]) -> List[ExtractedEvidence]:
-        """Extract evidences from a single document with deterministic processing"""
+# # #         """Extract evidences from a single document with deterministic processing"""  # Module not found  # Module not found  # Module not found
         doc_id = document["id"]
         doc_text = document["text"]
         doc_metadata = document.get("metadata", {})
@@ -430,7 +430,7 @@ class ExtractorEvidenciasContextual(TotalOrderingBase, DeterministicCollectionMi
         )
     
     def _extract_keywords_deterministic(self, text: str) -> List[str]:
-        """Extract keywords from text deterministically"""
+# # #         """Extract keywords from text deterministically"""  # Module not found  # Module not found  # Module not found
         # Simple keyword extraction using word frequency
         words = re.findall(r'\b[a-zA-ZáéíóúñÁÉÍÓÚÑ]+\b', text.lower())
         
@@ -650,7 +650,7 @@ class ExtractorEvidenciasContextual(TotalOrderingBase, DeterministicCollectionMi
 
 # Backward compatibility functions
 def extract_evidences(text: str, document_id: str = None) -> Dict[str, Any]:
-    """Extract evidences from text"""
+# # #     """Extract evidences from text"""  # Module not found  # Module not found  # Module not found
     extractor = ExtractorEvidenciasContextual()
     
     data = {"text": text}

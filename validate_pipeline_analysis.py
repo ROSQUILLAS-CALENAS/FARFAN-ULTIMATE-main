@@ -13,7 +13,7 @@ def validate_implementation():
     
     # Test 1: Import core components
     try:
-        from pipeline_value_analysis_system import (
+# # #         from pipeline_value_analysis_system import (  # Module not found  # Module not found  # Module not found
             PipelineValueAnalysisSystem, 
             ValueContributionLevel,
             ArtifactProfile,
@@ -27,7 +27,7 @@ def validate_implementation():
     
     # Test 2: Import stage justification framework
     try:
-        from stage_justification_framework import (
+# # #         from stage_justification_framework import (  # Module not found  # Module not found  # Module not found
             create_stage_justification_framework,
             JustificationMetricType,
             StageJustificationFramework

@@ -5,13 +5,13 @@ Genera recomendaciones personalizadas y accionables basadas en análisis de brec
 
 import logging
 import numpy as np
-from typing import Dict, List, Any, Optional, Tuple
-from dataclasses import asdict
-from datetime import datetime
+# # # from typing import Dict, List, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import asdict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import json
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
-from models import (
+# # # from models import (  # Module not found  # Module not found  # Module not found
     AdaptiveScoringResults, IntelligentRecommendations, RecommendationItem,
     PDTContext, ComplianceStatus
 )
@@ -93,7 +93,7 @@ class IntelligentRecommendationEngine:
         
         # 6. Crear objeto de recomendaciones
         # Create summary for strongly-typed response  
-        from models import Priority, DifficultyLevel
+# # #         from models import Priority, DifficultyLevel  # Module not found  # Module not found  # Module not found
         summary_by_priority = {}
         summary_by_category = {}
         summary_by_difficulty = {}
@@ -116,7 +116,7 @@ class IntelligentRecommendationEngine:
                 difficulty_key = rec.implementation_difficulty
             summary_by_difficulty[difficulty_key] = summary_by_difficulty.get(difficulty_key, 0) + 1
         
-        from schemas.api_models import RecommendationSummary
+# # #         from schemas.api_models import RecommendationSummary  # Module not found  # Module not found  # Module not found
         summary = RecommendationSummary(
             total_recommendations=len(prioritized_recommendations),
             by_priority=summary_by_priority,

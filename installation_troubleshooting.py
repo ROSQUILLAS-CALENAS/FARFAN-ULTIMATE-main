@@ -11,7 +11,7 @@ import platform
 import json
 import tempfile
 import shutil
-from typing import List, Dict, Any, Optional, Tuple
+# # # from typing import List, Dict, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
 import importlib
 
 
@@ -242,7 +242,7 @@ class InstallationTroubleshooter:
         
         # Test 4: Transformers tokenizer
         try:
-            from transformers import AutoTokenizer
+# # #             from transformers import AutoTokenizer  # Module not found  # Module not found  # Module not found
             tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased', use_fast=False)
             tokens = tokenizer.tokenize("test")
             tests['transformers_basic'] = {'status': 'success', 'tokens': tokens}

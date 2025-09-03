@@ -11,31 +11,31 @@ Returns merged payload with:
   - hybrid_metrics: performance and fusion diagnostics
   - explain_plan: ranking methodology details
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import math
 import os
-from collections import defaultdict
-from typing import Any, Dict, List, Optional, Tuple
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 
 try:
-    from config_loader import get_thresholds
+# # #     from config_loader import get_thresholds  # Module not found  # Module not found  # Module not found
     THRESHOLDS_AVAILABLE = True
 except ImportError:
     THRESHOLDS_AVAILABLE = False
 
 try:
     pass  # Added to fix syntax
-#     from orchestration.event_bus import publish_metric  # type: ignore  # Module not found
+# # # #     from orchestration.event_bus import publish_metric  # type: ignore  # Module not found  # Module not found  # Module not found  # Module not found
 except Exception:  # noqa: BLE001
     def publish_metric(topic: str, payload: Dict[str, Any]) -> None:  # type: ignore
         return None
 
 try:
     pass  # Added to fix syntax
-#     from tracing.decorators import trace  # type: ignore  # Module not found
+# # # #     from tracing.decorators import trace  # type: ignore  # Module not found  # Module not found  # Module not found  # Module not found
 except Exception:  # noqa: BLE001
     def trace(fn):  # type: ignore
         return fn
@@ -75,7 +75,7 @@ def _reciprocal_rank_fusion(rankings: List[List[int]], k: Optional[int] = None) 
     - Robust: insensitive to individual system failures
     - Deterministic: identical inputs → identical outputs
     """
-    # Load k parameter from configuration if not provided
+# # #     # Load k parameter from configuration if not provided  # Module not found  # Module not found  # Module not found
     if k is None:
         if THRESHOLDS_AVAILABLE:
             try:
@@ -135,7 +135,7 @@ def _late_interaction_score(query_tokens: List[str], doc_tokens: List[str],
 
 def _entropy_calibration(scores: List[float], temperature: Optional[float] = None) -> List[float]:
     """Apply temperature-based calibration to scores for better fusion."""
-    # Load temperature from configuration if not provided
+# # #     # Load temperature from configuration if not provided  # Module not found  # Module not found  # Module not found
     if temperature is None:
         if THRESHOLDS_AVAILABLE:
             try:
@@ -170,19 +170,19 @@ def process(data: Any, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
     debug = bool(ctx.get("debug", False))
     trace_log: List[Dict[str, Any]] = []
 
-    # Extract retrieval results from previous stages
+# # #     # Extract retrieval results from previous stages  # Module not found  # Module not found  # Module not found
     lexical_results = []
     vector_results = []
     query_terms = []
     
     if isinstance(data, dict):
-        # Lexical results from BM25
+# # #         # Lexical results from BM25  # Module not found  # Module not found  # Module not found
         if "bm25_scores" in data:
             bm25_scores = data["bm25_scores"]
             for i, score in enumerate(bm25_scores):
                 lexical_results.append({"doc_id": i, "score": score, "rank": i})
         
-        # Vector results from dense retrieval
+# # #         # Vector results from dense retrieval  # Module not found  # Module not found  # Module not found
         if "vector_metrics" in data and "similarities" in data["vector_metrics"]:
             similarities = data["vector_metrics"]["similarities"]
             full_sims = similarities.get("full", [])
@@ -220,7 +220,7 @@ def process(data: Any, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
     candidates = []
     
     for doc_id in all_doc_ids:
-        # Find scores from each modality
+# # #         # Find scores from each modality  # Module not found  # Module not found  # Module not found
         lexical_score = 0.0
         vector_score = 0.0
         
@@ -297,7 +297,7 @@ def process(data: Any, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
     # Final hybrid scoring (weighted combination)
     fusion_weights = ctx.get("fusion_weights")
     if fusion_weights is None:
-        # Load fusion weights from configuration
+# # #         # Load fusion weights from configuration  # Module not found  # Module not found  # Module not found
         if THRESHOLDS_AVAILABLE:
             try:
                 config = get_thresholds()

@@ -21,20 +21,20 @@ import json
 import logging
 import pickle
 import warnings
-from abc import ABC, abstractmethod
-from collections import defaultdict
-from dataclasses import asdict, dataclass, field
-from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Union
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import asdict, dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 import numpy as np
-from scipy import stats
+# # # from scipy import stats  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
 # Try to import centralized configuration
 try:
-    from config_loader import get_thresholds
+# # #     from config_loader import get_thresholds  # Module not found  # Module not found  # Module not found
     THRESHOLDS_AVAILABLE = True
 except ImportError:
     THRESHOLDS_AVAILABLE = False
@@ -93,7 +93,7 @@ class RiskControlConfig:
 
     @classmethod
     def from_thresholds_config(cls, use_centralized: bool = True) -> 'RiskControlConfig':
-        """Create RiskControlConfig from centralized thresholds configuration."""
+# # #         """Create RiskControlConfig from centralized thresholds configuration."""  # Module not found  # Module not found  # Module not found
         if use_centralized and THRESHOLDS_AVAILABLE:
             try:
                 config = get_thresholds()
@@ -190,7 +190,7 @@ class CoverageAnalysis:
     efficiency_score: float  # 1 / average_set_size
 
     def is_significantly_different(self, alpha: float = 0.05) -> bool:
-        """Test if coverage is significantly different from target."""
+# # #         """Test if coverage is significantly different from target."""  # Module not found  # Module not found  # Module not found
         return self.coverage_test_p_value < alpha
 
 
@@ -250,7 +250,7 @@ class RiskCertificate:
 
     @classmethod
     def load(cls, filepath: Union[str, Path]) -> "RiskCertificate":
-        """Load certificate from file."""
+# # #         """Load certificate from file."""  # Module not found  # Module not found  # Module not found
         filepath = Path(filepath)
         with open(filepath, "r") as f:
             data = json.load(f)
@@ -329,7 +329,7 @@ class RegressionNonconformityScorer(NonconformityScorer):
         self.robust = robust
         self.scale_factor = None
         
-        # Load temperature from centralized config if not provided
+# # #         # Load temperature from centralized config if not provided  # Module not found  # Module not found  # Module not found
         if temperature is None and THRESHOLDS_AVAILABLE:
             try:
                 config = get_thresholds()
@@ -346,7 +346,7 @@ class RegressionNonconformityScorer(NonconformityScorer):
     def fit_normalization(
         self, predictions: np.ndarray, true_labels: np.ndarray
     ) -> None:
-        """Fit normalization parameters from calibration data."""
+# # #         """Fit normalization parameters from calibration data."""  # Module not found  # Module not found  # Module not found
         residuals = predictions - true_labels
 
         if self.robust:
@@ -427,7 +427,7 @@ class ClassificationNonconformityScorer(NonconformityScorer):
         self.adaptive_threshold = adaptive_threshold
         self.class_thresholds = None
         
-        # Load temperature from centralized config if not provided
+# # #         # Load temperature from centralized config if not provided  # Module not found  # Module not found  # Module not found
         if temperature is None and THRESHOLDS_AVAILABLE:
             try:
                 config = get_thresholds()
@@ -557,7 +557,7 @@ class EnhancedConformalRiskController:
     """
 
     def __init__(self, config: Optional[RiskControlConfig] = None):
-        # Load config from centralized thresholds if not provided
+# # #         # Load config from centralized thresholds if not provided  # Module not found  # Module not found  # Module not found
         if config is None:
             self.config = RiskControlConfig.from_thresholds_config()
         else:
@@ -797,7 +797,7 @@ class EnhancedConformalRiskController:
         n_folds: int = 5,
     ) -> Dict[str, Any]:
         """Perform cross-validation to estimate coverage stability."""
-        from sklearn.model_selection import KFold
+# # #         from sklearn.model_selection import KFold  # Module not found  # Module not found  # Module not found
 
         kf = KFold(n_splits=n_folds, shuffle=True, random_state=self.config.random_seed)
         cv_coverages = []
@@ -877,7 +877,7 @@ class EnhancedConformalRiskController:
         Construct RCPS prediction set with coverage guarantees.
 
         Args:
-            candidate_predictions: Mapping from candidate values to non-conformity scores
+# # #             candidate_predictions: Mapping from candidate values to non-conformity scores  # Module not found  # Module not found  # Module not found
             confidence_level: Override default confidence level
 
         Returns:
@@ -912,7 +912,7 @@ class EnhancedConformalRiskController:
         Construct confidence interval for regression predictions.
 
         Args:
-            point_prediction: Point prediction from model
+# # #             point_prediction: Point prediction from model  # Module not found  # Module not found  # Module not found
             scorer: Non-conformity scorer (should be regression type)
 
         Returns:
@@ -999,7 +999,7 @@ class EnhancedConformalRiskController:
 
         # Binomial test for coverage hypothesis (using newer scipy API)
         try:
-            from scipy.stats import binomtest
+# # #             from scipy.stats import binomtest  # Module not found  # Module not found  # Module not found
 
             coverage_p_value = binomtest(
                 n_covered, total_count, target_coverage, alternative="two-sided"
@@ -1007,14 +1007,14 @@ class EnhancedConformalRiskController:
         except ImportError:
             # Fallback for older scipy versions
             try:
-                from scipy.stats import binom_test
+# # #                 from scipy.stats import binom_test  # Module not found  # Module not found  # Module not found
 
                 coverage_p_value = binom_test(
                     n_covered, total_count, target_coverage, alternative="two-sided"
                 )
             except ImportError:
                 # Manual binomial test calculation
-                from scipy.stats import binom
+# # #                 from scipy.stats import binom  # Module not found  # Module not found  # Module not found
 
                 coverage_p_value = 2 * min(
                     binom.cdf(n_covered, total_count, target_coverage),
@@ -1159,7 +1159,7 @@ class EnhancedConformalRiskController:
         if input_hash in self._certificate_cache:
             cached_cert = self._certificate_cache[input_hash]
             # Check if certificate is still valid (not expired)
-            from datetime import datetime, timedelta
+# # #             from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
 
             if hasattr(cached_cert, "validity_expires"):
                 try:
@@ -1232,7 +1232,7 @@ class EnhancedConformalRiskController:
         )
         timestamp = str(np.datetime64("now"))
 
-        from datetime import datetime, timedelta
+# # #         from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
 
         validity_expires = str(
             datetime.now() + timedelta(hours=self.config.certificate_validity_hours)
@@ -1300,7 +1300,7 @@ class EnhancedConformalRiskController:
         n_test = len(predictions)
 
         for _ in range(min(100, self.config.bootstrap_samples)):  # Limit for efficiency
-            # Bootstrap sample from test set
+# # #             # Bootstrap sample from test set  # Module not found  # Module not found  # Module not found
             boot_indices = self._bootstrap_rng.choice(n_test, size=n_test, replace=True)
             boot_pred = [predictions[i] for i in boot_indices]
             boot_labels = [test_labels[i] for i in boot_indices]
@@ -1334,7 +1334,7 @@ class EnhancedConformalRiskController:
         )
 
         # KS test against uniform distribution
-        from scipy.stats import kstest
+# # #         from scipy.stats import kstest  # Module not found  # Module not found  # Module not found
 
         ks_stat, ks_p = kstest(p_values, "uniform")
         uniformity_score = ks_p  # Higher p-value indicates better uniformity
@@ -1355,7 +1355,7 @@ class EnhancedConformalRiskController:
         Enhanced distribution shift detection using multiple statistical tests.
 
         Args:
-            new_scores: Non-conformity scores from new data
+# # #             new_scores: Non-conformity scores from new data  # Module not found  # Module not found  # Module not found
 
         Returns:
             Dictionary with comprehensive shift detection results
@@ -1377,7 +1377,7 @@ class EnhancedConformalRiskController:
 
         # Method 1: Kolmogorov-Smirnov test
         if self.config.shift_detection_method in ["ks", "all"]:
-            from scipy.stats import ks_2samp
+# # #             from scipy.stats import ks_2samp  # Module not found  # Module not found  # Module not found
 
             ks_statistic, ks_p_value = ks_2samp(baseline, new_scores)
             results["methods"]["ks"] = {

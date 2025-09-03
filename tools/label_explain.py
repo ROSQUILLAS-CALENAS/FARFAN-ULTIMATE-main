@@ -7,13 +7,13 @@ Provides transparency into monotone reasoning process.
 
 import json
 import sys
-from typing import Set, List, Dict, Tuple
-from dataclasses import dataclass, asdict
-from pathlib import Path
+# # # from typing import Set, List, Dict, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
-# Import from test module for consistency
+# # # # Import from test module for consistency  # Module not found  # Module not found  # Module not found
 sys.path.append(str(Path(__file__).parent.parent))
-from tests.test_mcc import SatLabel, Clause, Evidence, HornEvaluator
+# # # from tests.test_mcc import SatLabel, Clause, Evidence, HornEvaluator  # Module not found  # Module not found  # Module not found
 
 
 @dataclass

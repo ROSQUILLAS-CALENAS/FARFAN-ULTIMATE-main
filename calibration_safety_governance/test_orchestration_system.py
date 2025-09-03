@@ -10,12 +10,12 @@ import pytest
 import json
 import tempfile
 import shutil
-from datetime import datetime, timedelta
-from pathlib import Path
-from unittest.mock import Mock, patch
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import Mock, patch  # Module not found  # Module not found  # Module not found
 
-from preflight_validator import PreflightValidator, ValidationResult
-from auto_deactivation_monitor import (
+# # # from preflight_validator import PreflightValidator, ValidationResult  # Module not found  # Module not found  # Module not found
+# # # from auto_deactivation_monitor import (  # Module not found  # Module not found  # Module not found
     AutoDeactivationMonitor, 
     StabilityDriftAnalyzer, 
     EvidenceQualityTracker,
@@ -23,12 +23,12 @@ from auto_deactivation_monitor import (
     DeactivationTriggerType,
     DeactivationSeverity
 )
-from provenance_tracker import (
+# # # from provenance_tracker import (  # Module not found  # Module not found  # Module not found
     ProvenanceTracker, 
     EnhancementLifecycleState,
     ActivationCriteriaType
 )
-from orchestrator import EnhancementOrchestrator, OrchestrationConfig, OrchestrationMode
+# # # from orchestrator import EnhancementOrchestrator, OrchestrationConfig, OrchestrationMode  # Module not found  # Module not found  # Module not found
 
 
 class TestPreflightValidator:

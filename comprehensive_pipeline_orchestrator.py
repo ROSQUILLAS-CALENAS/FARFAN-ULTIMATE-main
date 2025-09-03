@@ -1,4 +1,4 @@
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 """
 Comprehensive Deterministic Pipeline Orchestrator
 
@@ -21,13 +21,13 @@ import importlib.util
 import json
 import logging
 import time
-from collections import defaultdict, deque
-from dataclasses import dataclass, field
-from datetime import datetime, timedelta
-from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
-from concurrent.futures import ThreadPoolExecutor
+# # # from collections import defaultdict, deque  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from concurrent.futures import ThreadPoolExecutor  # Module not found  # Module not found  # Module not found
 
 try:
     import psutil  # type: ignore
@@ -38,10 +38,10 @@ except Exception:
         def virtual_memory(self): return type("M", (), {"percent": 0.0})()
     psutil = _PsutilStub()  # type: ignore
 
-from circuit_breaker import CircuitBreaker, CircuitState, BreakerOpenError
-from exception_monitoring import ExceptionMonitor
-from parallel_processor import ParallelPDFProcessor, default_pdf_chunk_processor
-from canonical_flow.pipeline_state_manager import PipelineStateManager, StageArtifact, StageStatus
+# # # from circuit_breaker import CircuitBreaker, CircuitState, BreakerOpenError  # Module not found  # Module not found  # Module not found
+# # # from exception_monitoring import ExceptionMonitor  # Module not found  # Module not found  # Module not found
+# # # from parallel_processor import ParallelPDFProcessor, default_pdf_chunk_processor  # Module not found  # Module not found  # Module not found
+# # # from canonical_flow.pipeline_state_manager import PipelineStateManager, StageArtifact, StageStatus  # Module not found  # Module not found  # Module not found
 
 
 class PDFProcessingError(Exception):
@@ -89,11 +89,11 @@ project_root = Path(__file__).resolve().parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
-from egw_query_expansion.core.immutable_context import QuestionContext, create_question_context
+# # # from egw_query_expansion.core.immutable_context import QuestionContext, create_question_context  # Module not found  # Module not found  # Module not found
 
 # Import contract system
 try:
-    from contract_system import ContractManager, ContractResult, ContractStatus
+# # #     from contract_system import ContractManager, ContractResult, ContractStatus  # Module not found  # Module not found  # Module not found
     CONTRACTS_AVAILABLE = True
 except ImportError as e:
     CONTRACTS_AVAILABLE = False
@@ -516,7 +516,7 @@ except ImportError as e:
 # Import mathematical orchestration enhancer
 try:
     from canonical_flow.mathematical_enhancers.orchestration_enhancer import (
-        MathematicalOrchestrationEnhancer, 
+        MathematicalOrchestrationEnhancer,
         OrchestrationIntegrator,
         StabilityBounds,
         create_enhanced_orchestrator
@@ -558,7 +558,7 @@ class ComprehensivePipelineOrchestrator:
 
     def __init__(self) -> None:
         # Pre-flight validation - MUST be first operation
-        from canonical_flow.mathematical_enhancers.pre_flight_validator import check_library_compatibility
+# # #         from canonical_flow.mathematical_enhancers.pre_flight_validator import check_library_compatibility  # Module not found  # Module not found  # Module not found
         
         logger.info("Starting comprehensive pipeline orchestrator with pre-flight validation...")
         validation_result = check_library_compatibility()
@@ -644,7 +644,7 @@ class ComprehensivePipelineOrchestrator:
     def resume_from_checkpoint(self, document_id: str, input_data: Any = None, 
                               question_text: Optional[str] = None) -> Dict[str, Any]:
         """
-        Resume pipeline execution from the last successful checkpoint for a document.
+# # #         Resume pipeline execution from the last successful checkpoint for a document.  # Module not found  # Module not found  # Module not found
         
         Args:
             document_id: Document identifier to resume
@@ -654,11 +654,11 @@ class ComprehensivePipelineOrchestrator:
         Returns:
             Pipeline execution result
         """
-        logger.info(f"Resuming pipeline execution from checkpoint for document: {document_id}")
+# # #         logger.info(f"Resuming pipeline execution from checkpoint for document: {document_id}")  # Module not found  # Module not found  # Module not found
         
         # Check if document state exists
         if document_id not in self.state_manager.document_states:
-            logger.warning(f"No checkpoint found for document {document_id}, starting from beginning")
+# # #             logger.warning(f"No checkpoint found for document {document_id}, starting from beginning")  # Module not found  # Module not found  # Module not found
             return self.execute_pipeline(input_data, question_text, document_id=document_id, enable_checkpointing=True)
         
         # Get current progress
@@ -682,7 +682,7 @@ class ComprehensivePipelineOrchestrator:
                         "resumed_from_checkpoint": True
                     }
         
-        logger.info(f"Resuming from stage: {next_stage} (Progress: {progress['progress_percentage']:.1f}%)")
+# # #         logger.info(f"Resuming from stage: {next_stage} (Progress: {progress['progress_percentage']:.1f}%)")  # Module not found  # Module not found  # Module not found
         
         # Resume execution with checkpointing enabled
         return self.execute_pipeline(input_data, question_text, document_id=document_id, enable_checkpointing=True)
@@ -715,12 +715,12 @@ class ComprehensivePipelineOrchestrator:
             ProcessStage.SYNTHESIS: "synthesis_output"
         }
         
-        # Get pipeline stage from mapping, with fallback logic
+# # #         # Get pipeline stage from mapping, with fallback logic  # Module not found  # Module not found  # Module not found
         pipeline_stage = stage_mapping.get(node.stage)
         if pipeline_stage:
             return pipeline_stage
         
-        # Fallback: try to infer from node name or stage value
+# # #         # Fallback: try to infer from node name or stage value  # Module not found  # Module not found  # Module not found
         stage_value = node.stage.value.lower()
         if "routing" in node_name.lower() or "decision" in node_name.lower():
             return "routing_decision"
@@ -732,7 +732,7 @@ class ComprehensivePipelineOrchestrator:
     
     def _generate_stage_artifacts(self, node_name: str, result: Any) -> List[StageArtifact]:
         """
-        Generate artifacts from a stage execution result.
+# # #         Generate artifacts from a stage execution result.  # Module not found  # Module not found  # Module not found
         
         Args:
             node_name: Name of the process graph node
@@ -1740,7 +1740,7 @@ class ComprehensivePipelineOrchestrator:
         """Execute pipeline with parallel PDF processing capabilities."""
         logger.info("Executing pipeline with parallel PDF processing")
         
-        # Extract PDF processing configuration from input
+# # #         # Extract PDF processing configuration from input  # Module not found  # Module not found  # Module not found
         pdf_files = self._extract_pdf_files_from_input(input_data)
         
         if not pdf_files:
@@ -1795,7 +1795,7 @@ class ComprehensivePipelineOrchestrator:
                 logger.error(f"Failed to process {pdf_file} in parallel: {e}")
                 parallel_results[pdf_file] = {'error': str(e), 'success': False}
         
-        # Aggregate results from all PDF files
+# # #         # Aggregate results from all PDF files  # Module not found  # Module not found  # Module not found
         aggregated_results = self._aggregate_parallel_results(parallel_results)
         
         # Run final synthesis stages on aggregated results
@@ -1821,7 +1821,7 @@ class ComprehensivePipelineOrchestrator:
         }
     
     def _extract_pdf_files_from_input(self, input_data: Any) -> List[str]:
-        """Extract PDF file paths from input data."""
+# # #         """Extract PDF file paths from input data."""  # Module not found  # Module not found  # Module not found
         pdf_files = []
         
         if isinstance(input_data, dict):
@@ -1848,7 +1848,7 @@ class ComprehensivePipelineOrchestrator:
     
     def _process_chunk_through_pipeline(self, chunk_input: Dict[str, Any], question_text: Optional[str] = None) -> Dict[str, Any]:
         """Process a single chunk through relevant pipeline stages with comprehensive error handling."""
-        from knowledge_extraction_error_handler import KnowledgeExtractionErrorHandler
+# # #         from knowledge_extraction_error_handler import KnowledgeExtractionErrorHandler  # Module not found  # Module not found  # Module not found
         
         # Initialize error handler if not exists
         if not hasattr(self, '_chunk_error_handler'):
@@ -1875,7 +1875,7 @@ class ComprehensivePipelineOrchestrator:
         chunk_context = None
         if question_text:
             try:
-                from egw_query_expansion.core.immutable_context import create_question_context
+# # #                 from egw_query_expansion.core.immutable_context import create_question_context  # Module not found  # Module not found  # Module not found
                 chunk_context = create_question_context(question_text, chunk_input.get('chunk_data', {}))
                 processing_state['stages_completed'].append('context_creation')
             except Exception as e:
@@ -2015,7 +2015,7 @@ class ComprehensivePipelineOrchestrator:
     
     def _run_knowledge_extraction(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """Run knowledge extraction stages on data with comprehensive error handling."""
-        from knowledge_extraction_error_handler import KnowledgeExtractionPipeline
+# # #         from knowledge_extraction_error_handler import KnowledgeExtractionPipeline  # Module not found  # Module not found  # Module not found
         
         # Initialize error-handled pipeline if not exists
         if not hasattr(self, '_knowledge_pipeline'):
@@ -2029,7 +2029,7 @@ class ComprehensivePipelineOrchestrator:
         chunk_data = data.get('chunk_data', {})
         chunk_id = data.get('chunk_id', 'unknown')
         
-        # Extract all text from pages
+# # #         # Extract all text from pages  # Module not found  # Module not found  # Module not found
         all_text = ' '.join(page.get('text', '') for page in chunk_data.get('pages', []))
         
         # Create chunk for processing
@@ -2107,13 +2107,13 @@ class ComprehensivePipelineOrchestrator:
         return data
     
     def _extract_key_terms(self, text: str) -> List[str]:
-        """Extract key terms from text (simplified)."""
+# # #         """Extract key terms from text (simplified)."""  # Module not found  # Module not found  # Module not found
         import re
         words = re.findall(r'\b[A-Z][a-z]+\b', text)
         return list(set(words))[:10]  # Top 10 capitalized terms
     
     def _extract_concepts(self, text: str) -> List[str]:
-        """Extract concepts from text (simplified)."""
+# # #         """Extract concepts from text (simplified)."""  # Module not found  # Module not found  # Module not found
         # Simple concept extraction based on common patterns
         concepts = []
         if 'desarrollo' in text.lower():
@@ -2125,15 +2125,15 @@ class ComprehensivePipelineOrchestrator:
         return concepts
     
     def _extract_entities(self, text: str) -> List[str]:
-        """Extract entities from text (simplified)."""
+# # #         """Extract entities from text (simplified)."""  # Module not found  # Module not found  # Module not found
         import re
         # Extract proper nouns and potential entities
         entities = re.findall(r'\b[A-Z][a-z]+ [A-Z][a-z]+\b', text)
         return list(set(entities))[:5]  # Top 5 entities
     
     def _aggregate_parallel_results(self, parallel_results: Dict[str, Any]) -> Dict[str, Any]:
-        """Aggregate results from parallel processing with error handling statistics."""
-        from knowledge_extraction_error_handler import KnowledgeExtractionErrorHandler
+# # #         """Aggregate results from parallel processing with error handling statistics."""  # Module not found  # Module not found  # Module not found
+# # #         from knowledge_extraction_error_handler import KnowledgeExtractionErrorHandler  # Module not found  # Module not found  # Module not found
         
         aggregated = {
             'total_files': len(parallel_results),
@@ -2152,7 +2152,7 @@ class ComprehensivePipelineOrchestrator:
             }
         }
         
-        # Combine features, knowledge, and analysis from all chunks
+# # #         # Combine features, knowledge, and analysis from all chunks  # Module not found  # Module not found  # Module not found
         all_chunk_results = []
         total_processing_time = 0
         total_chunks = 0
@@ -2294,7 +2294,7 @@ class ComprehensivePipelineOrchestrator:
         return synthesis
     
     def _extract_key_insights(self, aggregated_data: Dict[str, Any]) -> List[str]:
-        """Extract key insights from aggregated data."""
+# # #         """Extract key insights from aggregated data."""  # Module not found  # Module not found  # Module not found
         insights = []
         
         combined_analysis = aggregated_data.get('combined_analysis', {})
@@ -2362,7 +2362,7 @@ class ComprehensivePipelineOrchestrator:
                 except Exception as e:
                     logger.error(f"Failed to initialize QuestionContext: {e}")
                     self.monitoring_metrics.record_error(e, document_id, "context_initialization")
-                    raise RuntimeError(f"QuestionContext initialization failed: {e}") from e
+# # #                     raise RuntimeError(f"QuestionContext initialization failed: {e}") from e  # Module not found  # Module not found  # Module not found
         except Exception as e:
             logger.error(f"Error during QuestionContext setup: {e}")
             self.monitoring_metrics.record_error(e, document_id, "setup")
@@ -2447,7 +2447,7 @@ class ComprehensivePipelineOrchestrator:
                         evidence_quality_scores.append(evidence_quality)
                         self.monitoring_metrics.record_evidence_quality(evidence_quality)
                 
-                # Generate artifacts from result
+# # #                 # Generate artifacts from result  # Module not found  # Module not found  # Module not found
                 artifacts = self._generate_stage_artifacts(node_name, current_data)
                 
                 # Complete stage in checkpoint
@@ -2548,7 +2548,7 @@ class ComprehensivePipelineOrchestrator:
         # Enrich final output to ensure canonical sophistication (clusters, evidence, causal)
         enriched_output = mathematically_enhanced_output
         try:
-            from canonical_flow import enrichment_postprocessor as _enrich  # type: ignore
+# # #             from canonical_flow import enrichment_postprocessor as _enrich  # type: ignore  # Module not found  # Module not found  # Module not found
             enriched_candidate = _enrich.process(mathematically_enhanced_output, context={"source": "comprehensive_pipeline_orchestrator"})
             if isinstance(enriched_candidate, dict):
                 enriched_output = enriched_candidate
@@ -2587,7 +2587,7 @@ class ComprehensivePipelineOrchestrator:
             BatchPDFResults with individual file processing status and results
         """
         import time
-        from pathlib import Path
+# # #         from pathlib import Path  # Module not found  # Module not found  # Module not found
         
         logger.info(f"Starting batch PDF processing for {len(pdf_file_paths)} files")
         batch_start_time = time.time()
@@ -2664,8 +2664,8 @@ class ComprehensivePipelineOrchestrator:
         try:
             # Import PDF processing modules
             try:
-                from pdf_reader import PDFPageIterator
-                from pdf_text_reader import extract_text_from_pdf, PDFTextExtractor
+                # Optional PDF modules not available in minimal environment; using fallbacks
+                pass
             except ImportError as e:
                 raise PDFCriticalError(f"Required PDF processing modules not available: {e}")
             
@@ -2721,7 +2721,7 @@ class ComprehensivePipelineOrchestrator:
                 return PDFProcessingResult(
                     file_path=file_path,
                     status='failed',
-                    error_message="No text could be extracted from PDF",
+# # #                     error_message="No text could be extracted from PDF",  # Module not found  # Module not found  # Module not found
                     error_type='no_text_extracted',
                     metadata=metadata
                 )
@@ -2766,7 +2766,7 @@ class ComprehensivePipelineOrchestrator:
         Analyze extracted PDF content for quality metrics and insights.
         
         Args:
-            text: Extracted text from PDF
+# # #             text: Extracted text from PDF  # Module not found  # Module not found  # Module not found
             metadata: PDF metadata
             
         Returns:
@@ -2811,7 +2811,7 @@ class ComprehensivePipelineOrchestrator:
         return analysis
         
     def _detect_ocr_artifacts(self, text: str) -> bool:
-        """Detect if text likely came from OCR processing"""
+# # #         """Detect if text likely came from OCR processing"""  # Module not found  # Module not found  # Module not found
         # Common OCR artifacts
         ocr_indicators = [
             'rn' in text.replace(' ', ''),  # m misread as rn
@@ -2950,7 +2950,7 @@ class ComprehensivePipelineOrchestrator:
         return order
     
     def _extract_text_from_data(self, data: Any) -> str:
-        """Extract text content from pipeline data"""
+# # #         """Extract text content from pipeline data"""  # Module not found  # Module not found  # Module not found
         if isinstance(data, dict):
             return data.get('text', '') or data.get('final_output', {}).get('text', '')
         elif isinstance(data, str):
@@ -2959,14 +2959,14 @@ class ComprehensivePipelineOrchestrator:
             return str(data)
     
     def _extract_context_from_data(self, data: Any) -> Dict[str, Any]:
-        """Extract context information from pipeline data"""
+# # #         """Extract context information from pipeline data"""  # Module not found  # Module not found  # Module not found
         if isinstance(data, dict):
             return data.get('context', {}) or data.get('final_output', {}).get('context', {})
         else:
             return {}
     
     def _extract_metadata_from_data(self, data: Any) -> Dict[str, Any]:
-        """Extract metadata from pipeline data"""
+# # #         """Extract metadata from pipeline data"""  # Module not found  # Module not found  # Module not found
         if isinstance(data, dict):
             return data.get('metadata', {}) or data.get('final_output', {}).get('metadata', {})
         else:
@@ -3137,7 +3137,7 @@ class ComprehensivePipelineOrchestrator:
         return datetime.now().isoformat()
 
     def _extract_question_from_input(self, input_data: Any) -> str:
-        """Extract question text from pipeline input data."""
+# # #         """Extract question text from pipeline input data."""  # Module not found  # Module not found  # Module not found
         try:
             if isinstance(input_data, dict):
                 # Try common question field names
@@ -3149,11 +3149,11 @@ class ComprehensivePipelineOrchestrator:
             # Default fallback
             return "Pipeline execution without explicit question"
         except Exception as e:
-            logger.warning(f"Failed to extract question from input: {e}")
+# # #             logger.warning(f"Failed to extract question from input: {e}")  # Module not found  # Module not found  # Module not found
             return "Pipeline execution with extraction error"
 
     def _extract_context_data_from_input(self, input_data: Any) -> Dict[str, Any]:
-        """Extract context data from pipeline input data."""
+# # #         """Extract context data from pipeline input data."""  # Module not found  # Module not found  # Module not found
         try:
             if isinstance(input_data, dict):
                 # Extract all non-question fields as context
@@ -3166,7 +3166,7 @@ class ComprehensivePipelineOrchestrator:
             else:
                 return {"input_type": type(input_data).__name__, "pipeline_mode": "direct"}
         except Exception as e:
-            logger.warning(f"Failed to extract context data from input: {e}")
+# # #             logger.warning(f"Failed to extract context data from input: {e}")  # Module not found  # Module not found  # Module not found
             return {"extraction_error": str(e)}
 
     def _handle_error(self, node: ProcessNode, error: Exception) -> None:
@@ -3196,7 +3196,7 @@ class ComprehensivePipelineOrchestrator:
             input_data: Initial payload for the pipeline.
             rounds: Number of rounds to execute for each cluster/point.
             clusters: Cluster ids to apply (defaults to [1,2,3,4]).
-            apply_decalogo: If True, iterate over Decálogo points from implementacion_mapeo.
+# # #             apply_decalogo: If True, iterate over Decálogo points from implementacion_mapeo.  # Module not found  # Module not found  # Module not found
 
         Returns:
             A dict with aggregated results of all runs, plus per-run execution traces.
@@ -3207,7 +3207,7 @@ class ComprehensivePipelineOrchestrator:
         decalogo_points: Dict[int, Dict[str, Any]] = {}
         questions_by_point: Dict[int, List[str]] = {}
         try:
-            from implementacion_mapeo import QuestionDecalogoMapper  # type: ignore
+# # #             from implementacion_mapeo import QuestionDecalogoMapper  # type: ignore  # Module not found  # Module not found  # Module not found
 
             mapper = QuestionDecalogoMapper()
             # Access defined Decálogo points
@@ -3323,12 +3323,12 @@ class ComprehensivePipelineOrchestrator:
     
     def get_performance_report(self) -> Dict[str, Any]:
         """
-        Get comprehensive performance report from monitoring metrics
+# # #         Get comprehensive performance report from monitoring metrics  # Module not found  # Module not found  # Module not found
         """
         return self.monitoring_metrics.get_performance_report()
     
     def _extract_evidence_quality_from_data(self, data: Any, node_name: str) -> Optional[EvidenceQualityMetrics]:
-        """Extract evidence quality metrics from processing results"""
+# # #         """Extract evidence quality metrics from processing results"""  # Module not found  # Module not found  # Module not found
         try:
             if isinstance(data, dict):
                 # Look for evidence-related metrics in the data
@@ -3501,7 +3501,7 @@ def generate_excellence_analysis_report(input_data: Optional[Any] = None) -> dic
 def generate_deterministic_flux_markdown(include_value_chain: bool = True) -> str:
     """Build a granular, stage-organized Markdown description of the deterministic pipeline.
 
-    The narrative is synthesized from the canonical process graph and includes:
+# # #     The narrative is synthesized from the canonical process graph and includes:  # Module not found  # Module not found  # Module not found
     - Stage overview and purpose
     - Per-node contribution: dependencies, inputs, outputs, events, and value metrics
     - Determinism notes (topological order and dependency guarantees)
@@ -3577,7 +3577,7 @@ def generate_deterministic_flux_markdown(include_value_chain: bool = True) -> st
             lines.append(f"- Stage: {node.stage.value}")
             lines.append(f"- Depends on: {', '.join(deps) if deps else 'None'}")
             if dep_outputs:
-                lines.append(f"- Expected inputs (from dependencies): {', '.join(dep_outputs)}")
+                pass
             lines.append(f"- Declared outputs: {', '.join(node.outputs.keys()) or 'None'}")
             lines.append(f"- Start event: {node.evento_inicio}")
             lines.append(f"- Close event: {node.evento_cierre}")

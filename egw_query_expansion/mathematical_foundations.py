@@ -13,16 +13,16 @@ Theoretical foundations based on:
 - Conformal prediction for finite-sample guarantees
 """
 
-from typing import Dict, List, Optional, Tuple, Union, Any
+# # # from typing import Dict, List, Optional, Tuple, Union, Any  # Module not found  # Module not found  # Module not found
 import warnings
-from dataclasses import dataclass
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 
 # Import safety wrapper
 try:
-    from .core.import_safety import safe_import
+# # #     from .core.import_safety import safe_import  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback if import_safety not available
-    from importlib import import_module
+# # #     from importlib import import_module  # Module not found  # Module not found  # Module not found
     def safe_import(module_name, **kwargs):
         class MockResult:
             def __init__(self, success, module=None):
@@ -51,19 +51,19 @@ stats = scipy_stats_result.module if scipy_stats_result.success else None
 
 scipy_special_result = safe_import('scipy.special', required=False)
 if scipy_special_result.success:
-    from scipy.special import digamma, gammaln
+# # #     from scipy.special import digamma, gammaln  # Module not found  # Module not found  # Module not found
 
 scipy_distance_result = safe_import('scipy.spatial.distance', required=False)
 if scipy_distance_result.success:
-    from scipy.spatial.distance import cosine as cosine_distance
+# # #     from scipy.spatial.distance import cosine as cosine_distance  # Module not found  # Module not found  # Module not found
 
 sklearn_similarity_result = safe_import('sklearn.metrics.pairwise', required=False)
 if sklearn_similarity_result.success:
-    from sklearn.metrics.pairwise import cosine_similarity
+# # #     from sklearn.metrics.pairwise import cosine_similarity  # Module not found  # Module not found  # Module not found
 
 sklearn_preprocessing_result = safe_import('sklearn.preprocessing', required=False)
 if sklearn_preprocessing_result.success:
-    from sklearn.preprocessing import normalize
+# # #     from sklearn.preprocessing import normalize  # Module not found  # Module not found  # Module not found
 
 
 @dataclass
@@ -350,7 +350,7 @@ class SemanticSimilarity:
         """
         if method == 'wasserstein':
             # Wasserstein distance in embedding space
-            from scipy.stats import wasserstein_distance
+# # #             from scipy.stats import wasserstein_distance  # Module not found  # Module not found  # Module not found
             # Flatten embeddings for 1D comparison
             flat1 = embeddings1.flatten()
             flat2 = embeddings2.flatten()
@@ -358,7 +358,7 @@ class SemanticSimilarity:
             
         elif method == 'energy':
             # Energy distance
-            from scipy.spatial.distance import pdist, squareform
+# # #             from scipy.spatial.distance import pdist, squareform  # Module not found  # Module not found  # Module not found
             
             # Compute pairwise distances
             combined = np.vstack([embeddings1, embeddings2])
@@ -415,8 +415,8 @@ class SemanticSimilarity:
             
         elif method == 'silhouette':
             # Silhouette analysis (requires clustering)
-            from sklearn.cluster import KMeans
-            from sklearn.metrics import silhouette_score
+# # #             from sklearn.cluster import KMeans  # Module not found  # Module not found  # Module not found
+# # #             from sklearn.metrics import silhouette_score  # Module not found  # Module not found  # Module not found
             
             if len(embeddings) < 2:
                 return 1.0

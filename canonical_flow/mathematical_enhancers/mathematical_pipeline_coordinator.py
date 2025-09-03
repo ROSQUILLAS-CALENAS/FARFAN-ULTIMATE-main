@@ -22,24 +22,24 @@ Architecture:
 
 import logging
 import traceback
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Tuple, Union, Callable
-from datetime import datetime
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple, Union, Callable  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import numpy as np
 import json
 
 try:
     import sys
-    from pathlib import Path
+# # #     from pathlib import Path  # Module not found  # Module not found  # Module not found
     
     # Add project root to path for canonical imports
     project_root = Path(__file__).resolve().parents[2]
     if str(project_root) not in sys.path:
         sys.path.insert(0, str(project_root))
     
-    from egw_query_expansion.mathematical_foundations import (
+# # #     from egw_query_expansion.mathematical_foundations import (  # Module not found  # Module not found  # Module not found
         InformationTheory, 
         SemanticSimilarity, 
         BayesianInference,
@@ -557,7 +557,7 @@ class MathematicalPipelineCoordinator:
         try:
             state = self.execution_states[stage]
             if state.rollback_checkpoint:
-                # Restore data from checkpoint
+# # #                 # Restore data from checkpoint  # Module not found  # Module not found  # Module not found
                 state.input_data = state.rollback_checkpoint.get('data', {})
                 state.output_data = {}
                 state.status = 'rolled_back'

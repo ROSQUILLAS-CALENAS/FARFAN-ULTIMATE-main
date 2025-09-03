@@ -12,8 +12,8 @@ Generates sc_certificate.json with cryptographic proof of:
 import json
 import hashlib
 import time
-from pathlib import Path
-from typing import Dict, Any, List
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, Any, List  # Module not found  # Module not found  # Module not found
 import sys
 
 try:
@@ -24,7 +24,7 @@ except ImportError:
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from snapshot_manager import (
+# # # from snapshot_manager import (  # Module not found  # Module not found  # Module not found
     get_current_snapshot_id,
     resolve_snapshot,
     replay_output

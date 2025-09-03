@@ -8,15 +8,15 @@ import json
 import logging
 import time
 import warnings
-from datetime import datetime
-from pathlib import Path
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 import numpy as np
-from typing import Any, Dict, List, Optional, Tuple
-from dataclasses import dataclass
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 
 try:
-    from traceability import TraceabilityManager, NodeType, ProcessingMetadata
-    from document_processor import DocumentChunk
+# # #     from traceability import TraceabilityManager, NodeType, ProcessingMetadata  # Module not found  # Module not found  # Module not found
+# # #     from document_processor import DocumentChunk  # Module not found  # Module not found  # Module not found
     TRACEABILITY_AVAILABLE = True
 except ImportError:
     TRACEABILITY_AVAILABLE = False
@@ -42,7 +42,7 @@ except ImportError:
             self.metadata = metadata or {}
 
 try:
-    from total_ordering_base import TotalOrderingBase
+# # #     from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
     TOTAL_ORDERING_AVAILABLE = True
 except ImportError:
     TOTAL_ORDERING_AVAILABLE = False
@@ -394,7 +394,7 @@ def process_vector_generation(embeddings: Dict[str, Any],
     Main processing function for vector generation stage (11K).
     
     Args:
-        embeddings: Input embeddings from previous stage
+# # #         embeddings: Input embeddings from previous stage  # Module not found  # Module not found  # Module not found
         document_stem: Document identifier for output naming
         dnp_results: Optional DNP results for structural features
         
@@ -404,12 +404,12 @@ def process_vector_generation(embeddings: Dict[str, Any],
     try:
         logging.info(f"Starting vector generation for document: {document_stem}")
         
-        # Extract embeddings from input
+# # #         # Extract embeddings from input  # Module not found  # Module not found  # Module not found
         node_embeddings = embeddings.get('embeddings', {}).get('node_embeddings', {})
         edge_embeddings = embeddings.get('embeddings', {}).get('edge_embeddings', {})
         graph_embedding = embeddings.get('embeddings', {}).get('graph_embedding', [])
         
-        # Generate semantic vectors (384-dim from embeddings)
+# # #         # Generate semantic vectors (384-dim from embeddings)  # Module not found  # Module not found  # Module not found
         semantic_vectors = []
         for node_id, embedding in node_embeddings.items():
             semantic_vectors.append({
@@ -425,7 +425,7 @@ def process_vector_generation(embeddings: Dict[str, Any],
                 "type": "semantic_edge"
             })
         
-        # Generate structural vectors (from graph topology)
+# # #         # Generate structural vectors (from graph topology)  # Module not found  # Module not found  # Module not found
         structural_vectors = []
         
         # Graph-level structural features
@@ -439,7 +439,7 @@ def process_vector_generation(embeddings: Dict[str, Any],
             
             # Add topological features if available
             if len(graph_embedding) > 0:
-                # Compute structural statistics from graph embedding
+# # #                 # Compute structural statistics from graph embedding  # Module not found  # Module not found  # Module not found
                 emb_array = np.array(graph_embedding)
                 structural_features.extend([
                     float(np.mean(emb_array)),
@@ -606,7 +606,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     Returns:
         Dict containing generated embeddings and metadata
     """
-    from canonical_flow.knowledge.knowledge_audit_system import audit_component_execution
+# # #     from canonical_flow.knowledge.knowledge_audit_system import audit_component_execution  # Module not found  # Module not found  # Module not found
     
     @audit_component_execution("12K", metadata={"component": "embedding_generator"})
     def _process_with_audit(data, context):
@@ -620,7 +620,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
                 model_name=getattr(context, 'model_name', "sentence-transformers/all-MiniLM-L6-v2") if context else "sentence-transformers/all-MiniLM-L6-v2"
             )
             
-            # Extract chunks from data
+# # #             # Extract chunks from data  # Module not found  # Module not found  # Module not found
             chunks = []
             if isinstance(data, dict):
                 if "chunks" in data:

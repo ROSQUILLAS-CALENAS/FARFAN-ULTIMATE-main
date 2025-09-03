@@ -13,11 +13,11 @@ This module implements standardized question analysis with:
 import json
 import re
 import os
-from pathlib import Path
-from dataclasses import dataclass, field
-from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Tuple, Union
-from collections import OrderedDict
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Optional imports with graceful fallbacks
 try:
@@ -31,19 +31,19 @@ except ImportError:
     np = None
 
 try:
-    from sentence_transformers import SentenceTransformer
+# # #     from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
 except ImportError:
     SentenceTransformer = None
 
 try:
-    from transformers import AutoModel, AutoTokenizer
+# # #     from transformers import AutoModel, AutoTokenizer  # Module not found  # Module not found  # Module not found
 except ImportError:
     AutoModel = None
     AutoTokenizer = None
 
 # Import audit logger for execution tracing
 try:
-    from canonical_flow.analysis.audit_logger import get_audit_logger
+# # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:
     get_audit_logger = None
 
@@ -219,7 +219,7 @@ class QuestionAnalyzer:
             return self._create_error_result(f"Processing failed: {str(e)}")
     
     def _extract_questions_from_document(self, doc_path: Path) -> List[str]:
-        """Extract questions from document with multiple format support"""
+# # #         """Extract questions from document with multiple format support"""  # Module not found  # Module not found  # Module not found
         questions = []
         
         try:
@@ -248,7 +248,7 @@ class QuestionAnalyzer:
         return questions
     
     def _extract_from_json(self, data: Any) -> List[str]:
-        """Extract questions from JSON data structure"""
+# # #         """Extract questions from JSON data structure"""  # Module not found  # Module not found  # Module not found
         questions = []
         
         if isinstance(data, dict):
@@ -278,7 +278,7 @@ class QuestionAnalyzer:
         return questions
     
     def _extract_from_text(self, content: str) -> List[str]:
-        """Extract questions from plain text using patterns"""
+# # #         """Extract questions from plain text using patterns"""  # Module not found  # Module not found  # Module not found
         questions = []
         
         # Split by lines and look for question patterns
@@ -391,14 +391,14 @@ class QuestionAnalyzer:
         return round(confidence, 3)
     
     def _extract_keywords(self, question_text: str, intent: str) -> List[str]:
-        """Extract relevant keywords from question text"""
+# # #         """Extract relevant keywords from question text"""  # Module not found  # Module not found  # Module not found
         if intent == "unknown_intent":
             return []
         
         text_lower = question_text.lower()
         found_keywords = []
         
-        # Find matching keywords from vocabulary
+# # #         # Find matching keywords from vocabulary  # Module not found  # Module not found  # Module not found
         intent_keywords = self.intent_vocabulary.get(intent, [])
         for keyword in intent_keywords:
             if keyword in text_lower:
@@ -506,7 +506,7 @@ class QuestionAnalyzer:
     
     def _get_timestamp(self) -> str:
         """Get current timestamp in ISO format"""
-        from datetime import datetime
+# # #         from datetime import datetime  # Module not found  # Module not found  # Module not found
         return datetime.now().isoformat()
 
 

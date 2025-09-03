@@ -1,4 +1,4 @@
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 """
 Production-grade, thread-safe, metrics-instrumented connection manager.
@@ -20,22 +20,22 @@ non-DB environments while still providing admission control metrics.
 import os
 import threading
 import time
-from contextlib import contextmanager
-from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, Optional
+# # # from contextlib import contextmanager  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, Optional  # Module not found  # Module not found  # Module not found
 
 # Optional dependencies
 try:  # SQLAlchemy is optional; we handle absence gracefully
     import sqlalchemy  # type: ignore
-    from sqlalchemy import create_engine  # type: ignore
-    from sqlalchemy.engine import Engine  # type: ignore
+# # #     from sqlalchemy import create_engine  # type: ignore  # Module not found  # Module not found  # Module not found
+# # #     from sqlalchemy.engine import Engine  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:  # pragma: no cover
     sqlalchemy = None  # type: ignore
     create_engine = None  # type: ignore
     Engine = Any  # type: ignore
 
 try:  # Optional Prometheus client
-    from prometheus_client import Counter, Gauge  # type: ignore
+# # #     from prometheus_client import Counter, Gauge  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:  # pragma: no cover
     Gauge = None  # type: ignore
     Counter = None  # type: ignore

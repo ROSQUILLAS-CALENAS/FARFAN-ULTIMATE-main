@@ -18,15 +18,15 @@ Theoretical Foundation:
 import hashlib
 import json
 import logging
-from dataclasses import dataclass
-from typing import Any, Dict, List, Optional, Tuple, Union
-from pathlib import Path
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 import numpy as np
-from scipy.linalg import eigvals, norm
-from scipy.optimize import minimize
-from scipy.special import logsumexp
-from scipy.spatial.distance import cdist
+# # # from scipy.linalg import eigvals, norm  # Module not found  # Module not found  # Module not found
+# # # from scipy.optimize import minimize  # Module not found  # Module not found  # Module not found
+# # # from scipy.special import logsumexp  # Module not found  # Module not found  # Module not found
+# # # from scipy.spatial.distance import cdist  # Module not found  # Module not found  # Module not found
 
 try:
     import ot  # Python Optimal Transport
@@ -101,7 +101,7 @@ class MathematicalStabilityVerifier:
         stability_margin = 1.0 - spectral_radius
         is_stable = spectral_radius < 1.0
         
-        # Convergence rate from largest eigenvalue modulus
+# # #         # Convergence rate from largest eigenvalue modulus  # Module not found  # Module not found  # Module not found
         convergence_rate = -np.log(spectral_radius) if is_stable else 0.0
         
         return LyapunovBound(
@@ -429,7 +429,7 @@ class EntropicGromovWassersteinScorer:
         
         Args:
             evaluation_scores: Original scoring results
-            evaluation_features: Features from development plan evaluation
+# # #             evaluation_features: Features from development plan evaluation  # Module not found  # Module not found  # Module not found
             dnp_standards: DNP standards feature representations
             dnp_weights: Importance weights for DNP standards
             
@@ -469,7 +469,7 @@ class EntropicGromovWassersteinScorer:
         # Compute transport-enhanced score
         T = transport_alignment.transport_matrix
         
-        # Alignment confidence from transport matrix entropy
+# # #         # Alignment confidence from transport matrix entropy  # Module not found  # Module not found  # Module not found
         transport_entropy = -np.sum(T * np.log(T + 1e-16))
         max_entropy = np.log(min(T.shape))
         alignment_confidence = 1.0 - (transport_entropy / max_entropy)
@@ -478,7 +478,7 @@ class EntropicGromovWassersteinScorer:
         alignment_bonus = alignment_confidence * 0.1  # 10% maximum bonus
         transport_enhanced_score = original_score + alignment_bonus
         
-        # DNP compliance evidence from transport plan
+# # #         # DNP compliance evidence from transport plan  # Module not found  # Module not found  # Module not found
         dnp_compliance = {}
         for i in range(min(n_dnp, 10)):  # Top 10 DNP standards
             compliance_score = np.sum(T[:, i])  # Mass transported to DNP standard i
@@ -561,20 +561,20 @@ class AdaptiveScoringIntegration:
         
         Args:
             evaluation_scores: Original evaluation scores
-            pdt_context: PDT context from adaptive scoring engine
+# # #             pdt_context: PDT context from adaptive scoring engine  # Module not found  # Module not found  # Module not found
             document_features: Optional document feature matrix
             
         Returns:
             Enhanced scoring result with optimal transport validation
         """
-        # Create evaluation features from context if not provided
+# # #         # Create evaluation features from context if not provided  # Module not found  # Module not found  # Module not found
         if document_features is None:
             document_features = self._extract_features_from_context(pdt_context)
         
         # Load DNP standards
         dnp_standards = self.load_dnp_standards()
         
-        # DNP weights from context
+# # #         # DNP weights from context  # Module not found  # Module not found  # Module not found
         dnp_weights = {
             "P1": 0.12, "P2": 0.11, "P3": 0.10, "P4": 0.09, "P5": 0.08,
             "P6": 0.10, "P7": 0.09, "P8": 0.11, "P9": 0.10, "P10": 0.10
@@ -589,8 +589,8 @@ class AdaptiveScoringIntegration:
         )
     
     def _extract_features_from_context(self, pdt_context: Any) -> np.ndarray:
-        """Extract feature matrix from PDT context."""
-        # Create feature vector from PDT context attributes
+# # #         """Extract feature matrix from PDT context."""  # Module not found  # Module not found  # Module not found
+# # #         # Create feature vector from PDT context attributes  # Module not found  # Module not found  # Module not found
         features = np.array([
             pdt_context.population / 1e6,  # Normalized population
             pdt_context.area_km2 / 1000,   # Normalized area

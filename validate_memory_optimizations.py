@@ -7,7 +7,7 @@ import gc
 import logging
 import sys
 import tempfile
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 
@@ -21,7 +21,7 @@ def validate_embedding_cache():
     print("🧠 Validating Embedding Cache Manager...")
     
     try:
-        from embedding_builder import EmbeddingCacheManager
+# # #         from embedding_builder import EmbeddingCacheManager  # Module not found  # Module not found  # Module not found
         
         # Test basic functionality
         cache = EmbeddingCacheManager(max_cache_size=5, max_memory_mb=1)
@@ -67,7 +67,7 @@ def validate_embedding_builder():
     print("🏗️ Validating Embedding Builder with Cache...")
     
     try:
-        from embedding_builder import EmbeddingBuilder
+# # #         from embedding_builder import EmbeddingBuilder  # Module not found  # Module not found  # Module not found
         
         # Test with cache enabled
         builder = EmbeddingBuilder(
@@ -132,7 +132,7 @@ def validate_garbage_collection():
         assert isinstance(collected, int), "Garbage collection not working"
         
         # Test with cache manager
-        from embedding_builder import EmbeddingCacheManager
+# # #         from embedding_builder import EmbeddingCacheManager  # Module not found  # Module not found  # Module not found
         cache = EmbeddingCacheManager(max_cache_size=5, max_memory_mb=10)
         
         for i in range(5):
@@ -191,7 +191,7 @@ def validate_memory_usage():
     print("📊 Validating Memory Usage Tracking...")
     
     try:
-        from embedding_builder import EmbeddingCacheManager
+# # #         from embedding_builder import EmbeddingCacheManager  # Module not found  # Module not found  # Module not found
         
         # Create cache with small memory limit
         cache = EmbeddingCacheManager(max_cache_size=1000, max_memory_mb=1)

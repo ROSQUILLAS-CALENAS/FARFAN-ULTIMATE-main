@@ -4,7 +4,7 @@
 import sys
 import json
 import hashlib
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Add paths
 sys.path.insert(0, str(Path(__file__).parent))
@@ -13,8 +13,8 @@ sys.path.insert(0, str(Path(__file__).parent / "canonical_flow"))
 def main():
     try:
         # Test imports
-        from canonical_flow.A_analysis_nlp.question_analyzer import get_decalogo_question_registry
-        from canonical_flow.L_classification_evaluation.decalogo_scoring_system import ScoringSystem
+# # #         from canonical_flow.A_analysis_nlp.question_analyzer import get_decalogo_question_registry  # Module not found  # Module not found  # Module not found
+# # #         from canonical_flow.L_classification_evaluation.decalogo_scoring_system import ScoringSystem  # Module not found  # Module not found  # Module not found
         print("✓ Imports successful")
         
         # Test registry

@@ -13,17 +13,17 @@ import sys
 import hashlib
 import os
 import logging
-from pathlib import Path
-from dataclasses import dataclass, field
-from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Tuple, Union
-from collections import OrderedDict
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 import datetime
 
 # Import total ordering base
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin
-from json_canonicalizer import JSONCanonicalizer
+# # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
+# # # from json_canonicalizer import JSONCanonicalizer  # Module not found  # Module not found  # Module not found
 
 # Optional imports with fallbacks
 try:
@@ -37,12 +37,12 @@ except ImportError:
     np = None
 
 try:
-    from sentence_transformers import SentenceTransformer
+# # #     from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
 except ImportError:
     SentenceTransformer = None
 
 try:
-    from transformers import AutoModel, AutoTokenizer
+# # #     from transformers import AutoModel, AutoTokenizer  # Module not found  # Module not found  # Module not found
 except ImportError:
     AutoModel = None
     AutoTokenizer = None
@@ -228,7 +228,7 @@ class QuestionRequirements:
 
 @dataclass 
 class DecalogoQuestion:
-    """Single question from Decálogo registry"""
+# # #     """Single question from Decálogo registry"""  # Module not found  # Module not found  # Module not found
     question_id: str
     point_number: int
     dimension_code: str
@@ -334,7 +334,7 @@ class DecalogoQuestionRegistry:
         }
         
         # Generate 47 questions per point (mix of dimensions, with some common ones)
-        base_questions_per_dim = 11  # Base questions from patterns above
+# # #         base_questions_per_dim = 11  # Base questions from patterns above  # Module not found  # Module not found  # Module not found
         additional_questions = 3     # Additional specific questions per point
         
         for point_num, point_name in sorted(point_templates.items()):
@@ -507,7 +507,7 @@ class QuestionAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
             document_id = canonical_data.get("document_id") or canonical_context.get("document_id", "unknown")
             self.coverage_matrix.document_id = document_id
             
-            # Get ALL 470 questions from registry
+# # #             # Get ALL 470 questions from registry  # Module not found  # Module not found  # Module not found
             all_questions = self.question_registry.get_all_questions()
             
             # Process each question without early termination or conditional skipping
@@ -758,7 +758,7 @@ class QuestionAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
     
     def _generate_proximal_plan_deterministic(self, question: str) -> ProximalProxy:
         """Generate proximal proxy plan with deterministic approach"""
-        # Extract potential proxies from question
+# # #         # Extract potential proxies from question  # Module not found  # Module not found  # Module not found
         words = sorted(set(re.findall(r'\b[a-zA-Z]+\b', question.lower())))
         
         # Simple heuristic: variables starting with certain letters
@@ -878,7 +878,7 @@ class QuestionAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
             question_text_lower = question.question_text.lower()
             document_text_lower = document_text.lower()
             
-            # Extract key terms from question
+# # #             # Extract key terms from question  # Module not found  # Module not found  # Module not found
             key_terms = self._extract_key_terms_from_question(question.question_text)
             
             # Find matches in document
@@ -900,7 +900,7 @@ class QuestionAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
         return analysis_result
     
     def _extract_key_terms_from_question(self, question_text: str) -> List[str]:
-        """Extract key terms from question text for document analysis"""
+# # #         """Extract key terms from question text for document analysis"""  # Module not found  # Module not found  # Module not found
         # Remove question words and focus on content terms
         question_words = {"qué", "cómo", "cuándo", "dónde", "por qué", "para qué", "cuál", "cuáles"}
         
@@ -1063,7 +1063,7 @@ class QuestionAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
         }
         
         # Import confidence and quality metrics
-        from confidence_quality_metrics import ArtifactMetricsIntegrator
+# # #         from confidence_quality_metrics import ArtifactMetricsIntegrator  # Module not found  # Module not found  # Module not found
         
         integrator = ArtifactMetricsIntegrator()
         
@@ -1096,7 +1096,7 @@ class QuestionAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
             question_metrics = integrator.calculator.calculate_question_level_metrics(question_data)
             question_scores.append(question_metrics)
         
-        # Calculate dimension-level metrics (assuming all questions are from same dimension)
+# # #         # Calculate dimension-level metrics (assuming all questions are from same dimension)  # Module not found  # Module not found  # Module not found
         dimension_metrics = integrator.calculator.propagate_to_dimension_level(question_scores, {})
         
         # Build complete output structure

@@ -13,7 +13,7 @@ def main():
     
     try:
         # Import the module
-        from import_safety import (
+# # #         from import_safety import (  # Module not found  # Module not found  # Module not found
             ImportSafety, safe_import, get_import_report,
             safe_import_numpy, safe_import_scipy, safe_import_torch,
             safe_import_sklearn, safe_import_faiss, safe_import_transformers,
@@ -68,7 +68,7 @@ def main():
         def mock_module_factory():
             class MockModule:
                 def hello(self):
-                    return "Hello from fallback!"
+# # #                     return "Hello from fallback!"  # Module not found  # Module not found  # Module not found
             return MockModule()
         
         result = safe_import('definitely_nonexistent_module', fallback_factory=mock_module_factory)

@@ -6,7 +6,7 @@ Tests core functionality without requiring full installation
 
 import sys
 import numpy as np
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Add the project root to path
 sys.path.insert(0, str(Path(__file__).parent))
@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 def test_information_theory():
     """Test information theory components"""
     try:
-        from egw_query_expansion.mathematical_foundations import InformationTheory
+# # #         from egw_query_expansion.mathematical_foundations import InformationTheory  # Module not found  # Module not found  # Module not found
         
         # Test Shannon entropy
         uniform_prob = np.ones(4) / 4
@@ -41,7 +41,7 @@ def test_information_theory():
 def test_semantic_similarity():
     """Test semantic similarity components"""
     try:
-        from egw_query_expansion.mathematical_foundations import SemanticSimilarity
+# # #         from egw_query_expansion.mathematical_foundations import SemanticSimilarity  # Module not found  # Module not found  # Module not found
         
         # Test distributional similarity with simple data
         embeddings1 = np.random.normal(0, 1, (5, 3))
@@ -72,7 +72,7 @@ def test_semantic_similarity():
 def test_bayesian_inference():
     """Test Bayesian inference components"""
     try:
-        from egw_query_expansion.mathematical_foundations import BayesianInference
+# # #         from egw_query_expansion.mathematical_foundations import BayesianInference  # Module not found  # Module not found  # Module not found
         
         # Test beta-binomial posterior
         result = BayesianInference.beta_binomial_posterior(
@@ -96,7 +96,7 @@ def test_bayesian_inference():
 def test_utility_functions():
     """Test utility functions"""
     try:
-        from egw_query_expansion.mathematical_foundations import (
+# # #         from egw_query_expansion.mathematical_foundations import (  # Module not found  # Module not found  # Module not found
             compute_question_entropy_features,
             bootstrap_similarity_test
         )

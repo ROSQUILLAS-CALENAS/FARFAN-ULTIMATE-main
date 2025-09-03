@@ -11,13 +11,13 @@ Audit Last Execution — Step-by-Step
 Usage:
   python3 audit_last_execution.py
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import json
 import os
 import time
-from pathlib import Path
-from typing import Any, Dict, List, Optional
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional  # Module not found  # Module not found  # Module not found
 
 # Optional imports; the auditor degrades gracefully
 try:
@@ -77,7 +77,7 @@ def _extract_trace(doc: Dict[str, Any]) -> Dict[str, Any]:
 
     # comprehensive_pipeline_orchestrator format: the whole document is the result; step logs may be embedded
     if not steps:
-        # Try to parse steps heuristically from known keys
+# # #         # Try to parse steps heuristically from known keys  # Module not found  # Module not found  # Module not found
         # Some orchestrators store 'logs' or 'trace' or 'timeline'
         for k in ("steps", "trace", "timeline", "events"):
             v = doc.get(k)
@@ -121,7 +121,7 @@ def _suggest_enhancements(audit: Dict[str, Any], steps: List[Dict[str, Any]], do
         if g in gap_actions:
             suggestions.append(gap_actions[g])
 
-    # Parse runtime errors from steps or the document
+# # #     # Parse runtime errors from steps or the document  # Module not found  # Module not found  # Module not found
     runtime_errors: List[str] = []
     for s in steps:
         if isinstance(s, dict):
@@ -176,7 +176,7 @@ def audit_last_execution() -> Dict[str, Any]:
     enriched_payload: Optional[Dict[str, Any]] = None
     try:
         if isinstance(result_payload, dict):
-            from canonical_flow import enrichment_postprocessor as _enrich  # type: ignore
+# # #             from canonical_flow import enrichment_postprocessor as _enrich  # type: ignore  # Module not found  # Module not found  # Module not found
             enriched_candidate = _enrich.process(result_payload, context={"source": "audit_last_execution"})
             if isinstance(enriched_candidate, dict):
                 enriched_payload = enriched_candidate
@@ -223,7 +223,7 @@ def audit_last_execution() -> Dict[str, Any]:
     calibration_payload: Dict[str, Any] = {}
     try:
         # Always produce a segmented calibration plan to increase sophistication and transparency
-        from canonical_flow import calibration_controller as _cal  # type: ignore
+# # #         from canonical_flow import calibration_controller as _cal  # type: ignore  # Module not found  # Module not found  # Module not found
         calibrated = _cal.process(payload_for_audit, context={"source": "audit_last_execution"}, steps=steps)
         if isinstance(calibrated, dict):
             calibration_payload = {

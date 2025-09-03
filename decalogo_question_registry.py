@@ -5,11 +5,11 @@ This module provides a comprehensive registry system for managing Decálogo ques
 with stable identifiers, cluster mappings, and dimension distribution validation.
 """
 
-from dataclasses import dataclass, field
-from typing import Dict, List, Tuple, Set, Any, Optional
-from enum import Enum
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Tuple, Set, Any, Optional  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 import json
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 
 class ClusterType(Enum):

@@ -4,13 +4,13 @@ y maneja relaciones complejas entre servicios y workflows
 """
 
 import asyncio
-from datetime import datetime, timedelta
-from enum import Enum
-from typing import Dict, List, Set, Optional, Any, Callable, Tuple
-from dataclasses import dataclass
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Set, Optional, Any, Callable, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 import logging
 import json
-from collections import defaultdict, deque
+# # # from collections import defaultdict, deque  # Module not found  # Module not found  # Module not found
 # Optional dependencies (guarded)
 try:
     import networkx as nx  # type: ignore
@@ -29,7 +29,7 @@ except Exception:
             def nodes(self): return list(self._adj.keys())
     nx = _NX()  # type: ignore
 try:
-    from pydantic import BaseModel, Field  # type: ignore
+# # #     from pydantic import BaseModel, Field  # type: ignore  # Module not found  # Module not found  # Module not found
     HAS_PYDANTIC = True
 except Exception:
     HAS_PYDANTIC = False
@@ -451,7 +451,7 @@ class DependencyManager:
             }
             
             # Evaluación usando AST seguro
-            from compensation_engine import SafeExpressionEvaluator, ConditionEvaluationError
+# # #             from compensation_engine import SafeExpressionEvaluator, ConditionEvaluationError  # Module not found  # Module not found  # Module not found
             
             result = SafeExpressionEvaluator.evaluate(dependency.conditional_expression, context)
             return bool(result)

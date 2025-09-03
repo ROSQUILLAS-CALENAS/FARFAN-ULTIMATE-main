@@ -8,12 +8,12 @@ configurable worker count, progress tracking, and recovery mechanisms.
 
 import logging
 import time
-from concurrent.futures import ProcessPoolExecutor, as_completed
-from dataclasses import dataclass, field
-from pathlib import Path
-from queue import Queue
-from threading import Lock, Thread
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+# # # from concurrent.futures import ProcessPoolExecutor, as_completed  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from queue import Queue  # Module not found  # Module not found  # Module not found
+# # # from threading import Lock, Thread  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 # Advanced serialization with fallback logic
 class SerializationManager:
@@ -281,7 +281,7 @@ class ParallelPDFProcessor:
             logger.warning(f"Failed to save recovery state: {e}")
     
     def _load_recovery_state(self) -> Optional[Dict[str, Any]]:
-        """Load recovery state from disk using advanced serialization."""
+# # #         """Load recovery state from disk using advanced serialization."""  # Module not found  # Module not found  # Module not found
         if not self.enable_recovery:
             return None
             
@@ -293,7 +293,7 @@ class ParallelPDFProcessor:
             with open(recovery_file, 'rb') as f:
                 serialized_data = f.read()
             recovery_state = self.serialization_manager.deserialize(serialized_data)
-            logger.info(f"Loaded recovery state from {recovery_file}")
+# # #             logger.info(f"Loaded recovery state from {recovery_file}")  # Module not found  # Module not found  # Module not found
             return recovery_state
         except Exception as e:
             logger.warning(f"Failed to load recovery state: {e}")
@@ -368,7 +368,7 @@ class ParallelPDFProcessor:
         recovery_state = self._load_recovery_state()
         
         if recovery_state:
-            logger.info("Resuming from previous processing state")
+# # #             logger.info("Resuming from previous processing state")  # Module not found  # Module not found  # Module not found
             chunks = recovery_state["chunks"]
             completed_chunk_ids = set(recovery_state["completed_chunks"])
             self.failed_chunks = recovery_state.get("failed_chunks", [])
@@ -575,7 +575,7 @@ class ParallelPDFProcessor:
 def default_pdf_chunk_processor(chunk: PDFChunk) -> Dict[str, Any]:
     """
     Default processor function for PDF chunks.
-    Extracts text from the specified page range.
+# # #     Extracts text from the specified page range.  # Module not found  # Module not found  # Module not found
     
     Args:
         chunk: PDF chunk to process

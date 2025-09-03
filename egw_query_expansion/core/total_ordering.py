@@ -40,12 +40,12 @@ This module is self-contained and does not change other pipelines. Import and us
 where deterministic total ordering is required.
 """
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import json
-from dataclasses import dataclass
-from math import isfinite, isnan
-from typing import Any, Callable, Iterable, List, Mapping, Sequence, Tuple, TypeVar
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from math import isfinite, isnan  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Iterable, List, Mapping, Sequence, Tuple, TypeVar  # Module not found  # Module not found  # Module not found
 
 # Local canonicalization helpers (duplicated minimal logic to avoid hard dependency)
 # We keep these minimal to avoid circular imports; deterministic_shield also provides
@@ -350,7 +350,7 @@ def explain_tie_breaks(
     to break ties. Returns a mapping with groups and applied tie-break positions.
     """
     # Group by normalized scores
-    from collections import defaultdict
+# # #     from collections import defaultdict  # Module not found  # Module not found  # Module not found
 
     def norm_scores_key(scores: Sequence[Score]) -> Tuple[Tuple[int, float], ...]:
         return tuple(

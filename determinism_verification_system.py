@@ -20,9 +20,9 @@ import json
 import os
 import random
 import time
-from dataclasses import dataclass, asdict
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Callable
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Callable  # Module not found  # Module not found  # Module not found
 import uuid
 
 # Try to import numpy for deterministic seeding
@@ -40,7 +40,7 @@ except ImportError:
     HAS_CANONICAL_AUDITOR = False
 
 try:
-    from tools.canonical_cojoin_auditor import iter_repo_files, guess_phase, Evidence, InventoryItem
+# # #     from tools.canonical_cojoin_auditor import iter_repo_files, guess_phase, Evidence, InventoryItem  # Module not found  # Module not found  # Module not found
     HAS_COJOIN_AUDITOR = True
 except ImportError:
     HAS_COJOIN_AUDITOR = False
@@ -48,7 +48,7 @@ except ImportError:
 
 @dataclass
 class DeterminismTestResult:
-    """Results from a determinism verification test"""
+# # #     """Results from a determinism verification test"""  # Module not found  # Module not found  # Module not found
     test_name: str
     success: bool
     consistency_score: float

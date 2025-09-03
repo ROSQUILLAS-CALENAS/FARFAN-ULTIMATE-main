@@ -14,13 +14,13 @@ except Exception:  # Optional dependency for YAML export
     yaml = None  # type: ignore
 import json
 import logging
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Any, Dict, List, Optional
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
 try:
-    from canonical_flow.analysis.audit_logger import get_audit_logger
+# # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback when audit logger is not available
     get_audit_logger = None

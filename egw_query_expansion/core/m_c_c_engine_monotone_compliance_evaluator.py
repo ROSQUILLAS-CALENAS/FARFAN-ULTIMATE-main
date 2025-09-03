@@ -7,10 +7,10 @@
 #
 # Python 3.12, stdlib only.
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
-from dataclasses import dataclass, field
-from typing import (
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import (  # Module not found  # Module not found  # Module not found
     Any,
     Callable,
     Dict,
@@ -188,7 +188,7 @@ class Rule:
     mandatory: Tuple[MandatoryLiteral, ...] = field(default_factory=tuple)
     aggs: Tuple[Aggregate, ...] = field(default_factory=tuple)
     stratum: int = (
-        0  # computed from label poset layering; used for stratified evaluation
+# # #         0  # computed from label poset layering; used for stratified evaluation  # Module not found  # Module not found  # Module not found
     )
 
 
@@ -354,7 +354,7 @@ class MCCEngine:
     ) -> EvaluationResult:
         """
         Compute least fixpoint model:
-          - Start from bottom label per entity (or provided initial_labels)
+# # #           - Start from bottom label per entity (or provided initial_labels)  # Module not found  # Module not found  # Module not found
           - Iteratively apply rules in increasing stratum order (stratified)
           - Labels only increase under poset unless explicit violation present
           - Detect contradictions; if violation_label is set, demote entity to it

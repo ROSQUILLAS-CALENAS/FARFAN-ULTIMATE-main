@@ -2,17 +2,17 @@
 Permutation Invariant Processor based on generalized Deep Sets theory.
 
 Implementation following Wagstaff et al. (2022) "Universal Approximation of Set
-Operations with Transformers" from Neural Information Processing Systems.
+# # # Operations with Transformers" from Neural Information Processing Systems.  # Module not found  # Module not found  # Module not found
 Extends the fundamental invariance theorem through equivariant attention
 architectures for multiset processing.
 """
 
 import logging
 import warnings
-from collections import Counter, defaultdict
-from dataclasses import dataclass, field
-from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+# # # from collections import Counter, defaultdict  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import torch
@@ -135,7 +135,7 @@ class MultisetSerializer:
         Deserialize canonical representation back to elements and multiplicities.
 
         Args:
-            serialized: Canonical string from serialize_multiset
+# # #             serialized: Canonical string from serialize_multiset  # Module not found  # Module not found  # Module not found
 
         Returns:
             Tuple of (elements, multiplicities)

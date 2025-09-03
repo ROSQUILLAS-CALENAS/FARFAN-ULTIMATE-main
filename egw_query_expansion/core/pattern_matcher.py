@@ -3,17 +3,17 @@ Pattern Matcher Module
 Enhanced placeholder implementation for EGW Query Expansion system
 """
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import logging
 import re
 import threading
 import unicodedata
-from dataclasses import dataclass, field
-from functools import lru_cache
-from typing import Any, Dict, List, Optional, Sequence, Tuple, Set
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from functools import lru_cache  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Sequence, Tuple, Set  # Module not found  # Module not found  # Module not found
 
-from .import_safety import safe_import
+# # # from .import_safety import safe_import  # Module not found  # Module not found  # Module not found
 
 # Safe imports with fallbacks
 numpy_result = safe_import('numpy', required=False)
@@ -25,8 +25,8 @@ sklearn_similarity_result = safe_import('sklearn.metrics.pairwise', required=Fal
 
 _SKLEARN_AVAILABLE = False
 if sklearn_tfidf_result.success and sklearn_similarity_result.success:
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.metrics.pairwise import cosine_similarity
+# # #     from sklearn.feature_extraction.text import TfidfVectorizer  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.metrics.pairwise import cosine_similarity  # Module not found  # Module not found  # Module not found
     _SKLEARN_AVAILABLE = True
 
 

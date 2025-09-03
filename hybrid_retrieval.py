@@ -6,16 +6,16 @@ ColBERTv2 late interaction, and multilingual E5 embeddings.
 """
 
 import logging
-from dataclasses import dataclass
-from typing import Any, Dict, List, Optional, Tuple, Union
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 import faiss
 import numpy as np
 import torch
-from sentence_transformers import SentenceTransformer
+# # # from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
 # Optional sklearn with fallback
 try:
-    from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore
+# # #     from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore  # Module not found  # Module not found  # Module not found
     _SKLEARN_AVAILABLE = True
 except Exception:
     _SKLEARN_AVAILABLE = False
@@ -37,7 +37,7 @@ except Exception:
             return tokens
 
         def fit(self, corpus):
-            from collections import Counter
+# # #             from collections import Counter  # Module not found  # Module not found  # Module not found
             df = Counter()
             for doc in corpus:
                 for t in set(self._tokenize(doc)):
@@ -371,7 +371,7 @@ class HybridRetriever:
         self, query: str, top_k: int, return_scores: bool = True
     ) -> Union[RetrievalResult, List[HybridScore]]:
         """Perform hybrid retrieval combining all methods."""
-        # Get results from all methods
+# # #         # Get results from all methods  # Module not found  # Module not found  # Module not found
         sparse_result = self._sparse_search(query, top_k * 2)  # Get more for fusion
         dense_result = self._dense_search(query, top_k * 2)
         late_interaction_result = self._late_interaction_search(query, top_k * 2)
@@ -401,7 +401,7 @@ class HybridRetriever:
         dense_result: RetrievalResult,
         late_interaction_result: RetrievalResult,
     ) -> Dict[str, HybridScore]:
-        """Fuse scores from different retrieval methods."""
+# # #         """Fuse scores from different retrieval methods."""  # Module not found  # Module not found  # Module not found
         doc_scores = {}
 
         # Normalize scores to [0, 1] range
@@ -508,7 +508,7 @@ class HybridRetriever:
         self.logger.info(f"Saved indices and metadata to {save_path}")
 
     def load_index(self, save_path: str):
-        """Load FAISS indices from disk."""
+# # #         """Load FAISS indices from disk."""  # Module not found  # Module not found  # Module not found
         self.dense_index = faiss.read_index(f"{save_path}_dense.faiss")
         self.sparse_index = faiss.read_index(f"{save_path}_sparse.faiss")
         self.late_interaction_index = faiss.read_index(
@@ -528,4 +528,4 @@ class HybridRetriever:
         self.embedding_dim = metadata["embedding_dim"]
         self.sparse_dim = metadata["sparse_dim"]
 
-        self.logger.info(f"Loaded indices and metadata from {save_path}")
+# # #         self.logger.info(f"Loaded indices and metadata from {save_path}")  # Module not found  # Module not found  # Module not found

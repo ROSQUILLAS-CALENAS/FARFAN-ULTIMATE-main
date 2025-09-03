@@ -19,27 +19,27 @@ Theoretical Foundation:
 - Tensor contraction methods for compressed spectral analysis
 """
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import math
 import warnings
-from typing import Any, Dict, List, Optional, Tuple, Union
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 import numpy as np
-from scipy import linalg
-from scipy.optimize import minimize_scalar
-from sklearn.metrics.pairwise import cosine_similarity
+# # # from scipy import linalg  # Module not found  # Module not found  # Module not found
+# # # from scipy.optimize import minimize_scalar  # Module not found  # Module not found  # Module not found
+# # # from sklearn.metrics.pairwise import cosine_similarity  # Module not found  # Module not found  # Module not found
 
 try:
     pass  # Added to fix syntax
-#     from orchestration.event_bus import publish_metric  # type: ignore  # Module not found
+# # # #     from orchestration.event_bus import publish_metric  # type: ignore  # Module not found  # Module not found  # Module not found  # Module not found
 except Exception:  # noqa: BLE001
     def publish_metric(topic: str, payload: Dict[str, Any]) -> None:  # type: ignore
         return None
 
 try:
     pass  # Added to fix syntax
-#     from tracing.decorators import trace  # type: ignore  # Module not found
+# # # #     from tracing.decorators import trace  # type: ignore  # Module not found  # Module not found  # Module not found  # Module not found
 except Exception:  # noqa: BLE001
     def trace(fn):  # type: ignore
         return fn
@@ -92,7 +92,7 @@ class HyperbolicTensorNetworks:
         """
         Map Euclidean embeddings to Poincaré disk model.
         
-        Uses stereographic projection to map from Euclidean space to hyperbolic space.
+# # #         Uses stereographic projection to map from Euclidean space to hyperbolic space.  # Module not found  # Module not found  # Module not found
         
         Args:
             euclidean_embeddings: Euclidean embeddings (n_docs, dim)
@@ -366,7 +366,7 @@ class HyperbolicTensorNetworks:
             # Use more sophisticated Fréchet mean computation for large datasets
             hyperbolic_centroid = self._compute_frechet_mean(poincare_embeddings)
         
-        # Compute radial variance (distance from origin)
+# # #         # Compute radial variance (distance from origin)  # Module not found  # Module not found  # Module not found
         radial_distances = np.linalg.norm(poincare_embeddings, axis=1)
         radial_variance = np.var(radial_distances)
         

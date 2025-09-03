@@ -31,11 +31,11 @@ The output of normalize(definition) is a dict:
 Note: This file intentionally avoids any execution engine/queues/schedulers and only
 captures the intent of workflows as stable data with validation.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import hashlib
 import json
-from typing import Any, Dict, List, Set, Tuple
+# # # from typing import Any, Dict, List, Set, Tuple  # Module not found  # Module not found  # Module not found
 
 # ---------------- Canonicalization helpers ---------------- #
 

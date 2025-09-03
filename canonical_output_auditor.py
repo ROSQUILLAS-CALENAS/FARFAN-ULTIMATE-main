@@ -7,9 +7,9 @@ Canonical Output Auditor
 
 Usage: process(data: Dict[str, Any], context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
-from typing import Any, Dict, List, Optional, Set
+# # # from typing import Any, Dict, List, Optional, Set  # Module not found  # Module not found  # Module not found
 import hashlib
 import time
 
@@ -135,7 +135,7 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
         cluster_ok = set("C" + str(n) for n in REQUIRED_CLUSTERS_NUM).issubset(set_labels) or set(
             str(n) for n in REQUIRED_CLUSTERS_NUM
         ).issubset(set_labels)
-        # Non-redundancy comes from cluster_audit if present
+# # #         # Non-redundancy comes from cluster_audit if present  # Module not found  # Module not found  # Module not found
         non_redundant = bool(cluster_audit.get("non_redundant", False))
         if not non_redundant:
             gaps.append("redundant_items")
@@ -306,6 +306,12 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
             "metrics": {"max_div": max_div, "avg_div": avg_div},
         }
 
+    # Mathematical enhancers default-programming check
+    math_info = out.get("mathematical_enhancements") or {}
+    math_programmed_by_default = bool(math_info.get("applied", False))
+    if not math_programmed_by_default:
+        gaps.append("math_enhancers_not_programmed_by_default")
+
     canonical_audit = {
         "four_clusters_confirmed": bool(cluster_ok),
         "clusters_complete": bool(cluster_audit.get("complete")) if isinstance(cluster_audit, dict) else False,
@@ -322,6 +328,10 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
         "raw_data_presence": raw_presence,
         "replicability": replicability,
         "public_adapter_available": public_adapter_available,
+        "mathematical_enhancers": {
+            "programmed_by_default": math_programmed_by_default,
+            "applied": math_programmed_by_default,
+        },
         "evidence_traceability": {
             "per_cluster": per_cluster_resolution,
             "unresolved_sample": unresolved_evidence[:10],

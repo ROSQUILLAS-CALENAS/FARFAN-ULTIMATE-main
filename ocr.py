@@ -7,17 +7,17 @@ import hashlib
 import json
 import logging
 import re
-from dataclasses import dataclass
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Any, Dict, Optional, Tuple
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import cv2
 import numpy as np
 import pytesseract
-from config_consolidated.settings import get_settings
-from google.cloud import storage
-from PIL import Image
+# # # from config_consolidated.settings import get_settings  # Module not found  # Module not found  # Module not found
+# # # from google.cloud import storage  # Module not found  # Module not found  # Module not found
+# # # from PIL import Image  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -223,7 +223,7 @@ class IntelligentOCRDecisionSystem:
 
         if characteristics.has_tables and should_process:
             decision_reasons.append(
-                "Document contains tables that may benefit from OCR"
+# # #                 "Document contains tables that may benefit from OCR"  # Module not found  # Module not found  # Module not found
             )
 
         if characteristics.has_images and should_process:
@@ -385,7 +385,7 @@ class CloudOCRCache:
         return content_hash
 
     def get_cache_key(self, document_hash: str) -> str:
-        """Generate cache key from document hash."""
+# # #         """Generate cache key from document hash."""  # Module not found  # Module not found  # Module not found
         return f"{self.ocr_settings.cache_key_prefix}{document_hash}"
 
     def get_cached_results(self, document_hash: str) -> Optional[OCRCacheEntry]:
@@ -488,7 +488,7 @@ class CloudOCRCache:
 
             for blob in blobs:
                 try:
-                    # Check expiration from metadata
+# # #                     # Check expiration from metadata  # Module not found  # Module not found  # Module not found
                     if blob.metadata and "expires_at" in blob.metadata:
                         expires_at = datetime.fromisoformat(blob.metadata["expires_at"])
                         if datetime.utcnow() > expires_at:
@@ -643,7 +643,7 @@ def run_cloud_ocr(
 def _run_google_vision_ocr(image: Image.Image) -> Dict[str, Any]:
     """Ejecuta Google Vision OCR."""
     try:
-        from google.cloud import vision
+# # #         from google.cloud import vision  # Module not found  # Module not found  # Module not found
 
         client = vision.ImageAnnotatorClient()
 
@@ -662,7 +662,7 @@ def _run_google_vision_ocr(image: Image.Image) -> Dict[str, Any]:
 
         if texts:
             full_text = texts[0].description
-            # Calculate average confidence from bounding polygon data
+# # #             # Calculate average confidence from bounding polygon data  # Module not found  # Module not found  # Module not found
             confidence = 0.9  # Google Vision typically has high confidence
         else:
             full_text = ""

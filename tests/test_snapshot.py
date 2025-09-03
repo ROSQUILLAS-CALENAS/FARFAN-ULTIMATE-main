@@ -11,8 +11,8 @@ import os
 import tempfile
 import unittest
 import sys
-from pathlib import Path
-from unittest.mock import patch
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import patch  # Module not found  # Module not found  # Module not found
 
 # Add project root to path for canonical imports
 project_root = Path(__file__).resolve().parents[1]
@@ -25,7 +25,7 @@ except ImportError:
     # Fallback if blake3 not available
     blake3 = None
 
-from snapshot_manager import (
+# # # from snapshot_manager import (  # Module not found  # Module not found  # Module not found
     get_current_snapshot_id,
     mount_snapshot,
     resolve_snapshot
@@ -191,7 +191,7 @@ class TestSnapshotForensics(unittest.TestCase):
         sigma = mount_snapshot(test_state)
         
         # Manually verify checksum computation
-        from snapshot_manager import compute_snapshot_id
+# # #         from snapshot_manager import compute_snapshot_id  # Module not found  # Module not found  # Module not found
         
         expected_corpus = sha256_hash(json.dumps({"test": "data"}, sort_keys=True, separators=(',', ':')))
         expected_indices = sha256_hash(json.dumps({"type": "dense"}, sort_keys=True, separators=(',', ':')))

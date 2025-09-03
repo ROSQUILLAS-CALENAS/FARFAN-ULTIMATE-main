@@ -2,12 +2,12 @@
 Event schemas for the event-driven choreography system
 """
 import json
-from datetime import datetime, timezone
-from enum import Enum
-from typing import Any, Dict, List, Optional, Union
-from uuid import uuid4
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
+# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
-from pydantic import BaseModel, Field, field_validator
+# # # from pydantic import BaseModel, Field, field_validator  # Module not found  # Module not found  # Module not found
 
 
 class EventStatus(str, Enum):
@@ -243,7 +243,7 @@ class BaseEvent(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> "BaseEvent":
-        """Deserialize event from JSON"""
+# # #         """Deserialize event from JSON"""  # Module not found  # Module not found  # Module not found
         data = json.loads(json_str)
         return cls(**data)
 

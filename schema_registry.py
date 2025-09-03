@@ -8,20 +8,20 @@ automatic schema evolution support.
 
 import json
 import logging
-from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Type, Union, Tuple
-from dataclasses import dataclass, field
-from datetime import datetime
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Type, Union, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 try:
-    from packaging import version
+# # #     from packaging import version  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback for version comparison if packaging is not available
     version = None
 import hashlib
 
-from pydantic import BaseModel, Field, ValidationError, validator
-from pydantic.version import VERSION as PYDANTIC_VERSION
+# # # from pydantic import BaseModel, Field, ValidationError, validator  # Module not found  # Module not found  # Module not found
+# # # from pydantic.version import VERSION as PYDANTIC_VERSION  # Module not found  # Module not found  # Module not found
 
 
 # Configure logging
@@ -116,7 +116,7 @@ class IngestionOutputSchema(BaseStageSchema):
 class ContextInputSchema(BaseStageSchema):
     """Input schema for context construction stage."""
     stage: PipelineStage = Field(default=PipelineStage.CONTEXT_BUILD)
-    validated_data: Dict[str, Any] = Field(..., description="Validated data from ingestion")
+# # #     validated_data: Dict[str, Any] = Field(..., description="Validated data from ingestion")  # Module not found  # Module not found  # Module not found
     context_requirements: Dict[str, Any] = Field(default_factory=dict)
 
 
@@ -353,7 +353,7 @@ class SchemaRegistry:
             self.output_schemas[stage] = output_schema
     
     def _load_schemas_config(self):
-        """Load schema configuration from JSON file."""
+# # #         """Load schema configuration from JSON file."""  # Module not found  # Module not found  # Module not found
         config_path = Path(self.schemas_config_path)
         
         if not config_path.exists():
@@ -506,7 +506,7 @@ class SchemaRegistry:
                     from_version: SchemaVersion,
                     to_version: SchemaVersion,
                     schema_type: str = "input") -> Dict[str, Any]:
-        """Migrate data from one schema version to another."""
+# # #         """Migrate data from one schema version to another."""  # Module not found  # Module not found  # Module not found
         rule_key = (stage.value, f"{from_version}->{to_version}")
         
         if rule_key not in self.evolution_rules:

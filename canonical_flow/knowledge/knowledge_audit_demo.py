@@ -7,13 +7,13 @@ showing how execution metrics are tracked and written to the audit file.
 
 import sys
 import time
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from canonical_flow.knowledge.knowledge_audit_system import (
+# # # from canonical_flow.knowledge.knowledge_audit_system import (  # Module not found  # Module not found  # Module not found
     get_audit_system, 
     component_06K_process, 
     component_07K_process
@@ -76,7 +76,7 @@ def run_audit_demo():
     # Test 08K component (advanced_knowledge_graph_builder) - placeholder for now
     print("\n3. Testing 08K Component (advanced_knowledge_graph_builder)")
     try:
-        from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component
+# # #         from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component  # Module not found  # Module not found  # Module not found
         process_08K = create_placeholder_component("08K", "advanced_knowledge_graph_builder")
         result_08K = process_08K(sample_data, {"enable_parallel": False})
         print(f"   ✓ Component 08K completed successfully")
@@ -89,7 +89,7 @@ def run_audit_demo():
     # Test 09K component (causal_graph) - placeholder for now
     print("\n4. Testing 09K Component (causal_graph)")
     try:
-        from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component
+# # #         from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component  # Module not found  # Module not found  # Module not found
         process_09K = create_placeholder_component("09K", "causal_graph")
         result_09K = process_09K(sample_data)
         print(f"   ✓ Component 09K completed successfully") 
@@ -102,7 +102,7 @@ def run_audit_demo():
     # Test 10K component (causal_dnp_framework) - placeholder for now
     print("\n5. Testing 10K Component (causal_dnp_framework)")
     try:
-        from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component
+# # #         from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component  # Module not found  # Module not found  # Module not found
         process_10K = create_placeholder_component("10K", "causal_dnp_framework")
         result_10K = process_10K(sample_data)
         print(f"   ✓ Component 10K completed successfully")
@@ -115,7 +115,7 @@ def run_audit_demo():
     # Test 11K component (embedding_builder) - placeholder for now
     print("\n6. Testing 11K Component (embedding_builder)")
     try:
-        from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component
+# # #         from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component  # Module not found  # Module not found  # Module not found
         process_11K = create_placeholder_component("11K", "embedding_builder")
         result_11K = process_11K(sample_data)
         print(f"   ✓ Component 11K completed successfully")
@@ -128,7 +128,7 @@ def run_audit_demo():
     # Test 12K component (embedding_generator) - placeholder for now
     print("\n7. Testing 12K Component (embedding_generator)")
     try:
-        from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component
+# # #         from canonical_flow.knowledge.knowledge_audit_system import create_placeholder_component  # Module not found  # Module not found  # Module not found
         process_12K = create_placeholder_component("12K", "embedding_generator")
         result_12K = process_12K(sample_data)
         print(f"   ✓ Component 12K completed successfully")

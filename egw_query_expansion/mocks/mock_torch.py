@@ -7,8 +7,8 @@ behavior and realistic return types for testing and fallback scenarios.
 """
 
 import math
-from typing import Any, List, Tuple, Union, Optional, Callable, Dict
-from .mock_utils import MockRandomState, DeterministicHasher, create_deterministic_data, ensure_tuple
+# # # from typing import Any, List, Tuple, Union, Optional, Callable, Dict  # Module not found  # Module not found  # Module not found
+# # # from .mock_utils import MockRandomState, DeterministicHasher, create_deterministic_data, ensure_tuple  # Module not found  # Module not found  # Module not found
 
 
 class MockTensor:
@@ -16,11 +16,11 @@ class MockTensor:
     
     def __init__(self, data: Any = None, shape: Optional[Tuple[int, ...]] = None, dtype: str = "float32", device: str = "cpu", requires_grad: bool = False):
         if data is None and shape is not None:
-            # Create tensor from shape
+# # #             # Create tensor from shape  # Module not found  # Module not found  # Module not found
             self.data = create_deterministic_data(shape, dtype)
             self.shape = shape
         elif isinstance(data, (list, tuple)):
-            # Create from data
+# # #             # Create from data  # Module not found  # Module not found  # Module not found
             self.data = data
             self.shape = self._infer_shape(data)
         else:
@@ -38,7 +38,7 @@ class MockTensor:
         self.numel_ = self._calculate_numel()
         
     def _infer_shape(self, data: Any) -> Tuple[int, ...]:
-        """Infer shape from nested structure"""
+# # #         """Infer shape from nested structure"""  # Module not found  # Module not found  # Module not found
         if not isinstance(data, (list, tuple)):
             return ()
         
@@ -196,7 +196,7 @@ class MockTensor:
             return [data]
     
     def _unflatten(self, flat_data: List[Any], shape: Tuple[int, ...]) -> Any:
-        """Reconstruct nested structure from flat data"""
+# # #         """Reconstruct nested structure from flat data"""  # Module not found  # Module not found  # Module not found
         if len(shape) == 1:
             return flat_data[:shape[0]]
         
@@ -258,7 +258,7 @@ class MockTensor:
             return MockTensor([result], dtype=self.dtype, device=self.device)
     
     def detach(self):
-        """Detach from computation graph"""
+# # #         """Detach from computation graph"""  # Module not found  # Module not found  # Module not found
         return MockTensor(self.data, self.shape, self.dtype, self.device, requires_grad=False)
     
     def clone(self):
@@ -307,7 +307,7 @@ class MockTensor:
     def numpy(self):
         """Convert to numpy array (returns mock)"""
         # Import here to avoid circular dependency
-        from .mock_numpy import MockNDArray
+# # #         from .mock_numpy import MockNDArray  # Module not found  # Module not found  # Module not found
         return MockNDArray(self.data, self.shape, self.dtype)
 
 

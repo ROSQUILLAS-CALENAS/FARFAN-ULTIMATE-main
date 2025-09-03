@@ -14,8 +14,8 @@ import os
 import sys
 import subprocess
 import re
-from pathlib import Path
-from typing import Dict, List, Tuple
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 
 
 class VenvImportFixer:
@@ -147,26 +147,26 @@ class VenvImportFixer:
             original_line = line
             
             # Fix common module path issues
-            if 'from ' in line:
-                line = line.replace('from ', 'from ')
+# # #             if 'from ' in line:  # Module not found  # Module not found  # Module not found
+# # #                 line = line.replace('from ', 'from ')  # Module not found  # Module not found  # Module not found
             elif 'import ' in line:
                 line = line.replace('import ', 'import ')
             
-            if 'from ' in line:
-                line = line.replace('from ', 'from ')
+# # #             if 'from ' in line:  # Module not found  # Module not found  # Module not found
+# # #                 line = line.replace('from ', 'from ')  # Module not found  # Module not found  # Module not found
             elif 'import ' in line:
                 line = line.replace('import ', 'import ')
             
-            if 'from ' in line:
+# # #             if 'from ' in line:  # Module not found  # Module not found  # Module not found
                 # These look like they should be local imports
-                line = line.replace('from ', 'from ')
+# # #                 line = line.replace('from ', 'from ')  # Module not found  # Module not found  # Module not found
             
             # Fix orchestration imports
-#             if 'from orchestration.event_bus' in line:  # Module not found
+# # # #             if 'from orchestration.event_bus' in line:  # Module not found  # Module not found  # Module not found  # Module not found
                 line = '# ' + line + '  # Module not found'
-#             elif 'from tracing.decorators' in line:  # Module not found
+# # # #             elif 'from tracing.decorators' in line:  # Module not found  # Module not found  # Module not found  # Module not found
                 line = '# ' + line + '  # Module not found'
-#             elif 'from monitoring_stack' in line:  # Module not found
+# # # #             elif 'from monitoring_stack' in line:  # Module not found  # Module not found  # Module not found  # Module not found
                 line = '# ' + line + '  # Module not found'
             
             if line != original_line:

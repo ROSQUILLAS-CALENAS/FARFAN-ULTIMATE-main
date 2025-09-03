@@ -2,7 +2,7 @@
 Monotonic Task Selector with Submodular Approximation
 
 Implementation of a monotonic task selector based on submodular maximization
-from Balkanski et al. (2021) "Exponential Speedups in Parallel Running Time
+# # # from Balkanski et al. (2021) "Exponential Speedups in Parallel Running Time  # Module not found  # Module not found  # Module not found
 for Submodular Maximization without Loss in Approximation" (ACM-SIAM SODA).
 
 Provides greedy selection with lazy evaluation, stable ordering under budget
@@ -11,10 +11,10 @@ changes, and proven approximation guarantees.
 
 import heapq
 import logging
-from abc import ABC, abstractmethod
-from collections import defaultdict
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set, Tuple, Union
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 
 @dataclass(frozen=True)
@@ -83,7 +83,7 @@ class SelectionTrace:
 class SelectionDecision:
     """Decision record for legacy API compatibility.
 
-    Fields mirror expectations from external tests.
+# # #     Fields mirror expectations from external tests.  # Module not found  # Module not found  # Module not found
     """
 
     task: "Task"
@@ -159,7 +159,7 @@ class CoverageUtility(SubmodularFunction):
     ):
         """
         Args:
-            feature_coverage: Map from task_id to set of features covered
+# # #             feature_coverage: Map from task_id to set of features covered  # Module not found  # Module not found  # Module not found
             feature_weights: Optional weights for features (default: uniform)
         """
         self.feature_coverage = feature_coverage
@@ -177,7 +177,7 @@ class CoverageUtility(SubmodularFunction):
         candidate_task: str,
         available_tasks: Dict[str, Task],
     ) -> float:
-        """Marginal coverage gain from adding candidate_task."""
+# # #         """Marginal coverage gain from adding candidate_task."""  # Module not found  # Module not found  # Module not found
         if candidate_task not in self.feature_coverage:
             return 0.0
 
@@ -223,7 +223,7 @@ class MonotonicTaskSelector:
     """
     Monotonic task selector with submodular approximation guarantees.
 
-    Implements the greedy algorithm with lazy evaluation from Balkanski et al.
+# # #     Implements the greedy algorithm with lazy evaluation from Balkanski et al.  # Module not found  # Module not found  # Module not found
     Maintains prefix property: increasing budget only adds tasks at the end.
     """
 
@@ -673,7 +673,7 @@ class MonotonicTaskSelector:
 # --- Compatibility Layer -----------------------------------------------------
 # Provide DeterministicGainFunction as used by legacy tests, and alias
 # SelectionDecision for trace type compatibility.
-from typing import Iterable
+# # # from typing import Iterable  # Module not found  # Module not found  # Module not found
 
 
 class DeterministicGainFunction:

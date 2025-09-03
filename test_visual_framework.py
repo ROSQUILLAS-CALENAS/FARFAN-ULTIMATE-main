@@ -5,9 +5,9 @@ Test cases for the Visual Animation Testing Framework
 import pytest
 import asyncio
 import json
-from pathlib import Path
-from unittest.mock import Mock, AsyncMock, patch
-from visual_testing_framework import (
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import Mock, AsyncMock, patch  # Module not found  # Module not found  # Module not found
+# # # from visual_testing_framework import (  # Module not found  # Module not found  # Module not found
     VisualTestingFramework,
     AnimationTestConfig,
     TestResult

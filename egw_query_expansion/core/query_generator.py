@@ -3,7 +3,7 @@ Query Generator Module
 Enhanced implementation for EGW Query Expansion system
 """
 
-from .import_safety import safe_import
+# # # from .import_safety import safe_import  # Module not found  # Module not found  # Module not found
 
 # Safe imports for dependencies
 numpy_result = safe_import('numpy', required=False)
@@ -52,7 +52,7 @@ class QueryGenerator:
             return [[0.5] * 128 for _ in range(len(patterns))]
     
     def generate_from_patterns(self, patterns):
-        """Mock query generation from patterns."""
+# # #         """Mock query generation from patterns."""  # Module not found  # Module not found  # Module not found
         return [f"query_from_{pattern.replace(' ', '_')}" for pattern in patterns]
     
     def add_dnp_vocabulary(self, query, dnp_terms, transport_masses):

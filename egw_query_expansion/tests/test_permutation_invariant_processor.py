@@ -5,15 +5,15 @@ Tests the implementation of generalized Deep Sets theory with invariance verific
 numerical consistency, and multiset semantics preservation.
 """
 
-from collections import Counter
-from typing import List, Tuple
+# # # from collections import Counter  # Module not found  # Module not found  # Module not found
+# # # from typing import List, Tuple  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import pytest
 import torch
 import torch.nn as nn
 
-from egw_query_expansion.core.permutation_invariant_processor import (
+# # # from egw_query_expansion.core.permutation_invariant_processor import (  # Module not found  # Module not found  # Module not found
     AggregationType,
     DeepSetBlock,
     DeterministicPooler,

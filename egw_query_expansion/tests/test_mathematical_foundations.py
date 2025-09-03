@@ -7,9 +7,9 @@ and Bayesian inference components.
 
 import numpy as np
 import pytest
-from unittest.mock import Mock, patch
+# # # from unittest.mock import Mock, patch  # Module not found  # Module not found  # Module not found
 
-from egw_query_expansion.mathematical_foundations import (
+# # # from egw_query_expansion.mathematical_foundations import (  # Module not found  # Module not found  # Module not found
     InformationTheory,
     SemanticSimilarity,
     BayesianInference,
@@ -300,7 +300,7 @@ class TestIntegrationWithQuestionAnalyzer:
     @patch('question_analyzer.AutoTokenizer')
     def test_question_analyzer_mathematical_integration(self, mock_tokenizer, mock_transformer):
         """Test that QuestionAnalyzer integrates properly with mathematical foundations"""
-        from question_analyzer import QuestionAnalyzer
+# # #         from question_analyzer import QuestionAnalyzer  # Module not found  # Module not found  # Module not found
         
         # Mock the models
         mock_transformer.return_value.encode.return_value = np.random.normal(0, 1, (1, 384))

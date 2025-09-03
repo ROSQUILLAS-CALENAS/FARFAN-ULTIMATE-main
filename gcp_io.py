@@ -4,11 +4,11 @@ Operaciones de I/O con Google Cloud Platform
 
 import io
 import datetime
-from datetime import datetime
-from typing import Any, Dict, List, Optional
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional  # Module not found  # Module not found  # Module not found
 
 import orjson
-from google.cloud import bigquery, pubsub_v1, storage
+# # # from google.cloud import bigquery, pubsub_v1, storage  # Module not found  # Module not found  # Module not found
 
 
 class GCPIOManager:
@@ -258,7 +258,7 @@ class GCPIOManager:
             URL firmada
         """
         try:
-            from datetime import timedelta
+# # #             from datetime import timedelta  # Module not found  # Module not found  # Module not found
 
             parts = gcs_uri[5:].split("/", 1)
             bucket_name = parts[0]

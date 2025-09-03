@@ -8,8 +8,8 @@ fallback scenarios.
 """
 
 import math
-from typing import Any, List, Tuple, Union, Optional, Callable
-from .mock_utils import MockRandomState, DeterministicHasher, create_deterministic_data, ensure_tuple, flatten_shape
+# # # from typing import Any, List, Tuple, Union, Optional, Callable  # Module not found  # Module not found  # Module not found
+# # # from .mock_utils import MockRandomState, DeterministicHasher, create_deterministic_data, ensure_tuple, flatten_shape  # Module not found  # Module not found  # Module not found
 
 
 class MockNDArray:
@@ -17,11 +17,11 @@ class MockNDArray:
     
     def __init__(self, data: Any = None, shape: Optional[Tuple[int, ...]] = None, dtype: str = "float32"):
         if data is None and shape is not None:
-            # Create array from shape
+# # #             # Create array from shape  # Module not found  # Module not found  # Module not found
             self.data = create_deterministic_data(shape, dtype)
             self.shape = shape
         elif isinstance(data, (list, tuple)):
-            # Create from data
+# # #             # Create from data  # Module not found  # Module not found  # Module not found
             self.data = data
             self.shape = self._infer_shape(data)
         else:
@@ -34,7 +34,7 @@ class MockNDArray:
         self.size = flatten_shape(self.shape) if self.shape else 1
         
     def _infer_shape(self, data: Any) -> Tuple[int, ...]:
-        """Infer shape from nested list structure"""
+# # #         """Infer shape from nested list structure"""  # Module not found  # Module not found  # Module not found
         if not isinstance(data, (list, tuple)):
             return ()
         
@@ -148,7 +148,7 @@ class MockNDArray:
             return [data]
     
     def _unflatten(self, flat_data: List[Any], shape: Tuple[int, ...]) -> Any:
-        """Reconstruct nested structure from flat data"""
+# # #         """Reconstruct nested structure from flat data"""  # Module not found  # Module not found  # Module not found
         if len(shape) == 1:
             return flat_data[:shape[0]]
         
@@ -269,7 +269,7 @@ class MockNumPy:
         self.random = MockNumpyRandom()
         
     def array(self, data, dtype="float32"):
-        """Create array from data"""
+# # #         """Create array from data"""  # Module not found  # Module not found  # Module not found
         return MockNDArray(data, dtype=str(dtype))
     
     def zeros(self, shape, dtype="float32"):
@@ -572,7 +572,7 @@ class MockNumpyRandom:
         return self._rng.random(size)
     
     def randn(self, *size):
-        """Random values from standard normal distribution"""
+# # #         """Random values from standard normal distribution"""  # Module not found  # Module not found  # Module not found
         return self._rng.randn(*size)
     
     def randint(self, low, high=None, size=None):
@@ -583,7 +583,7 @@ class MockNumpyRandom:
         return self._rng.randint(low, high, size)
     
     def choice(self, a, size=None, replace=True, p=None):
-        """Random choice from array"""
+# # #         """Random choice from array"""  # Module not found  # Module not found  # Module not found
         return self._rng.choice(a, size, replace, p)
     
     def uniform(self, low=0.0, high=1.0, size=None):

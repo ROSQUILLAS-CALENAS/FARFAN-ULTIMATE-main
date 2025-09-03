@@ -11,27 +11,27 @@ Dependencies: evidence_processor, evidence_validation_model, normative_validator
 
 import hashlib
 import json
-from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple, Union
-from uuid import uuid4
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
-# Import from existing modules
+# # # # Import from existing modules  # Module not found  # Module not found  # Module not found
 try:
-    from evidence_processor import (
+# # #     from evidence_processor import (  # Module not found  # Module not found  # Module not found
         ConfidenceLevel,
         EvidenceType,
         SourceMetadata,
         StructuredEvidence,
     )
-    from evidence_validation_model import (
+# # #     from evidence_validation_model import (  # Module not found  # Module not found  # Module not found
         DNPStandards,
         ValidationCriteria,
         ValidationRule,
         ValidationSeverity,
     )
-    from normative_validator import CheckStatus, ComplianceLevel, ViolationSeverity
+# # #     from normative_validator import CheckStatus, ComplianceLevel, ViolationSeverity  # Module not found  # Module not found  # Module not found
 except ImportError as e:
     print(
         f"Warning: Import error {e}. Running in standalone mode with minimal dependencies."
@@ -388,7 +388,7 @@ class AnswerFormatter:
     def _generate_reasoning_chain(
         self, question_id: str, evidence_collection: List[StructuredEvidence]
     ) -> ReasoningChain:
-        """Generate reasoning chain from evidence collection."""
+# # #         """Generate reasoning chain from evidence collection."""  # Module not found  # Module not found  # Module not found
         chain_id = f"chain_{uuid4().hex[:8]}"
         steps = []
 
@@ -452,7 +452,7 @@ class AnswerFormatter:
         evidence_collection: List[StructuredEvidence],
         reasoning_chain: ReasoningChain,
     ) -> str:
-        """Generate structured answer text from evidence and reasoning."""
+# # #         """Generate structured answer text from evidence and reasoning."""  # Module not found  # Module not found  # Module not found
         # Group evidence by dimension
         evidence_by_dimension = {}
         for evidence in evidence_collection:
@@ -463,7 +463,7 @@ class AnswerFormatter:
         answer_parts = []
 
         # Executive summary
-        summary = f"Based on analysis of {len(evidence_collection)} evidence items from {len(set(e.citation.metadata.document_id for e in evidence_collection))} sources:"
+# # #         summary = f"Based on analysis of {len(evidence_collection)} evidence items from {len(set(e.citation.metadata.document_id for e in evidence_collection))} sources:"  # Module not found  # Module not found  # Module not found
         answer_parts.append(summary)
 
         # Dimension-specific findings
@@ -565,7 +565,7 @@ class AnswerFormatter:
     def _determine_compliance_level(
         self, dnp_validation: Dict[str, Any]
     ) -> DNPComplianceLevel:
-        """Determine DNP compliance level from validation results."""
+# # #         """Determine DNP compliance level from validation results."""  # Module not found  # Module not found  # Module not found
         overall_compliance = dnp_validation.get("overall_compliance", 0.0)
         violation_count = len(dnp_validation.get("violations", []))
 
@@ -613,7 +613,7 @@ class ConfidenceCalibrator:
         reasoning_chain: ReasoningChain,
     ) -> ConfidenceMetrics:
         """Calculate calibrated confidence metrics."""
-        # Base confidence from evidence scores
+# # #         # Base confidence from evidence scores  # Module not found  # Module not found  # Module not found
         evidence_scores = [e.scoring.overall_score for e in evidence_collection]
         base_confidence = (
             sum(evidence_scores) / len(evidence_scores) if evidence_scores else 0.0
@@ -684,8 +684,8 @@ class AuditTrailGenerator:
 def create_sample_answer() -> DNPCompliantAnswer:
     """Create sample DNP-compliant answer for demonstration."""
     try:
-        from evidence_processor import create_sample_evidence
-        from evidence_validation_model import (
+# # #         from evidence_processor import create_sample_evidence  # Module not found  # Module not found  # Module not found
+# # #         from evidence_validation_model import (  # Module not found  # Module not found  # Module not found
             DNPStandards,
             ValidationCriteria,
             ValidationRule,

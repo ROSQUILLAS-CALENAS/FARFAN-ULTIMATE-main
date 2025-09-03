@@ -2,19 +2,19 @@
 # Resolves all "Unexpected argument" warnings
 
 import inspect
-from typing import Dict, List, Any, Optional, Callable
-from dataclasses import dataclass, field
-from pathlib import Path
+# # # from typing import Dict, List, Any, Optional, Callable  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 import importlib.util
 import logging
-from datetime import datetime
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 try:
-    from deterministic_flow_risk_guard import DeterministicFlowRiskGuard
+# # #     from deterministic_flow_risk_guard import DeterministicFlowRiskGuard  # Module not found  # Module not found  # Module not found
 except Exception:  # safety if optional
     DeterministicFlowRiskGuard = None  # type: ignore
 
 try:
-    from canonical_flow.calibration_dashboard import CalibrationDashboard
+# # #     from canonical_flow.calibration_dashboard import CalibrationDashboard  # Module not found  # Module not found  # Module not found
 except Exception:
     CalibrationDashboard = None  # type: ignore
 
@@ -368,7 +368,7 @@ class PipelineOrchestrator:
         try:
             # Best-effort enrichment to level-up sophistication before auditing
             try:
-                from canonical_flow import enrichment_postprocessor as _enrich  # type: ignore
+# # #                 from canonical_flow import enrichment_postprocessor as _enrich  # type: ignore  # Module not found  # Module not found  # Module not found
                 enriched = _enrich.process(data, context={'source': 'pipeline_orchestrator'})
                 if isinstance(enriched, dict):
                     data = enriched
@@ -388,7 +388,7 @@ class PipelineOrchestrator:
             try:
                 needs_calibration = bool(audit_payload and audit_payload.get('calibration_trigger')) or bool(audit_payload and audit_payload.get('gaps'))
                 if needs_calibration:
-                    from canonical_flow import calibration_controller as _cal  # type: ignore
+# # #                     from canonical_flow import calibration_controller as _cal  # type: ignore  # Module not found  # Module not found  # Module not found
                     calibrated = _cal.process(data, context={'source': 'pipeline_orchestrator'})
                     if isinstance(calibrated, dict):
                         data = calibrated
@@ -440,7 +440,7 @@ class PipelineOrchestrator:
         
         Args:
             module_name: Name of the executed module
-            result: Result data from module execution
+# # #             result: Result data from module execution  # Module not found  # Module not found  # Module not found
             context: Execution context
         """
         if not self.calibration_dashboard:
@@ -467,7 +467,7 @@ class PipelineOrchestrator:
             return
             
         try:
-            # Extract or create calibration data from the result
+# # #             # Extract or create calibration data from the result  # Module not found  # Module not found  # Module not found
             calibration_data = self._extract_calibration_data(result, context, module_name)
             
             # Generate and write the calibration report
@@ -482,7 +482,7 @@ class PipelineOrchestrator:
     
     def _extract_calibration_data(self, result: Dict[str, Any], context: Dict[str, Any], module_name: str) -> Dict[str, Any]:
         """
-        Extract calibration data from module execution result.
+# # #         Extract calibration data from module execution result.  # Module not found  # Module not found  # Module not found
         
         Args:
             result: Module execution result
@@ -494,7 +494,7 @@ class PipelineOrchestrator:
         """
         calibration_data = {}
         
-        # Try to extract calibration-related fields from result
+# # #         # Try to extract calibration-related fields from result  # Module not found  # Module not found  # Module not found
         if isinstance(result, dict):
             # Direct calibration fields
             calibration_fields = [

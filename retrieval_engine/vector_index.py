@@ -4,13 +4,13 @@ FAISS-based Vector Retrieval Module
 Implements semantic search using dense vector embeddings and FAISS indexing.
 Provides standardized retrieval interface for vector similarity search.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import json
 import os
 import pickle
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 try:
     import numpy as np
@@ -54,7 +54,7 @@ except ImportError:
     faiss = MockFAISS()
 
 try:
-    from sentence_transformers import SentenceTransformer
+# # #     from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
 except ImportError:
     SentenceTransformer = None
 
@@ -294,7 +294,7 @@ class VectorIndex:
             np.save(f"{path}_embeddings.npy", self.document_embeddings)
     
     def load_index(self, path: str) -> None:
-        """Load the FAISS index and metadata from disk."""
+# # #         """Load the FAISS index and metadata from disk."""  # Module not found  # Module not found  # Module not found
         # Load FAISS index
         self.index = faiss.read_index(f"{path}.faiss")
         
@@ -358,7 +358,7 @@ class VectorRetriever:
     
     def build_index(self, documents: List[Tuple[str, str]]) -> None:
         """
-        Build FAISS index from documents.
+# # #         Build FAISS index from documents.  # Module not found  # Module not found  # Module not found
         
         Args:
             documents: List of (doc_id, text) tuples
@@ -436,14 +436,14 @@ def process(data: Any, context: Dict[str, Any] = None) -> Dict[str, Any]:
     """
     ctx = context or {}
     
-    # Extract query and documents from input data
+# # #     # Extract query and documents from input data  # Module not found  # Module not found  # Module not found
     query = ""
     documents = []
     
     if isinstance(data, dict):
         query = data.get("query", "") or ctx.get("query", "")
         
-        # Try to extract documents from various possible keys
+# # #         # Try to extract documents from various possible keys  # Module not found  # Module not found  # Module not found
         docs = data.get("documents") or data.get("loaded_docs") or data.get("text", "")
         if isinstance(docs, str) and docs:
             documents = [("doc_0", docs)]

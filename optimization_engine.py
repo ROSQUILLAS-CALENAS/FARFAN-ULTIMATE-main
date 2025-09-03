@@ -10,11 +10,11 @@ import json
 import logging
 import pickle
 import random
-from collections import defaultdict, deque
-from dataclasses import dataclass, field
-from datetime import datetime, timedelta
-from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Tuple
+# # # from collections import defaultdict, deque  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 
@@ -22,17 +22,17 @@ import numpy as np
 import pm4py
 
 # Genetic Algorithm
-from deap import algorithms, base, creator, tools
-from pm4py.algo.conformance.tokenreplay import algorithm as token_replay
-from pm4py.algo.discovery.alpha import algorithm as alpha_miner
-from pm4py.objects.log.importer.xes import importer as xes_importer
+# # # from deap import algorithms, base, creator, tools  # Module not found  # Module not found  # Module not found
+# # # from pm4py.algo.conformance.tokenreplay import algorithm as token_replay  # Module not found  # Module not found  # Module not found
+# # # from pm4py.algo.discovery.alpha import algorithm as alpha_miner  # Module not found  # Module not found  # Module not found
+# # # from pm4py.objects.log.importer.xes import importer as xes_importer  # Module not found  # Module not found  # Module not found
 
 # Machine Learning imports (guarded)
 try:
-    from sklearn.ensemble import IsolationForest, RandomForestRegressor  # type: ignore
-    from sklearn.metrics import mean_absolute_error, mean_squared_error  # type: ignore
-    from sklearn.model_selection import train_test_split  # type: ignore
-    from sklearn.preprocessing import StandardScaler  # type: ignore
+# # #     from sklearn.ensemble import IsolationForest, RandomForestRegressor  # type: ignore  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.metrics import mean_absolute_error, mean_squared_error  # type: ignore  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.model_selection import train_test_split  # type: ignore  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.preprocessing import StandardScaler  # type: ignore  # Module not found  # Module not found  # Module not found
     SKLEARN_AVAILABLE = True
 except Exception:
     SKLEARN_AVAILABLE = False
@@ -103,7 +103,7 @@ class WorkflowChromosome:
 
     @classmethod
     def from_list(cls, gene_id: str, genes: List[Any]) -> "WorkflowChromosome":
-        """Create chromosome from gene list"""
+# # #         """Create chromosome from gene list"""  # Module not found  # Module not found  # Module not found
         return cls(
             gene_id=gene_id,
             parallelism_level=int(genes[0]),

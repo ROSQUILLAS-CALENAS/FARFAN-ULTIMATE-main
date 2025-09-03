@@ -7,7 +7,7 @@ if not already present.
 Idempotency: guarded by marker <!-- ADV_GRAPHICS_STACK:BEGIN v1 --> ... <!-- ADV_GRAPHICS_STACK:END v1 -->
 """
 import os
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKER_BEGIN = "<!-- ADV_GRAPHICS_STACK:BEGIN v1 -->"

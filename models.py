@@ -1,20 +1,20 @@
 """
 Pydantic models for PDT ingestion engine with comprehensive validation
-Migrated from dataclasses to provide better API validation and serialization
+# # # Migrated from dataclasses to provide better API validation and serialization  # Module not found  # Module not found  # Module not found
 """
 
-from datetime import datetime
-from enum import Enum
-from typing import Any, Dict, List, Optional, Union
-from uuid import UUID
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
+# # # from uuid import UUID  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import pandas as pd
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+# # # from pydantic import BaseModel, ConfigDict, Field, field_validator  # Module not found  # Module not found  # Module not found
 
-# Import base model from models directory (guarded)
+# # # # Import base model from models directory (guarded)  # Module not found  # Module not found  # Module not found
 try:
-    from models.base import BaseModel as CustomBaseModel
+# # #     from models.base import BaseModel as CustomBaseModel  # Module not found  # Module not found  # Module not found
 except Exception:
     # Fallback to pydantic BaseModel if optional custom base is missing
     CustomBaseModel = BaseModel
@@ -86,7 +86,7 @@ class DocumentEnvelope(CustomBaseModel):
     pdt_id: str = Field(..., min_length=1, description="Unique PDT identifier")
     gcs_uri: str = Field(..., pattern=r"^gs://.+", description="Google Cloud Storage URI")
     raw_metadata: Dict[str, Any] = Field(
-        default_factory=dict, description="Raw metadata from document"
+# # #         default_factory=dict, description="Raw metadata from document"  # Module not found  # Module not found  # Module not found
     )
     clean_metadata: Dict[str, Any] = Field(
         default_factory=dict, description="Processed metadata"
@@ -181,7 +181,7 @@ class TableArtifact(CustomBaseModel):
             self._dataframe_json = df.to_json(orient="records")
 
     def get_dataframe(self) -> Optional[pd.DataFrame]:
-        """Retrieve DataFrame from serialized format"""
+# # #         """Retrieve DataFrame from serialized format"""  # Module not found  # Module not found  # Module not found
         if self._dataframe_json:
             return pd.read_json(self._dataframe_json, orient="records")
         return None

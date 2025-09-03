@@ -4,20 +4,20 @@ Core Event-Driven Orchestrator for PDT Analysis System
 
 import asyncio
 import logging
-from typing import Dict, List, Optional, Any
-from datetime import datetime, timezone
+# # # from typing import Dict, List, Optional, Any  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
 
-from models import (
+# # # from models import (  # Module not found  # Module not found  # Module not found
     Event, EventType, WorkflowDefinition, ProcessingContext,
     SystemHealthMetrics, WorkflowStatus
 )
-from event_bus import EventBus
-from workflow_engine import WorkflowEngine
-from compensation_engine import CompensationEngine, register_default_compensation_handlers
-from workflow_definitions import WORKFLOW_REGISTRY, get_workflow_definition
-from step_handlers import register_default_step_handlers
+# # # from event_bus import EventBus  # Module not found  # Module not found  # Module not found
+# # # from workflow_engine import WorkflowEngine  # Module not found  # Module not found  # Module not found
+# # # from compensation_engine import CompensationEngine, register_default_compensation_handlers  # Module not found  # Module not found  # Module not found
+# # # from workflow_definitions import WORKFLOW_REGISTRY, get_workflow_definition  # Module not found  # Module not found  # Module not found
+# # # from step_handlers import register_default_step_handlers  # Module not found  # Module not found  # Module not found
 # Optional enhanced core orchestrator integration
-from advanced_loader import get_hyper_advanced_core
+# # # from advanced_loader import get_hyper_advanced_core  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +56,7 @@ class EventDrivenOrchestrator:
         """Initialize orchestrator components"""
         # Verify paths and log which orchestrator modules are active/newest
         try:
-            from path_verification import verify_orchestration_paths
+# # #             from path_verification import verify_orchestration_paths  # Module not found  # Module not found  # Module not found
             verify_orchestration_paths(strict=False)
         except Exception as e:
             logger.debug(f"Orchestration path verification skipped or failed: {e}")
@@ -174,7 +174,7 @@ class EventDrivenOrchestrator:
         
         for workflow_id in workflow_ids:
             try:
-                # Build workflow context from event
+# # #                 # Build workflow context from event  # Module not found  # Module not found  # Module not found
                 context = {
                     'trigger_event': {
                         'id': event.id,
@@ -189,7 +189,7 @@ class EventDrivenOrchestrator:
                     workflow_id, context, event.correlation_id
                 )
                 
-                logger.info(f"Triggered workflow {workflow_id} from event {event.type.value}")
+# # #                 logger.info(f"Triggered workflow {workflow_id} from event {event.type.value}")  # Module not found  # Module not found  # Module not found
                 
             except Exception as e:
                 logger.error(f"Failed to trigger workflow {workflow_id}: {e}")
@@ -367,6 +367,6 @@ def get_preferred_core_orchestrator(config: Dict[str, Any] = None):
     """
     advanced = get_hyper_advanced_core(config=config)
     if advanced is not None:
-        logger.info("Using HyperAdvancedOrchestrator from advanced modules")
+# # #         logger.info("Using HyperAdvancedOrchestrator from advanced modules")  # Module not found  # Module not found  # Module not found
         return advanced
     return EventDrivenOrchestrator(config=config)

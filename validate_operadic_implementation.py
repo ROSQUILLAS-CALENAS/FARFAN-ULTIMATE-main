@@ -23,7 +23,7 @@ def validate_imports():
     """Validate that all required modules can be imported"""
     try:
         sys.path.insert(0, '.')
-        from egw_query_expansion.core.confluent_orchestrator import (
+# # #         from egw_query_expansion.core.confluent_orchestrator import (  # Module not found  # Module not found  # Module not found
             InfinityOperad, 
             OperadOperation, 
             HomotopyCoherence, 
@@ -41,7 +41,7 @@ def validate_operadic_structure():
     """Validate basic operadic structure functionality"""
     try:
         sys.path.insert(0, '.')
-        from egw_query_expansion.core.confluent_orchestrator import (
+# # #         from egw_query_expansion.core.confluent_orchestrator import (  # Module not found  # Module not found  # Module not found
             InfinityOperad, OperadOperation, frozenset
         )
         

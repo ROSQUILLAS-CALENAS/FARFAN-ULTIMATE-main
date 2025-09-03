@@ -10,14 +10,14 @@ import pytest
 import sys
 import tempfile
 import json
-from pathlib import Path
-from unittest.mock import patch, MagicMock
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from unittest.mock import patch, MagicMock  # Module not found  # Module not found  # Module not found
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.validate_dependency_compatibility import DependencyCompatibilityValidator
+# # # from scripts.validate_dependency_compatibility import DependencyCompatibilityValidator  # Module not found  # Module not found  # Module not found
 
 class TestDependencyCompatibilityValidator:
     """Test suite for dependency compatibility validator"""
@@ -245,7 +245,7 @@ class TestIntegrationCompatibility:
             
             # Test basic operations work together
             a = np.random.rand(10, 10)
-            from scipy.linalg import svd
+# # #             from scipy.linalg import svd  # Module not found  # Module not found  # Module not found
             u, s, vt = svd(a)
             
             # Test reconstruction

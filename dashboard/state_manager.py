@@ -5,12 +5,12 @@ Provides a high-level API for dashboard state operations.
 
 import asyncio
 import threading
-from typing import Dict, Any, Optional, Callable, List, Tuple
-from datetime import datetime
+# # # from typing import Dict, Any, Optional, Callable, List, Tuple  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import logging
 
-from .store import DashboardStore
-from .transitions import TransitionContext
+# # # from .store import DashboardStore  # Module not found  # Module not found  # Module not found
+# # # from .transitions import TransitionContext  # Module not found  # Module not found  # Module not found
 
 
 class StateManager:
@@ -66,7 +66,7 @@ class StateManager:
                 self._start_auto_save()
     
     def _handle_store_change(self, change_data: Dict[str, Any]):
-        """Handle changes from the store."""
+# # #         """Handle changes from the store."""  # Module not found  # Module not found  # Module not found
         self._emit_event('state_changed', change_data)
     
     def _emit_event(self, event_type: str, data: Dict[str, Any]):
@@ -88,7 +88,7 @@ class StateManager:
         return f"{event_type}_{len(self._event_callbacks[event_type]) - 1}"
     
     def off(self, event_type: str, callback_or_id):
-        """Unsubscribe from state manager events."""
+# # #         """Unsubscribe from state manager events."""  # Module not found  # Module not found  # Module not found
         if event_type in self._event_callbacks:
             if callable(callback_or_id):
                 # Remove by callback function
@@ -317,7 +317,7 @@ class StateManager:
         return self.store.persistence.export_state(export_path)
     
     def import_state(self, import_path: str) -> bool:
-        """Import state from file."""
+# # #         """Import state from file."""  # Module not found  # Module not found  # Module not found
         imported_state = self.store.persistence.import_state(import_path)
         if imported_state:
             # Apply imported UI state

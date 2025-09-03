@@ -12,11 +12,11 @@ import logging
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
-from sklearn.calibration import CalibratedClassifierCV
-from sklearn.datasets import make_classification, make_regression
-from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
-from sklearn.metrics import accuracy_score, classification_report
-from sklearn.model_selection import train_test_split
+# # # from sklearn.calibration import CalibratedClassifierCV  # Module not found  # Module not found  # Module not found
+# # # from sklearn.datasets import make_classification, make_regression  # Module not found  # Module not found  # Module not found
+# # # from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor  # Module not found  # Module not found  # Module not found
+# # # from sklearn.metrics import accuracy_score, classification_report  # Module not found  # Module not found  # Module not found
+# # # from sklearn.model_selection import train_test_split  # Module not found  # Module not found  # Module not found
 
 # Configure logging
 logging.basicConfig(
@@ -24,7 +24,7 @@ logging.basicConfig(
 )
 
 # Import conformal risk control components
-from egw_query_expansion.core.conformal_risk_control import (
+# # # from egw_query_expansion.core.conformal_risk_control import (  # Module not found  # Module not found  # Module not found
     RiskControlConfig,
     create_conformal_system,
 )

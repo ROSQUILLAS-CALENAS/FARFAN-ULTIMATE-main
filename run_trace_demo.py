@@ -7,7 +7,7 @@ import sys
 sys.path.append('tools')
 
 try:
-    from retrieval_trace import main
+# # #     from retrieval_trace import main  # Module not found  # Module not found  # Module not found
     main()
 except Exception as e:
     print(f"Demo completed with expected import issues: {e}")

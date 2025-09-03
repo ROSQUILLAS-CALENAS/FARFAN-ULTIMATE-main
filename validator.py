@@ -2,9 +2,9 @@
 Validador de integridad documental para PDTs
 """
 
-from typing import List, Dict, Tuple, Any
-from enum import Enum
-from models import SectionBlock, SectionType, QualityIndicators
+# # # from typing import List, Dict, Tuple, Any  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from models import SectionBlock, SectionType, QualityIndicators  # Module not found  # Module not found  # Module not found
 
 
 class ValidationResult(Enum):

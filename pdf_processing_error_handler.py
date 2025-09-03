@@ -11,11 +11,11 @@ import os
 import pickle
 import struct
 import time
-from dataclasses import dataclass, asdict
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Callable, Tuple, Union
-from functools import wraps
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Callable, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from functools import wraps  # Module not found  # Module not found  # Module not found
 import threading
 import hashlib
 
@@ -70,7 +70,7 @@ class ProcessingState:
     
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'ProcessingState':
-        """Create from dictionary"""
+# # #         """Create from dictionary"""  # Module not found  # Module not found  # Module not found
         data['start_time'] = datetime.fromisoformat(data['start_time'])
         if data.get('last_checkpoint_time'):
             data['last_checkpoint_time'] = datetime.fromisoformat(data['last_checkpoint_time'])
@@ -402,7 +402,7 @@ class CheckpointManager:
             raise CheckpointError(f"Failed to save checkpoint: {e}")
     
     def load_checkpoint(self, checkpoint_path: Union[str, Path]) -> ProcessingState:
-        """Load processing state from checkpoint"""
+# # #         """Load processing state from checkpoint"""  # Module not found  # Module not found  # Module not found
         try:
             checkpoint_path = Path(checkpoint_path)
             
@@ -525,7 +525,7 @@ class PDFErrorHandler:
             file_paths: List of PDF file paths to process
             processing_function: Function to process each PDF file
             batch_id: Unique identifier for this batch
-            resume_from_checkpoint: Whether to try resuming from existing checkpoint
+# # #             resume_from_checkpoint: Whether to try resuming from existing checkpoint  # Module not found  # Module not found  # Module not found
         
         Returns:
             Dictionary with processing results and statistics
@@ -533,16 +533,16 @@ class PDFErrorHandler:
         if batch_id is None:
             batch_id = hashlib.md5(str(file_paths).encode()).hexdigest()[:12]
         
-        # Try to resume from checkpoint
+# # #         # Try to resume from checkpoint  # Module not found  # Module not found  # Module not found
         state = None
         if resume_from_checkpoint:
             latest_checkpoint = self.checkpoint_manager.find_latest_checkpoint(batch_id)
             if latest_checkpoint:
                 try:
                     state = self.checkpoint_manager.load_checkpoint(latest_checkpoint)
-                    self.logger.info(f"Resuming from checkpoint at document {state.current_index}")
+# # #                     self.logger.info(f"Resuming from checkpoint at document {state.current_index}")  # Module not found  # Module not found  # Module not found
                 except CheckpointError as e:
-                    self.logger.warning(f"Could not resume from checkpoint: {e}")
+# # #                     self.logger.warning(f"Could not resume from checkpoint: {e}")  # Module not found  # Module not found  # Module not found
         
         # Initialize state if not resumed
         if state is None:
@@ -644,14 +644,14 @@ class PDFErrorHandler:
     
     def resume_from_checkpoint(self, checkpoint_path: Union[str, Path],
                              processing_function: Callable[[Path], Any]) -> Dict[str, Any]:
-        """Resume processing from a specific checkpoint"""
+# # #         """Resume processing from a specific checkpoint"""  # Module not found  # Module not found  # Module not found
         try:
             state = self.checkpoint_manager.load_checkpoint(checkpoint_path)
             
-            # Reconstruct file list from processed and failed documents
+# # #             # Reconstruct file list from processed and failed documents  # Module not found  # Module not found  # Module not found
             all_files = state.processed_documents + [f[0] for f in state.failed_documents]
             
-            self.logger.info(f"Resuming batch {state.batch_id} from checkpoint")
+# # #             self.logger.info(f"Resuming batch {state.batch_id} from checkpoint")  # Module not found  # Module not found  # Module not found
             return self.process_pdf_batch(
                 file_paths=all_files,
                 processing_function=processing_function,
@@ -660,7 +660,7 @@ class PDFErrorHandler:
             )
             
         except Exception as e:
-            raise CheckpointError(f"Failed to resume from checkpoint: {e}")
+# # #             raise CheckpointError(f"Failed to resume from checkpoint: {e}")  # Module not found  # Module not found  # Module not found
 
 
 # Convenience function for simple batch processing

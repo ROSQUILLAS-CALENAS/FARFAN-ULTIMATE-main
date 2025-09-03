@@ -7,8 +7,8 @@ behavior and realistic return types for testing and fallback scenarios.
 """
 
 import math
-from typing import Any, List, Tuple, Union, Optional, Dict
-from .mock_utils import MockRandomState, DeterministicHasher, create_deterministic_data
+# # # from typing import Any, List, Tuple, Union, Optional, Dict  # Module not found  # Module not found  # Module not found
+# # # from .mock_utils import MockRandomState, DeterministicHasher, create_deterministic_data  # Module not found  # Module not found  # Module not found
 
 
 class MockIndex:
@@ -136,7 +136,7 @@ class MockIndex:
             return self._create_mock_vector()
     
     def reconstruct_n(self, n0: int, n: int):
-        """Reconstruct n vectors starting from n0"""
+# # #         """Reconstruct n vectors starting from n0"""  # Module not found  # Module not found  # Module not found
         vectors = []
         for i in range(n):
             if n0 + i < len(self._vectors):
@@ -262,7 +262,7 @@ class MockFAISS:
     
     # Index factory functions
     def index_factory(self, dimension: int, description: str, metric=None):
-        """Create index from description string"""
+# # #         """Create index from description string"""  # Module not found  # Module not found  # Module not found
         desc_lower = description.lower()
         metric_type = self.METRIC_L2 if metric is None else metric
         
@@ -272,7 +272,7 @@ class MockFAISS:
             else:
                 return MockIndexFlatL2(dimension)
         elif "ivf" in desc_lower:
-            # Extract nlist from description (simplified)
+# # #             # Extract nlist from description (simplified)  # Module not found  # Module not found  # Module not found
             nlist = 100  # Default
             if "ivf" in desc_lower:
                 parts = desc_lower.split("ivf")
@@ -299,7 +299,7 @@ class MockFAISS:
         pass
     
     def read_index(self, filename: str):
-        """Read index from file (returns empty index)"""
+# # #         """Read index from file (returns empty index)"""  # Module not found  # Module not found  # Module not found
         # In a real implementation, this would deserialize the index
         # Return a basic flat index as placeholder
         return MockIndexFlat(128)  # Default dimension
@@ -309,7 +309,7 @@ class MockFAISS:
         pass
     
     def read_VectorTransform(self, filename: str):
-        """Read vector transform from file (returns None)"""
+# # #         """Read vector transform from file (returns None)"""  # Module not found  # Module not found  # Module not found
         return None
     
     # Clustering
@@ -560,7 +560,7 @@ def write_index(index, filename: str):
 
 
 def read_index(filename: str):
-    """Read index from file"""
+# # #     """Read index from file"""  # Module not found  # Module not found  # Module not found
     global _MOCK_FAISS_INSTANCE
     if '_MOCK_FAISS_INSTANCE' not in globals():
         _MOCK_FAISS_INSTANCE = MockFAISS()

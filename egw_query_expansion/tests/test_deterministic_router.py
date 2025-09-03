@@ -4,12 +4,12 @@ Tests for the Deterministic Router system
 
 import hashlib
 import json
-from unittest.mock import patch
+# # # from unittest.mock import patch  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import pytest
 
-from egw_query_expansion.core.deterministic_router import (
+# # # from egw_query_expansion.core.deterministic_router import (  # Module not found  # Module not found  # Module not found
     ActionType,
     ConvexProjector,
     DeterministicRouter,
@@ -53,7 +53,7 @@ class TestRoutingContext:
     """Test routing context creation and immutability"""
 
     def test_context_creation(self):
-        """Test context creation from query data"""
+# # #         """Test context creation from query data"""  # Module not found  # Module not found  # Module not found
         query = "test query"
         embedding = np.array([0.1, 0.2, 0.3])
 
@@ -241,7 +241,7 @@ class TestDeterministicRouter:
         assert actions1 != actions2
 
     def test_path_reconstruction(self):
-        """Test complete path reconstruction from logs"""
+# # #         """Test complete path reconstruction from logs"""  # Module not found  # Module not found  # Module not found
         embedding = np.array([0.1, 0.2, 0.3, 0.4])
         context = RoutingContext.from_query("test query", embedding, 1000, "hybrid")
 

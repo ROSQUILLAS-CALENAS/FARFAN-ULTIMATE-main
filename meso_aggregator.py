@@ -1,6 +1,6 @@
 """
 Meso Aggregator with Decálogo Cluster-Based Grouping System
-- Aggregates results from the four clusters (C1-C4) by computing divergence metrics
+# # # - Aggregates results from the four clusters (C1-C4) by computing divergence metrics  # Module not found  # Module not found  # Module not found
 - Generates a coverage matrix tracking which Development Plan components have been evaluated
 - Implements cluster-based grouping system for the 10 Decálogo points organized into 4 predefined clusters
 - Calculates weighted scores for each cluster using individual point scores as inputs
@@ -19,18 +19,18 @@ Output:
 - decalogo_cluster_analysis with weighted scores, coverage metrics, and evidence linkage
 """
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import hashlib
 import json
 import logging
 import os
-from typing import Any, Dict, List, Set
+# # # from typing import Any, Dict, List, Set  # Module not found  # Module not found  # Module not found
 
 import numpy as np
-from scipy.spatial.distance import cosine
-from difflib import SequenceMatcher
-from itertools import combinations
+# # # from scipy.spatial.distance import cosine  # Module not found  # Module not found  # Module not found
+# # # from difflib import SequenceMatcher  # Module not found  # Module not found  # Module not found
+# # # from itertools import combinations  # Module not found  # Module not found  # Module not found
 
 # Development Plan Components enum values
 DEVELOPMENT_PLAN_COMPONENTS = [
@@ -141,7 +141,7 @@ def generate_evidence_hash_id(evidence: Dict[str, Any]) -> str:
     if isinstance(metadata, dict):
         content_for_hash['metadata'] = {k: metadata[k] for k in sorted(metadata.keys())}
     
-    # Create hash from canonical JSON representation
+# # #     # Create hash from canonical JSON representation  # Module not found  # Module not found  # Module not found
     content_json = canonical_json_dumps(content_for_hash)
     hash_obj = hashlib.sha256(content_json.encode('utf-8'))
     return f"ev_{hash_obj.hexdigest()[:16]}"
@@ -355,7 +355,7 @@ def calculate_cluster_divergences(
         for cluster_id in sorted(REQUIRED_CLUSTERS):
             answer = cluster_answers.get(cluster_id, {})
             if isinstance(answer, dict):
-                # Create feature vector from answer
+# # #                 # Create feature vector from answer  # Module not found  # Module not found  # Module not found
                 score = answer.get("score", answer.get("confidence", 0.5))
                 verdict_score = (
                     1.0
@@ -505,7 +505,7 @@ def analyze_decalogo_clusters(by_question: Dict[str, Dict[str, Any]]) -> Dict[st
             }
         }
     
-    # Collect point data from answers
+# # #     # Collect point data from answers  # Module not found  # Module not found  # Module not found
     point_data = {}  # {decalogo_point: {question_id: answer_data, ...}}
     
     for question_id, slot in sorted(by_question.items()):
@@ -513,10 +513,10 @@ def analyze_decalogo_clusters(by_question: Dict[str, Dict[str, Any]]) -> Dict[st
             if not isinstance(answer, dict):
                 continue
                 
-            # Extract decálogo point from answer
+# # #             # Extract decálogo point from answer  # Module not found  # Module not found  # Module not found
             decalogo_point = answer.get('decalogo_point')
             if not decalogo_point:
-                # Try to infer from question_id or other fields
+# # #                 # Try to infer from question_id or other fields  # Module not found  # Module not found  # Module not found
                 if 'P' in question_id:
                     try:
                         point_part = question_id.split('P')[1].split('_')[0]
@@ -898,7 +898,7 @@ def process_macro_alignment(doc_stem: str) -> Dict[str, Any]:
         Macro alignment results
     """
     try:
-        from macro_alignment_calculator import process as macro_process
+# # #         from macro_alignment_calculator import process as macro_process  # Module not found  # Module not found  # Module not found
         result = macro_process(doc_stem)
         logger.info(f"Macro alignment calculation completed for {doc_stem}")
         return result
@@ -1157,7 +1157,7 @@ def process(data: Any, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
         doc_stem = context.get("doc_stem") or context.get("document_id")
     
     if not doc_stem and isinstance(data, dict):
-        # Try to derive doc_stem from data structure
+# # #         # Try to derive doc_stem from data structure  # Module not found  # Module not found  # Module not found
         doc_stem = (
             data.get("doc_stem") or 
             data.get("document_id") or
@@ -1166,7 +1166,7 @@ def process(data: Any, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
         )
     
     if not doc_stem:
-        # Create a fallback doc_stem from available data
+# # #         # Create a fallback doc_stem from available data  # Module not found  # Module not found  # Module not found
         if by_question:
             # Use first question key as basis for doc_stem
             first_question = next(iter(by_question.keys()))

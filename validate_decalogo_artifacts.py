@@ -4,7 +4,7 @@ Validation script for decalogo JSON artifacts.
 """
 
 import json
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 def validate_artifacts():
     """Validate the generated decalogo JSON artifacts."""

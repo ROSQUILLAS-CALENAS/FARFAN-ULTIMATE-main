@@ -23,7 +23,7 @@ Notes:
 - Do NOT rename; only propose links/moves in plan
 - Deterministic: fixed sort keys, stable tie-breakers
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import argparse
 import ast
@@ -31,10 +31,10 @@ import json
 import os
 import re
 import sys
-from dataclasses import dataclass, asdict
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, Iterable, List, Optional, Set, Tuple  # Module not found  # Module not found  # Module not found
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -122,7 +122,7 @@ def read_seed(seed_sequence_file: Optional[Path]) -> List[str]:
 
 
 def iter_repo_files() -> Iterable[Path]:
-    # Include hidden folders and follow symlinks by using rglob from each scope root deterministically
+# # #     # Include hidden folders and follow symlinks by using rglob from each scope root deterministically  # Module not found  # Module not found  # Module not found
     roots = sorted({str((ROOT / s).resolve()) for s in SCOPE_HINTS if (ROOT / s).exists()})
     seen: Set[str] = set()
     for r in roots:
@@ -202,7 +202,7 @@ def extract_imports_and_interfaces(path: Path, text: str) -> Tuple[List[str], Li
 
 
 def file_version_and_date(path: Path, text: str) -> Tuple[Optional[str], Optional[str]]:
-    # Extract version-like and date-like tokens from header/comments
+# # #     # Extract version-like and date-like tokens from header/comments  # Module not found  # Module not found  # Module not found
     version = None
     date = None
     try:

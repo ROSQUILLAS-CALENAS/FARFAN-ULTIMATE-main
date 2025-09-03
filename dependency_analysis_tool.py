@@ -3,10 +3,10 @@ Lightweight Dependency and Data Flow Analysis Tool
 - No external dependencies
 - Provides safe, deterministic defaults so the module is executable end-to-end
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 import itertools
 import json
 
@@ -171,7 +171,7 @@ class DataFlowAnalyzer:
             return []
 
     def _trace_data_flows(self) -> List[Flow]:
-        # Build simple flow segments from edges; group into one flow for now
+# # #         # Build simple flow segments from edges; group into one flow for now  # Module not found  # Module not found  # Module not found
         fid = "flow-1"
         return [Flow(id=fid, edges=self.graph_edges)]
 

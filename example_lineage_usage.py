@@ -4,10 +4,10 @@ demonstrating integration with the evidence collection pipeline.
 """
 import os
 import tempfile
-from typing import Any, Dict, List
+# # # from typing import Any, Dict, List  # Module not found  # Module not found  # Module not found
 
-from evidence_system import Evidence, EvidenceSystem
-from lineage_tracker import EventType, LineageTracker, create_evidence_lineage_adapter
+# # # from evidence_system import Evidence, EvidenceSystem  # Module not found  # Module not found  # Module not found
+# # # from lineage_tracker import EventType, LineageTracker, create_evidence_lineage_adapter  # Module not found  # Module not found  # Module not found
 
 
 def simulate_question_processing_pipeline(

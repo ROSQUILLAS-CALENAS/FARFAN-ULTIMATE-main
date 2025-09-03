@@ -16,27 +16,27 @@ import json
 import logging
 import re
 import time
-from abc import ABC, abstractmethod
-from contextlib import contextmanager
-from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Protocol, Union, runtime_checkable
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from contextlib import contextmanager  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Protocol, Union, runtime_checkable  # Module not found  # Module not found  # Module not found
 
-from total_ordering_base import TotalOrderingBase
+# # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 # Dependencies avanzadas para el stack moderno
 try:
     import numpy as np
-    from fuzzywuzzy import fuzz
-    from jsonschema import ValidationError as JsonSchemaValidationError
-    from jsonschema import validate
-    from loguru import logger
-    from pydantic import BaseModel, ConfigDict, Field, field_validator
-    from rich.console import Console
-    from rich.progress import Progress, SpinnerColumn, TextColumn
-    from rich.table import Table
+# # #     from fuzzywuzzy import fuzz  # Module not found  # Module not found  # Module not found
+# # #     from jsonschema import ValidationError as JsonSchemaValidationError  # Module not found  # Module not found  # Module not found
+# # #     from jsonschema import validate  # Module not found  # Module not found  # Module not found
+# # #     from loguru import logger  # Module not found  # Module not found  # Module not found
+# # #     from pydantic import BaseModel, ConfigDict, Field, field_validator  # Module not found  # Module not found  # Module not found
+# # #     from rich.console import Console  # Module not found  # Module not found  # Module not found
+# # #     from rich.progress import Progress, SpinnerColumn, TextColumn  # Module not found  # Module not found  # Module not found
+# # #     from rich.table import Table  # Module not found  # Module not found  # Module not found
 except ImportError as e:
     print(
         f"Dependencia faltante: {e}. Instalar con: pip install pydantic jsonschema rich loguru numpy fuzzywuzzy"
@@ -1583,7 +1583,7 @@ Requiere: pytest, pytest-mock, pytest-cov
 
 import shutil
 import tempfile
-from unittest.mock import MagicMock, Mock, patch
+# # # from unittest.mock import MagicMock, Mock, patch  # Module not found  # Module not found  # Module not found
 
 import pytest
 
@@ -1821,7 +1821,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     """
     # Import ArtifactManager locally to avoid circular imports
     try:
-        from canonical_flow.ingestion import ArtifactManager
+# # #         from canonical_flow.ingestion import ArtifactManager  # Module not found  # Module not found  # Module not found
     except ImportError:
         return {"error": "ArtifactManager not available"}
     
@@ -1835,7 +1835,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     
     # Handle different input formats
     if isinstance(data, dict) and 'results' in data:
-        # Input from 03I component
+# # #         # Input from 03I component  # Module not found  # Module not found  # Module not found
         feature_results = data['results']
     elif isinstance(data, list):
         feature_results = data

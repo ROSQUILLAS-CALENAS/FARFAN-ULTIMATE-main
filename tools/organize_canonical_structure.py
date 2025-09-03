@@ -20,8 +20,8 @@ import json
 import logging
 import re
 import shutil
-from pathlib import Path
-from typing import Any, Dict, List, Tuple
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 
 # Stage mapping: ProcessStage -> single letter code
 STAGE_MAP = {
@@ -80,8 +80,8 @@ Code: {alias_code}
 """
 
 import sys
-from pathlib import Path
-from importlib import util as importlib_util
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
 alias_source = r"{original_path}"
@@ -175,7 +175,7 @@ def get_orchestrator_graph() -> Tuple[Dict[str, Any], List[str]]:
             pandas_mock.DataFrame = MockDataFrame
             sys.modules['pandas'] = pandas_mock
             
-        from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator
+# # #         from comprehensive_pipeline_orchestrator import ComprehensivePipelineOrchestrator  # Module not found  # Module not found  # Module not found
         
         orchestrator = ComprehensivePipelineOrchestrator()
         graph = orchestrator.process_graph
@@ -198,7 +198,7 @@ def get_orchestrator_graph() -> Tuple[Dict[str, Any], List[str]]:
 
 def create_fallback_graph() -> Dict[str, Any]:
     """Create a fallback graph when orchestrator can't be loaded."""
-    from types import SimpleNamespace
+# # #     from types import SimpleNamespace  # Module not found  # Module not found  # Module not found
     
     # Define ProcessStage enum values
     stages = {
@@ -274,7 +274,7 @@ def organize_canonical_structure(dry_run: bool = False, copy_tests: bool = False
         alias_number = f"{i:02d}"
         alias_code = f"{alias_number}{stage_letter}"
         
-        # Generate slug from filename
+# # #         # Generate slug from filename  # Module not found  # Module not found  # Module not found
         slug = sanitize_slug(node.file_path.split("/")[-1])  # Get just filename
         alias_filename = f"{alias_code}_{slug}.py"
         
@@ -433,11 +433,11 @@ Each alias file follows the pattern: `NN<Letter>_<slug>.py` where:
     
     readme += """## Usage
 
-Import from canonical flow for stable, ordered access:
+# # # Import from canonical flow for stable, ordered access:  # Module not found  # Module not found  # Module not found
 
 ```python
 # Import specific module alias
-from canonical_flow.R_search_retrieval import _28R_lexical_index as lexical_index
+# # # from canonical_flow.R_search_retrieval import _28R_lexical_index as lexical_index  # Module not found  # Module not found  # Module not found
 
 # Use re-exported functions
 result = lexical_index.process(data, context)

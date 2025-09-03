@@ -3,7 +3,7 @@ Simple test runner for DecalogoQuestionRegistry without pytest dependency.
 """
 
 import json
-from decalogo_question_registry import (
+# # # from decalogo_question_registry import (  # Module not found  # Module not found  # Module not found
     DecalogoQuestionRegistry,
     DecalogoPoint,
     Question,

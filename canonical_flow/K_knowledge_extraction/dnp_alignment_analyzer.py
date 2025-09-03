@@ -1,7 +1,7 @@
 """
 DNP Alignment Analyzer for Knowledge Extraction Stage
 
-This component inherits from TotalOrderingBase and implements the standardized process() API
+# # # This component inherits from TotalOrderingBase and implements the standardized process() API  # Module not found  # Module not found  # Module not found
 to consume all existing knowledge stage artifacts and compute compliance deviations
 for each of the 10 Decálogo points against DNP baseline standards.
 """
@@ -9,17 +9,17 @@ for each of the 10 Decálogo points against DNP baseline standards.
 import json
 import logging
 import sys
-from pathlib import Path
-from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
-from typing import Any, Dict, List, Optional, Union, Tuple
-from collections import OrderedDict
-from uuid import uuid4
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union, Tuple  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
+# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
 # Import total ordering base
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin
+# # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -181,7 +181,7 @@ class DNPAlignmentAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
     def _load_dnp_baselines(self) -> Dict[str, Any]:
         """Load DNP baseline standards with error handling"""
         try:
-            # Attempt to load DNP baselines from standard locations
+# # #             # Attempt to load DNP baselines from standard locations  # Module not found  # Module not found  # Module not found
             baseline_paths = [
                 Path("data/dnp_baselines.json"),
                 Path("standards_alignment/dnp_baselines.json"),
@@ -192,7 +192,7 @@ class DNPAlignmentAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
                 if path.exists():
                     with open(path, 'r', encoding='utf-8') as f:
                         baselines = json.load(f)
-                        logger.info(f"Loaded DNP baselines from {path}")
+# # #                         logger.info(f"Loaded DNP baselines from {path}")  # Module not found  # Module not found  # Module not found
                         return baselines
             
             # If no baseline files found, return empty dict
@@ -660,7 +660,7 @@ class DNPAlignmentAnalyzer(TotalOrderingBase, DeterministicCollectionMixin):
     def _save_alignment_artifacts(self, results: Dict[str, Any], context: Dict[str, Any]) -> None:
         """Save alignment results to canonical_flow/knowledge/ directory"""
         try:
-            # Extract document stem from context
+# # #             # Extract document stem from context  # Module not found  # Module not found  # Module not found
             doc_stem = "unknown_document"
             if "document_metadata" in context:
                 metadata = context["document_metadata"]

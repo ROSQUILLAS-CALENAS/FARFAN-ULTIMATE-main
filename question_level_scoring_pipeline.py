@@ -8,7 +8,7 @@ This module implements a comprehensive question-level scoring pipeline that:
 4. Integrates with the existing DecalogoQuestionRegistry system
 5. Generates deterministic outputs for dimension aggregation
 
-The pipeline consumes question responses and associated evidence from the question_analyzer
+# # # The pipeline consumes question responses and associated evidence from the question_analyzer  # Module not found  # Module not found  # Module not found
 output, calculates evidence quality scores using the established relevance/credibility/
 recency/authority weighting scheme, and generates per-question scoring artifacts with
 evidence gap flags when insufficient evidence is detected.
@@ -17,19 +17,19 @@ evidence gap flags when insufficient evidence is detected.
 import json
 import logging
 import math
-from abc import ABC, abstractmethod
-from dataclasses import asdict, dataclass, field
-from datetime import datetime
-from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple, Union
-from uuid import uuid4
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import asdict, dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
 # Import existing components
-from evidence_processor import EvidenceScoringSystem, ScoringMetrics, StructuredEvidence
-from score_calculator import ScoreCalculator
+# # # from evidence_processor import EvidenceScoringSystem, ScoringMetrics, StructuredEvidence  # Module not found  # Module not found  # Module not found
+# # # from score_calculator import ScoreCalculator  # Module not found  # Module not found  # Module not found
 
 try:
-    from canonical_flow.analysis.audit_logger import get_audit_logger
+# # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:
     get_audit_logger = None
 
@@ -154,7 +154,7 @@ class DecalogoQuestionRegistry:
         self._load_default_questions()
     
     def _load_default_questions(self):
-        """Load default question definitions from methodology."""
+# # #         """Load default question definitions from methodology."""  # Module not found  # Module not found  # Module not found
         # Sample questions based on the methodology document
         default_questions = {
             "DE1_C1": {
@@ -207,7 +207,7 @@ class QuestionLevelScoringPipeline:
     Main pipeline for question-level scoring with evidence integration.
     
     This pipeline implements the complete scoring workflow:
-    1. Base score calculation from question responses
+# # #     1. Base score calculation from question responses  # Module not found  # Module not found  # Module not found
     2. Evidence quality assessment using established metrics
     3. Evidence gap detection and severity assessment
     4. α-blended final score calculation with confidence intervals
@@ -452,7 +452,7 @@ class QuestionLevelScoringPipeline:
         if evidence_count == 0:
             return 0.0
         
-        # Base adjustment from evidence quality
+# # #         # Base adjustment from evidence quality  # Module not found  # Module not found  # Module not found
         quality_adjustment = evidence_quality_score - 0.5  # Neutral point at 0.5
         
         # Apply evidence gap penalty

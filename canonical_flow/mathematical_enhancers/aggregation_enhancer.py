@@ -15,19 +15,19 @@ The enhancer maintains full compatibility with the deterministic pipeline flow w
 mathematical rigor to micro-to-meso evidence aggregation across clusters.
 """
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import logging
-from typing import Any, Dict, List, Optional, Tuple, Union
-from dataclasses import dataclass, field
-from functools import wraps
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from functools import wraps  # Module not found  # Module not found  # Module not found
 
 import numpy as np
-from scipy import stats
-from scipy.optimize import minimize
+# # # from scipy import stats  # Module not found  # Module not found  # Module not found
+# # # from scipy.optimize import minimize  # Module not found  # Module not found  # Module not found
 import warnings
-from typing import Callable, Complex
-from enum import Enum
+# # # from typing import Callable, Complex  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 import itertools
 
 # Import the base meso aggregator
@@ -51,7 +51,7 @@ class ProbabilitySpace:
 
 @dataclass 
 class ConvergenceResult:
-    """Results from convergence analysis"""
+# # #     """Results from convergence analysis"""  # Module not found  # Module not found  # Module not found
     converged: bool
     iterations: int
     final_distance: float
@@ -283,7 +283,7 @@ class TopologicalQuantumLearningTheory:
     
     def _store_aggregation_pattern(self, data: Dict[str, Any]) -> None:
         """Store aggregation pattern in topological quantum memory"""
-        # Extract pattern features from aggregation data
+# # #         # Extract pattern features from aggregation data  # Module not found  # Module not found  # Module not found
         pattern = {}
         
         if "clusters" in data:
@@ -311,7 +311,7 @@ class TopologicalQuantumLearningTheory:
         """Apply topological enhancement to aggregation data"""
         enhanced_data = data.copy()
         
-        # Retrieve relevant patterns from quantum memory via anyon braiding
+# # #         # Retrieve relevant patterns from quantum memory via anyon braiding  # Module not found  # Module not found  # Module not found
         relevant_states = self._retrieve_relevant_patterns(data)
         
         if relevant_states:
@@ -326,7 +326,7 @@ class TopologicalQuantumLearningTheory:
         return enhanced_data
         
     def _retrieve_relevant_patterns(self, data: Dict[str, Any]) -> List[TopologicalState]:
-        """Retrieve relevant patterns from quantum memory using similarity matching"""
+# # #         """Retrieve relevant patterns from quantum memory using similarity matching"""  # Module not found  # Module not found  # Module not found
         relevant_states = []
         
         # Extract current data signature
@@ -346,7 +346,7 @@ class TopologicalQuantumLearningTheory:
         return relevant_states[:self.braiding_complexity]  # Limit complexity
     
     def _extract_data_signature(self, data: Dict[str, Any]) -> TopologicalState:
-        """Extract topological signature from current data"""
+# # #         """Extract topological signature from current data"""  # Module not found  # Module not found  # Module not found
         signature_config = [AnyonType.IDENTITY]  # Start with identity
         
         if "clusters" in data:
@@ -406,7 +406,7 @@ class TopologicalQuantumLearningTheory:
         """Integrate braided topological information into aggregation data"""
         enhanced_data = data.copy()
         
-        # Extract enhancement factors from braided state
+# # #         # Extract enhancement factors from braided state  # Module not found  # Module not found  # Module not found
         entanglement = braided_state.measure_entanglement()
         state_norm = np.linalg.norm(braided_state.state_vector)
         
@@ -432,7 +432,7 @@ class TopologicalQuantumLearningTheory:
     
     def _update_learning_parameters(self, result: Dict[str, Any]) -> None:
         """Update quantum learning parameters using non-Abelian statistics"""
-        # Extract learning signal from aggregation result
+# # #         # Extract learning signal from aggregation result  # Module not found  # Module not found  # Module not found
         learning_signal = self._extract_learning_signal(result)
         
         # Update learning rate matrix using anyon statistics
@@ -460,7 +460,7 @@ class TopologicalQuantumLearningTheory:
             self.parameter_evolution_operator = U @ Vh
     
     def _extract_learning_signal(self, result: Dict[str, Any]) -> Optional[np.ndarray]:
-        """Extract learning signal from aggregation result"""
+# # #         """Extract learning signal from aggregation result"""  # Module not found  # Module not found  # Module not found
         signals = []
         
         # Extract divergence-based learning signal
@@ -538,10 +538,10 @@ class TopologicalQuantumLearningTheory:
     
     def _compute_anyon_correction(self, score: float) -> float:
         """Compute anyonic statistical correction for a score"""
-        # Use golden ratio statistics from Fibonacci anyons
+# # #         # Use golden ratio statistics from Fibonacci anyons  # Module not found  # Module not found  # Module not found
         phi = (1 + np.sqrt(5)) / 2
         
-        # Correction based on distance from golden ratio point
+# # #         # Correction based on distance from golden ratio point  # Module not found  # Module not found  # Module not found
         golden_point = 1 / phi  # ≈ 0.618
         distance_to_golden = abs(score - golden_point)
         
@@ -836,7 +836,7 @@ class MathematicalAggregationEnhancer:
         else:
             concentration_bound = float('inf')
         
-        # Coverage probability from matrix
+# # #         # Coverage probability from matrix  # Module not found  # Module not found  # Module not found
         if coverage_matrix:
             coverages = [
                 comp_data.get("coverage_percentage", 0.0) / 100.0
@@ -1034,7 +1034,7 @@ class MathematicalAggregationEnhancer:
                 js_divergences.append(div_metrics["jensen_shannon_max"])
         
         if js_divergences and len(js_divergences) > 1:
-            # Estimate Lipschitz constant from data
+# # #             # Estimate Lipschitz constant from data  # Module not found  # Module not found  # Module not found
             diffs = np.abs(np.diff(sorted(js_divergences)))
             lipschitz_constant = np.max(diffs) if diffs.size > 0 else 0.0
             
@@ -1119,7 +1119,7 @@ class MathematicalAggregationEnhancer:
                 if score_summary["count"] > 0:
                     all_scores.append(score_summary["avg"])
                     
-                    # Estimate variance from range (if available)
+# # #                     # Estimate variance from range (if available)  # Module not found  # Module not found  # Module not found
                     if "max" in score_summary and "min" in score_summary:
                         score_range = score_summary["max"] - score_summary["min"]
                         # Range ≈ 4σ for normal distribution
@@ -1147,7 +1147,7 @@ class MathematicalAggregationEnhancer:
         )
         uncertainty_metrics["total_uncertainty"] = float(total_uncertainty)
         
-        # Confidence bounds from convergence analysis
+# # #         # Confidence bounds from convergence analysis  # Module not found  # Module not found  # Module not found
         uncertainty_metrics["convergence_confidence_interval"] = convergence_result.confidence_interval
         uncertainty_metrics["convergence_uncertainty"] = (
             convergence_result.confidence_interval[1] - convergence_result.confidence_interval[0]

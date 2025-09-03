@@ -12,18 +12,18 @@ Canonical Path Auditor
 Safe to run standalone:
   python tools/canonical_path_auditor.py --json
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import argparse
 import json
 import os
-from dataclasses import dataclass, asdict
-from pathlib import Path
-from typing import Any, Dict, List, Set, Tuple
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Set, Tuple  # Module not found  # Module not found  # Module not found
 
 # Local imports are guarded to avoid import-time side effects
 try:
-    from comprehensive_pipeline_orchestrator import (
+# # #     from comprehensive_pipeline_orchestrator import (  # Module not found  # Module not found  # Module not found
         ComprehensivePipelineOrchestrator,
         get_canonical_process_graph,
         ProcessStage,
@@ -80,7 +80,7 @@ def _load_graph() -> Tuple[Dict[str, Any], Dict[str, Any]]:
     try:
         import importlib.util as _ilu, types as _types
         # Use pipeline_orchestrator_audit to extract nodes
-        from pipeline_orchestrator_audit import list_required_modules_and_functions
+# # #         from pipeline_orchestrator_audit import list_required_modules_and_functions  # Module not found  # Module not found  # Module not found
         audit = list_required_modules_and_functions(str(ROOT))
         nodes: Dict[str, Any] = {}
         class _Node:
@@ -231,7 +231,7 @@ def _write_artifacts(sequence: List[str]) -> Dict[str, str]:
 def run(json_only: bool = False) -> Tuple[bool, AuditorReport]:
     graph, meta = _load_graph()
     if not graph:
-        # Fallback: build a pseudo-graph from canonical_flow directory order
+# # #         # Fallback: build a pseudo-graph from canonical_flow directory order  # Module not found  # Module not found  # Module not found
         cf = ROOT / "canonical_flow"
         entries: List[Tuple[str, Path]] = []
         if cf.exists():

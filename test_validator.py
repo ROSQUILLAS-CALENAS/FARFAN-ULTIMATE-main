@@ -5,7 +5,7 @@ Test script for the refactored normative validator module.
 
 import sys
 import os
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Add current directory to Python path
 sys.path.insert(0, os.getcwd())
@@ -13,7 +13,7 @@ sys.path.insert(0, os.getcwd())
 def test_validator():
     """Test the normative validator functionality."""
     try:
-        from canonical_flow.I_ingestion_preparation.normative_validator import process, NormativeValidator
+# # #         from canonical_flow.I_ingestion_preparation.normative_validator import process, NormativeValidator  # Module not found  # Module not found  # Module not found
         
         print("✓ Module imported successfully!")
         

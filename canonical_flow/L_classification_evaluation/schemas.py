@@ -6,13 +6,13 @@ for the classification evaluation calibration system.
 
 import json
 import hashlib
-from typing import Dict, Any, List, Optional, Union, Callable
-from enum import Enum
-from functools import wraps
-from dataclasses import dataclass
+# # # from typing import Dict, Any, List, Optional, Union, Callable  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from functools import wraps  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 
-from pydantic import BaseModel, Field, validator, ValidationError
-from pydantic.config import ConfigDict
+# # # from pydantic import BaseModel, Field, validator, ValidationError  # Module not found  # Module not found  # Module not found
+# # # from pydantic.config import ConfigDict  # Module not found  # Module not found  # Module not found
 
 
 class ResponseValue(str, Enum):
@@ -101,7 +101,7 @@ class QuestionEvalInput(BaseModel):
     evidence_text: Optional[str] = Field(
         None,
         max_length=2048,
-        description="Supporting evidence text from document"
+# # #         description="Supporting evidence text from document"  # Module not found  # Module not found  # Module not found
     )
     evidence_completeness: float = Field(
         0.0,
@@ -135,7 +135,7 @@ class QuestionEvalInput(BaseModel):
         return v
     
     def generate_deterministic_id(self) -> str:
-        """Generate deterministic ID from sorted field values."""
+# # #         """Generate deterministic ID from sorted field values."""  # Module not found  # Module not found  # Module not found
         # Create stable field ordering for consistent hashing
         id_fields = {
             "doc_id": self.doc_id,
@@ -218,7 +218,7 @@ class DimensionEvalOutput(BaseModel):
     )
     
     def generate_deterministic_id(self) -> str:
-        """Generate deterministic ID from dimension and document."""
+# # #         """Generate deterministic ID from dimension and document."""  # Module not found  # Module not found  # Module not found
         id_content = f"{self.dimension_id.value}:{self.doc_id}"
         return hashlib.sha256(id_content.encode('utf-8')).hexdigest()[:16]
     
@@ -320,7 +320,7 @@ class PointEvalOutput(BaseModel):
         return v
     
     def generate_deterministic_id(self) -> str:
-        """Generate deterministic ID from point and document."""
+# # #         """Generate deterministic ID from point and document."""  # Module not found  # Module not found  # Module not found
         id_content = f"point_{self.point_id}:{self.doc_id}"
         return hashlib.sha256(id_content.encode('utf-8')).hexdigest()[:16]
     
@@ -395,7 +395,7 @@ class StageMeta(BaseModel):
     )
     
     def generate_deterministic_id(self) -> str:
-        """Generate deterministic ID from stage and document."""
+# # #         """Generate deterministic ID from stage and document."""  # Module not found  # Module not found  # Module not found
         id_content = f"{self.stage_name}:{self.stage_version}:{self.doc_id}"
         return hashlib.sha256(id_content.encode('utf-8')).hexdigest()[:16]
 
@@ -430,7 +430,7 @@ def validate_input_schema(schema_class: BaseModel, strict: bool = True):
             data = None
             if args:
                 data = args[0]
-                args = args[1:]  # Remove data from args
+# # #                 args = args[1:]  # Remove data from args  # Module not found  # Module not found  # Module not found
             elif 'data' in kwargs:
                 data = kwargs.pop('data')
             
@@ -455,7 +455,7 @@ def validate_input_schema(schema_class: BaseModel, strict: bool = True):
                     f"Input validation failed for {func.__name__} - "
                     f"Malformed data rejected with errors: {'; '.join(error_details)}"
                 )
-                raise ValidationError([detailed_msg]) from e
+# # #                 raise ValidationError([detailed_msg]) from e  # Module not found  # Module not found  # Module not found
                 
         wrapper.__name__ = func.__name__
         wrapper.__doc__ = func.__doc__
@@ -504,7 +504,7 @@ def validate_output_schema(schema_class: BaseModel, strict: bool = True):
                     f"Output validation failed for {func.__name__} - "
                     f"Schema compliance error: {'; '.join(error_details)}"
                 )
-                raise ValidationError([detailed_msg]) from e
+# # #                 raise ValidationError([detailed_msg]) from e  # Module not found  # Module not found  # Module not found
                 
         wrapper.__name__ = func.__name__
         wrapper.__doc__ = func.__doc__
@@ -595,7 +595,7 @@ def reject_unknown_responses(response_value: str) -> ResponseValue:
             f"Response validation failed: {str(e)}. "
             "Unknown responses are explicitly rejected to ensure data integrity. "
             "Please use documented response values or add synonym mappings if needed."
-        ) from e
+# # #         ) from e  # Module not found  # Module not found  # Module not found
 
 
 # Export all schema classes and utilities

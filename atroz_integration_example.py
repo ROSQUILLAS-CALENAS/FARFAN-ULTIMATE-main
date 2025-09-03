@@ -6,8 +6,8 @@ Shows how to integrate the dashboard with existing analysis systems
 import json
 import random
 import numpy as np
-from datetime import datetime
-from pathlib import Path
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 class PDETAnalysisSystem:
     """
@@ -123,7 +123,7 @@ class NeuralAnalysisSystem:
     
     def get_current_weights(self) -> dict:
         """
-        Simulate dynamic weight updates from training/analysis
+# # #         Simulate dynamic weight updates from training/analysis  # Module not found  # Module not found  # Module not found
         In real system, this would connect to actual neural network weights
         """
         weights = []

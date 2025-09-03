@@ -10,17 +10,17 @@ Env flags:
 - FARFAN_USE_ADVANCED_AIRFLOW = "1" to prefer HyperAirflowOrchestrator/AdvancedDAGGenerator
 - FARFAN_USE_ENHANCED_CORE   = "1" to prefer HyperAdvancedOrchestrator
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import os
 import sys
-from importlib.machinery import SourceFileLoader
-from importlib.util import module_from_spec, spec_from_loader
-from pathlib import Path
-from types import ModuleType
-from typing import Any, Dict, Optional
+# # # from importlib.machinery import SourceFileLoader  # Module not found  # Module not found  # Module not found
+# # # from importlib.util import module_from_spec, spec_from_loader  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from types import ModuleType  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, Optional  # Module not found  # Module not found  # Module not found
 
-from total_ordering_base import TotalOrderingBase
+# # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 ADV_DIR_NAME = "Nueva carpeta con elementos"
 
@@ -99,7 +99,7 @@ def _load_module(module_filename: str, module_qualname: str, loader_instance: Op
         f"{pkg_name}.workflow_definitions": "orchestration.workflow_definitions",
         f"{pkg_name}.step_handlers": "orchestration.step_handlers",
         f"{pkg_name}.telemetry_collector": "orchestration.telemetry_collector",
-        f"{pkg_name}.optimization_engine": f"{pkg_name}.optimization_engine",  # load from advanced dir
+# # #         f"{pkg_name}.optimization_engine": f"{pkg_name}.optimization_engine",  # load from advanced dir  # Module not found  # Module not found  # Module not found
     }
     
     # Create deterministic alias processing order
@@ -283,7 +283,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     """
     Process API for advanced loader component (02I).
     
-    Creates document bundles from text extraction results and writes 
+# # #     Creates document bundles from text extraction results and writes   # Module not found  # Module not found  # Module not found
     standardized artifacts using ArtifactManager.
     
     Args:
@@ -295,7 +295,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     """
     # Import ArtifactManager locally to avoid circular imports
     try:
-        from canonical_flow.ingestion import ArtifactManager
+# # #         from canonical_flow.ingestion import ArtifactManager  # Module not found  # Module not found  # Module not found
     except ImportError:
         return {"error": "ArtifactManager not available"}
     
@@ -309,7 +309,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     
     # Handle different input formats
     if isinstance(data, dict) and 'results' in data:
-        # Input from 01I component
+# # #         # Input from 01I component  # Module not found  # Module not found  # Module not found
         text_results = data['results']
     elif isinstance(data, list):
         text_results = data

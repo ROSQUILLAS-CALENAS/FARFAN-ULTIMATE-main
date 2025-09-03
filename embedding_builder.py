@@ -9,20 +9,20 @@ import logging
 import threading
 import time
 import warnings
-from collections import OrderedDict
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import numpy as np
-from langdetect import detect
-from sentence_transformers import SentenceTransformer
-from tqdm import tqdm
-from total_ordering_base import TotalOrderingBase
+# # # from langdetect import detect  # Module not found  # Module not found  # Module not found
+# # # from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
+# # # from tqdm import tqdm  # Module not found  # Module not found  # Module not found
+# # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 # Optional sklearn cosine_similarity for analysis (used in a small section); provide fallback
 try:
-    from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
+# # #     from sklearn.metrics.pairwise import cosine_similarity  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:
     def cosine_similarity(A, B=None):
         import numpy as np
@@ -180,12 +180,12 @@ class EmbeddingCacheManager:
         return embedding.nbytes
 
     def _generate_cache_key(self, text: str, model_name: str = "") -> str:
-        """Generate cache key from text and model."""
+# # #         """Generate cache key from text and model."""  # Module not found  # Module not found  # Module not found
         combined = f"{model_name}:{text}"
         return hashlib.md5(combined.encode('utf-8')).hexdigest()
 
     def get(self, text: str, model_name: str = "") -> Optional[np.ndarray]:
-        """Get embedding from cache, moving to end (most recently used)."""
+# # #         """Get embedding from cache, moving to end (most recently used)."""  # Module not found  # Module not found  # Module not found
         cache_key = self._generate_cache_key(text, model_name)
 
         with self.lock:
@@ -341,7 +341,7 @@ class EmbeddingBuilder(TotalOrderingBase):
             if self.cache_manager:
                 cached_embedding = self.cache_manager.get(processed_text, self.model_name)
                 if cached_embedding is not None:
-                    logger.debug("Retrieved embedding from cache")
+# # #                     logger.debug("Retrieved embedding from cache")  # Module not found  # Module not found  # Module not found
                     return cached_embedding
 
             # Generar embedding
@@ -494,7 +494,7 @@ class EmbeddingBuilder(TotalOrderingBase):
         if self.cache_manager:
             cached_embedding = self.cache_manager.get(processed_query, f"query_{self.model_name}")
             if cached_embedding is not None:
-                logger.debug("Retrieved query embedding from cache")
+# # #                 logger.debug("Retrieved query embedding from cache")  # Module not found  # Module not found  # Module not found
                 return cached_embedding
 
         embedding = self.model.encode(processed_query, normalize_embeddings=True).astype(
@@ -528,7 +528,7 @@ class EmbeddingBuilder(TotalOrderingBase):
             lang = detect(text)
         except Exception as e:
             try:
-                from exception_telemetry import log_structured_exception
+# # #                 from exception_telemetry import log_structured_exception  # Module not found  # Module not found  # Module not found
                 log_structured_exception(
                     type(e),
                     e,
@@ -595,7 +595,7 @@ def process_embedding_generation(causal_graph: Any,
     Main processing function for embedding generation stage (10K).
 
     Args:
-        causal_graph: Input causal graph from previous stage
+# # #         causal_graph: Input causal graph from previous stage  # Module not found  # Module not found  # Module not found
         dnp_results: Optional DNP optimization results
         document_stem: Document identifier for output naming
 
@@ -608,7 +608,7 @@ def process_embedding_generation(causal_graph: Any,
         # Create embedding builder
         builder = EmbeddingBuilder()
 
-        # Extract text content from causal graph
+# # #         # Extract text content from causal graph  # Module not found  # Module not found  # Module not found
         texts = []
         node_texts = {}
         edge_texts = {}
@@ -776,7 +776,7 @@ if __name__ == "__main__":
         Returns:
             Dict containing processed embeddings and metadata
         """
-        from canonical_flow.knowledge.knowledge_audit_system import audit_component_execution
+# # #         from canonical_flow.knowledge.knowledge_audit_system import audit_component_execution  # Module not found  # Module not found  # Module not found
 
         @audit_component_execution("11K", metadata={"model_name": self.model_name})
         def _process_with_audit(data, context):
@@ -784,7 +784,7 @@ if __name__ == "__main__":
                 return {"error": "No input data provided"}
 
             try:
-                # Extract text chunks from data
+# # #                 # Extract text chunks from data  # Module not found  # Module not found  # Module not found
                 chunks_list = []
                 if isinstance(data, dict):
                     if "chunks" in data:

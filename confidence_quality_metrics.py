@@ -2,7 +2,7 @@
 Confidence and Quality Metrics Propagation System
 
 This module implements a comprehensive confidence and quality metrics system that flows
-from individual question evaluations through dimension, point, meso, and macro aggregation
+# # # from individual question evaluations through dimension, point, meso, and macro aggregation  # Module not found  # Module not found  # Module not found
 levels with proper evidence density, coverage validation, and model agreement scoring.
 
 Key Features:
@@ -18,11 +18,11 @@ import json
 import logging
 import math
 import statistics
-from dataclasses import dataclass, field
-from datetime import datetime, timedelta
-from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple, Union
-from collections import defaultdict, OrderedDict
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from collections import defaultdict, OrderedDict  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -92,7 +92,7 @@ class CoverageValidationMetrics:
         Calculate coverage validation score (0.0-1.0)
         
         Formula: (answered_questions / total_questions) * (1 - critical_gaps * gap_penalty_factor)
-        - Base score from answer completion ratio
+# # #         - Base score from answer completion ratio  # Module not found  # Module not found  # Module not found
         - Penalty for critical coverage gaps
         """
         if self.total_questions == 0:
@@ -316,7 +316,7 @@ class ConfidenceQualityCalculator:
             critical_gaps=0 if has_answer else 1
         )
         
-        # Model agreement (from multiple analysis models)
+# # #         # Model agreement (from multiple analysis models)  # Module not found  # Module not found  # Module not found
         model_scores = []
         for model_key in ['nlp_score', 'semantic_score', 'context_score']:
             score = question_data.get(model_key)

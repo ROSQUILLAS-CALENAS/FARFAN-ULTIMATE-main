@@ -4,24 +4,24 @@ Implementa modelado predictivo basado en datos históricos y contexto municipal
 con integración de DNP alignment validation para estándares de derechos humanos.
 """
 
-from typing import Any, Dict, List, Optional
+# # # from typing import Any, Dict, List, Optional  # Module not found  # Module not found  # Module not found
 
 import json
 import logging
 import pickle
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import pandas as pd
 
 try:
-    from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
-    from sklearn.feature_selection import SelectKBest, f_regression
-    from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-    from sklearn.model_selection import cross_val_score, train_test_split
-    from sklearn.preprocessing import RobustScaler, StandardScaler
+# # #     from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.feature_selection import SelectKBest, f_regression  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.model_selection import cross_val_score, train_test_split  # Module not found  # Module not found  # Module not found
+# # #     from sklearn.preprocessing import RobustScaler, StandardScaler  # Module not found  # Module not found  # Module not found
 
     SKLEARN_AVAILABLE = True
 except ImportError:
@@ -31,7 +31,7 @@ except ImportError:
     SKLEARN_AVAILABLE = False
 
 try:
-    from causal_dnp_framework import CausalDNPAnalyzer, CausalGraph, Evidence, CausalFactor
+# # #     from causal_dnp_framework import CausalDNPAnalyzer, CausalGraph, Evidence, CausalFactor  # Module not found  # Module not found  # Module not found
     CAUSAL_FRAMEWORK_AVAILABLE = True
 except ImportError:
     logging.warning(
@@ -41,14 +41,14 @@ except ImportError:
 
 # Try to import centralized configuration
 try:
-    from config_loader import get_thresholds
+# # #     from config_loader import get_thresholds  # Module not found  # Module not found  # Module not found
     THRESHOLDS_AVAILABLE = True
 except ImportError:
     THRESHOLDS_AVAILABLE = False
     logging.warning("Centralized thresholds not available, using hardcoded values")
 
 try:
-    from models import (
+# # #     from models import (  # Module not found  # Module not found  # Module not found
         AdaptiveScoringResults,
         ComplianceStatus,
         DecalogoPointScore,
@@ -58,7 +58,7 @@ try:
     )
 except ImportError:
     try:
-        from .models import (
+# # #         from .models import (  # Module not found  # Module not found  # Module not found
             AdaptiveScoringResults,
             ComplianceStatus,
             DecalogoPointScore,
@@ -99,7 +99,7 @@ class AdaptiveScoringEngine:
         self.feature_scaler = StandardScaler() if SKLEARN_AVAILABLE else None
         self.feature_selector = None
 
-        # Load configuration from centralized thresholds or use defaults
+# # #         # Load configuration from centralized thresholds or use defaults  # Module not found  # Module not found  # Module not found
         self._load_configuration()
 
         # Métricas de importancia
@@ -122,7 +122,7 @@ class AdaptiveScoringEngine:
         
         # DNP alignment validation mechanism
         try:
-            from dnp_alignment_adapter import DNPAlignmentValidator
+# # #             from dnp_alignment_adapter import DNPAlignmentValidator  # Module not found  # Module not found  # Module not found
             self.dnp_validator = DNPAlignmentValidator()
         except ImportError:
             self.dnp_validator = None
@@ -133,7 +133,7 @@ class AdaptiveScoringEngine:
         
         # Math Stage5 Enhanced Scoring Integration
         try:
-            from canonical_flow.mathematical_enhancers.scoring_enhancer import create_math_stage5_enhancer
+# # #             from canonical_flow.mathematical_enhancers.scoring_enhancer import create_math_stage5_enhancer  # Module not found  # Module not found  # Module not found
             self.math_stage5_enhancer = create_math_stage5_enhancer(entropy_reg=0.1)
             self.has_stage5_enhancement = True
             logger.info("Math Stage5 scoring enhancer loaded successfully")
@@ -143,7 +143,7 @@ class AdaptiveScoringEngine:
             self.has_stage5_enhancement = False
 
     def _load_configuration(self):
-        """Load configuration from centralized thresholds or use defaults."""
+# # #         """Load configuration from centralized thresholds or use defaults."""  # Module not found  # Module not found  # Module not found
         if THRESHOLDS_AVAILABLE:
             try:
                 config = get_thresholds()
@@ -170,7 +170,7 @@ class AdaptiveScoringEngine:
                 self.correction_thresholds = adaptive_config.correction_thresholds.copy()
                 self.dnp_baseline_standards = adaptive_config.dnp_baseline_standards.copy()
                 
-                logger.info("Loaded adaptive scoring configuration from centralized thresholds")
+# # #                 logger.info("Loaded adaptive scoring configuration from centralized thresholds")  # Module not found  # Module not found  # Module not found
                 
             except Exception as e:
                 logger.warning(f"Failed to load centralized configuration: {e}, using defaults")
@@ -297,7 +297,7 @@ class AdaptiveScoringEngine:
         evidence_patterns: List[str] = None
     ) -> Dict[str, Any]:
         """
-        Calculate causal correction scores measuring distance from DNP baseline standards
+# # #         Calculate causal correction scores measuring distance from DNP baseline standards  # Module not found  # Module not found  # Module not found
         """
         if not self.causal_correction_enabled:
             return {
@@ -324,7 +324,7 @@ class AdaptiveScoringEngine:
             # Compute DNP deviation scores
             dnp_deviations = self._compute_dnp_deviations(current_scores, dimension_id)
             
-            # Calculate causal distance from baseline
+# # #             # Calculate causal distance from baseline  # Module not found  # Module not found  # Module not found
             causal_distance = self._calculate_causal_distance(
                 current_scores, 
                 self.dnp_baseline_standards, 
@@ -408,7 +408,7 @@ class AdaptiveScoringEngine:
         return graph
 
     def _compute_dnp_deviations(self, current_scores: Dict[str, float], dimension_id: str) -> Dict[str, float]:
-        """Compute deviations from DNP baseline standards"""
+# # #         """Compute deviations from DNP baseline standards"""  # Module not found  # Module not found  # Module not found
         deviations = {}
         
         # Check dimensional baseline
@@ -459,7 +459,7 @@ class AdaptiveScoringEngine:
         causal_factor: 'CausalFactor'
     ) -> float:
         """Compute quantitative correction factor for realignment"""
-        # Base correction from causal validity
+# # #         # Base correction from causal validity  # Module not found  # Module not found  # Module not found
         validity_correction = max(0.5, causal_validity)
         
         # Distance penalty
@@ -479,7 +479,7 @@ class AdaptiveScoringEngine:
         return np.clip(correction_factor, 0.1, 2.0)
 
     def _extract_robustness_score(self, causal_factor: 'CausalFactor') -> float:
-        """Extract robustness score from causal factor"""
+# # #         """Extract robustness score from causal factor"""  # Module not found  # Module not found  # Module not found
         if not hasattr(causal_factor, 'dro_robustness') or not causal_factor.dro_robustness:
             return 0.5  # Default moderate robustness
         
@@ -649,7 +649,7 @@ class AdaptiveScoringEngine:
         """Generate specific contrast flags"""
         flags = []
         
-        # Flags from contradictions
+# # #         # Flags from contradictions  # Module not found  # Module not found  # Module not found
         for contradiction in contradictions:
             flags.append({
                 "flag_type": "HUMAN_RIGHTS_VIOLATION",
@@ -659,7 +659,7 @@ class AdaptiveScoringEngine:
                 "action_required": "IMMEDIATE_REMEDIATION"
             })
         
-        # Flags from critical gaps
+# # #         # Flags from critical gaps  # Module not found  # Module not found  # Module not found
         for component, gap_size in critical_gaps.items():
             flags.append({
                 "flag_type": "CRITICAL_GAP",
@@ -791,7 +791,7 @@ class AdaptiveScoringEngine:
                     # Handle DocumentPackage creation with proper validation
                     package_data = sample["document_package"]
                     if "quality_indicators" not in package_data:
-                        from .models import QualityIndicators
+# # #                         from .models import QualityIndicators  # Module not found  # Module not found  # Module not found
 
                         package_data["quality_indicators"] = QualityIndicators(
                             completeness_index=0.5,
@@ -1134,7 +1134,7 @@ class AdaptiveScoringEngine:
                     enhancement_result = self.math_stage5_enhancer.enhance_causal_correction_scoring(
                         evaluation_scores=initial_scores,
                         pdt_context=pdt_context,
-                        document_features=None  # Will be extracted from context
+# # #                         document_features=None  # Will be extracted from context  # Module not found  # Module not found  # Module not found
                     )
                     
                     # Update results with transport-enhanced scoring
@@ -1409,10 +1409,10 @@ class DNPAlignmentValidator:
         return validation_result
 
     def _extract_evidence_patterns(self, document_package: DocumentPackage) -> List[str]:
-        """Extract evidence patterns from document package for causal analysis"""
+# # #         """Extract evidence patterns from document package for causal analysis"""  # Module not found  # Module not found  # Module not found
         patterns = []
         
-        # Extract from sections
+# # #         # Extract from sections  # Module not found  # Module not found  # Module not found
         for section in document_package.sections:
             if hasattr(section, 'content') and section.content:
                 # Look for causal language patterns
@@ -1420,7 +1420,7 @@ class DNPAlignmentValidator:
                 if any(word in section.content.lower() for word in causal_words):
                     patterns.append(section.content[:200])  # First 200 chars
         
-        # Extract from tables if they contain relevant information
+# # #         # Extract from tables if they contain relevant information  # Module not found  # Module not found  # Module not found
         for table in document_package.tables:
             if hasattr(table, 'caption') and table.caption:
                 patterns.append(table.caption)
@@ -1661,7 +1661,7 @@ class DNPAlignmentValidator:
                 with open(selector_path, "rb") as f:
                     self.feature_selector = pickle.load(f)
 
-            logger.info(f"Models loaded from {self.models_path}")
+# # #             logger.info(f"Models loaded from {self.models_path}")  # Module not found  # Module not found  # Module not found
             return True
 
         except Exception as e:

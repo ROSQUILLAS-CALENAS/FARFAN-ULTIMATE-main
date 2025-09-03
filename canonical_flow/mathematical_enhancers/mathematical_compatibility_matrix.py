@@ -25,16 +25,16 @@ import sys
 import warnings
 import platform
 import re
-from typing import Dict, List, Optional, Tuple, Union, Any, NamedTuple
-from dataclasses import dataclass, field
-from enum import Enum
-from datetime import datetime
+# # # from typing import Dict, List, Optional, Tuple, Union, Any, NamedTuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import importlib
 import importlib.util
 import subprocess
-from pathlib import Path
-from packaging import version
-from concurrent.futures import ThreadPoolExecutor, as_completed
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from packaging import version  # Module not found  # Module not found  # Module not found
+# # # from concurrent.futures import ThreadPoolExecutor, as_completed  # Module not found  # Module not found  # Module not found
 import threading
 import traceback
 import json
@@ -646,7 +646,7 @@ class MathematicalCompatibilityMatrix:
         # Test scipy optimization
         if 'optimization' in operations:
             try:
-                from scipy.optimize import minimize
+# # #                 from scipy.optimize import minimize  # Module not found  # Module not found  # Module not found
                 
                 # Test simple quadratic optimization
                 def objective(x):
@@ -1310,7 +1310,7 @@ class LibraryStatusReporter:
             report = self.generate_comprehensive_report()
         
         import json
-        from pathlib import Path
+# # #         from pathlib import Path  # Module not found  # Module not found  # Module not found
         
         report_path = Path(self.report_path)
         report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -1468,7 +1468,7 @@ class LibraryStatusReporter:
     
     def generate_unified_validation_report(self) -> ValidationReport:
         """Generate comprehensive unified validation report"""
-        from datetime import datetime
+# # #         from datetime import datetime  # Module not found  # Module not found  # Module not found
         
         report = ValidationReport(
             timestamp=datetime.now().isoformat(),

@@ -2,7 +2,7 @@ import copy
 import json
 import unittest
 
-from workflow_definitions import canonical_json, normalize
+# # # from workflow_definitions import canonical_json, normalize  # Module not found  # Module not found  # Module not found
 
 
 def _strip_hashes(norm):

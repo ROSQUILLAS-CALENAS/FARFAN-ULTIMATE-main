@@ -6,14 +6,14 @@ Demonstrates how to integrate with existing scoring systems and analysis compone
 
 import sys
 import os
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 import json
-from typing import Dict, List, Any
+# # # from typing import Dict, List, Any  # Module not found  # Module not found  # Module not found
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from canonical_flow.analysis.artifact_generator import (
+# # # from canonical_flow.analysis.artifact_generator import (  # Module not found  # Module not found  # Module not found
     ArtifactGenerator, QuestionEvaluation, DimensionSummary, PointSummary,
     MesoClusterAnalysis, MacroAlignment, EvidenceReference
 )

@@ -10,8 +10,8 @@ import os
 import sys
 import http.server
 import socketserver
-from pathlib import Path
-from typing import Optional, Dict, List, Tuple
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Optional, Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 import time
 import signal
 import re
@@ -192,7 +192,7 @@ class AtroZCSSManager:
 
     @classmethod
     def detect_browser_capabilities(cls, user_agent: str) -> Dict[str, bool]:
-        """Detect browser capabilities from User-Agent."""
+# # #         """Detect browser capabilities from User-Agent."""  # Module not found  # Module not found  # Module not found
         capabilities = {
             'supports_woff2': True,  # Default to true for modern browsers
             'supports_css_custom_properties': True,
@@ -912,7 +912,7 @@ class CanonicalFlowHandler(http.server.SimpleHTTPRequestHandler):
         """Serve real-time dashboard metrics."""
         try:
             # Import monitoring system
-            from monitoring_dashboard import MonitoringDashboard
+# # #             from monitoring_dashboard import MonitoringDashboard  # Module not found  # Module not found  # Module not found
             dashboard = MonitoringDashboard()
             metrics = dashboard.get_current_metrics()
             
@@ -955,7 +955,7 @@ class CanonicalFlowHandler(http.server.SimpleHTTPRequestHandler):
         """Serve pipeline health status for all stages."""
         try:
             # Import monitoring system
-            from monitoring_dashboard import MonitoringDashboard
+# # #             from monitoring_dashboard import MonitoringDashboard  # Module not found  # Module not found  # Module not found
             dashboard = MonitoringDashboard()
             health_data = dashboard.get_pipeline_health()
             
@@ -996,7 +996,7 @@ class CanonicalFlowHandler(http.server.SimpleHTTPRequestHandler):
     def serve_stage_metrics(self, stage_name: str):
         """Serve detailed metrics for a specific stage."""
         try:
-            from monitoring_dashboard import MonitoringDashboard
+# # #             from monitoring_dashboard import MonitoringDashboard  # Module not found  # Module not found  # Module not found
             dashboard = MonitoringDashboard()
             stage_metrics = dashboard.get_stage_metrics(stage_name)
             
@@ -1031,7 +1031,7 @@ class CanonicalFlowHandler(http.server.SimpleHTTPRequestHandler):
     def serve_alerts(self):
         """Serve active alerts and notifications."""
         try:
-            from monitoring_dashboard import MonitoringDashboard
+# # #             from monitoring_dashboard import MonitoringDashboard  # Module not found  # Module not found  # Module not found
             dashboard = MonitoringDashboard()
             alerts = dashboard.get_active_alerts()
             
@@ -1080,7 +1080,7 @@ class CanonicalFlowHandler(http.server.SimpleHTTPRequestHandler):
     def serve_performance_metrics(self):
         """Serve performance and resource utilization metrics."""
         try:
-            from monitoring_dashboard import MonitoringDashboard
+# # #             from monitoring_dashboard import MonitoringDashboard  # Module not found  # Module not found  # Module not found
             dashboard = MonitoringDashboard()
             perf_metrics = dashboard.get_performance_metrics()
             
@@ -1338,7 +1338,7 @@ class CanonicalFlowServer:
 
     def __init__(self, port: int = 8000, project_root_path: Optional[str] = None):
         # Pre-flight validation - MUST be first operation
-        from canonical_flow.mathematical_enhancers.pre_flight_validator import check_library_compatibility
+# # #         from canonical_flow.mathematical_enhancers.pre_flight_validator import check_library_compatibility  # Module not found  # Module not found  # Module not found
         
         print("Starting canonical web server with pre-flight validation...")
         validation_result = check_library_compatibility()
@@ -1434,7 +1434,7 @@ class CanonicalFlowServer:
 
             # Initialize monitoring dashboard
             try:
-                from monitoring_dashboard import get_dashboard
+# # #                 from monitoring_dashboard import get_dashboard  # Module not found  # Module not found  # Module not found
                 dashboard = get_dashboard()
                 print("Monitoring dashboard initialized")
             except Exception as e:
@@ -1442,7 +1442,7 @@ class CanonicalFlowServer:
 
             # Initialize alert system
             try:
-                from alert_system import get_alert_system
+# # #                 from alert_system import get_alert_system  # Module not found  # Module not found  # Module not found
                 alert_system = get_alert_system()
                 print("Alert system initialized")
             except Exception as e:

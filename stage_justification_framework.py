@@ -9,12 +9,12 @@ Includes metrics for artifact uniqueness, processing efficiency ratios, and down
 import json
 import logging
 import time
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from datetime import datetime, timedelta
-from enum import Enum
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple, Union
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 import hashlib
 # Optional numpy import
 try:
@@ -140,7 +140,7 @@ class DependencyImpactCalculator(JustificationMetricCalculator):
         removal_impact = stage_data.get('dependency_analysis', {}).get('removal_impact_score', 0.0)
         critical_path = stage_data.get('dependency_analysis', {}).get('critical_path_position', False)
         
-        # Base score from downstream count
+# # #         # Base score from downstream count  # Module not found  # Module not found  # Module not found
         base_score = min(1.0, downstream_count / 5.0)
         
         # Boost for critical path position
@@ -172,10 +172,10 @@ class ComputationalComplexityCalculator(JustificationMetricCalculator):
 
 
 class OutputDifferentiationCalculator(JustificationMetricCalculator):
-    """Calculates output differentiation from inputs"""
+# # #     """Calculates output differentiation from inputs"""  # Module not found  # Module not found  # Module not found
     
     def calculate(self, stage_data: Dict[str, Any]) -> float:
-        """Calculate how much the outputs differ from inputs"""
+# # #         """Calculate how much the outputs differ from inputs"""  # Module not found  # Module not found  # Module not found
         input_keys = stage_data.get('artifact_profile', {}).get('input_keys', set())
         output_keys = stage_data.get('artifact_profile', {}).get('output_keys', set())
         
@@ -269,7 +269,7 @@ class StageJustificationFramework:
                 minimum_acceptable=0.3,
                 target_value=0.8,
                 weight=0.15,
-                description="Outputs should meaningfully differ from inputs"
+# # #                 description="Outputs should meaningfully differ from inputs"  # Module not found  # Module not found  # Module not found
             ),
             JustificationMetricType.DOWNSTREAM_VALUE: MetricThreshold(
                 JustificationMetricType.DOWNSTREAM_VALUE,
@@ -474,7 +474,7 @@ def main():
     print("Stage Justification Framework Demo")
     print("=" * 40)
     
-    # This would normally be populated from the pipeline analysis system
+# # #     # This would normally be populated from the pipeline analysis system  # Module not found  # Module not found  # Module not found
     sample_data = {
         "stage1": {
             "stage_name": "stage1",

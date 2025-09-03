@@ -5,11 +5,11 @@ This example showcases the implementation of Balkanski et al. (2021) submodular
 approximation algorithm with practical applications in task prioritization.
 """
 
-from typing import Dict, List
+# # # from typing import Dict, List  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 
-from egw_query_expansion import DeterministicGainFunction, MonotonicTaskSelector, Task
+# # # from egw_query_expansion import DeterministicGainFunction, MonotonicTaskSelector, Task  # Module not found  # Module not found  # Module not found
 
 
 def demonstrate_software_development_prioritization():
@@ -135,7 +135,7 @@ def demonstrate_software_development_prioritization():
 
     if is_prefix:
         print(
-            "✓ Increasing budget from 100 to 200 only ADDED tasks, never removed or reordered"
+# # #             "✓ Increasing budget from 100 to 200 only ADDED tasks, never removed or reordered"  # Module not found  # Module not found  # Module not found
         )
     else:
         print("✗ Prefix property violation detected!")
@@ -148,7 +148,7 @@ def demonstrate_software_development_prioritization():
     trace = selector.get_decision_trace()
     recent_decisions = trace[-10:]  # Show last 10 decisions
 
-    print(f"\nShowing last {len(recent_decisions)} decisions from trace:")
+# # #     print(f"\nShowing last {len(recent_decisions)} decisions from trace:")  # Module not found  # Module not found  # Module not found
     for decision in recent_decisions:
         status = "SELECTED" if decision.selected else "REJECTED"
         print(f"  {decision.timestamp}: {status} {decision.task.id}")

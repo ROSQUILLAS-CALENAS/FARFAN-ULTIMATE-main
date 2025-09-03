@@ -5,12 +5,12 @@ Performs document retrieval operations with complete audit trail.
 
 import time
 import numpy as np
-from typing import Any, Dict, List, Optional, Tuple
-from dataclasses import dataclass
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 
-from traceability import TraceabilityManager, NodeType, ProcessingMetadata
-from document_processor import DocumentChunk
-from embedding_generator import ChunkEmbedding, EmbeddingGenerator
+# # # from traceability import TraceabilityManager, NodeType, ProcessingMetadata  # Module not found  # Module not found  # Module not found
+# # # from document_processor import DocumentChunk  # Module not found  # Module not found  # Module not found
+# # # from embedding_generator import ChunkEmbedding, EmbeddingGenerator  # Module not found  # Module not found  # Module not found
 
 
 @dataclass

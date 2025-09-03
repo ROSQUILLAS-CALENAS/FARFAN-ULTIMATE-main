@@ -10,9 +10,9 @@ import hashlib
 import json
 import logging
 import pickle
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import networkx as nx
 import numpy as np
@@ -170,7 +170,7 @@ class StableEGWAligner:
         return content_matrix
 
     def _extract_node_content(self, node_data: Dict) -> str:
-        """Extract textual content from node data."""
+# # #         """Extract textual content from node data."""  # Module not found  # Module not found  # Module not found
         content_fields = ["title", "content", "text", "label", "description"]
         content = ""
 
@@ -292,7 +292,7 @@ class StableEGWAligner:
 
     def _quantify_unmatched_mass(self, T: np.ndarray) -> Dict[str, float]:
         """Quantify unmatched mass and coverage gaps."""
-        source_coverage = np.sum(T, axis=1)  # Mass assigned from each source
+# # #         source_coverage = np.sum(T, axis=1)  # Mass assigned from each source  # Module not found  # Module not found  # Module not found
         target_coverage = np.sum(T, axis=0)  # Mass received by each target
 
         # Unmatched source mass

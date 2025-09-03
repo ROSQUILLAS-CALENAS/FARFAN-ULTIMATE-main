@@ -6,8 +6,8 @@ Generates inclusion proofs and validates data integrity.
 import hashlib
 import json
 import sqlite3
-from typing import List, Dict, Any, Tuple, Optional
-from pathlib import Path
+# # # from typing import List, Dict, Any, Tuple, Optional  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 import logging
 
 try:
@@ -108,11 +108,11 @@ class AuditTrail:
         return trace_id
     
     def build_merkle_tree(self) -> Optional[MerkleNode]:
-        """Build Merkle tree from all traces."""
+# # #         """Build Merkle tree from all traces."""  # Module not found  # Module not found  # Module not found
         if not self.traces:
             return None
             
-        # Create leaf nodes from trace hashes
+# # #         # Create leaf nodes from trace hashes  # Module not found  # Module not found  # Module not found
         nodes = [MerkleNode(trace["hash"], data=trace) for trace in self.traces]
         
         # Build tree bottom-up
@@ -152,7 +152,7 @@ class AuditTrail:
         if not tree:
             return []
             
-        # Find path from leaf to root
+# # #         # Find path from leaf to root  # Module not found  # Module not found  # Module not found
         proof_path = []
         current_nodes = [MerkleNode(trace["hash"], data=trace) for trace in self.traces]
         target_hash = self.traces[trace_index]["hash"]
@@ -280,7 +280,7 @@ class AuditTrail:
         logger.info(f"Certificate saved to {filename}")
     
     def load_traces_from_db(self) -> None:
-        """Load existing traces from database."""
+# # #         """Load existing traces from database."""  # Module not found  # Module not found  # Module not found
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.execute("""
                 SELECT timestamp, operation, data, hash_value

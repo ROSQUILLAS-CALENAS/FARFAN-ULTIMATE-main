@@ -7,14 +7,14 @@ import json
 import logging
 import threading
 import time
-from collections import deque
-from dataclasses import asdict, dataclass
-from datetime import datetime, timedelta
-from typing import Any, Callable, Dict, List, Optional, Set
+# # # from collections import deque  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import asdict, dataclass  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Set  # Module not found  # Module not found  # Module not found
 
 try:
-    from kafka import KafkaConsumer, KafkaProducer
-    from kafka.errors import KafkaError
+# # #     from kafka import KafkaConsumer, KafkaProducer  # Module not found  # Module not found  # Module not found
+# # #     from kafka.errors import KafkaError  # Module not found  # Module not found  # Module not found
 
     KAFKA_AVAILABLE = True
 except ImportError:
@@ -40,7 +40,7 @@ class StreamEvent:
 
     @classmethod
     def from_json(cls, json_str: str) -> "StreamEvent":
-        """Deserialize from JSON string"""
+# # #         """Deserialize from JSON string"""  # Module not found  # Module not found  # Module not found
         data = json.loads(json_str)
         data["timestamp"] = datetime.fromisoformat(data["timestamp"])
         return cls(**data)
@@ -334,7 +334,7 @@ class StreamProcessor:
         self.logger.info("Stream processing started")
 
     async def _consume_topic(self, topic_type: str, consumer: KafkaConsumer):
-        """Consume messages from a specific Kafka topic"""
+# # #         """Consume messages from a specific Kafka topic"""  # Module not found  # Module not found  # Module not found
         while self.is_running:
             try:
                 message_batch = consumer.poll(timeout_ms=1000)
@@ -349,11 +349,11 @@ class StreamProcessor:
                             self.logger.error(f"Error processing message: {e}")
 
             except Exception as e:
-                self.logger.error(f"Error consuming from topic {topic_type}: {e}")
+# # #                 self.logger.error(f"Error consuming from topic {topic_type}: {e}")  # Module not found  # Module not found  # Module not found
                 await asyncio.sleep(5)  # Back off on errors
 
     async def _process_memory_events(self):
-        """Process events from in-memory buffer"""
+# # #         """Process events from in-memory buffer"""  # Module not found  # Module not found  # Module not found
         while self.is_running:
             try:
                 if self.event_buffer:

@@ -7,12 +7,12 @@ distribution-free guarantees following Angelopoulos et al. (2024).
 
 import pickle
 import tempfile
-from typing import Dict, List
+# # # from typing import Dict, List  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import pytest
 
-from egw_query_expansion.core.conformal_risk_control import (
+# # # from egw_query_expansion.core.conformal_risk_control import (  # Module not found  # Module not found  # Module not found
     ClassificationNonconformityScorer,
     ConformalRiskController,
     PredictionSet,

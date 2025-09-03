@@ -6,13 +6,13 @@ Demonstrates the complete functionality including validation and coverage tracki
 
 import json
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Import the registry
 sys.path.insert(0, str(Path(__file__).resolve().parent / "canonical_flow" / "A_analysis_nlp"))
 
 try:
-    from decalogo_question_registry import (
+# # #     from decalogo_question_registry import (  # Module not found  # Module not found  # Module not found
         DecalogoQuestionRegistry,
         DecalogoQuestionValidationError,
         CoverageMatrix
@@ -43,7 +43,7 @@ try:
             print(f"   - {dim}: {count} per point × 10 points = {total_for_dim} total")
         
         # Test 3: Sample questions
-        print("\n3. Sample questions from each dimension:")
+# # #         print("\n3. Sample questions from each dimension:")  # Module not found  # Module not found  # Module not found
         sample_point = 1
         point_questions = registry.get_questions_by_point(sample_point)
         

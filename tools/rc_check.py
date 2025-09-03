@@ -11,8 +11,8 @@ Usage:
 import argparse
 import json
 import sys
-from pathlib import Path
-from typing import Any, Dict, List
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List  # Module not found  # Module not found  # Module not found
 
 try:
     import blake3
@@ -26,12 +26,12 @@ except ImportError:
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from egw_query_expansion.core.deterministic_router import (
+# # # from egw_query_expansion.core.deterministic_router import (  # Module not found  # Module not found  # Module not found
     DeterministicRouter,
     ImmutableConfig,
     RoutingContext,
 )
-from egw_query_expansion.core.immutable_context import QuestionContext
+# # # from egw_query_expansion.core.immutable_context import QuestionContext  # Module not found  # Module not found  # Module not found
 
 
 class RoutingContractCLI:
@@ -47,7 +47,7 @@ class RoutingContractCLI:
         return hash_func(route_bytes).hexdigest()
     
     def create_routing_context(self, question: str, mode: str = "hybrid", corpus_size: int = 1000) -> RoutingContext:
-        """Create routing context from question"""
+# # #         """Create routing context from question"""  # Module not found  # Module not found  # Module not found
         return RoutingContext.from_query(
             query=question,
             embedding=[0.1, 0.2, 0.3, 0.4],  # Dummy embedding for CLI

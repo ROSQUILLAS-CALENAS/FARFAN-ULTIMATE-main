@@ -10,18 +10,18 @@ import json
 import sys
 import tempfile
 import traceback
-from pathlib import Path
-from typing import Dict, Any
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, Any  # Module not found  # Module not found  # Module not found
 
 def validate_audit_imports():
     """Validate that audit system imports work correctly"""
     print("1. Testing audit system imports...")
     
     try:
-        from audit_logger import AuditLogger, AuditMixin, AuditStatus, create_audit_logger
+# # #         from audit_logger import AuditLogger, AuditMixin, AuditStatus, create_audit_logger  # Module not found  # Module not found  # Module not found
         print("   ✅ Core audit classes imported successfully")
         
-        from total_ordering_base import TotalOrderingBase
+# # #         from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
         print("   ✅ TotalOrderingBase with audit integration imported")
         
         return True
@@ -39,7 +39,7 @@ def validate_audit_logger_creation():
     print("\n2. Testing AuditLogger creation...")
     
     try:
-        from audit_logger import AuditLogger, AuditStatus
+# # #         from audit_logger import AuditLogger, AuditStatus  # Module not found  # Module not found  # Module not found
         
         # Create logger instance
         logger = AuditLogger("TestComponent", "test_stage")
@@ -68,7 +68,7 @@ def validate_audit_session():
     print("\n3. Testing complete audit session...")
     
     try:
-        from audit_logger import AuditLogger, AuditStatus
+# # #         from audit_logger import AuditLogger, AuditStatus  # Module not found  # Module not found  # Module not found
         
         # Create temporary directory for test
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -159,8 +159,8 @@ def validate_total_ordering_integration():
     print("\n4. Testing TotalOrderingBase audit integration...")
     
     try:
-        from total_ordering_base import TotalOrderingBase
-        from audit_logger import AuditMixin
+# # #         from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
+# # #         from audit_logger import AuditMixin  # Module not found  # Module not found  # Module not found
         
         # Create test component class
         class TestComponent(TotalOrderingBase):
@@ -213,7 +213,7 @@ def validate_existing_components():
     try:
         # Test AdaptiveAnalyzer
         try:
-            from canonical_flow.A_analysis_nlp.adaptive_analyzer import AdaptiveAnalyzer
+# # #             from canonical_flow.A_analysis_nlp.adaptive_analyzer import AdaptiveAnalyzer  # Module not found  # Module not found  # Module not found
             
             analyzer = AdaptiveAnalyzer()
             assert hasattr(analyzer, 'component_name')
@@ -225,7 +225,7 @@ def validate_existing_components():
         
         # Test MesoAggregator
         try:
-            from G_aggregation_reporting.meso_aggregator import MesoAggregator
+# # #             from G_aggregation_reporting.meso_aggregator import MesoAggregator  # Module not found  # Module not found  # Module not found
             
             aggregator = MesoAggregator()
             assert hasattr(aggregator, 'component_name')
@@ -248,7 +248,7 @@ def validate_audit_file_format():
     print("\n6. Testing audit file format compliance...")
     
     try:
-        from audit_logger import AuditLogger, AuditStatus
+# # #         from audit_logger import AuditLogger, AuditStatus  # Module not found  # Module not found  # Module not found
         
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
@@ -358,7 +358,7 @@ def validate_error_handling():
     print("\n7. Testing error handling capabilities...")
     
     try:
-        from audit_logger import AuditLogger, AuditStatus
+# # #         from audit_logger import AuditLogger, AuditStatus  # Module not found  # Module not found  # Module not found
         
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)

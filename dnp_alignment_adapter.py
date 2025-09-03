@@ -21,17 +21,17 @@ Outputs:
 
 This adapter avoids hard crashes and logs errors while keeping the pipeline flowing.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
 try:
-    from canonical_flow.analysis.audit_logger import get_audit_logger
+# # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback when audit logger is not available
     get_audit_logger = None
 
-from datetime import datetime, timezone
-from typing import Any, Dict, Optional, Union
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, Optional, Union  # Module not found  # Module not found  # Module not found
 import uuid
 import logging
 
@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 
 # Try to import centralized configuration
 try:
-    from config_loader import get_thresholds
+# # #     from config_loader import get_thresholds  # Module not found  # Module not found  # Module not found
     THRESHOLDS_AVAILABLE = True
 except ImportError:
     THRESHOLDS_AVAILABLE = False
@@ -55,7 +55,7 @@ DNP_COMPATIBILITY_MATRIX = {
 }
 
 def _load_default_values() -> tuple[Dict[str, float], Dict[str, Any]]:
-    """Load default values from centralized configuration or fallback to hardcoded."""
+# # #     """Load default values from centralized configuration or fallback to hardcoded."""  # Module not found  # Module not found  # Module not found
     if THRESHOLDS_AVAILABLE:
         try:
             config = get_thresholds()
@@ -96,7 +96,7 @@ DEFAULT_ALIGNMENT_SCORES, DEFAULT_MAPPINGS = _load_default_values()
 
 
 def _extract_pdt_and_eval(payload: Any) -> (Dict[str, Any], Dict[str, Any]):
-    """Best-effort extraction of PDT data and evaluation results from arbitrary payloads."""
+# # #     """Best-effort extraction of PDT data and evaluation results from arbitrary payloads."""  # Module not found  # Module not found  # Module not found
     pdt_data: Dict[str, Any] = {}
     eval_results: Dict[str, Any] = {}
 
@@ -231,7 +231,7 @@ def _process_internal(data: Any, context: Optional[Dict[str, Any]] = None) -> Di
 
     try:
         # Lazy import to avoid heavy cost when unused
-        from dnp_alignment_engine import (
+# # #         from dnp_alignment_engine import (  # Module not found  # Module not found  # Module not found
             DNPAlignmentEngine,
             create_dnp_alignment_engine,
         )
@@ -311,7 +311,7 @@ def _process_internal(data: Any, context: Optional[Dict[str, Any]] = None) -> Di
         return base
 
 def _extract_alignment_scores(compliance: Dict[str, Any]) -> Dict[str, float]:
-    """Extract standardized alignment scores from compliance results."""
+# # #     """Extract standardized alignment scores from compliance results."""  # Module not found  # Module not found  # Module not found
     scores = DEFAULT_ALIGNMENT_SCORES.copy()
     
     try:
@@ -335,7 +335,7 @@ def _extract_alignment_scores(compliance: Dict[str, Any]) -> Dict[str, float]:
     return scores
 
 def _extract_alignment_mappings(compliance: Dict[str, Any]) -> Dict[str, Any]:
-    """Extract standardized alignment mappings from compliance results."""
+# # #     """Extract standardized alignment mappings from compliance results."""  # Module not found  # Module not found  # Module not found
     mappings = DEFAULT_MAPPINGS.copy()
     
     try:

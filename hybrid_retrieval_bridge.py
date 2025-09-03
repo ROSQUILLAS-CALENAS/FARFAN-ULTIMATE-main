@@ -2,20 +2,20 @@ import json
 import logging
 import re
 import warnings
-from collections import defaultdict
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+# # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 import faiss
 import numpy as np
 import ot  # POT library for optimal transport
 import torch
-from pyserini.search import FaissSearcher
-from pyserini.search.lucene import LuceneSearcher
-from scipy.optimize import minimize
-from scipy.spatial.distance import cdist
-from sklearn.metrics import ndcg_score
-from transformers import AutoModel, AutoTokenizer
+# # # from pyserini.search import FaissSearcher  # Module not found  # Module not found  # Module not found
+# # # from pyserini.search.lucene import LuceneSearcher  # Module not found  # Module not found  # Module not found
+# # # from scipy.optimize import minimize  # Module not found  # Module not found  # Module not found
+# # # from scipy.spatial.distance import cdist  # Module not found  # Module not found  # Module not found
+# # # from sklearn.metrics import ndcg_score  # Module not found  # Module not found  # Module not found
+# # # from transformers import AutoModel, AutoTokenizer  # Module not found  # Module not found  # Module not found
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -96,7 +96,7 @@ class EGWAligner:
         self.max_iter = max_iter
 
     def compute_structure_matrix(self, embeddings: np.ndarray) -> np.ndarray:
-        """Compute structure matrix from embeddings."""
+# # #         """Compute structure matrix from embeddings."""  # Module not found  # Module not found  # Module not found
         # Use cosine similarity as structure
         norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
         normalized = embeddings / (norms + 1e-8)
@@ -490,7 +490,7 @@ class HybridRetrievalBridge:
     ) -> Tuple[List[SearchResult], RCPSCertificate]:
         """
         API: Inject DNP terms by transport mass Π_ij; reject outliers
-        using RCPS at level α; record coverage from Jackknife+.
+# # #         using RCPS at level α; record coverage from Jackknife+.  # Module not found  # Module not found  # Module not found
         """
         if not results:
             return results, RCPSCertificate(
@@ -705,7 +705,7 @@ def demo_hybrid_retrieval():
     # Create question mapping
     question = QuestionMapping(
         query="How to optimize machine learning model performance?",
-        intent_vector=np.random.randn(768),  # Would be computed from actual query
+# # #         intent_vector=np.random.randn(768),  # Would be computed from actual query  # Module not found  # Module not found  # Module not found
         target_metric="ndcg",
         constraints={"domain": "technical", "min_relevance": 0.5},
     )

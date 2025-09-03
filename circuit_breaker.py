@@ -3,8 +3,8 @@ Circuit breaker pattern implementation for fault tolerance.
 """
 
 import time
-from enum import Enum
-from typing import Any, Callable, Optional, Type, Union, Tuple
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Optional, Type, Union, Tuple  # Module not found  # Module not found  # Module not found
 import threading
 import logging
 
@@ -79,7 +79,7 @@ class CircuitBreaker:
         with self._lock:
             current_time = time.time()
             
-            # Check if we should transition from OPEN to HALF_OPEN
+# # #             # Check if we should transition from OPEN to HALF_OPEN  # Module not found  # Module not found  # Module not found
             if (self.state == CircuitState.OPEN and 
                 current_time >= self.last_failure_time + self.recovery_timeout):
                 self._transition_to_half_open()

@@ -5,11 +5,11 @@ Implements synthetic tasks with known ground truth for coverage testing
 and causal validation scenarios.
 """
 
-from typing import Any, Dict, List, Tuple
+# # # from typing import Any, Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 
-from question_analyzer import (
+# # # from question_analyzer import (  # Module not found  # Module not found  # Module not found
     CausalPosture,
     EvidenceType,
     QuestionAnalyzer,

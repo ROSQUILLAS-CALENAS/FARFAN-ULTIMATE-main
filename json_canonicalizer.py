@@ -7,12 +7,12 @@ import json
 import hashlib
 import time
 import uuid
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Union, Tuple
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union, Tuple  # Module not found  # Module not found  # Module not found
 import logging
-from dataclasses import dataclass, field
-from enum import Enum
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 import traceback
 import re
 
@@ -130,7 +130,7 @@ class JSONCanonicalizer:
             return json.dumps(str(data), ensure_ascii=False, separators=(',', ':'))
     
     def generate_stable_id(self, content: Any, prefix: str = "canon") -> str:
-        """Generate stable SHA-256 based ID from normalized content."""
+# # #         """Generate stable SHA-256 based ID from normalized content."""  # Module not found  # Module not found  # Module not found
         try:
             # Normalize and canonicalize content
             if isinstance(content, str) and self._is_json_string(content):

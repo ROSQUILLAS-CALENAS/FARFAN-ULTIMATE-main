@@ -4,12 +4,12 @@ Tests for Monotonic Task Selector based on Submodular Maximization.
 Validates approximation guarantees, prefix properties, and decision traceability.
 """
 
-from typing import Dict, List, Set
+# # # from typing import Dict, List, Set  # Module not found  # Module not found  # Module not found
 
 import numpy as np
 import pytest
 
-from egw_query_expansion.core.submodular_task_selector import (
+# # # from egw_query_expansion.core.submodular_task_selector import (  # Module not found  # Module not found  # Module not found
     DeterministicGainFunction,
     MonotonicTaskSelector,
     SelectionDecision,
@@ -97,7 +97,7 @@ class TestMonotonicTaskSelector:
         """Test DeterministicGainFunction with interactions and dependencies."""
         base_values = {"A": 100.0, "B": 80.0, "C": 60.0}
         interactions = {("A", "B"): 20.0, ("B", "C"): 15.0}  # Redundancy penalties
-        dependencies = {"C": {"A", "B"}}  # C benefits from A and B
+# # #         dependencies = {"C": {"A", "B"}}  # C benefits from A and B  # Module not found  # Module not found  # Module not found
 
         gain_func = DeterministicGainFunction(
             base_values=base_values,
@@ -331,7 +331,7 @@ class TestMonotonicTaskSelector:
         """
         Compute optimal solution value via brute force (for small test instances).
         """
-        from itertools import combinations
+# # #         from itertools import combinations  # Module not found  # Module not found  # Module not found
 
         best_value = 0.0
 

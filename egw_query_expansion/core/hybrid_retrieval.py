@@ -3,7 +3,7 @@ Hybrid Retrieval Module
 Enhanced placeholder implementation for EGW Query Expansion system
 """
 
-from .import_safety import safe_import
+# # # from .import_safety import safe_import  # Module not found  # Module not found  # Module not found
 
 # Safe imports for dependencies
 faiss_result = safe_import('faiss', required=False)

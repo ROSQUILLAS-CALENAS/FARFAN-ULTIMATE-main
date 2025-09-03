@@ -6,12 +6,12 @@ Validates linear type theory compliance and immutability guarantees
 
 import hashlib
 import hmac
-from datetime import datetime, timezone
-from typing import Any, Dict
+# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict  # Module not found  # Module not found  # Module not found
 
 import pytest
 
-from egw_query_expansion.core.immutable_context import (
+# # # from egw_query_expansion.core.immutable_context import (  # Module not found  # Module not found  # Module not found
     DerivationDAG,
     DerivationEdge,
     ImmutableContextManager,
@@ -22,7 +22,7 @@ from egw_query_expansion.core.immutable_context import (
     create_question_context,
     is_valid_context,
 )
-from egw_query_expansion.core.linear_type_enforcer import (
+# # # from egw_query_expansion.core.linear_type_enforcer import (  # Module not found  # Module not found  # Module not found
     AliasDetectionError,
     LinearReference,
     LinearTypeEnforcer,

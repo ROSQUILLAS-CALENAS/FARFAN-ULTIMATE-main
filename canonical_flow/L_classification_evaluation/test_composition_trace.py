@@ -6,8 +6,8 @@ Tests the mathematical transparency and audit trail capabilities.
 import json
 import tempfile
 import shutil
-from pathlib import Path
-from decalogo_scoring_system import ScoringSystem, CompositionTrace
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from decalogo_scoring_system import ScoringSystem, CompositionTrace  # Module not found  # Module not found  # Module not found
 
 
 def test_composition_trace_generation():
@@ -57,7 +57,7 @@ def test_composition_trace_generation():
             for i in range(len(point_score.dimension_scores))
         }
         
-        from decimal import Decimal
+# # #         from decimal import Decimal  # Module not found  # Module not found  # Module not found
         dimension_scores_decimal = {k: Decimal(str(v)) for k, v in dimension_scores.items()}
         final_score, composition_trace = scoring_system.compose_point_score(dimension_scores_decimal)
         

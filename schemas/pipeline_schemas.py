@@ -5,10 +5,10 @@ This module defines the expected schemas for data passed between critical pipeli
 stages to ensure data integrity and consistency across handoffs.
 """
 
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Union
-from datetime import datetime
-from enum import Enum
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
 import json
 
 
@@ -92,7 +92,7 @@ class ContextOutput:
     contextual_embeddings: Optional[List[float]] = None
     context_confidence: float = 0.0
     
-    # Must preserve from ingestion
+# # #     # Must preserve from ingestion  # Module not found  # Module not found  # Module not found
     extracted_text: str = ""
     document_structure: Dict[str, Any] = field(default_factory=dict)
 
@@ -122,7 +122,7 @@ class AnalysisOutput:
     linguistic_patterns: Dict[str, Any]
     analysis_confidence: float = 0.0
     
-    # Must preserve from knowledge extraction
+# # #     # Must preserve from knowledge extraction  # Module not found  # Module not found  # Module not found
     knowledge_entities: List[Dict[str, Any]] = field(default_factory=list)
     concept_relations: Dict[str, Any] = field(default_factory=dict)
 

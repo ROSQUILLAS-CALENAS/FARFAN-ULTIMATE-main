@@ -15,20 +15,20 @@ Key Features:
 
 import hashlib
 import inspect
-from datetime import datetime
-from functools import wraps
-from typing import Any, Callable, Dict, List, Optional, Set, Union
-from enum import Enum
-from uuid import uuid4
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from functools import wraps  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Set, Union  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
-from pydantic import BaseModel, Field, validator, root_validator
-from pydantic import __version__ as pydantic_version
+# # # from pydantic import BaseModel, Field, validator, root_validator  # Module not found  # Module not found  # Module not found
+# # # from pydantic import __version__ as pydantic_version  # Module not found  # Module not found  # Module not found
 
 # Check Pydantic version for compatibility
 PYDANTIC_V2 = pydantic_version.startswith("2.")
 
 if PYDANTIC_V2:
-    from pydantic import field_validator, model_validator
+# # #     from pydantic import field_validator, model_validator  # Module not found  # Module not found  # Module not found
 else:
     # For Pydantic v1 compatibility
     field_validator = validator
@@ -94,12 +94,12 @@ class BaseSchema(BaseModel):
             validate_assignment = True
             
     def generate_deterministic_id(self, prefix: str = "") -> str:
-        """Generate deterministic ID from stable field sorting"""
+# # #         """Generate deterministic ID from stable field sorting"""  # Module not found  # Module not found  # Module not found
         # Get all fields and sort them for deterministic ordering
         field_dict = self.dict(exclude={'created_at', 'schema_version'})
         sorted_items = sorted(field_dict.items(), key=lambda x: str(x[0]))
         
-        # Create hash from sorted field representation
+# # #         # Create hash from sorted field representation  # Module not found  # Module not found  # Module not found
         hash_input = f"{prefix}:{sorted_items}"
         return f"{prefix}{hashlib.sha256(hash_input.encode()).hexdigest()[:16]}"
 

@@ -9,22 +9,22 @@ import json
 import logging
 import pickle
 import statistics
-from collections import deque
-from dataclasses import dataclass, field
-from datetime import datetime, timedelta
-from enum import Enum
-from functools import total_ordering
-from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Tuple
-from uuid import uuid4
+# # # from collections import deque  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from functools import total_ordering  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 import hashlib
 
 import numpy as np
-from pydantic import BaseModel, Field
+# # # from pydantic import BaseModel, Field  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
 try:
-    from canonical_flow.analysis.audit_logger import get_audit_logger
+# # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback when audit logger is not available
     get_audit_logger = None
@@ -931,7 +931,7 @@ class AdaptiveAnalyzer:
         )
         
         try:
-            # Extract configuration from inputs
+# # #             # Extract configuration from inputs  # Module not found  # Module not found  # Module not found
             config = {}
             if data:
                 config.update(data)

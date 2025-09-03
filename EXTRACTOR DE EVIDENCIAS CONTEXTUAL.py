@@ -10,27 +10,27 @@ import numpy as np
 import pandas as pd
 import re
 import json
-from typing import Dict, List, Tuple, Any, Optional, Union
-from dataclasses import dataclass, asdict
-from sentence_transformers import SentenceTransformer
+# # # from typing import Dict, List, Tuple, Any, Optional, Union  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
+# # # from sentence_transformers import SentenceTransformer  # Module not found  # Module not found  # Module not found
 import faiss
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 import logging
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
+# # # from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
 try:
-    from canonical_flow.analysis.audit_logger import get_audit_logger
+# # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Fallback when audit logger is not available
     get_audit_logger = None
 import camelot
-from spellchecker import SpellChecker
+# # # from spellchecker import SpellChecker  # Module not found  # Module not found  # Module not found
 import psutil
-from datetime import datetime
-from abc import ABC, abstractmethod
-from contextlib import contextmanager
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
+# # # from contextlib import contextmanager  # Module not found  # Module not found  # Module not found
 import hashlib
 import asyncio
 import threading
@@ -720,7 +720,7 @@ class AdvancedEvidenceExtractor:
                 chunks, metadata = self._create_deterministic_chunks(document_text)
                 
                 if not chunks:
-                    logger.warning("No chunks created from document text")
+# # #                     logger.warning("No chunks created from document text")  # Module not found  # Module not found  # Module not found
                     return []
                 
                 # 3. Index and search
@@ -890,7 +890,7 @@ class AdvancedEvidenceExtractor:
         return ""
     
     def _infer_section(self, text: str) -> str:
-        """Infer section from text content"""
+# # #         """Infer section from text content"""  # Module not found  # Module not found  # Module not found
         text_lower = text.lower()
         
         section_indicators = {
@@ -951,7 +951,7 @@ class AdvancedEvidenceExtractor:
                 chunks, metadata = self._prepare_chunks_optimized(pdf_path, pdf_structure)
                 
                 if not chunks:
-                    logger.warning("No chunks extracted from PDF")
+# # #                     logger.warning("No chunks extracted from PDF")  # Module not found  # Module not found  # Module not found
                     return None
                 
                 # 3. Indexar y buscar
@@ -1225,7 +1225,7 @@ def process(document_text: str, question_context: str,
                 metadata.extend(table_metadata)
         
         except Exception as e:
-            logger.debug(f"Error extracting chunks from page {page_num}: {e}")
+# # #             logger.debug(f"Error extracting chunks from page {page_num}: {e}")  # Module not found  # Module not found  # Module not found
         
         return chunks, metadata
     
@@ -1272,7 +1272,7 @@ def process(document_text: str, question_context: str,
                         })
         
         except Exception as e:
-            logger.debug(f"No tables extracted from page {page_num}: {e}")
+# # #             logger.debug(f"No tables extracted from page {page_num}: {e}")  # Module not found  # Module not found  # Module not found
         
         return chunks, metadata
     

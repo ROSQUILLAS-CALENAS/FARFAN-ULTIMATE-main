@@ -6,7 +6,7 @@ Validation script for MonitoringMetrics integration
 def main():
     try:
         # Import the classes
-        from comprehensive_pipeline_orchestrator import (
+# # #         from comprehensive_pipeline_orchestrator import (  # Module not found  # Module not found  # Module not found
             MonitoringMetrics, 
             EvidenceQualityMetrics, 
             ComprehensivePipelineOrchestrator
@@ -37,7 +37,7 @@ def main():
         print("- Memory usage per document using psutil") 
         print("- Error rates with categorized failure types")
         print("- Evidence extraction quality scores")
-        print("- End-to-end latency from PDF input to final output")
+# # #         print("- End-to-end latency from PDF input to final output")  # Module not found  # Module not found  # Module not found
         print("- Integration into ComprehensivePipelineOrchestrator")
         print("- get_performance_report() method")
         print("- Configurable logging intervals for batch processing")

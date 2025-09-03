@@ -3,12 +3,12 @@
 # 1) Verify each installed package's Requires-Python matches your interpreter
 # 2) Verify inter-package dependency specifiers vs installed versions
 #
-# No external packages required. Uses importlib.metadata from stdlib.
+# # # # No external packages required. Uses importlib.metadata from stdlib.  # Module not found  # Module not found  # Module not found
 
 import sys
 import re
-from typing import Dict, List, Tuple, Optional
-from importlib.metadata import distributions, requires, PackageNotFoundError
+# # # from typing import Dict, List, Tuple, Optional  # Module not found  # Module not found  # Module not found
+# # # from importlib.metadata import distributions, requires, PackageNotFoundError  # Module not found  # Module not found  # Module not found
 
 def parse_version_tuple(s: str) -> Tuple[int, ...]:
     parts = []

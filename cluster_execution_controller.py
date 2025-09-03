@@ -6,13 +6,13 @@ Cluster Execution Controller
 
 Entry: process(data, context) -> merged dict with 'cluster_audit'.
 """
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
-from typing import Any, Dict, List, Tuple
+# # # from typing import Any, Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 
 # Import evidence processor for integration
 try:
-    from evidence_processor import (
+# # #     from evidence_processor import (  # Module not found  # Module not found  # Module not found
         EvidenceProcessor,
         StructuredEvidence, 
         EvidenceChunk,
@@ -46,7 +46,7 @@ def validate_cluster_count(clusters: List[str]) -> None:
         clusters: List of cluster identifiers
         
     Raises:
-        ClusterCountError: If the count differs from exactly 4 clusters
+# # #         ClusterCountError: If the count differs from exactly 4 clusters  # Module not found  # Module not found  # Module not found
     """
     required_set = set(REQUIRED_CLUSTERS)
     clusters_set = set(clusters)
@@ -91,7 +91,7 @@ def _apply_questionnaire_to_cluster(cluster_id: str, data: Dict[str, Any]) -> Di
         "evaluation_results": {}
     }
     
-    # Extract evidence from cluster data
+# # #     # Extract evidence from cluster data  # Module not found  # Module not found  # Module not found
     evidence_data = data.get("evidence", {})
     
     for question_id, question_text in decalogo_questions.items():
@@ -265,7 +265,7 @@ def process_clusters_sequentially(data: Dict[str, Any], context: Dict[str, Any] 
                 # Process with evidence_processor if available
                 if evidence_processor and response_text:
                     try:
-                        # Create evidence chunk from response
+# # #                         # Create evidence chunk from response  # Module not found  # Module not found  # Module not found
                         evidence_chunk = EvidenceChunk(
                             chunk_id=f"chunk_{cluster_id}_{question_id}",
                             text=response_text[:500],  # Truncate for processing
@@ -336,7 +336,7 @@ def process(data: Any, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
     if isinstance(data, dict):
         out.update(data)
 
-    # Determine clusters present from input or context
+# # #     # Determine clusters present from input or context  # Module not found  # Module not found  # Module not found
     clusters_input = []
     if isinstance(data, dict):
         clusters_input = data.get("clusters") or []

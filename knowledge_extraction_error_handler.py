@@ -7,7 +7,7 @@ This module provides:
 - Graceful failure isolation for individual chunks
 - Component-specific error logging
 - Deterministic fallback behavior with stable ordering
-- Recovery from partial failures without corrupting downstream artifacts
+# # # - Recovery from partial failures without corrupting downstream artifacts  # Module not found  # Module not found  # Module not found
 """
 
 import gc
@@ -16,12 +16,12 @@ import os
 import psutil
 import time
 import traceback
-from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
-from dataclasses import dataclass, field
-from functools import wraps
-from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
-from collections import OrderedDict
+# # # from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError  # Module not found  # Module not found  # Module not found
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
+# # # from functools import wraps  # Module not found  # Module not found  # Module not found
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Callable, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+# # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 import threading
 
 
@@ -394,7 +394,7 @@ class KnowledgeExtractionErrorHandler:
                             extra={'chunk_id': chunk_id}
                         )
                         
-                        # Remove from failed chunks
+# # #                         # Remove from failed chunks  # Module not found  # Module not found  # Module not found
                         with self._failed_chunks_lock:
                             self.failed_chunks.pop(chunk_id, None)
                         break

@@ -9,13 +9,13 @@ This demo showcases the key features of the task selector including:
 - Comprehensive tracing and statistics
 """
 
-from dataclasses import dataclass
-from typing import Dict, Set
+# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, Set  # Module not found  # Module not found  # Module not found
 
 import matplotlib.pyplot as plt
 import numpy as np
 
-from egw_query_expansion.core.submodular_task_selector import (
+# # # from egw_query_expansion.core.submodular_task_selector import (  # Module not found  # Module not found  # Module not found
     CoverageUtility,
     MonotonicTaskSelector,
     SubmodularFunction,
@@ -39,7 +39,7 @@ class ProjectUtility(SubmodularFunction):
     ):
         """
         Args:
-            task_categories: Map from task_id to category
+# # #             task_categories: Map from task_id to category  # Module not found  # Module not found  # Module not found
             category_base_values: Base utility values per category
             synergy_matrix: Bonus for category pairs (cat1, cat2) -> bonus
         """

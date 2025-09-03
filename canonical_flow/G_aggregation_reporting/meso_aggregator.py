@@ -4,20 +4,20 @@ Meso Aggregator for Evidence Analysis
 Stage: G_aggregation_reporting
 Code: 53G
 
-Aggregates analysis outputs from canonical_flow/analysis/ into meso-level structures
+# # # Aggregates analysis outputs from canonical_flow/analysis/ into meso-level structures  # Module not found  # Module not found  # Module not found
 with coverage, divergence, and participation metrics.
 """
 
 import json
 import os
 import sys
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple
-from datetime import datetime
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Any, Optional, Tuple  # Module not found  # Module not found  # Module not found
+# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import logging
-from collections import defaultdict, Counter
+# # # from collections import defaultdict, Counter  # Module not found  # Module not found  # Module not found
 
-from json_canonicalizer import JSONCanonicalizer
+# # # from json_canonicalizer import JSONCanonicalizer  # Module not found  # Module not found  # Module not found
 
 try:
     import numpy as np
@@ -227,7 +227,7 @@ def _aggregate_evidence_by_dimensions(analysis_data: List[Dict[str, Any]]) -> Di
         data = analysis_source["data"]
         source_file = analysis_source["source_file"]
         
-        # Extract evidence from different analysis file types
+# # #         # Extract evidence from different analysis file types  # Module not found  # Module not found  # Module not found
         if "results" in data and isinstance(data["results"], list):
             # Evidence validation format
             for result in data["results"]:
@@ -240,7 +240,7 @@ def _aggregate_evidence_by_dimensions(analysis_data: List[Dict[str, Any]]) -> Di
                 dimensions[dimension]["sources"].append(source_file)
         
         elif "components" in data:
-            # Audit format - extract from component outputs
+# # #             # Audit format - extract from component outputs  # Module not found  # Module not found  # Module not found
             for comp_id, comp_data in data["components"].items():
                 dimension = f"component_{comp_id}"
                 for event in comp_data.get("events", []):
@@ -283,8 +283,8 @@ def _aggregate_evidence_by_dimensions(analysis_data: List[Dict[str, Any]]) -> Di
 
 
 def _extract_dimension_from_evidence(result: Dict[str, Any], data: Dict[str, Any]) -> str:
-    """Extract dimension from evidence result."""
-    # Try to infer dimension from evidence content
+# # #     """Extract dimension from evidence result."""  # Module not found  # Module not found  # Module not found
+# # #     # Try to infer dimension from evidence content  # Module not found  # Module not found  # Module not found
     evidence_id = result.get("evidence_id", "")
     
     # Check for common dimension keywords
@@ -395,7 +395,7 @@ def _calculate_participation_metrics(aggregated_evidence: Dict[str, Dict[str, An
 
 
 def _calculate_dnp_score_from_metrics(performance_metrics: Dict[str, Any]) -> float:
-    """Calculate a DNP-style score from performance metrics."""
+# # #     """Calculate a DNP-style score from performance metrics."""  # Module not found  # Module not found  # Module not found
     if not performance_metrics:
         return 0.5  # Neutral score
     

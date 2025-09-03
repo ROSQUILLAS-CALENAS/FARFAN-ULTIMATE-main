@@ -4,8 +4,8 @@ Enhanced implementation for EGW Query Expansion system with stable alignment sup
 Includes WassersteinFisherRaoMetric for quantum information geometry and Ricci flow
 """
 
-from typing import Tuple, Dict, Optional, Union, List, Any
-from .import_safety import safe_import
+# # # from typing import Tuple, Dict, Optional, Union, List, Any  # Module not found  # Module not found  # Module not found
+# # # from .import_safety import safe_import  # Module not found  # Module not found  # Module not found
 
 # Safe imports with fallbacks
 numpy_result = safe_import('numpy', attributes=['array', 'ndarray', 'linalg'])
@@ -25,26 +25,26 @@ F = torch_functional_result.module if torch_functional_result.success else None
 
 scipy_distance_result = safe_import('scipy.spatial.distance', required=False)
 if scipy_distance_result.success:
-    from scipy.spatial.distance import pdist, squareform
+# # #     from scipy.spatial.distance import pdist, squareform  # Module not found  # Module not found  # Module not found
 
 scipy_linalg_result = safe_import('scipy.linalg', required=False)
 if scipy_linalg_result.success:
-    from scipy.linalg import expm, logm
+# # #     from scipy.linalg import expm, logm  # Module not found  # Module not found  # Module not found
 
 scipy_sparse_result = safe_import('scipy.sparse', required=False)
 if scipy_sparse_result.success:
-    from scipy.sparse import csr_matrix
-    from scipy.sparse.linalg import eigsh
+# # #     from scipy.sparse import csr_matrix  # Module not found  # Module not found  # Module not found
+# # #     from scipy.sparse.linalg import eigsh  # Module not found  # Module not found  # Module not found
 
-# Import the main aligner from the root level
+# # # # Import the main aligner from the root level  # Module not found  # Module not found  # Module not found
 import sys
-from pathlib import Path
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # Add parent directory to path to access root-level gw_alignment
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
 try:
-    from gw_alignment import GromovWassersteinAligner
+# # #     from gw_alignment import GromovWassersteinAligner  # Module not found  # Module not found  # Module not found
 except ImportError:
     # Enhanced fallback implementation
     class GromovWassersteinAligner:

@@ -1,6 +1,6 @@
 """
 Macro Alignment Calculator
-- Consumes meso-level cluster aggregations from canonical_flow/aggregation/<doc_stem>_meso.json
+# # # - Consumes meso-level cluster aggregations from canonical_flow/aggregation/<doc_stem>_meso.json  # Module not found  # Module not found  # Module not found
 - Applies predefined Decálogo weights to compute overall compliance score
 - Classifies results into CUMPLE (≥0.75), CUMPLE_PARCIAL (0.5-0.74), or NO_CUMPLE (<0.5) categories
 - Generates canonical_flow/aggregation/<doc_stem>_macro.json artifact with weighted score calculation breakdown
@@ -13,13 +13,13 @@ Output:
 - macro_alignment with weighted compliance score, classification, and supporting metrics
 """
 
-from __future__ import annotations
+# # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 import json
 import logging
 import os
-from enum import Enum
-from typing import Any, Dict, List, Optional
+# # # from enum import Enum  # Module not found  # Module not found  # Module not found
+# # # from typing import Any, Dict, List, Optional  # Module not found  # Module not found  # Module not found
 
 logger = logging.getLogger(__name__)
 
@@ -100,7 +100,7 @@ def calculate_divergence_penalty(divergence_scores: Dict[str, Any]) -> float:
     High divergence indicates inconsistent evaluation across clusters.
     
     Args:
-        divergence_scores: Divergence metrics from meso aggregation
+# # #         divergence_scores: Divergence metrics from meso aggregation  # Module not found  # Module not found  # Module not found
         
     Returns:
         Penalty factor between 0.0 and 1.0 (1.0 = no penalty)
@@ -151,7 +151,7 @@ def calculate_coverage_score(coverage_metrics: Dict[str, Any]) -> float:
     Calculate coverage score based on component coverage across clusters.
     
     Args:
-        coverage_metrics: Coverage matrix and summary from meso aggregation
+# # #         coverage_metrics: Coverage matrix and summary from meso aggregation  # Module not found  # Module not found  # Module not found
         
     Returns:
         Coverage score between 0.0 and 1.0
@@ -190,7 +190,7 @@ def calculate_cluster_participation_score(cluster_participation: Dict[str, Any])
     Calculate score based on cluster participation distribution.
     
     Args:
-        cluster_participation: Cluster participation data from meso aggregation
+# # #         cluster_participation: Cluster participation data from meso aggregation  # Module not found  # Module not found  # Module not found
         
     Returns:
         Participation score between 0.0 and 1.0
@@ -222,7 +222,7 @@ def calculate_cluster_participation_score(cluster_participation: Dict[str, Any])
 
 def load_meso_aggregation(doc_stem: str) -> Optional[Dict[str, Any]]:
     """
-    Load meso-level aggregation data from canonical_flow/aggregation/<doc_stem>_meso.json
+# # #     Load meso-level aggregation data from canonical_flow/aggregation/<doc_stem>_meso.json  # Module not found  # Module not found  # Module not found
     
     Args:
         doc_stem: Document identifier stem
@@ -239,7 +239,7 @@ def load_meso_aggregation(doc_stem: str) -> Optional[Dict[str, Any]]:
         with open(meso_filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
             
-        logger.info(f"Loaded meso aggregation data from {meso_filepath}")
+# # #         logger.info(f"Loaded meso aggregation data from {meso_filepath}")  # Module not found  # Module not found  # Module not found
         return data
         
     except (OSError, IOError, json.JSONDecodeError) as e:
@@ -258,7 +258,7 @@ def calculate_macro_alignment_score(meso_data: Dict[str, Any]) -> Dict[str, Any]
         Dictionary with weighted score calculation breakdown
     """
     try:
-        # Extract key components from meso data
+# # #         # Extract key components from meso data  # Module not found  # Module not found  # Module not found
         coverage_metrics = meso_data.get("coverage_metrics", {})
         divergence_scores = meso_data.get("divergence_scores", {})
         cluster_participation = meso_data.get("cluster_participation", {})
@@ -432,7 +432,7 @@ def process(data: Any, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
     Returns:
         Enhanced data with macro_alignment results
     """
-    # Extract doc_stem from input
+# # #     # Extract doc_stem from input  # Module not found  # Module not found  # Module not found
     doc_stem = None
     if isinstance(data, dict):
         doc_stem = data.get("doc_stem")

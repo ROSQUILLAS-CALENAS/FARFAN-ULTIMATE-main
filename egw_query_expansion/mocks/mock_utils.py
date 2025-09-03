@@ -8,7 +8,7 @@ used across all mock implementations in the EGW fallback system.
 import hashlib
 import struct
 import warnings
-from typing import Any, List, Union, Tuple, Optional
+# # # from typing import Any, List, Union, Tuple, Optional  # Module not found  # Module not found  # Module not found
 
 
 class MockRandomState:
@@ -138,7 +138,7 @@ class DeterministicHasher:
     
     @staticmethod
     def hash_array(data: Any, salt: str = "mock") -> int:
-        """Create deterministic hash from array-like data"""
+# # #         """Create deterministic hash from array-like data"""  # Module not found  # Module not found  # Module not found
         # Convert data to string representation
         if hasattr(data, 'tolist'):
             str_data = str(data.tolist())
@@ -154,7 +154,7 @@ class DeterministicHasher:
     
     @staticmethod
     def hash_shape(shape: Tuple[int, ...], dtype: str = "float32") -> int:
-        """Create hash from array shape and dtype"""
+# # #         """Create hash from array shape and dtype"""  # Module not found  # Module not found  # Module not found
         shape_str = f"{shape}:{dtype}"
         hash_bytes = hashlib.sha256(shape_str.encode()).digest()
         return struct.unpack('>Q', hash_bytes[:8])[0]

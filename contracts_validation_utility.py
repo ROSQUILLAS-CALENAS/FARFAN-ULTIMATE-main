@@ -8,11 +8,11 @@ Flags any that still reference old shadowed module names or incorrect package re
 import ast
 import importlib.util
 import sys
-from pathlib import Path
-from typing import Dict, List, Set, Tuple, Optional, Any
+# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
+# # # from typing import Dict, List, Set, Tuple, Optional, Any  # Module not found  # Module not found  # Module not found
 import json
 import re
-from dataclasses import dataclass, field
+# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
 
 
 @dataclass
@@ -80,14 +80,14 @@ class ContractsValidator:
         """Load known import issues and their fixes."""
         return {
             # Legacy patterns that need fixing
-            r"from\s+canonical_flow\..*\.(\w+)\s+import": r"from \1 import",
+# # #             r"from\s+canonical_flow\..*\.(\w+)\s+import": r"from \1 import",  # Module not found  # Module not found  # Module not found
             r"import\s+canonical_flow\..*\.(\w+)": r"import \1",
             
             # Non-canonical import patterns
             r"from\s+(\w+)\s+import.*(?:DeterministicRouter|RoutingContext)": 
-                r"from egw_query_expansion.core.deterministic_router import",
+# # #                 r"from egw_query_expansion.core.deterministic_router import",  # Module not found  # Module not found  # Module not found
             r"from\s+(\w+)\s+import.*(?:QuestionContext|create_question_context)": 
-                r"from egw_query_expansion.core.immutable_context import",
+# # #                 r"from egw_query_expansion.core.immutable_context import",  # Module not found  # Module not found  # Module not found
         }
     
     def validate_all_contracts(self) -> ValidationResult:
@@ -212,21 +212,21 @@ class ContractsValidator:
         """Check if module name is shadowed/ambiguous."""
         shadowed_modules = [
             "contract_validator",  # Could refer to root or alias
-            "deterministic_router",  # Should be from egw_query_expansion.core
-            "snapshot_manager",  # Should be from root
+# # #             "deterministic_router",  # Should be from egw_query_expansion.core  # Module not found  # Module not found  # Module not found
+# # #             "snapshot_manager",  # Should be from root  # Module not found  # Module not found  # Module not found
         ]
         
         return any(module_name.endswith(name) for name in shadowed_modules)
     
     def _get_canonical_path(self, module_name: str) -> str:
         """Get canonical path for a module."""
-        # Extract the actual module name from complex paths
+# # #         # Extract the actual module name from complex paths  # Module not found  # Module not found  # Module not found
         base_module = module_name.split('.')[-1]
         
         if base_module in self.canonical_modules:
             return self.canonical_modules[base_module]
         
-        # Fallback: try to determine from known patterns
+# # #         # Fallback: try to determine from known patterns  # Module not found  # Module not found  # Module not found
         if "deterministic_router" in module_name:
             return "egw_query_expansion.core.deterministic_router"
         elif "snapshot_manager" in module_name:
@@ -291,11 +291,11 @@ class ContractsValidator:
         return False
     
     def _create_canonical_import_line(self, original_line: str, canonical_path: str) -> str:
-        """Create a canonical import line from original line."""
+# # #         """Create a canonical import line from original line."""  # Module not found  # Module not found  # Module not found
         # Extract the import items
         if " import " in original_line:
             import_items = original_line.split(" import ", 1)[1].strip()
-            return f"from {canonical_path} import {import_items}\n"
+# # #             return f"from {canonical_path} import {import_items}\n"  # Module not found  # Module not found  # Module not found
         else:
             return f"import {canonical_path}\n"
     
