@@ -1,0 +1,53 @@
+#!/bin/bash
+# Git pre-commit hook for pipeline validation.
+# Ensures index consistency before commits.
+
+set -e
+
+echo "🔍 Running pipeline pre-commit validation..."
+
+# Check if Python is available
+if ! command -v python3 &> /dev/null; then
+    echo "❌ Python3 is required for pipeline validation"
+    exit 1
+fi
+
+# Run quick validation (non-strict mode for pre-commit)
+echo "📋 Validating pipeline index..."
+if ! python3 pipeline_validation_system.py --build-mode; then
+    echo ""
+    echo "❌ Pipeline validation failed!"
+    echo ""
+    echo "To fix this, run:"
+    echo "  python3 pipeline_autoscan.py"
+    echo "  python3 pipeline_validation_system.py --strict --report validation_report.md"
+    echo ""
+    echo "Or to bypass this check (not recommended):"
+    echo "  git commit --no-verify"
+    exit 1
+fi
+
+echo "✅ Pipeline validation passed"
+
+# Optional: Run autoscan to detect changes
+echo "🔄 Checking for component changes..."
+if python3 pipeline_autoscan.py --no-update --output /tmp/autoscan.json; then
+    # Check if changes were detected
+    changes=$(python3 -c "import json; print(len(json.load(open('/tmp/autoscan.json'))['changes_detected']))" 2>/dev/null || echo "0")
+    
+    if [ "$changes" -gt 0 ]; then
+        echo "⚠️  Detected $changes component changes"
+        echo "Consider running: python3 pipeline_autoscan.py"
+        echo ""
+        echo "Continue with commit? [y/N]"
+        read -r response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            echo "Commit aborted"
+            exit 1
+        fi
+    fi
+else
+    echo "⚠️  Could not run autoscan check"
+fi
+
+exit 0

@@ -1,0 +1,142 @@
+graph TD
+
+  01I["01I<br/>pdf_reader"]
+  02I["02I<br/>advanced_loader"]
+  03I["03I<br/>feature_extractor"]
+  04I["04I<br/>normative_validator"]
+  05X["05X<br/>immutable_context"]
+  06X["06X<br/>context_adapter"]
+  07X["07X<br/>lineage_tracker"]
+  08K["08K<br/>advanced_knowledge_graph_builder"]
+  09K["09K<br/>causal_graph"]
+  10K["10K<br/>causal_dnp_framework"]
+  11K["11K<br/>embedding_builder"]
+  12K["12K<br/>embedding_generator"]
+  13A["13A<br/>adaptive_analyzer"]
+  14A["14A<br/>question_analyzer"]
+  15A["15A<br/>implementacion_mapeo"]
+  16A["16A<br/>evidence_processor"]
+  17A["17A<br/>extractor_evidencias_contextual"]
+  18A["18A<br/>evidence_validation_model"]
+  19A["19A<br/>evaluation_driven_processor"]
+  20A["20A<br/>dnp_alignment_adapter"]
+  21L["21L<br/>adaptive_scoring_engine"]
+  22L["22L<br/>score_calculator"]
+  23L["23L<br/>conformal_risk_control"]
+  24O["24O<br/>deterministic_router"]
+  25O["25O<br/>evidence_router"]
+  26O["26O<br/>decision_engine"]
+  27O["27O<br/>adaptive_controller"]
+  28R["28R<br/>lexical_index"]
+  29R["29R<br/>vector_index"]
+  30R["30R<br/>hybrid_retriever"]
+  31R["31R<br/>reranker"]
+  32R["32R<br/>hybrid_retrieval"]
+  33R["33R<br/>deterministic_hybrid_retrieval"]
+  34R["34R<br/>hybrid_retrieval_bridge"]
+  35R["35R<br/>lexical_index_alt"]
+  36R["36R<br/>intelligent_recommendation_engine"]
+  37O["37O<br/>confluent_orchestrator"]
+  38O["38O<br/>core_orchestrator"]
+  39O["39O<br/>enhanced_core_orchestrator"]
+  40O["40O<br/>distributed_processor"]
+  41O["41O<br/>airflow_orchestrator"]
+  42O["42O<br/>circuit_breaker"]
+  43O["43O<br/>backpressure_manager"]
+  44O["44O<br/>alert_system"]
+  45O["45O<br/>exception_monitoring"]
+  46O["46O<br/>exception_telemetry"]
+  47O["47O<br/>contract_validator"]
+  48O["48O<br/>constraint_validator"]
+  49O["49O<br/>rubric_validator"]
+  50S["50S<br/>answer_synthesizer"]
+  51S["51S<br/>answer_formatter"]
+  52G["52G<br/>report_compiler"]
+  53G["53G<br/>meso_aggregator"]
+  54T["54T<br/>metrics_collector"]
+  55T["55T<br/>analytics_enhancement"]
+  56T["56T<br/>feedback_loop"]
+  57T["57T<br/>compensation_engine"]
+  58T["58T<br/>optimization_engine"]
+
+  01I --> 02I
+  02I --> 03I
+  03I --> 04I
+  04I --> 05X
+  05X --> 06X
+  06X --> 07X
+  07X --> 08K
+  08K --> 09K
+  09K --> 10K
+  10K --> 11K
+  11K --> 12K
+  12K --> 13A
+  13A --> 14A
+  14A --> 15A
+  15A --> 16A
+  16A --> 17A
+  17A --> 18A
+  18A --> 19A
+  19A --> 20A
+  20A --> 21L
+  21L --> 22L
+  22L --> 23L
+  23L --> 24O
+  24O --> 25O
+  25O --> 26O
+  26O --> 27O
+  27O --> 28R
+  28R --> 29R
+  29R --> 30R
+  30R --> 31R
+  31R --> 32R
+  32R --> 33R
+  33R --> 34R
+  34R --> 35R
+  35R --> 36R
+  36R --> 37O
+  37O --> 38O
+  38O --> 39O
+  39O --> 40O
+  40O --> 41O
+  41O --> 42O
+  42O --> 43O
+  43O --> 44O
+  44O --> 45O
+  45O --> 46O
+  46O --> 47O
+  47O --> 48O
+  48O --> 49O
+  49O --> 50S
+  50S --> 51S
+  51S --> 52G
+  52G --> 53G
+  53G --> 54T
+  54T --> 55T
+  55T --> 56T
+  56T --> 57T
+  57T --> 58T
+
+  %% Styling
+  classDef ingestionpreparation fill:#FF6B6B,stroke:#333,stroke-width:2px
+  classDef contextconstruction fill:#4ECDC4,stroke:#333,stroke-width:2px
+  classDef knowledgeextraction fill:#45B7D1,stroke:#333,stroke-width:2px
+  classDef analysisnlp fill:#96CEB4,stroke:#333,stroke-width:2px
+  classDef classificationevaluation fill:#FFEAA7,stroke:#333,stroke-width:2px
+  classDef orchestrationcontrol fill:#DDA0DD,stroke:#333,stroke-width:2px
+  classDef searchretrieval fill:#98D8C8,stroke:#333,stroke-width:2px
+  classDef synthesisoutput fill:#F7DC6F,stroke:#333,stroke-width:2px
+  classDef aggregationreporting fill:#BB8FCE,stroke:#333,stroke-width:2px
+  classDef integrationstorage fill:#85C1E9,stroke:#333,stroke-width:2px
+  classDef unclassified fill:#BDC3C7,stroke:#333,stroke-width:2px
+
+  class 01I,02I,03I,04I ingestionpreparation
+  class 05X,06X,07X contextconstruction
+  class 08K,09K,10K,11K,12K knowledgeextraction
+  class 13A,14A,15A,16A,17A,18A,19A,20A analysisnlp
+  class 21L,22L,23L classificationevaluation
+  class 24O,25O,26O,27O,37O,38O,39O,40O,41O,42O,43O,44O,45O,46O,47O,48O,49O orchestrationcontrol
+  class 28R,29R,30R,31R,32R,33R,34R,35R,36R searchretrieval
+  class 50S,51S synthesisoutput
+  class 52G,53G aggregationreporting
+  class 54T,55T,56T,57T,58T integrationstorage

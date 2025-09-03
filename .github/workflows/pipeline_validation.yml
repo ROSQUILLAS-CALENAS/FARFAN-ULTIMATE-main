@@ -1,0 +1,178 @@
+name: Pipeline Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  pipeline-validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for change detection
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y graphviz
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if [ -f requirements-core.txt ]; then pip install -r requirements-core.txt; fi
+    
+    - name: Make scripts executable
+      run: |
+        chmod +x pipeline_autoscan.py
+        chmod +x pipeline_dag_visualizer.py
+        chmod +x pipeline_validation_system.py
+    
+    - name: Run pipeline autoscan
+      id: autoscan
+      run: |
+        echo "Running pipeline autoscan..."
+        python pipeline_autoscan.py --output autoscan_results.json
+        echo "autoscan_exit_code=$?" >> $GITHUB_OUTPUT
+    
+    - name: Validate DAG structure
+      run: |
+        echo "Validating DAG structure..."
+        python pipeline_dag_visualizer.py --validate
+    
+    - name: Run pipeline validation (strict mode)
+      run: |
+        echo "Running pipeline validation..."
+        python pipeline_validation_system.py \
+          --strict \
+          --build-mode \
+          --report validation_report.md \
+          --json-output validation_results.json
+    
+    - name: Generate DAG visualizations
+      if: success() || failure()  # Always generate if validation runs
+      run: |
+        echo "Generating DAG visualizations..."
+        python pipeline_dag_visualizer.py --format all --output pipeline_dag_ci
+    
+    - name: Upload validation artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pipeline-validation-results
+        path: |
+          validation_report.md
+          validation_results.json
+          autoscan_results.json
+          pipeline_dag_ci.*
+    
+    - name: Comment validation results on PR
+      if: github.event_name == 'pull_request' && (success() || failure())
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let comment = '## Pipeline Validation Results\n\n';
+          
+          // Read validation report if it exists
+          try {
+            const report = fs.readFileSync('validation_report.md', 'utf8');
+            comment += report;
+          } catch (error) {
+            comment += 'Validation report not available.\n';
+          }
+          
+          // Add autoscan results if available
+          try {
+            const autoscanResults = JSON.parse(fs.readFileSync('autoscan_results.json', 'utf8'));
+            comment += '\n### Autoscan Summary\n';
+            comment += `- Components found: ${autoscanResults.components_found}\n`;
+            comment += `- Changes detected: ${autoscanResults.changes_detected?.length || 0}\n`;
+            
+            if (autoscanResults.changes_detected && autoscanResults.changes_detected.length > 0) {
+              comment += '\n#### Changes:\n';
+              for (const change of autoscanResults.changes_detected.slice(0, 10)) { // Limit to first 10
+                comment += `- ${change.change_type}: ${change.component_name}\n`;
+              }
+            }
+          } catch (error) {
+            console.log('Could not read autoscan results:', error);
+          }
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+    
+    - name: Check validation status
+      run: |
+        # This step will fail the job if validation failed
+        if [ -f validation_results.json ]; then
+          is_valid=$(python -c "import json; print(json.load(open('validation_results.json'))['is_valid'])")
+          if [ "$is_valid" = "False" ]; then
+            echo "Pipeline validation failed!"
+            exit 1
+          fi
+        fi
+
+  # Job to update index on main branch after validation passes
+  update-index:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: pipeline-validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Run autoscan with index update
+      run: |
+        python pipeline_autoscan.py --output autoscan_update.json
+        echo "Autoscan completed with index update"
+    
+    - name: Check for index changes
+      id: check_changes
+      run: |
+        if git diff --quiet pipeline_index.json; then
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit updated index
+      if: steps.check_changes.outputs.has_changes == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Pipeline Autoscan"
+        git add pipeline_index.json
+        git commit -m "🤖 Auto-update pipeline index [skip ci]"
+        git push
+    
+    - name: Generate and commit visualizations
+      run: |
+        python pipeline_dag_visualizer.py --format all --output pipeline_dag
+        
+        # Check if any visualization files changed
+        if ! git diff --quiet --exit-code *.png *.svg *.dot *.mmd 2>/dev/null; then
+          git add *.png *.svg *.dot *.mmd 2>/dev/null || true
+          git commit -m "🎨 Update pipeline visualizations [skip ci]" || true
+          git push || true
+        fi

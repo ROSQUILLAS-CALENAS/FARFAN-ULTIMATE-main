@@ -1,0 +1,202 @@
+digraph PipelineDAG {
+  rankdir=TB;
+  node [shape=box, style=filled];
+  edge [color=gray50];
+
+  subgraph cluster_ingestion_preparation {
+    label="Ingestion Preparation";
+    style=filled;
+    fillcolor="#FF6B6B30";
+    color="#FF6B6B";
+
+    "pdf_reader" [label="01I\npdf_reader", fillcolor="#FF6B6B", tooltip="PDF document reader and text extractor"];
+    "advanced_loader" [label="02I\nadvanced_loader", fillcolor="#FF6B6B", tooltip="Advanced data loading and preprocessing"];
+    "feature_extractor" [label="03I\nfeature_extractor", fillcolor="#FF6B6B", tooltip="Extract features from loaded documents"];
+    "normative_validator" [label="04I\nnormative_validator", fillcolor="#FF6B6B", tooltip="Validate documents against normative criteria"];
+  }
+
+  subgraph cluster_context_construction {
+    label="Context Construction";
+    style=filled;
+    fillcolor="#4ECDC430";
+    color="#4ECDC4";
+
+    "immutable_context" [label="05X\nimmutable_context", fillcolor="#4ECDC4", tooltip="Create immutable context for processing"];
+    "context_adapter" [label="06X\ncontext_adapter", fillcolor="#4ECDC4", tooltip="Adapt context between pipeline stages"];
+    "lineage_tracker" [label="07X\nlineage_tracker", fillcolor="#4ECDC4", tooltip="Track data lineage through pipeline"];
+  }
+
+  subgraph cluster_knowledge_extraction {
+    label="Knowledge Extraction";
+    style=filled;
+    fillcolor="#45B7D130";
+    color="#45B7D1";
+
+    "advanced_knowledge_graph_builder" [label="08K\nadvanced_knowledge_graph_builder", fillcolor="#45B7D1", tooltip="Build knowledge graphs for semantic inference"];
+    "causal_graph" [label="09K\ncausal_graph", fillcolor="#45B7D1", tooltip="Construct causal relationship graphs"];
+    "causal_dnp_framework" [label="10K\ncausal_dnp_framework", fillcolor="#45B7D1", tooltip="DNP causal framework implementation"];
+    "embedding_builder" [label="11K\nembedding_builder", fillcolor="#45B7D1", tooltip="Build semantic embeddings"];
+    "embedding_generator" [label="12K\nembedding_generator", fillcolor="#45B7D1", tooltip="Generate embeddings for downstream tasks"];
+  }
+
+  subgraph cluster_analysis_nlp {
+    label="Analysis Nlp";
+    style=filled;
+    fillcolor="#96CEB430";
+    color="#96CEB4";
+
+    "adaptive_analyzer" [label="13A\nadaptive_analyzer", fillcolor="#96CEB4", tooltip="Adaptive analysis engine"];
+    "question_analyzer" [label="14A\nquestion_analyzer", fillcolor="#96CEB4", tooltip="Analyze and categorize questions"];
+    "implementacion_mapeo" [label="15A\nimplementacion_mapeo", fillcolor="#96CEB4", tooltip="Implementation mapping functionality"];
+    "evidence_processor" [label="16A\nevidence_processor", fillcolor="#96CEB4", tooltip="Process evidence data"];
+    "extractor_evidencias_contextual" [label="17A\nextractor_evidencias_contextual", fillcolor="#96CEB4", tooltip="Extract contextual evidence"];
+    "evidence_validation_model" [label="18A\nevidence_validation_model", fillcolor="#96CEB4", tooltip="Validate evidence using ML models"];
+    "evaluation_driven_processor" [label="19A\nevaluation_driven_processor", fillcolor="#96CEB4", tooltip="Evaluation-driven processing engine"];
+    "dnp_alignment_adapter" [label="20A\ndnp_alignment_adapter", fillcolor="#96CEB4", tooltip="Adapt DNP alignment for analysis"];
+  }
+
+  subgraph cluster_classification_evaluation {
+    label="Classification Evaluation";
+    style=filled;
+    fillcolor="#FFEAA730";
+    color="#FFEAA7";
+
+    "adaptive_scoring_engine" [label="21L\nadaptive_scoring_engine", fillcolor="#FFEAA7", tooltip="Adaptive scoring and classification"];
+    "score_calculator" [label="22L\nscore_calculator", fillcolor="#FFEAA7", tooltip="Calculate classification scores"];
+    "conformal_risk_control" [label="23L\nconformal_risk_control", fillcolor="#FFEAA7", tooltip="Conformal risk control mechanisms"];
+  }
+
+  subgraph cluster_orchestration_control {
+    label="Orchestration Control";
+    style=filled;
+    fillcolor="#DDA0DD30";
+    color="#DDA0DD";
+
+    "deterministic_router" [label="24O\ndeterministic_router", fillcolor="#DDA0DD", tooltip="Deterministic request routing"];
+    "evidence_router" [label="25O\nevidence_router", fillcolor="#DDA0DD", tooltip="Route evidence through pipeline"];
+    "decision_engine" [label="26O\ndecision_engine", fillcolor="#DDA0DD", tooltip="Core decision making engine"];
+    "adaptive_controller" [label="27O\nadaptive_controller", fillcolor="#DDA0DD", tooltip="Adaptive process control"];
+    "confluent_orchestrator" [label="37O\nconfluent_orchestrator", fillcolor="#DDA0DD", tooltip="Confluent-based orchestration"];
+    "core_orchestrator" [label="38O\ncore_orchestrator", fillcolor="#DDA0DD", tooltip="Core orchestration engine"];
+    "enhanced_core_orchestrator" [label="39O\nenhanced_core_orchestrator", fillcolor="#DDA0DD", tooltip="Enhanced orchestration with additional features"];
+    "distributed_processor" [label="40O\ndistributed_processor", fillcolor="#DDA0DD", tooltip="Distributed processing coordination"];
+    "airflow_orchestrator" [label="41O\nairflow_orchestrator", fillcolor="#DDA0DD", tooltip="Apache Airflow integration"];
+    "circuit_breaker" [label="42O\ncircuit_breaker", fillcolor="#DDA0DD", tooltip="Circuit breaker pattern implementation"];
+    "backpressure_manager" [label="43O\nbackpressure_manager", fillcolor="#DDA0DD", tooltip="Backpressure management system"];
+    "alert_system" [label="44O\nalert_system", fillcolor="#DDA0DD", tooltip="Alerting and notification system"];
+    "exception_monitoring" [label="45O\nexception_monitoring", fillcolor="#DDA0DD", tooltip="Exception monitoring and handling"];
+    "exception_telemetry" [label="46O\nexception_telemetry", fillcolor="#DDA0DD", tooltip="Exception telemetry collection"];
+    "contract_validator" [label="47O\ncontract_validator", fillcolor="#DDA0DD", tooltip="Contract validation system"];
+    "constraint_validator" [label="48O\nconstraint_validator", fillcolor="#DDA0DD", tooltip="Constraint validation engine"];
+    "rubric_validator" [label="49O\nrubric_validator", fillcolor="#DDA0DD", tooltip="Rubric-based validation"];
+  }
+
+  subgraph cluster_search_retrieval {
+    label="Search Retrieval";
+    style=filled;
+    fillcolor="#98D8C830";
+    color="#98D8C8";
+
+    "lexical_index" [label="28R\nlexical_index", fillcolor="#98D8C8", tooltip="Lexical indexing for retrieval"];
+    "vector_index" [label="29R\nvector_index", fillcolor="#98D8C8", tooltip="Vector-based indexing system"];
+    "hybrid_retriever" [label="30R\nhybrid_retriever", fillcolor="#98D8C8", tooltip="Hybrid retrieval combining methods"];
+    "reranker" [label="31R\nreranker", fillcolor="#98D8C8", tooltip="Semantic reranking of results"];
+    "hybrid_retrieval" [label="32R\nhybrid_retrieval", fillcolor="#98D8C8", tooltip="Main hybrid retrieval system"];
+    "deterministic_hybrid_retrieval" [label="33R\ndeterministic_hybrid_retrieval", fillcolor="#98D8C8", tooltip="Deterministic hybrid retrieval"];
+    "hybrid_retrieval_bridge" [label="34R\nhybrid_retrieval_bridge", fillcolor="#98D8C8", tooltip="Bridge between retrieval systems"];
+    "lexical_index_alt" [label="35R\nlexical_index_alt", fillcolor="#98D8C8", tooltip="Alternative lexical indexing"];
+    "intelligent_recommendation_engine" [label="36R\nintelligent_recommendation_engine", fillcolor="#98D8C8", tooltip="Intelligent recommendation system"];
+  }
+
+  subgraph cluster_synthesis_output {
+    label="Synthesis Output";
+    style=filled;
+    fillcolor="#F7DC6F30";
+    color="#F7DC6F";
+
+    "answer_synthesizer" [label="50S\nanswer_synthesizer", fillcolor="#F7DC6F", tooltip="Synthesize answers from analysis"];
+    "answer_formatter" [label="51S\nanswer_formatter", fillcolor="#F7DC6F", tooltip="Format synthesized answers"];
+  }
+
+  subgraph cluster_aggregation_reporting {
+    label="Aggregation Reporting";
+    style=filled;
+    fillcolor="#BB8FCE30";
+    color="#BB8FCE";
+
+    "report_compiler" [label="52G\nreport_compiler", fillcolor="#BB8FCE", tooltip="Compile comprehensive reports"];
+    "meso_aggregator" [label="53G\nmeso_aggregator", fillcolor="#BB8FCE", tooltip="Meso-level data aggregation"];
+  }
+
+  subgraph cluster_integration_storage {
+    label="Integration Storage";
+    style=filled;
+    fillcolor="#85C1E930";
+    color="#85C1E9";
+
+    "metrics_collector" [label="54T\nmetrics_collector", fillcolor="#85C1E9", tooltip="Collect system metrics"];
+    "analytics_enhancement" [label="55T\nanalytics_enhancement", fillcolor="#85C1E9", tooltip="Enhance analytics capabilities"];
+    "feedback_loop" [label="56T\nfeedback_loop", fillcolor="#85C1E9", tooltip="Implement feedback mechanisms"];
+    "compensation_engine" [label="57T\ncompensation_engine", fillcolor="#85C1E9", tooltip="Compensation and error recovery"];
+    "optimization_engine" [label="58T\noptimization_engine", fillcolor="#85C1E9", tooltip="System optimization engine"];
+  }
+
+  // Dependencies
+  "pdf_reader" -> "advanced_loader";
+  "advanced_loader" -> "feature_extractor";
+  "feature_extractor" -> "normative_validator";
+  "normative_validator" -> "immutable_context";
+  "immutable_context" -> "context_adapter";
+  "context_adapter" -> "lineage_tracker";
+  "lineage_tracker" -> "advanced_knowledge_graph_builder";
+  "advanced_knowledge_graph_builder" -> "causal_graph";
+  "causal_graph" -> "causal_dnp_framework";
+  "causal_dnp_framework" -> "embedding_builder";
+  "embedding_builder" -> "embedding_generator";
+  "embedding_generator" -> "adaptive_analyzer";
+  "adaptive_analyzer" -> "question_analyzer";
+  "question_analyzer" -> "implementacion_mapeo";
+  "implementacion_mapeo" -> "evidence_processor";
+  "evidence_processor" -> "extractor_evidencias_contextual";
+  "extractor_evidencias_contextual" -> "evidence_validation_model";
+  "evidence_validation_model" -> "evaluation_driven_processor";
+  "evaluation_driven_processor" -> "dnp_alignment_adapter";
+  "dnp_alignment_adapter" -> "adaptive_scoring_engine";
+  "adaptive_scoring_engine" -> "score_calculator";
+  "score_calculator" -> "conformal_risk_control";
+  "conformal_risk_control" -> "deterministic_router";
+  "deterministic_router" -> "evidence_router";
+  "evidence_router" -> "decision_engine";
+  "decision_engine" -> "adaptive_controller";
+  "adaptive_controller" -> "lexical_index";
+  "lexical_index" -> "vector_index";
+  "vector_index" -> "hybrid_retriever";
+  "hybrid_retriever" -> "reranker";
+  "reranker" -> "hybrid_retrieval";
+  "hybrid_retrieval" -> "deterministic_hybrid_retrieval";
+  "deterministic_hybrid_retrieval" -> "hybrid_retrieval_bridge";
+  "hybrid_retrieval_bridge" -> "lexical_index_alt";
+  "lexical_index_alt" -> "intelligent_recommendation_engine";
+  "intelligent_recommendation_engine" -> "confluent_orchestrator";
+  "confluent_orchestrator" -> "core_orchestrator";
+  "core_orchestrator" -> "enhanced_core_orchestrator";
+  "enhanced_core_orchestrator" -> "distributed_processor";
+  "distributed_processor" -> "airflow_orchestrator";
+  "airflow_orchestrator" -> "circuit_breaker";
+  "circuit_breaker" -> "backpressure_manager";
+  "backpressure_manager" -> "alert_system";
+  "alert_system" -> "exception_monitoring";
+  "exception_monitoring" -> "exception_telemetry";
+  "exception_telemetry" -> "contract_validator";
+  "contract_validator" -> "constraint_validator";
+  "constraint_validator" -> "rubric_validator";
+  "rubric_validator" -> "answer_synthesizer";
+  "answer_synthesizer" -> "answer_formatter";
+  "answer_formatter" -> "report_compiler";
+  "report_compiler" -> "meso_aggregator";
+  "meso_aggregator" -> "metrics_collector";
+  "metrics_collector" -> "analytics_enhancement";
+  "analytics_enhancement" -> "feedback_loop";
+  "feedback_loop" -> "compensation_engine";
+  "compensation_engine" -> "optimization_engine";
+}

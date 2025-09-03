@@ -1,0 +1,593 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2025-01-03T00:00:00.000Z",
+  "metadata": {
+    "description": "Canonical pipeline component specification index",
+    "total_components": 58,
+    "phases": ["ingestion_preparation", "context_construction", "knowledge_extraction", "analysis_nlp", "classification_evaluation", "orchestration_control", "search_retrieval", "synthesis_output", "aggregation_reporting", "integration_storage"],
+    "maintainer": "automated_index_system"
+  },
+  "components": [
+    {
+      "name": "pdf_reader",
+      "code": "01I",
+      "phase": "ingestion_preparation",
+      "dependencies": [],
+      "canonical_path": "canonical_flow/I_ingestion_preparation/pdf_reader.py",
+      "original_path": "pdf_reader.py",
+      "description": "PDF document reader and text extractor",
+      "enabled": true,
+      "entry_point": true
+    },
+    {
+      "name": "advanced_loader",
+      "code": "02I",
+      "phase": "ingestion_preparation", 
+      "dependencies": ["01I"],
+      "canonical_path": "canonical_flow/I_ingestion_preparation/advanced_loader.py",
+      "original_path": "advanced_loader.py",
+      "description": "Advanced data loading and preprocessing",
+      "enabled": true
+    },
+    {
+      "name": "feature_extractor", 
+      "code": "03I",
+      "phase": "ingestion_preparation",
+      "dependencies": ["02I"],
+      "canonical_path": "canonical_flow/I_ingestion_preparation/feature_extractor.py",
+      "original_path": "feature_extractor.py", 
+      "description": "Extract features from loaded documents",
+      "enabled": true
+    },
+    {
+      "name": "normative_validator",
+      "code": "04I", 
+      "phase": "ingestion_preparation",
+      "dependencies": ["03I"],
+      "canonical_path": "canonical_flow/I_ingestion_preparation/normative_validator.py",
+      "original_path": "normative_validator.py",
+      "description": "Validate documents against normative criteria",
+      "enabled": true
+    },
+    {
+      "name": "immutable_context",
+      "code": "05X",
+      "phase": "context_construction", 
+      "dependencies": ["04I"],
+      "canonical_path": "canonical_flow/X_context_construction/immutable_context.py",
+      "original_path": "immutable_context.py",
+      "description": "Create immutable context for processing",
+      "enabled": true
+    },
+    {
+      "name": "context_adapter",
+      "code": "06X",
+      "phase": "context_construction",
+      "dependencies": ["05X"], 
+      "canonical_path": "canonical_flow/X_context_construction/context_adapter.py",
+      "original_path": "context_adapter.py",
+      "description": "Adapt context between pipeline stages",
+      "enabled": true
+    },
+    {
+      "name": "lineage_tracker",
+      "code": "07X",
+      "phase": "context_construction",
+      "dependencies": ["06X"],
+      "canonical_path": "canonical_flow/X_context_construction/lineage_tracker.py", 
+      "original_path": "lineage_tracker.py",
+      "description": "Track data lineage through pipeline",
+      "enabled": true
+    },
+    {
+      "name": "advanced_knowledge_graph_builder",
+      "code": "08K",
+      "phase": "knowledge_extraction",
+      "dependencies": ["07X"],
+      "canonical_path": "canonical_flow/K_knowledge_extraction/advanced_knowledge_graph_builder.py",
+      "original_path": "Advanced Knowledge Graph Builder Component for Semantic Inference Engine.py", 
+      "description": "Build knowledge graphs for semantic inference",
+      "enabled": true
+    },
+    {
+      "name": "causal_graph",
+      "code": "09K",
+      "phase": "knowledge_extraction",
+      "dependencies": ["08K"],
+      "canonical_path": "canonical_flow/K_knowledge_extraction/causal_graph.py",
+      "original_path": "causal_graph.py",
+      "description": "Construct causal relationship graphs",
+      "enabled": true
+    },
+    {
+      "name": "causal_dnp_framework", 
+      "code": "10K",
+      "phase": "knowledge_extraction",
+      "dependencies": ["09K"],
+      "canonical_path": "canonical_flow/K_knowledge_extraction/causal_dnp_framework.py",
+      "original_path": "causal_dnp_framework.py",
+      "description": "DNP causal framework implementation",
+      "enabled": true
+    },
+    {
+      "name": "embedding_builder",
+      "code": "11K", 
+      "phase": "knowledge_extraction",
+      "dependencies": ["10K"],
+      "canonical_path": "canonical_flow/K_knowledge_extraction/embedding_builder.py",
+      "original_path": "embedding_builder.py",
+      "description": "Build semantic embeddings",
+      "enabled": true
+    },
+    {
+      "name": "embedding_generator",
+      "code": "12K",
+      "phase": "knowledge_extraction", 
+      "dependencies": ["11K"],
+      "canonical_path": "canonical_flow/K_knowledge_extraction/embedding_generator.py",
+      "original_path": "embedding_generator.py",
+      "description": "Generate embeddings for downstream tasks",
+      "enabled": true
+    },
+    {
+      "name": "adaptive_analyzer",
+      "code": "13A",
+      "phase": "analysis_nlp",
+      "dependencies": ["12K"],
+      "canonical_path": "canonical_flow/A_analysis_nlp/adaptive_analyzer.py",
+      "original_path": "adaptive_analyzer.py",
+      "description": "Adaptive analysis engine",
+      "enabled": true
+    },
+    {
+      "name": "question_analyzer",
+      "code": "14A",
+      "phase": "analysis_nlp",
+      "dependencies": ["13A"],
+      "canonical_path": "canonical_flow/A_analysis_nlp/question_analyzer.py",
+      "original_path": "question_analyzer.py",
+      "description": "Analyze and categorize questions", 
+      "enabled": true
+    },
+    {
+      "name": "implementacion_mapeo",
+      "code": "15A",
+      "phase": "analysis_nlp",
+      "dependencies": ["14A"],
+      "canonical_path": "canonical_flow/A_analysis_nlp/implementacion_mapeo.py",
+      "original_path": "implementacion_mapeo.py",
+      "description": "Implementation mapping functionality",
+      "enabled": true
+    },
+    {
+      "name": "evidence_processor",
+      "code": "16A", 
+      "phase": "analysis_nlp",
+      "dependencies": ["15A"],
+      "canonical_path": "canonical_flow/A_analysis_nlp/evidence_processor.py",
+      "original_path": "evidence_processor.py",
+      "description": "Process evidence data",
+      "enabled": true
+    },
+    {
+      "name": "extractor_evidencias_contextual",
+      "code": "17A",
+      "phase": "analysis_nlp",
+      "dependencies": ["16A"],
+      "canonical_path": "canonical_flow/A_analysis_nlp/EXTRACTOR_DE_EVIDENCIAS_CONTEXTUAL.py",
+      "original_path": "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py",
+      "description": "Extract contextual evidence",
+      "enabled": true
+    },
+    {
+      "name": "evidence_validation_model",
+      "code": "18A",
+      "phase": "analysis_nlp", 
+      "dependencies": ["17A"],
+      "canonical_path": "canonical_flow/A_analysis_nlp/evidence_validation_model.py",
+      "original_path": "evidence_validation_model.py",
+      "description": "Validate evidence using ML models",
+      "enabled": true
+    },
+    {
+      "name": "evaluation_driven_processor",
+      "code": "19A",
+      "phase": "analysis_nlp",
+      "dependencies": ["18A"],
+      "canonical_path": "canonical_flow/A_analysis_nlp/evaluation_driven_processor.py",
+      "original_path": "evaluation_driven_processor.py", 
+      "description": "Evaluation-driven processing engine",
+      "enabled": true
+    },
+    {
+      "name": "dnp_alignment_adapter",
+      "code": "20A",
+      "phase": "analysis_nlp",
+      "dependencies": ["19A"],
+      "canonical_path": "canonical_flow/A_analysis_nlp/dnp_alignment_adapter.py",
+      "original_path": "dnp_alignment_adapter.py",
+      "description": "Adapt DNP alignment for analysis",
+      "enabled": true
+    },
+    {
+      "name": "adaptive_scoring_engine",
+      "code": "21L",
+      "phase": "classification_evaluation",
+      "dependencies": ["20A"],
+      "canonical_path": "canonical_flow/L_classification_evaluation/adaptive_scoring_engine.py",
+      "original_path": "adaptive_scoring_engine.py",
+      "description": "Adaptive scoring and classification",
+      "enabled": true
+    },
+    {
+      "name": "score_calculator", 
+      "code": "22L",
+      "phase": "classification_evaluation",
+      "dependencies": ["21L"],
+      "canonical_path": "canonical_flow/L_classification_evaluation/score_calculator.py",
+      "original_path": "score_calculator.py",
+      "description": "Calculate classification scores",
+      "enabled": true
+    },
+    {
+      "name": "conformal_risk_control",
+      "code": "23L",
+      "phase": "classification_evaluation",
+      "dependencies": ["22L"],
+      "canonical_path": "canonical_flow/L_classification_evaluation/conformal_risk_control.py", 
+      "original_path": "conformal_risk_control.py",
+      "description": "Conformal risk control mechanisms",
+      "enabled": true
+    },
+    {
+      "name": "deterministic_router",
+      "code": "24O",
+      "phase": "orchestration_control",
+      "dependencies": ["23L"],
+      "canonical_path": "canonical_flow/O_orchestration_control/deterministic_router.py",
+      "original_path": "deterministic_router.py",
+      "description": "Deterministic request routing",
+      "enabled": true
+    },
+    {
+      "name": "evidence_router",
+      "code": "25O",
+      "phase": "orchestration_control",
+      "dependencies": ["24O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/evidence_router.py",
+      "original_path": "evidence_router.py", 
+      "description": "Route evidence through pipeline",
+      "enabled": true
+    },
+    {
+      "name": "decision_engine",
+      "code": "26O",
+      "phase": "orchestration_control",
+      "dependencies": ["25O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/decision_engine.py",
+      "original_path": "decision_engine.py",
+      "description": "Core decision making engine",
+      "enabled": true
+    },
+    {
+      "name": "adaptive_controller",
+      "code": "27O",
+      "phase": "orchestration_control",
+      "dependencies": ["26O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/adaptive_controller.py",
+      "original_path": "adaptive_controller.py",
+      "description": "Adaptive process control",
+      "enabled": true
+    },
+    {
+      "name": "lexical_index",
+      "code": "28R",
+      "phase": "search_retrieval",
+      "dependencies": ["27O"],
+      "canonical_path": "canonical_flow/R_search_retrieval/lexical_index.py",
+      "original_path": "retrieval_engine/lexical_index.py",
+      "description": "Lexical indexing for retrieval",
+      "enabled": true
+    },
+    {
+      "name": "vector_index",
+      "code": "29R", 
+      "phase": "search_retrieval",
+      "dependencies": ["28R"],
+      "canonical_path": "canonical_flow/R_search_retrieval/vector_index.py",
+      "original_path": "retrieval_engine/vector_index.py",
+      "description": "Vector-based indexing system",
+      "enabled": true
+    },
+    {
+      "name": "hybrid_retriever",
+      "code": "30R",
+      "phase": "search_retrieval",
+      "dependencies": ["29R"],
+      "canonical_path": "canonical_flow/R_search_retrieval/hybrid_retriever.py",
+      "original_path": "retrieval_engine/hybrid_retriever.py",
+      "description": "Hybrid retrieval combining methods",
+      "enabled": true
+    },
+    {
+      "name": "reranker",
+      "code": "31R",
+      "phase": "search_retrieval",
+      "dependencies": ["30R"],
+      "canonical_path": "canonical_flow/R_search_retrieval/reranker.py",
+      "original_path": "semantic_reranking/reranker.py",
+      "description": "Semantic reranking of results",
+      "enabled": true
+    },
+    {
+      "name": "hybrid_retrieval",
+      "code": "32R",
+      "phase": "search_retrieval",
+      "dependencies": ["31R"],
+      "canonical_path": "canonical_flow/R_search_retrieval/hybrid_retrieval.py",
+      "original_path": "hybrid_retrieval.py",
+      "description": "Main hybrid retrieval system",
+      "enabled": true
+    },
+    {
+      "name": "deterministic_hybrid_retrieval",
+      "code": "33R",
+      "phase": "search_retrieval",
+      "dependencies": ["32R"],
+      "canonical_path": "canonical_flow/R_search_retrieval/deterministic_hybrid_retrieval.py",
+      "original_path": "deterministic_hybrid_retrieval.py",
+      "description": "Deterministic hybrid retrieval",
+      "enabled": true
+    },
+    {
+      "name": "hybrid_retrieval_bridge",
+      "code": "34R",
+      "phase": "search_retrieval",
+      "dependencies": ["33R"],
+      "canonical_path": "canonical_flow/R_search_retrieval/hybrid_retrieval_bridge.py",
+      "original_path": "hybrid_retrieval_bridge.py",
+      "description": "Bridge between retrieval systems",
+      "enabled": true
+    },
+    {
+      "name": "lexical_index_alt",
+      "code": "35R",
+      "phase": "search_retrieval", 
+      "dependencies": ["34R"],
+      "canonical_path": "canonical_flow/R_search_retrieval/lexical_index.py",
+      "original_path": "lexical_index.py",
+      "description": "Alternative lexical indexing",
+      "enabled": true
+    },
+    {
+      "name": "intelligent_recommendation_engine",
+      "code": "36R",
+      "phase": "search_retrieval",
+      "dependencies": ["35R"],
+      "canonical_path": "canonical_flow/R_search_retrieval/intelligent_recommendation_engine.py",
+      "original_path": "intelligent_recommendation_engine.py",
+      "description": "Intelligent recommendation system",
+      "enabled": true
+    },
+    {
+      "name": "confluent_orchestrator",
+      "code": "37O",
+      "phase": "orchestration_control",
+      "dependencies": ["36R"],
+      "canonical_path": "canonical_flow/O_orchestration_control/confluent_orchestrator.py",
+      "original_path": "confluent_orchestrator.py",
+      "description": "Confluent-based orchestration",
+      "enabled": true
+    },
+    {
+      "name": "core_orchestrator",
+      "code": "38O",
+      "phase": "orchestration_control",
+      "dependencies": ["37O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/core_orchestrator.py",
+      "original_path": "core_orchestrator.py",
+      "description": "Core orchestration engine",
+      "enabled": true
+    },
+    {
+      "name": "enhanced_core_orchestrator",
+      "code": "39O",
+      "phase": "orchestration_control",
+      "dependencies": ["38O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/enhanced_core_orchestrator.py",
+      "original_path": "enhanced_core_orchestrator.py",
+      "description": "Enhanced orchestration with additional features",
+      "enabled": true
+    },
+    {
+      "name": "distributed_processor",
+      "code": "40O",
+      "phase": "orchestration_control",
+      "dependencies": ["39O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/distributed_processor.py",
+      "original_path": "distributed_processor.py",
+      "description": "Distributed processing coordination",
+      "enabled": true
+    },
+    {
+      "name": "airflow_orchestrator",
+      "code": "41O",
+      "phase": "orchestration_control",
+      "dependencies": ["40O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/airflow_orchestrator.py",
+      "original_path": "airflow_orchestrator.py",
+      "description": "Apache Airflow integration",
+      "enabled": true
+    },
+    {
+      "name": "circuit_breaker",
+      "code": "42O",
+      "phase": "orchestration_control",
+      "dependencies": ["41O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/circuit_breaker.py",
+      "original_path": "circuit_breaker.py",
+      "description": "Circuit breaker pattern implementation",
+      "enabled": true
+    },
+    {
+      "name": "backpressure_manager",
+      "code": "43O",
+      "phase": "orchestration_control", 
+      "dependencies": ["42O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/backpressure_manager.py",
+      "original_path": "backpressure_manager.py",
+      "description": "Backpressure management system",
+      "enabled": true
+    },
+    {
+      "name": "alert_system",
+      "code": "44O",
+      "phase": "orchestration_control",
+      "dependencies": ["43O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/alert_system.py",
+      "original_path": "alert_system.py",
+      "description": "Alerting and notification system",
+      "enabled": true
+    },
+    {
+      "name": "exception_monitoring",
+      "code": "45O",
+      "phase": "orchestration_control",
+      "dependencies": ["44O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/exception_monitoring.py",
+      "original_path": "exception_monitoring.py",
+      "description": "Exception monitoring and handling",
+      "enabled": true
+    },
+    {
+      "name": "exception_telemetry",
+      "code": "46O",
+      "phase": "orchestration_control",
+      "dependencies": ["45O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/exception_telemetry.py",
+      "original_path": "exception_telemetry.py",
+      "description": "Exception telemetry collection",
+      "enabled": true
+    },
+    {
+      "name": "contract_validator",
+      "code": "47O",
+      "phase": "orchestration_control",
+      "dependencies": ["46O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/contract_validator.py",
+      "original_path": "contract_validator.py",
+      "description": "Contract validation system",
+      "enabled": true
+    },
+    {
+      "name": "constraint_validator",
+      "code": "48O",
+      "phase": "orchestration_control",
+      "dependencies": ["47O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/constraint_validator.py",
+      "original_path": "constraint_validator.py",
+      "description": "Constraint validation engine",
+      "enabled": true
+    },
+    {
+      "name": "rubric_validator",
+      "code": "49O",
+      "phase": "orchestration_control",
+      "dependencies": ["48O"],
+      "canonical_path": "canonical_flow/O_orchestration_control/rubric_validator.py",
+      "original_path": "rubric_validator.py",
+      "description": "Rubric-based validation",
+      "enabled": true
+    },
+    {
+      "name": "answer_synthesizer",
+      "code": "50S",
+      "phase": "synthesis_output",
+      "dependencies": ["49O"],
+      "canonical_path": "canonical_flow/S_synthesis_output/answer_synthesizer.py",
+      "original_path": "answer_synthesizer.py",
+      "description": "Synthesize answers from analysis",
+      "enabled": true
+    },
+    {
+      "name": "answer_formatter",
+      "code": "51S",
+      "phase": "synthesis_output",
+      "dependencies": ["50S"],
+      "canonical_path": "canonical_flow/S_synthesis_output/answer_formatter.py",
+      "original_path": "answer_formatter.py",
+      "description": "Format synthesized answers",
+      "enabled": true
+    },
+    {
+      "name": "report_compiler",
+      "code": "52G",
+      "phase": "aggregation_reporting",
+      "dependencies": ["51S"],
+      "canonical_path": "canonical_flow/G_aggregation_reporting/report_compiler.py",
+      "original_path": "report_compiler.py",
+      "description": "Compile comprehensive reports",
+      "enabled": true
+    },
+    {
+      "name": "meso_aggregator",
+      "code": "53G",
+      "phase": "aggregation_reporting",
+      "dependencies": ["52G"],
+      "canonical_path": "canonical_flow/G_aggregation_reporting/meso_aggregator.py",
+      "original_path": "meso_aggregator.py",
+      "description": "Meso-level data aggregation",
+      "enabled": true
+    },
+    {
+      "name": "metrics_collector",
+      "code": "54T",
+      "phase": "integration_storage",
+      "dependencies": ["53G"],
+      "canonical_path": "canonical_flow/T_integration_storage/metrics_collector.py",
+      "original_path": "metrics_collector.py",
+      "description": "Collect system metrics",
+      "enabled": true
+    },
+    {
+      "name": "analytics_enhancement",
+      "code": "55T",
+      "phase": "integration_storage",
+      "dependencies": ["54T"],
+      "canonical_path": "canonical_flow/T_integration_storage/analytics_enhancement.py",
+      "original_path": "analytics_enhancement.py",
+      "description": "Enhance analytics capabilities",
+      "enabled": true
+    },
+    {
+      "name": "feedback_loop",
+      "code": "56T",
+      "phase": "integration_storage",
+      "dependencies": ["55T"],
+      "canonical_path": "canonical_flow/T_integration_storage/feedback_loop.py",
+      "original_path": "feedback_loop.py",
+      "description": "Implement feedback mechanisms",
+      "enabled": true
+    },
+    {
+      "name": "compensation_engine",
+      "code": "57T",
+      "phase": "integration_storage",
+      "dependencies": ["56T"],
+      "canonical_path": "canonical_flow/T_integration_storage/compensation_engine.py",
+      "original_path": "compensation_engine.py",
+      "description": "Compensation and error recovery",
+      "enabled": true
+    },
+    {
+      "name": "optimization_engine", 
+      "code": "58T",
+      "phase": "integration_storage",
+      "dependencies": ["57T"],
+      "canonical_path": "canonical_flow/T_integration_storage/optimization_engine.py",
+      "original_path": "optimization_engine.py",
+      "description": "System optimization engine",
+      "enabled": true
+    }
+  ]
+}
