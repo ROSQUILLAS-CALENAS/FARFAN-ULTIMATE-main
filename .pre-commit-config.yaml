@@ -1,4 +1,13 @@
 repos:
+  - repo: local
+    hooks:
+      - id: dep-doctor
+        name: Dependency Doctor - Architecture Validator
+        entry: python3 tools/dep_doctor.py
+        language: system
+        pass_filenames: false
+        files: '\.py$'
+        always_run: true
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.6.4
     hooks:
