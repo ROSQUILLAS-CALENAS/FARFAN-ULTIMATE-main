@@ -1,6 +1,6 @@
 """Setup configuration for EGW Query Expansion"""
 
-# # # from setuptools import find_packages, setup  # Module not found  # Module not found  # Module not found
+from setuptools import find_packages, setup
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -31,7 +31,6 @@ setup(
     ],
     python_requires=">=3.8",
     install_requires=[
-# # #         # Read from requirements.txt  # Module not found  # Module not found  # Module not found
         line.strip()
         for line in open("requirements.txt").readlines()
         if line.strip() and not line.startswith("#")
