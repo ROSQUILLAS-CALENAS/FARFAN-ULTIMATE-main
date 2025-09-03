@@ -1,39 +1,39 @@
 """
-Validator API Package - Abstract Interfaces and Data Transfer Objects
+Validator API Package
 
-This package defines the contract for validator operations without importing
-any pipeline components, ensuring clean dependency separation.
+Provides abstract base classes and data transfer objects that define 
+interfaces for validation operations without importing any concrete 
+pipeline components.
 """
 
-from .interfaces import (
-    IValidator,
-    IEvidenceProcessor,
-    IValidationResult,
-    IEvidenceValidationRequest,
-    IEvidenceValidationResponse
+from .validation_interfaces import (
+    ValidationResult,
+    ValidatorPort,
+    EvidenceProcessorPort,
+    ValidationService,
 )
 
 from .dtos import (
     ValidationRequest,
     ValidationResponse,
-    EvidenceItem,
-    ValidationMetrics,
-    ValidationSeverity,
-    ValidationCategory,
-    DNPAlignmentCategory
+    EvidenceProcessingRequest, 
+    EvidenceProcessingResponse,
+    ValidationError,
+    ValidationStatus,
 )
 
 __all__ = [
-    "IValidator",
-    "IEvidenceProcessor", 
-    "IValidationResult",
-    "IEvidenceValidationRequest",
-    "IEvidenceValidationResponse",
-    "ValidationRequest",
-    "ValidationResponse",
-    "EvidenceItem",
-    "ValidationMetrics",
-    "ValidationSeverity",
-    "ValidationCategory",
-    "DNPAlignmentCategory"
+    # Interfaces
+    'ValidationResult',
+    'ValidatorPort',
+    'EvidenceProcessorPort', 
+    'ValidationService',
+    
+    # DTOs
+    'ValidationRequest',
+    'ValidationResponse',
+    'EvidenceProcessingRequest',
+    'EvidenceProcessingResponse',
+    'ValidationError',
+    'ValidationStatus',
 ]
