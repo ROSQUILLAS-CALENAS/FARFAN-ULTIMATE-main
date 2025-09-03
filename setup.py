@@ -31,9 +31,19 @@ setup(
     ],
     python_requires=">=3.8",
     install_requires=[
-        line.strip()
-        for line in open("requirements.txt").readlines()
-        if line.strip() and not line.startswith("#")
+        "faiss-cpu>=1.7.4",
+        "transformers>=4.35.0",
+        "sentence-transformers>=2.2.2",
+        "torch>=2.0.0",
+        "numpy>=1.24.0",
+        "scipy>=1.11.0",
+        "POT>=0.9.1",
+        "scikit-learn>=1.3.0",
+        "packaging>=21.0",
+        "datasets>=2.14.0",
+        "pandas>=1.5.0",
+        "pyyaml>=5.1",
+        "tqdm>=4.66.0",
     ],
     extras_require={
         "dev": [
