@@ -1,0 +1,41 @@
+{
+  "analysis_metadata": {
+    "generated_at": "2025-09-03T13:37:22.923023",
+    "total_components": 341,
+    "total_phases": 17,
+    "total_edges": 192246,
+    "cycles_detected": 300,
+    "dag_valid": false
+  },
+  "canonical_phase_distribution": {
+    "unknown": 268,
+    "analysis_core": 18,
+    "O_orchestration": 28,
+    "G_reporting": 8,
+    "S_synthesis": 4,
+    "T_storage": 12,
+    "R_retrieval": 21,
+    "L_classification": 16,
+    "evaluation_core": 4,
+    "A_analysis": 11,
+    "I_ingestion": 11,
+    "K_knowledge": 14,
+    "knowledge_core": 5,
+    "calibration": 10,
+    "X_context": 6,
+    "ingestion_core": 1,
+    "mathematical": 14
+  },
+  "analysis_summary": {
+    "components_properly_classified": 73,
+    "components_in_unknown_phase": 268,
+    "classification_accuracy": "21.4%",
+    "high_cycle_count_indicates": "Complex interdependencies that may need refactoring",
+    "recommendations": [
+      "Improve phase classification algorithm",
+      "Resolve circular dependencies to achieve DAG properties",
+      "Consider component architecture refactoring",
+      "Implement stricter import and dependency management"
+    ]
+  }
+}
