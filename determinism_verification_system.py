@@ -31,6 +31,9 @@ try:
     HAS_NUMPY = True
 except ImportError:
     HAS_NUMPY = False
+    # Fallback warning can be logged if needed
+    import warnings
+    warnings.filterwarnings('ignore', message='numpy not available')  # Suppress potential warnings
 
 # Import core audit components
 try:
@@ -103,10 +106,8 @@ class DeterminismVerifier:
         os.environ['DETERMINISTIC_MODE'] = '1'
         os.environ['PYTHONHASHSEED'] = str(self.deterministic_seed)
         
-        # Set random seeds
-        random.seed(self.deterministic_seed)
-        if HAS_NUMPY:
-            np.random.seed(self.deterministic_seed)
+        # Set random seeds with fallback handling
+        self._set_deterministic_seeds()
             
         # Configure JSON serialization for consistency
         self.json_kwargs = {
@@ -114,6 +115,55 @@ class DeterminismVerifier:
             'ensure_ascii': False,
             'separators': (',', ':')
         }
+    
+    def _set_deterministic_seeds(self) -> None:
+        """Set deterministic seeds with numpy fallback handling"""
+        # Always set Python's built-in random seed
+        random.seed(self.deterministic_seed)
+        
+        # Set numpy seed if available, otherwise rely on Python random
+        if HAS_NUMPY:
+            try:
+                np.random.seed(self.deterministic_seed)
+            except Exception:
+                # Fallback to Python random if numpy seed fails
+                pass
+    
+    def _generate_deterministic_random(self, low: float = 0.0, high: float = 1.0) -> float:
+        """Generate deterministic random number with numpy fallback"""
+        if HAS_NUMPY:
+            try:
+                return float(np.random.uniform(low, high))
+            except Exception:
+                # Fallback to Python random
+                return random.uniform(low, high)
+        else:
+            return random.uniform(low, high)
+    
+    def _generate_deterministic_choice(self, choices: List[Any]) -> Any:
+        """Make deterministic random choice with numpy fallback"""
+        if HAS_NUMPY:
+            try:
+                return np.random.choice(choices)
+            except Exception:
+                # Fallback to Python random
+                return random.choice(choices)
+        else:
+            return random.choice(choices)
+    
+    def _calculate_variance(self, values: List[float]) -> float:
+        """Calculate variance with numpy fallback"""
+        if HAS_NUMPY:
+            try:
+                return float(np.var(values))
+            except Exception:
+                # Fallback to manual calculation
+                mean = sum(values) / len(values)
+                return sum((x - mean) ** 2 for x in values) / len(values)
+        else:
+            # Manual variance calculation
+            mean = sum(values) / len(values)
+            return sum((x - mean) ** 2 for x in values) / len(values)
     
     def compute_stable_hash(self, data: Any) -> str:
         """Compute stable, deterministic hash of any data structure"""
@@ -217,9 +267,9 @@ class DeterminismVerifier:
             for i in range(runs):
                 self._setup_deterministic_environment()
                 
-                # Simulate component discovery and ordering
+                # Simulate component discovery and ordering using deterministic choice
                 components = [
-                    {"name": f"comp_{j}", "phase": random.choice(["I", "A", "L", "R"]), 
+                    {"name": f"comp_{j}", "phase": self._generate_deterministic_choice(["I", "A", "L", "R"]), 
                      "path": f"path/to/comp_{j}.py"} 
                     for j in range(10)
                 ]
@@ -291,16 +341,12 @@ class DeterminismVerifier:
                 
                 confidence_sets.append(confidences)
             
-            # Calculate variance
+            # Calculate variance using fallback-aware method
             if len(confidence_sets) > 1:
                 variances = []
                 for i in range(len(confidence_sets[0])):
                     values = [conf_set[i] for conf_set in confidence_sets]
-                    if HAS_NUMPY:
-                        variance = float(np.var(values))
-                    else:
-                        mean = sum(values) / len(values)
-                        variance = sum((x - mean) ** 2 for x in values) / len(values)
+                    variance = self._calculate_variance(values)
                     variances.append(variance)
                 
                 max_variance = max(variances)
