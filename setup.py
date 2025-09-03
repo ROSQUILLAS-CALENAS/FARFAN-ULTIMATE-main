@@ -50,6 +50,7 @@ setup(
     package_data={"egw_query_expansion": ["configs/*.yaml"]},
     entry_points={
         "console_scripts": [
+            "egw-troubleshoot=egw_query_expansion.cli.troubleshoot:main",
             "egw-expand=egw_query_expansion.cli:main",
         ],
     },
