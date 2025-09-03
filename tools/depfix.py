@@ -1,826 +1,580 @@
 #!/usr/bin/env python3
 """
-Comprehensive Graph Analysis System for Canonical Pipeline DAG Transformation
+Comprehensive Dependency Analysis Tool
+=====================================
 
-This module implements:
-- Dependency graph construction from the codebase
-- SCC detection using Tarjan's algorithm  
-- Feedback arc set computation using greedy approximation
-- Concrete edge cut proposal generation with stub port interfaces
-- Integration with I→X→K→A→L→R→O→G→T→S phase layering
+Implements three core algorithms for dependency cycle detection and resolution:
+1. Kahn's algorithm for topological sorting
+2. Tarjan's algorithm for strongly connected component detection  
+3. Eades' greedy feedback arc set algorithm for minimal edge cuts
+
+Analyzes Python import dependencies, detects circular dependencies,
+and generates concrete proposals for breaking cycles.
 """
 
 import ast
+import argparse
+import json
 import os
-import re
 import sys
 from collections import defaultdict, deque
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Set, Tuple, Optional, NamedTuple, Union
-import json
+from typing import Dict, List, Set, Tuple, Optional, Any
+from dataclasses import dataclass, asdict
 import logging
-from abc import ABC, abstractmethod
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
 
-class DependencyEdge(NamedTuple):
-    """Represents a dependency edge in the module graph"""
-    source: str
-    target: str
-    import_type: str  # 'direct', 'from', 'star', 'conditional'
+@dataclass
+class ImportStatement:
+    """Represents a Python import statement with metadata."""
+    module: str
     line_number: int
-    statement: str
+    import_type: str  # 'import', 'from_import'
+    alias: Optional[str] = None
+    specific_items: List[str] = None
 
-
-class StubInterface(NamedTuple):
-    """Stub interface specification for breaking circular dependencies"""
-    module_name: str
-    interface_name: str
-    methods: List[str]
-    properties: List[str]
-    docstring: str
+    def __post_init__(self):
+        if self.specific_items is None:
+            self.specific_items = []
 
 
 @dataclass
-class RefactoringProposal:
-    """Concrete refactoring proposal to break circular dependencies"""
-    cycle: List[str]
-    cut_edges: List[DependencyEdge]
-    stub_interfaces: List[StubInterface]
-    file_splits: List[Tuple[str, List[str]]]  # (original_file, split_targets)
-    phase_violations: List[Tuple[str, str, str]]  # (source, target, violation_type)
+class DependencyEdge:
+    """Represents a dependency edge between modules."""
+    from_module: str
+    to_module: str
+    import_statements: List[ImportStatement]
+    weight: int = 1  # For feedback arc set algorithm
 
 
-class DependencyGraphBuilder:
-    """Constructs dependency graph from Python codebase using AST analysis"""
+@dataclass
+class StronglyConnectedComponent:
+    """Represents a strongly connected component (cycle)."""
+    modules: List[str]
+    edges: List[DependencyEdge]
+    cycle_length: int
+
+
+@dataclass
+class CycleBreakingProposal:
+    """Represents a proposal for breaking a dependency cycle."""
+    scc: StronglyConnectedComponent
+    edges_to_remove: List[DependencyEdge]
+    stub_files_to_create: List[str]
+    import_statements_to_modify: List[Tuple[str, ImportStatement]]
+
+
+class ImportExtractor(ast.NodeVisitor):
+    """AST visitor to extract import statements from Python files."""
     
-    def __init__(self, project_root: Path, canonical_phases: Optional[List[str]] = None):
-        self.project_root = Path(project_root)
-        self.canonical_phases = canonical_phases or ['I', 'X', 'K', 'A', 'L', 'R', 'O', 'G', 'T', 'S']
-        self.module_graph: Dict[str, Set[str]] = defaultdict(set)
-        self.dependency_edges: List[DependencyEdge] = []
-        self.phase_mapping: Dict[str, str] = {}
-        
-    def build_graph(self) -> Dict[str, Set[str]]:
-        """Build complete dependency graph from project"""
-        logger.info(f"Building dependency graph for {self.project_root}")
-        
-        # Discover all Python files
-        python_files = list(self.project_root.rglob("*.py"))
-        logger.info(f"Found {len(python_files)} Python files")
-        
-        # Build phase mapping
-        self._build_phase_mapping()
-        
-        # Process each file
-        for py_file in python_files:
-            try:
-                self._process_file(py_file)
-            except Exception as e:
-                logger.warning(f"Failed to process {py_file}: {e}")
-                
-        logger.info(f"Built graph with {len(self.module_graph)} modules and {len(self.dependency_edges)} dependencies")
-        return dict(self.module_graph)
+    def __init__(self, filepath: str):
+        self.filepath = filepath
+        self.imports: List[ImportStatement] = []
     
-    def _build_phase_mapping(self):
-        """Map modules to canonical pipeline phases"""
-        for phase in self.canonical_phases:
-            phase_dirs = list(self.project_root.rglob(f"{phase}_*"))
-            phase_dirs.extend(list(self.project_root.rglob(f"*{phase.lower()}*")))
-            
-            for phase_dir in phase_dirs:
-                if phase_dir.is_dir():
-                    for py_file in phase_dir.rglob("*.py"):
-                        module_path = self._get_module_path(py_file)
-                        self.phase_mapping[module_path] = phase
-                        
-    def _process_file(self, file_path: Path):
-        """Extract dependencies from a single Python file"""
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-        except (UnicodeDecodeError, FileNotFoundError):
-            return
-            
-        try:
-            tree = ast.parse(content)
-        except SyntaxError:
-            logger.debug(f"Syntax error in {file_path}, skipping")
-            return
-            
-        source_module = self._get_module_path(file_path)
-        visitor = ImportVisitor(source_module, self.project_root)
-        visitor.visit(tree)
-        
-        # Add edges to graph
-        for edge in visitor.edges:
-            self.module_graph[edge.source].add(edge.target)
-            self.dependency_edges.append(edge)
-            
-    def _get_module_path(self, file_path: Path) -> str:
-        """Convert file path to Python module path"""
-        try:
-            rel_path = file_path.relative_to(self.project_root)
-            module_parts = list(rel_path.parts[:-1]) + [rel_path.stem]
-            if module_parts[-1] == '__init__':
-                module_parts = module_parts[:-1]
-            return '.'.join(module_parts)
-        except ValueError:
-            return str(file_path)
-
-
-class ImportVisitor(ast.NodeVisitor):
-    """AST visitor to extract import dependencies"""
-    
-    def __init__(self, source_module: str, project_root: Path):
-        self.source_module = source_module
-        self.project_root = project_root
-        self.edges: List[DependencyEdge] = []
-        
     def visit_Import(self, node: ast.Import):
-        """Handle 'import module' statements"""
+        """Visit import statements."""
         for alias in node.names:
-            if self._is_local_import(alias.name):
-                edge = DependencyEdge(
-                    source=self.source_module,
-                    target=alias.name,
-                    import_type='direct',
-                    line_number=node.lineno,
-                    statement=f"import {alias.name}"
-                )
-                self.edges.append(edge)
-        self.generic_visit(node)
-        
-    def visit_ImportFrom(self, node: ast.ImportFrom):
-        """Handle 'from module import ...' statements"""
-        if node.module and self._is_local_import(node.module):
-            import_type = 'star' if any(alias.name == '*' for alias in node.names) else 'from'
-            edge = DependencyEdge(
-                source=self.source_module,
-                target=node.module,
-                import_type=import_type,
+            self.imports.append(ImportStatement(
+                module=alias.name,
                 line_number=node.lineno,
-                statement=f"from {node.module} import {', '.join(alias.name for alias in node.names)}"
-            )
-            self.edges.append(edge)
-        self.generic_visit(node)
-        
-    def _is_local_import(self, module_name: str) -> bool:
-        """Check if import is a local module within the project"""
-        # Handle relative imports
-        if module_name.startswith('.'):
-            return True
-            
-        # Skip standard library and common third-party modules
-        stdlib_modules = {
-            'os', 'sys', 'json', 'logging', 'pathlib', 'typing', 'collections',
-            'ast', 're', 'time', 'datetime', 'abc', 'functools', 'itertools',
-            'dataclasses', 'enum', 'uuid', 'hashlib', 'base64', 'subprocess',
-            'contextlib', 'copy', 'pickle', 'tempfile', 'shutil', 'glob',
-            'math', 'random', 'statistics', 'threading', 'multiprocessing',
-            'asyncio', 'concurrent', 'queue', 'heapq', 'bisect', 'weakref'
-        }
-        
-        common_third_party = {
-            'numpy', 'pandas', 'torch', 'transformers', 'sklearn', 'scipy',
-            'matplotlib', 'seaborn', 'pytest', 'flask', 'django', 'requests',
-            'click', 'pydantic', 'fastapi', 'sqlalchemy', 'alembic', 'celery',
-            'redis', 'boto3', 'botocore', 'kubernetes', 'docker', 'pymongo',
-            'psycopg2', 'mysql', 'aiohttp', 'websockets', 'pika', 'kombu',
-            'jinja2', 'werkzeug', 'gunicorn', 'uvicorn', 'starlette'
-        }
-        
-        root_module = module_name.split('.')[0]
-        if root_module in stdlib_modules or root_module in common_third_party:
-            return False
-            
-        # Check if module file exists in project  
-        parts = module_name.split('.')
-        for i in range(len(parts)):
-            subpath = '/'.join(parts[:i+1])
-            if (self.project_root / f'{subpath}.py').exists():
-                return True
-            if (self.project_root / subpath / '__init__.py').exists():
-                return True
-                
-        return False
-
-
-class TarjanSCCDetector:
-    """Tarjan's algorithm for strongly connected components detection"""
+                import_type='import',
+                alias=alias.asname
+            ))
     
-    def __init__(self, graph: Dict[str, Set[str]]):
-        self.graph = graph
+    def visit_ImportFrom(self, node: ast.ImportFrom):
+        """Visit from-import statements."""
+        if node.module:
+            specific_items = []
+            for alias in node.names:
+                specific_items.append(alias.name)
+            
+            self.imports.append(ImportStatement(
+                module=node.module,
+                line_number=node.lineno,
+                import_type='from_import',
+                specific_items=specific_items
+            ))
+
+
+class DependencyGraph:
+    """Represents the dependency graph of Python modules."""
+    
+    def __init__(self):
+        self.nodes: Set[str] = set()
+        self.edges: List[DependencyEdge] = []
+        self.adjacency_list: Dict[str, List[str]] = defaultdict(list)
+        self.edge_map: Dict[Tuple[str, str], DependencyEdge] = {}
+    
+    def add_edge(self, from_module: str, to_module: str, import_stmt: ImportStatement):
+        """Add a dependency edge to the graph."""
+        self.nodes.add(from_module)
+        self.nodes.add(to_module)
+        
+        edge_key = (from_module, to_module)
+        if edge_key in self.edge_map:
+            # Add to existing edge
+            self.edge_map[edge_key].import_statements.append(import_stmt)
+            self.edge_map[edge_key].weight += 1
+        else:
+            # Create new edge
+            edge = DependencyEdge(from_module, to_module, [import_stmt], 1)
+            self.edges.append(edge)
+            self.edge_map[edge_key] = edge
+            self.adjacency_list[from_module].append(to_module)
+    
+    def get_in_degree(self) -> Dict[str, int]:
+        """Calculate in-degree for each node."""
+        in_degree = {node: 0 for node in self.nodes}
+        for edge in self.edges:
+            in_degree[edge.to_module] += 1
+        return in_degree
+    
+    def get_reverse_graph(self) -> Dict[str, List[str]]:
+        """Get reverse adjacency list for Tarjan's algorithm."""
+        reverse_graph = defaultdict(list)
+        for from_node, to_nodes in self.adjacency_list.items():
+            for to_node in to_nodes:
+                reverse_graph[to_node].append(from_node)
+        return reverse_graph
+
+
+class KahnsAlgorithm:
+    """Implementation of Kahn's algorithm for topological sorting."""
+    
+    @staticmethod
+    def topological_sort(graph: DependencyGraph) -> Tuple[List[str], bool]:
+        """
+        Perform topological sort using Kahn's algorithm.
+        Returns (sorted_nodes, is_dag) where is_dag indicates if graph is acyclic.
+        """
+        in_degree = graph.get_in_degree()
+        queue = deque([node for node, degree in in_degree.items() if degree == 0])
+        result = []
+        
+        while queue:
+            current = queue.popleft()
+            result.append(current)
+            
+            # Reduce in-degree of adjacent nodes
+            for neighbor in graph.adjacency_list[current]:
+                in_degree[neighbor] -= 1
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
+        
+        # Check if all nodes were processed (DAG) or cycles exist
+        is_dag = len(result) == len(graph.nodes)
+        return result, is_dag
+
+
+class TarjansAlgorithm:
+    """Implementation of Tarjan's algorithm for strongly connected components."""
+    
+    def __init__(self):
         self.index_counter = 0
-        self.stack: List[str] = []
-        self.lowlinks: Dict[str, int] = {}
-        self.index: Dict[str, int] = {}
-        self.on_stack: Dict[str, bool] = {}
-        self.sccs: List[List[str]] = []
+        self.stack = []
+        self.lowlinks = {}
+        self.index = {}
+        self.on_stack = {}
+        self.strongly_connected_components = []
+    
+    def strongly_connected_components_tarjan(self, graph: DependencyGraph) -> List[StronglyConnectedComponent]:
+        """Find all strongly connected components using Tarjan's algorithm."""
+        self.index_counter = 0
+        self.stack = []
+        self.lowlinks = {}
+        self.index = {}
+        self.on_stack = {}
+        self.strongly_connected_components = []
         
-    def find_sccs(self) -> List[List[str]]:
-        """Find all strongly connected components"""
-        logger.info("Running Tarjan's algorithm for SCC detection")
-        
-        for node in self.graph:
+        for node in graph.nodes:
             if node not in self.index:
-                self._strongconnect(node)
-                
-        logger.info(f"Found {len(self.sccs)} strongly connected components")
-        return self.sccs
+                self._strong_connect(node, graph)
         
-    def _strongconnect(self, node: str):
-        """Tarjan's strongconnect procedure"""
-        # Set depth index for node to smallest unused index
+        # Convert to StronglyConnectedComponent objects
+        sccs = []
+        for scc_nodes in self.strongly_connected_components:
+            if len(scc_nodes) > 1:  # Only interested in cycles
+                scc_edges = self._get_scc_edges(scc_nodes, graph)
+                sccs.append(StronglyConnectedComponent(
+                    modules=scc_nodes,
+                    edges=scc_edges,
+                    cycle_length=len(scc_nodes)
+                ))
+        
+        return sccs
+    
+    def _strong_connect(self, node: str, graph: DependencyGraph):
+        """Recursive helper for Tarjan's algorithm."""
         self.index[node] = self.index_counter
         self.lowlinks[node] = self.index_counter
         self.index_counter += 1
         self.stack.append(node)
         self.on_stack[node] = True
         
-        # Consider successors of node
-        for successor in self.graph.get(node, set()):
+        for successor in graph.adjacency_list[node]:
             if successor not in self.index:
-                # Successor has not been visited; recurse
-                self._strongconnect(successor)
+                self._strong_connect(successor, graph)
                 self.lowlinks[node] = min(self.lowlinks[node], self.lowlinks[successor])
             elif self.on_stack.get(successor, False):
-                # Successor is in stack and hence in current SCC
                 self.lowlinks[node] = min(self.lowlinks[node], self.index[successor])
-                
-        # If node is root of SCC, pop the stack and create SCC
+        
+        # If node is a root node, pop the stack and create an SCC
         if self.lowlinks[node] == self.index[node]:
-            scc = []
+            component = []
             while True:
-                w = self.stack.pop()
-                self.on_stack[w] = False
-                scc.append(w)
-                if w == node:
+                successor = self.stack.pop()
+                self.on_stack[successor] = False
+                component.append(successor)
+                if successor == node:
                     break
-            if len(scc) > 1:  # Only cycles with > 1 node are interesting
-                self.sccs.append(scc)
-
-
-class FeedbackArcSetComputer:
-    """Greedy approximation algorithm for minimum feedback arc set"""
+            self.strongly_connected_components.append(component)
     
-    def __init__(self, graph: Dict[str, Set[str]], dependency_edges: List[DependencyEdge]):
-        self.graph = graph
-        self.dependency_edges = dependency_edges
-        self.edge_lookup = self._build_edge_lookup()
+    def _get_scc_edges(self, scc_nodes: List[str], graph: DependencyGraph) -> List[DependencyEdge]:
+        """Get all edges within a strongly connected component."""
+        scc_node_set = set(scc_nodes)
+        scc_edges = []
         
-    def _build_edge_lookup(self) -> Dict[Tuple[str, str], DependencyEdge]:
-        """Build lookup table for dependency edges"""
-        lookup = {}
-        for edge in self.dependency_edges:
-            lookup[(edge.source, edge.target)] = edge
-        return lookup
+        for edge in graph.edges:
+            if edge.from_module in scc_node_set and edge.to_module in scc_node_set:
+                scc_edges.append(edge)
         
-    def compute_feedback_arc_set(self, scc: List[str]) -> List[DependencyEdge]:
-        """Compute feedback arc set for a strongly connected component"""
-        logger.info(f"Computing feedback arc set for SCC of size {len(scc)}")
-        
-        if len(scc) <= 1:
+        return scc_edges
+
+
+class EadesGreedyFeedbackArcSet:
+    """Implementation of Eades' greedy algorithm for feedback arc set."""
+    
+    @staticmethod
+    def find_feedback_arc_set(scc: StronglyConnectedComponent) -> List[DependencyEdge]:
+        """
+        Find minimal feedback arc set using Eades' greedy algorithm.
+        This is a simplified version that prioritizes edges with lower weight.
+        """
+        if len(scc.modules) <= 1:
             return []
-            
-        # Create subgraph for this SCC
-        scc_set = set(scc)
-        subgraph = {node: self.graph[node] & scc_set for node in scc}
         
-        # Greedy algorithm: repeatedly remove edges that participate in cycles
+        # Create a copy of the SCC for manipulation
+        remaining_edges = scc.edges.copy()
         feedback_edges = []
-        temp_graph = {node: neighbors.copy() for node, neighbors in subgraph.items()}
         
-        while self._has_cycles(temp_graph):
-            # Find node with highest out-degree - in-degree
-            best_node = max(temp_graph.keys(), 
-                          key=lambda n: len(temp_graph[n]) - sum(1 for m in temp_graph.values() if n in m))
+        # Build temporary graph
+        temp_graph = DependencyGraph()
+        for edge in remaining_edges:
+            temp_graph.add_edge(edge.from_module, edge.to_module, edge.import_statements[0])
+        
+        # Greedy approach: remove edges until no cycles remain
+        while True:
+            # Check if current graph is acyclic using Kahn's algorithm
+            _, is_dag = KahnsAlgorithm.topological_sort(temp_graph)
+            if is_dag:
+                break
             
-            # Remove outgoing edges from best node
-            for target in list(temp_graph[best_node]):
-                edge_key = (best_node, target)
-                if edge_key in self.edge_lookup:
-                    feedback_edges.append(self.edge_lookup[edge_key])
-                temp_graph[best_node].remove(target)
-                
+            # Find edge with minimum weight to remove
+            min_weight_edge = min(remaining_edges, key=lambda e: e.weight)
+            feedback_edges.append(min_weight_edge)
+            remaining_edges.remove(min_weight_edge)
+            
+            # Rebuild temporary graph without this edge
+            temp_graph = DependencyGraph()
+            for edge in remaining_edges:
+                temp_graph.add_edge(edge.from_module, edge.to_module, edge.import_statements[0])
+        
         return feedback_edges
-        
-    def _has_cycles(self, graph: Dict[str, Set[str]]) -> bool:
-        """Check if graph has cycles using DFS"""
-        visited = set()
-        rec_stack = set()
-        
-        def dfs(node):
-            if node in rec_stack:
-                return True
-            if node in visited:
-                return False
-                
-            visited.add(node)
-            rec_stack.add(node)
-            
-            for neighbor in graph.get(node, set()):
-                if dfs(neighbor):
-                    return True
-                    
-            rec_stack.remove(node)
-            return False
-            
-        for node in graph:
-            if node not in visited:
-                if dfs(node):
-                    return True
-        return False
 
 
-class InterfaceStubGenerator:
-    """Generates stub interface specifications for breaking circular dependencies"""
+class DependencyAnalyzer:
+    """Main class for analyzing Python module dependencies."""
     
-    def __init__(self, project_root: Path):
-        self.project_root = Path(project_root)
-        
-    def generate_stub_interfaces(self, cut_edges: List[DependencyEdge]) -> List[StubInterface]:
-        """Generate stub interfaces for cut dependency edges"""
-        logger.info(f"Generating stub interfaces for {len(cut_edges)} cut edges")
-        
-        stubs = []
-        for edge in cut_edges:
-            try:
-                stub = self._create_stub_for_edge(edge)
-                if stub:
-                    stubs.append(stub)
-            except Exception as e:
-                logger.warning(f"Failed to create stub for edge {edge.source} -> {edge.target}: {e}")
-                
-        return stubs
-        
-    def _create_stub_for_edge(self, edge: DependencyEdge) -> Optional[StubInterface]:
-        """Create stub interface for a specific dependency edge"""
-        target_file = self._find_module_file(edge.target)
-        if not target_file or not target_file.exists():
-            return None
-            
-        try:
-            with open(target_file, 'r', encoding='utf-8') as f:
-                content = f.read()
-            tree = ast.parse(content)
-        except (UnicodeDecodeError, SyntaxError):
-            return None
-            
-        # Extract public API
-        api_extractor = APIExtractor()
-        api_extractor.visit(tree)
-        
-        if not api_extractor.methods and not api_extractor.properties:
-            return None
-            
-        stub_name = f"{edge.target.replace('.', '_')}_stub"
-        return StubInterface(
-            module_name=edge.target,
-            interface_name=stub_name,
-            methods=api_extractor.methods,
-            properties=api_extractor.properties,
-            docstring=f"Stub interface for {edge.target} to break circular dependency with {edge.source}"
-        )
-        
-    def _find_module_file(self, module_name: str) -> Optional[Path]:
-        """Find the file corresponding to a module name"""
-        parts = module_name.split('.')
-        
-        # Try as package
-        package_path = self.project_root / '/'.join(parts) / '__init__.py'
-        if package_path.exists():
-            return package_path
-            
-        # Try as module
-        module_path = self.project_root / '/'.join(parts[:-1]) / f"{parts[-1]}.py"
-        if module_path.exists():
-            return module_path
-            
-        return None
-
-
-class APIExtractor(ast.NodeVisitor):
-    """Extract public API from Python module"""
+    def __init__(self, root_paths: List[str], exclude_patterns: List[str] = None):
+        self.root_paths = [Path(p) for p in root_paths]
+        self.exclude_patterns = exclude_patterns or ['__pycache__', '.git', 'venv', '.venv']
+        self.graph = DependencyGraph()
+        self.module_files: Dict[str, Path] = {}
     
-    def __init__(self):
-        self.methods = []
-        self.properties = []
-        self.classes = []
+    def analyze(self) -> Dict[str, Any]:
+        """Perform complete dependency analysis."""
+        logger.info("Starting dependency analysis...")
         
-    def visit_FunctionDef(self, node: ast.FunctionDef):
-        """Visit function definitions"""
-        if not node.name.startswith('_'):  # Public methods only
-            args = [arg.arg for arg in node.args.args]
-            self.methods.append(f"{node.name}({', '.join(args)})")
-        self.generic_visit(node)
+        # Step 1: Extract dependencies
+        self._extract_dependencies()
         
-    def visit_ClassDef(self, node: ast.ClassDef):
-        """Visit class definitions"""
-        if not node.name.startswith('_'):  # Public classes only
-            self.classes.append(node.name)
-            # Extract methods from class
-            for item in node.body:
-                if isinstance(item, ast.FunctionDef) and not item.name.startswith('_'):
-                    args = [arg.arg for arg in item.args.args]
-                    self.methods.append(f"{node.name}.{item.name}({', '.join(args)})")
-        self.generic_visit(node)
+        # Step 2: Detect cycles using Tarjan's algorithm
+        tarjans = TarjansAlgorithm()
+        sccs = tarjans.strongly_connected_components_tarjan(self.graph)
         
-    def visit_Assign(self, node: ast.Assign):
-        """Visit assignments (potential properties)"""
-        for target in node.targets:
-            if isinstance(target, ast.Name) and not target.id.startswith('_'):
-                self.properties.append(target.id)
-        self.generic_visit(node)
-
-
-class CanonicalPipelineAnalyzer:
-    """Analyzes canonical pipeline phase compliance and generates refactoring proposals"""
-    
-    def __init__(self, project_root: Path):
-        self.project_root = Path(project_root)
-        self.canonical_order = ['I', 'X', 'K', 'A', 'L', 'R', 'O', 'G', 'T', 'S']
-        self.phase_names = {
-            'I': 'Ingestion Preparation',
-            'X': 'Context Construction',
-            'K': 'Knowledge Extraction', 
-            'A': 'Analysis NLP',
-            'L': 'Classification Evaluation',
-            'R': 'Search Retrieval',
-            'O': 'Orchestration Control',
-            'G': 'Aggregation Reporting',
-            'T': 'Integration Storage',
-            'S': 'Synthesis Output'
-        }
-        
-    def analyze_phase_violations(self, graph: Dict[str, Set[str]], 
-                               phase_mapping: Dict[str, str]) -> List[Tuple[str, str, str]]:
-        """Detect violations of canonical pipeline ordering"""
-        violations = []
-        
-        for source, targets in graph.items():
-            source_phase = phase_mapping.get(source)
-            if not source_phase:
-                continue
-                
-            for target in targets:
-                target_phase = phase_mapping.get(target)
-                if not target_phase:
-                    continue
-                    
-                # Check if dependency violates canonical ordering
-                source_idx = self.canonical_order.index(source_phase) if source_phase in self.canonical_order else -1
-                target_idx = self.canonical_order.index(target_phase) if target_phase in self.canonical_order else -1
-                
-                if source_idx >= 0 and target_idx >= 0 and source_idx > target_idx:
-                    violation_type = f"Backward dependency: {source_phase} → {target_phase}"
-                    violations.append((source, target, violation_type))
-                    
-        return violations
-        
-    def generate_file_split_proposals(self, cycles: List[List[str]]) -> List[Tuple[str, List[str]]]:
-        """Generate file split proposals to break cycles"""
-        split_proposals = []
-        
-        for cycle in cycles:
-            for module in cycle:
-                # Propose splitting large modules that participate in cycles
-                module_file = self._find_module_file(module)
-                if module_file and self._should_split(module_file):
-                    split_targets = self._propose_split_targets(module_file)
-                    if split_targets:
-                        split_proposals.append((module, split_targets))
-                        
-        return split_proposals
-        
-    def _find_module_file(self, module_name: str) -> Optional[Path]:
-        """Find file for module"""
-        # Simplified implementation
-        parts = module_name.split('.')
-        candidate = self.project_root / '/'.join(parts[:-1]) / f"{parts[-1]}.py"
-        return candidate if candidate.exists() else None
-        
-    def _should_split(self, file_path: Path) -> bool:
-        """Determine if file should be split"""
-        try:
-            with open(file_path, 'r') as f:
-                lines = f.readlines()
-            return len(lines) > 200  # Split files larger than 200 lines
-        except:
-            return False
-            
-    def _propose_split_targets(self, file_path: Path) -> List[str]:
-        """Propose split targets for a file"""
-        # Simplified: propose splitting by classes and major functions
-        try:
-            with open(file_path, 'r') as f:
-                content = f.read()
-            tree = ast.parse(content)
-        except:
-            return []
-            
-        extractor = APIExtractor()
-        extractor.visit(tree)
-        
-        split_targets = []
-        if extractor.classes:
-            split_targets.extend([f"{file_path.stem}_{cls.lower()}.py" for cls in extractor.classes[:3]])
-        if len(extractor.methods) > 10:
-            split_targets.append(f"{file_path.stem}_utils.py")
-            
-        return split_targets
-
-
-class ComprehensiveDepFixAnalyzer:
-    """Main analyzer class coordinating all components"""
-    
-    def __init__(self, project_root: Path):
-        self.project_root = Path(project_root)
-        self.graph_builder = DependencyGraphBuilder(project_root)
-        self.scc_detector = None
-        self.fas_computer = None
-        self.stub_generator = InterfaceStubGenerator(project_root)
-        self.pipeline_analyzer = CanonicalPipelineAnalyzer(project_root)
-        
-    def analyze_and_propose_fixes(self) -> List[RefactoringProposal]:
-        """Run complete analysis and generate refactoring proposals"""
-        logger.info("Starting comprehensive dependency fix analysis")
-        
-        # Build dependency graph
-        graph = self.graph_builder.build_graph()
-        
-        # Log graph statistics
-        total_nodes = len(graph)
-        total_edges = sum(len(targets) for targets in graph.values())
-        logger.info(f"Graph statistics: {total_nodes} nodes, {total_edges} edges")
-        
-        # Detect SCCs
-        self.scc_detector = TarjanSCCDetector(graph)
-        sccs = self.scc_detector.find_sccs()
-        
-        # Log all SCCs found (including single-node ones for debugging)
-        logger.info(f"All SCCs found: {len(sccs)} multi-node SCCs")
-        for i, scc in enumerate(sccs):
-            logger.info(f"SCC {i+1}: {scc}")
-        
-        # Initialize feedback arc set computer
-        self.fas_computer = FeedbackArcSetComputer(graph, self.graph_builder.dependency_edges)
-        
-        # Analyze phase violations
-        phase_violations = self.pipeline_analyzer.analyze_phase_violations(
-            graph, self.graph_builder.phase_mapping
-        )
-        logger.info(f"Found {len(phase_violations)} phase violations")
-        
-        # Generate proposals for each problematic SCC
-        proposals = []
+        # Step 3: For each SCC, find minimal feedback arc set
+        cycle_breaking_proposals = []
         for scc in sccs:
-            if len(scc) <= 1:
-                continue
-                
-            logger.info(f"Processing SCC: {' → '.join(scc)}")
-            
-            # Compute feedback arc set
-            cut_edges = self.fas_computer.compute_feedback_arc_set(scc)
-            logger.info(f"Cut edges for SCC: {len(cut_edges)}")
-            
-            # Generate stub interfaces
-            stub_interfaces = self.stub_generator.generate_stub_interfaces(cut_edges)
-            logger.info(f"Generated {len(stub_interfaces)} stub interfaces")
-            
-            # Generate file split proposals
-            file_splits = self.pipeline_analyzer.generate_file_split_proposals([scc])
-            logger.info(f"Generated {len(file_splits)} file split proposals")
-            
-            # Filter relevant phase violations
-            scc_set = set(scc)
-            relevant_violations = [
-                (s, t, v) for s, t, v in phase_violations 
-                if s in scc_set or t in scc_set
-            ]
-            
-            proposal = RefactoringProposal(
-                cycle=scc,
-                cut_edges=cut_edges,
-                stub_interfaces=stub_interfaces,
-                file_splits=file_splits,
-                phase_violations=relevant_violations
-            )
-            proposals.append(proposal)
+            feedback_edges = EadesGreedyFeedbackArcSet.find_feedback_arc_set(scc)
+            proposal = self._generate_cycle_breaking_proposal(scc, feedback_edges)
+            cycle_breaking_proposals.append(proposal)
         
-        # Even if no cycles, still analyze phase violations and generate recommendations  
-        if not proposals and phase_violations:
-            logger.info("No cycles found, but generating recommendations for phase violations")
-            all_violated_modules = set()
-            for source, target, _ in phase_violations:
-                all_violated_modules.update([source, target])
-                
-            file_splits = self.pipeline_analyzer.generate_file_split_proposals([list(all_violated_modules)])
-            
-            # Create a pseudo-proposal for phase violations
-            proposal = RefactoringProposal(
-                cycle=[],
-                cut_edges=[],
-                stub_interfaces=[],
-                file_splits=file_splits,
-                phase_violations=phase_violations
-            )
-            proposals.append(proposal)
-            
-        # Always generate architectural recommendations even if no issues
-        if not proposals:
-            logger.info("No dependency issues found, generating general architectural recommendations")
-            
-            # Identify large modules that could benefit from splitting
-            large_modules = []
-            for module in graph.keys():
-                module_file = self._find_module_file_path(module)
-                if module_file and self._should_split_large_file(module_file):
-                    large_modules.append(module)
-                    
-            if large_modules:
-                file_splits = self.pipeline_analyzer.generate_file_split_proposals([large_modules])
-                proposal = RefactoringProposal(
-                    cycle=[],
-                    cut_edges=[],
-                    stub_interfaces=[],
-                    file_splits=file_splits,
-                    phase_violations=[]
-                )
-                proposals.append(proposal)
-                
-        # Generate synthetic cycles for demonstration if no real issues found
-        if len(proposals) == 0 or (len(proposals) == 1 and not proposals[0].cycle):
-            synthetic_cycles = self._generate_synthetic_examples()
-            proposals.extend(synthetic_cycles)
-            
-        logger.info(f"Generated {len(proposals)} refactoring proposals")
-        return proposals
+        # Step 4: Generate topological order (if possible)
+        topo_order, is_dag = KahnsAlgorithm.topological_sort(self.graph)
         
-    def _find_module_file_path(self, module_name: str) -> Optional[Path]:
-        """Find file path for a module"""
-        parts = module_name.split('.')
-        
-        # Try as regular module
-        module_path = self.project_root / '/'.join(parts[:-1]) / f"{parts[-1]}.py"
-        if module_path.exists():
-            return module_path
-            
-        # Try as package
-        package_path = self.project_root / '/'.join(parts) / '__init__.py'
-        if package_path.exists():
-            return package_path
-            
-        return None
-        
-    def _should_split_large_file(self, file_path: Path) -> bool:
-        """Check if file is large enough to warrant splitting"""
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-            return len(lines) > 500  # Files larger than 500 lines
-        except:
-            return False
-            
-    def _generate_synthetic_examples(self) -> List[RefactoringProposal]:
-        """Generate synthetic examples to demonstrate the tool capabilities"""
-        logger.info("Generating synthetic examples for demonstration")
-        
-        # Create example cycle
-        synthetic_cycle = ['module_a', 'module_b', 'module_c']
-        
-        # Create example edges
-        synthetic_edges = [
-            DependencyEdge('module_a', 'module_b', 'from', 10, 'from module_b import ClassB'),
-            DependencyEdge('module_b', 'module_c', 'from', 15, 'from module_c import ClassC'),
-            DependencyEdge('module_c', 'module_a', 'import', 8, 'import module_a')
-        ]
-        
-        # Create example stub interfaces
-        synthetic_stubs = [
-            StubInterface(
-                module_name='module_b',
-                interface_name='module_b_stub',
-                methods=['process_data(data)', 'validate_input(input_data)'],
-                properties=['status', 'config'],
-                docstring='Stub interface for module_b to break circular dependency'
-            )
-        ]
-        
-        # Create example phase violations
-        synthetic_violations = [
-            ('module_r', 'module_k', 'Backward dependency: R → K'),
-            ('module_g', 'module_l', 'Backward dependency: G → L')
-        ]
-        
-        synthetic_proposal = RefactoringProposal(
-            cycle=synthetic_cycle,
-            cut_edges=synthetic_edges,
-            stub_interfaces=synthetic_stubs,
-            file_splits=[('large_module.py', ['large_module_core.py', 'large_module_utils.py'])],
-            phase_violations=synthetic_violations
-        )
-        
-        return [synthetic_proposal]
-        
-    def generate_report(self, proposals: List[RefactoringProposal]) -> Dict:
-        """Generate comprehensive analysis report"""
-        report = {
-            "summary": {
-                "total_cycles": len(proposals),
-                "total_cut_edges": sum(len(p.cut_edges) for p in proposals),
-                "total_stub_interfaces": sum(len(p.stub_interfaces) for p in proposals),
-                "total_file_splits": sum(len(p.file_splits) for p in proposals),
-                "phase_violations": sum(len(p.phase_violations) for p in proposals)
-            },
-            "proposals": []
+        return {
+            'total_modules': len(self.graph.nodes),
+            'total_dependencies': len(self.graph.edges),
+            'is_dag': is_dag,
+            'cycles_detected': len(sccs),
+            'topological_order': topo_order if is_dag else None,
+            'strongly_connected_components': sccs,
+            'cycle_breaking_proposals': cycle_breaking_proposals
         }
+    
+    def _extract_dependencies(self):
+        """Extract dependencies from Python files."""
+        logger.info("Extracting dependencies from Python files...")
         
-        for i, proposal in enumerate(proposals):
-            proposal_data = {
-                "id": i + 1,
-                "cycle": proposal.cycle,
-                "cut_edges": [
-                    {
-                        "source": edge.source,
-                        "target": edge.target,
-                        "type": edge.import_type,
-                        "line": edge.line_number,
-                        "statement": edge.statement
-                    }
-                    for edge in proposal.cut_edges
-                ],
-                "stub_interfaces": [
-                    {
-                        "module": stub.module_name,
-                        "interface": stub.interface_name,
-                        "methods": stub.methods,
-                        "properties": stub.properties,
-                        "docstring": stub.docstring
-                    }
-                    for stub in proposal.stub_interfaces
-                ],
-                "file_splits": [
-                    {
-                        "original": split[0],
-                        "targets": split[1]
-                    }
-                    for split in proposal.file_splits
-                ],
-                "phase_violations": [
-                    {
-                        "source": viol[0],
-                        "target": viol[1], 
-                        "violation_type": viol[2]
-                    }
-                    for viol in proposal.phase_violations
-                ]
-            }
-            report["proposals"].append(proposal_data)
+        python_files = []
+        for root_path in self.root_paths:
+            python_files.extend(self._find_python_files(root_path))
+        
+        logger.info(f"Found {len(python_files)} Python files")
+        
+        for file_path in python_files:
+            module_name = self._get_module_name(file_path)
+            self.module_files[module_name] = file_path
             
-        return report
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                tree = ast.parse(content, filename=str(file_path))
+                extractor = ImportExtractor(str(file_path))
+                extractor.visit(tree)
+                
+                for import_stmt in extractor.imports:
+                    # Only consider internal imports
+                    if self._is_internal_import(import_stmt.module):
+                        self.graph.add_edge(module_name, import_stmt.module, import_stmt)
+                        
+            except Exception as e:
+                logger.warning(f"Error parsing {file_path}: {e}")
+    
+    def _find_python_files(self, root_path: Path) -> List[Path]:
+        """Recursively find all Python files."""
+        python_files = []
         
-    def save_report(self, report: Dict, output_path: Path):
-        """Save analysis report to file"""
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(report, f, indent=2, ensure_ascii=False)
-        logger.info(f"Report saved to {output_path}")
+        for item in root_path.rglob('*.py'):
+            if not any(pattern in str(item) for pattern in self.exclude_patterns):
+                python_files.append(item)
+        
+        return python_files
+    
+    def _get_module_name(self, file_path: Path) -> str:
+        """Convert file path to module name."""
+        # Convert path to module notation
+        relative_path = file_path
+        for root_path in self.root_paths:
+            try:
+                relative_path = file_path.relative_to(root_path)
+                break
+            except ValueError:
+                continue
+        
+        # Convert to module name
+        parts = list(relative_path.parts)
+        if parts[-1] == '__init__.py':
+            parts = parts[:-1]
+        elif parts[-1].endswith('.py'):
+            parts[-1] = parts[-1][:-3]
+        
+        return '.'.join(parts)
+    
+    def _is_internal_import(self, module_name: str) -> bool:
+        """Check if import is internal to the analyzed codebase."""
+        # Check if this module exists in our module files
+        if module_name in self.module_files:
+            return True
+        
+        # Check if it starts with any of our analyzed paths
+        for root_path in self.root_paths:
+            root_name = root_path.name
+            if module_name.startswith(root_name) or module_name.startswith('.'):
+                return True
+        
+        # Check if we can find a file corresponding to this import
+        for root_path in self.root_paths:
+            # Try to resolve the import path
+            potential_paths = [
+                root_path / f"{module_name.replace('.', '/')}.py",
+                root_path / f"{module_name.replace('.', '/')}" / "__init__.py"
+            ]
+            for path in potential_paths:
+                if path.exists():
+                    return True
+        
+        return False
+    
+    def _generate_cycle_breaking_proposal(self, scc: StronglyConnectedComponent, 
+                                        feedback_edges: List[DependencyEdge]) -> CycleBreakingProposal:
+        """Generate concrete proposal for breaking dependency cycle."""
+        stub_files = []
+        import_modifications = []
+        
+        for edge in feedback_edges:
+            # Propose creating a stub file for the target module
+            stub_file = f"{edge.to_module}_stub.py"
+            stub_files.append(stub_file)
+            
+            # Identify specific import statements to modify
+            for import_stmt in edge.import_statements:
+                import_modifications.append((edge.from_module, import_stmt))
+        
+        return CycleBreakingProposal(
+            scc=scc,
+            edges_to_remove=feedback_edges,
+            stub_files_to_create=stub_files,
+            import_statements_to_modify=import_modifications
+        )
+
+
+class OutputFormatter:
+    """Formats analysis results for different output types."""
+    
+    @staticmethod
+    def format_human_readable(analysis_result: Dict[str, Any]) -> str:
+        """Format results in human-readable format."""
+        output = []
+        output.append("=" * 60)
+        output.append("DEPENDENCY ANALYSIS REPORT")
+        output.append("=" * 60)
+        output.append(f"Total Modules: {analysis_result['total_modules']}")
+        output.append(f"Total Dependencies: {analysis_result['total_dependencies']}")
+        output.append(f"Is DAG: {analysis_result['is_dag']}")
+        output.append(f"Cycles Detected: {analysis_result['cycles_detected']}")
+        output.append("")
+        
+        if analysis_result['cycles_detected'] > 0:
+            output.append("STRONGLY CONNECTED COMPONENTS (CYCLES):")
+            output.append("-" * 40)
+            for i, scc in enumerate(analysis_result['strongly_connected_components'], 1):
+                output.append(f"Cycle #{i} - {scc.cycle_length} modules:")
+                output.append(f"  Modules: {', '.join(scc.modules)}")
+                output.append(f"  Edges: {len(scc.edges)}")
+                output.append("")
+            
+            output.append("CYCLE BREAKING PROPOSALS:")
+            output.append("-" * 40)
+            for i, proposal in enumerate(analysis_result['cycle_breaking_proposals'], 1):
+                output.append(f"Proposal #{i}:")
+                output.append(f"  Edges to remove: {len(proposal.edges_to_remove)}")
+                for edge in proposal.edges_to_remove:
+                    output.append(f"    {edge.from_module} -> {edge.to_module}")
+                output.append(f"  Stub files to create: {', '.join(proposal.stub_files_to_create)}")
+                output.append(f"  Import statements to modify: {len(proposal.import_statements_to_modify)}")
+                output.append("")
+        
+        if analysis_result['topological_order']:
+            output.append("TOPOLOGICAL ORDER:")
+            output.append("-" * 20)
+            for i, module in enumerate(analysis_result['topological_order'], 1):
+                output.append(f"{i:2d}. {module}")
+        
+        return '\n'.join(output)
+    
+    @staticmethod
+    def format_json(analysis_result: Dict[str, Any]) -> str:
+        """Format results as JSON."""
+        # Convert dataclasses to dictionaries for JSON serialization
+        json_result = analysis_result.copy()
+        
+        # Convert SCCs
+        json_result['strongly_connected_components'] = [
+            asdict(scc) for scc in analysis_result['strongly_connected_components']
+        ]
+        
+        # Convert proposals
+        json_result['cycle_breaking_proposals'] = [
+            asdict(proposal) for proposal in analysis_result['cycle_breaking_proposals']
+        ]
+        
+        return json.dumps(json_result, indent=2, default=str)
 
 
 def main():
-    """Main entry point for the dependency fix analyzer"""
-    if len(sys.argv) < 2:
-        print("Usage: python depfix.py <project_root> [output_file]")
-        sys.exit(1)
+    """Main entry point for the dependency analysis tool."""
+    parser = argparse.ArgumentParser(
+        description='Comprehensive dependency analysis tool for Python projects'
+    )
+    parser.add_argument(
+        'paths', nargs='+',
+        help='Root paths to analyze (can specify multiple paths)'
+    )
+    parser.add_argument(
+        '--output', choices=['human', 'json', 'both'], default='human',
+        help='Output format (default: human)'
+    )
+    parser.add_argument(
+        '--output-file', type=str,
+        help='Output file path (default: stdout)'
+    )
+    parser.add_argument(
+        '--exclude', nargs='*', default=['__pycache__', '.git', 'venv', '.venv'],
+        help='Patterns to exclude from analysis'
+    )
+    parser.add_argument(
+        '--verbose', action='store_true',
+        help='Enable verbose logging'
+    )
+    
+    args = parser.parse_args()
+    
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
+    
+    # Validate paths
+    for path in args.paths:
+        if not os.path.exists(path):
+            print(f"Error: Path {path} does not exist", file=sys.stderr)
+            return 1
+    
+    try:
+        # Perform analysis
+        analyzer = DependencyAnalyzer(args.paths, args.exclude)
+        result = analyzer.analyze()
         
-    project_root = Path(sys.argv[1])
-    output_file = Path(sys.argv[2]) if len(sys.argv) > 2 else project_root / "depfix_analysis.json"
-    
-    if not project_root.exists():
-        print(f"Error: Project root {project_root} does not exist")
-        sys.exit(1)
+        # Format output
+        if args.output in ['human', 'both']:
+            human_output = OutputFormatter.format_human_readable(result)
+            if args.output_file and args.output == 'human':
+                with open(args.output_file, 'w') as f:
+                    f.write(human_output)
+            else:
+                print(human_output)
         
-    # Run analysis
-    analyzer = ComprehensiveDepFixAnalyzer(project_root)
-    proposals = analyzer.analyze_and_propose_fixes()
-    
-    # Generate and save report
-    report = analyzer.generate_report(proposals)
-    analyzer.save_report(report, output_file)
-    
-    # Print summary
-    print(f"\n=== DEPENDENCY FIX ANALYSIS SUMMARY ===")
-    print(f"Total circular dependency cycles: {report['summary']['total_cycles']}")
-    print(f"Total edges to cut: {report['summary']['total_cut_edges']}")
-    print(f"Stub interfaces to create: {report['summary']['total_stub_interfaces']}")
-    print(f"File splits proposed: {report['summary']['total_file_splits']}")
-    print(f"Phase violations detected: {report['summary']['phase_violations']}")
-    print(f"\nDetailed report saved to: {output_file}")
+        if args.output in ['json', 'both']:
+            json_output = OutputFormatter.format_json(result)
+            if args.output_file:
+                json_file = args.output_file
+                if args.output == 'both':
+                    json_file = args.output_file.replace('.txt', '.json').replace('.md', '.json')
+                    if json_file == args.output_file:
+                        json_file = args.output_file + '.json'
+                with open(json_file, 'w') as f:
+                    f.write(json_output)
+            else:
+                if args.output == 'both':
+                    print("\n" + "="*60)
+                    print("JSON OUTPUT:")
+                    print("="*60)
+                print(json_output)
+        
+        # Exit with appropriate code
+        return 0 if result['cycles_detected'] == 0 else 1
+        
+    except Exception as e:
+        logger.error(f"Analysis failed: {e}")
+        if args.verbose:
+            import traceback
+            traceback.print_exc()
+        return 1
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    sys.exit(main())

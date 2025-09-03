@@ -1,0 +1,9 @@
+{
+  "total_modules": 0,
+  "total_dependencies": 0,
+  "is_dag": true,
+  "cycles_detected": 0,
+  "topological_order": [],
+  "strongly_connected_components": [],
+  "cycle_breaking_proposals": []
+}
