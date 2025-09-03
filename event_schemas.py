@@ -1,386 +1,431 @@
 """
-Event schemas for the event-driven choreography system
+Typed Event Schemas for Pipeline Event Bus System
+=================================================
+
+Defines strongly-typed event classes for various pipeline operations, including
+validator interactions, stage transitions, and system events.
 """
+
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from datetime import datetime
+from enum import Enum
+from typing import Any, Dict, List, Optional, Type, TypeVar, Generic
 import json
-# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
-# # # from enum import Enum  # Module not found  # Module not found  # Module not found
-# # # from typing import Any, Dict, List, Optional, Union  # Module not found  # Module not found  # Module not found
-# # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
-
-# # # from pydantic import BaseModel, Field, field_validator  # Module not found  # Module not found  # Module not found
+from uuid import uuid4
 
 
-class EventStatus(str, Enum):
-    """Event processing status"""
-
-    PENDING = "pending"
-    PROCESSING = "processing"
-    COMPLETED = "completed"
-    FAILED = "failed"
-    RETRYING = "retrying"
-    DEAD_LETTER = "dead_letter"
-
-
-class EventType(str, Enum):
-    """Supported event types"""
-
-    DOCUMENT_INGESTION_REQUESTED = "document.ingestion.requested"
-    DOCUMENT_INGESTION_STARTED = "document.ingestion.started"
-    DOCUMENT_INGESTION_COMPLETED = "document.ingestion.completed"
-    DOCUMENT_INGESTION_FAILED = "document.ingestion.failed"
-
-    OCR_REQUESTED = "ocr.requested"
-    OCR_COMPLETED = "ocr.completed"
-    OCR_FAILED = "ocr.failed"
-
-    TABLE_EXTRACTION_REQUESTED = "table.extraction.requested"
-    TABLE_EXTRACTION_COMPLETED = "table.extraction.completed"
-    TABLE_EXTRACTION_FAILED = "table.extraction.failed"
-
-    VALIDATION_REQUESTED = "validation.requested"
-    VALIDATION_COMPLETED = "validation.completed"
-    VALIDATION_FAILED = "validation.failed"
-
-    PACKAGE_REQUESTED = "package.requested"
-    PACKAGE_COMPLETED = "package.completed"
-    PACKAGE_FAILED = "package.failed"
-
-    COMPENSATION_REQUESTED = "compensation.requested"
-    COMPENSATION_COMPLETED = "compensation.completed"
-    COMPENSATION_FAILED = "compensation.failed"
-
-    SYSTEM_HEARTBEAT = "system.heartbeat"
-    SYSTEM_ALERT = "system.alert"
+class EventType(Enum):
+    """Enumeration of all supported event types in the pipeline system"""
+    
+    # Pipeline Stage Events
+    STAGE_STARTED = "stage_started"
+    STAGE_COMPLETED = "stage_completed"
+    STAGE_FAILED = "stage_failed"
+    STAGE_SKIPPED = "stage_skipped"
+    
+    # Validator Events  
+    VALIDATION_REQUESTED = "validation_requested"
+    VALIDATION_COMPLETED = "validation_completed"
+    VALIDATION_FAILED = "validation_failed"
+    VERDICT_ISSUED = "verdict_issued"
+    
+    # Document Processing Events
+    DOCUMENT_UPLOADED = "document_uploaded"
+    DOCUMENT_PROCESSED = "document_processed"
+    DOCUMENT_FAILED = "document_failed"
+    
+    # Orchestration Events
+    ORCHESTRATION_STARTED = "orchestration_started"
+    ORCHESTRATION_COMPLETED = "orchestration_completed"
+    ORCHESTRATION_FAILED = "orchestration_failed"
+    ORCHESTRATION_PAUSED = "orchestration_paused"
+    ORCHESTRATION_RESUMED = "orchestration_resumed"
+    
+    # System Events
+    SYSTEM_ERROR = "system_error"
+    SYSTEM_WARNING = "system_warning"
+    SYSTEM_HEALTH_CHECK = "system_health_check"
+    RESOURCE_ALLOCATED = "resource_allocated"
+    RESOURCE_RELEASED = "resource_released"
+    
+    # Enhancement Events
+    ENHANCEMENT_REQUESTED = "enhancement_requested"
+    ENHANCEMENT_ACTIVATED = "enhancement_activated"
+    ENHANCEMENT_DEACTIVATED = "enhancement_deactivated"
+    ENHANCEMENT_FAILED = "enhancement_failed"
 
 
-class RetryMetadata(BaseModel):
-    """Metadata for retry and circuit breaker logic"""
-
-    attempt_count: int = Field(default=0, description="Current attempt number")
-    max_attempts: int = Field(default=3, description="Maximum retry attempts")
-    backoff_multiplier: float = Field(
-        default=2.0, description="Exponential backoff multiplier"
-    )
-    initial_delay_seconds: float = Field(default=1.0, description="Initial retry delay")
-    max_delay_seconds: float = Field(default=300.0, description="Maximum retry delay")
-    circuit_breaker_threshold: int = Field(
-        default=5, description="Circuit breaker failure threshold"
-    )
-    last_failure_reason: Optional[str] = Field(
-        default=None, description="Last failure reason"
-    )
-    next_retry_at: Optional[datetime] = Field(
-        default=None, description="Next retry timestamp"
-    )
+EventData = TypeVar('EventData')
 
 
-class TimeoutMetadata(BaseModel):
-    """Timeout and orphan detection metadata"""
-
-    timeout_seconds: int = Field(default=300, description="Event timeout in seconds")
-    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    expires_at: Optional[datetime] = Field(
-        default=None, description="Event expiration timestamp"
-    )
-    heartbeat_interval_seconds: int = Field(
-        default=30, description="Heartbeat interval"
-    )
-    last_heartbeat_at: Optional[datetime] = Field(
-        default=None, description="Last heartbeat timestamp"
-    )
-
+@dataclass
+class BaseEvent(ABC, Generic[EventData]):
+    """
+    Base class for all events in the pipeline system.
+    Provides common event metadata and serialization capabilities.
+    """
+    
+    event_id: str = field(default_factory=lambda: str(uuid4()))
+    event_type: EventType = field(init=False)
+    timestamp: datetime = field(default_factory=datetime.utcnow)
+    source: str = ""
+    correlation_id: Optional[str] = None
+    data: EventData = None
+    metadata: Dict[str, Any] = field(default_factory=dict)
+    
     def __post_init__(self):
-        """Set expiration timestamp if not provided"""
-        if not self.expires_at and self.timeout_seconds:
-            self.expires_at = self.created_at.replace(
-                seconds=self.created_at.second + self.timeout_seconds
-            )
-
-    def is_expired(self) -> bool:
-        """Check if event has expired"""
-        if not self.expires_at:
-            return False
-        return datetime.now(timezone.utc) > self.expires_at
-
-    def is_orphaned(self) -> bool:
-        """Check if event is orphaned based on heartbeat"""
-        if not self.last_heartbeat_at:
-            return self.is_expired()
-
-        heartbeat_expiry = self.last_heartbeat_at.replace(
-            seconds=self.last_heartbeat_at.second
-            + (self.heartbeat_interval_seconds * 2)
-        )
-        return datetime.now(timezone.utc) > heartbeat_expiry
-
-
-class EventRelationship(BaseModel):
-    """Parent-child relationships between events"""
-
-    parent_correlation_id: Optional[str] = Field(
-        default=None, description="Parent event correlation ID"
-    )
-    root_correlation_id: Optional[str] = Field(
-        default=None, description="Root event correlation ID"
-    )
-    child_correlation_ids: List[str] = Field(
-        default_factory=list, description="Child event correlation IDs"
-    )
-    workflow_id: Optional[str] = Field(default=None, description="Workflow identifier")
-    saga_id: Optional[str] = Field(
-        default=None, description="Saga identifier for compensation"
-    )
-
-    def add_child(self, child_correlation_id: str):
-        """Add a child correlation ID"""
-        if child_correlation_id not in self.child_correlation_ids:
-            self.child_correlation_ids.append(child_correlation_id)
-
-    def is_root_event(self) -> bool:
-        """Check if this is a root event"""
-        return self.parent_correlation_id is None
-
-    def is_leaf_event(self) -> bool:
-        """Check if this is a leaf event"""
-        return len(self.child_correlation_ids) == 0
-
-
-class EventMetadata(BaseModel):
-    """Complete event metadata"""
-
-    correlation_id: str = Field(
-        default_factory=lambda: str(uuid4()), description="Unique correlation ID"
-    )
-    event_id: str = Field(
-        default_factory=lambda: str(uuid4()), description="Unique event ID"
-    )
-    event_type: EventType = Field(..., description="Type of event")
-    event_version: str = Field(default="1.0", description="Event schema version")
-
-    # Relationships
-    relationships: EventRelationship = Field(default_factory=EventRelationship)
-
-    # Timing and timeouts
-    timeout_metadata: TimeoutMetadata = Field(default_factory=TimeoutMetadata)
-
-    # Retry logic
-    retry_metadata: RetryMetadata = Field(default_factory=RetryMetadata)
-
-    # Status tracking
-    status: EventStatus = Field(default=EventStatus.PENDING)
-
-    # Context
-    source_service: str = Field(..., description="Service that generated the event")
-    destination_service: Optional[str] = Field(
-        default=None, description="Target service"
-    )
-    trace_id: Optional[str] = Field(default=None, description="Distributed tracing ID")
-    user_id: Optional[str] = Field(default=None, description="User ID for audit")
-    tenant_id: Optional[str] = Field(
-        default=None, description="Tenant ID for multi-tenancy"
-    )
-
-    # Timestamps
-    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    updated_at: Optional[datetime] = Field(default=None)
-    completed_at: Optional[datetime] = Field(default=None)
-
-    # Custom metadata
-    custom_metadata: Dict[str, Any] = Field(
-        default_factory=dict, description="Custom metadata"
-    )
-
-    def update_status(self, new_status: EventStatus):
-        """Update event status with timestamp"""
-        self.status = new_status
-        self.updated_at = datetime.now(timezone.utc)
-
-        if new_status in [
-            EventStatus.COMPLETED,
-            EventStatus.FAILED,
-            EventStatus.DEAD_LETTER,
-        ]:
-            self.completed_at = self.updated_at
-
-    def increment_retry(self):
-        """Increment retry count and calculate next retry time"""
-        self.retry_metadata.attempt_count += 1
-
-        delay = min(
-            self.retry_metadata.initial_delay_seconds
-            * (
-                self.retry_metadata.backoff_multiplier
-                ** (self.retry_metadata.attempt_count - 1)
-            ),
-            self.retry_metadata.max_delay_seconds,
-        )
-
-        self.retry_metadata.next_retry_at = datetime.now(timezone.utc).replace(
-            seconds=datetime.now(timezone.utc).second + int(delay)
-        )
-
-        self.update_status(EventStatus.RETRYING)
-
-    def can_retry(self) -> bool:
-        """Check if event can be retried"""
-        return (
-            self.retry_metadata.attempt_count < self.retry_metadata.max_attempts
-            and self.status in [EventStatus.FAILED, EventStatus.RETRYING]
-        )
-
-
-class BaseEvent(BaseModel):
-    """Base event with metadata"""
-
-    metadata: EventMetadata = Field(..., description="Event metadata")
-    payload: Dict[str, Any] = Field(
-        default_factory=dict, description="Event payload data"
-    )
-
+        if not hasattr(self, 'event_type'):
+            raise TypeError(f"Event class {self.__class__.__name__} must define event_type")
+    
+    @abstractmethod
+    def validate_data(self) -> bool:
+        """Validate the event data structure"""
+        pass
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Serialize event to dictionary"""
+        return {
+            'event_id': self.event_id,
+            'event_type': self.event_type.value,
+            'timestamp': self.timestamp.isoformat(),
+            'source': self.source,
+            'correlation_id': self.correlation_id,
+            'data': self.data,
+            'metadata': self.metadata
+        }
+    
     def to_json(self) -> str:
-        """Serialize event to JSON"""
-        return json.dumps(self.model_dump(), default=str, ensure_ascii=False)
-
+        """Serialize event to JSON string"""
+        return json.dumps(self.to_dict(), default=str)
+    
     @classmethod
-    def from_json(cls, json_str: str) -> "BaseEvent":
-# # #         """Deserialize event from JSON"""  # Module not found  # Module not found  # Module not found
-        data = json.loads(json_str)
-        return cls(**data)
-
-    def create_child_event(
-        self,
-        event_type: EventType,
-        source_service: str,
-        payload: Dict[str, Any] = None,
-        destination_service: str = None,
-    ) -> "BaseEvent":
-        """Create a child event with proper relationship tracking"""
-        child_metadata = EventMetadata(
-            event_type=event_type,
-            source_service=source_service,
-            destination_service=destination_service,
-            relationships=EventRelationship(
-                parent_correlation_id=self.metadata.correlation_id,
-                root_correlation_id=self.metadata.relationships.root_correlation_id
-                or self.metadata.correlation_id,
-                workflow_id=self.metadata.relationships.workflow_id,
-                saga_id=self.metadata.relationships.saga_id,
-            ),
-            trace_id=self.metadata.trace_id,
-            user_id=self.metadata.user_id,
-            tenant_id=self.metadata.tenant_id,
-        )
-
-        # Update parent's child list
-        self.metadata.relationships.add_child(child_metadata.correlation_id)
-
-        return BaseEvent(metadata=child_metadata, payload=payload or {})
+    def from_dict(cls, data: Dict[str, Any]) -> 'BaseEvent':
+        """Deserialize event from dictionary"""
+        event_data = data.copy()
+        if 'timestamp' in event_data:
+            event_data['timestamp'] = datetime.fromisoformat(event_data['timestamp'])
+        if 'event_type' in event_data:
+            event_data['event_type'] = EventType(event_data['event_type'])
+        return cls(**event_data)
 
 
-# Specific event types for different operations
-class DocumentIngestionEvent(BaseEvent):
-    """Document ingestion event"""
+# ============================================================================
+# STAGE EVENTS
+# ============================================================================
 
-    @field_validator("metadata")
+@dataclass
+class StageEventData:
+    """Data structure for stage-related events"""
+    stage_name: str
+    stage_type: str
+    input_data: Dict[str, Any] = field(default_factory=dict)
+    output_data: Dict[str, Any] = field(default_factory=dict)
+    execution_time_ms: Optional[float] = None
+    memory_usage_mb: Optional[float] = None
+    error_message: Optional[str] = None
+    validation_results: Optional[Dict[str, Any]] = None
+
+
+@dataclass
+class StageStartedEvent(BaseEvent[StageEventData]):
+    """Event emitted when a pipeline stage starts execution"""
+    event_type: EventType = field(default=EventType.STAGE_STARTED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and 
+                hasattr(self.data, 'stage_name') and 
+                hasattr(self.data, 'stage_type'))
+
+
+@dataclass
+class StageCompletedEvent(BaseEvent[StageEventData]):
+    """Event emitted when a pipeline stage completes successfully"""
+    event_type: EventType = field(default=EventType.STAGE_COMPLETED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and 
+                hasattr(self.data, 'stage_name') and
+                hasattr(self.data, 'output_data'))
+
+
+@dataclass
+class StageFailedEvent(BaseEvent[StageEventData]):
+    """Event emitted when a pipeline stage fails"""
+    event_type: EventType = field(default=EventType.STAGE_FAILED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'stage_name') and
+                hasattr(self.data, 'error_message'))
+
+
+# ============================================================================
+# VALIDATION EVENTS
+# ============================================================================
+
+@dataclass
+class ValidationEventData:
+    """Data structure for validation-related events"""
+    validator_name: str
+    validator_type: str
+    validation_target: str
+    validation_rules: List[str] = field(default_factory=list)
+    input_data: Dict[str, Any] = field(default_factory=dict)
+    validation_result: Optional[Dict[str, Any]] = None
+    confidence_score: Optional[float] = None
+    error_details: Optional[Dict[str, Any]] = None
+
+
+@dataclass
+class ValidationRequestedEvent(BaseEvent[ValidationEventData]):
+    """Event emitted when validation is requested"""
+    event_type: EventType = field(default=EventType.VALIDATION_REQUESTED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'validator_name') and
+                hasattr(self.data, 'validation_target'))
+
+
+@dataclass
+class ValidationCompletedEvent(BaseEvent[ValidationEventData]):
+    """Event emitted when validation completes successfully"""
+    event_type: EventType = field(default=EventType.VALIDATION_COMPLETED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'validator_name') and
+                hasattr(self.data, 'validation_result'))
+
+
+@dataclass
+class ValidationFailedEvent(BaseEvent[ValidationEventData]):
+    """Event emitted when validation fails"""
+    event_type: EventType = field(default=EventType.VALIDATION_FAILED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'validator_name') and
+                hasattr(self.data, 'error_details'))
+
+
+@dataclass
+class VerdictEventData:
+    """Data structure for validation verdict events"""
+    validator_name: str
+    verdict: str  # 'PASS', 'FAIL', 'WARNING'
+    confidence: float
+    evidence: List[Dict[str, Any]] = field(default_factory=list)
+    recommendations: List[str] = field(default_factory=list)
+    validation_metadata: Dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass
+class VerdictIssuedEvent(BaseEvent[VerdictEventData]):
+    """Event emitted when a validator issues a verdict"""
+    event_type: EventType = field(default=EventType.VERDICT_ISSUED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'validator_name') and
+                hasattr(self.data, 'verdict') and
+                hasattr(self.data, 'confidence'))
+
+
+# ============================================================================
+# ORCHESTRATION EVENTS  
+# ============================================================================
+
+@dataclass
+class OrchestrationEventData:
+    """Data structure for orchestration events"""
+    orchestrator_name: str
+    orchestrator_type: str
+    pipeline_config: Dict[str, Any] = field(default_factory=dict)
+    execution_id: Optional[str] = None
+    stage_sequence: List[str] = field(default_factory=list)
+    current_stage: Optional[str] = None
+    progress_percentage: Optional[float] = None
+    error_details: Optional[Dict[str, Any]] = None
+
+
+@dataclass
+class OrchestrationStartedEvent(BaseEvent[OrchestrationEventData]):
+    """Event emitted when orchestration starts"""
+    event_type: EventType = field(default=EventType.ORCHESTRATION_STARTED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'orchestrator_name') and
+                hasattr(self.data, 'execution_id'))
+
+
+@dataclass
+class OrchestrationCompletedEvent(BaseEvent[OrchestrationEventData]):
+    """Event emitted when orchestration completes"""
+    event_type: EventType = field(default=EventType.ORCHESTRATION_COMPLETED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'orchestrator_name') and
+                hasattr(self.data, 'execution_id'))
+
+
+@dataclass
+class OrchestrationFailedEvent(BaseEvent[OrchestrationEventData]):
+    """Event emitted when orchestration fails"""
+    event_type: EventType = field(default=EventType.ORCHESTRATION_FAILED, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'orchestrator_name') and
+                hasattr(self.data, 'error_details'))
+
+
+# ============================================================================
+# SYSTEM EVENTS
+# ============================================================================
+
+@dataclass
+class SystemEventData:
+    """Data structure for system events"""
+    component_name: str
+    event_category: str
+    severity: str  # 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
+    message: str
+    details: Dict[str, Any] = field(default_factory=dict)
+    stack_trace: Optional[str] = None
+
+
+@dataclass
+class SystemErrorEvent(BaseEvent[SystemEventData]):
+    """Event emitted for system errors"""
+    event_type: EventType = field(default=EventType.SYSTEM_ERROR, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'component_name') and
+                hasattr(self.data, 'message'))
+
+
+@dataclass
+class SystemWarningEvent(BaseEvent[SystemEventData]):
+    """Event emitted for system warnings"""
+    event_type: EventType = field(default=EventType.SYSTEM_WARNING, init=False)
+    
+    def validate_data(self) -> bool:
+        return (self.data is not None and
+                hasattr(self.data, 'component_name') and
+                hasattr(self.data, 'message'))
+
+
+# ============================================================================
+# EVENT REGISTRY
+# ============================================================================
+
+class EventRegistry:
+    """Registry for all event types and their corresponding classes"""
+    
+    _event_classes: Dict[EventType, Type[BaseEvent]] = {
+        EventType.STAGE_STARTED: StageStartedEvent,
+        EventType.STAGE_COMPLETED: StageCompletedEvent,
+        EventType.STAGE_FAILED: StageFailedEvent,
+        EventType.VALIDATION_REQUESTED: ValidationRequestedEvent,
+        EventType.VALIDATION_COMPLETED: ValidationCompletedEvent,
+        EventType.VALIDATION_FAILED: ValidationFailedEvent,
+        EventType.VERDICT_ISSUED: VerdictIssuedEvent,
+        EventType.ORCHESTRATION_STARTED: OrchestrationStartedEvent,
+        EventType.ORCHESTRATION_COMPLETED: OrchestrationCompletedEvent,
+        EventType.ORCHESTRATION_FAILED: OrchestrationFailedEvent,
+        EventType.SYSTEM_ERROR: SystemErrorEvent,
+        EventType.SYSTEM_WARNING: SystemWarningEvent,
+    }
+    
     @classmethod
-    def validate_ingestion_event(cls, v):
-        if v.event_type not in [
-            EventType.DOCUMENT_INGESTION_REQUESTED,
-            EventType.DOCUMENT_INGESTION_STARTED,
-            EventType.DOCUMENT_INGESTION_COMPLETED,
-            EventType.DOCUMENT_INGESTION_FAILED,
-        ]:
-            raise ValueError(
-                f"Invalid event type for DocumentIngestionEvent: {v.event_type}"
-            )
-        return v
-
-
-class OCREvent(BaseEvent):
-    """OCR processing event"""
-
-    @field_validator("metadata")
+    def get_event_class(cls, event_type: EventType) -> Type[BaseEvent]:
+        """Get the event class for a given event type"""
+        return cls._event_classes.get(event_type)
+    
     @classmethod
-    def validate_ocr_event(cls, v):
-        if v.event_type not in [
-            EventType.OCR_REQUESTED,
-            EventType.OCR_COMPLETED,
-            EventType.OCR_FAILED,
-        ]:
-            raise ValueError(f"Invalid event type for OCREvent: {v.event_type}")
-        return v
-
-
-class TableExtractionEvent(BaseEvent):
-    """Table extraction event"""
-
-    @field_validator("metadata")
+    def register_event_class(cls, event_type: EventType, event_class: Type[BaseEvent]):
+        """Register a new event class"""
+        cls._event_classes[event_type] = event_class
+    
     @classmethod
-    def validate_table_event(cls, v):
-        if v.event_type not in [
-            EventType.TABLE_EXTRACTION_REQUESTED,
-            EventType.TABLE_EXTRACTION_COMPLETED,
-            EventType.TABLE_EXTRACTION_FAILED,
-        ]:
-            raise ValueError(
-                f"Invalid event type for TableExtractionEvent: {v.event_type}"
-            )
-        return v
+    def create_event(cls, event_type: EventType, **kwargs) -> BaseEvent:
+        """Factory method to create typed events"""
+        event_class = cls.get_event_class(event_type)
+        if not event_class:
+            raise ValueError(f"No event class registered for event type: {event_type}")
+        return event_class(**kwargs)
 
 
-class ValidationEvent(BaseEvent):
-    """Document validation event"""
+# ============================================================================
+# EVENT BUILDER UTILITIES
+# ============================================================================
 
-    @field_validator("metadata")
-    @classmethod
-    def validate_validation_event(cls, v):
-        if v.event_type not in [
-            EventType.VALIDATION_REQUESTED,
-            EventType.VALIDATION_COMPLETED,
-            EventType.VALIDATION_FAILED,
-        ]:
-            raise ValueError(f"Invalid event type for ValidationEvent: {v.event_type}")
-        return v
-
-
-class PackagingEvent(BaseEvent):
-    """Document packaging event"""
-
-    @field_validator("metadata")
-    @classmethod
-    def validate_packaging_event(cls, v):
-        if v.event_type not in [
-            EventType.PACKAGE_REQUESTED,
-            EventType.PACKAGE_COMPLETED,
-            EventType.PACKAGE_FAILED,
-        ]:
-            raise ValueError(f"Invalid event type for PackagingEvent: {v.event_type}")
-        return v
-
-
-class CompensationEvent(BaseEvent):
-    """Compensation/rollback event"""
-
-    @field_validator("metadata")
-    @classmethod
-    def validate_compensation_event(cls, v):
-        if v.event_type not in [
-            EventType.COMPENSATION_REQUESTED,
-            EventType.COMPENSATION_COMPLETED,
-            EventType.COMPENSATION_FAILED,
-        ]:
-            raise ValueError(
-                f"Invalid event type for CompensationEvent: {v.event_type}"
-            )
-        return v
+class EventBuilder:
+    """Builder pattern for creating complex events"""
+    
+    def __init__(self, event_type: EventType):
+        self.event_type = event_type
+        self._kwargs = {}
+    
+    def with_source(self, source: str) -> 'EventBuilder':
+        self._kwargs['source'] = source
+        return self
+    
+    def with_correlation_id(self, correlation_id: str) -> 'EventBuilder':
+        self._kwargs['correlation_id'] = correlation_id
+        return self
+    
+    def with_data(self, data: Any) -> 'EventBuilder':
+        self._kwargs['data'] = data
+        return self
+    
+    def with_metadata(self, **metadata) -> 'EventBuilder':
+        if 'metadata' not in self._kwargs:
+            self._kwargs['metadata'] = {}
+        self._kwargs['metadata'].update(metadata)
+        return self
+    
+    def build(self) -> BaseEvent:
+        """Build the event with configured parameters"""
+        return EventRegistry.create_event(self.event_type, **self._kwargs)
 
 
-class SystemEvent(BaseEvent):
-    """System-level event (heartbeat, alerts, etc.)"""
+# ============================================================================
+# CONVENIENCE FUNCTIONS
+# ============================================================================
 
-    @field_validator("metadata")
-    @classmethod
-    def validate_system_event(cls, v):
-        if v.event_type not in [EventType.SYSTEM_HEARTBEAT, EventType.SYSTEM_ALERT]:
-            raise ValueError(f"Invalid event type for SystemEvent: {v.event_type}")
-        return v
+def create_stage_started_event(stage_name: str, stage_type: str, source: str, 
+                              correlation_id: str = None, **kwargs) -> StageStartedEvent:
+    """Convenience function to create stage started events"""
+    data = StageEventData(stage_name=stage_name, stage_type=stage_type, **kwargs)
+    return StageStartedEvent(data=data, source=source, correlation_id=correlation_id)
+
+
+def create_validation_requested_event(validator_name: str, validator_type: str,
+                                    validation_target: str, source: str,
+                                    correlation_id: str = None, **kwargs) -> ValidationRequestedEvent:
+    """Convenience function to create validation request events"""
+    data = ValidationEventData(
+        validator_name=validator_name,
+        validator_type=validator_type,
+        validation_target=validation_target,
+        **kwargs
+    )
+    return ValidationRequestedEvent(data=data, source=source, correlation_id=correlation_id)
+
+
+def create_verdict_issued_event(validator_name: str, verdict: str, confidence: float,
+                               source: str, correlation_id: str = None, **kwargs) -> VerdictIssuedEvent:
+    """Convenience function to create verdict events"""
+    data = VerdictEventData(
+        validator_name=validator_name,
+        verdict=verdict,
+        confidence=confidence,
+        **kwargs
+    )
+    return VerdictIssuedEvent(data=data, source=source, correlation_id=correlation_id)
