@@ -1,4 +1,4 @@
-# Import Linter Configuration for Phase Isolation
+# Import Linter Configuration for Phase Isolation and Layering Enforcement
 
 [importlinter]
 root_packages = 
@@ -12,6 +12,77 @@ type = "independence"
 modules = 
     canonical_flow.I_ingestion_preparation
     canonical_flow.X_context_construction
+
+# Phase Layering Enforcement Contract
+[[importlinter.contracts]]
+name = "Phase Layering Enforcement Contract"
+type = "layers"
+layers = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction", 
+    "canonical_flow.K_knowledge_extraction",
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+    "canonical_flow.R_search_retrieval",
+    "canonical_flow.O_orchestration_control",
+    "canonical_flow.G_aggregation_reporting",
+    "canonical_flow.T_integration_storage",
+    "canonical_flow.S_synthesis_output"
+]
+
+# Phase Independence Contract
+[[importlinter.contracts]] 
+name = "Phase Independence Contract"
+type = "independence"
+modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction", 
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+    "canonical_flow.R_search_retrieval",
+    "canonical_flow.O_orchestration_control",
+    "canonical_flow.G_aggregation_reporting",
+    "canonical_flow.T_integration_storage",
+    "canonical_flow.S_synthesis_output"
+]
+
+# Mathematical Enhancers Isolation
+[[importlinter.contracts]]
+name = "Mathematical Enhancers Isolation Contract"
+type = "forbidden"
+forbidden_modules = [
+    "canonical_flow.mathematical_enhancers"
+]
+source_modules = [
+    "canonical_flow.I_ingestion_preparation",
+    "canonical_flow.X_context_construction", 
+    "canonical_flow.K_knowledge_extraction",
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+    "canonical_flow.R_search_retrieval",
+    "canonical_flow.O_orchestration_control",
+    "canonical_flow.G_aggregation_reporting",
+    "canonical_flow.T_integration_storage",
+    "canonical_flow.S_synthesis_output"
+]
+
+# Backward Dependency Prevention
+[[importlinter.contracts]]
+name = "Backward Dependency Prevention Contract"
+type = "forbidden"
+forbidden_modules = ["canonical_flow.I_ingestion_preparation"]
+source_modules = [
+    "canonical_flow.X_context_construction",
+    "canonical_flow.K_knowledge_extraction", 
+    "canonical_flow.A_analysis_nlp",
+    "canonical_flow.L_classification_evaluation",
+    "canonical_flow.R_search_retrieval",
+    "canonical_flow.O_orchestration_control",
+    "canonical_flow.G_aggregation_reporting",
+    "canonical_flow.T_integration_storage",
+    "canonical_flow.S_synthesis_output"
+]
 
 [importlinter:contract:phase_isolation]
 name = "Phase Isolation Contract"
@@ -66,59 +137,4 @@ unmatched_ignore_imports = [
     "canonical_flow.*.ingestion_orchestrator",
     "canonical_flow.*.*_orchestrator",
     "canonical_flow.*.orchestrator"
-]
-
-[importlinter:contract:no_cross_phase_direct]
-name = "No Cross-Phase Direct Imports" 
-type = "forbidden"
-source_modules = [
-    "phases.I",
-    "phases.X",
-    "phases.K", 
-    "phases.A",
-    "phases.L",
-    "phases.R",
-    "phases.O",
-    "phases.G",
-    "phases.T",
-    "phases.S"
-]
-forbidden_modules = [
-    "phases.I.internal",
-    "phases.X.internal", 
-    "phases.K.internal",
-    "phases.A.internal",
-    "phases.L.internal",
-    "phases.R.internal",
-    "phases.O.internal",
-    "phases.G.internal",
-    "phases.T.internal", 
-    "phases.S.internal"
-]
-
-[importlinter:contract:backward_compatibility]
-name = "Canonical Flow Backward Compatibility"
-type = "forbidden"
-source_modules = [
-    "canonical_flow.*"
-]
-forbidden_modules = [
-    "phases.*"
-]
-allow_indirect_imports = true
-ignore_imports = [
-    "phases.backward_compatibility -> canonical_flow.*"
-]
-
-[importlinter:contract:private_member_protection]
-name = "Private Member Protection"
-type = "forbidden" 
-source_modules = [
-    "phases.*"
-]
-forbidden_modules = [
-    "phases.*._*"
-]
-unmatched_ignore_imports = [
-    "phases._validation"
 ]

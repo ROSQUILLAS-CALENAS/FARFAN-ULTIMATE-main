@@ -1,0 +1,165 @@
+name: Architecture Enforcement CI
+
+on:
+  push:
+    branches: [ main, develop, feature/* ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  architecture-enforcement:
+    name: Phase Layering Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+    
+    - name: Create virtual environment
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+        echo "$VIRTUAL_ENV/bin" >> $GITHUB_PATH
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install import-linter>=1.12.0
+        pip install -r requirements.txt
+    
+    - name: Create validation reports directory
+      run: mkdir -p validation_reports
+    
+    - name: Run Import Linter Contract Validation
+      run: |
+        echo "Running import-linter contract validation..."
+        lint-imports --config .importlinter > validation_reports/import_linter_output.txt 2>&1 || true
+        
+        # Check if import-linter found violations
+        if lint-imports --config .importlinter; then
+          echo "✅ Import-linter validation PASSED"
+          echo "IMPORT_LINTER_STATUS=PASSED" >> $GITHUB_ENV
+        else
+          echo "❌ Import-linter validation FAILED"
+          echo "IMPORT_LINTER_STATUS=FAILED" >> $GITHUB_ENV
+        fi
+    
+    - name: Run Phase Layering Fitness Functions
+      run: |
+        echo "Running architecture fitness functions..."
+        python architecture_fitness_functions.py \
+          --fail-on-violations \
+          --output validation_reports/architecture_fitness_report.txt \
+          --json > validation_reports/architecture_fitness_results.json || true
+        
+        # Check fitness function results
+        if python architecture_fitness_functions.py --fail-on-violations --json > /dev/null 2>&1; then
+          echo "✅ Architecture fitness functions PASSED"
+          echo "FITNESS_FUNCTIONS_STATUS=PASSED" >> $GITHUB_ENV
+        else
+          echo "❌ Architecture fitness functions FAILED"
+          echo "FITNESS_FUNCTIONS_STATUS=FAILED" >> $GITHUB_ENV
+        fi
+    
+    - name: Combined Architecture Validation
+      run: |
+        echo "Combined validation results:"
+        echo "  Import Linter: $IMPORT_LINTER_STATUS"
+        echo "  Fitness Functions: $FITNESS_FUNCTIONS_STATUS"
+        
+        # Create combined summary
+        cat > validation_reports/architecture_summary.md << EOF
+        # Architecture Validation Summary
+        
+        ## Phase Layering Enforcement Results
+        
+        | Validation Type | Status |
+        |----------------|--------|
+        | Import Linter Contracts | $IMPORT_LINTER_STATUS |
+        | Architecture Fitness Functions | $FITNESS_FUNCTIONS_STATUS |
+        
+        ### Canonical Phase Sequence
+        I→X→K→A→L→R→O→G→T→S
+        
+        - **I**: Ingestion & Preparation
+        - **X**: Context Construction
+        - **K**: Knowledge Extraction
+        - **A**: Analysis & NLP
+        - **L**: Classification & Evaluation
+        - **R**: Search & Retrieval
+        - **O**: Orchestration & Control
+        - **G**: Aggregation & Reporting
+        - **T**: Integration & Storage
+        - **S**: Synthesis & Output
+        
+        ### Validation Details
+        
+        See attached artifacts for detailed violation reports and analysis.
+        EOF
+        
+        # Fail the job if either validation failed
+        if [[ "$IMPORT_LINTER_STATUS" == "FAILED" || "$FITNESS_FUNCTIONS_STATUS" == "FAILED" ]]; then
+          echo "❌ ARCHITECTURE VALIDATION FAILED"
+          echo "At least one architecture enforcement check failed."
+          echo "Please review the validation reports and fix any backward dependencies."
+          exit 1
+        else
+          echo "✅ ARCHITECTURE VALIDATION PASSED"
+          echo "All phase layering constraints are properly maintained."
+        fi
+    
+    - name: Upload validation artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: architecture-validation-reports
+        path: |
+          validation_reports/
+          .importlinter
+        retention-days: 30
+    
+    - name: Comment PR with validation results
+      uses: actions/github-script@v6
+      if: github.event_name == 'pull_request' && always()
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let summaryContent = '## 🏗️ Architecture Validation Results\n\n';
+          
+          const importLinterStatus = process.env.IMPORT_LINTER_STATUS;
+          const fitnessStatus = process.env.FITNESS_FUNCTIONS_STATUS;
+          
+          summaryContent += `| Validation Type | Status |\n`;
+          summaryContent += `|----------------|--------|\n`;
+          summaryContent += `| Import Linter | ${importLinterStatus === 'PASSED' ? '✅ PASSED' : '❌ FAILED'} |\n`;
+          summaryContent += `| Fitness Functions | ${fitnessStatus === 'PASSED' ? '✅ PASSED' : '❌ FAILED'} |\n\n`;
+          
+          summaryContent += `### Canonical Phase Sequence\n`;
+          summaryContent += `\`I→X→K→A→L→R→O→G→T→S\`\n\n`;
+          
+          if (importLinterStatus === 'FAILED' || fitnessStatus === 'FAILED') {
+            summaryContent += `⚠️ **Architecture violations detected!**\n`;
+            summaryContent += `Please review the validation reports and fix backward phase dependencies.\n\n`;
+            summaryContent += `Download the validation artifacts to see detailed violation reports.\n`;
+          } else {
+            summaryContent += `✅ All phase layering constraints are properly maintained.\n`;
+          }
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: summaryContent
+          });
