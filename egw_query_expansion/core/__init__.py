@@ -5,6 +5,14 @@ This package contains the core processing and orchestration components
 for the Entropic Gromov-Wasserstein query expansion system.
 """
 
+# Import deterministic hashing functions
+from .deterministic_hashing import (
+    hash_context,
+    hash_synthesis, 
+    hash_data_structure,
+    combine_hashes,
+    verify_hash_consistency
+)
 try:
     from .safety_controller import (
         MathEnhancementSafetyController,

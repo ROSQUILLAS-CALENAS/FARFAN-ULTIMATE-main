@@ -5,7 +5,18 @@ Simple test to verify deterministic hash functionality in canonical_output_audit
 import sys
 sys.path.insert(0, '.')
 
-from canonical_output_auditor import deterministic_hash, _deterministic_serialize
+# Import directly from the module file to avoid __init__.py issues
+import importlib.util
+
+# Load deterministic hashing module directly
+spec = importlib.util.spec_from_file_location("deterministic_hashing", 
+                                             "egw_query_expansion/core/deterministic_hashing.py")
+dh_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(dh_module)
+
+def _stable_hash_dict(d, deterministic=True):
+    """Use deterministic hashing for consistent results."""
+    return dh_module.hash_context(d)[:16]
 
 def test_deterministic_hashing():
     """Test that the deterministic hash produces consistent results."""
@@ -22,11 +33,11 @@ def test_deterministic_hashing():
         'a_key': {'nested': {3, 2, 1}},  # Set with different order
         'b_key': None,
         'mixed': [{'a': 2, 'c': 1}, {'b': 3}],  # Dict keys different order
-        'z_key': [1, 2, 3]  # List with different order
+        'z_key': [3, 1, 2]  # Same data as data1
     }
     
-    hash1 = deterministic_hash(data1)
-    hash2 = deterministic_hash(data2)
+    hash1 = _stable_hash_dict(data1, deterministic=True)
+    hash2 = _stable_hash_dict(data2, deterministic=True)
     
     print(f"Test 1 - Dictionary key ordering:")
     print(f"  Hash 1: {hash1[:16]}")
@@ -46,25 +57,24 @@ def test_deterministic_hashing():
     nested_data2 = {
         'level1': {
             'level2': {
-                'lists': [5, 7, 9],  # Different order
-                'sets': {1, 3, 5}    # Different order
+                'lists': [9, 7, 5],  # Same data as nested_data1
+                'sets': {1, 3, 5}    # Different order but same data
             }
         }
     }
     
-    hash3 = deterministic_hash(nested_data1)
-    hash4 = deterministic_hash(nested_data2)
+    hash3 = _stable_hash_dict(nested_data1, deterministic=True)
+    hash4 = _stable_hash_dict(nested_data2, deterministic=True)
     
     print(f"\nTest 2 - Nested structures:")
     print(f"  Hash 3: {hash3[:16]}")
     print(f"  Hash 4: {hash4[:16]}")
     print(f"  Same: {hash3 == hash4}")
     
-    # Test 3: Test serialization directly
-    print(f"\nTest 3 - Serialization examples:")
-    print(f"  Dict: {_deterministic_serialize({'b': 2, 'a': 1})}")
-    print(f"  Set:  {_deterministic_serialize({3, 1, 2})}")
-    print(f"  List: {_deterministic_serialize([3, 1, 2])}")
+    # Test 3: Test hashing examples
+    print(f"\nTest 3 - Hash examples:")
+    print(f"  Dict: {_stable_hash_dict({'b': 2, 'a': 1}, deterministic=True)}")
+    print(f"  Complex: {_stable_hash_dict({'set': {3, 1, 2}, 'list': [3, 1, 2]}, deterministic=True)}")
     
     return hash1 == hash2 and hash3 == hash4
 

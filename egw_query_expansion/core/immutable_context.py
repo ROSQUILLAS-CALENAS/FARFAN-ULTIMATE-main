@@ -19,11 +19,11 @@ import hashlib
 import hmac
 import json
 import uuid
-# # # from abc import ABC, abstractmethod  # Module not found  # Module not found  # Module not found
-# # # from collections.abc import Mapping  # Module not found  # Module not found  # Module not found
-# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
-# # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
-# # # from typing import Any, Dict, FrozenSet, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
+from abc import ABC, abstractmethod
+from collections.abc import Mapping
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from typing import Any, Dict, FrozenSet, List, Optional, Set, Tuple, Union
 
 # Type aliases for linear type system compliance
 LinearRef = str  # Linear reference identifier
@@ -285,14 +285,45 @@ class QuestionContext:
         return secrets.token_bytes(32)
 
     def _compute_content_hash(self) -> ContextHash:
-        """Compute deterministic content hash using hash policies"""
-        from .hash_policies import DEFAULT_CONTEXT_HASHER
+        """Compute deterministic content hash using deterministic hashing module"""
+        try:
+            # Try relative import first (when used as part of package)
+            from .deterministic_hashing import hash_context
+        except ImportError:
+            # Try using hash policies if available (upstream compatibility)
+            try:
+                from .hash_policies import DEFAULT_CONTEXT_HASHER
+                content = {
+                    "question_text": self._question_text,
+                    "context_data": dict(self._context_data),
+                }
+                return DEFAULT_CONTEXT_HASHER.policy.hash_object(content)
+            except ImportError:
+                # Fallback to direct import (when used standalone)
+                import importlib.util
+                import os
+                
+                # Load deterministic hashing module directly
+                current_dir = os.path.dirname(__file__)
+                hash_module_path = os.path.join(current_dir, 'deterministic_hashing.py')
+                if os.path.exists(hash_module_path):
+                    spec = importlib.util.spec_from_file_location("deterministic_hashing", hash_module_path)
+                    hash_module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(hash_module)
+                    hash_context = hash_module.hash_context
+                else:
+                    # Final fallback to original implementation
+                    content_json = json.dumps({
+                        "question_text": self._question_text,
+                        "context_data": dict(self._context_data),
+                    }, sort_keys=True)
+                    return hashlib.sha256(content_json.encode()).hexdigest()
         
         content = {
             "question_text": self._question_text,
             "context_data": dict(self._context_data),
         }
-        return DEFAULT_CONTEXT_HASHER.policy.hash_object(content)
+        return hash_context(content)
 
     def _compute_integrity_hmac_for_id(self, derivation_id: str) -> str:
         """Compute HMAC for integrity verification with given derivation ID"""

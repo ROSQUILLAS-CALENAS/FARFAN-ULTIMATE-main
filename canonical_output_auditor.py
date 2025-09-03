@@ -35,25 +35,50 @@ def _sorted_dict_items(d: Dict[str, Any]) -> List[Tuple[str, Any]]:
 
 
 def _stable_hash_dict(d: Dict[str, Any], deterministic: bool = False) -> str:
+    # Use the new deterministic hashing module for consistent results
     try:
-        import json
-        content = json.dumps(d, sort_keys=True, ensure_ascii=False)
-    except Exception:
-        content = str(d)
-    
-    # For deterministic mode, use a stable seed-based approach
-    if deterministic:
-        # Remove timestamp fields before hashing for deterministic behavior
-        import copy
-        clean_dict = copy.deepcopy(d)
-        if isinstance(clean_dict, dict):
-            _remove_timestamps_recursive(clean_dict)
+        import importlib.util
+        import os
+        
+        # Load deterministic hashing module directly to avoid import issues
+        hash_module_path = os.path.join(os.path.dirname(__file__), 'egw_query_expansion', 'core', 'deterministic_hashing.py')
+        if os.path.exists(hash_module_path):
+            spec = importlib.util.spec_from_file_location("deterministic_hashing", hash_module_path)
+            hash_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(hash_module)
+            
+            # For deterministic mode, remove timestamps first
+            if deterministic:
+                import copy
+                clean_dict = copy.deepcopy(d)
+                if isinstance(clean_dict, dict):
+                    _remove_timestamps_recursive(clean_dict)
+                return hash_module.hash_context(clean_dict)[:16]  # Return first 16 chars for compatibility
+            else:
+                return hash_module.hash_context(d)[:16]
+        else:
+            raise ImportError("Deterministic hashing module not found")
+    except (ImportError, Exception):
+        # Fallback to original implementation
         try:
-            content = json.dumps(clean_dict, sort_keys=True, ensure_ascii=False)
+            import json
+            content = json.dumps(d, sort_keys=True, ensure_ascii=False)
         except Exception:
-            content = str(clean_dict)
-    
-    return hashlib.sha256(content.encode("utf-8")).hexdigest()[:16]
+            content = str(d)
+        
+        # For deterministic mode, use a stable seed-based approach
+        if deterministic:
+            # Remove timestamp fields before hashing for deterministic behavior
+            import copy
+            clean_dict = copy.deepcopy(d)
+            if isinstance(clean_dict, dict):
+                _remove_timestamps_recursive(clean_dict)
+            try:
+                content = json.dumps(clean_dict, sort_keys=True, ensure_ascii=False)
+            except Exception:
+                content = str(clean_dict)
+        
+        return hashlib.sha256(content.encode("utf-8")).hexdigest()[:16]
 
 
 def _remove_timestamps_recursive(obj: Any) -> None:
