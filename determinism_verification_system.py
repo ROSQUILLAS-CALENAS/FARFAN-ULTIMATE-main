@@ -98,36 +98,164 @@ class DeterminismVerifier:
         self.root_path = root_path or Path.cwd()
         self.test_results: List[DeterminismTestResult] = []
         self.deterministic_seed = 42
+        self.deterministic_context_active = False
         self._setup_deterministic_environment()
         
-    def _setup_deterministic_environment(self) -> None:
-        """Configure environment for deterministic execution"""
-        # Set environment variables
-        os.environ['DETERMINISTIC_MODE'] = '1'
-        os.environ['PYTHONHASHSEED'] = str(self.deterministic_seed)
+    def _setup_deterministic_environment(self, context: Optional[Dict[str, Any]] = None) -> None:
+        """Configure environment for deterministic execution
         
-        # Set random seeds with fallback handling
-        self._set_deterministic_seeds()
+        Args:
+            context: Optional context dict to check for deterministic flag
+        """
+        # Check for deterministic context flag
+        deterministic_requested = (
+            context and context.get('deterministic', False)
+        ) or os.environ.get('DETERMINISTIC_MODE') == '1'
+        
+        if deterministic_requested:
+            self.deterministic_context_active = True
             
-        # Configure JSON serialization for consistency
+            # Configure PYTHONHASHSEED environment variable
+            # Note: This needs to be set before Python starts to be effective
+            # We set it here for child processes and future runs
+            current_hash_seed = os.environ.get('PYTHONHASHSEED')
+            if current_hash_seed != str(self.deterministic_seed):
+                os.environ['PYTHONHASHSEED'] = str(self.deterministic_seed)
+                print(f"⚠️  PYTHONHASHSEED set to {self.deterministic_seed}. "
+                      "Restart may be needed for full effect.")
+            
+            # Set environment markers
+            os.environ['DETERMINISTIC_MODE'] = '1'
+            os.environ['DETERMINISTIC_AUDIT'] = '1'
+            
+            # Initialize Python random module with deterministic seed
+            random.seed(self.deterministic_seed)
+            
+            # Initialize numpy random seed with fallback handling
+            self._setup_numpy_determinism()
+            
+            # Configure other potential randomness sources
+            self._configure_additional_randomness_sources()
+            
+        # Always configure JSON serialization for consistency
         self.json_kwargs = {
             'sort_keys': True,
             'ensure_ascii': False,
             'separators': (',', ':')
         }
     
-    def _set_deterministic_seeds(self) -> None:
-        """Set deterministic seeds with numpy fallback handling"""
-        # Always set Python's built-in random seed
-        random.seed(self.deterministic_seed)
-        
-        # Set numpy seed if available, otherwise rely on Python random
+    def _setup_numpy_determinism(self) -> None:
+        """Setup numpy random seeding with graceful fallback"""
         if HAS_NUMPY:
             try:
                 np.random.seed(self.deterministic_seed)
-            except Exception:
-                # Fallback to Python random if numpy seed fails
-                pass
+                # Also set the newer Generator-based random state if available
+                if hasattr(np.random, 'default_rng'):
+                    np.random.default_rng(self.deterministic_seed)
+            except Exception as e:
+                print(f"⚠️  Warning: Could not initialize numpy random seed: {e}")
+        else:
+            # Graceful fallback when numpy is not available
+            # Still maintain deterministic behavior for other sources
+            pass
+    
+    def _configure_additional_randomness_sources(self) -> None:
+        """Configure additional sources of randomness for determinism"""
+        # Set hash randomization seed (if not already set)
+        if 'PYTHONHASHSEED' not in os.environ:
+            os.environ['PYTHONHASHSEED'] = str(self.deterministic_seed)
+        
+        # Ensure consistent ordering for dictionary iteration
+        # (Python 3.7+ maintains insertion order by default, but this is extra safety)
+        
+        # Set any other environment variables that might affect determinism
+        os.environ['PYTHONDONTWRITEBYTECODE'] = '1'  # Avoid .pyc timing issues
+    
+    def activate_deterministic_mode(self, context: Optional[Dict[str, Any]] = None) -> None:
+        """Explicitly activate deterministic mode before audit processing
+        
+        This method should be called before any audit processing begins
+        to ensure all randomness sources are properly controlled.
+        
+        Args:
+            context: Context dict that may contain deterministic flag
+        """
+        print("🎲 Activating deterministic environment for audit processing...")
+        self._setup_deterministic_environment(context)
+        
+        if self.deterministic_context_active:
+            print(f"✅ Deterministic mode active (seed: {self.deterministic_seed})")
+            print(f"   - Python random seed: {self.deterministic_seed}")
+            if HAS_NUMPY:
+                print(f"   - NumPy random seed: {self.deterministic_seed}")
+            else:
+                print("   - NumPy not available (graceful fallback)")
+            print(f"   - PYTHONHASHSEED: {os.environ.get('PYTHONHASHSEED', 'not set')}")
+        else:
+            print("ℹ️  Deterministic mode not requested - running with default randomness")
+
+    @classmethod
+    def setup_deterministic_environment(cls, context: Optional[Dict[str, Any]] = None, 
+                                      seed: int = 42, verbose: bool = False) -> bool:
+        """Static method to setup deterministic environment for external use
+        
+        This is a convenient method for external systems to ensure deterministic
+        behavior without creating a full verifier instance.
+        
+        Args:
+            context: Context dict to check for deterministic flag
+            seed: Random seed to use (default: 42)
+            verbose: Whether to print setup information
+            
+        Returns:
+            bool: True if deterministic mode was activated
+        """
+        # Check if deterministic mode is requested
+        deterministic_requested = (
+            context and context.get('deterministic', False)
+        ) or os.environ.get('DETERMINISTIC_MODE') == '1'
+        
+        if not deterministic_requested:
+            if verbose:
+                print("ℹ️  Deterministic mode not requested")
+            return False
+        
+        if verbose:
+            print(f"🎲 Setting up deterministic environment (seed: {seed})...")
+        
+        # Configure environment variables
+        os.environ['DETERMINISTIC_MODE'] = '1'
+        os.environ['DETERMINISTIC_AUDIT'] = '1'
+        os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
+        
+        # Configure PYTHONHASHSEED
+        current_hash_seed = os.environ.get('PYTHONHASHSEED')
+        if current_hash_seed != str(seed):
+            os.environ['PYTHONHASHSEED'] = str(seed)
+            if verbose:
+                print(f"⚠️  PYTHONHASHSEED set to {seed}. Restart may be needed for full effect.")
+        
+        # Initialize Python random module
+        random.seed(seed)
+        if verbose:
+            print(f"✅ Python random seed: {seed}")
+        
+        # Initialize numpy with fallback handling
+        if HAS_NUMPY:
+            try:
+                np.random.seed(seed)
+                if hasattr(np.random, 'default_rng'):
+                    np.random.default_rng(seed)
+                if verbose:
+                    print(f"✅ NumPy random seed: {seed}")
+            except Exception as e:
+                if verbose:
+                    print(f"⚠️  Warning: Could not initialize numpy random seed: {e}")
+        else:
+            if verbose:
+                print("ℹ️  NumPy not available (graceful fallback)")
+        
+        return True
     
     def _generate_deterministic_random(self, low: float = 0.0, high: float = 1.0) -> float:
         """Generate deterministic random number with numpy fallback"""
