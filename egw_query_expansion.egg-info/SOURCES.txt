@@ -249,6 +249,7 @@ tests/test_conformal_risk_system.py
 tests/test_constraint_validator.py
 tests/test_contract_validation.py
 tests/test_dependency_compatibility.py
+tests/test_deterministic_canonical_audit.py
 tests/test_deterministic_retrieval.py
 tests/test_deterministic_router_simple.py
 tests/test_evidence_processor.py

@@ -1,0 +1,61 @@
+{
+  "default_grace_period_days": 30,
+  "enable_vulture": true,
+  "enable_import_linter": true,
+  "auto_delete": false,
+  "canonical_mapping": {
+    "analysis_nlp": "canonical_flow/A_analysis_nlp",
+    "retrieval_engine": "canonical_flow/R_search_retrieval",
+    "microservices": "canonical_flow/O_orchestration_control",
+    "dashboard": "canonical_flow/calibration",
+    "src/stages": "canonical_flow",
+    "scripts": "tools"
+  },
+  "excluded_patterns": [
+    "venv/*",
+    "__pycache__/*",
+    "*.pyc",
+    ".git/*",
+    "node_modules/*",
+    "*.egg-info/*",
+    ".pytest_cache/*",
+    ".idea/*",
+    ".vscode/*"
+  ],
+  "notification_emails": [
+    "dev-team@example.com"
+  ],
+  "notifications": {
+    "smtp": {
+      "host": "smtp.example.com",
+      "port": 587,
+      "use_tls": true,
+      "from": "noreply@example.com"
+    },
+    "webhook": {
+      "url": "https://hooks.slack.com/services/YOUR/WEBHOOK/URL",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "ci_integration": {
+    "fail_on_deprecated_imports": true,
+    "generate_reports": true,
+    "junit_xml_output": true
+  },
+  "scanning": {
+    "vulture_min_confidence": 60,
+    "custom_analysis_enabled": true,
+    "backup_before_deletion": true,
+    "backup_retention_days": 90
+  },
+  "directories_to_audit": [
+    "analysis_nlp",
+    "retrieval_engine", 
+    "microservices",
+    "dashboard",
+    "src/stages/K_knowledge_extraction",
+    "scripts"
+  ]
+}

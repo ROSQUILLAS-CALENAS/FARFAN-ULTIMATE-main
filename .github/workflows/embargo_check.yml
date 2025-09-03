@@ -1,0 +1,185 @@
+name: Embargo Import Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run nightly at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  embargo-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install vulture import-linter schedule
+    
+    - name: Check for embargoed imports
+      id: embargo_check
+      run: |
+        python tools/import_linter_config.py check --format json --output embargo_results.json
+      continue-on-error: true
+    
+    - name: Generate JUnit XML report
+      if: always()
+      run: |
+        python tools/import_linter_config.py check --format xml --output embargo_results.xml
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: embargo-test-results
+        path: embargo_results.xml
+    
+    - name: Publish test results
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Embargo Import Check
+        path: embargo_results.xml
+        reporter: java-junit
+    
+    - name: Run nightly scan (scheduled only)
+      if: github.event_name == 'schedule'
+      run: |
+        python tools/nightly_deletion_scanner.py scan --config tools/deletion_config.json > nightly_scan.json
+    
+    - name: Upload nightly scan results
+      if: github.event_name == 'schedule'
+      uses: actions/upload-artifact@v3
+      with:
+        name: nightly-scan-results
+        path: nightly_scan.json
+    
+    - name: Comment PR with embargo status
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          try {
+            const results = JSON.parse(fs.readFileSync('embargo_results.json', 'utf8'));
+            
+            let comment = '## 🚫 Embargo Import Check Results\n\n';
+            
+            if (results.summary.passed) {
+              comment += '✅ **All checks passed** - no embargoed imports detected\n\n';
+            } else {
+              comment += `❌ **Import violations detected!** (${results.summary.total_violations} violations)\n\n`;
+              
+              if (results.ast_checker.violations.length > 0) {
+                comment += '### AST Checker Violations:\n';
+                results.ast_checker.violations.slice(0, 10).forEach(v => {
+                  comment += `- \`${v.file}:${v.line}\` - ${v.message}\n`;
+                });
+                
+                if (results.ast_checker.violations.length > 10) {
+                  comment += `- ... and ${results.ast_checker.violations.length - 10} more violations\n`;
+                }
+                comment += '\n';
+              }
+            }
+            
+            comment += '---\n*This check enforces the controlled deletion system for non-canonical directories.*';
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+          } catch (error) {
+            console.log('Could not read results file:', error);
+          }
+    
+    - name: Fail on embargo violations
+      if: steps.embargo_check.outcome == 'failure'
+      run: |
+        echo "❌ Embargo import violations detected. Please fix before merging."
+        exit 1
+
+  safe-deletion:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    needs: embargo-check
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install vulture schedule
+    
+    - name: Run safe deletion (dry run)
+      run: |
+        python tools/nightly_deletion_scanner.py delete --dry-run --config tools/deletion_config.json > deletion_results.json
+    
+    - name: Upload deletion results
+      uses: actions/upload-artifact@v3
+      with:
+        name: deletion-results
+        path: deletion_results.json
+    
+    - name: Create issue for ready deletions
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          try {
+            const results = JSON.parse(fs.readFileSync('deletion_results.json', 'utf8'));
+            
+            if (results.deletions_attempted > 0) {
+              const title = `🗑️ Directories ready for deletion (${results.deletions_attempted})`;
+              
+              let body = '## Controlled Deletion System Report\n\n';
+              body += `**${results.deletions_attempted}** directories are ready for safe deletion.\n\n`;
+              
+              body += '### Directories ready for deletion:\n';
+              results.deleted_directories.forEach(d => {
+                body += `- \`${d.directory}\`\n`;
+              });
+              
+              body += '\n### Next Steps:\n';
+              body += '1. Review the directories listed above\n';
+              body += '2. Ensure no critical functionality will be affected\n';
+              body += '3. If approved, run the deletion command manually\n';
+              body += '4. Monitor for any issues post-deletion\n\n';
+              
+              body += '---\n*This issue was created automatically by the nightly deletion scanner.*';
+              
+              github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['automated', 'deletion', 'maintenance']
+              });
+            }
+          } catch (error) {
+            console.log('Could not process deletion results:', error);
+          }
