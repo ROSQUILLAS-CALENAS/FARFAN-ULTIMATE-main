@@ -383,6 +383,101 @@ class ImportSafety:
             alternative_names=['sklearn']
         )
     
+    def safe_import_scipy(self) -> ImportResult:
+        """Safely import SciPy with appropriate fallbacks"""
+        def scipy_fallback():
+            """Minimal SciPy-like interface for basic operations"""
+            import math
+            
+            class MockSciPy:
+                class spatial:
+                    class distance:
+                        @staticmethod
+                        def cosine(u, v):
+                            """Basic cosine distance implementation"""
+                            try:
+                                np = _import_safety.safe_import_numpy().module
+                                if np:
+                                    dot = np.dot(u, v)
+                                    norms = np.linalg.norm(u) * np.linalg.norm(v)
+                                    return 1 - (dot / norms) if norms != 0 else 0
+                                else:
+                                    # Pure Python fallback
+                                    dot = sum(a * b for a, b in zip(u, v))
+                                    norm_u = math.sqrt(sum(a * a for a in u))
+                                    norm_v = math.sqrt(sum(b * b for b in v))
+                                    return 1 - (dot / (norm_u * norm_v)) if norm_u * norm_v != 0 else 0
+                            except Exception:
+                                return 0.5  # Neutral distance
+                        
+                        @staticmethod
+                        def euclidean(u, v):
+                            """Basic euclidean distance implementation"""
+                            try:
+                                return math.sqrt(sum((a - b) ** 2 for a, b in zip(u, v)))
+                            except Exception:
+                                return float('inf')
+                
+                class optimize:
+                    class OptimizeResult:
+                        def __init__(self, x, fun, success=True, message="Fallback optimization"):
+                            self.x = x
+                            self.fun = fun
+                            self.success = success
+                            self.message = message
+                    
+                    @staticmethod
+                    def minimize(func, x0, **kwargs):
+                        """Basic optimization fallback"""
+                        return MockSciPy.optimize.OptimizeResult(x0, func(x0), False, "No SciPy available")
+                
+                class stats:
+                    @staticmethod
+                    def entropy(pk, qk=None, base=None):
+                        """Basic entropy calculation"""
+                        try:
+                            if qk is None:
+                                # Shannon entropy
+                                entropy_val = -sum(p * math.log(p) for p in pk if p > 0)
+                            else:
+                                # Cross entropy
+                                entropy_val = -sum(p * math.log(q) for p, q in zip(pk, qk) if q > 0)
+                            
+                            if base is not None:
+                                entropy_val /= math.log(base)
+                            return entropy_val
+                        except Exception:
+                            return 0.0
+                    
+                    @staticmethod
+                    def wasserstein_distance(u_values, v_values, u_weights=None, v_weights=None):
+                        """Basic Wasserstein distance approximation"""
+                        # This is a very simplified approximation
+                        try:
+                            if u_weights is None:
+                                u_weights = [1/len(u_values)] * len(u_values)
+                            if v_weights is None:
+                                v_weights = [1/len(v_values)] * len(v_values)
+                            
+                            # Sort and compute basic Earth Mover's Distance approximation
+                            u_sorted = sorted(zip(u_values, u_weights))
+                            v_sorted = sorted(zip(v_values, v_weights))
+                            
+                            # Simple approximation based on sorted values
+                            return sum(abs(u - v) * min(wu, wv) 
+                                     for (u, wu), (v, wv) in zip(u_sorted, v_sorted))
+                        except Exception:
+                            return float('inf')
+            
+            return MockSciPy()
+        
+        return self.safe_import(
+            'scipy',
+            fallback_factory=scipy_fallback,
+            attributes=['spatial', 'optimize', 'stats'],
+            min_version='1.7.0'
+        )
+    
     def safe_import_faiss(self) -> ImportResult:
         """Safely import FAISS with CPU fallback"""
         def faiss_fallback():
@@ -395,17 +490,17 @@ class ImportSafety:
                         self._vectors = []
                     
                     def add(self, vectors):
-                        import numpy as np
-                        if hasattr(vectors, 'shape'):
+                        np = _import_safety.safe_import_numpy().module
+                        if np and hasattr(vectors, 'shape'):
                             self._vectors.extend(vectors.tolist())
                             self.ntotal += len(vectors)
                     
                     def search(self, queries, k):
-                        import numpy as np
-                        if not self._vectors:
-                            return np.array([]), np.array([])
+                        np = _import_safety.safe_import_numpy().module
+                        if not np or not self._vectors:
+                            return [], []
                         
-                        # Minimal linear search
+                        # Minimal linear search using numpy if available
                         vectors = np.array(self._vectors)
                         distances = []
                         indices = []
@@ -417,6 +512,36 @@ class ImportSafety:
                             indices.append(idx)
                         
                         return np.array(distances), np.array(indices)
+                
+                class IndexFlatIP:
+                    def __init__(self, d):
+                        self.d = d
+                        self.ntotal = 0
+                        self._vectors = []
+                    
+                    def add(self, vectors):
+                        np = _import_safety.safe_import_numpy().module
+                        if np and hasattr(vectors, 'shape'):
+                            self._vectors.extend(vectors.tolist())
+                            self.ntotal += len(vectors)
+                    
+                    def search(self, queries, k):
+                        np = _import_safety.safe_import_numpy().module
+                        if not np or not self._vectors:
+                            return [], []
+                        
+                        vectors = np.array(self._vectors)
+                        scores = []
+                        indices = []
+                        
+                        for query in queries:
+                            # Inner product scores (higher is better)
+                            inner_products = np.dot(vectors, query)
+                            idx = np.argsort(inner_products)[::-1][:k]  # Descending order
+                            scores.append(inner_products[idx])
+                            indices.append(idx)
+                        
+                        return np.array(scores), np.array(indices)
             
             return MockFAISS()
         
@@ -428,10 +553,237 @@ class ImportSafety:
     
     def safe_import_transformers(self) -> ImportResult:
         """Safely import transformers library"""
+        def transformers_fallback():
+            """Minimal transformers-like interface for basic operations"""
+            class MockTransformers:
+                class AutoTokenizer:
+                    def __init__(self, model_name):
+                        self.model_name = model_name
+                        self.vocab_size = 50000  # Dummy vocab size
+                    
+                    @classmethod
+                    def from_pretrained(cls, model_name_or_path, **kwargs):
+                        return cls(model_name_or_path)
+                    
+                    def encode(self, text, **kwargs):
+                        """Basic hash-based encoding fallback"""
+                        if isinstance(text, str):
+                            # Simple hash-based token generation
+                            tokens = [hash(word) % self.vocab_size for word in text.split()]
+                            if kwargs.get('return_tensors') == 'pt':
+                                torch = _import_safety.safe_import_torch().module
+                                if torch:
+                                    return torch.tensor(tokens).unsqueeze(0)
+                            return tokens
+                        return []
+                    
+                    def decode(self, token_ids, **kwargs):
+                        """Fallback decode - returns placeholder"""
+                        return f"[DECODED_TOKENS_{len(token_ids) if hasattr(token_ids, '__len__') else 'UNKNOWN'}]"
+                    
+                    def __call__(self, text, **kwargs):
+                        """Tokenize with basic fallback"""
+                        if isinstance(text, str):
+                            tokens = text.split()
+                            encoding = {
+                                'input_ids': self.encode(text, **kwargs),
+                                'attention_mask': [1] * len(tokens)
+                            }
+                            if kwargs.get('return_tensors') == 'pt':
+                                torch = _import_safety.safe_import_torch().module
+                                if torch:
+                                    encoding = {k: torch.tensor(v).unsqueeze(0) if isinstance(v, list) else v 
+                                              for k, v in encoding.items()}
+                            return encoding
+                        return {'input_ids': [], 'attention_mask': []}
+                
+                class AutoModel:
+                    def __init__(self, config=None):
+                        self.config = config or {}
+                    
+                    @classmethod
+                    def from_pretrained(cls, model_name_or_path, **kwargs):
+                        return cls()
+                    
+                    def __call__(self, **kwargs):
+                        """Mock forward pass"""
+                        torch = _import_safety.safe_import_torch().module
+                        if torch:
+                            batch_size = 1
+                            seq_len = 512
+                            hidden_size = 768
+                            
+                            if 'input_ids' in kwargs:
+                                input_ids = kwargs['input_ids']
+                                if hasattr(input_ids, 'shape'):
+                                    batch_size, seq_len = input_ids.shape
+                            
+                            # Return mock outputs
+                            last_hidden_state = torch.randn(batch_size, seq_len, hidden_size)
+                            pooler_output = torch.randn(batch_size, hidden_size)
+                            
+                            class MockOutput:
+                                def __init__(self):
+                                    self.last_hidden_state = last_hidden_state
+                                    self.pooler_output = pooler_output
+                                    self.hidden_states = (last_hidden_state,)
+                            
+                            return MockOutput()
+                        
+                        # Non-torch fallback
+                        class MockOutput:
+                            def __init__(self):
+                                self.last_hidden_state = [[0.0] * 768] * 512
+                                self.pooler_output = [0.0] * 768
+                        
+                        return MockOutput()
+                    
+                    def eval(self):
+                        return self
+                    
+                    def to(self, device):
+                        return self
+                
+                class pipeline:
+                    def __init__(self, task, model=None, tokenizer=None, **kwargs):
+                        self.task = task
+                        self.model = model
+                        self.tokenizer = tokenizer
+                    
+                    def __call__(self, inputs, **kwargs):
+                        if self.task == "feature-extraction":
+                            if isinstance(inputs, str):
+                                # Return mock embeddings
+                                return [[0.1] * 768]  # Mock 768-dim embeddings
+                            elif isinstance(inputs, list):
+                                return [[0.1] * 768] * len(inputs)
+                        elif self.task == "text-classification":
+                            return [{"label": "POSITIVE", "score": 0.5}]
+                        elif self.task == "text-generation":
+                            return [{"generated_text": inputs + " [GENERATED]"}]
+                        return []
+            
+            return MockTransformers()
+        
         return self.safe_import(
             'transformers',
+            fallback_factory=transformers_fallback,
             attributes=['AutoModel', 'AutoTokenizer'],
             min_version='4.0.0'
+        )
+    
+    def safe_import_sentence_transformers(self) -> ImportResult:
+        """Safely import sentence-transformers library"""
+        def sentence_transformers_fallback():
+            """Minimal sentence-transformers-like interface"""
+            class MockSentenceTransformer:
+                def __init__(self, model_name_or_path='mock-model'):
+                    self.model_name = model_name_or_path
+                    self.max_seq_length = 512
+                
+                def encode(self, sentences, **kwargs):
+                    """Mock encoding that returns random vectors"""
+                    if isinstance(sentences, str):
+                        sentences = [sentences]
+                    
+                    # Mock 384-dimensional embeddings (common size)
+                    np = _import_safety.safe_import_numpy().module
+                    if np:
+                        embeddings = np.random.randn(len(sentences), 384).astype(np.float32)
+                        if kwargs.get('normalize_embeddings', False):
+                            embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+                        return embeddings
+                    else:
+                        # Pure Python fallback
+                        import random
+                        return [[random.gauss(0, 1) for _ in range(384)] for _ in sentences]
+                
+                def similarity(self, embeddings1, embeddings2):
+                    """Mock similarity computation"""
+                    np = _import_safety.safe_import_numpy().module
+                    if np:
+                        return np.dot(embeddings1, embeddings2.T)
+                    else:
+                        # Basic dot product fallback
+                        if len(embeddings1.shape) == 1:
+                            embeddings1 = [embeddings1]
+                        if len(embeddings2.shape) == 1:
+                            embeddings2 = [embeddings2]
+                        
+                        similarities = []
+                        for emb1 in embeddings1:
+                            row = []
+                            for emb2 in embeddings2:
+                                sim = sum(a * b for a, b in zip(emb1, emb2))
+                                row.append(sim)
+                            similarities.append(row)
+                        return similarities
+                
+                def get_sentence_embedding_dimension(self):
+                    return 384
+            
+            class MockSentenceTransformers:
+                SentenceTransformer = MockSentenceTransformer
+            
+            return MockSentenceTransformers()
+        
+        return self.safe_import(
+            'sentence_transformers',
+            fallback_factory=sentence_transformers_fallback,
+            attributes=['SentenceTransformer'],
+            min_version='2.0.0'
+        )
+    
+    def safe_import_pot(self) -> ImportResult:
+        """Safely import Python Optimal Transport (POT) library"""
+        def pot_fallback():
+            """Minimal POT-like interface for optimal transport"""
+            class MockPOT:
+                @staticmethod
+                def emd(a, b, M, **kwargs):
+                    """Mock Earth Mover's Distance"""
+                    np = _import_safety.safe_import_numpy().module
+                    if np:
+                        # Return identity transport plan
+                        n, m = len(a), len(b)
+                        G = np.zeros((n, m))
+                        # Simple greedy assignment
+                        for i in range(min(n, m)):
+                            G[i, i] = min(a[i], b[i])
+                        return G
+                    else:
+                        # Basic fallback
+                        return [[0.0] * len(b) for _ in range(len(a))]
+                
+                @staticmethod
+                def gromov_wasserstein(C1, C2, p, q, loss_fun='square_loss', **kwargs):
+                    """Mock Gromov-Wasserstein distance"""
+                    np = _import_safety.safe_import_numpy().module
+                    if np:
+                        n, m = len(p), len(q)
+                        # Return uniform coupling
+                        G = np.outer(p, q)
+                        return G
+                    else:
+                        return [[p[i] * q[j] for j in range(len(q))] for i in range(len(p))]
+                
+                @staticmethod
+                def entropic_gromov_wasserstein(C1, C2, p, q, loss_fun='square_loss', epsilon=0.1, **kwargs):
+                    """Mock Entropic Gromov-Wasserstein distance"""
+                    return MockPOT.gromov_wasserstein(C1, C2, p, q, loss_fun, **kwargs)
+                
+                class ot:
+                    emd = MockPOT.emd
+                    gromov_wasserstein = MockPOT.gromov_wasserstein
+                    entropic_gromov_wasserstein = MockPOT.entropic_gromov_wasserstein
+            
+            return MockPOT()
+        
+        return self.safe_import(
+            'ot',  # POT imports as 'ot'
+            fallback_factory=pot_fallback,
+            attributes=['emd', 'gromov_wasserstein'],
+            min_version='0.8.0'
         )
 
 
@@ -469,3 +821,74 @@ def import_with_fallback(fallback_value: Any = None):
                 return fallback_value
         return wrapper
     return decorator
+
+# Convenience functions for common libraries
+def safe_import_numpy(**kwargs) -> ImportResult:
+    """Safely import NumPy"""
+    return _import_safety.safe_import_numpy()
+
+def safe_import_scipy(**kwargs) -> ImportResult:
+    """Safely import SciPy"""
+    return _import_safety.safe_import_scipy()
+
+def safe_import_torch(**kwargs) -> ImportResult:
+    """Safely import PyTorch"""
+    return _import_safety.safe_import_torch()
+
+def safe_import_sklearn(**kwargs) -> ImportResult:
+    """Safely import scikit-learn"""
+    return _import_safety.safe_import_sklearn()
+
+def safe_import_faiss(**kwargs) -> ImportResult:
+    """Safely import FAISS"""
+    return _import_safety.safe_import_faiss()
+
+def safe_import_transformers(**kwargs) -> ImportResult:
+    """Safely import transformers"""
+    return _import_safety.safe_import_transformers()
+
+def safe_import_sentence_transformers(**kwargs) -> ImportResult:
+    """Safely import sentence-transformers"""
+    return _import_safety.safe_import_sentence_transformers()
+
+def safe_import_pot(**kwargs) -> ImportResult:
+    """Safely import Python Optimal Transport (POT)"""
+    return _import_safety.safe_import_pot()
+
+def check_dependencies(dependencies: List[str], verbose: bool = True) -> Dict[str, bool]:
+    """
+    Check availability of multiple dependencies at once
+    
+    Args:
+        dependencies: List of module names to check
+        verbose: Whether to print status messages
+        
+    Returns:
+        Dictionary mapping module names to availability status
+    """
+    results = {}
+    
+    for dep in dependencies:
+        result = safe_import(dep, required=False)
+        results[dep] = result.success
+        
+        if verbose:
+            status = "✓ Available" if result.success else "✗ Missing"
+            fallback_info = f" (using {result.fallback_used})" if result.fallback_used else ""
+            print(f"{dep}: {status}{fallback_info}")
+    
+    return results
+
+def log_import_summary():
+    """Log a summary of all import attempts"""
+    report = get_import_report()
+    logger = logging.getLogger(__name__)
+    
+    logger.info(f"Import Summary: {report['summary']['successful_imports']} successful, "
+               f"{report['summary']['failed_imports']} failed, "
+               f"{report['summary']['fallbacks_used']} using fallbacks")
+    
+    if report['summary']['critical_failures'] > 0:
+        logger.warning(f"Critical failures: {report['critical_failures']}")
+    
+    return report
