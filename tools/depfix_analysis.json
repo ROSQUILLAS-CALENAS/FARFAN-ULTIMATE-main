@@ -1,0 +1,122 @@
+{
+  "summary": {
+    "total_cycles": 2,
+    "total_cut_edges": 3,
+    "total_stub_interfaces": 1,
+    "total_file_splits": 5,
+    "phase_violations": 2
+  },
+  "proposals": [
+    {
+      "id": 1,
+      "cycle": [],
+      "cut_edges": [],
+      "stub_interfaces": [],
+      "file_splits": [
+        {
+          "original": "comprehensive_pipeline_orchestrator",
+          "targets": [
+            "comprehensive_pipeline_orchestrator_pdfprocessingerror.py",
+            "comprehensive_pipeline_orchestrator_pdfparsingerror.py",
+            "comprehensive_pipeline_orchestrator_pdfcriticalerror.py",
+            "comprehensive_pipeline_orchestrator_utils.py"
+          ]
+        },
+        {
+          "original": "determinism_verification_system",
+          "targets": [
+            "determinism_verification_system_determinismtestresult.py",
+            "determinism_verification_system_verificationreport.py",
+            "determinism_verification_system_determinismverifier.py",
+            "determinism_verification_system_utils.py"
+          ]
+        },
+        {
+          "original": "canonical_flow.mathematical_enhancers.aggregation_enhancer",
+          "targets": [
+            "aggregation_enhancer_probabilityspace.py",
+            "aggregation_enhancer_convergenceresult.py",
+            "aggregation_enhancer_statisticalvalidation.py",
+            "aggregation_enhancer_utils.py"
+          ]
+        },
+        {
+          "original": "tests.integration.test_ingestion_preparation_dag",
+          "targets": [
+            "test_ingestion_preparation_dag_mockingestioncomponent.py",
+            "test_ingestion_preparation_dag_ingestionpreparationdagtest.py",
+            "test_ingestion_preparation_dag_utils.py"
+          ]
+        }
+      ],
+      "phase_violations": []
+    },
+    {
+      "id": 2,
+      "cycle": [
+        "module_a",
+        "module_b",
+        "module_c"
+      ],
+      "cut_edges": [
+        {
+          "source": "module_a",
+          "target": "module_b",
+          "type": "from",
+          "line": 10,
+          "statement": "from module_b import ClassB"
+        },
+        {
+          "source": "module_b",
+          "target": "module_c",
+          "type": "from",
+          "line": 15,
+          "statement": "from module_c import ClassC"
+        },
+        {
+          "source": "module_c",
+          "target": "module_a",
+          "type": "import",
+          "line": 8,
+          "statement": "import module_a"
+        }
+      ],
+      "stub_interfaces": [
+        {
+          "module": "module_b",
+          "interface": "module_b_stub",
+          "methods": [
+            "process_data(data)",
+            "validate_input(input_data)"
+          ],
+          "properties": [
+            "status",
+            "config"
+          ],
+          "docstring": "Stub interface for module_b to break circular dependency"
+        }
+      ],
+      "file_splits": [
+        {
+          "original": "large_module.py",
+          "targets": [
+            "large_module_core.py",
+            "large_module_utils.py"
+          ]
+        }
+      ],
+      "phase_violations": [
+        {
+          "source": "module_r",
+          "target": "module_k",
+          "violation_type": "Backward dependency: R → K"
+        },
+        {
+          "source": "module_g",
+          "target": "module_l",
+          "violation_type": "Backward dependency: G → L"
+        }
+      ]
+    }
+  ]
+}
