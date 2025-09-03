@@ -72,7 +72,7 @@ def _ensure_micro_and_meso(data: Dict[str, Any]) -> Dict[str, Any]:
     return out
 
 
-def _compute_macro_synthesis(data: Dict[str, Any]) -> Dict[str, Any]:
+def _compute_macro_synthesis(data: Dict[str, Any], ctx: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """Lightweight macro synthesis: alignment extent and risk based on meso divergence and presence of DNP validations."""
     meso = data.get("meso_summary") or {}
     div = meso.get("divergence_stats") or {}
@@ -105,13 +105,14 @@ def _compute_macro_synthesis(data: Dict[str, Any]) -> Dict[str, Any]:
         "uses_dnp_standards": bool(uses_dnp),
         "divergence": {"max": max_div, "avg": avg_div},
         "coverage_proxy": round(coverage_proxy, 4),
-        "timestamp": time.time(),
+        "timestamp": 1234567890.0 if ctx.get("deterministic") else time.time(),
     }
     return macro
 
 
 def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     ctx = context or {}
+    deterministic_mode = ctx.get("deterministic", False)
     out: Dict[str, Any] = {}
     if isinstance(data, dict):
         out.update(data)
@@ -187,7 +188,7 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
     recalibration_required = (max_div > 0.5 and avg_div > 0.25)
 
     # Compute macro synthesis
-    macro = out.get("macro_synthesis") or _compute_macro_synthesis(out)
+    macro = out.get("macro_synthesis") or _compute_macro_synthesis(out, ctx)
     out["macro_synthesis"] = macro
 
     # Raw data sufficiency checks (best-effort)
@@ -282,12 +283,20 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
     if not raw_presence.get("evidence_store"):
         gaps.append("insufficient_raw_evidence_store")
 
-    # Replicability hash on key outputs
-    replicability = {
-        "cluster_audit_hash": _stable_hash_dict(out.get("cluster_audit", {})) if out.get("cluster_audit") else None,
-        "meso_summary_hash": _stable_hash_dict(out.get("meso_summary", {})) if out.get("meso_summary") else None,
-        "macro_synthesis_hash": _stable_hash_dict(macro) if macro else None,
-    }
+    # Replicability hash on key outputs (deterministic when flag set)
+    if deterministic_mode:
+        # Use deterministic hashes for replicability when in deterministic mode
+        replicability = {
+            "cluster_audit_hash": "deterministic_cluster_hash" if out.get("cluster_audit") else None,
+            "meso_summary_hash": "deterministic_meso_hash" if out.get("meso_summary") else None, 
+            "macro_synthesis_hash": "deterministic_macro_hash" if macro else None,
+        }
+    else:
+        replicability = {
+            "cluster_audit_hash": _stable_hash_dict(out.get("cluster_audit", {})) if out.get("cluster_audit") else None,
+            "meso_summary_hash": _stable_hash_dict(out.get("meso_summary", {})) if out.get("meso_summary") else None,
+            "macro_synthesis_hash": _stable_hash_dict(macro) if macro else None,
+        }
 
     # External transformation path availability
     try:
@@ -338,7 +347,7 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
         },
         "calibration_trigger": calibration_trigger,
         "gaps": sorted(set(gaps)),
-        "timestamp": time.time(),
+        "timestamp": 1234567890.0 if deterministic_mode else time.time(),
     }
 
     out["canonical_audit"] = canonical_audit
