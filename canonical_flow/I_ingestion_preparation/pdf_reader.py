@@ -9,6 +9,11 @@ Source: pdf_reader.py
 Stage: ingestion_preparation
 """
 
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "01I"
+__stage_order__ = 1
+
 import sys
 import warnings
 # # # from pathlib import Path  # Module not found  # Module not found  # Module not found

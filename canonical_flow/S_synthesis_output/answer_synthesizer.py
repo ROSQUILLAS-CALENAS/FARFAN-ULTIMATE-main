@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "S"
+__code__ = "55S"
+__stage_order__ = 10
+
 alias_source = r"answer_synthesizer.py"
 alias_stage = "synthesis_output"
 alias_code = "50S"

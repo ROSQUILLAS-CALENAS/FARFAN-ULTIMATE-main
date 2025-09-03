@@ -19,6 +19,12 @@ Notes:
 # # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 
 # Optional import for typing/Enum usage; keep robust if not available
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "L"
+__code__ = "25L"
+__stage_order__ = 5
+
 try:
 # # #     from evidence_processor import ConfidenceLevel  # Module not found  # Module not found  # Module not found
 except Exception:  # pragma: no cover

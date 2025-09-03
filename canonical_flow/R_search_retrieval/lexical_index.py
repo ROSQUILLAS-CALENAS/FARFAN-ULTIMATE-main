@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "R"
+__code__ = "45R"
+__stage_order__ = 6
+
 alias_source = r"lexical_index.py"
 alias_stage = "search_retrieval"
 alias_code = "35R"

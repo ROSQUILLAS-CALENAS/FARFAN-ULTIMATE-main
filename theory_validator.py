@@ -10,6 +10,12 @@ import json
 # # # from causal_graph import CausalGraph, CausalRelationType  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "97O"
+__stage_order__ = 7
+
 class ValidationResult(Enum):
     """Results of theory of change validation."""
     CONSISTENT = "consistent"

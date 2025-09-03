@@ -29,6 +29,12 @@ import importlib.util
 
 # Import the existing compatibility matrix
 # # # from .mathematical_compatibility_matrix import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "128O"
+__stage_order__ = 7
+
     MathematicalCompatibilityMatrix,
     PythonVersion,
     StageEnhancer,

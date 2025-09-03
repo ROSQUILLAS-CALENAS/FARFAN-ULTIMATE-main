@@ -19,6 +19,12 @@ import uuid
 # # # from pydantic import ValidationError as PydanticValidationError  # Module not found  # Module not found  # Module not found
 # # # from pydantic import field_validator  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "T"
+__code__ = "59T"
+__stage_order__ = 9
+
 logger = logging.getLogger(__name__)
 
 

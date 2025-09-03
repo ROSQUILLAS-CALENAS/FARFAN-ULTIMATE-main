@@ -37,6 +37,12 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 # Import with fallbacks for missing dependencies
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "12I"
+__stage_order__ = 1
+
 try:
     import faiss
 except ImportError:

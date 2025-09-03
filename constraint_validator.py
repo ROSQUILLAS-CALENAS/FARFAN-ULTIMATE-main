@@ -14,6 +14,12 @@ import warnings
 import numpy as np
 
 # Optional z3-solver for Horn/SMT checks
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "75O"
+__stage_order__ = 7
+
 try:
     import z3
 

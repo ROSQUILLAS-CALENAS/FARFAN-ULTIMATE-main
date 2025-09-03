@@ -17,6 +17,12 @@ import warnings
 import networkx as nx
 
 # Import total ordering base
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "13K"
+__stage_order__ = 3
+
 try:
 # # #     from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
     TOTAL_ORDERING_AVAILABLE = True

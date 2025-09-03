@@ -13,6 +13,12 @@ Design goals:
 # # # from typing import Any, Optional  # Module not found  # Module not found  # Module not found
 
 # # # # Optional imports from evidence_processor for better typing and field access  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "33A"
+__stage_order__ = 4
+
 try:
 # # #     from evidence_processor import EvidenceType, ConfidenceLevel  # Module not found  # Module not found  # Module not found
 except Exception:  # pragma: no cover - make router resilient if import path differs

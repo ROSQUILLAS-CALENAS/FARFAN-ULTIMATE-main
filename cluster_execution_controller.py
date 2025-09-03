@@ -11,6 +11,12 @@ Entry: process(data, context) -> merged dict with 'cluster_audit'.
 # # # from typing import Any, Dict, List, Tuple  # Module not found  # Module not found  # Module not found
 
 # Import evidence processor for integration
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "82O"
+__stage_order__ = 7
+
 try:
 # # #     from evidence_processor import (  # Module not found  # Module not found  # Module not found
         EvidenceProcessor,

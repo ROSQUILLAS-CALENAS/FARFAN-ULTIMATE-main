@@ -20,6 +20,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "154O"
+__stage_order__ = 7
+
 class AggregationType(Enum):
     """Supported aggregation types with deterministic behavior."""
 

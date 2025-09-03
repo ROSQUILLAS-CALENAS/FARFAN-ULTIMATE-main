@@ -13,6 +13,12 @@ import numpy as np
 # # # from embedding_generator import ChunkEmbedding, EmbeddingGenerator  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "R"
+__code__ = "37R"
+__stage_order__ = 6
+
 @dataclass
 class RetrievalResult:
     """Result of a retrieval operation."""

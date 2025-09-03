@@ -10,6 +10,12 @@ This removes previous syntax/formatting issues and keeps the project executable.
 
 # Delegate to the maintained orchestrator implementation
 # # # from pipeline_orchestrator import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "96O"
+__stage_order__ = 7
+
     PipelineOrchestrator as _PipelineOrchestrator,
     ConfigurationValidator as _ConfigurationValidator,
     main as _main,

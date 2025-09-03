@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "92O"
+__stage_order__ = 7
+
 """
 Self-contained web server for serving canonical flow analysis results.
 Integrates directly with existing project analysis orchestrator.

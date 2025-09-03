@@ -11,6 +11,12 @@ import json
 import logging
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "121O"
+__stage_order__ = 7
+
 @dataclass
 class DataUpdate:
 # # #     """Represents a single data update from the backend."""  # Module not found  # Module not found  # Module not found

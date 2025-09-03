@@ -23,6 +23,12 @@ import os
 # # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 # Optional NLP dependencies with fallbacks
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "25K"
+__stage_order__ = 3
+
 try:
     import spacy
     SPACY_AVAILABLE = True

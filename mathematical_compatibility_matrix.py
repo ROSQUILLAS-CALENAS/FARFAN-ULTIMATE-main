@@ -17,6 +17,12 @@ import importlib.util
 # # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "72O"
+__stage_order__ = 7
+
 class ConflictSeverity(Enum):
     """Severity levels for package conflicts"""
     CRITICAL = "critical"

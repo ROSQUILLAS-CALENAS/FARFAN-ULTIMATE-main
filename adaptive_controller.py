@@ -16,6 +16,12 @@ import ray
 # # # from .decision_engine import ScalingAction, ScalingDecision  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "101O"
+__stage_order__ = 7
+
 class RayWorkerPool:
     """Ray-based worker pool management with dynamic scaling"""
 

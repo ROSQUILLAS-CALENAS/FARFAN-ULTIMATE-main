@@ -28,6 +28,12 @@ import logging
 # # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "150O"
+__stage_order__ = 7
+
 class EnhancementStatus(Enum):
     """Status of mathematical enhancements"""
     DISABLED = "disabled"

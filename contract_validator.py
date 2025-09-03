@@ -16,6 +16,12 @@ import jsonschema
 import yaml
 # # # from pydantic import BaseModel, Field, ValidationError  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "86O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

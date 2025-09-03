@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "142O"
+__stage_order__ = 7
+
 alias_source = r"circuit_breaker.py"
 alias_stage = "orchestration_control"
 alias_code = "42O"

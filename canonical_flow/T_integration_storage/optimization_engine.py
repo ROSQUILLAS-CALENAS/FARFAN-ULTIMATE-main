@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "T"
+__code__ = "63T"
+__stage_order__ = 9
+
 alias_source = r"optimization_engine.py"
 alias_stage = "integration_storage"
 alias_code = "57T"

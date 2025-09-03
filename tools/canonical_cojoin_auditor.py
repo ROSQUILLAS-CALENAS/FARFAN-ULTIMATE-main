@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "112O"
+__stage_order__ = 7
+
 """
 Canonical Co-Join Auditor
 - Exhaustive repo-wide search to recover canonical pipeline nodes scattered outside canonical_flow/

@@ -30,6 +30,12 @@ import warnings
 import numpy as np
 # # # from scipy import stats  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "L"
+__code__ = "33L"
+__stage_order__ = 5
+
 logger = logging.getLogger(__name__)
 
 # Try to import centralized configuration

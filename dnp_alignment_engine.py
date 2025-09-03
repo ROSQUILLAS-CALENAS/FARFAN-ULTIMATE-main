@@ -1,4 +1,10 @@
 # src/core/dnp_alignment_engine.py
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "14K"
+__stage_order__ = 3
+
 """
 DNP Alignment Engine - Sistema de Alineación y Validación con Estándares DNP
 

@@ -8,6 +8,12 @@ import re
 # # # from typing import Any, Dict, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "61O"
+__stage_order__ = 7
+
 class MetadataExtractor:
     """Extractor de metadatos de documentos PDT"""
 

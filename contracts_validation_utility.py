@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "51O"
+__stage_order__ = 7
+
 """
 Contracts Validation Utility
 Automatically verifies all contract imports resolve to their intended canonical modules.

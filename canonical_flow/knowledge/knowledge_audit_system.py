@@ -19,6 +19,12 @@ import os
 import threading
 
 # Try to import psutil, fallback to basic monitoring if not available
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "30K"
+__stage_order__ = 3
+
 try:
     import psutil
     PSUTIL_AVAILABLE = True

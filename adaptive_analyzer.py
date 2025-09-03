@@ -1,5 +1,11 @@
 """
 """
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "24A"
+__stage_order__ = 4
+
 Analizador adaptativo que ajusta el comportamiento del sistema
 en tiempo real basado en métricas y machine learning
 """

@@ -15,6 +15,12 @@ import warnings
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Component metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "15I"
+__stage_order__ = 1
+
 source_module = r"advanced_loader.py"
 stage = "ingestion_preparation"
 component_id = "02I"

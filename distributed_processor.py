@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "69O"
+__stage_order__ = 7
+
 """
 Distributed Processing System for EGW Query Expansion Pipeline
 

@@ -8,6 +8,12 @@ import inspect
 import importlib.util
 import logging
 # # # from datetime import datetime  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "67O"
+__stage_order__ = 7
+
 try:
 # # #     from deterministic_flow_risk_guard import DeterministicFlowRiskGuard  # Module not found  # Module not found  # Module not found
 except Exception:  # safety if optional

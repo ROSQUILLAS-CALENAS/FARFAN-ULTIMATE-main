@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "44A"
+__stage_order__ = 4
+
 """
 Project Structure Analyzer
 Analyzes a software project to identify modules, dependencies, missing connections,

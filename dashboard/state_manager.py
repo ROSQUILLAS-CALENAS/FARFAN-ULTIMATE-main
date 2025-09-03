@@ -13,6 +13,12 @@ import logging
 # # # from .transitions import TransitionContext  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "120O"
+__stage_order__ = 7
+
 class StateManager:
     """High-level state management orchestrator for dashboard operations."""
     

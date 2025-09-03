@@ -26,6 +26,12 @@ import numpy as np
 import pandas as pd
 import torch
 # Optional sklearn with fallback for TF-IDF
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "06I"
+__stage_order__ = 1
+
 try:
 # # #     from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:

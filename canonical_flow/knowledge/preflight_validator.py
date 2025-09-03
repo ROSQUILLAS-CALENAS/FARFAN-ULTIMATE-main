@@ -26,6 +26,12 @@ import sys
 import hashlib
 
 # Configure logging
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "147O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

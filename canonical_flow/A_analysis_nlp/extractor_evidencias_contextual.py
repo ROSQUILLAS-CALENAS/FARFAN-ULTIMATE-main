@@ -19,6 +19,12 @@ import sys
 # # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Import total ordering base
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "38A"
+__stage_order__ = 4
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 # # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 

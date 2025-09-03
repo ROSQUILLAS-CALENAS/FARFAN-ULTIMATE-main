@@ -14,6 +14,12 @@ import warnings
 # # # from datetime import datetime, timezone  # Module not found  # Module not found  # Module not found
 
 # # # from models import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "64O"
+__stage_order__ = 7
+
     WorkflowDefinition, WorkflowExecution, WorkflowStep, WorkflowStatus, 
     StepStatus, EventType, Event
 )

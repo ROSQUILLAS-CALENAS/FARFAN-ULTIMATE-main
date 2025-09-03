@@ -18,6 +18,12 @@ import sys
 # # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
 # Import total ordering base
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "27K"
+__stage_order__ = 3
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 # # # from total_ordering_base import TotalOrderingBase, DeterministicCollectionMixin  # Module not found  # Module not found  # Module not found
 

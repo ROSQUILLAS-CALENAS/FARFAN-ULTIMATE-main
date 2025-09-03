@@ -10,6 +10,12 @@ import threading
 import math
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "119O"
+__stage_order__ = 7
+
 @dataclass
 class RadialMenuConfig:
     """Configuration for radial menu position and state."""

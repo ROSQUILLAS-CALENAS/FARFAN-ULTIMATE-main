@@ -20,6 +20,12 @@ import time
 # # # from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "X"
+__code__ = "08X"
+__stage_order__ = 2
+
 try:
 # # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:

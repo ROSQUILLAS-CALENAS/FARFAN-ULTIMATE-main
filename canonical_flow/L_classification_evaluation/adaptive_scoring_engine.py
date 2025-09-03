@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "L"
+__code__ = "32L"
+__stage_order__ = 5
+
 alias_source = r"adaptive_scoring_engine.py"
 alias_stage = "classification_evaluation"
 alias_code = "21L"

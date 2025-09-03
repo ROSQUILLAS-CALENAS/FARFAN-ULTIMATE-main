@@ -13,6 +13,12 @@ import logging
 # # # from enum import Enum  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "122O"
+__stage_order__ = 7
+
 class TransitionState(Enum):
     """States for UI transitions."""
     IDLE = "idle"

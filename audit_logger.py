@@ -16,6 +16,12 @@ import traceback
 # # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
 # # # from enum import Enum  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "G"
+__code__ = "55G"
+__stage_order__ = 8
+
 logger = logging.getLogger(__name__)
 
 

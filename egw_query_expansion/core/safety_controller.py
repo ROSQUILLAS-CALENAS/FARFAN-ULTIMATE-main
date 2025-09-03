@@ -28,6 +28,12 @@ import warnings
 # # # from functools import wraps  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "155O"
+__stage_order__ = 7
+
 class EnhancementStatus(Enum):
     """Status of mathematical enhancements"""
     DISABLED = "disabled"

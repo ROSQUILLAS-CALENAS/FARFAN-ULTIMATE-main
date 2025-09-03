@@ -26,6 +26,12 @@ from datetime import datetime, timezone
 from typing import Any, Dict, FrozenSet, List, Optional, Set, Tuple, Union
 
 # Type aliases for linear type system compliance
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "X"
+__code__ = "12X"
+__stage_order__ = 2
+
 LinearRef = str  # Linear reference identifier
 DerivationId = str  # Unique derivation identifier
 ContextHash = str  # Content-based hash for integrity

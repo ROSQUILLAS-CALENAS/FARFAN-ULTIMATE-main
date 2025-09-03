@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "115O"
+__stage_order__ = 7
+
 """
 Demo script showing integration of standardized schema contracts
 with classification and scoring components.

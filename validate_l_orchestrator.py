@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "54O"
+__stage_order__ = 7
+
 """
 Validation script for L-Classification Stage Orchestrator
 Tests all major functionality including deterministic behavior

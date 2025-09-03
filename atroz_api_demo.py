@@ -10,6 +10,12 @@ import time
 # # # from flask import Flask, jsonify, render_template  # Module not found  # Module not found  # Module not found
 # # # from typing import Dict, List, Any  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "99O"
+__stage_order__ = 7
+
 app = Flask(__name__)
 
 class AtroZDataGenerator:

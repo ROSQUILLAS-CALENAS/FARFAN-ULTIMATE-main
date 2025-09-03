@@ -11,6 +11,12 @@
 
 # # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
 # # # from typing import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "L"
+__code__ = "34L"
+__stage_order__ = 5
+
     Any,
     Callable,
     Dict,

@@ -15,6 +15,12 @@ import warnings
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Component metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "13I"
+__stage_order__ = 1
+
 source_module = r"normative_validator.py"
 stage = "ingestion_preparation"
 component_id = "04I"

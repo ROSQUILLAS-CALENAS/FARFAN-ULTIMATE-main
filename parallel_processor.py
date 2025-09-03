@@ -16,6 +16,12 @@ import time
 # # # from typing import Any, Callable, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 # Advanced serialization with fallback logic
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "58O"
+__stage_order__ = 7
+
 class SerializationManager:
     """Manages serialization with fallback logic across multiple backends."""
     

@@ -12,6 +12,12 @@ import hashlib
 # # # from collections import defaultdict, deque  # Module not found  # Module not found  # Module not found
 
 # Optional external service clients (guarded imports)
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "83O"
+__stage_order__ = 7
+
 try:
     import etcd3  # type: ignore
 except Exception:  # pragma: no cover - optional dependency

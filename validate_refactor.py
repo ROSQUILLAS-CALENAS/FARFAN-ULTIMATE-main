@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "89O"
+__stage_order__ = 7
+
 """
 Validation script for PDFReader refactoring
 Tests the structure without requiring external dependencies

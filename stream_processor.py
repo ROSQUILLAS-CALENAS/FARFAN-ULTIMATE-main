@@ -12,6 +12,12 @@ import time
 # # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
 # # # from typing import Any, Callable, Dict, List, Optional, Set  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "81O"
+__stage_order__ = 7
+
 try:
 # # #     from kafka import KafkaConsumer, KafkaProducer  # Module not found  # Module not found  # Module not found
 # # #     from kafka.errors import KafkaError  # Module not found  # Module not found  # Module not found

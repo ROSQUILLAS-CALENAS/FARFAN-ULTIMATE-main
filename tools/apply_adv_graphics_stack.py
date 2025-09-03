@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "19K"
+__stage_order__ = 3
+
 """
 Appends an innovative "Advanced Graphics Stack" section with Mermaid diagrams to all README-like files,
 if not already present.

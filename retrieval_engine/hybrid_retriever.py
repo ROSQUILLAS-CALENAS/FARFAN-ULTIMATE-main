@@ -20,6 +20,12 @@ import os
 
 import numpy as np
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "R"
+__code__ = "40R"
+__stage_order__ = 6
+
 try:
 # # #     from config_loader import get_thresholds  # Module not found  # Module not found  # Module not found
     THRESHOLDS_AVAILABLE = True

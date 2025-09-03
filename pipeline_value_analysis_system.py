@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "29A"
+__stage_order__ = 4
+
 """
 Pipeline Value Analysis System
 

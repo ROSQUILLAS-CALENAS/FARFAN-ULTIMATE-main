@@ -14,6 +14,12 @@ import re
 import logging
 # # # from collections import defaultdict  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "68O"
+__stage_order__ = 7
+
 class QueryGenerator:
     """
     Pattern-based query generator with EGW-guided expansion.

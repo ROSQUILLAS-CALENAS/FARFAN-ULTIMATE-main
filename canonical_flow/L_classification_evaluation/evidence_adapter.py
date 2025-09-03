@@ -11,6 +11,12 @@ import logging
 # # # from decimal import Decimal  # Module not found  # Module not found  # Module not found
 # # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "L"
+__code__ = "31L"
+__stage_order__ = 5
+
 logger = logging.getLogger(__name__)
 
 

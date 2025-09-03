@@ -21,6 +21,12 @@ import jsonschema
 # # # from jsonschema import validate  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "116O"
+__stage_order__ = 7
+
 class ValidationResult(BaseModel):
     """Result of validation check"""
     passed: bool

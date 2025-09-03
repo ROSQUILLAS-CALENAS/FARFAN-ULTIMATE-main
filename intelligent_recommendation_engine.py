@@ -12,6 +12,12 @@ import json
 # # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 
 # # # from models import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "80O"
+__stage_order__ = 7
+
     AdaptiveScoringResults, IntelligentRecommendations, RecommendationItem,
     PDTContext, ComplianceStatus
 )

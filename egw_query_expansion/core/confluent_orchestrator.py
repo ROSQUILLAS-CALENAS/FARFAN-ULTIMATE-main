@@ -25,6 +25,12 @@ import weakref
 
 # ∞-Operadic Framework for Homotopy Coherent Pipeline Composition
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "152O"
+__stage_order__ = 7
+
 @dataclass(frozen=True)
 class OperadOperation:
     """Operation in the ∞-operad representing pipeline stage composition"""

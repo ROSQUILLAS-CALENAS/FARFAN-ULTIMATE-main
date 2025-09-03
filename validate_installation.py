@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "98O"
+__stage_order__ = 7
+
 """
 Validation script for EGW Query Expansion installation with comprehensive pre-installation checks
 """

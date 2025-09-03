@@ -11,6 +11,12 @@ import orjson
 # # # from google.cloud import bigquery, pubsub_v1, storage  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "105O"
+__stage_order__ = 7
+
 class GCPIOManager:
     """Manejador de operaciones I/O con GCP"""
 

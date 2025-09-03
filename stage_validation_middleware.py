@@ -27,6 +27,12 @@ import time
 
 
 # Configure logging
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "94O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

@@ -33,6 +33,12 @@ import itertools
 # Import the base meso aggregator
 import meso_aggregator
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "G"
+__code__ = "58G"
+__stage_order__ = 8
+
 logger = logging.getLogger(__name__)
 
 @dataclass

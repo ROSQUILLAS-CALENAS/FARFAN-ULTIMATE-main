@@ -13,6 +13,12 @@ import consul
 import etcd3
 # # # from kubernetes import client, config, watch  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "108O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

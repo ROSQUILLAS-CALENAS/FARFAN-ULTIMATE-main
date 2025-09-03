@@ -12,6 +12,12 @@ import json
 
 
 # ----- Data structures used by the analyzer -----
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "35A"
+__stage_order__ = 4
+
 @dataclass
 class DataFlowAnomaly:
     flow_id: str

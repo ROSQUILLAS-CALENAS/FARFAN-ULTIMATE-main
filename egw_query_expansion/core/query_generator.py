@@ -6,6 +6,12 @@ Enhanced implementation for EGW Query Expansion system
 # # # from .import_safety import safe_import  # Module not found  # Module not found  # Module not found
 
 # Safe imports for dependencies
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "151O"
+__stage_order__ = 7
+
 numpy_result = safe_import('numpy', required=False)
 torch_result = safe_import('torch', required=False)
 sklearn_result = safe_import('sklearn', required=False)

@@ -17,6 +17,12 @@ import sys
 
 # Import gate validation system
 # # # from .gate_validation_system import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "17I"
+__stage_order__ = 1
+
     IngestionPipelineGatekeeper,
     ComponentState, 
     GateStatus

@@ -20,6 +20,12 @@ import threading
 # # # from .provenance_tracker import ProvenanceTracker  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "117O"
+__stage_order__ = 7
+
 class OrchestrationMode(Enum):
     """Orchestration operation modes"""
     AUTOMATIC = "automatic"

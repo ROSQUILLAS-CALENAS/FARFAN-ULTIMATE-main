@@ -19,6 +19,12 @@ import pytesseract
 # # # from google.cloud import storage  # Module not found  # Module not found  # Module not found
 # # # from PIL import Image  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "90O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

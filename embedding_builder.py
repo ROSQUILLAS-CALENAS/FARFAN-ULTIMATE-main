@@ -21,6 +21,12 @@ import numpy as np
 # # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 # Optional sklearn cosine_similarity for analysis (used in a small section); provide fallback
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "18K"
+__stage_order__ = 3
+
 try:
 # # #     from sklearn.metrics.pairwise import cosine_similarity  # type: ignore  # Module not found  # Module not found  # Module not found
 except Exception:

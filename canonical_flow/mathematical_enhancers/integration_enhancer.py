@@ -40,6 +40,12 @@ import scipy.optimize as opt
 # # # from scipy.spatial.distance import jensenshannon  # Module not found  # Module not found  # Module not found
 # # # from sklearn.metrics import mean_squared_error  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "127O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

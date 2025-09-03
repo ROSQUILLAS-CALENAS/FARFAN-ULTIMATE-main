@@ -24,6 +24,12 @@ import redis
 # # # from prometheus_client import Counter, Histogram, Gauge  # Module not found  # Module not found  # Module not found
 
 # # # from models import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "95O"
+__stage_order__ = 7
+
     Event, EventType, WorkflowDefinition, ProcessingContext,
     SystemHealthMetrics, WorkflowStatus, ProcessDefinition
 )

@@ -22,6 +22,12 @@ import sys
 
 # # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "09I"
+__stage_order__ = 1
+
 ADV_DIR_NAME = "Nueva carpeta con elementos"
 
 

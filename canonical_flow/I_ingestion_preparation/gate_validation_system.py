@@ -30,6 +30,12 @@ import time
 # # # from typing import Any, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 # Import LibraryStatusReporter for pre-flight validation
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "11I"
+__stage_order__ = 1
+
 try:
 # # #     from ..mathematical_enhancers.mathematical_compatibility_matrix import (  # Module not found  # Module not found  # Module not found
         LibraryStatusReporter, MathematicalCompatibilityMatrix

@@ -14,6 +14,12 @@ import logging
 import traceback
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "21K"
+__stage_order__ = 3
+
 class ComponentStatus(Enum):
     """Component execution status."""
     SUCCESS = "success"

@@ -13,6 +13,12 @@ import numpy as np
 # # # from collections import defaultdict, Counter  # Module not found  # Module not found  # Module not found
 
 # # # from normative_validator import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "T"
+__code__ = "60T"
+__stage_order__ = 9
+
     NormativeValidationResult, 
     ValidationFinding, 
     ComplianceStatus,

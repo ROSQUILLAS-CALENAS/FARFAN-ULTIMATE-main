@@ -14,6 +14,12 @@ import os
 # # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "21A"
+__stage_order__ = 4
+
 try:
 # # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:

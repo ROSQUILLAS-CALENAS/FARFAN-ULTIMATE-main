@@ -16,6 +16,12 @@ import pickle
 import numpy as np
 import pandas as pd
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "L"
+__code__ = "26L"
+__stage_order__ = 5
+
 try:
 # # #     from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor  # Module not found  # Module not found  # Module not found
 # # #     from sklearn.feature_selection import SelectKBest, f_regression  # Module not found  # Module not found  # Module not found

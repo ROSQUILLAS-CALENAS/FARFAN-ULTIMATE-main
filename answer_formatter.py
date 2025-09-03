@@ -18,6 +18,12 @@ import json
 # # # from uuid import uuid4  # Module not found  # Module not found  # Module not found
 
 # # # # Import from existing modules  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "S"
+__code__ = "52S"
+__stage_order__ = 10
+
 try:
 # # #     from evidence_processor import (  # Module not found  # Module not found  # Module not found
         ConfidenceLevel,

@@ -18,6 +18,12 @@ import cv2
 import numpy as np
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "110O"
+__stage_order__ = 7
+
 class TableExtractor:
     """Extractor de tablas con sistema de fallback inteligente"""
     

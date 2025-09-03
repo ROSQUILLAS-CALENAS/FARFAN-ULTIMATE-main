@@ -14,6 +14,12 @@ import sys
 # # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 # # # from typing import Any, Dict, List, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "34A"
+__stage_order__ = 4
+
 logger = logging.getLogger(__name__)
 
 

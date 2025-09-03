@@ -13,6 +13,12 @@ import uuid
 # # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 import re
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "G"
+__code__ = "57G"
+__stage_order__ = 8
+
 try:
 # # #     from data_models import ScoreResult  # Module not found  # Module not found  # Module not found
 # # #     from evidence_processor import EvidenceChunk  # Module not found  # Module not found  # Module not found

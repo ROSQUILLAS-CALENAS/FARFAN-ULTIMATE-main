@@ -16,6 +16,12 @@ import os
 # # # from typing import Any, Dict, List, Optional, Set  # Module not found  # Module not found  # Module not found
 # # # from enum import Enum  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "124O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

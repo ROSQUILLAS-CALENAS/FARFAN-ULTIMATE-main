@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "59O"
+__stage_order__ = 7
+
 """
 Minimal Contract Scanner - Quick analysis of process() method signatures
 """

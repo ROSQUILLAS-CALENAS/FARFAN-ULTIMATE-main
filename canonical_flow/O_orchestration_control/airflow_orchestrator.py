@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "130O"
+__stage_order__ = 7
+
 alias_source = r"airflow_orchestrator.py"
 alias_stage = "orchestration_control"
 alias_code = "41O"

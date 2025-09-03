@@ -7,6 +7,11 @@ Stage: analysis_nlp
 Code: 13A
 """
 
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "13A"
+__stage_order__ = 4
+
 import asyncio
 import json
 import logging

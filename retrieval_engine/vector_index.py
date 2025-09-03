@@ -12,6 +12,12 @@ import pickle
 # # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 # # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "R"
+__code__ = "38R"
+__stage_order__ = 6
+
 try:
     import numpy as np
     HAS_NUMPY = True

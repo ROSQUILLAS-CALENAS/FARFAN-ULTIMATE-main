@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "28K"
+__stage_order__ = 3
+
 alias_source = r"embedding_generator.py"
 alias_stage = "knowledge_extraction"
 alias_code = "12K"

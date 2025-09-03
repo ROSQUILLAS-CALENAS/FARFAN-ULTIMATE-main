@@ -21,6 +21,12 @@ import math
 # # # from .import_safety import safe_import  # Module not found  # Module not found  # Module not found
 
 # Safe imports with fallbacks
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "149O"
+__stage_order__ = 7
+
 numpy_result = safe_import('numpy', attributes=['array', 'linalg'])
 HAS_NUMPY = numpy_result.success
 

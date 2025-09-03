@@ -14,6 +14,12 @@ import numpy as np
 # # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 # # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "17K"
+__stage_order__ = 3
+
 try:
 # # #     from traceability import TraceabilityManager, NodeType, ProcessingMetadata  # Module not found  # Module not found  # Module not found
 # # #     from document_processor import DocumentChunk  # Module not found  # Module not found  # Module not found

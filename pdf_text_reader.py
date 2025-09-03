@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "87O"
+__stage_order__ = 7
+
 """
 Canonical Flow Component: CF-INGEST-PDF-TEXT
 Minimal PDF text reader - text extraction only (no OCR)

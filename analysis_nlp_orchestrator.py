@@ -17,6 +17,12 @@ import sys
 
 # Import all analysis_nlp components
 # # # from canonical_flow.A_analysis_nlp import (  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "25A"
+__stage_order__ = 4
+
     AdaptiveAnalyzer,
     QuestionAnalyzer,
     QuestionDecalogoMapper,

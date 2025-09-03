@@ -7,6 +7,12 @@ Validador de integridad documental para PDTs
 # # # from models import SectionBlock, SectionType, QualityIndicators  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "50O"
+__stage_order__ = 7
+
 class ValidationResult(Enum):
     """Resultados de validación"""
     PASSED = "passed"

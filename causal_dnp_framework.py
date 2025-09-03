@@ -19,6 +19,12 @@ import numpy as np
 # # # from scipy.spatial.distance import wasserstein_distance  # Module not found  # Module not found  # Module not found
 
 # JSON Schema validation
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "15K"
+__stage_order__ = 3
+
 try:
     import jsonschema
     JSONSCHEMA_AVAILABLE = True

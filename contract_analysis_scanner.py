@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "32A"
+__stage_order__ = 4
+
 """
 Contract Analysis Scanner
 Analyzes process(data, context) method signatures across canonical pipeline components

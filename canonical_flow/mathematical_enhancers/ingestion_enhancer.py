@@ -26,6 +26,12 @@ import scipy.optimize
 import random
 import itertools
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "10I"
+__stage_order__ = 1
+
 try:
 # # #     from models import SectionBlock, Citation  # Module not found  # Module not found  # Module not found
 except ImportError:

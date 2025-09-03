@@ -27,6 +27,12 @@ import time
 # # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
 # Dependencies avanzadas para el stack moderno
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "07I"
+__stage_order__ = 1
+
 try:
     import numpy as np
 # # #     from fuzzywuzzy import fuzz  # Module not found  # Module not found  # Module not found

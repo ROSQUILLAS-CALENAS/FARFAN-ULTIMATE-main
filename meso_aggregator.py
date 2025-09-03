@@ -33,6 +33,12 @@ import numpy as np
 # # # from itertools import combinations  # Module not found  # Module not found  # Module not found
 
 # Development Plan Components enum values
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "G"
+__code__ = "54G"
+__stage_order__ = 8
+
 DEVELOPMENT_PLAN_COMPONENTS = [
     "OBJECTIVES",
     "STRATEGIES",

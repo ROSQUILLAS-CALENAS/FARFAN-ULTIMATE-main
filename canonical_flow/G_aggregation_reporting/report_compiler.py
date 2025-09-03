@@ -20,6 +20,12 @@ import uuid
 # # # from json_canonicalizer import JSONCanonicalizer  # Module not found  # Module not found  # Module not found
 
 # Configure logging
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "G"
+__code__ = "60G"
+__stage_order__ = 8
+
 logger = logging.getLogger(__name__)
 
 

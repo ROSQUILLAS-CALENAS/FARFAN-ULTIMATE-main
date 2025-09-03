@@ -11,6 +11,12 @@ import logging
 # # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
 
 # Optional heavy dependencies (guarded)
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "78O"
+__stage_order__ = 7
+
 try:
     import numpy as np  # type: ignore
     HAS_NUMPY = True

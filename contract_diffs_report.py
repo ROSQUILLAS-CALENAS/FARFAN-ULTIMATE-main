@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "G"
+__code__ = "56G"
+__stage_order__ = 8
+
 """
 Generate CONTRACT DIFFS Report based on grep analysis of process() signatures
 """

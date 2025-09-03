@@ -14,6 +14,12 @@ import hashlib
 import time
 
 # Best-effort imports of optional modules; auditor degrades gracefully
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "S"
+__code__ = "53S"
+__stage_order__ = 10
+
 try:
     import cluster_execution_controller  # type: ignore
 except Exception:

@@ -19,6 +19,12 @@ import time
 import threading
 import hashlib
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "106O"
+__stage_order__ = 7
+
 try:
     import psutil
     PSUTIL_AVAILABLE = True

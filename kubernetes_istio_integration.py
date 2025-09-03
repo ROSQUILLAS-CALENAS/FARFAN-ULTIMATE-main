@@ -19,6 +19,12 @@ import yaml
 # # # from kubernetes.client.rest import ApiException  # Module not found  # Module not found  # Module not found
 # # # from prometheus_client import Counter, Gauge, Histogram  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "100O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

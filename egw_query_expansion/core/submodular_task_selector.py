@@ -17,6 +17,12 @@ import logging
 # # # from typing import Any, Dict, List, Optional, Set, Tuple, Union  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "153O"
+__stage_order__ = 7
+
 @dataclass(frozen=True)
 class Task:
     """Task representation with immutable properties.

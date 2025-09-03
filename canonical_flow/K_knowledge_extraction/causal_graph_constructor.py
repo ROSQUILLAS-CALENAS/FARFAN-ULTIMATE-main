@@ -22,6 +22,12 @@ import networkx as nx
 
 # # # # Import TotalOrderingBase from project root  # Module not found  # Module not found  # Module not found
 import sys
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "20K"
+__stage_order__ = 3
+
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 # # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 

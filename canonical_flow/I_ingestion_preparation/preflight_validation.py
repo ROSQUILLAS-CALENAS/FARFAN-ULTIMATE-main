@@ -27,6 +27,12 @@ import traceback
 import warnings
 
 # Configure logging to suppress warnings during validation
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "16I"
+__stage_order__ = 1
+
 logging.getLogger().setLevel(logging.ERROR)
 warnings.filterwarnings("ignore", category=UserWarning)
 

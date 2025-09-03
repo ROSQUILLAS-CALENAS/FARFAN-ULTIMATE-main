@@ -18,6 +18,12 @@ import numpy as np
 # # # from pydantic import BaseModel  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "118O"
+__stage_order__ = 7
+
 class DeactivationTriggerType(Enum):
     """Types of deactivation triggers"""
     STABILITY_DRIFT = "stability_drift"

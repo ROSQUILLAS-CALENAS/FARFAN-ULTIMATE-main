@@ -21,6 +21,12 @@ import pdfplumber
 # # # from pdf_processing_error_handler import PDFErrorHandler, process_pdf_batch_with_error_handling  # Module not found  # Module not found  # Module not found
 # # # from total_ordering_base import TotalOrderingBase  # Module not found  # Module not found  # Module not found
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "05I"
+__stage_order__ = 1
+
 logger = logging.getLogger(__name__)
 
 

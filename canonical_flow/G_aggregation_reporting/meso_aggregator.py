@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "G"
+__code__ = "59G"
+__stage_order__ = 8
+
 """
 Meso Aggregator for Evidence Analysis
 Stage: G_aggregation_reporting

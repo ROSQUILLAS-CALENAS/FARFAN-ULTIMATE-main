@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "60O"
+__stage_order__ = 7
+
 """
 Validador para el archivo de rúbrica YAML.
 Verifica consistencia de pesos, completitud y compatibilidad con ConjunctiveModel.

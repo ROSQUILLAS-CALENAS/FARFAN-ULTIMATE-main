@@ -10,6 +10,12 @@ import re
 # # # from json_canonicalizer import JSONCanonicalizer  # Module not found  # Module not found  # Module not found
 
 # Optional heavy deps (guarded imports)
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "I"
+__code__ = "08I"
+__stage_order__ = 1
+
 try:
     import textstat
     TEXTSTAT_AVAILABLE = True

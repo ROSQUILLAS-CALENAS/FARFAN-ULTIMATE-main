@@ -12,6 +12,12 @@ import logging
 import json
 # # # from collections import defaultdict, deque  # Module not found  # Module not found  # Module not found
 # Optional dependencies (guarded)
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "63O"
+__stage_order__ = 7
+
 try:
     import networkx as nx  # type: ignore
     HAS_NETWORKX = True

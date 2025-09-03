@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "22A"
+__stage_order__ = 4
+
 """
 Dependency Analysis Module for Pipeline Components
 

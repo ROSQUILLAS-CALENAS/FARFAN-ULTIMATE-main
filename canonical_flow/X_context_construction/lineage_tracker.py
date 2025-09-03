@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "X"
+__code__ = "11X"
+__stage_order__ = 2
+
 alias_source = r"lineage_tracker.py"
 alias_stage = "context_construction"
 alias_code = "07X"

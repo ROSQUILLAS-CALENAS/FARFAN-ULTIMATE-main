@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "157O"
+__stage_order__ = 7
+
 """
 CLI troubleshooting tool for EGW Query Expansion installation.
 

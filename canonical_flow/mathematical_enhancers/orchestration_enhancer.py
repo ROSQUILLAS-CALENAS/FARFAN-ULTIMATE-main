@@ -23,6 +23,12 @@ import time
 # # # from datetime import datetime  # Module not found  # Module not found  # Module not found
 # # # from enum import Enum  # Module not found  # Module not found  # Module not found
 # # # from typing import Dict, List, Optional, Tuple, Any, Callable  # Module not found  # Module not found  # Module not found
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "129O"
+__stage_order__ = 7
+
 try:
     import numpy as np
 # # #     from scipy.optimize import minimize_scalar  # Module not found  # Module not found  # Module not found

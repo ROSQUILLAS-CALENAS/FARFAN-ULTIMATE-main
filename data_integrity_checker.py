@@ -18,6 +18,12 @@ import logging
 import traceback
 import random
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "73O"
+__stage_order__ = 7
+
 logger = logging.getLogger(__name__)
 
 

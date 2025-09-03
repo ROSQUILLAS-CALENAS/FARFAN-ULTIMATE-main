@@ -20,6 +20,12 @@ import os
 # # # from collections import OrderedDict  # Module not found  # Module not found  # Module not found
 
 # Optional imports with graceful fallbacks
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "28A"
+__stage_order__ = 4
+
 try:
     import networkx as nx
 except ImportError:

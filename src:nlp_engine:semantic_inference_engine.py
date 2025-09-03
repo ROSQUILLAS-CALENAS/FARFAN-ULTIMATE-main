@@ -1,5 +1,11 @@
 ### FILE: src/nlp_engine/semantic_inference_engine.py
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "30A"
+__stage_order__ = 4
+
 """
 semantic_inference_engine.py - Central Orchestrator for Hypersophisticated RAG Pipeline
 

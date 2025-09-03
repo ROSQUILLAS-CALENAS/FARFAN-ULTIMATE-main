@@ -14,6 +14,12 @@ import sys
 # # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
 
 # Alias metadata
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "R"
+__code__ = "50R"
+__stage_order__ = 6
+
 alias_source = r"retrieval_engine/hybrid_retriever.py"
 alias_stage = "search_retrieval"
 alias_code = "30R"

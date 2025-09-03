@@ -25,6 +25,12 @@ import threading
 # # # from concurrent.futures import ThreadPoolExecutor, as_completed  # Module not found  # Module not found  # Module not found
 
 # Optional imports with fallbacks
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "23K"
+__stage_order__ = 3
+
 try:
     import spacy
     SPACY_AVAILABLE = True

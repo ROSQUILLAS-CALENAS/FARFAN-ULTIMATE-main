@@ -24,6 +24,12 @@ This adapter avoids hard crashes and logs errors while keeping the pipeline flow
 # # # from __future__ import annotations  # Module not found  # Module not found  # Module not found
 
 # Import audit logger for execution tracing
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "K"
+__code__ = "16K"
+__stage_order__ = 3
+
 try:
 # # #     from canonical_flow.analysis.audit_logger import get_audit_logger  # Module not found  # Module not found  # Module not found
 except ImportError:

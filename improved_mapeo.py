@@ -1,4 +1,10 @@
 # src/core/question_decalogo_mapper.py
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "A"
+__code__ = "27A"
+__stage_order__ = 4
+
 """
 Mapeo completo de preguntas de evaluación PDT con puntos del Decálogo DDHH
 y eslabones de la cadena de valor del DNP - IMPLEMENTACIÓN EJECUTABLE MEJORADA

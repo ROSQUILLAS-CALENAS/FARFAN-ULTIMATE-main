@@ -25,3 +25,12 @@ repos:
     hooks:
       - id: pytest
         additional_dependencies: []
+  - repo: local
+    hooks:
+      - id: pipeline-component-annotations
+        name: Validate Pipeline Component Annotations
+        entry: python3 scripts/pre_commit_hook.py
+        language: system
+        files: \.py$
+        exclude: ^(test_.*|.*test\.py|__init__\.py)$
+        pass_filenames: false

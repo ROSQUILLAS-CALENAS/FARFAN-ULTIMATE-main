@@ -3,6 +3,12 @@
 
 # UNIVERSAL PROCESS ADAPTER
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "O"
+__code__ = "76O"
+__stage_order__ = 7
+
 class UniversalProcessAdapter:
     """Universal adapter for process() method signature standardization"""
     

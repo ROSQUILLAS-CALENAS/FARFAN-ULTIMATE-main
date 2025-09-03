@@ -12,6 +12,12 @@ import tempfile
 # # # from stage_orchestrator import LClassificationStageOrchestrator, process  # Module not found  # Module not found  # Module not found
 
 
+
+# Mandatory Pipeline Contract Annotations
+__phase__ = "L"
+__code__ = "29L"
+__stage_order__ = 5
+
 def create_sample_data():
     """Create sample classification input data for demonstration"""
     sample_data = {
