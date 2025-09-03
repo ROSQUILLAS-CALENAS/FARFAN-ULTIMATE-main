@@ -22,14 +22,19 @@ Alias metadata:
 - alias_code: 05I
 """
 
+# Phase metadata annotations for canonical naming convention
+__phase__ = "I_ingestion_preparation"
+__code__ = "05I" 
+__stage_order__ = 5
+
 import hashlib
 import json
 import logging
 import os
 import random
 import struct
-# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
-# # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 # Import with fallbacks for missing dependencies
 try:
@@ -53,12 +58,12 @@ except ImportError:
     torch = None
     
 try:
-# # #     from sklearn.feature_extraction.text import TfidfVectorizer  # Module not found  # Module not found  # Module not found
+    from sklearn.feature_extraction.text import TfidfVectorizer
 except ImportError:
     TfidfVectorizer = None
     
 try:
-# # #     from transformers import AutoModel, AutoTokenizer  # Module not found  # Module not found  # Module not found
+    from transformers import AutoModel, AutoTokenizer
 except ImportError:
     AutoModel = None
     AutoTokenizer = None
@@ -74,9 +79,9 @@ class HashStableRandom:
     """Hash-stable random number generator for deterministic artifacts."""
     
     def __init__(self, seed_data: Union[str, bytes, int]):
-# # #         """Initialize with deterministic seed from input data."""  # Module not found  # Module not found  # Module not found
+        """Initialize with deterministic seed from input data."""
         if isinstance(seed_data, (str, bytes)):
-# # #             # Create deterministic seed from hash of input data  # Module not found  # Module not found  # Module not found
+            # Create deterministic seed from hash of input data
             hash_digest = hashlib.sha256(
                 seed_data.encode() if isinstance(seed_data, str) else seed_data
             ).digest()
@@ -106,7 +111,7 @@ class HashStableRandom:
 
 
 class DeterministicFeatureGenerator:
-# # #     """Generates deterministic feature matrices from text data."""  # Module not found  # Module not found  # Module not found
+    """Generates deterministic feature matrices from text data."""
     
     def __init__(self, seed_data: Union[str, bytes]):
         self.hasher = HashStableRandom(seed_data)
@@ -888,7 +893,7 @@ def process(data=None, context=None) -> Dict[str, Any]:
     """
     # Import ArtifactManager locally to avoid circular imports
     try:
-# # #         from canonical_flow.ingestion import ArtifactManager  # Module not found  # Module not found  # Module not found
+        from canonical_flow.ingestion import ArtifactManager
     except ImportError:
         return {"error": "ArtifactManager not available"}
     
