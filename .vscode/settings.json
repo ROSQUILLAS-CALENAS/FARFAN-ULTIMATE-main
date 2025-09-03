@@ -1,7 +1,0 @@
-{
-    "python.testing.pytestArgs": [
-        "canonical_flow"
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
-}
