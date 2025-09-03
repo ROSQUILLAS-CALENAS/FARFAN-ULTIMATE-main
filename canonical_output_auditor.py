@@ -9,12 +9,9 @@ Usage: process(data: Dict[str, Any], context: Optional[Dict[str, Any]] = None) -
 """
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Set, Union, Tuple
+from typing import Any, Dict, List, Optional, Set
 import hashlib
 import time
-import json
-import glob
-import os
 
 # Best-effort imports of optional modules; auditor degrades gracefully
 try:
@@ -32,104 +29,54 @@ REQUIRED_CLUSTERS_LABEL = ("C1", "C2", "C3", "C4")
 REQUIRED_CLUSTERS_NUM = (1, 2, 3, 4)
 
 
-def _deterministic_serialize(obj: Any) -> str:
-    """Recursively serialize any object with deterministic ordering."""
-    if obj is None:
-        return "null"
-    elif isinstance(obj, bool):
-        return "true" if obj else "false"
-    elif isinstance(obj, (int, float)):
-        return str(obj)
-    elif isinstance(obj, str):
-        return json.dumps(obj, ensure_ascii=False)
-    elif isinstance(obj, (list, tuple)):
-        # Sort lists only if they contain hashable types for stability
-        try:
-            # Try to sort if all elements are comparable
-            sorted_obj = sorted(obj, key=lambda x: (type(x).__name__, x))
-            items = [_deterministic_serialize(item) for item in sorted_obj]
-        except (TypeError, AttributeError):
-            # If not sortable, serialize in original order
-            items = [_deterministic_serialize(item) for item in obj]
-        return "[" + ",".join(items) + "]"
-    elif isinstance(obj, set):
-        # Convert sets to sorted lists
-        try:
-            sorted_items = sorted(obj, key=lambda x: (type(x).__name__, x))
-        except (TypeError, AttributeError):
-            sorted_items = sorted(obj, key=str)
-        return _deterministic_serialize(sorted_items)
-    elif isinstance(obj, dict):
-        # Recursively sort dictionary keys
-        sorted_items = []
-        for key in sorted(obj.keys()):
-            key_str = _deterministic_serialize(key)
-            value_str = _deterministic_serialize(obj[key])
-            sorted_items.append(f"{key_str}:{value_str}")
-        return "{" + ",".join(sorted_items) + "}"
-    else:
-        # Fallback for other types
-        return json.dumps(str(obj), ensure_ascii=False)
-
-
-def deterministic_hash(obj: Any) -> str:
-    """Generate a deterministic hash for any object using stable serialization."""
-    serialized = _deterministic_serialize(obj)
-    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
-
-
-def _deterministic_file_key(filepath: str) -> Tuple[str, float]:
-    """Deterministic comparison key for file sorting with tie-breaking."""
-    try:
-        stat = os.stat(filepath)
-        return (filepath, stat.st_mtime)
-    except (OSError, AttributeError):
-        return (filepath, 0.0)
-
-
-def _sorted_glob(pattern: str) -> List[str]:
-    """Stable sorted glob operation for file iteration."""
-    return sorted(glob.glob(pattern), key=_deterministic_file_key)
-
-
 def _sorted_dict_items(d: Dict[str, Any]) -> List[Tuple[str, Any]]:
     """Stable sorted dictionary items for deterministic iteration."""
     return sorted(d.items(), key=lambda x: x[0])
 
 
-def _sorted_dict_keys(d: Dict[str, Any]) -> List[str]:
-    """Stable sorted dictionary keys for deterministic iteration."""
-    return sorted(d.keys())
+def _stable_hash_dict(d: Dict[str, Any], deterministic: bool = False) -> str:
+    try:
+        import json
+        content = json.dumps(d, sort_keys=True, ensure_ascii=False)
+    except Exception:
+        content = str(d)
+    
+    # For deterministic mode, use a stable seed-based approach
+    if deterministic:
+        # Remove timestamp fields before hashing for deterministic behavior
+        import copy
+        clean_dict = copy.deepcopy(d)
+        if isinstance(clean_dict, dict):
+            _remove_timestamps_recursive(clean_dict)
+        try:
+            content = json.dumps(clean_dict, sort_keys=True, ensure_ascii=False)
+        except Exception:
+            content = str(clean_dict)
+    
+    return hashlib.sha256(content.encode("utf-8")).hexdigest()[:16]
 
 
-def _sorted_dict_values_by_key(d: Dict[str, Any]) -> List[Any]:
-    """Stable sorted dictionary values ordered by their keys."""
-    return [d[k] for k in sorted(d.keys())]
-
-
-def _ordered_set(items) -> List[str]:
-    """Convert set operations to ordered list with lexicographic sorting."""
-    if isinstance(items, set):
-        return sorted(list(items))
-    elif hasattr(items, '__iter__') and not isinstance(items, str):
-        return sorted(list(set(items)))
-    return [items]
-
-
-def _stable_hash_dict(d: Dict[str, Any]) -> str:
-    """Legacy function, now uses deterministic_hash for consistency."""
-    return deterministic_hash(d)[:16]
+def _remove_timestamps_recursive(obj: Any) -> None:
+    """Remove timestamp fields recursively for deterministic hashing."""
+    if isinstance(obj, dict):
+        if 'timestamp' in obj:
+            del obj['timestamp']
+        for value in obj.values():
+            _remove_timestamps_recursive(value)
+    elif isinstance(obj, list):
+        for item in obj:
+            _remove_timestamps_recursive(item)
 
 
 def _collect_evidence_ids_from_answers(answers: List[Dict[str, Any]]) -> Set[str]:
     eids: Set[str] = set()
-    for a in sorted(answers or [], key=lambda x: str(x.get('question_id', '') if isinstance(x, dict) else '')):
+    for a in answers or []:
         if not isinstance(a, dict):
             continue
-        for key in sorted(("evidence_ids", "citations")):
+        for key in ("evidence_ids", "citations"):
             vals = a.get(key) or []
             if isinstance(vals, list):
-                for v in sorted(vals, key=str) if vals else []:
+                for v in vals:
                     if isinstance(v, str):
                         eids.add(v)
     return eids
@@ -155,7 +102,7 @@ def _ensure_micro_and_meso(data: Dict[str, Any]) -> Dict[str, Any]:
     return out
 
 
-def _compute_macro_synthesis(data: Dict[str, Any], ctx: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+def _compute_macro_synthesis(data: Dict[str, Any], deterministic: bool = False) -> Dict[str, Any]:
     """Lightweight macro synthesis: alignment extent and risk based on meso divergence and presence of DNP validations."""
     meso = data.get("meso_summary") or {}
     div = meso.get("divergence_stats") or {}
@@ -165,7 +112,7 @@ def _compute_macro_synthesis(data: Dict[str, Any], ctx: Optional[Dict[str, Any]]
     # Evidence coverage proxy
     total_items = int(div.get("count", 0))
     evidence_total = 0
-    items = _sorted_dict_values_by_key(meso.get("items") or {})
+    items = (meso.get("items") or {}).values()
     for slot in items:
         evidence_total += int(slot.get("evidence_coverage", 0))
     coverage_proxy = float(evidence_total) / max(1, total_items)
@@ -183,18 +130,24 @@ def _compute_macro_synthesis(data: Dict[str, Any], ctx: Optional[Dict[str, Any]]
     # Simple alignment score combining low divergence and coverage
     alignment_score = max(0.0, 1.0 - min(1.0, (max_div + avg_div) / 2.0)) * (0.5 + 0.5 * min(1.0, coverage_proxy))
 
+    # Use deterministic timestamp if requested, otherwise current time
+    timestamp = 1640995200.0 if deterministic else time.time()
+
     macro = {
         "alignment_score": round(alignment_score, 4),
         "uses_dnp_standards": bool(uses_dnp),
         "divergence": {"max": max_div, "avg": avg_div},
         "coverage_proxy": round(coverage_proxy, 4),
-        "timestamp": 1234567890.0 if ctx and ctx.get("deterministic") else time.time(),
+        "timestamp": timestamp,
     }
     return macro
 
 
 def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     ctx = context or {}
+    # Check for deterministic flag with backward compatibility
+    deterministic = ctx.get('deterministic', False)
+    
     out: Dict[str, Any] = {}
     if isinstance(data, dict):
         out.update(data)
@@ -271,7 +224,7 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
     recalibration_required = (max_div > 0.5 and avg_div > 0.25)
 
     # Compute macro synthesis
-    macro = out.get("macro_synthesis") or _compute_macro_synthesis(out)
+    macro = out.get("macro_synthesis") or _compute_macro_synthesis(out, deterministic=deterministic)
     out["macro_synthesis"] = macro
 
     # Raw data sufficiency checks (best-effort)
@@ -327,17 +280,27 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
     # Walk micro answers and resolve evidence ids
     if isinstance(cluster_audit, dict):
         micro = cluster_audit.get("micro") or {}
-        for c, payload in _sorted_dict_items(micro or {}):
+        # Sort cluster keys for deterministic ordering
+        cluster_items = sorted(micro.items()) if deterministic else micro.items()
+        
+        for c, payload in cluster_items:
             answers = payload.get("answers") or []
             unresolved_count = 0
             checked = 0
-            for a in sorted(answers, key=lambda x: str(x.get("question_id", "") or x.get("question", "") if isinstance(x, dict) else "")):
+            # Sort answers for deterministic processing if deterministic mode is enabled
+            if deterministic and isinstance(answers, list):
+                answers = sorted(answers, key=lambda x: str(x.get("question_id", "") or x.get("question", "")))
+            
+            for a in answers:
                 if not isinstance(a, dict):
                     continue
                 qid = str(a.get("question_id") or a.get("question") or "")
                 eids = a.get("evidence_ids") or []
                 if isinstance(eids, list):
-                    for eid in sorted(eids, key=str):
+                    # Sort evidence IDs for deterministic processing
+                    if deterministic:
+                        eids = sorted(eids)
+                    for eid in eids:
                         if isinstance(eid, str):
                             checked += 1
                             universe = evidence_index_by_qid.get(qid) or set()
@@ -351,6 +314,14 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
 
     if unresolved_evidence:
         gaps.append("unresolved_evidence_ids")
+    
+    # Sort unresolved evidence for deterministic ordering
+    if deterministic:
+        unresolved_evidence.sort()
+    
+    # Sort unresolved evidence for deterministic ordering
+    if deterministic:
+        unresolved_evidence.sort()
 
     # Compute additional gaps based on presence of reporting levels and raw sufficiency
     if not out.get("cluster_audit"):
@@ -368,9 +339,9 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
 
     # Replicability hash on key outputs
     replicability = {
-        "cluster_audit_hash": _stable_hash_dict(out.get("cluster_audit", {})) if out.get("cluster_audit") else None,
-        "meso_summary_hash": _stable_hash_dict(out.get("meso_summary", {})) if out.get("meso_summary") else None,
-        "macro_synthesis_hash": _stable_hash_dict(macro) if macro else None,
+        "cluster_audit_hash": _stable_hash_dict(out.get("cluster_audit", {}), deterministic=deterministic) if out.get("cluster_audit") else None,
+        "meso_summary_hash": _stable_hash_dict(out.get("meso_summary", {}), deterministic=deterministic) if out.get("meso_summary") else None,
+        "macro_synthesis_hash": _stable_hash_dict(macro, deterministic=deterministic) if macro else None,
     }
 
     # External transformation path availability
@@ -411,8 +382,8 @@ def process(data: Any, context: Optional[Dict[str, Any]] = None) -> Dict[str, An
             "unresolved_sample": unresolved_evidence[:10],
         },
         "calibration_trigger": calibration_trigger,
-        "gaps": _ordered_set(gaps),
-        "timestamp": time.time(),
+        "gaps": sorted(set(gaps)),
+        "timestamp": 1640995200.0 if deterministic else time.time(),
     }
 
     out["canonical_audit"] = canonical_audit
