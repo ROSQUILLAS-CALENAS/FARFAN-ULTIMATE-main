@@ -48,10 +48,26 @@
     "original_path": "Advanced Knowledge Graph Builder Component for Semantic Inference Engine.py"
   },
   {
+    "code": "08X",
+    "stage": "context_construction",
+    "alias_path": "canonical_flow/X_context_construction/08x_context_construction_component.py",
+    "original_path": "08x_context_construction_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
+  },
+  {
     "code": "09K",
     "stage": "knowledge_extraction",
     "alias_path": "canonical_flow/K_knowledge_extraction/09K_causal_graph.py",
     "original_path": "causal_graph.py"
+  },
+  {
+    "code": "09X",
+    "stage": "context_construction",
+    "alias_path": "canonical_flow/X_context_construction/09x_context_construction_component.py",
+    "original_path": "09x_context_construction_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
   },
   {
     "code": "10K",
@@ -60,16 +76,40 @@
     "original_path": "causal_dnp_framework.py"
   },
   {
+    "code": "10X",
+    "stage": "context_construction",
+    "alias_path": "canonical_flow/X_context_construction/10x_context_construction_component.py",
+    "original_path": "10x_context_construction_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
+  },
+  {
     "code": "11K",
     "stage": "knowledge_extraction",
     "alias_path": "canonical_flow/K_knowledge_extraction/11K_embedding_builder.py",
     "original_path": "embedding_builder.py"
   },
   {
+    "code": "11X",
+    "stage": "context_construction",
+    "alias_path": "canonical_flow/X_context_construction/11x_context_construction_component.py",
+    "original_path": "11x_context_construction_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
+  },
+  {
     "code": "12K",
     "stage": "knowledge_extraction",
     "alias_path": "canonical_flow/K_knowledge_extraction/12K_embedding_generator.py",
     "original_path": "embedding_generator.py"
+  },
+  {
+    "code": "12X",
+    "stage": "context_construction",
+    "alias_path": "canonical_flow/X_context_construction/12x_context_construction_component.py",
+    "original_path": "12x_context_construction_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
   },
   {
     "code": "13A",
@@ -312,10 +352,34 @@
     "original_path": "report_compiler.py"
   },
   {
+    "code": "52S",
+    "stage": "synthesis_output",
+    "alias_path": "canonical_flow/S_synthesis_output/52s_synthesis_output_component.py",
+    "original_path": "52s_synthesis_output_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
+  },
+  {
     "code": "53G",
     "stage": "aggregation_reporting",
     "alias_path": "canonical_flow/G_aggregation_reporting/53G_meso_aggregator.py",
     "original_path": "meso_aggregator.py"
+  },
+  {
+    "code": "53S",
+    "stage": "synthesis_output",
+    "alias_path": "canonical_flow/S_synthesis_output/53s_synthesis_output_component.py",
+    "original_path": "53s_synthesis_output_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
+  },
+  {
+    "code": "54S",
+    "stage": "synthesis_output",
+    "alias_path": "canonical_flow/S_synthesis_output/54s_synthesis_output_component.py",
+    "original_path": "54s_synthesis_output_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
   },
   {
     "code": "54T",
@@ -324,16 +388,40 @@
     "original_path": "metrics_collector.py"
   },
   {
+    "code": "55S",
+    "stage": "synthesis_output",
+    "alias_path": "canonical_flow/S_synthesis_output/55s_synthesis_output_component.py",
+    "original_path": "55s_synthesis_output_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
+  },
+  {
     "code": "55T",
     "stage": "integration_storage",
     "alias_path": "canonical_flow/T_integration_storage/55T_analytics_enhancement.py",
     "original_path": "analytics_enhancement.py"
   },
   {
+    "code": "56S",
+    "stage": "synthesis_output",
+    "alias_path": "canonical_flow/S_synthesis_output/56s_synthesis_output_component.py",
+    "original_path": "56s_synthesis_output_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
+  },
+  {
     "code": "56T",
     "stage": "integration_storage",
     "alias_path": "canonical_flow/T_integration_storage/56T_feedback_loop.py",
     "original_path": "feedback_loop.py"
+  },
+  {
+    "code": "57S",
+    "stage": "synthesis_output",
+    "alias_path": "canonical_flow/S_synthesis_output/57s_synthesis_output_component.py",
+    "original_path": "57s_synthesis_output_component.py",
+    "generated": true,
+    "scaffolded_by": "scaffold_canonical.py"
   },
   {
     "code": "57T",
