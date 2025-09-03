@@ -111,9 +111,63 @@ dev = [
     "pre-commit>=3.6.0",
 ]
 
+# Phase-based architecture import linting
 [tool.import-linter]
-root_package = "canonical_flow"
+root_package = "."
 
+[[tool.import-linter.contracts]]
+name = "Phase Isolation Contract"
+type = "independence"
+modules = [
+    "phases.I",
+    "phases.X", 
+    "phases.K",
+    "phases.A",
+    "phases.L",
+    "phases.R",
+    "phases.O",
+    "phases.G",
+    "phases.T",
+    "phases.S"
+]
+
+[[tool.import-linter.contracts]]
+name = "Phase API Enforcement"
+type = "forbidden"
+source_modules = [
+    "phases.I",
+    "phases.X",
+    "phases.K", 
+    "phases.A",
+    "phases.L",
+    "phases.R",
+    "phases.O",
+    "phases.G",
+    "phases.T",
+    "phases.S"
+]
+forbidden_modules = [
+    "canonical_flow.I_ingestion_preparation.pdf_reader",
+    "canonical_flow.I_ingestion_preparation.advanced_loader",
+    "canonical_flow.I_ingestion_preparation.feature_extractor",
+    "canonical_flow.X_context_construction.context_adapter",
+    "canonical_flow.X_context_construction.lineage_tracker",
+    "canonical_flow.K_knowledge_extraction.*", 
+    "canonical_flow.A_analysis_nlp.*",
+    "canonical_flow.L_classification_evaluation.*",
+    "canonical_flow.R_search_retrieval.*",
+    "canonical_flow.O_orchestration_control.*",
+    "canonical_flow.G_aggregation_reporting.*",
+    "canonical_flow.T_integration_storage.*",
+    "canonical_flow.S_synthesis_output.*"
+]
+unmatched_ignore_imports = [
+    "canonical_flow.*.ingestion_orchestrator",
+    "canonical_flow.*.orchestrator",
+    "canonical_flow.*.*_orchestrator"
+]
+
+# Canonical flow phase layer enforcement
 [[tool.import-linter.contracts]]
 name = "Phase Layer Enforcement: Ingestion → Context Construction"
 type = "forbidden"
@@ -240,6 +294,38 @@ forbidden_modules = [
     "canonical_flow.T_integration_storage",
 ]
 
+[[tool.import-linter.contracts]]
+name = "No Cross-Phase Direct Imports"
+type = "forbidden"
+source_modules = [
+    "phases.*"
+]
+forbidden_modules = [
+    "phases.I.internal",
+    "phases.X.internal",
+    "phases.K.internal",
+    "phases.A.internal", 
+    "phases.L.internal",
+    "phases.R.internal",
+    "phases.O.internal",
+    "phases.G.internal",
+    "phases.T.internal",
+    "phases.S.internal"
+]
+
+[[tool.import-linter.contracts]]
+name = "Canonical Flow Backward Compatibility"
+type = "forbidden"
+source_modules = [
+    "canonical_flow.*"
+]
+forbidden_modules = [
+    "phases.*"
+]
+ignore_imports = [
+    "phases -> canonical_flow.*"
+]
+
 [tool.black]
 line-length = 88
 target-version = ['py39']
@@ -262,7 +348,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["canonical_flow", "egw_query_expansion"]
+known_first_party = ["canonical_flow", "egw_query_expansion", "phases"]
 
 [tool.mypy]
 python_version = "3.9"
