@@ -1,0 +1,15 @@
+# Requirements for the Controlled Deletion System
+
+# Dead code detection
+vulture>=2.9
+import-linter>=1.10.0
+
+# Already included in main requirements.txt:
+# - pathlib (standard library)
+# - ast (standard library) 
+# - json (standard library)
+# - datetime (standard library)
+# - subprocess (standard library)
+# - shutil (standard library)
+# - hashlib (standard library)
+# - logging (standard library)
