@@ -1,0 +1,179 @@
+name: Strict Static Analysis CI
+
+on:
+  push:
+    branches: [ main, develop, feature/* ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  static-analysis:
+    name: Static Analysis Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    
+    strategy:
+      matrix:
+        python-version: [3.9, "3.10", "3.11"]
+      fail-fast: false
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        
+    - name: Create virtual environment
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+        echo "$VIRTUAL_ENV/bin" >> $GITHUB_PATH
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install mypy ruff black isort pytest pytest-cov
+        pip install types-requests types-PyYAML types-setuptools types-redis
+        
+    - name: Create analysis reports directory
+      run: mkdir -p analysis_reports
+        
+    - name: Run MyPy with strict type checking
+      id: mypy
+      run: |
+        echo "::group::MyPy Type Checking"
+        mypy --strict --config-file mypy.ini --show-error-codes \
+             --junit-xml analysis_reports/mypy-results.xml \
+             --html-report analysis_reports/mypy-html \
+             --txt-report analysis_reports/mypy-txt \
+             egw_query_expansion/ || echo "MYPY_FAILED=true" >> $GITHUB_ENV
+        echo "::endgroup::"
+        
+    - name: Run Ruff with strict settings
+      id: ruff
+      run: |
+        echo "::group::Ruff Linting"
+        ruff check --config pyproject.toml --output-format=github \
+             --output-file analysis_reports/ruff-results.txt egw_query_expansion/ || echo "RUFF_FAILED=true" >> $GITHUB_ENV
+        echo "::endgroup::"
+        
+    - name: Check for star imports
+      id: star_imports
+      run: |
+        echo "::group::Star Import Detection"
+        python scripts/check_star_imports.py egw_query_expansion/**/*.py > analysis_reports/star-imports.txt || echo "STAR_IMPORTS_FAILED=true" >> $GITHUB_ENV
+        echo "::endgroup::"
+        
+    - name: Check for circular imports
+      id: circular_imports  
+      run: |
+        echo "::group::Circular Import Detection"
+        python scripts/check_circular_imports.py egw_query_expansion/**/*.py > analysis_reports/circular-imports.txt || echo "CIRCULAR_IMPORTS_FAILED=true" >> $GITHUB_ENV
+        echo "::endgroup::"
+        
+    - name: Validate type checking imports
+      id: type_imports
+      run: |
+        echo "::group::Type Import Validation"
+        python scripts/validate_type_imports.py egw_query_expansion/**/*.py > analysis_reports/type-imports.txt || echo "TYPE_IMPORTS_FAILED=true" >> $GITHUB_ENV
+        echo "::endgroup::"
+        
+    - name: Import organization check
+      id: import_order
+      run: |
+        echo "::group::Import Organization"
+        ruff check --select I --config pyproject.toml \
+             --output-format=github egw_query_expansion/ > analysis_reports/import-order.txt || echo "IMPORT_ORDER_FAILED=true" >> $GITHUB_ENV
+        echo "::endgroup::"
+        
+    - name: Generate comprehensive analysis report
+      run: |
+        echo "::group::Analysis Summary"
+        python scripts/generate_analysis_report.py \
+               --mypy-results analysis_reports/mypy-txt/index.txt \
+               --ruff-results analysis_reports/ruff-results.txt \
+               --star-imports analysis_reports/star-imports.txt \
+               --circular-imports analysis_reports/circular-imports.txt \
+               --type-imports analysis_reports/type-imports.txt \
+               --import-order analysis_reports/import-order.txt \
+               --output analysis_reports/comprehensive-analysis.md
+        echo "::endgroup::"
+        
+    - name: Upload analysis artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: static-analysis-py${{ matrix.python-version }}
+        path: analysis_reports/
+        retention-days: 30
+        
+    - name: Comment PR with analysis results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          try {
+            const report = fs.readFileSync('analysis_reports/comprehensive-analysis.md', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## Static Analysis Report (Python ${{ matrix.python-version }})\n\n${report}`
+            });
+          } catch (error) {
+            console.log('Could not read analysis report:', error);
+          }
+          
+    - name: Fail build on violations
+      run: |
+        FAILED=false
+        
+        if [ "$MYPY_FAILED" = "true" ]; then
+          echo "❌ MyPy type checking failed"
+          FAILED=true
+        fi
+        
+        if [ "$RUFF_FAILED" = "true" ]; then
+          echo "❌ Ruff linting failed"
+          FAILED=true
+        fi
+        
+        if [ "$STAR_IMPORTS_FAILED" = "true" ]; then
+          echo "❌ Star imports detected"
+          FAILED=true
+        fi
+        
+        if [ "$CIRCULAR_IMPORTS_FAILED" = "true" ]; then
+          echo "❌ Circular imports detected"
+          FAILED=true
+        fi
+        
+        if [ "$TYPE_IMPORTS_FAILED" = "true" ]; then
+          echo "❌ Type import violations detected"
+          FAILED=true
+        fi
+        
+        if [ "$IMPORT_ORDER_FAILED" = "true" ]; then
+          echo "❌ Import order violations detected"
+          FAILED=true
+        fi
+        
+        if [ "$FAILED" = "true" ]; then
+          echo ""
+          echo "🚨 BUILD FAILED: Static analysis violations detected"
+          echo "Please review the analysis reports and fix all violations before merging."
+          echo "Check the uploaded artifacts for detailed remediation suggestions."
+          exit 1
+        else
+          echo "✅ All static analysis checks passed!"
+        fi

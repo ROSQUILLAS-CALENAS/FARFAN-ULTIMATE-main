@@ -73,6 +73,10 @@ jobs:
         python validate_comprehensive_ci_system.py \
           --output-dir validation_reports \
           ${{ github.event.inputs.verbose == 'true' && '--verbose' || '' }}
+          
+    - name: Run strict static analysis
+      run: |
+        python scripts/run_strict_analysis.py
     
     - name: Upload validation artifacts
       uses: actions/upload-artifact@v3

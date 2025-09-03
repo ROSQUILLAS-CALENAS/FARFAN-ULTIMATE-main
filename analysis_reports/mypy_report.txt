@@ -1,0 +1,1 @@
+Command not found: mypy --strict --config-file mypy.ini --show-error-codes egw_query_expansion/

@@ -1,0 +1,1 @@
+Command not found: ruff check --select I --config pyproject.toml egw_query_expansion/

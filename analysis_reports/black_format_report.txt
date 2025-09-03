@@ -1,0 +1,1 @@
+Command not found: black --check --diff egw_query_expansion/

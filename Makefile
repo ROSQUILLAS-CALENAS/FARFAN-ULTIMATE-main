@@ -1,128 +1,105 @@
-# EGW Query Expansion - Phase Enforcement Makefile
-# ================================================
-
-.PHONY: help install test lint build clean architecture-test phase-check all-checks
+.PHONY: help install test lint format type-check analysis clean dev-setup pre-commit
 
 # Default target
 help:
-	@echo "EGW Query Expansion - Phase Enforcement Commands"
-	@echo "=============================================="
-	@echo ""
-	@echo "Setup Commands:"
-	@echo "  install          Install dependencies and setup virtual environment"
-	@echo "  install-dev      Install development dependencies"
-	@echo ""
-	@echo "Testing Commands:"
-	@echo "  test             Run standard test suite"
-	@echo "  architecture-test Run architecture fitness function tests"
-	@echo "  phase-check      Run import-linter phase enforcement checks"
-	@echo "  test-all         Run all tests including architecture tests"
-	@echo ""
-	@echo "Quality Commands:"
-	@echo "  lint             Run linting tools (black, isort, flake8, mypy)"
-	@echo "  format           Format code with black and isort"
-	@echo ""
-	@echo "Build Commands:"
-	@echo "  build            Build the package"
-	@echo "  validate         Validate installation and basic functionality"
-	@echo ""
-	@echo "Maintenance Commands:"
-	@echo "  clean            Clean build artifacts and cache"
-	@echo "  all-checks       Run all quality checks and tests"
-	@echo ""
-	@echo "Phase Flow: I → X → K → A → L → R → O → G → T → S"
+	@echo "Available targets:"
+	@echo "  install        - Install dependencies"
+	@echo "  dev-setup      - Set up development environment"
+	@echo "  lint           - Run ruff linting"
+	@echo "  format         - Run code formatting (black, isort)"
+	@echo "  type-check     - Run mypy type checking"
+	@echo "  analysis       - Run full static analysis suite"
+	@echo "  pre-commit     - Install and run pre-commit hooks"
+	@echo "  test           - Run tests"
+	@echo "  clean          - Clean build artifacts"
+	@echo "  ci-validate    - Run CI validation checks"
 
-# Setup
+# Installation and setup
 install:
-	python -m venv venv
-	. venv/bin/activate && pip install --upgrade pip
-	. venv/bin/activate && pip install -r requirements.txt
-	. venv/bin/activate && pip install -e .
+	pip install -r requirements.txt
 
-install-dev:
-	. venv/bin/activate && pip install -e .[dev]
-	. venv/bin/activate && pip install import-linter>=1.12.0 networkx
+dev-setup: install
+	pip install -e .
+	pre-commit install
+	mkdir -p analysis_reports
+
+# Code quality checks
+lint:
+	ruff check --config pyproject.toml egw_query_expansion/
+	@echo "✅ Linting complete"
+
+format:
+	black egw_query_expansion/
+	ruff format egw_query_expansion/
+	isort egw_query_expansion/
+	@echo "✅ Code formatting complete"
+
+type-check:
+	mypy --config-file mypy.ini egw_query_expansion/
+	@echo "✅ Type checking complete"
+
+# Comprehensive static analysis
+analysis:
+	@echo "🚀 Running comprehensive static analysis..."
+	python scripts/run_strict_analysis.py
+
+# Static analysis components
+check-star-imports:
+	python scripts/check_star_imports.py $$(find egw_query_expansion -name "*.py")
+
+check-circular-imports:
+	python scripts/check_circular_imports.py $$(find egw_query_expansion -name "*.py")
+
+check-type-imports:
+	python scripts/validate_type_imports.py $$(find egw_query_expansion -name "*.py")
+
+# Pre-commit integration
+pre-commit:
+	pre-commit install
+	pre-commit run --all-files
 
 # Testing
 test:
-	. venv/bin/activate && pytest egw_query_expansion/tests/ -v
+	pytest egw_query_expansion/tests/ -v
 
-architecture-test:
-	@echo "Running architecture fitness function tests..."
-	. venv/bin/activate && pytest architecture_tests/ -v -m "architecture or phase_enforcement" \
-		--tb=long --junit-xml=architecture-results.xml
+test-coverage:
+	pytest --cov=egw_query_expansion --cov-report=html --cov-report=term egw_query_expansion/tests/
 
-phase-check:
-	@echo "Running import-linter phase enforcement checks..."
-	@echo "Canonical Phase Flow: I → X → K → A → L → R → O → G → T → S"
-	. venv/bin/activate && import-linter --config pyproject.toml
+# CI validation (matches CI pipeline)
+ci-validate:
+	@echo "🔍 Running CI validation locally..."
+	mypy --strict --config-file mypy.ini --show-error-codes egw_query_expansion/
+	ruff check --config pyproject.toml egw_query_expansion/
+	python scripts/check_star_imports.py $$(find egw_query_expansion -name "*.py")
+	python scripts/check_circular_imports.py $$(find egw_query_expansion -name "*.py")
+	python scripts/validate_type_imports.py $$(find egw_query_expansion -name "*.py")
+	ruff check --select I --config pyproject.toml egw_query_expansion/
+	black --check egw_query_expansion/
+	@echo "✅ CI validation complete"
 
-test-all: test architecture-test
-
-# Quality
-lint:
-	. venv/bin/activate && flake8 canonical_flow/ egw_query_expansion/ architecture_tests/
-	. venv/bin/activate && mypy canonical_flow/ egw_query_expansion/ architecture_tests/ || echo "MyPy completed with warnings"
-
-format:
-	. venv/bin/activate && black canonical_flow/ egw_query_expansion/ architecture_tests/
-	. venv/bin/activate && isort canonical_flow/ egw_query_expansion/ architecture_tests/
-
-# Build
-build:
-	. venv/bin/activate && python -m pip install build
-	. venv/bin/activate && python -m build
-
-validate:
-	. venv/bin/activate && python validate_installation.py
-
-# All checks (CI simulation)
-all-checks: phase-check architecture-test lint test validate
-	@echo ""
-	@echo "🎉 All checks completed successfully!"
-	@echo "✅ Phase layering constraints enforced"
-	@echo "✅ Architecture fitness functions passed"
-	@echo "✅ Code quality checks passed"
-	@echo "✅ Standard tests passed"
-	@echo "✅ Installation validation passed"
-
-# Maintenance
+# Cleanup
 clean:
+	find . -type f -name "*.pyc" -delete
+	find . -type d -name "__pycache__" -delete
+	find . -type d -name ".pytest_cache" -delete
+	find . -type d -name ".mypy_cache" -delete
+	find . -type d -name ".ruff_cache" -delete
 	rm -rf build/
 	rm -rf dist/
 	rm -rf *.egg-info/
-	rm -rf .pytest_cache/
-	rm -rf .mypy_cache/
-	rm -rf .coverage
-	rm -rf htmlcov/
-	rm -rf architecture-coverage/
-	find . -type d -name __pycache__ -exec rm -rf {} +
-	find . -type f -name "*.pyc" -delete
+	rm -rf analysis_reports/
+	@echo "✅ Cleanup complete"
 
-# CI simulation
-ci-simulation: clean install-dev all-checks
-	@echo ""
-	@echo "🚀 CI simulation completed successfully!"
-	@echo "This simulates what will happen in the CI pipeline."
+# Development workflow shortcuts
+quick-check: lint type-check
+	@echo "✅ Quick checks complete"
 
-# Quick phase violations check
-quick-phase-check:
-	@echo "Quick phase violations check..."
-	python -c "
-	import sys
-	sys.path.insert(0, '.')
-	from architecture_tests.test_phase_enforcement import ImportAnalyzer
-	
-	analyzer = ImportAnalyzer()
-	violations = analyzer.analyze_phase_dependencies()
-	
-	total = sum(len(v) for v in violations.values())
-	if total == 0:
-		print('✅ No phase violations found!')
-	else:
-		print(f'❌ Found {total} phase violations:')
-		for phase, viols in violations.items():
-			if viols:
-				print(f'  {phase}: {len(viols)} violations')
-		sys.exit(1)
-	"
+full-check: format lint type-check test
+	@echo "✅ Full validation complete"
+
+# Fix common issues automatically
+fix:
+	ruff check --fix --config pyproject.toml egw_query_expansion/
+	black egw_query_expansion/
+	isort egw_query_expansion/
+	@echo "✅ Auto-fixes applied"
