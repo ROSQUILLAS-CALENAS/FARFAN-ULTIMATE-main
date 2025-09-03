@@ -1,0 +1,651 @@
+# Canonical Flow Integration Plan
+# Co-join plan for migrating 89 scattered pipeline components to canonical_flow structure
+# Organized by canonical phases with atomic integration steps
+
+metadata:
+  version: "1.0"
+  created: "2024-01-15"
+  total_components: 89
+  external_directories: 15
+  target_structure: "canonical_flow/"
+
+# Phase definitions mapping to canonical flow structure
+phase_definitions:
+  X_context_construction:
+    description: "Context building, document preparation, and metadata extraction"
+    target_path: "canonical_flow/X_context_construction"
+  
+  I_ingestion_preparation:
+    description: "Document ingestion, normalization, and preparation"
+    target_path: "canonical_flow/I_ingestion_preparation"
+  
+  A_analysis_nlp:
+    description: "NLP analysis, question processing, and evidence extraction"
+    target_path: "canonical_flow/A_analysis_nlp"
+    
+  K_knowledge_extraction:
+    description: "Knowledge graph construction and causal framework processing"
+    target_path: "canonical_flow/K_knowledge_extraction"
+    
+  R_search_retrieval:
+    description: "Hybrid retrieval, lexical indexing, and vector search"
+    target_path: "canonical_flow/R_search_retrieval"
+    
+  L_classification_evaluation:
+    description: "Scoring, classification, and evaluation systems"
+    target_path: "canonical_flow/L_classification_evaluation"
+    
+  S_synthesis_output:
+    description: "Answer synthesis, output formatting, and result compilation"
+    target_path: "canonical_flow/S_synthesis_output"
+    
+  G_aggregation_reporting:
+    description: "Result aggregation, reporting, and macro-level analysis"
+    target_path: "canonical_flow/G_aggregation_reporting"
+    
+  O_orchestration_control:
+    description: "Pipeline orchestration, workflow control, and coordination"
+    target_path: "canonical_flow/O_orchestration_control"
+    
+  T_integration_storage:
+    description: "Data persistence, caching, and system integration"
+    target_path: "canonical_flow/T_integration_storage"
+
+# Integration strategy definitions
+integration_methods:
+  file_move:
+    description: "Direct file relocation with dependency updates"
+    risk_level: "low"
+  
+  symlink_creation:
+    description: "Symbolic link creation to maintain original location access"
+    risk_level: "medium"
+    
+  contract_adapter:
+    description: "Wrapper/adapter creation to maintain interface contracts"
+    risk_level: "low"
+
+# Contract preservation strategies
+contract_preservation:
+  import_path_update:
+    description: "Update import statements to new canonical paths"
+    
+  interface_wrapper:
+    description: "Create interface wrapper to maintain existing API contracts"
+    
+  backward_compatibility:
+    description: "Maintain backward compatible imports during transition"
+
+# Phase-organized integration steps
+integration_steps:
+
+  # X - Context Construction Phase
+  X_context_construction:
+    validation_checkpoint: "validate_context_construction_components"
+    components:
+      - component_id: "X_001"
+        name: "document_processor"
+        source_path: "document_processor.py"
+        target_path: "canonical_flow/X_context_construction/document_processor.py"
+        integration_method: "file_move"
+        dependencies:
+          - "pdf_reader.py"
+          - "text_analyzer.py"
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "X_002"
+        name: "pdf_reader"
+        source_path: "pdf_reader.py"
+        target_path: "canonical_flow/X_context_construction/pdf_reader.py"
+        integration_method: "file_move"
+        dependencies:
+          - "ocr.py"
+          - "table_extractor.py"
+        contract_preservation: ["import_path_update", "backward_compatibility"]
+        
+      - component_id: "X_003"
+        name: "text_analyzer"
+        source_path: "text_analyzer.py"
+        target_path: "canonical_flow/X_context_construction/text_analyzer.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+
+  # I - Ingestion Preparation Phase  
+  I_ingestion_preparation:
+    validation_checkpoint: "validate_ingestion_preparation_components"
+    components:
+      - component_id: "I_001"
+        name: "normalizer"
+        source_path: "normalizer.py"
+        target_path: "canonical_flow/I_ingestion_preparation/normalizer.py"
+        integration_method: "file_move"
+        dependencies:
+          - "structure_parser.py"
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "I_002"
+        name: "structure_parser"
+        source_path: "structure_parser.py"
+        target_path: "canonical_flow/I_ingestion_preparation/structure_parser.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "I_003"
+        name: "normative_validator"
+        source_path: "normative_validator.py"
+        target_path: "canonical_flow/I_ingestion_preparation/normative_validator.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/ingestion"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "I_004"
+        name: "advanced_loader"
+        source_path: "advanced_loader.py"
+        target_path: "canonical_flow/I_ingestion_preparation/advanced_loader.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/ingestion"
+        contract_preservation: ["interface_wrapper"]
+
+  # A - Analysis NLP Phase
+  A_analysis_nlp:
+    validation_checkpoint: "validate_analysis_nlp_components"
+    components:
+      - component_id: "A_001"
+        name: "adaptive_analyzer" 
+        source_path: "adaptive_analyzer.py"
+        target_path: "canonical_flow/A_analysis_nlp/adaptive_analyzer.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/analysis/audit_logger"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "A_002"
+        name: "question_analyzer"
+        source_path: "question_analyzer.py"
+        target_path: "canonical_flow/A_analysis_nlp/question_analyzer.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/analysis/audit_logger"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "A_003"
+        name: "evidence_processor"
+        source_path: "evidence_processor.py"
+        target_path: "canonical_flow/A_analysis_nlp/evidence_processor.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/analysis/audit_logger"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "A_004"
+        name: "evidence_validation_model"
+        source_path: "evidence_validation_model.py"
+        target_path: "canonical_flow/A_analysis_nlp/evidence_validation_model.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/analysis/audit_logger"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "A_005"
+        name: "dnp_alignment_adapter"
+        source_path: "dnp_alignment_adapter.py"
+        target_path: "canonical_flow/A_analysis_nlp/dnp_alignment_adapter.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/analysis/audit_logger"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "A_006"
+        name: "implementacion_mapeo"
+        source_path: "implementacion_mapeo.py"
+        target_path: "canonical_flow/A_analysis_nlp/implementacion_mapeo.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/analysis/audit_logger"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "A_007"
+        name: "evaluation_driven_processor"
+        source_path: "evaluation_driven_processor.py"
+        target_path: "canonical_flow/A_analysis_nlp/evaluation_driven_processor.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+
+  # K - Knowledge Extraction Phase
+  K_knowledge_extraction:
+    validation_checkpoint: "validate_knowledge_extraction_components"
+    components:
+      - component_id: "K_001"
+        name: "embedding_builder"
+        source_path: "embedding_builder.py"
+        target_path: "canonical_flow/K_knowledge_extraction/embedding_builder.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/knowledge/knowledge_audit_system"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "K_002"
+        name: "embedding_generator"
+        source_path: "embedding_generator.py"
+        target_path: "canonical_flow/K_knowledge_extraction/embedding_generator.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/knowledge/knowledge_audit_system"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "K_003"
+        name: "causal_graph"
+        source_path: "causal_graph.py"
+        target_path: "canonical_flow/K_knowledge_extraction/causal_graph.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/knowledge/knowledge_audit_system"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "K_004"
+        name: "causal_dnp_framework"
+        source_path: "causal_dnp_framework.py"
+        target_path: "canonical_flow/K_knowledge_extraction/causal_dnp_framework.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/knowledge/knowledge_audit_system"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "K_005"
+        name: "feature_extractor"
+        source_path: "feature_extractor.py"
+        target_path: "canonical_flow/K_knowledge_extraction/feature_extractor.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/ingestion"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+
+  # R - Search Retrieval Phase
+  R_search_retrieval:
+    validation_checkpoint: "validate_retrieval_components"
+    components:
+      - component_id: "R_001"
+        name: "lexical_index"
+        source_path: "lexical_index.py"
+        target_path: "canonical_flow/R_search_retrieval/lexical_index.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "R_002"
+        name: "hybrid_retrieval"
+        source_path: "hybrid_retrieval.py"
+        target_path: "canonical_flow/R_search_retrieval/hybrid_retrieval.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "R_003"
+        name: "hybrid_retrieval_bridge"
+        source_path: "hybrid_retrieval_bridge.py"
+        target_path: "canonical_flow/R_search_retrieval/hybrid_retrieval_bridge.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "R_004"
+        name: "retrieval_engine"
+        source_path: "retrieval_engine.py"
+        target_path: "canonical_flow/R_search_retrieval/retrieval_engine.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "R_005"
+        name: "vector_index"
+        source_path: "retrieval_engine/vector_index.py"
+        target_path: "canonical_flow/R_search_retrieval/vector_index.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "R_006"
+        name: "lexical_index_ext"
+        source_path: "retrieval_engine/lexical_index.py"
+        target_path: "canonical_flow/R_search_retrieval/lexical_index_ext.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "R_007"
+        name: "hybrid_retriever"
+        source_path: "retrieval_engine/hybrid_retriever.py"
+        target_path: "canonical_flow/R_search_retrieval/hybrid_retriever.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+
+  # L - Classification Evaluation Phase
+  L_classification_evaluation:
+    validation_checkpoint: "validate_classification_components"
+    components:
+      - component_id: "L_001"
+        name: "score_calculator"
+        source_path: "score_calculator.py"
+        target_path: "canonical_flow/L_classification_evaluation/score_calculator.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "L_002"
+        name: "scoring"
+        source_path: "scoring.py"
+        target_path: "canonical_flow/L_classification_evaluation/scoring.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "L_003"
+        name: "question_level_scoring_pipeline"
+        source_path: "question_level_scoring_pipeline.py"
+        target_path: "canonical_flow/L_classification_evaluation/question_level_scoring_pipeline.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/analysis/audit_logger"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "L_004"
+        name: "adaptive_scoring_engine"
+        source_path: "adaptive_scoring_engine.py"
+        target_path: "canonical_flow/L_classification_evaluation/adaptive_scoring_engine.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/mathematical_enhancers/scoring_enhancer"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+
+  # S - Synthesis Output Phase
+  S_synthesis_output:
+    validation_checkpoint: "validate_synthesis_components"
+    components:
+      - component_id: "S_001"
+        name: "answer_synthesizer"
+        source_path: "answer_synthesizer.py"
+        target_path: "canonical_flow/S_synthesis_output/answer_synthesizer.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "S_002"
+        name: "answer_formatter"
+        source_path: "answer_formatter.py"
+        target_path: "canonical_flow/S_synthesis_output/answer_formatter.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "S_003"
+        name: "semantic_reranking_module"
+        source_path: "semantic_reranking/__init__.py"
+        target_path: "canonical_flow/S_synthesis_output/semantic_reranking.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+
+  # G - Aggregation Reporting Phase
+  G_aggregation_reporting:
+    validation_checkpoint: "validate_aggregation_components"
+    components:
+      - component_id: "G_001"
+        name: "meso_aggregator"
+        source_path: "G_aggregation_reporting/meso_aggregator.py"
+        target_path: "canonical_flow/G_aggregation_reporting/meso_aggregator.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "G_002"
+        name: "report_compiler"
+        source_path: "G_aggregation_reporting/report_compiler.py"
+        target_path: "canonical_flow/G_aggregation_reporting/report_compiler.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "G_003"
+        name: "macro_alignment_calculator"
+        source_path: "macro_alignment_calculator.py"
+        target_path: "canonical_flow/G_aggregation_reporting/macro_alignment_calculator.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update", "backward_compatibility"]
+        notes: "Update references to canonical_flow/aggregation path"
+
+  # O - Orchestration Control Phase
+  O_orchestration_control:
+    validation_checkpoint: "validate_orchestration_components"
+    components:
+      - component_id: "O_001"
+        name: "comprehensive_pipeline_orchestrator"
+        source_path: "comprehensive_pipeline_orchestrator.py"
+        target_path: "canonical_flow/O_orchestration_control/comprehensive_pipeline_orchestrator.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/pipeline_state_manager"
+          - "canonical_flow/mathematical_enhancers"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "O_002"
+        name: "pipeline_orchestrator"
+        source_path: "pipeline_orchestrator.py"
+        target_path: "canonical_flow/O_orchestration_control/pipeline_orchestrator.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/calibration_dashboard"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "O_003"
+        name: "analysis_nlp_orchestrator"
+        source_path: "analysis_nlp_orchestrator.py"
+        target_path: "canonical_flow/O_orchestration_control/analysis_nlp_orchestrator.py"
+        integration_method: "contract_adapter"
+        dependencies:
+          - "canonical_flow/A_analysis_nlp"
+        contract_preservation: ["interface_wrapper", "backward_compatibility"]
+        
+      - component_id: "O_004"
+        name: "core_orchestrator"
+        source_path: "core_orchestrator.py"
+        target_path: "canonical_flow/O_orchestration_control/core_orchestrator.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "O_005"
+        name: "enhanced_core_orchestrator"
+        source_path: "enhanced_core_orchestrator.py"
+        target_path: "canonical_flow/O_orchestration_control/enhanced_core_orchestrator.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "O_006"
+        name: "workflow_engine"
+        source_path: "workflow_engine.py"
+        target_path: "canonical_flow/O_orchestration_control/workflow_engine.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+
+  # T - Integration Storage Phase  
+  T_integration_storage:
+    validation_checkpoint: "validate_integration_storage_components"
+    components:
+      - component_id: "T_001"
+        name: "connection_pool"
+        source_path: "connection_pool.py"
+        target_path: "canonical_flow/T_integration_storage/connection_pool.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "T_002"
+        name: "serializable_wrappers"
+        source_path: "serializable_wrappers.py"
+        target_path: "canonical_flow/T_integration_storage/serializable_wrappers.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+        
+      - component_id: "T_003"
+        name: "snapshot_manager"
+        source_path: "snapshot_manager.py"
+        target_path: "canonical_flow/T_integration_storage/snapshot_manager.py"
+        integration_method: "file_move"
+        dependencies: []
+        contract_preservation: ["import_path_update"]
+
+# Additional scattered components requiring integration
+additional_components:
+  microservices_integration:
+    - component_id: "M_001"
+      name: "service_discovery"
+      source_path: "service_discovery.py"
+      target_path: "canonical_flow/T_integration_storage/service_discovery.py"
+      integration_method: "file_move"
+      contract_preservation: ["import_path_update"]
+
+  hypothesis_module_integration:
+    - component_id: "H_001" 
+      name: "hypothesis_core"
+      source_path: "hypothesis_module/__init__.py"
+      target_path: "canonical_flow/A_analysis_nlp/hypothesis_core.py"
+      integration_method: "file_move"
+      contract_preservation: ["import_path_update"]
+
+  calibration_integration:
+    - component_id: "C_001"
+      name: "calibration_controller"
+      source_path: "calibration_safety_governance/__init__.py"
+      target_path: "canonical_flow/L_classification_evaluation/calibration_controller.py"
+      integration_method: "file_move"
+      contract_preservation: ["import_path_update"]
+
+# System-wide validation checkpoints
+validation_checkpoints:
+  pre_integration:
+    - name: "dependency_analysis"
+      description: "Analyze all import dependencies before migration"
+      command: "python validate_dependencies.py"
+      
+    - name: "contract_verification"
+      description: "Verify existing interface contracts"
+      command: "python run_contract_validation.py"
+
+  per_phase:
+    - name: "component_integrity"
+      description: "Verify component functionality after migration"
+      command: "pytest canonical_flow/{phase}/ -v"
+      
+    - name: "import_validation"
+      description: "Validate updated import paths"
+      command: "python validate_import_safety.py"
+
+  post_integration:
+    - name: "end_to_end_validation"
+      description: "Full pipeline validation after integration"
+      command: "python run_comprehensive_validation.py"
+      
+    - name: "performance_regression"
+      description: "Ensure no performance degradation"
+      command: "python run_performance_tests.py"
+
+# Migration execution sequence
+execution_sequence:
+  1:
+    phase: "X_context_construction"
+    priority: "high"
+    reason: "Foundational components with minimal dependencies"
+    
+  2:
+    phase: "I_ingestion_preparation" 
+    priority: "high"
+    reason: "Core ingestion components required by downstream phases"
+    
+  3:
+    phase: "R_search_retrieval"
+    priority: "high"
+    reason: "Retrieval components with clear interfaces"
+    
+  4:
+    phase: "K_knowledge_extraction"
+    priority: "medium"
+    reason: "Knowledge components with audit system dependencies"
+    
+  5:
+    phase: "A_analysis_nlp"
+    priority: "medium"
+    reason: "NLP components with audit logger dependencies"
+    
+  6:
+    phase: "L_classification_evaluation"
+    priority: "medium"
+    reason: "Scoring components with mathematical enhancer dependencies"
+    
+  7:
+    phase: "S_synthesis_output"
+    priority: "low"
+    reason: "Output formatting with minimal dependencies"
+    
+  8:
+    phase: "G_aggregation_reporting"
+    priority: "low"
+    reason: "Reporting components with path references to update"
+    
+  9:
+    phase: "T_integration_storage"
+    priority: "low"
+    reason: "Storage and serialization utilities"
+    
+  10:
+    phase: "O_orchestration_control"
+    priority: "critical"
+    reason: "Orchestration components must be migrated last due to dependencies on all other phases"
+
+# Risk mitigation strategies
+risk_mitigation:
+  backup_strategy:
+    description: "Create complete backup before migration"
+    actions:
+      - "git branch canonical_flow_integration"
+      - "tar -czf pre_migration_backup.tar.gz ."
+      
+  rollback_procedures:
+    description: "Procedures for rolling back failed integrations"
+    actions:
+      - "git checkout main"
+      - "git branch -D canonical_flow_integration"
+      - "Restore from backup if needed"
+      
+  incremental_validation:
+    description: "Validate each phase before proceeding"
+    actions:
+      - "Run phase-specific tests after each migration"
+      - "Validate import paths and dependencies"
+      - "Check contract compliance"
+
+# Success criteria
+success_criteria:
+  - description: "All 89 components successfully migrated"
+    metric: "component_count == 89"
+    
+  - description: "No broken import statements"
+    metric: "import_validation_errors == 0"
+    
+  - description: "All existing tests continue to pass"
+    metric: "test_success_rate >= 100%"
+    
+  - description: "Performance within 5% of baseline"
+    metric: "performance_degradation < 5%"
+    
+  - description: "Contract compliance maintained"
+    metric: "contract_violations == 0"

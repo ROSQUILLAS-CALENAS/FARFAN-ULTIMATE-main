@@ -4,6 +4,7 @@ calibration_safety_governance
 canonical_flow
 contracts
 dashboard
+egw_query_expansion
 examples
 hypothesis_module
 microservices
