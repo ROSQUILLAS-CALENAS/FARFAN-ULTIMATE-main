@@ -285,13 +285,14 @@ class QuestionContext:
         return secrets.token_bytes(32)
 
     def _compute_content_hash(self) -> ContextHash:
-        """Compute deterministic content hash"""
+        """Compute deterministic content hash using hash policies"""
+        from .hash_policies import DEFAULT_CONTEXT_HASHER
+        
         content = {
             "question_text": self._question_text,
             "context_data": dict(self._context_data),
         }
-        content_json = json.dumps(content, sort_keys=True)
-        return hashlib.sha256(content_json.encode()).hexdigest()
+        return DEFAULT_CONTEXT_HASHER.policy.hash_object(content)
 
     def _compute_integrity_hmac_for_id(self, derivation_id: str) -> str:
         """Compute HMAC for integrity verification with given derivation ID"""

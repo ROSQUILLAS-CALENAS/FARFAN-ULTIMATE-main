@@ -744,7 +744,8 @@ def calculate_confidence(
     monotone_loss: str = "fnr_mandatory",
     standards: Optional[Dict[str, Any]] = None,
     question: Optional[str] = None,
-    """Return only the confidence point estimate as float for convenience.
+) -> float:
+                """Return only the confidence point estimate as float for convenience.
     For full metadata, use the class method directly.
     """
     synth = AnswerSynthesizer()

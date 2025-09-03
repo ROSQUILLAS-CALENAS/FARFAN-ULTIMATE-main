@@ -22,12 +22,12 @@ __description__ = "Entropic Gromov-Wasserstein Query Expansion for Hybrid Retrie
 
 # Import core components
 try:
-# # #     from .core import *  # Module not found  # Module not found  # Module not found
+    from .core import *
 except ImportError:
     pass
 
 # Import diagnostics functionality
 try:
-# # #     from .installation_diagnostics import diagnose_environment, check_installation_readiness  # Module not found  # Module not found  # Module not found
+    from .installation_diagnostics import diagnose_environment, check_installation_readiness
 except ImportError:
     pass
