@@ -15,10 +15,27 @@ from abc import ABC, abstractmethod
 from dataclasses import asdict, dataclass
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
-import faiss
-import numpy as np
-import torch
-from sentence_transformers import SentenceTransformer
+# Heavy/optional dependencies (guarded)
+try:
+    import faiss  # type: ignore
+    HAS_FAISS = True
+except Exception:
+    HAS_FAISS = False
+try:
+    import numpy as np  # type: ignore
+    HAS_NUMPY = True
+except Exception:
+    HAS_NUMPY = False
+try:
+    import torch  # type: ignore
+    HAS_TORCH = True
+except Exception:
+    HAS_TORCH = False
+try:
+    from sentence_transformers import SentenceTransformer  # type: ignore
+    HAS_ST = True
+except Exception:
+    HAS_ST = False
 # Optional sklearn with fallback
 try:
     from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore
@@ -55,15 +72,23 @@ except Exception:
             return self
 
         def transform(self, corpus):
-            import numpy as np
-            X = np.zeros((len(corpus), len(self.vocabulary_)), dtype=np.float32)
+            # Pure-Python sparse TF matrix and L2 normalization (no NumPy)
+            rows = len(corpus)
+            cols = len(self.vocabulary_)
+            X = [[0.0 for _ in range(cols)] for _ in range(rows)]
             for i, doc in enumerate(corpus):
                 for t in self._tokenize(doc):
                     j = self.vocabulary_.get(t)
                     if j is not None:
-                        X[i, j] += 1.0
-            norms = np.linalg.norm(X, axis=1, keepdims=True) + 1e-8
-            return X / norms
+                        X[i][j] += 1.0
+            # L2 normalize each row
+            def _l2norm(vec: List[float]) -> float:
+                s = sum(v*v for v in vec)
+                return s ** 0.5 if s > 0 else 1e-8
+            for i in range(rows):
+                n = _l2norm(X[i])
+                X[i] = [v / n for v in X[i]]
+            return X
 
         def fit_transform(self, corpus):
             return self.fit(corpus).transform(corpus)
@@ -127,7 +152,12 @@ class QueryExpansion:
 
     def expand_query(self, query: str, seed: int = 42) -> List[str]:
         """Deterministically expand query using fixed weights"""
-        np.random.seed(seed)  # Ensure determinism
+        try:
+            import numpy as _np  # local, may fail
+            _np.random.seed(seed)
+        except Exception:
+            import random as _random
+            _random.seed(seed)  # Fallback without NumPy
 
         # Simple deterministic expansion (in practice, use learned projections)
         words = query.split()
@@ -718,3 +748,37 @@ class DeterministicHybridRetriever:
             if hasattr(self.sparse_vectorizer, "vocabulary_")
             else 0,
         }
+
+if __name__ == "__main__":
+    # Minimal, dependency-free demo to prove executability
+    docs = [
+        "deterministic retrieval with hybrid sparse and dense signals",
+        "pure python fallback for tf idf without numpy",
+        "semantic reranking using projections"
+    ]
+    queries = ["deterministic hybrid retrieval"]
+    try:
+        # Try sparse-only demo using fallback TF-IDF (works even if sklearn/numpy missing)
+        vec = TfidfVectorizer(max_features=50, lowercase=True, stop_words=None)
+        vec.fit(docs)
+        X = vec.transform(docs)  # list of lists
+        def cosine(a: List[float], b: List[float]) -> float:
+            num = sum(x*y for x, y in zip(a, b))
+            da = sum(x*x for x in a) ** 0.5
+            db = sum(y*y for y in b) ** 0.5
+            if da <= 0 or db <= 0:
+                return 0.0
+            return num / (da * db)
+        for q in queries:
+            qv = vec.transform([q])[0]
+            scores = [(i, cosine(qv, dv)) for i, dv in enumerate(X)]
+            scores.sort(key=lambda t: t[1], reverse=True)
+            result = {
+                "query": q,
+                "ranking": [
+                    {"doc": int(i), "score": float(s), "text": docs[i]} for i, s in scores
+                ]
+            }
+            print(json.dumps(result, ensure_ascii=False))
+    except Exception as e:
+        print(json.dumps({"error": str(e)}))

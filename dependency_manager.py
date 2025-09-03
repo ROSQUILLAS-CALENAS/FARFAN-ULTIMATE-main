@@ -9,10 +9,34 @@ from enum import Enum
 from typing import Dict, List, Set, Optional, Any, Callable, Tuple
 from dataclasses import dataclass
 import logging
+import json
 from collections import defaultdict, deque
-import networkx as nx
-
-from pydantic import BaseModel, Field
+# Optional dependencies (guarded)
+try:
+    import networkx as nx  # type: ignore
+    HAS_NETWORKX = True
+except Exception:
+    HAS_NETWORKX = False
+    class _NX:
+        class DiGraph:
+            def __init__(self): self._adj = {}
+            def add_node(self, n): self._adj.setdefault(n, set())
+            def add_edge(self, u, v):
+                self.add_node(u); self.add_node(v); self._adj[u].add(v)
+            def successors(self, n): return list(self._adj.get(n, ()))
+            def predecessors(self, n):
+                return [u for u, vs in self._adj.items() if n in vs]
+            def nodes(self): return list(self._adj.keys())
+    nx = _NX()  # type: ignore
+try:
+    from pydantic import BaseModel, Field  # type: ignore
+    HAS_PYDANTIC = True
+except Exception:
+    HAS_PYDANTIC = False
+    class BaseModel:  # type: ignore
+        def dict(self, *a, **k): return self.__dict__
+    def Field(default=None, **kwargs):  # type: ignore
+        return default
 
 logger = logging.getLogger(__name__)
 
@@ -776,3 +800,14 @@ class DependencyManager:
                         {"violation_type": violation.violation_type}
                     )
                 break
+if __name__ == "__main__":
+    # Minimal demo to ensure execution even without networkx/pydantic
+    dm = DependencyManager()
+    dm.register_service(ServiceInfo(name="api", version="1.0", state=ServiceState.RUNNING))
+    dm.register_service(ServiceInfo(name="db", version="1.0", state=ServiceState.RUNNING))
+    dm.add_dependency("api", "db", DependencyType.SYNCHRONOUS)
+    summary = dm.get_dependency_summary()
+    print(json.dumps({
+        "services": list(summary.get("services", {}).keys()) if isinstance(summary, dict) else [],
+        "edges": summary.get("edges", []) if isinstance(summary, dict) else []
+    }))

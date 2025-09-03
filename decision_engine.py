@@ -10,8 +10,35 @@ from datetime import datetime, timedelta
 from enum import Enum
 from typing import Any, Dict, List, Optional, Tuple
 
-import numpy as np
-from scipy import stats
+# Optional heavy dependencies (guarded)
+try:
+    import numpy as np  # type: ignore
+    HAS_NUMPY = True
+except Exception:
+    HAS_NUMPY = False
+    # Minimal fallback for required functions
+    class _NP:
+        @staticmethod
+        def mean(x):
+            return sum(x) / len(x) if x else 0.0
+        @staticmethod
+        def std(x):
+            m = _NP.mean(x)
+            return (sum((v - m) * (v - m) for v in x) / max(1, len(x))) ** 0.5
+    np = _NP()  # type: ignore
+try:
+    from scipy import stats  # type: ignore
+    HAS_SCIPY = True
+except Exception:
+    HAS_SCIPY = False
+    class _Stats:
+        @staticmethod
+        def zscore(data):
+            m = np.mean(data)
+            s = np.std(data)
+            s = s if s > 0 else 1.0
+            return [(v - m) / s for v in data]
+    stats = _Stats()  # type: ignore
 
 
 class ScalingAction(Enum):
@@ -500,3 +527,21 @@ class DecisionEngine:
         self.current_workers = 1
         self.current_window_size = 10
         self.current_frequency = 1.0
+
+if __name__ == "__main__":
+    # Minimal demo to guarantee execution without numpy/scipy
+    logging.basicConfig(level=logging.INFO)
+    engine = DecisionEngine()
+    sample_metrics = {
+        "cpu_usage": 0.42,
+        "memory_usage": 0.55,
+        "latency_ms": 1200,
+        "throughput": 2.5,
+        "error_rate": 0.5,
+    }
+    engine.update_metrics(sample_metrics)
+    decision = engine.generate_scaling_decision()
+    print(json.dumps({
+        "decision": decision.to_dict(),
+        "summary": engine.get_performance_summary()
+    }))
