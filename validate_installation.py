@@ -16,9 +16,9 @@ import shutil
 import subprocess
 import sys
 import traceback
-# # # from dataclasses import dataclass  # Module not found  # Module not found  # Module not found
-# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
-# # # from typing import Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
 
 
 @dataclass
@@ -432,34 +432,37 @@ def test_egw_modules():
         sys.path.append(".")
 
         # Test conformal risk control module
-# # #         from egw_query_expansion.core.conformal_risk_control import (  # Module not found  # Module not found  # Module not found
-            ConformalRiskController,
-            RiskControlConfig,
-            create_conformal_system,
-        )
-        print("✅ Conformal Risk Control module imported successfully")
+        try:
+            from egw_query_expansion.core.conformal_risk_control import (
+                ConformalRiskController,
+                RiskControlConfig,
+                create_conformal_system,
+            )
+            print("✅ Conformal Risk Control module imported successfully")
+        except ImportError:
+            print("ℹ️  Conformal Risk Control module not available (module not implemented)")
 
         # Test other core modules if they exist
         try:
-# # #             from egw_query_expansion.core.gw_alignment import GromovWassersteinAligner  # Module not found  # Module not found  # Module not found
+            from egw_query_expansion.core.gw_alignment import GromovWassersteinAligner
             print("✅ GromovWassersteinAligner imported successfully")
         except ImportError:
             print("ℹ️  GromovWassersteinAligner not available (module not implemented)")
 
         try:
-# # #             from egw_query_expansion.core.query_generator import QueryGenerator  # Module not found  # Module not found  # Module not found
+            from egw_query_expansion.core.query_generator import QueryGenerator
             print("✅ QueryGenerator imported successfully")
         except ImportError:
             print("ℹ️  QueryGenerator not available (module not implemented)")
 
         try:
-# # #             from egw_query_expansion.core.hybrid_retrieval import HybridRetriever  # Module not found  # Module not found  # Module not found
+            from egw_query_expansion.core.hybrid_retrieval import HybridRetriever
             print("✅ HybridRetriever imported successfully")
         except ImportError:
             print("ℹ️  HybridRetriever not available (module not implemented)")
 
         try:
-# # #             from egw_query_expansion.core.pattern_matcher import PatternMatcher  # Module not found  # Module not found  # Module not found
+            from egw_query_expansion.core.pattern_matcher import PatternMatcher
             print("✅ PatternMatcher imported successfully")
         except ImportError:
             print("ℹ️  PatternMatcher not available (module not implemented)")
@@ -505,7 +508,7 @@ def test_conformal_functionality():
 
     try:
         import numpy as np
-# # #         from egw_query_expansion.core.conformal_risk_control import (  # Module not found  # Module not found  # Module not found
+        from egw_query_expansion.core.conformal_risk_control import (
             ClassificationScore,
             RegressionScore,
             create_conformal_system,
