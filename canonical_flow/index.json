@@ -50,10 +50,14 @@
   {
     "code": "08X",
     "stage": "context_construction",
-    "alias_path": "canonical_flow/X_context_construction/08x_context_construction_component.py",
-    "original_path": "08x_context_construction_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/X_context_construction/08x_context_construction.py",
+    "original_path": "08x_context_construction.py",
+    "dependencies": [
+      "04I",
+      "03I"
+    ],
+    "scaffolded": true,
+    "description": "Context transformation and preparation module"
   },
   {
     "code": "09K",
@@ -64,10 +68,15 @@
   {
     "code": "09X",
     "stage": "context_construction",
-    "alias_path": "canonical_flow/X_context_construction/09x_context_construction_component.py",
-    "original_path": "09x_context_construction_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/X_context_construction/09x_context_construction.py",
+    "original_path": "09x_context_construction.py",
+    "dependencies": [
+      "08X",
+      "04I",
+      "03I"
+    ],
+    "scaffolded": true,
+    "description": "Context validation and normalization module"
   },
   {
     "code": "10K",
@@ -78,10 +87,15 @@
   {
     "code": "10X",
     "stage": "context_construction",
-    "alias_path": "canonical_flow/X_context_construction/10x_context_construction_component.py",
-    "original_path": "10x_context_construction_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/X_context_construction/10x_context_construction.py",
+    "original_path": "10x_context_construction.py",
+    "dependencies": [
+      "09X",
+      "04I",
+      "03I"
+    ],
+    "scaffolded": true,
+    "description": "Context enrichment and augmentation module"
   },
   {
     "code": "11K",
@@ -92,10 +106,15 @@
   {
     "code": "11X",
     "stage": "context_construction",
-    "alias_path": "canonical_flow/X_context_construction/11x_context_construction_component.py",
-    "original_path": "11x_context_construction_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/X_context_construction/11x_context_construction.py",
+    "original_path": "11x_context_construction.py",
+    "dependencies": [
+      "10X",
+      "04I",
+      "03I"
+    ],
+    "scaffolded": true,
+    "description": "Context integration and merging module"
   },
   {
     "code": "12K",
@@ -106,10 +125,15 @@
   {
     "code": "12X",
     "stage": "context_construction",
-    "alias_path": "canonical_flow/X_context_construction/12x_context_construction_component.py",
-    "original_path": "12x_context_construction_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/X_context_construction/12x_context_construction.py",
+    "original_path": "12x_context_construction.py",
+    "dependencies": [
+      "11X",
+      "04I",
+      "03I"
+    ],
+    "scaffolded": true,
+    "description": "Context finalization and optimization module"
   },
   {
     "code": "13A",
@@ -354,10 +378,14 @@
   {
     "code": "52S",
     "stage": "synthesis_output",
-    "alias_path": "canonical_flow/S_synthesis_output/52s_synthesis_output_component.py",
-    "original_path": "52s_synthesis_output_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/S_synthesis_output/52s_synthesis_output.py",
+    "original_path": "52s_synthesis_output.py",
+    "dependencies": [
+      "24O",
+      "25O"
+    ],
+    "scaffolded": true,
+    "description": "Pre-synthesis preparation module"
   },
   {
     "code": "53G",
@@ -368,18 +396,28 @@
   {
     "code": "53S",
     "stage": "synthesis_output",
-    "alias_path": "canonical_flow/S_synthesis_output/53s_synthesis_output_component.py",
-    "original_path": "53s_synthesis_output_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/S_synthesis_output/53s_synthesis_output.py",
+    "original_path": "53s_synthesis_output.py",
+    "dependencies": [
+      "52S",
+      "24O",
+      "25O"
+    ],
+    "scaffolded": true,
+    "description": "Core synthesis processing module"
   },
   {
     "code": "54S",
     "stage": "synthesis_output",
-    "alias_path": "canonical_flow/S_synthesis_output/54s_synthesis_output_component.py",
-    "original_path": "54s_synthesis_output_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/S_synthesis_output/54s_synthesis_output.py",
+    "original_path": "54s_synthesis_output.py",
+    "dependencies": [
+      "53S",
+      "24O",
+      "25O"
+    ],
+    "scaffolded": true,
+    "description": "Synthesis refinement and enhancement module"
   },
   {
     "code": "54T",
@@ -390,10 +428,15 @@
   {
     "code": "55S",
     "stage": "synthesis_output",
-    "alias_path": "canonical_flow/S_synthesis_output/55s_synthesis_output_component.py",
-    "original_path": "55s_synthesis_output_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/S_synthesis_output/55s_synthesis_output.py",
+    "original_path": "55s_synthesis_output.py",
+    "dependencies": [
+      "54S",
+      "24O",
+      "25O"
+    ],
+    "scaffolded": true,
+    "description": "Synthesis validation and verification module"
   },
   {
     "code": "55T",
@@ -404,10 +447,15 @@
   {
     "code": "56S",
     "stage": "synthesis_output",
-    "alias_path": "canonical_flow/S_synthesis_output/56s_synthesis_output_component.py",
-    "original_path": "56s_synthesis_output_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/S_synthesis_output/56s_synthesis_output.py",
+    "original_path": "56s_synthesis_output.py",
+    "dependencies": [
+      "55S",
+      "24O",
+      "25O"
+    ],
+    "scaffolded": true,
+    "description": "Synthesis formatting and structuring module"
   },
   {
     "code": "56T",
@@ -418,10 +466,15 @@
   {
     "code": "57S",
     "stage": "synthesis_output",
-    "alias_path": "canonical_flow/S_synthesis_output/57s_synthesis_output_component.py",
-    "original_path": "57s_synthesis_output_component.py",
-    "generated": true,
-    "scaffolded_by": "scaffold_canonical.py"
+    "alias_path": "canonical_flow/S_synthesis_output/57s_synthesis_output.py",
+    "original_path": "57s_synthesis_output.py",
+    "dependencies": [
+      "56S",
+      "24O",
+      "25O"
+    ],
+    "scaffolded": true,
+    "description": "Final synthesis output preparation module"
   },
   {
     "code": "57T",
@@ -434,145 +487,5 @@
     "stage": "integration_storage",
     "alias_path": "canonical_flow/T_integration_storage/58T_optimization_engine.py",
     "original_path": "optimization_engine.py"
-  },
-  {
-    "code": "59I",
-    "stage": "ingestion_preparation",
-    "alias_path": "canonical_flow/I_ingestion_preparation/bridge_ingestion_enhancer.py",
-    "original_path": "bridge_ingestion_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "ingestion_enhancement_bridge",
-      "bridge_name": "IngestionEnhancementBridge",
-      "api_interface": "IngestionEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 10,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "60X",
-    "stage": "context_construction",
-    "alias_path": "canonical_flow/X_context_construction/bridge_context_enhancer.py",
-    "original_path": "bridge_context_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "context_enhancement_bridge",
-      "bridge_name": "ContextEnhancementBridge",
-      "api_interface": "ContextEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 20,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "61K",
-    "stage": "knowledge_extraction",
-    "alias_path": "canonical_flow/K_knowledge_extraction/bridge_knowledge_enhancer.py",
-    "original_path": "bridge_knowledge_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "knowledge_enhancement_bridge",
-      "bridge_name": "KnowledgeEnhancementBridge",
-      "api_interface": "KnowledgeEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 30,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "62A",
-    "stage": "analysis_nlp",
-    "alias_path": "canonical_flow/A_analysis_nlp/bridge_analysis_enhancer.py",
-    "original_path": "bridge_analysis_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "analysis_enhancement_bridge",
-      "bridge_name": "AnalysisEnhancementBridge",
-      "api_interface": "AnalysisEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 40,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "63L",
-    "stage": "classification_evaluation",
-    "alias_path": "canonical_flow/L_classification_evaluation/bridge_scoring_enhancer.py",
-    "original_path": "bridge_scoring_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "scoring_enhancement_bridge",
-      "bridge_name": "ScoringEnhancementBridge",
-      "api_interface": "ScoringEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 50,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "64O",
-    "stage": "orchestration_control",
-    "alias_path": "canonical_flow/O_orchestration_control/bridge_orchestration_enhancer.py",
-    "original_path": "bridge_orchestration_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "orchestration_enhancement_bridge",
-      "bridge_name": "OrchestrationEnhancementBridge",
-      "api_interface": "OrchestrationEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 60,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "65R",
-    "stage": "search_retrieval",
-    "alias_path": "canonical_flow/R_search_retrieval/bridge_retrieval_enhancer.py",
-    "original_path": "bridge_retrieval_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "retrieval_enhancement_bridge",
-      "bridge_name": "RetrievalEnhancementBridge",
-      "api_interface": "RetrievalEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 70,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "66S",
-    "stage": "synthesis_output",
-    "alias_path": "canonical_flow/S_synthesis_output/bridge_synthesis_enhancer.py",
-    "original_path": "bridge_synthesis_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "synthesis_enhancement_bridge",
-      "bridge_name": "SynthesisEnhancementBridge",
-      "api_interface": "SynthesisEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 80,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "67G",
-    "stage": "aggregation_reporting",
-    "alias_path": "canonical_flow/G_aggregation_reporting/bridge_aggregation_enhancer.py",
-    "original_path": "bridge_aggregation_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "aggregation_enhancement_bridge",
-      "bridge_name": "AggregationEnhancementBridge",
-      "api_interface": "AggregationEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 90,
-      "enhancement_bridge": true
-    }
-  },
-  {
-    "code": "68T",
-    "stage": "integration_storage",
-    "alias_path": "canonical_flow/T_integration_storage/bridge_integration_enhancer.py",
-    "original_path": "bridge_integration_enhancement_bridge.py",
-    "bridge_metadata": {
-      "bridge_id": "integration_enhancement_bridge",
-      "bridge_name": "IntegrationEnhancementBridge",
-      "api_interface": "IntegrationEnhancerAPI",
-      "dependencies": ["canonical_flow.mathematical_enhancers.api_interfaces"],
-      "priority": 100,
-      "enhancement_bridge": true
-    }
   }
 ]
