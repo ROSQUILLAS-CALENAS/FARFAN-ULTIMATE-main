@@ -1,137 +1,131 @@
 """
-Decorators for instrumenting process(data, context) interfaces
+Enhanced tracing decorators for DAG observability
+
+Provides function and class decorators for automatic tracing integration.
 """
 
 import functools
 import inspect
-from typing import Any, Dict, Optional, Callable
+from typing import Optional, Callable, Any
+from .dag_observability import trace_component_execution, trace_edge_traversal, get_dag_observability
 
-from .otel_tracer import get_pipeline_tracer
 
-
-def trace_process(source_phase: str, target_phase: str, component_name: str):
+def traced_component(component_name: Optional[str] = None, 
+                    phase: Optional[str] = None,
+                    correlation_id_param: Optional[str] = None):
     """
-    Decorator to trace process(data, context) method calls with edge traversal spans
+    Decorator for automatic component execution tracing
     
     Args:
-        source_phase: Source phase in canonical pipeline
-        target_phase: Target phase in canonical pipeline  
-        component_name: Name of the component being traced
+        component_name: Name of the component (defaults to function name)
+        phase: Processing phase (defaults to 'execution')
+        correlation_id_param: Parameter name containing correlation ID
     """
-    def decorator(func: Callable):
+    def decorator(func):
+        nonlocal component_name
+        if component_name is None:
+            component_name = func.__name__
+        
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            tracer = get_pipeline_tracer()
+        async def async_wrapper(*args, **kwargs):
+            # Extract correlation ID if specified
+            correlation_id = None
+            if correlation_id_param and correlation_id_param in kwargs:
+                correlation_id = kwargs[correlation_id_param]
             
-            # Extract data and context from arguments
-            data = None
-            context = None
-            
-            # Handle different function signatures
-            if len(args) >= 1:
-                data = args[0]
-            if len(args) >= 2:
-                context = args[1]
+            with trace_component_execution(component_name, phase, correlation_id):
+                return await func(*args, **kwargs)
+        
+        @functools.wraps(func)
+        def sync_wrapper(*args, **kwargs):
+            # Extract correlation ID if specified
+            correlation_id = None
+            if correlation_id_param and correlation_id_param in kwargs:
+                correlation_id = kwargs[correlation_id_param]
                 
-            # Check for keyword arguments
-            if 'data' in kwargs:
-                data = kwargs['data']
-            if 'context' in kwargs:
-                context = kwargs['context']
-                
-            # Create edge span
-            span_id = tracer.create_edge_span(
-                source_phase=source_phase,
-                target_phase=target_phase,
-                component_name=component_name,
-                data=data,
-                context=context
-            )
-            
-            try:
-                # Execute the function
-                result = func(*args, **kwargs)
-                
-                # Complete span successfully
-                tracer.complete_edge_span(span_id, result=result)
-                
-                return result
-                
-            except Exception as e:
-                # Complete span with error
-                tracer.complete_edge_span(span_id, error=e)
-                raise
-                
-        return wrapper
+            with trace_component_execution(component_name, phase, correlation_id):
+                return func(*args, **kwargs)
+        
+        # Return appropriate wrapper based on function type
+        if inspect.iscoroutinefunction(func):
+            return async_wrapper
+        else:
+            return sync_wrapper
+    
     return decorator
 
 
-def trace_edge(source_phase: str, target_phase: str):
+def traced_edge(source: str, target: Optional[str] = None,
+               correlation_id_param: Optional[str] = None):
     """
-    Simplified decorator that infers component name from function/class
+    Decorator for automatic edge traversal tracing
+    
+    Args:
+        source: Source component name
+        target: Target component name (defaults to function name)
+        correlation_id_param: Parameter name containing correlation ID
     """
-    def decorator(func: Callable):
-        # Try to infer component name
-        component_name = func.__name__
-        if hasattr(func, '__qualname__'):
-            component_name = func.__qualname__
+    def decorator(func):
+        nonlocal target
+        if target is None:
+            target = func.__name__
+        
+        @functools.wraps(func)
+        async def async_wrapper(*args, **kwargs):
+            # Extract correlation ID if specified
+            correlation_id = None
+            if correlation_id_param and correlation_id_param in kwargs:
+                correlation_id = kwargs[correlation_id_param]
             
-        return trace_process(source_phase, target_phase, component_name)(func)
+            with trace_edge_traversal(source, target, correlation_id):
+                return await func(*args, **kwargs)
+        
+        @functools.wraps(func)
+        def sync_wrapper(*args, **kwargs):
+            # Extract correlation ID if specified
+            correlation_id = None
+            if correlation_id_param and correlation_id_param in kwargs:
+                correlation_id = kwargs[correlation_id_param]
+                
+            with trace_edge_traversal(source, target, correlation_id):
+                return func(*args, **kwargs)
+        
+        # Return appropriate wrapper based on function type
+        if inspect.iscoroutinefunction(func):
+            return async_wrapper
+        else:
+            return sync_wrapper
+    
     return decorator
 
 
-def auto_trace_process(func: Callable):
+def traced_class(component_name: Optional[str] = None):
     """
-    Auto-detect phase transitions from function location and trace automatically
+    Class decorator to automatically trace all public methods as components
+    
+    Args:
+        component_name: Base component name (defaults to class name)
     """
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        # Try to detect phases from module path
-        module = inspect.getmodule(func)
-        if not module:
-            return func(*args, **kwargs)
-            
-        module_path = module.__name__
+    def decorator(cls):
+        nonlocal component_name
+        if component_name is None:
+            component_name = cls.__name__
         
-        # Extract phases from canonical_flow module paths
-        source_phase = None
-        target_phase = None
+        # Trace all public methods
+        for attr_name in dir(cls):
+            if not attr_name.startswith('_'):
+                attr = getattr(cls, attr_name)
+                if callable(attr):
+                    method_component_name = f"{component_name}.{attr_name}"
+                    traced_attr = traced_component(method_component_name)(attr)
+                    setattr(cls, attr_name, traced_attr)
         
-        # Parse module path like "canonical_flow.I_ingestion_preparation.component"
-        path_parts = module_path.split('.')
-        for part in path_parts:
-            if part.startswith(('I_', 'X_', 'K_', 'A_', 'L_', 'R_', 'O_', 'G_', 'T_', 'S_')):
-                source_phase = part
-                # For now, assume target is next phase (can be refined)
-                break
-                
-        if not source_phase:
-            # Fall back to untraced execution
-            return func(*args, **kwargs)
-            
-        # Default target to same phase if not determinable
-        target_phase = source_phase
-        
-        component_name = f"{func.__qualname__}"
-        
-        tracer = get_pipeline_tracer()
-        data = args[0] if args else kwargs.get('data')
-        context = args[1] if len(args) > 1 else kwargs.get('context')
-        
-        span_id = tracer.create_edge_span(
-            source_phase=source_phase,
-            target_phase=target_phase,
-            component_name=component_name,
-            data=data,
-            context=context
-        )
-        
-        try:
-            result = func(*args, **kwargs)
-            tracer.complete_edge_span(span_id, result=result)
-            return result
-        except Exception as e:
-            tracer.complete_edge_span(span_id, error=e)
-            raise
-            
-    return wrapper
+        return cls
+    
+    return decorator
+
+
+# Legacy compatibility
+def trace(func):
+    """Legacy trace decorator - now provides full observability"""
+    return traced_component()(func)
