@@ -1,0 +1,31 @@
+Rider Entry Point...
+19:51:18.128 |V| --LOGLOG:NativeMemoryPool--    | WatchParentPid:42:4            | New memory block allocated, size: 1,048,576 bytes, total allocated blocks: 0, used: 0
+
+19:51:18.176 |V| --LOGLOG:NativeMemoryPool--    | :1                             | New memory block allocated, size: 1,048,576 bytes, total allocated blocks: 1, used: 1
+
+19:51:18.237 |I| --LOGLOG--                     | :1                             | Initializing LogManager with path=/opt/idea/plugins/clion-radler/DotFiles/backend-log.xml, subconfiguration=Debug
+
+19:51:18.255 |I| --LOGLOG--                     | :1                             | Reconfigure logger, ReadBinary=[False], Subconf=[Debug], Xml=/opt/idea/plugins/clion-radler/DotFiles/backend-log.xml
+
+JetBrains CLion 2025.2 EAP 8 D 
+Running in .NET Core v8.0.11 ARM64 runtime
+19:51:18.532 |I| --LOGLOG--                     | :1                             | Added omnipresent logger with type [JetBrains.Util.Console.ConsoleLoggerListener] and level [INFO]
+
+19:51:23.586 |I| --LOGLOG--                     | :1                             | Added omnipresent logger with type [JetBrains.UI.Application.LogEventListener] and level [INFO]. Filters: <len=1>[BurstFilter[level=ERROR, lastburst=0, rates=0]]
+
+JetBrains CLion 2025.2 EAP 8 D
+Running on ARM64 OS in ARM64 architecture, .NET 8.0.11 under Debian GNU/Linux 12 (bookworm)
+19:51:24.159 |I| --LOGLOG--                     | :1                             | Removed omnipresent logger with type [JetBrains.Util.Console.ConsoleLoggerListener] and level [INFO]
+
+19:51:24.159 |I| --LOGLOG--                     | :1                             | Added omnipresent logger with type [JetBrains.Rider.Backend.Features.Loggers.RiderNullLoggerListener] and level [WARN]
+
+19:51:24.159 |I| --LOGLOG--                     | :1                             | Added omnipresent logger with type [JetBrains.Rider.Backend.Features.Loggers.LoggerHost] and level [INFO]
+
+19:51:24.161 |I| --LOGLOG--                     | :1                             | Removed omnipresent logger with type [JetBrains.UI.Application.LogEventListener] and level [INFO]
+
+19:51:47.262 |V| --LOGLOG:NativeMemoryPool--    | .NET TP Worker:13              | New memory block allocated, size: 1,048,576 bytes, total allocated blocks: 2, used: 1
+
+19:51:47.288 |V| --LOGLOG:NativeMemoryPool--    | .NET TP Worker:15              | New memory block allocated, size: 1,048,576 bytes, total allocated blocks: 3, used: 0
+
+19:53:04.716 |I| --LOGLOG--                     | :1                             | Apply Transformation >> Enable RD trace categories: <len=0>
+

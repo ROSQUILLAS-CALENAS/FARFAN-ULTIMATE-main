@@ -1,0 +1,50 @@
+{
+  "appInfo" : {
+    "build" : "252.25519",
+    "buildDate" : "2025-09-04T19:51:13.56Z[Etc/UTC]",
+    "productCode" : "QDCPP",
+    "generated" : "2025-09-04T19:55:33.78094125Z",
+    "os" : "Linux 6.10.14-linuxkit",
+    "runtime" : "JetBrains s.r.o. 21.0.8 21.0.8+9-b1038.68"
+  },
+  "runtimeInfo" : {
+    "maxMemory" : 2877292544,
+    "numberOfProcessors" : 8,
+    "maxNumberOfIndexingThreads" : 8,
+    "maxSizeOfFileForIntelliSense" : 2560000,
+    "maxSizeOfFileForContentLoading" : 20971520
+  },
+  "type" : "Scanning",
+  "projectIndexingActivityHistory" : {
+    "projectName" : "project",
+    "times" : {
+      "scanningReason" : "Rebuild requested for index SchemaTypeInheritance",
+      "scanningType" : "FULL",
+      "scanningId" : 2,
+      "creatingIteratorsTime" : 0,
+      "concurrentHandlingWallTimeWithoutPauses" : 0,
+      "concurrentHandlingWallTimeWithPauses" : 0,
+      "concurrentHandlingSumOfThreadTimesWithPauses" : 0,
+      "concurrentIterationAndScannersApplicationSumOfThreadTimesWithPauses" : 0,
+      "concurrentFileCheckSumOfThreadTimesWithPauses" : 0,
+      "delayedPushPropertiesStageTime" : 0,
+      "indexExtensionsTime" : 0,
+      "dumbWallTimeWithPauses" : 0,
+      "dumbWallTimeWithoutPauses" : 0,
+      "updatingStart" : "2025-09-04T19:55:02.236511708Z",
+      "updatingEnd" : "2025-09-04T19:55:33.758330306Z",
+      "totalWallTimeWithPauses" : 31521818598,
+      "wallTimeOnPause" : 471875,
+      "isCancelled" : true,
+      "cancellationReason" : "java.util.concurrent.CancellationException: Full scanning is queued",
+      "totalWallTimeWithoutPauses" : 31521346723
+    },
+    "fileCount" : {
+      "numberOfFileProviders" : 0,
+      "numberOfScannedFiles" : 0,
+      "numberOfFilesIndexedByInfrastructureExtensionsDuringScan" : 0,
+      "numberOfFilesScheduledForIndexingAfterScan" : 0
+    },
+    "scanningStatistics" : [ ]
+  }
+}

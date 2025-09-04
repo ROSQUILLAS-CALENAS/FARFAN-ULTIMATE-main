@@ -3,6 +3,4 @@ profile:
   name: qodana.starter
 include:
   - name: DuplicatedCode
-qodana:
-  sarif:
-    json:
+linter: qodana-cpp
