@@ -42,46 +42,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.pytest in test_retriever_determinism.py.executor": "Run",
-    "Python.Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.executor": "Run",
-    "Python.Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.executor": "Run",
-    "Python.ComprehensiveStaticAudit.executor": "Run",
-    "Python.DEVELOPMENT PLAN.executor": "Run",
-    "Python.automated_dependency_resolution.executor": "Run",
-    "Python.canonical_output_auditor.executor": "Run",
-    "Python.comprehensive_pipeline_orchestrator.executor": "Run",
-    "Python.dependency_analysis_tool.executor": "Run",
-    "Python.deterministic_pipeline_validator.executor": "Run",
-    "Python.distributed_processor.executor": "Run",
-    "Python.fix_imports_venv.executor": "Run",
-    "Python.ingestion_enhancer.executor": "Debug",
-    "Python.project_health_check.executor": "Run",
-    "Python.report_compiler.executor": "Run",
-    "Python.scratch_3.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHELLCHECK.PATH": "/Users/recovered/Library/Application Support/JetBrains/PyCharm2025.1/plugins/Shell Script/shellcheck",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "CodeWithMe",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.pytest in test_retriever_determinism.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ComprehensiveStaticAudit.executor&quot;: &quot;Run&quot;,
+    &quot;Python.DEVELOPMENT PLAN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.automated_dependency_resolution.executor&quot;: &quot;Run&quot;,
+    &quot;Python.canonical_output_auditor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.comprehensive_pipeline_orchestrator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dependency_analysis_tool.executor&quot;: &quot;Run&quot;,
+    &quot;Python.deterministic_pipeline_validator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.distributed_processor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fix_imports_venv.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ingestion_enhancer.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.project_health_check.executor&quot;: &quot;Run&quot;,
+    &quot;Python.report_compiler.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scratch_3.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/recovered/Library/Application Support/JetBrains/PyCharm2025.1/plugins/Shell Script/shellcheck&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/recovered/Downloads/FARFAN-ULTIMATE-main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
