@@ -1,304 +1,284 @@
 [build-system]
-requires = ["setuptools>=68.0.0", "wheel"]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "egw-query-expansion"
-version = "1.0.0"
-description = "EGW Query Expansion system with hybrid retrieval and phase layering enforcement"
+dynamic = ["version", "description", "readme"]
 authors = [
-    {name = "EGW Team", email = "team@egw.ai"}
+    {name = "EGW Query Expansion Team", email = "contact@example.com"},
 ]
 license = {text = "MIT"}
-readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.8"
+keywords = ["machine-learning", "information-retrieval", "query-expansion"]
 classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers", 
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
-    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Indexing",
 ]
 
-[project.urls]
-Homepage = "https://github.com/egw/egw-query-expansion"
-Repository = "https://github.com/egw/egw-query-expansion"
-Documentation = "https://egw-query-expansion.readthedocs.io/"
+[tool.setuptools]
+packages = ["egw_query_expansion"]
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["canonical_flow*", "egw_query_expansion*"]
+[tool.setuptools.dynamic]
+version = {attr = "egw_query_expansion.__version__"}
+description = {attr = "egw_query_expansion.__description__"}
+readme = {file = ["README.md"], content-type = "text/markdown"}
 
-[tool.importlinter]
-root_packages = ["canonical_flow"]
+# Pyright configuration
+[tool.pyright]
+include = ["egw_query_expansion", "src", "scripts", "tests"]
+exclude = ["venv", ".venv", "build", "dist", ".mypy_cache", ".pytest_cache"]
+venvPath = "."
+venv = "venv"
 
-[[tool.importlinter.contracts]]
-name = "Phase Layering Enforcement Contract"
-type = "layers"
-layers = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction", 
-    "canonical_flow.K_knowledge_extraction",
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
-]
+# Strict type checking rules
+strict = ["egw_query_expansion/**/*.py"]
+typeCheckingMode = "strict"
+pythonVersion = "3.8"
+pythonPlatform = "All"
 
-[[tool.importlinter.contracts]]
-name = "Phase Independence Contract" 
-type = "independence"
-modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction",
-    "canonical_flow.K_knowledge_extraction", 
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
-]
+# Advanced analysis settings
+useLibraryCodeForTypes = true
+autoImportCompletions = true
+autoSearchPaths = true
+stubPath = "stubs"
 
-[[tool.importlinter.contracts]]
-name = "Mathematical Enhancers Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.mathematical_enhancers"
-]
-source_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction", 
-    "canonical_flow.K_knowledge_extraction",
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
-]
+# Diagnostic settings
+reportMissingImports = "error"
+reportMissingTypeStubs = "warning" 
+reportImportCycles = "error"
+reportUnusedImport = "warning"
+reportUnusedClass = "warning"
+reportUnusedFunction = "warning"
+reportUnusedVariable = "warning"
+reportDuplicateImport = "error"
+reportWildcardImportFromLibrary = "error"
+reportOptionalSubscript = "error"
+reportOptionalMemberAccess = "error"
+reportOptionalCall = "error"
+reportOptionalIterable = "error"
+reportOptionalContextManager = "error"
+reportOptionalOperand = "error"
+reportUntypedFunctionDecorator = "error"
+reportUntypedClassDecorator = "error"
+reportUntypedBaseClass = "error"
+reportUntypedNamedTuple = "error"
+reportPrivateUsage = "warning"
+reportConstantRedefinition = "error"
+reportIncompatibleMethodOverride = "error"
+reportIncompatibleVariableOverride = "error"
+reportInvalidStringEscapeSequence = "error"
+reportUnknownParameterType = "error"
+reportUnknownArgumentType = "error"
+reportUnknownLambdaType = "error"
+reportUnknownVariableType = "error"
+reportUnknownMemberType = "warning"
+reportMissingParameterType = "error"
+reportMissingTypeArgument = "error"
+reportInvalidTypeVarUse = "error"
+reportCallInDefaultInitializer = "warning"
+reportUnnecessaryIsInstance = "warning"
+reportUnnecessaryCast = "warning"
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryContains = "warning"
+reportAssertAlwaysTrue = "warning"
+reportSelfClsParameterName = "error"
+reportImplicitStringConcatenation = "warning"
+reportUndefinedVariable = "error"
+reportUnboundVariable = "error"
+reportInvalidStubStatement = "error"
+reportIncompleteStub = "error"
+reportUnsupportedDunderAll = "error"
+reportUnusedCoroutine = "error"
 
-[[tool.importlinter.contracts]]
-name = "Backward Dependency Prevention Contract"
-type = "forbidden"
-forbidden_modules = ["canonical_flow.I_ingestion_preparation"]
-source_modules = [
-    "canonical_flow.X_context_construction",
-    "canonical_flow.K_knowledge_extraction", 
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
-]
-
-[[tool.importlinter.contracts]]
-name = "X Context Construction Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction"
-]
-source_modules = [
-    "canonical_flow.K_knowledge_extraction",
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval", 
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
+# Ruff configuration
+[tool.ruff]
+target-version = "py38"
+line-length = 100
+exclude = [
+    ".git",
+    ".mypy_cache", 
+    ".pytest_cache",
+    ".ruff_cache",
+    ".tox",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "site-packages",
 ]
 
-[[tool.importlinter.contracts]]
-name = "K Knowledge Extraction Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction",
-    "canonical_flow.K_knowledge_extraction"
-]
-source_modules = [
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
-]
-
-[[tool.importlinter.contracts]]
-name = "A Analysis NLP Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction", 
-    "canonical_flow.K_knowledge_extraction",
-    "canonical_flow.A_analysis_nlp"
-]
-source_modules = [
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage", 
-    "canonical_flow.S_synthesis_output"
-]
-
-[[tool.importlinter.contracts]]
-name = "L Classification Evaluation Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction",
-    "canonical_flow.K_knowledge_extraction",
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation"
-]
-source_modules = [
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
+[tool.ruff.lint]
+# Enable type-checking (TCH) and import (I) rule categories
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (import organization)
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "YTT", # flake8-2020
+    "ANN", # flake8-annotations
+    "S",   # flake8-bandit
+    "BLE", # flake8-blind-except
+    "FBT", # flake8-boolean-trap
+    "B",   # flake8-bugbear
+    "A",   # flake8-builtins
+    "COM", # flake8-commas
+    "C4",  # flake8-comprehensions
+    "DTZ", # flake8-datetimez
+    "T10", # flake8-debugger
+    "EM",  # flake8-errmsg
+    "FA",  # flake8-future-annotations
+    "ISC", # flake8-implicit-str-concat
+    "ICN", # flake8-import-conventions
+    "G",   # flake8-logging-format
+    "INP", # flake8-no-pep420
+    "PIE", # flake8-pie
+    "T20", # flake8-print
+    "PYI", # flake8-pyi
+    "PT",  # flake8-pytest-style
+    "Q",   # flake8-quotes
+    "RSE", # flake8-raise
+    "RET", # flake8-return
+    "SLF", # flake8-self
+    "SLOT", # flake8-slots
+    "SIM", # flake8-simplify
+    "TID", # flake8-tidy-imports
+    "TCH", # flake8-type-checking (imports should be in TYPE_CHECKING block)
+    "ARG", # flake8-unused-arguments
+    "PTH", # flake8-use-pathlib
+    "ERA", # eradicate
+    "PD",  # pandas-vet
+    "PGH", # pygrep-hooks
+    "PL",  # pylint
+    "TRY", # tryceratops
+    "FLY", # flynt
+    "NPY", # numpy
+    "PERF", # perflint
+    "RUF", # ruff-specific rules
 ]
 
-[[tool.importlinter.contracts]]
-name = "R Search Retrieval Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction",
-    "canonical_flow.K_knowledge_extraction", 
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval"
-]
-source_modules = [
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
+ignore = [
+    "ANN101", # Missing type annotation for `self` in method
+    "ANN102", # Missing type annotation for `cls` in classmethod
+    "S101",   # Use of `assert` detected (allow in tests)
+    "PLR0913", # Too many arguments to function call
+    "PLR0912", # Too many branches
+    "PLR0915", # Too many statements
+    "E501",   # Line too long (handled by formatter)
+    "COM812", # Trailing comma missing (handled by formatter)
+    "ISC001", # Implicitly concatenated string literals (handled by formatter)
 ]
 
-[[tool.importlinter.contracts]]
-name = "O Orchestration Control Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction",
-    "canonical_flow.K_knowledge_extraction",
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control"
+# Allow fix for all enabled rules
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "S101",   # Use of `assert` detected
+    "ANN",    # Type annotations not required in tests
+    "PLR2004", # Magic value used in comparison
+    "SLF001", # Private member accessed
 ]
-source_modules = [
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
+"scripts/**/*.py" = [
+    "T201",   # `print` found (allow in scripts)
+    "S603",   # `subprocess` call: check for execution of untrusted input
 ]
 
-[[tool.importlinter.contracts]]
-name = "G Aggregation Reporting Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction",
-    "canonical_flow.K_knowledge_extraction",
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation", 
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting"
+[tool.ruff.lint.isort]
+known-first-party = ["egw_query_expansion"]
+force-sort-within-sections = true
+split-on-trailing-comma = true
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.flake8-type-checking]
+runtime-evaluated-base-classes = ["pydantic.BaseModel"]
+exempt-modules = ["typing", "typing_extensions"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-source-first-line = false
+line-ending = "auto"
+
+# Pytest configuration
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "-ra",
+    "--strict-markers", 
+    "--strict-config",
+    "--cov=egw_query_expansion",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
 ]
-source_modules = [
-    "canonical_flow.T_integration_storage",
-    "canonical_flow.S_synthesis_output"
+testpaths = ["tests", "egw_query_expansion/tests"]
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
 ]
 
-[[tool.importlinter.contracts]]
-name = "T Integration Storage Isolation Contract"
-type = "forbidden"
-forbidden_modules = [
-    "canonical_flow.I_ingestion_preparation",
-    "canonical_flow.X_context_construction",
-    "canonical_flow.K_knowledge_extraction",
-    "canonical_flow.A_analysis_nlp",
-    "canonical_flow.L_classification_evaluation",
-    "canonical_flow.R_search_retrieval",
-    "canonical_flow.O_orchestration_control",
-    "canonical_flow.G_aggregation_reporting",
-    "canonical_flow.T_integration_storage"
-]
-source_modules = [
-    "canonical_flow.S_synthesis_output"
+# Coverage configuration
+[tool.coverage.run]
+source = ["egw_query_expansion", "src"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__init__.py",
+    "*/venv/*",
+    "setup.py",
 ]
 
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+# Black configuration (for compatibility)
 [tool.black]
-line-length = 88
-target-version = ['py39', 'py310', 'py311']
+line-length = 100
+target-version = ['py38', 'py39', 'py310']
 include = '\.pyi?$'
 extend-exclude = '''
 /(
-    \.git
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
   | \.venv
   | venv
   | build
   | dist
-  | \.eggs
 )/
 '''
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 88
-known_first_party = ["canonical_flow", "egw_query_expansion"]
-
-[tool.mypy]
-python_version = "3.9"
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-check_untyped_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_no_return = true
-warn_unreachable = true
-strict_equality = true
-
-[tool.pytest.ini_options]
-minversion = "7.0"
-addopts = "-ra -q --strict-markers --strict-config"
-testpaths = [
-    "tests",
-    "canonical_flow/*/test_*.py",
-    "egw_query_expansion/tests"
-]
-python_files = ["test_*.py", "*_test.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-markers = [
-    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
-    "integration: marks tests as integration tests",
-    "unit: marks tests as unit tests",
-]

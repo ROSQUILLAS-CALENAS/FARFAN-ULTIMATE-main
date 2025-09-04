@@ -32,7 +32,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         line.strip()
-        for line in open("requirements.txt").readlines()
+        for line in open("requirements-minimal.txt").readlines()
         if line.strip() and not line.startswith("#")
     ],
     extras_require={
