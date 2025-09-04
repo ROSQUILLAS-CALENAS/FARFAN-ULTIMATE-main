@@ -1,0 +1,370 @@
+Pipeline Component Dependencies
+========================================
+
+
+I - Ingestion Preparation:
+-------------------------------
+  01I: EXTRACTOR DE EVIDENCIAS CONTEXTUAL
+  02I: config_loader
+  03I: pdf_reader
+  04I: normative_validator
+  05I: feature_extractor
+  06I: validate_advanced_loader <- 07I, 07I
+  07I: advanced_loader
+  08I: validate_feature_extractor
+  09I: table_extractor <- 02R
+  10I: gate_validation_system
+  11I: pdf_reader
+  12I: raw_data_generator
+  13I: __init__
+  14I: normative_validator
+  15I: feature_extractor
+  16I: advanced_loader
+  17I: preflight_validation <- 14R
+  18I: ingestion_orchestrator
+  19I: gate_validation_system
+  20I: pdf_reader
+  21I: raw_data_generator
+  22I: __init__
+  23I: normative_validator
+  24I: feature_extractor
+  25I: advanced_loader
+  26I: preflight_validation <- 14R
+  27I: ingestion_orchestrator
+
+X - Context Construction:
+------------------------------
+  01X: lineage_tracker
+  02X: example_lineage_usage
+  03X: command_context
+  04X: immutable_context
+  05X: context_adapter
+  06X: immutable_context
+  07X: __init__
+  08X: context_adapter
+  09X: lineage_tracker
+  10X: context_enhancer
+  11X: immutable_context
+  12X: __init__
+  13X: context_adapter
+  14X: lineage_tracker
+  15X: context_enhancer
+
+K - Knowledge Extraction:
+------------------------------
+  01K: causal_graph
+  02K: causal_dnp_framework
+  03K: embedding_generator
+  04K: knowledge_extraction_error_handler <- 14R
+  05K: embedding_builder
+  06K: graph_ops
+  07K: apply_adv_graphics_stack
+  08K: deterministic_embedder
+  09K: dnp_causal_correction_system
+  10K: knowledge_enhancer
+  11K: causal_graph_constructor
+  12K: gate_validator <- 14R
+  13K: causal_graph
+  14K: advanced_knowledge_graph_builder
+  15K: chunking_processor
+  16K: __init__
+  17K: entity_concept_extractor
+  18K: causal_dnp_framework
+  19K: dnp_alignment_analyzer
+  20K: embedding_generator
+  21K: embedding_builder
+  22K: knowledge_audit_system <- 14R
+  23K: knowledge_audit_demo
+  24K: dnp_causal_correction_system
+  25K: knowledge_enhancer
+  26K: causal_graph_constructor
+  27K: gate_validator <- 14R
+  28K: causal_graph
+  29K: advanced_knowledge_graph_builder
+  30K: chunking_processor
+  31K: __init__
+  32K: entity_concept_extractor
+  33K: causal_dnp_framework
+  34K: dnp_alignment_analyzer
+  35K: embedding_generator
+  36K: embedding_builder
+  37K: knowledge_audit_system <- 14R
+  38K: knowledge_audit_demo
+
+A - Analysis Nlp:
+----------------------
+  01A: evidence_system
+  02A: evidence_processor
+  03A: module_distributed_processor
+  04A: parallel_processor <- 02R, 02R
+  05A: adaptive_analyzer
+  06A: analysis_nlp_orchestrator
+  07A: text_analyzer
+  08A: distributed_processor
+  09A: document_processor
+  10A: evaluation_driven_processor
+  11A: update_distributed_processor_demo
+  12A: stream_processor
+  13A: question_analyzer
+  14A: src:nlp_engine:semantic_inference_engine
+  15A: validate_parallel_processor
+  16A: evidence_validation_model
+  17A: evidence_router
+  18A: validate_analysis_nlp_components
+  19A: __init__
+  20A: _mapping
+  21A: _mapping
+  22A: _mapping
+  23A: project_analyzer <- 01G, 14R
+  24A: permutation_invariant_processor
+  25A: evidence_processor
+  26A: implementacion_mapeo
+  27A: adaptive_analyzer
+  28A: extractor_evidencias_contextual
+  29A: evaluation_driven_processor
+  30A: __init__
+  31A: question_analyzer
+  32A: dnp_alignment_adapter
+  33A: evidence_validation_model
+  34A: decalogo_question_registry
+  35A: evidence_processor
+  36A: implementacion_mapeo
+  37A: adaptive_analyzer
+  38A: extractor_evidencias_contextual
+  39A: evaluation_driven_processor
+  40A: __init__
+  41A: question_analyzer
+  42A: dnp_alignment_adapter
+  43A: evidence_validation_model
+  44A: decalogo_question_registry
+  45A: __init__
+
+L - Classification Evaluation:
+-----------------------------------
+  01L: conformal_risk_demo
+  02L: scoring
+  03L: adaptive_scoring_engine
+  04L: adaptive_controller
+  05L: deterministic_flow_risk_guard
+  06L: conformal_risk_certification_demo
+  07L: question_level_scoring_pipeline
+  08L: per_point_scoring_system_demo <- 33A
+  09L: conformal_risk_demo
+  10L: conformal_risk_control
+  11L: per_point_scoring_system <- 33A
+  12L: scoring_enhancer
+  13L: conformal_risk_control
+  14L: demo_schema_validation
+  15L: stage_orchestrator
+  16L: demo_stage_orchestrator
+  17L: __init__
+  18L: score_calculator
+  19L: question_registry
+  20L: schemas
+  21L: evidence_adapter
+  22L: decalogo_scoring_system
+  23L: adaptive_scoring_engine
+  24L: conformal_prediction
+  25L: per_point_scoring_system <- 33A
+  26L: scoring_enhancer
+  27L: conformal_risk_control
+  28L: demo_schema_validation
+  29L: stage_orchestrator
+  30L: demo_stage_orchestrator
+  31L: __init__
+  32L: score_calculator
+  33L: question_registry
+  34L: schemas
+  35L: evidence_adapter
+  36L: decalogo_scoring_system
+  37L: adaptive_scoring_engine
+  38L: conformal_prediction
+
+O - Orchestration Control:
+-------------------------------
+  01O: validator
+  02O: airflow_orchestrator
+  03O: validate_l_orchestrator
+  04O: rubric_validator
+  05O: validate_orchestrator
+  06O: core_orchestrator
+  07O: pipeline_orchestrator
+  08O: pipeline_orchestrator_audit
+  09O: constraint_validator
+  10O: Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization <- 14R
+  11O: decision_engine
+  12O: cluster_execution_controller
+  13O: contract_validator
+  14O: comprehensive_pipeline_orchestrator <- 02R, 02R
+  15O: deterministic_pipeline_validator <- 14R, 01G
+  16O: enhanced_core_orchestrator
+  17O: PIPELINEORCHESTRATOR
+  18O: theory_validator
+  19O: validate_safety_controller
+  20O: comprehensive_import_validator <- 01G, 02R
+  21O: preflight_validator
+  22O: orchestrator
+  23O: controller <- 14O, 04A
+  24O: deterministic_router
+  25O: mathematical_safety_controller <- 14R
+  26O: confluent_orchestrator
+  27O: safety_controller
+  28O: auto_enhancement_orchestrator <- 01G
+  29O: pre_flight_validator
+  30O: airflow_orchestrator
+  31O: deterministic_router
+  32O: exception_monitoring
+  33O: rubric_validator
+  34O: core_orchestrator
+  35O: alert_system
+  36O: confluent_orchestrator
+  37O: distributed_processor
+  38O: exception_telemetry
+  39O: __init__
+  40O: constraint_validator
+  41O: decision_engine
+  42O: contract_validator
+  43O: circuit_breaker
+  44O: enhanced_core_orchestrator
+  45O: backpressure_manager
+  46O: adaptive_controller
+  47O: evidence_router
+  48O: preflight_validator <- 14R
+  49O: pre_flight_validator
+  50O: airflow_orchestrator
+  51O: deterministic_router
+  52O: exception_monitoring
+  53O: rubric_validator
+  54O: core_orchestrator
+  55O: alert_system
+  56O: confluent_orchestrator
+  57O: distributed_processor
+  58O: exception_telemetry
+  59O: __init__
+  60O: constraint_validator
+  61O: decision_engine
+  62O: contract_validator
+  63O: circuit_breaker
+  64O: enhanced_core_orchestrator
+  65O: backpressure_manager
+  66O: adaptive_controller
+  67O: evidence_router
+  68O: preflight_validator <- 14R
+
+R - Search Retrieval:
+--------------------------
+  01R: lexical_index
+  02R: deterministic_hybrid_retrieval <- 33A
+  03R: hybrid_retrieval
+  04R: demo_pipeline_index <- 07R
+  05R: hybrid_retrieval_bridge
+  06R: setup_pipeline_index <- 07R
+  07R: pipeline_index_system <- 01G
+  08R: validate_pipeline_index <- 01G, 07R
+  09R: retrieval_engine
+  10R: retrieval_trace
+  11R: retrieval_trace
+  12R: vector_index
+  13R: lexical_index
+  14R: hybrid_retriever
+  15R: reranker
+  16R: index
+  17R: search_scope
+  18R: index_command <- 14O, 03X
+  19R: index <- 18R, 02R, 02R, 14O
+  20R: search <- 18R, 14O, 04X, 04X
+  21R: hybrid_retrieval
+  22R: retrieval_enhancer
+  23R: vector_index
+  24R: reranker
+  25R: lexical_index
+  26R: deterministic_hybrid_retrieval
+  27R: __init__
+  28R: hybrid_retrieval_bridge
+  29R: intelligent_recommendation_engine
+  30R: hybrid_retrieval_core
+  31R: hybrid_retriever
+  32R: lexical_index_base
+  33R: retrieval_enhancer
+  34R: vector_index
+  35R: reranker
+  36R: lexical_index
+  37R: deterministic_hybrid_retrieval
+  38R: __init__
+  39R: hybrid_retrieval_bridge
+  40R: intelligent_recommendation_engine
+  41R: hybrid_retrieval_core
+  42R: hybrid_retriever
+  43R: lexical_index_base
+  44R: vector_index
+  45R: lexical_index
+  46R: hybrid_retriever
+  47R: reranker
+
+S - Synthesis Output:
+--------------------------
+  01S: answer_formatter
+  02S: answer_synthesizer
+  03S: formatter
+  04S: answer_formatter
+  05S: __init__
+  06S: answer_synthesizer
+  07S: answer_formatter
+  08S: __init__
+  09S: answer_synthesizer
+
+G - Aggregation Reporting:
+-------------------------------
+  01G: meso_aggregator
+  02G: manual_test_report <- 14R
+  03G: validate_meso_aggregator <- 01G
+  04G: simple_test_final_report <- 06G, 14R
+  05G: contract_diffs_report
+  06G: report_compiler
+  07G: generate_flux_report
+  08G: meso_aggregator
+  09G: __init__
+  10G: report_compiler
+  11G: reporters <- 14O, 03S
+  12G: installation_report
+  13G: reporter <- 11G
+  14G: dimension_aggregator
+  15G: meso_aggregator
+  16G: __init__
+  17G: audit_logger <- 14R
+  18G: report_compiler
+  19G: dimension_aggregator
+  20G: meso_aggregator
+  21G: __init__
+  22G: audit_logger <- 14R
+  23G: report_compiler
+  24G: meso_aggregator
+  25G: __init__
+  26G: report_compiler
+
+T - Integration Storage:
+-----------------------------
+  01T: analytics_enhancement
+  02T: optimization_engine <- 33A
+  03T: validate_memory_optimizations
+  04T: confidence_quality_metrics
+  05T: metrics_collector
+  06T: feedback_loop
+  07T: compensation_engine
+  08T: __init__
+  09T: analytics_enhancement
+  10T: optimization_engine
+  11T: metrics_collector
+  12T: feedback_loop
+  13T: compensation_engine
+  14T: __init__
+  15T: analytics_enhancement
+  16T: optimization_engine
+  17T: metrics_collector
+  18T: feedback_loop
+
+
+Dependency Summary:
+--------------------
+Total Dependencies: 56
+Components with Dependencies: 39
