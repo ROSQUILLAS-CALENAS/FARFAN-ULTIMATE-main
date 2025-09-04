@@ -29,3 +29,7 @@ Running on ARM64 OS in ARM64 architecture, .NET 8.0.11 under Debian GNU/Linux 12
 
 19:53:04.716 |I| --LOGLOG--                     | :1                             | Apply Transformation >> Enable RD trace categories: <len=0>
 
+20:51:43.052 |V| --LOGLOG:NativeMemoryPool--    | .NET TP Worker:14              | New memory block allocated, size: 1,048,576 bytes, total allocated blocks: 0, used: 0
+
+20:51:43.065 |V| --LOGLOG:NativeMemoryPool--    | :1                             | New memory block allocated, size: 1,048,576 bytes, total allocated blocks: 1, used: 0
+

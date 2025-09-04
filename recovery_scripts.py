@@ -312,7 +312,7 @@ def reinstall_dependencies_ordered() -> bool:
             
             # Remaining dependencies
             ['python-consul>=1.1.0', 'pm4py>=2.7.0', 'deap>=1.4.0', 'whoosh>=2.7.4',
-             'ray>=2.7.0', 'torch-geometric>=2.3.0', 'elasticsearch>=8.9.0',
+             'ray>=2.43.0', 'torch-geometric>=2.3.0', 'elasticsearch>=8.9.0',
              'joblib>=1.3.0', 'dask>=2023.8.0', 'sqlalchemy>=2.0.0', 'lark>=1.1.0',
              'jsonschema>=4.19.0', 'toml>=0.10.2', 'prometheus-client>=0.17.0',
              'opentelemetry-api>=1.20.0', 'opentelemetry-sdk>=1.20.0', 'loguru>=0.7.0',

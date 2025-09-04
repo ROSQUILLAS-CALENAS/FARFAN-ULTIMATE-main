@@ -118,7 +118,8 @@ deap>=1.4.0
 whoosh>=2.7.4
 
 # Machine learning extensions
-ray>=2.7.0
+# Upgraded to address CVE-2023-6019, CVE-2023-6020, CVE-2023-6021, CVE-2025-1979
+ray>=2.43.0
 torch-geometric>=2.3.0
 # node2vec>=0.4.0  # Commented out due to gensim build issues on Python 3.13
 

@@ -7,9 +7,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7131941-30ca-4dc0-8d47-9573452efdf5" name="Changes" comment="">
+    <list default="true" id="d7131941-30ca-4dc0-8d47-9573452efdf5" name="Changes" comment="m&#10;&#10;k">
+      <change afterPath="$PROJECT_DIR$/.idea/developer-tools.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qodana.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/backend.2025-09-04_1951.152-out.log" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/backend.2025-09-04_1951.152-out.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/backend.2025-09-04_1951.152.log" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/backend.2025-09-04_1951.152.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/gc.log" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/gc.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/idea.log" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/idea.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-51-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-52-31.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-53-20.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-54-19.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-56-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-57-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-58-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-59-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-00-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-01-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-02-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-03-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-04-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-05-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-06-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-07-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-08-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-09-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-10-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-11-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-12-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-13-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-14-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-15-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-16-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-17-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-18-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-19-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-20-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-21-16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-metrics.2025-09-04-19-51-16.csv" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/open-telemetry-metrics.2025-09-04-19-51-16.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canonical_flow/dependency_audit.json" beforeDir="false" afterPath="$PROJECT_DIR$/canonical_flow/dependency_audit.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recovery_scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/recovery_scripts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,46 +81,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python tests.pytest in test_retriever_determinism.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ComprehensiveStaticAudit.executor&quot;: &quot;Run&quot;,
-    &quot;Python.DEVELOPMENT PLAN.executor&quot;: &quot;Run&quot;,
-    &quot;Python.automated_dependency_resolution.executor&quot;: &quot;Run&quot;,
-    &quot;Python.canonical_output_auditor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.comprehensive_pipeline_orchestrator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dependency_analysis_tool.executor&quot;: &quot;Run&quot;,
-    &quot;Python.deterministic_pipeline_validator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.distributed_processor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.fix_imports_venv.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ingestion_enhancer.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.project_health_check.executor&quot;: &quot;Run&quot;,
-    &quot;Python.report_compiler.executor&quot;: &quot;Run&quot;,
-    &quot;Python.scratch_3.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/recovered/Library/Application Support/JetBrains/PyCharm2025.1/plugins/Shell Script/shellcheck&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/recovered/Downloads/FARFAN-ULTIMATE-main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.pytest in test_retriever_determinism.py.executor": "Run",
+    "Python.Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.executor": "Run",
+    "Python.Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.executor": "Run",
+    "Python.ComprehensiveStaticAudit.executor": "Run",
+    "Python.DEVELOPMENT PLAN.executor": "Run",
+    "Python.automated_dependency_resolution.executor": "Run",
+    "Python.canonical_output_auditor.executor": "Run",
+    "Python.comprehensive_pipeline_orchestrator.executor": "Run",
+    "Python.dependency_analysis_tool.executor": "Run",
+    "Python.deterministic_pipeline_validator.executor": "Run",
+    "Python.distributed_processor.executor": "Run",
+    "Python.fix_imports_venv.executor": "Run",
+    "Python.ingestion_enhancer.executor": "Debug",
+    "Python.project_health_check.executor": "Run",
+    "Python.report_compiler.executor": "Run",
+    "Python.scratch_3.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "/Users/recovered/Library/Application Support/JetBrains/PyCharm2025.1/plugins/Shell Script/shellcheck",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Python&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -91,7 +130,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-657d8234b839-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.74" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -103,6 +142,23 @@
       <option name="presentableId" value="Default" />
       <updated>1756728582133</updated>
     </task>
+    <task id="LOCAL-00001" summary="m&#10;&#10;k">
+      <option name="closed" value="true" />
+      <created>1757017901242</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757017901242</updated>
+    </task>
+    <task id="LOCAL-00002" summary="m&#10;&#10;k">
+      <option name="closed" value="true" />
+      <created>1757017906091</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757017906091</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +174,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="m&#10;&#10;k" />
+    <option name="LAST_COMMIT_MESSAGE" value="m&#10;&#10;k" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

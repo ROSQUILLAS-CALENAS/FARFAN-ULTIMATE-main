@@ -3212,3 +3212,18 @@ Top components by Ctor own time [Ctor own time >= 0ms, Count = 3, Total time: 15
 19:56:09.273 |V| ProjectModelMonitor           | :1                 | IsProjectModelReady -> True [ProjectModel: True, Operations: ]
 19:56:09.274 |V| NuGetOperator                 | :1                 | NuGetOperator.Idle = False
 19:56:09.276 |V| NuGetOperator                 | NuGetThread:44     | NuGetOperator.Idle = True
+20:30:57.007 |W| RiderPrimaryThreadWatchdog    | MainGuardAvailabilityWatchdog:30 | Primary thread didn't respond for 1.984sec (CurrentTask: 'RdDispatcher::FlushAll') QueueSize=-4
+20:30:57.209 |W| RiderPrimaryThreadWatchdog    | MainGuardAvailabilityWatchdog:30 | Primary thread was unresponsive for 1.984sec
+20:39:13.029 |W| RiderPrimaryThreadWatchdog    | MainGuardAvailabilityWatchdog:30 | Primary thread didn't respond for 0.847sec (CurrentTask: 'ReentrancyGuardTaskScheduler::QueueTask') QueueSize=-4
+20:39:13.231 |W| RiderPrimaryThreadWatchdog    | MainGuardAvailabilityWatchdog:30 | Primary thread was unresponsive for 0.847sec
+20:51:42.884 |V| RiderGcCollector              | JetPool(S) #1:18   | Started UltraGcCollect
+20:51:43.262 |V| RiderGcCollector              | JetPool(S) #1:18   | Finished UltraGcCollect (354 ms): 
+Allocated managed memory : 156 MB
+Working set              : 266 MB
+Private memory size      : 432 MB
+Virtual memory size      : 268594 MB
+GC(0)   : 20
+GC(1)   : 17
+GC(2)   : 13
+GC(LOH) : 1
+
