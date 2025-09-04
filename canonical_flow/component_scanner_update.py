@@ -7,9 +7,12 @@ import ast
 import re
 import os
 import json
+import subprocess
 from typing import Dict, List, Any, Set, Optional
 from pathlib import Path
 from enum import Enum
+from datetime import datetime
+from integration_layer import IntegrationLayer, ComponentMetadata, LifecycleState
 
 class ValidationResult(Enum):
     VALID = "valid"
@@ -43,6 +46,12 @@ class ComponentRegistry:
         self.registered_components: Dict[str, Dict[str, Any]] = {}
         self.registered_codes: Set[str] = set()
         self.validation_errors: List[Dict[str, Any]] = []
+        
+        # Initialize integration layer for SQL registry
+        self.integration_layer = IntegrationLayer()
+        
+        # Git analysis for owner information
+        self.git_available = self._check_git_availability()
     
     def is_pipeline_component(self, content: str) -> bool:
         """Check if file contains pipeline component patterns"""
@@ -150,6 +159,112 @@ class ComponentRegistry:
         
         return ValidationResult.VALID
     
+    def _check_git_availability(self) -> bool:
+        """Check if git is available for blame analysis"""
+        try:
+            result = subprocess.run(['git', 'status'], 
+                                  capture_output=True, 
+                                  text=True, 
+                                  timeout=5,
+                                  cwd=self.root_path)
+            return result.returncode == 0
+        except Exception:
+            return False
+    
+    def _get_file_owner_from_git(self, file_path: Path) -> str:
+        """Get file owner using git blame analysis"""
+        if not self.git_available:
+            return "unknown"
+        
+        try:
+            # Get relative path from repo root
+            rel_path = file_path.relative_to(self.root_path)
+            
+            # Use git blame to find most frequent committer
+            result = subprocess.run([
+                'git', 'blame', '--line-porcelain', str(rel_path)
+            ], capture_output=True, text=True, timeout=10, cwd=self.root_path)
+            
+            if result.returncode == 0:
+                authors = []
+                for line in result.stdout.split('\n'):
+                    if line.startswith('author '):
+                        authors.append(line[7:])  # Remove 'author ' prefix
+                
+                if authors:
+                    # Return most frequent author
+                    from collections import Counter
+                    return Counter(authors).most_common(1)[0][0]
+            
+            return "unknown"
+            
+        except Exception as e:
+            print(f"Warning: Could not get git blame for {file_path}: {e}")
+            return "unknown"
+    
+    def _calculate_evidence_score(self, file_path: Path, annotations: Dict[str, Any]) -> float:
+        """Calculate canonical evidence score based on various factors"""
+        score = 0.0
+        
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Base score for having proper annotations
+            score += 30.0
+            
+            # Documentation score
+            if '"""' in content or "'''" in content:
+                score += 20.0
+            
+            # Type hints score  
+            if 'typing' in content or '->' in content or ': str' in content:
+                score += 15.0
+            
+            # Error handling score
+            if 'try:' in content and 'except' in content:
+                score += 10.0
+            
+            # Logging score
+            if 'logger' in content or 'logging' in content:
+                score += 10.0
+            
+            # Test coverage bonus (if corresponding test file exists)
+            test_file = self.root_path / f"tests/test_{file_path.stem}.py"
+            if test_file.exists():
+                score += 15.0
+            
+            # Ensure score doesn't exceed 100
+            return min(score, 100.0)
+            
+        except Exception:
+            return 0.0
+    
+    def _determine_lifecycle_state(self, evidence_score: float, file_path: Path) -> LifecycleState:
+        """Determine initial lifecycle state based on evidence score and other factors"""
+        
+        # Check for experimental markers
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read().lower()
+            
+            if any(marker in content for marker in ['experimental', 'prototype', 'draft']):
+                return LifecycleState.EXPERIMENTAL
+            
+            if any(marker in content for marker in ['deprecated', 'obsolete']):
+                return LifecycleState.DEPRECATED
+                
+        except Exception:
+            pass
+        
+        # Use evidence score to determine state
+        if evidence_score >= 80:
+            return LifecycleState.ACTIVE
+        elif evidence_score >= 60:
+            return LifecycleState.MAINTENANCE
+        else:
+            return LifecycleState.EXPERIMENTAL
+    
     def scan_and_register_component(self, file_path: Path) -> bool:
         """Scan single component and register if valid"""
         try:
@@ -174,17 +289,55 @@ class ComponentRegistry:
             validation_result = self.validate_component_annotations(file_path, annotations)
             
             if validation_result == ValidationResult.VALID:
-                # Register component
+                # Get owner information from git blame
+                owner = self._get_file_owner_from_git(file_path)
+                
+                # Calculate evidence score
+                evidence_score = self._calculate_evidence_score(file_path, annotations)
+                
+                # Determine lifecycle state
+                lifecycle_state = self._determine_lifecycle_state(evidence_score, file_path)
+                
+                # Register component in memory
                 component_info = {
                     'file_path': str(file_path),
                     'phase': annotations['__phase__'],
                     'code': annotations['__code__'],
                     'stage_order': annotations['__stage_order__'],
-                    'phase_name': self.PHASE_NAMES[annotations['__phase__']]
+                    'phase_name': self.PHASE_NAMES[annotations['__phase__']],
+                    'owner': owner,
+                    'evidence_score': evidence_score,
+                    'lifecycle_state': lifecycle_state.value
                 }
                 
                 self.registered_components[annotations['__code__']] = component_info
                 self.registered_codes.add(annotations['__code__'])
+                
+                # Register in SQL registry
+                try:
+                    # Determine alias path based on canonical structure
+                    stage_name = self.PHASE_NAMES[annotations['__phase__']]
+                    alias_path = f"canonical_flow/{annotations['__phase__']}_{stage_name}/{annotations['__code__']}_{file_path.stem}.py"
+                    
+                    metadata = ComponentMetadata(
+                        code=annotations['__code__'],
+                        stage=stage_name,
+                        alias_path=alias_path,
+                        original_path=str(file_path),
+                        owner=owner,
+                        lifecycle_state=lifecycle_state,
+                        evidence_score=evidence_score
+                    )
+                    
+                    success = self.integration_layer.registry.register_component(metadata)
+                    if success:
+                        print(f"✓ Registered {annotations['__code__']} in SQL registry (score: {evidence_score:.1f})")
+                    else:
+                        print(f"⚠ Failed to register {annotations['__code__']} in SQL registry")
+                        
+                except Exception as e:
+                    print(f"⚠ SQL registry error for {annotations['__code__']}: {e}")
+                
                 return True
             
             return False
@@ -310,11 +463,41 @@ class ComponentRegistry:
 def main():
     """Main entry point for component scanning"""
     
-    print("🚀 Pipeline Component Scanner v2.0")
-    print("   Enhanced with annotation validation")
+    print("🚀 Pipeline Component Scanner v3.0")
+    print("   Enhanced with SQL registry integration and git blame analysis")
     
     registry = ComponentRegistry(".")
     scan_result = registry.scan_repository()
+    
+    # Perform bidirectional sync with canonical_flow index.json
+    print("\n🔄 Performing registry synchronization...")
+    sync_result = registry.integration_layer.bidirectional_sync()
+    
+    if sync_result["errors"]:
+        print("⚠️ Synchronization errors:")
+        for error in sync_result["errors"]:
+            print(f"   - {error}")
+    else:
+        print("✅ Registry synchronization completed successfully")
+    
+    # Check for inconsistencies
+    print("\n🔍 Checking for inconsistencies...")
+    inconsistencies = registry.integration_layer.get_inconsistencies()
+    
+    total_issues = (len(inconsistencies.get("registry_only", [])) + 
+                   len(inconsistencies.get("index_only", [])) + 
+                   len(inconsistencies.get("metadata_mismatches", [])))
+    
+    if total_issues > 0:
+        print(f"⚠️ Found {total_issues} inconsistencies")
+        if inconsistencies.get("registry_only"):
+            print(f"   Registry-only components: {len(inconsistencies['registry_only'])}")
+        if inconsistencies.get("index_only"):
+            print(f"   Index-only components: {len(inconsistencies['index_only'])}")
+        if inconsistencies.get("metadata_mismatches"):
+            print(f"   Metadata mismatches: {len(inconsistencies['metadata_mismatches'])}")
+    else:
+        print("✅ No inconsistencies found")
     
     # Generate registration index
     index = registry.get_registration_index()
@@ -345,7 +528,30 @@ def main():
     if sequence_validation['issues']:
         print(f"\n🔍 Sequence Issues: {len(sequence_validation['issues'])}")
     
-    print(f"\n✅ Component scanning complete")
+    # SQL Registry Statistics
+    sql_components = registry.integration_layer.registry.list_components()
+    print(f"\n📊 SQL Registry Statistics:")
+    print(f"   Total registered components: {len(sql_components)}")
+    
+    # Lifecycle state summary
+    state_counts = {}
+    for comp in sql_components:
+        state = comp.lifecycle_state.value
+        state_counts[state] = state_counts.get(state, 0) + 1
+    
+    for state, count in state_counts.items():
+        print(f"   {state.capitalize()}: {count}")
+    
+    # Average evidence score
+    if sql_components:
+        avg_score = sum(comp.evidence_score for comp in sql_components) / len(sql_components)
+        print(f"   Average evidence score: {avg_score:.1f}")
+    
+    print(f"\n✅ Component scanning and registry integration complete")
+    
+    # Clean up
+    registry.integration_layer.close()
+    
     return index
 
 

@@ -22,6 +22,13 @@ __phase__ = "O"
 __code__ = "86O"
 __stage_order__ = 7
 
+# Import integration layer for registry lookup
+try:
+    from integration_layer import IntegrationLayer, LifecycleState
+    REGISTRY_AVAILABLE = True
+except ImportError:
+    REGISTRY_AVAILABLE = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -163,9 +170,22 @@ class ContractValidator:
     usando JSON Schema y validaciones personalizadas
     """
 
-    def __init__(self, registry: ContractRegistry = None, telemetry_collector=None):
+    def __init__(self, registry: ContractRegistry = None, telemetry_collector=None, 
+                 enable_governance=True):
         self.registry = registry or ContractRegistry()
         self.telemetry = telemetry_collector
+
+        # Governance policy enforcement
+        self.enable_governance = enable_governance
+        self.component_registry = None
+        
+        if self.enable_governance and REGISTRY_AVAILABLE:
+            try:
+                self.component_registry = IntegrationLayer()
+                logger.info("Component registry integration enabled for governance")
+            except Exception as e:
+                logger.warning(f"Failed to initialize component registry: {e}")
+                self.component_registry = None
 
         # Validadores personalizados por tipo de contrato
         self.custom_validators: Dict[ContractType, List[Callable]] = {}
@@ -182,6 +202,8 @@ class ContractValidator:
             "validations_failed": 0,
             "cache_hits": 0,
             "cache_misses": 0,
+            "governance_checks": 0,
+            "governance_rejections": 0,
         }
 
     def register_custom_validator(
@@ -193,6 +215,77 @@ class ContractValidator:
 
         self.custom_validators[contract_type].append(validator)
         logger.info(f"Registered custom validator for {contract_type.value}")
+
+    def _check_component_governance(self, component_code: str, contract_name: str) -> Dict[str, Any]:
+        """Check component registration status and lifecycle compliance"""
+        governance_result = {
+            "compliant": True,
+            "warnings": [],
+            "errors": [],
+            "component_status": "unknown"
+        }
+        
+        if not self.enable_governance or not self.component_registry:
+            governance_result["component_status"] = "governance_disabled"
+            return governance_result
+        
+        try:
+            # Look up component in registry
+            component = self.component_registry.registry.get_component(component_code)
+            
+            if not component:
+                governance_result["compliant"] = False
+                governance_result["errors"].append(
+                    f"Component {component_code} is not registered in the component registry"
+                )
+                governance_result["component_status"] = "unregistered"
+                self.stats["governance_rejections"] += 1
+                return governance_result
+            
+            governance_result["component_status"] = component.lifecycle_state.value
+            
+            # Check lifecycle state compliance
+            if component.lifecycle_state == LifecycleState.DEPRECATED:
+                # Check for explicit waivers
+                waiver_key = f"deprecated_component_{component_code}"
+                if waiver_key in component.governance_waivers:
+                    governance_result["warnings"].append(
+                        f"Component {component_code} is deprecated but has explicit waiver"
+                    )
+                else:
+                    governance_result["compliant"] = False
+                    governance_result["errors"].append(
+                        f"Component {component_code} is deprecated and cannot be validated without explicit waiver"
+                    )
+                    self.stats["governance_rejections"] += 1
+            
+            elif component.lifecycle_state == LifecycleState.ARCHIVED:
+                governance_result["compliant"] = False
+                governance_result["errors"].append(
+                    f"Component {component_code} is archived and cannot be validated"
+                )
+                self.stats["governance_rejections"] += 1
+            
+            elif component.lifecycle_state == LifecycleState.EXPERIMENTAL:
+                governance_result["warnings"].append(
+                    f"Component {component_code} is in experimental state - use with caution"
+                )
+            
+            # Check evidence score thresholds
+            if component.evidence_score < 50.0:
+                governance_result["warnings"].append(
+                    f"Component {component_code} has low evidence score ({component.evidence_score:.1f})"
+                )
+            
+            self.stats["governance_checks"] += 1
+            
+        except Exception as e:
+            governance_result["warnings"].append(
+                f"Failed to check governance for component {component_code}: {e}"
+            )
+            logger.warning(f"Governance check failed for {component_code}: {e}")
+        
+        return governance_result
 
     async def validate(
         self,
@@ -214,6 +307,28 @@ class ContractValidator:
             Resultado de la validación
         """
         start_time = datetime.now()
+
+        # Check governance policy if component_code is provided in context
+        governance_warnings = []
+        component_code = None
+        
+        if context and self.enable_governance:
+            component_code = context.get("component_code")
+            if component_code:
+                governance_result = self._check_component_governance(component_code, contract_name)
+                
+                if not governance_result["compliant"]:
+                    return ValidationResult(
+                        valid=False,
+                        contract_name=contract_name,
+                        contract_version=version or "unknown",
+                        errors=governance_result["errors"],
+                        warnings=governance_result["warnings"],
+                        validation_time=(datetime.now() - start_time).total_seconds(),
+                        data_hash=self._calculate_data_hash(data),
+                    )
+                
+                governance_warnings.extend(governance_result["warnings"])
 
         # Obtener contrato
         contract = self.registry.get_contract(contract_name)
@@ -261,7 +376,7 @@ class ContractValidator:
         contract_version = contract.versions[target_version]
 
         # Verificar si la versión está deprecated
-        warnings = []
+        warnings = governance_warnings.copy()
         if contract_version.deprecated:
             warnings.append(f"Contract version {target_version} is deprecated")
             if contract_version.migration_guide:
@@ -419,6 +534,11 @@ class ContractValidator:
         if total_validations > 0:
             success_rate = (self.stats["validations_passed"] / total_validations) * 100
 
+        governance_rejection_rate = 0.0
+        governance_checks = self.stats.get("governance_checks", 0)
+        if governance_checks > 0:
+            governance_rejection_rate = (self.stats.get("governance_rejections", 0) / governance_checks) * 100
+
         cache_hit_rate = 0.0
         total_cache_requests = self.stats["cache_hits"] + self.stats["cache_misses"]
         if total_cache_requests > 0:
@@ -428,6 +548,9 @@ class ContractValidator:
             **self.stats,
             "success_rate": success_rate,
             "cache_hit_rate": cache_hit_rate,
+            "governance_rejection_rate": governance_rejection_rate,
+            "governance_enabled": self.enable_governance,
+            "component_registry_available": self.component_registry is not None,
             "total_contracts": len(self.registry.contracts),
             "validation_history_size": len(self.registry.validation_history),
         }
