@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7131941-30ca-4dc0-8d47-9573452efdf5" name="Changes" comment="" />
+    <list default="true" id="d7131941-30ca-4dc0-8d47-9573452efdf5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,9 +44,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python tests.pytest in test_retriever_determinism.py.executor": "Run",
     "Python.Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.executor": "Run",
     "Python.Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.executor": "Run",
+    "Python.ComprehensiveStaticAudit.executor": "Run",
     "Python.DEVELOPMENT PLAN.executor": "Run",
     "Python.automated_dependency_resolution.executor": "Run",
     "Python.canonical_output_auditor.executor": "Run",
