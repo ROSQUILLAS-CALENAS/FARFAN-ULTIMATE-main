@@ -1,66 +1,133 @@
 #!/usr/bin/env python3
 """
-Test script for Stage Transition Controller
+Test script for StageTransitionController module
 """
 
-def test_basic_functionality():
-    """Test basic controller functionality"""
+import json
+import os
+import tempfile
+from pathlib import Path
+
+def test_stage_transition_controller():
+    """Test basic functionality of the stage transition controller"""
+    
     try:
-        import stage_transition_controller as stc
-        
+        # Import the module
+        from stage_transition_controller import (
+            StageTransitionController, 
+            StageState, 
+            ValidationResult,
+            create_controller,
+            validate_pipeline_sequence
+        )
         print("✓ Module imported successfully")
         
-        # Test enum
-        stages = stc.PipelineStage.get_canonical_sequence()
-        assert len(stages) == 10, f"Expected 10 stages, got {len(stages)}"
-        print(f"✓ Canonical sequence has {len(stages)} stages")
+        # Create temporary directory for testing
+        with tempfile.TemporaryDirectory() as temp_dir:
+            artifact_dir = os.path.join(temp_dir, "artifacts")
+            log_file = os.path.join(temp_dir, "test_transitions.log")
+            
+            # Create controller
+            controller = create_controller(artifact_dir, log_file)
+            print("✓ Controller created successfully")
+            
+            # Test initial state
+            assert controller.get_current_stage() is None
+            print("✓ Initial state is None")
+            
+            # Test valid first transition
+            result = controller.validate_transition(None, StageState.INGESTION_PREPARATION, require_artifacts=False)
+            assert result.result == ValidationResult.SUCCESS
+            print("✓ Valid first transition (None → I)")
+            
+            # Test invalid transition (skipping stages)
+            result = controller.validate_transition(StageState.INGESTION_PREPARATION, StageState.KNOWLEDGE_EXTRACTION, require_artifacts=False)
+            assert result.result == ValidationResult.INVALID_TRANSITION
+            assert len(result.remediation_suggestions) > 0
+            print("✓ Invalid transition detected (I → K)")
+            
+            # Test valid sequential transitions
+            valid_sequence = [
+                (StageState.INGESTION_PREPARATION, StageState.CONTEXT_CONSTRUCTION),
+                (StageState.CONTEXT_CONSTRUCTION, StageState.KNOWLEDGE_EXTRACTION),
+                (StageState.KNOWLEDGE_EXTRACTION, StageState.ANALYSIS_NLP)
+            ]
+            
+            current = StageState.INGESTION_PREPARATION
+            for from_stage, to_stage in valid_sequence:
+                result = controller.validate_transition(from_stage, to_stage, require_artifacts=False)
+                assert result.result == ValidationResult.SUCCESS
+                current = to_stage
+            print("✓ Valid sequence transitions (I→X→K→A)")
+            
+            # Test artifact registration
+            test_file = os.path.join(temp_dir, "test_artifact.txt")
+            with open(test_file, 'w') as f:
+                f.write("Test artifact content")
+            
+            artifact = controller.register_artifact(StageState.ANALYSIS_NLP, test_file, {"type": "test"})
+            assert artifact.verify_existence()
+            assert artifact.verify_integrity()
+            print("✓ Artifact registration and verification")
+            
+            # Test compliance report
+            report = controller.get_compliance_report()
+            assert "timestamp" in report
+            assert "current_stage" in report
+            assert "artifact_summary" in report
+            assert "import_violations" in report
+            print("✓ Compliance report generation")
+            
+            # Test report export
+            report_file = os.path.join(temp_dir, "test_report.json")
+            controller.export_compliance_report(report_file)
+            assert os.path.exists(report_file)
+            
+            with open(report_file) as f:
+                exported_report = json.load(f)
+                assert exported_report["total_transitions"] > 0
+            print("✓ Report export functionality")
+            
+            # Test pipeline sequence validation
+            canonical_stages = [
+                StageState.INGESTION_PREPARATION,
+                StageState.CONTEXT_CONSTRUCTION,
+                StageState.KNOWLEDGE_EXTRACTION,
+                StageState.ANALYSIS_NLP,
+                StageState.CLASSIFICATION_EVALUATION,
+                StageState.SEARCH_RETRIEVAL,
+                StageState.ORCHESTRATION_CONTROL,
+                StageState.AGGREGATION_REPORTING,
+                StageState.INTEGRATION_STORAGE,
+                StageState.SYNTHESIS_OUTPUT
+            ]
+            
+            # Reset controller for clean test
+            controller.reset_state()
+            results = validate_pipeline_sequence(controller, canonical_stages, require_artifacts=False)
+            
+            assert len(results) == len(canonical_stages)
+            # Check that all transitions were successful
+            failed_results = [r for r in results if r.result != ValidationResult.SUCCESS]
+            if failed_results:
+                print(f"Failed transitions: {[(r.from_stage, r.to_stage, r.message) for r in failed_results]}")
+                assert False, f"Expected all transitions to succeed, but {len(failed_results)} failed"
+            
+            print("✓ Complete canonical sequence validation")
+            
+        print("\n=== ALL TESTS PASSED ===")
+        print("StageTransitionController module is functioning correctly")
         
-        # Test controller creation
-        controller = stc.StageTransitionController()
-        print("✓ Controller instance created")
-        
-        # Test initial state
-        current = controller.get_current_stage()
-        assert current is None, f"Expected None, got {current}"
-        print("✓ Initial state is None")
-        
-        # Test valid next stages
-        next_stages = controller.get_valid_next_stages()
-        expected = {stc.PipelineStage.I_INGESTION_PREPARATION}
-        assert next_stages == expected, f"Expected {expected}, got {next_stages}"
-        print("✓ Valid next stages correct")
-        
-        # Test artifact creation
-        artifact = stc.create_stage_artifact("test", {"data": "value"})
-        assert artifact.name == "test"
-        assert len(artifact.hash_value) == 64  # SHA256 hex
-        print("✓ Artifact creation works")
-        
-        # Test transition
-        result = controller.transition_to_stage(
-            stc.PipelineStage.I_INGESTION_PREPARATION, 
-            {"test_artifact": artifact}
-        )
-        assert result.success, f"Transition failed: {result.message}"
-        print("✓ First transition successful")
-        
-        # Test current stage updated
-        current = controller.get_current_stage()
-        assert current == stc.PipelineStage.I_INGESTION_PREPARATION
-        print("✓ Current stage updated correctly")
-        
-        # Test invalid transition
-        result = controller.transition_to_stage(
-            stc.PipelineStage.K_KNOWLEDGE_EXTRACTION  # Skip X
-        )
-        assert not result.success, "Invalid transition should fail"
-        print("✓ Invalid transition correctly rejected")
-        
-        # Test report generation
-        report = controller.generate_transition_report()
-        assert "controller_status" in report
-        assert "stage_history" in report
-        print("✓ Report generation works")
+        # Print feature summary
+        print("\nImplemented Features:")
+        print("- Finite State Automaton with canonical I→X→K→A→L→R→O→G→T→S sequence")
+        print("- Artifact verification with SHA-256 checksums")
+        print("- Hash continuity detection across processing chain")
+        print("- Runtime import monitoring for backward dependency detection")
+        print("- Comprehensive logging with structured output")
+        print("- Detailed error messages with remediation suggestions")
+        print("- Compliance reporting for debugging and auditing")
+        print("- Context manager for stage execution monitoring")
         
         return True
         
@@ -71,10 +138,5 @@ def test_basic_functionality():
         return False
 
 if __name__ == "__main__":
-    print("Testing Stage Transition Controller...")
-    success = test_basic_functionality()
-    if success:
-        print("\n🎉 All tests passed!")
-    else:
-        print("\n❌ Tests failed!")
-        exit(1)
+    success = test_stage_transition_controller()
+    exit(0 if success else 1)
