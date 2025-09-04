@@ -176,3 +176,4 @@ pillow>=10.0.0
 # Topological Data Analysis libraries (optional)
 # gudhi>=3.7.0  # Install with: conda install -c conda-forge gudhi
 # ripser>=0.6.0  # Install with: pip install ripser
+smart-open==7.0.0
