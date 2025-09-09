@@ -3,6 +3,7 @@
 Validation script for K_knowledge_extraction workflow tests
 Runs basic validation without external dependencies
 """
+from pathlib import Path
 
 def validate_test_structure():
     """Validate the test structure without running tests"""

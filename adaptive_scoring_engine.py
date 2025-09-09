@@ -4,17 +4,27 @@ Implementa modelado predictivo basado en datos históricos y contexto municipal
 con integración de DNP alignment validation para estándares de derechos humanos.
 """
 
-# # # from typing import Any, Dict, List, Optional  # Module not found  # Module not found  # Module not found
+from __future__ import annotations
 
 import json
 import logging
 import pickle
-# # # from datetime import datetime  # Module not found  # Module not found  # Module not found
-# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
-# # # from typing import Any, Dict, List, Optional, Tuple  # Module not found  # Module not found  # Module not found
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+from enum import Enum
 
-import numpy as np
-import pandas as pd
+try:
+    import numpy as np
+except Exception:
+    np = None
+    logging.warning("numpy not available. Some features will be disabled.")
+try:
+    import pandas as pd
+except Exception:
+    pd = None
+    logging.warning("pandas not available. Some features will be disabled.")
 
 
 # Mandatory Pipeline Contract Annotations
@@ -23,23 +33,22 @@ __code__ = "26L"
 __stage_order__ = 5
 
 try:
-# # #     from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor  # Module not found  # Module not found  # Module not found
-# # #     from sklearn.feature_selection import SelectKBest, f_regression  # Module not found  # Module not found  # Module not found
-# # #     from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score  # Module not found  # Module not found  # Module not found
-# # #     from sklearn.model_selection import cross_val_score, train_test_split  # Module not found  # Module not found  # Module not found
-# # #     from sklearn.preprocessing import RobustScaler, StandardScaler  # Module not found  # Module not found  # Module not found
-
+    from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+    from sklearn.feature_selection import SelectKBest, f_regression
+    from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+    from sklearn.model_selection import cross_val_score, train_test_split
+    from sklearn.preprocessing import RobustScaler, StandardScaler
     SKLEARN_AVAILABLE = True
-except ImportError:
+except Exception:
     logging.warning(
         "scikit-learn not available. AdaptiveScoringEngine will use fallback implementations."
     )
     SKLEARN_AVAILABLE = False
 
 try:
-# # #     from causal_dnp_framework import CausalDNPAnalyzer, CausalGraph, Evidence, CausalFactor  # Module not found  # Module not found  # Module not found
+    from causal_dnp_framework import CausalDNPAnalyzer, CausalGraph, Evidence, CausalFactor
     CAUSAL_FRAMEWORK_AVAILABLE = True
-except ImportError:
+except Exception:
     logging.warning(
         "Causal DNP framework not available. Causal correction will use fallback implementations."
     )
@@ -47,14 +56,15 @@ except ImportError:
 
 # Try to import centralized configuration
 try:
-# # #     from config_loader import get_thresholds  # Module not found  # Module not found  # Module not found
+    from config_loader import get_thresholds
     THRESHOLDS_AVAILABLE = True
-except ImportError:
+except Exception:
     THRESHOLDS_AVAILABLE = False
     logging.warning("Centralized thresholds not available, using hardcoded values")
 
+# Try to import required models
 try:
-# # #     from models import (  # Module not found  # Module not found  # Module not found
+    from models import (
         AdaptiveScoringResults,
         ComplianceStatus,
         DecalogoPointScore,
@@ -62,9 +72,9 @@ try:
         DocumentPackage,
         PDTContext,
     )
-except ImportError:
+except Exception:
     try:
-# # #         from .models import (  # Module not found  # Module not found  # Module not found
+        from .models import (
             AdaptiveScoringResults,
             ComplianceStatus,
             DecalogoPointScore,
@@ -72,13 +82,30 @@ except ImportError:
             DocumentPackage,
             PDTContext,
         )
-    except ImportError:
-        logging.error("Could not import required models. Please ensure models.py is available.")
-        raise
-    
-    @dataclass
-    class DimensionScore:
-        dimension_id: str = ""
+    except Exception:
+        logging.warning("models.py not available or missing classes. Using minimal fallbacks.")
+        class ComplianceStatus(str, Enum):
+            CUMPLE = "CUMPLE"
+            CUMPLE_PARCIAL = "CUMPLE_PARCIAL"
+            NO_CUMPLE = "NO_CUMPLE"
+        @dataclass
+        class DimensionScore:
+            dimension_id: str = ""
+        @dataclass
+        class DecalogoPointScore:
+            point_id: str = ""
+            score: float = 0.0
+        @dataclass
+        class AdaptiveScoringResults:
+            dimension_scores: Dict[str, float] = None
+            decalogo_scores: Dict[str, float] = None
+            global_score: float = 0.0
+        @dataclass
+        class DocumentPackage:
+            pass
+        @dataclass
+        class PDTContext:
+            pass
 
 
 logger = logging.getLogger(__name__)
@@ -128,11 +155,15 @@ class AdaptiveScoringEngine:
         
         # DNP alignment validation mechanism
         try:
-# # #             from dnp_alignment_adapter import DNPAlignmentValidator  # Module not found  # Module not found  # Module not found
+            # Prefer local definition if available (defined later in this file)
             self.dnp_validator = DNPAlignmentValidator()
-        except ImportError:
-            self.dnp_validator = None
-            logger.warning("DNP alignment validator not available")
+        except Exception:
+            try:
+                from dnp_alignment_adapter import DNPAlignmentValidator as ExternalDNPAlignmentValidator
+                self.dnp_validator = ExternalDNPAlignmentValidator()
+            except Exception as e:
+                self.dnp_validator = None
+                logger.warning(f"DNP alignment validator not available: {e}")
         
         # Human rights standards cache
         self.human_rights_standards = self._load_human_rights_standards()

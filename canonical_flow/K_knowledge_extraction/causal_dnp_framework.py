@@ -10,8 +10,8 @@ Code: 10K
 """
 
 import sys
-# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
-# # # from importlib import util as importlib_util  # Module not found  # Module not found  # Module not found
+from pathlib import Path
+from importlib import util as importlib_util
 
 # Alias metadata
 
@@ -27,7 +27,7 @@ alias_code = "10K"
 # Dynamically load and re-export the original module
 try:
     # Add project root to path for imports
-    project_root = Path(__file__).resolve().parents[1]
+    project_root = Path(__file__).resolve().parents[2]
     if str(project_root) not in sys.path:
         sys.path.insert(0, str(project_root))
     

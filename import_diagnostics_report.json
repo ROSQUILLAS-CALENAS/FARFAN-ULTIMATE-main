@@ -1,0 +1,1484 @@
+{
+  "summary": {
+    "project_root": "/Users/recovered/PycharmProjects/FARFAN-ULTIMATE-main",
+    "total_python_files": 785,
+    "files_with_issues": 726,
+    "issue_percentage": 92.48,
+    "total_imports": 3782,
+    "failed_imports": 3143,
+    "failure_rate": 83.1,
+    "total_issues": 3382,
+    "critical_issues": 3374,
+    "circular_dependencies": 0,
+    "missing_packages": [
+      "numpy",
+      "pytest",
+      "torch",
+      "pandas",
+      "matplotlib",
+      "requests",
+      "setuptools",
+      "transformers",
+      "sklearn",
+      "__future__"
+    ],
+    "critical_files_count": 726
+  },
+  "top_issues": {
+    "syntax_errors": 231,
+    "missing_imports": 495,
+    "circular_dependencies": 0,
+    "deep_nesting": 0,
+    "excessive_relative_imports": 1
+  },
+  "problem_files": [
+    {
+      "file": "validator_impl/__init__.py",
+      "complexity_score": 12.0,
+      "issues": {
+        "failed_imports": 3,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tracing/otel_tracer.py",
+      "complexity_score": 10.94,
+      "issues": {
+        "failed_imports": 16,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "canonical_flow/interfaces/__init__.py",
+      "complexity_score": 10.8,
+      "issues": {
+        "failed_imports": 5,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "canonical_flow/interfaces/telemetry.py",
+      "complexity_score": 10.53,
+      "issues": {
+        "failed_imports": 19,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tracing/dag_observability.py",
+      "complexity_score": 10.5,
+      "issues": {
+        "failed_imports": 30,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tracing/dashboard.py",
+      "complexity_score": 10.43,
+      "issues": {
+        "failed_imports": 14,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "validator_api/__init__.py",
+      "complexity_score": 10.4,
+      "issues": {
+        "failed_imports": 10,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tools/embargo_cli.py",
+      "complexity_score": 10.38,
+      "issues": {
+        "failed_imports": 16,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tracing/integration.py",
+      "complexity_score": 10.36,
+      "issues": {
+        "failed_imports": 11,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "canonical_flow/interfaces/auto_instrumenter.py",
+      "complexity_score": 10.27,
+      "issues": {
+        "failed_imports": 15,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tracing/decorators.py",
+      "complexity_score": 10.25,
+      "issues": {
+        "failed_imports": 8,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "adapters/schema_mismatch_logger.py",
+      "complexity_score": 10.22,
+      "issues": {
+        "failed_imports": 9,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "architecture_tests/test_import_graph_analysis.py",
+      "complexity_score": 10.22,
+      "issues": {
+        "failed_imports": 9,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tools/ci_ccc_integration.py",
+      "complexity_score": 10.2,
+      "issues": {
+        "failed_imports": 10,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "adapters/lineage_tracker.py",
+      "complexity_score": 10.18,
+      "issues": {
+        "failed_imports": 11,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "egw_query_expansion/core/immutable_context.py",
+      "complexity_score": 10.17,
+      "issues": {
+        "failed_imports": 24,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tracing/back_edge_detector.py",
+      "complexity_score": 10.17,
+      "issues": {
+        "failed_imports": 12,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tracing/visualization.py",
+      "complexity_score": 10.17,
+      "issues": {
+        "failed_imports": 12,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "tools/nightly_deletion_scanner.py",
+      "complexity_score": 10.15,
+      "issues": {
+        "failed_imports": 26,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    },
+    {
+      "file": "egw_query_expansion/tests/test_deterministic_hashing.py",
+      "complexity_score": 10.11,
+      "issues": {
+        "failed_imports": 18,
+        "syntax_errors": 0,
+        "circular_imports": 0
+      }
+    }
+  ],
+  "patterns": {
+    "most_imported_modules": [
+      [
+        "typing",
+        647
+      ],
+      [
+        "json",
+        241
+      ],
+      [
+        "sys",
+        226
+      ],
+      [
+        "logging",
+        183
+      ],
+      [
+        "os",
+        115
+      ],
+      [
+        "time",
+        96
+      ],
+      [
+        "pathlib",
+        96
+      ],
+      [
+        "dataclasses",
+        76
+      ],
+      [
+        "numpy",
+        73
+      ],
+      [
+        "warnings",
+        71
+      ]
+    ],
+    "god_modules": [
+      [
+        "asyncio",
+        24
+      ],
+      [
+        "hashlib",
+        68
+      ],
+      [
+        "json",
+        236
+      ],
+      [
+        "time",
+        93
+      ],
+      [
+        "traceback",
+        57
+      ],
+      [
+        "inspect",
+        16
+      ],
+      [
+        "sys",
+        216
+      ],
+      [
+        "tempfile",
+        33
+      ],
+      [
+        "uuid",
+        18
+      ],
+      [
+        "importlib",
+        30
+      ],
+      [
+        "ast",
+        41
+      ],
+      [
+        "numpy",
+        63
+      ],
+      [
+        "networkx",
+        15
+      ],
+      [
+        "os",
+        111
+      ],
+      [
+        "psutil",
+        15
+      ],
+      [
+        "subprocess",
+        41
+      ],
+      [
+        "logging",
+        183
+      ],
+      [
+        "re",
+        51
+      ],
+      [
+        "dataclasses",
+        50
+      ],
+      [
+        "typing",
+        150
+      ],
+      [
+        "datetime",
+        46
+      ],
+      [
+        "importlib.util",
+        24
+      ],
+      [
+        "collections",
+        26
+      ],
+      [
+        "threading",
+        36
+      ],
+      [
+        "pathlib",
+        92
+      ],
+      [
+        "argparse",
+        37
+      ],
+      [
+        "pytest",
+        26
+      ],
+      [
+        "random",
+        13
+      ],
+      [
+        "faiss",
+        12
+      ],
+      [
+        "canonical_flow.mathematical_enhancers.api_interfaces",
+        13
+      ],
+      [
+        "torch",
+        14
+      ],
+      [
+        "warnings",
+        71
+      ],
+      [
+        "enum",
+        18
+      ],
+      [
+        "shutil",
+        25
+      ],
+      [
+        "unittest",
+        11
+      ],
+      [
+        "opentelemetry",
+        16
+      ],
+      [
+        "opentelemetry.trace",
+        14
+      ],
+      [
+        "abc",
+        13
+      ],
+      [
+        "math",
+        15
+      ]
+    ],
+    "orphan_modules": [
+      "tests/test_55s_synthesis_output.py",
+      "canonical_flow/knowledge/preflight_validator.py",
+      "normative_validator.py",
+      "tracing/demo.py",
+      "tests/integration/test_ingestion_preparation_dag.py",
+      "tests/test_dependency_compatibility.py",
+      "canonical_flow/L_classification_evaluation/__init__.py",
+      "contract_system.py",
+      "canonical_flow/interfaces/telemetry.py",
+      "canonical_flow/mathematical_enhancers/hyperbolic_tensor_networks.py"
+    ],
+    "files_with_most_dependencies": [
+      [
+        "egw_query_expansion/core/__init__.py",
+        72
+      ],
+      [
+        "test_validator_refactor.py",
+        42
+      ],
+      [
+        "validate_dag_observability.py",
+        40
+      ],
+      [
+        "egw_query_expansion/core/event_driven_orchestrator.py",
+        39
+      ],
+      [
+        "validate_installation.py",
+        38
+      ],
+      [
+        "test_event_bus_system.py",
+        30
+      ],
+      [
+        "tracing/dag_observability.py",
+        30
+      ],
+      [
+        "egw_query_expansion/core/validator_adapters.py",
+        27
+      ],
+      [
+        "egw_query_expansion/tests/test_hash_policies.py",
+        26
+      ],
+      [
+        "tools/nightly_deletion_scanner.py",
+        26
+      ]
+    ]
+  },
+  "recommendations": [
+    {
+      "priority": "CRITICAL",
+      "issue": "Syntax Errors",
+      "files": [
+        "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py",
+        "PIPELINEORCHESTRATOR.py",
+        "adaptive_analyzer.py",
+        "adaptive_scoring_engine.py",
+        "advanced_loader.py"
+      ],
+      "action": "Fix syntax errors in these files before proceeding",
+      "impact": "Blocking all functionality in affected files"
+    },
+    {
+      "priority": "CRITICAL",
+      "issue": "Missing External Packages",
+      "packages": [
+        "numpy",
+        "pytest",
+        "torch",
+        "pandas",
+        "matplotlib",
+        "requests",
+        "setuptools",
+        "transformers",
+        "sklearn",
+        "__future__"
+      ],
+      "action": "pip install numpy pytest torch pandas matplotlib requests setuptools transformers sklearn __future__",
+      "impact": "10 packages need installation"
+    },
+    {
+      "priority": "HIGH",
+      "issue": "Missing Internal Modules",
+      "files": [
+        "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+        "Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.py",
+        "ComprehensiveStaticAudit.py",
+        "Copia de pattern_matcher.py",
+        "EnvironmentVerification.py"
+      ],
+      "action": "Create missing modules or fix import paths",
+      "impact": "Broken internal dependencies"
+    },
+    {
+      "priority": "MEDIUM",
+      "issue": "Excessive Relative Imports",
+      "files": [
+        "egw_query_expansion/core/__init__.py"
+      ],
+      "action": "Convert to absolute imports for clarity",
+      "impact": "Fragile import structure, breaks easily when moving files"
+    },
+    {
+      "priority": "LOW",
+      "issue": "God Modules (imported by too many files)",
+      "modules": [
+        [
+          "json",
+          236
+        ],
+        [
+          "sys",
+          216
+        ],
+        [
+          "logging",
+          183
+        ],
+        [
+          "typing",
+          150
+        ],
+        [
+          "os",
+          111
+        ]
+      ],
+      "action": "Consider splitting these modules into smaller, focused modules",
+      "impact": "High coupling, changes affect many files"
+    }
+  ],
+  "detailed_issues": [
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 25,
+      "import_statement": "import asyncio",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'asyncio' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 26,
+      "import_statement": "import hashlib",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'hashlib' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 27,
+      "import_statement": "import json",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'json' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 28,
+      "import_statement": "import time",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'time' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 29,
+      "import_statement": "import traceback",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'traceback' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 36,
+      "import_statement": "import concurrent.futures",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'concurrent.futures' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 37,
+      "import_statement": "import inspect",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'inspect' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 38,
+      "import_statement": "import sys",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'sys' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 39,
+      "import_statement": "import tempfile",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'tempfile' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 40,
+      "import_statement": "import uuid",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'uuid' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 42,
+      "import_statement": "import importlib",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'importlib' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 43,
+      "import_statement": "import ast",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'ast' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 44,
+      "import_statement": "import dis",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'dis' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 45,
+      "import_statement": "import gc",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'gc' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 46,
+      "import_statement": "import weakref",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'weakref' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 47,
+      "import_statement": "import functools",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'functools' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 51,
+      "import_statement": "import numpy",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "External package 'numpy' not installed",
+      "suggested_fix": "pip install numpy"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 59,
+      "import_statement": "import networkx",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'networkx' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 164,
+      "import_statement": "import os",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'os' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "line_number": 1160,
+      "import_statement": "import psutil",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'psutil' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.py",
+      "line_number": 7,
+      "import_statement": "import importlib",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'importlib' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.py",
+      "line_number": 8,
+      "import_statement": "import json",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'json' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.py",
+      "line_number": 9,
+      "import_statement": "import subprocess",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'subprocess' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.py",
+      "line_number": 10,
+      "import_statement": "import sys",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'sys' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "ComprehensiveStaticAudit.py",
+      "line_number": 8,
+      "import_statement": "import ast",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'ast' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "ComprehensiveStaticAudit.py",
+      "line_number": 9,
+      "import_statement": "import os",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'os' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "ComprehensiveStaticAudit.py",
+      "line_number": 10,
+      "import_statement": "import fnmatch",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'fnmatch' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "ComprehensiveStaticAudit.py",
+      "line_number": 14,
+      "import_statement": "import sys",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'sys' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Copia de pattern_matcher.py",
+      "line_number": 8,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Copia de pattern_matcher.py",
+      "line_number": 9,
+      "import_statement": "import re",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 're' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "Copia de pattern_matcher.py",
+      "line_number": 14,
+      "import_statement": "import numpy",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "External package 'numpy' not installed",
+      "suggested_fix": "pip install numpy"
+    },
+    {
+      "file_path": "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py",
+      "line_number": 31,
+      "import_statement": "",
+      "issue_type": "syntax",
+      "severity": "critical",
+      "details": "expected an indented block after 'try' statement on line 29 (EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py, line 31)",
+      "suggested_fix": "Fix syntax error before analyzing imports"
+    },
+    {
+      "file_path": "EnvironmentVerification.py",
+      "line_number": 8,
+      "import_statement": "import sys",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'sys' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "EnvironmentVerification.py",
+      "line_number": 9,
+      "import_statement": "import re",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 're' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "GOVERNANCE.py",
+      "line_number": 1,
+      "import_statement": "import json",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'json' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "G_aggregation_reporting/meso_aggregator.py",
+      "line_number": 10,
+      "import_statement": "import json",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'json' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "G_aggregation_reporting/meso_aggregator.py",
+      "line_number": 11,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "G_aggregation_reporting/meso_aggregator.py",
+      "line_number": 12,
+      "import_statement": "import sys",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'sys' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "G_aggregation_reporting/report_compiler.py",
+      "line_number": 10,
+      "import_statement": "import json",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'json' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "G_aggregation_reporting/report_compiler.py",
+      "line_number": 11,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "G_aggregation_reporting/report_compiler.py",
+      "line_number": 12,
+      "import_statement": "import sys",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'sys' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "PIPELINEORCHESTRATOR.py",
+      "line_number": 19,
+      "import_statement": "",
+      "issue_type": "syntax",
+      "severity": "critical",
+      "details": "unexpected indent (PIPELINEORCHESTRATOR.py, line 19)",
+      "suggested_fix": "Fix syntax error before analyzing imports"
+    },
+    {
+      "file_path": "adapters/__init__.py",
+      "line_number": 8,
+      "import_statement": "from .retrieval_analysis_adapter import RetrievalAnalysisAdapter",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'retrieval_analysis_adapter' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/__init__.py",
+      "line_number": 9,
+      "import_statement": "from .schema_mismatch_logger import SchemaMismatchLogger",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'schema_mismatch_logger' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/__init__.py",
+      "line_number": 11,
+      "import_statement": "from .import_blocker import ImportBlocker",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'import_blocker' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/data_transfer_objects.py",
+      "line_number": 7,
+      "import_statement": "from dataclasses import dataclass",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'dataclasses' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/data_transfer_objects.py",
+      "line_number": 7,
+      "import_statement": "from dataclasses import field",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'dataclasses' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/data_transfer_objects.py",
+      "line_number": 8,
+      "import_statement": "from typing import Any",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/data_transfer_objects.py",
+      "line_number": 8,
+      "import_statement": "from typing import Dict",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/data_transfer_objects.py",
+      "line_number": 8,
+      "import_statement": "from typing import List",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/data_transfer_objects.py",
+      "line_number": 8,
+      "import_statement": "from typing import Optional",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/data_transfer_objects.py",
+      "line_number": 9,
+      "import_statement": "from datetime import datetime",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'datetime' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/demo_adapter_usage.py",
+      "line_number": 8,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/demo_adapter_usage.py",
+      "line_number": 9,
+      "import_statement": "import json",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'json' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/demo_adapter_usage.py",
+      "line_number": 10,
+      "import_statement": "from typing import Any",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/demo_adapter_usage.py",
+      "line_number": 10,
+      "import_statement": "from typing import Dict",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/demo_adapter_usage.py",
+      "line_number": 13,
+      "import_statement": "from .retrieval_analysis_adapter import RetrievalAnalysisAdapter",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'retrieval_analysis_adapter' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/demo_adapter_usage.py",
+      "line_number": 14,
+      "import_statement": "from .import_blocker import ImportBlocker",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'import_blocker' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 8,
+      "import_statement": "import sys",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'sys' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 9,
+      "import_statement": "import importlib.util",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'importlib.util' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 10,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 11,
+      "import_statement": "from typing import Set",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 11,
+      "import_statement": "from typing import Dict",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 11,
+      "import_statement": "from typing import Any",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 11,
+      "import_statement": "from typing import Optional",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 161,
+      "import_statement": "from datetime import datetime",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'datetime' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/import_blocker.py",
+      "line_number": 146,
+      "import_statement": "from .data_transfer_objects import LineageEvent",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'data_transfer_objects' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/integration_example.py",
+      "line_number": 8,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/integration_example.py",
+      "line_number": 9,
+      "import_statement": "from typing import Any",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/integration_example.py",
+      "line_number": 9,
+      "import_statement": "from typing import Dict",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/integration_example.py",
+      "line_number": 10,
+      "import_statement": "from .retrieval_analysis_adapter import RetrievalAnalysisAdapter",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'retrieval_analysis_adapter' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/integration_example.py",
+      "line_number": 11,
+      "import_statement": "from .import_blocker import ImportBlocker",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'import_blocker' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/integration_example.py",
+      "line_number": 303,
+      "import_statement": "import traceback",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'traceback' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 8,
+      "import_statement": "import json",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'json' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 9,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 10,
+      "import_statement": "from typing import Any",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 10,
+      "import_statement": "from typing import Dict",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 10,
+      "import_statement": "from typing import List",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 10,
+      "import_statement": "from typing import Optional",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 10,
+      "import_statement": "from typing import Set",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 11,
+      "import_statement": "from datetime import datetime",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'datetime' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 11,
+      "import_statement": "from datetime import timedelta",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'datetime' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 12,
+      "import_statement": "from collections import defaultdict",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'collections' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/lineage_tracker.py",
+      "line_number": 13,
+      "import_statement": "from .data_transfer_objects import LineageEvent",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'data_transfer_objects' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/retrieval_analysis_adapter.py",
+      "line_number": 8,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/retrieval_analysis_adapter.py",
+      "line_number": 9,
+      "import_statement": "from typing import Any",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/retrieval_analysis_adapter.py",
+      "line_number": 9,
+      "import_statement": "from typing import Dict",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/retrieval_analysis_adapter.py",
+      "line_number": 9,
+      "import_statement": "from typing import List",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/retrieval_analysis_adapter.py",
+      "line_number": 9,
+      "import_statement": "from typing import Optional",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/retrieval_analysis_adapter.py",
+      "line_number": 10,
+      "import_statement": "from .data_transfer_objects import RetrievalOutputDTO",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'data_transfer_objects' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/retrieval_analysis_adapter.py",
+      "line_number": 10,
+      "import_statement": "from .data_transfer_objects import AnalysisInputDTO",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'data_transfer_objects' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/retrieval_analysis_adapter.py",
+      "line_number": 11,
+      "import_statement": "from .schema_mismatch_logger import SchemaMismatchLogger",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'schema_mismatch_logger' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/schema_mismatch_logger.py",
+      "line_number": 8,
+      "import_statement": "import json",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'json' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/schema_mismatch_logger.py",
+      "line_number": 9,
+      "import_statement": "import logging",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'logging' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/schema_mismatch_logger.py",
+      "line_number": 10,
+      "import_statement": "from typing import Any",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/schema_mismatch_logger.py",
+      "line_number": 10,
+      "import_statement": "from typing import Dict",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/schema_mismatch_logger.py",
+      "line_number": 10,
+      "import_statement": "from typing import List",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/schema_mismatch_logger.py",
+      "line_number": 10,
+      "import_statement": "from typing import Optional",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'typing' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/schema_mismatch_logger.py",
+      "line_number": 11,
+      "import_statement": "from datetime import datetime",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'datetime' not found",
+      "suggested_fix": "Create module or fix import path"
+    },
+    {
+      "file_path": "adapters/schema_mismatch_logger.py",
+      "line_number": 12,
+      "import_statement": "from .data_transfer_objects import SchemaMismatchEvent",
+      "issue_type": "missing",
+      "severity": "critical",
+      "details": "Internal module 'data_transfer_objects' not found",
+      "suggested_fix": "Create module or fix import path"
+    }
+  ],
+  "refactoring_targets": {
+    "immediate": [
+      "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.py",
+      "ComprehensiveStaticAudit.py",
+      "Copia de pattern_matcher.py",
+      "EXTRACTOR DE EVIDENCIAS CONTEXTUAL.py",
+      "EnvironmentVerification.py",
+      "GOVERNANCE.py",
+      "G_aggregation_reporting/meso_aggregator.py",
+      "G_aggregation_reporting/report_compiler.py",
+      "PIPELINEORCHESTRATOR.py"
+    ],
+    "high_priority": [],
+    "medium_priority": [
+      "adapters/lineage_tracker.py",
+      "adapters/schema_mismatch_logger.py",
+      "architecture_tests/test_import_graph_analysis.py",
+      "canonical_flow/interfaces/__init__.py",
+      "canonical_flow/interfaces/auto_instrumenter.py",
+      "canonical_flow/interfaces/telemetry.py",
+      "egw_query_expansion/core/immutable_context.py",
+      "egw_query_expansion/tests/test_deterministic_hashing.py",
+      "egw_query_expansion/tests/test_hash_policies.py",
+      "tools/ci_ccc_integration.py"
+    ]
+  }
+}

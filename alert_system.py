@@ -9,23 +9,25 @@ import json
 import logging
 import smtplib
 import time
-# # # from dataclasses import dataclass, field  # Module not found  # Module not found  # Module not found
-# # # from datetime import datetime, timedelta  # Module not found  # Module not found  # Module not found
-# # # from enum import Enum  # Module not found  # Module not found  # Module not found
-# # # from pathlib import Path  # Module not found  # Module not found  # Module not found
-# # # from typing import Any, Callable, Dict, List, Optional, Set  # Module not found  # Module not found  # Module not found
 import threading
-# # # from email.mime.text import MIMEText  # Module not found  # Module not found  # Module not found
-# # # from email.mime.multipart import MIMEMultipart  # Module not found  # Module not found  # Module not found
+from dataclasses import dataclass, field, asdict
+from datetime import datetime, timedelta
+from enum import Enum
+from pathlib import Path
+from typing import Any, Callable, Dict, List, Optional, Set, Union
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 logger = logging.getLogger(__name__)
+
 
 class AlertSeverity(Enum):
     """Alert severity levels"""
     INFO = "info"
-    WARNING = "warning" 
+    WARNING = "warning"
     CRITICAL = "critical"
     EMERGENCY = "emergency"
+
 
 class AlertStatus(Enum):
     """Alert status"""
@@ -34,15 +36,17 @@ class AlertStatus(Enum):
     RESOLVED = "resolved"
     SUPPRESSED = "suppressed"
 
+
 @dataclass
 class AlertThreshold:
     """Configurable alert threshold"""
     metric_name: str
-    operator: str  # '>', '<', '>=', '<=', '=='
+    operator: str  # '>', '<', '>=', '<=', '==', '!='
     value: float
     window_minutes: int = 5
     consecutive_breaches: int = 1
     severity: AlertSeverity = AlertSeverity.WARNING
+
 
 @dataclass
 class AlertRule:
@@ -57,7 +61,8 @@ class AlertRule:
     max_alerts_per_hour: int = 10  # Rate limiting
     notification_channels: List[str] = field(default_factory=list)
 
-@dataclass 
+
+@dataclass
 class Alert:
     """Individual alert instance"""
     alert_id: str
@@ -74,39 +79,58 @@ class Alert:
     message: str = ""
     metadata: Dict[str, Any] = field(default_factory=dict)
     escalation_count: int = 0
-    
+
     def age_minutes(self) -> float:
         """Get alert age in minutes."""
         return (datetime.now() - self.created_at).total_seconds() / 60
 
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert alert to dictionary for serialization."""
+        result = asdict(self)
+        # Convert Enum values to strings
+        result['severity'] = self.severity.value
+        result['status'] = self.status.value
+        # Convert datetime objects to ISO format strings
+        for time_field in ['created_at', 'acknowledged_at', 'resolved_at']:
+            if result[time_field]:
+                result[time_field] = result[time_field].isoformat()
+        return result
+
+
 class NotificationChannel:
     """Base class for alert notification channels"""
-    
+
     def __init__(self, channel_id: str, config: Dict[str, Any]):
         self.channel_id = channel_id
         self.config = config
-        
-    async def send_alert(self, alert: Alert) -> bool:
+
+    def send_alert(self, alert: Alert) -> bool:
         """Send alert notification. Return True if successful."""
         raise NotImplementedError
 
+
 class EmailNotificationChannel(NotificationChannel):
     """Email notification channel"""
-    
+
     def __init__(self, channel_id: str, config: Dict[str, Any]):
         super().__init__(channel_id, config)
         self.smtp_server = config.get("smtp_server", "localhost")
         self.smtp_port = config.get("smtp_port", 587)
         self.username = config.get("username")
         self.password = config.get("password")
-        self.from_email = config.get("from_email")
+        self.from_email = config.get("from_email", "alerts@example.com")
         self.to_emails = config.get("to_emails", [])
-        
-    async def send_alert(self, alert: Alert) -> bool:
+        self.use_tls = config.get("use_tls", True)
+
+    def send_alert(self, alert: Alert) -> bool:
         """Send email alert."""
         try:
+            if not self.to_emails:
+                logger.warning(f"No recipients configured for email channel {self.channel_id}")
+                return False
+
             subject = f"[{alert.severity.value.upper()}] Pipeline Alert: {alert.stage}"
-            
+
             body = f"""
 Pipeline Alert Notification
 
@@ -117,59 +141,68 @@ Metric: {alert.metric_name}
 Current Value: {alert.current_value}
 Threshold: {alert.threshold_value}
 Created: {alert.created_at.strftime('%Y-%m-%d %H:%M:%S')}
+Status: {alert.status.value}
 
 Message: {alert.message}
 
 Dashboard: http://localhost:8000/dashboard
 API Details: http://localhost:8000/api/stages/{alert.stage}
             """
-            
+
             msg = MIMEMultipart()
             msg['From'] = self.from_email
             msg['To'] = ", ".join(self.to_emails)
             msg['Subject'] = subject
             msg.attach(MIMEText(body, 'plain'))
-            
+
             # Send email
-            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
-                if self.username and self.password:
-                    server.starttls()
-                    server.login(self.username, self.password)
-                server.send_message(msg)
-                
+            server = smtplib.SMTP(self.smtp_server, self.smtp_port)
+            if self.use_tls:
+                server.starttls()
+            if self.username and self.password:
+                server.login(self.username, self.password)
+            server.sendmail(self.from_email, self.to_emails, msg.as_string())
+            server.quit()
+
             logger.info(f"Email alert sent for {alert.alert_id}")
             return True
-            
+
         except Exception as e:
             logger.error(f"Failed to send email alert {alert.alert_id}: {e}")
             return False
 
+
 class SlackNotificationChannel(NotificationChannel):
     """Slack notification channel (webhook)"""
-    
+
     def __init__(self, channel_id: str, config: Dict[str, Any]):
         super().__init__(channel_id, config)
         self.webhook_url = config.get("webhook_url")
         self.channel = config.get("channel", "#alerts")
-        
-    async def send_alert(self, alert: Alert) -> bool:
+        self.timeout = config.get("timeout", 10)
+
+    def send_alert(self, alert: Alert) -> bool:
         """Send Slack alert via webhook."""
         try:
             import requests
-            
+
+            if not self.webhook_url:
+                logger.warning(f"No webhook URL configured for Slack channel {self.channel_id}")
+                return False
+
             color_map = {
-                AlertSeverity.INFO: "good",
-                AlertSeverity.WARNING: "warning", 
-                AlertSeverity.CRITICAL: "danger",
-                AlertSeverity.EMERGENCY: "danger"
+                AlertSeverity.INFO: "#36a64f",  # green
+                AlertSeverity.WARNING: "#f2c744",  # yellow
+                AlertSeverity.CRITICAL: "#ff0000",  # red
+                AlertSeverity.EMERGENCY: "#8b0000"  # dark red
             }
-            
+
             payload = {
                 "channel": self.channel,
                 "username": "Pipeline Monitor",
                 "icon_emoji": ":warning:",
                 "attachments": [{
-                    "color": color_map.get(alert.severity, "warning"),
+                    "color": color_map.get(alert.severity, "#f2c744"),
                     "title": f"Pipeline Alert: {alert.stage}",
                     "text": alert.message,
                     "fields": [
@@ -177,36 +210,45 @@ class SlackNotificationChannel(NotificationChannel):
                         {"title": "Metric", "value": alert.metric_name, "short": True},
                         {"title": "Current", "value": str(alert.current_value), "short": True},
                         {"title": "Threshold", "value": str(alert.threshold_value), "short": True},
+                        {"title": "Status", "value": alert.status.value.upper(), "short": True},
                     ],
                     "footer": f"Alert ID: {alert.alert_id}",
                     "ts": int(alert.created_at.timestamp())
                 }]
             }
-            
-            response = requests.post(self.webhook_url, json=payload, timeout=10)
+
+            response = requests.post(self.webhook_url, json=payload, timeout=self.timeout)
             response.raise_for_status()
-            
+
             logger.info(f"Slack alert sent for {alert.alert_id}")
             return True
-            
+
+        except ImportError:
+            logger.error("Requests library not available. Install with 'pip install requests'")
+            return False
         except Exception as e:
             logger.error(f"Failed to send Slack alert {alert.alert_id}: {e}")
             return False
 
+
 class WebhookNotificationChannel(NotificationChannel):
     """Generic webhook notification channel"""
-    
+
     def __init__(self, channel_id: str, config: Dict[str, Any]):
         super().__init__(channel_id, config)
         self.url = config.get("url")
-        self.headers = config.get("headers", {})
+        self.headers = config.get("headers", {"Content-Type": "application/json"})
         self.timeout = config.get("timeout", 10)
-        
-    async def send_alert(self, alert: Alert) -> bool:
+
+    def send_alert(self, alert: Alert) -> bool:
         """Send webhook alert."""
         try:
             import requests
-            
+
+            if not self.url:
+                logger.warning(f"No URL configured for webhook channel {self.channel_id}")
+                return False
+
             payload = {
                 "alert_id": alert.alert_id,
                 "rule_id": alert.rule_id,
@@ -220,7 +262,7 @@ class WebhookNotificationChannel(NotificationChannel):
                 "created_at": alert.created_at.isoformat(),
                 "metadata": alert.metadata
             }
-            
+
             response = requests.post(
                 self.url,
                 json=payload,
@@ -228,85 +270,99 @@ class WebhookNotificationChannel(NotificationChannel):
                 timeout=self.timeout
             )
             response.raise_for_status()
-            
+
             logger.info(f"Webhook alert sent for {alert.alert_id}")
             return True
-            
+
+        except ImportError:
+            logger.error("Requests library not available. Install with 'pip install requests'")
+            return False
         except Exception as e:
             logger.error(f"Failed to send webhook alert {alert.alert_id}: {e}")
             return False
+
 
 class AlertSystem:
     """
     Comprehensive alert system with configurable thresholds, escalation policies,
     and multiple notification channels for production pipeline monitoring.
     """
-    
+
     def __init__(self, config_file: Optional[str] = None):
         """
         Initialize alert system.
-        
+
         Args:
             config_file: Path to alert configuration file
         """
         self.config_file = config_file or "alert_config.json"
-        
+
         # Core data structures
         self.alert_rules: Dict[str, AlertRule] = {}
         self.active_alerts: Dict[str, Alert] = {}
         self.alert_history: List[Alert] = []
         self.notification_channels: Dict[str, NotificationChannel] = {}
-        
+
         # Rate limiting and deduplication
         self.alert_counts: Dict[str, List[datetime]] = {}
         self.last_alert_times: Dict[str, datetime] = {}
-        
+
+        # Thread safety
+        self._lock = threading.RLock()
+
         # Background processing
         self._running = False
         self._processor_thread: Optional[threading.Thread] = None
-        
+
         # Load configuration
         self._load_configuration()
-        
+
     def _load_configuration(self):
-# # #         """Load alert rules and notification channels from configuration."""  # Module not found  # Module not found  # Module not found
+        """Load alert rules and notification channels from configuration."""
         try:
-            if Path(self.config_file).exists():
-                with open(self.config_file, 'r') as f:
+            config_path = Path(self.config_file)
+            if config_path.exists():
+                with open(config_path, 'r') as f:
                     config = json.load(f)
             else:
                 config = self._get_default_config()
                 self._save_configuration(config)
-                
+
             # Load alert rules
             for rule_data in config.get("alert_rules", []):
+                # Convert severity strings to Enum
+                for threshold_data in rule_data.get("thresholds", []):
+                    if "severity" in threshold_data and isinstance(threshold_data["severity"], str):
+                        threshold_data["severity"] = AlertSeverity(threshold_data["severity"])
+
                 rule = AlertRule(**rule_data)
                 self.alert_rules[rule.rule_id] = rule
-                
+
             # Load notification channels
             for channel_data in config.get("notification_channels", []):
                 channel_type = channel_data.get("type")
                 channel_id = channel_data.get("channel_id")
                 channel_config = channel_data.get("config", {})
-                
+
                 if channel_type == "email":
                     channel = EmailNotificationChannel(channel_id, channel_config)
                 elif channel_type == "slack":
-                    channel = SlackNotificationChannel(channel_id, channel_config)  
+                    channel = SlackNotificationChannel(channel_id, channel_config)
                 elif channel_type == "webhook":
                     channel = WebhookNotificationChannel(channel_id, channel_config)
                 else:
                     logger.warning(f"Unknown notification channel type: {channel_type}")
                     continue
-                    
+
                 self.notification_channels[channel_id] = channel
-                
-            logger.info(f"Loaded {len(self.alert_rules)} alert rules and {len(self.notification_channels)} notification channels")
-            
+
+            logger.info(
+                f"Loaded {len(self.alert_rules)} alert rules and {len(self.notification_channels)} notification channels")
+
         except Exception as e:
             logger.error(f"Error loading alert configuration: {e}")
             self._load_default_rules()
-            
+
     def _get_default_config(self) -> Dict[str, Any]:
         """Get default alert configuration."""
         return {
@@ -323,7 +379,7 @@ class AlertSystem:
                             "severity": "warning"
                         },
                         {
-                            "metric_name": "error_rate", 
+                            "metric_name": "error_rate",
                             "operator": ">=",
                             "value": 10.0,
                             "severity": "critical"
@@ -338,7 +394,7 @@ class AlertSystem:
                     "thresholds": [
                         {
                             "metric_name": "processing_time_avg",
-                            "operator": ">=", 
+                            "operator": ">=",
                             "value": 5.0,
                             "severity": "warning"
                         },
@@ -405,7 +461,7 @@ class AlertSystem:
                     }
                 },
                 {
-                    "type": "slack", 
+                    "type": "slack",
                     "channel_id": "slack",
                     "config": {
                         "webhook_url": "https://hooks.slack.com/services/YOUR/WEBHOOK/URL",
@@ -414,7 +470,7 @@ class AlertSystem:
                 }
             ]
         }
-        
+
     def _save_configuration(self, config: Dict[str, Any]):
         """Save configuration to file."""
         try:
@@ -422,7 +478,7 @@ class AlertSystem:
                 json.dump(config, f, indent=2, default=str)
         except Exception as e:
             logger.error(f"Error saving alert configuration: {e}")
-            
+
     def _load_default_rules(self):
         """Load minimal default alert rules."""
         self.alert_rules = {
@@ -433,27 +489,28 @@ class AlertSystem:
                 thresholds=[
                     AlertThreshold("error_rate", ">=", 5.0, severity=AlertSeverity.WARNING),
                     AlertThreshold("error_rate", ">=", 10.0, severity=AlertSeverity.CRITICAL)
-                ]
+                ],
+                notification_channels=[]
             )
         }
-        
+
     def start_monitoring(self):
         """Start background alert processing."""
         if self._running:
             return
-            
+
         self._running = True
         self._processor_thread = threading.Thread(target=self._process_alerts_loop, daemon=True)
         self._processor_thread.start()
         logger.info("Alert system started")
-        
+
     def stop_monitoring(self):
         """Stop background alert processing."""
         self._running = False
         if self._processor_thread:
             self._processor_thread.join(timeout=5)
         logger.info("Alert system stopped")
-        
+
     def _process_alerts_loop(self):
         """Background loop for processing alerts and escalations."""
         while self._running:
@@ -461,126 +518,129 @@ class AlertSystem:
                 self._process_escalations()
                 self._cleanup_resolved_alerts()
                 time.sleep(60)  # Process every minute
-                
+
             except Exception as e:
                 logger.error(f"Error in alert processing loop: {e}")
                 time.sleep(60)
-                
+
     def _process_escalations(self):
         """Process alert escalations."""
         current_time = datetime.now()
-        
-        for alert in self.active_alerts.values():
-            if alert.status != AlertStatus.ACTIVE:
-                continue
-                
-            # Get corresponding rule
-            rule = self.alert_rules.get(alert.rule_id)
-            if not rule or not rule.enabled:
-                continue
-                
-            # Check if escalation is needed
-            if alert.age_minutes() >= rule.escalation_minutes:
-                if alert.escalation_count == 0:  # First escalation
-                    alert.escalation_count += 1
-                    alert.severity = AlertSeverity.CRITICAL
-                    logger.warning(f"Escalating alert {alert.alert_id} to CRITICAL")
-                    
-                    # Send escalated notification
-                    self._send_notifications(alert, escalation=True)
-                    
+
+        with self._lock:
+            for alert in list(self.active_alerts.values()):
+                if alert.status != AlertStatus.ACTIVE:
+                    continue
+
+                # Get corresponding rule
+                rule = self.alert_rules.get(alert.rule_id)
+                if not rule or not rule.enabled:
+                    continue
+
+                # Check if escalation is needed
+                if alert.age_minutes() >= rule.escalation_minutes:
+                    if alert.escalation_count == 0:  # First escalation
+                        alert.escalation_count += 1
+                        alert.severity = AlertSeverity.CRITICAL
+                        logger.warning(f"Escalating alert {alert.alert_id} to CRITICAL")
+
+                        # Send escalated notification
+                        self._send_notifications(alert, escalation=True)
+
     def _cleanup_resolved_alerts(self):
         """Clean up old resolved alerts."""
         cutoff_time = datetime.now() - timedelta(hours=24)
-        
-# # #         # Remove old alerts from history  # Module not found  # Module not found  # Module not found
-        self.alert_history = [
-            alert for alert in self.alert_history
-            if alert.resolved_at is None or alert.resolved_at > cutoff_time
-        ]
-        
-        # Clean up rate limiting data
-        for rule_id in list(self.alert_counts.keys()):
-            self.alert_counts[rule_id] = [
-                timestamp for timestamp in self.alert_counts[rule_id]
-                if timestamp > cutoff_time
+
+        with self._lock:
+            # Remove old alerts from history
+            self.alert_history = [
+                alert for alert in self.alert_history
+                if alert.resolved_at is None or alert.resolved_at > cutoff_time
             ]
-            
+
+            # Clean up rate limiting data
+            for rule_id in list(self.alert_counts.keys()):
+                self.alert_counts[rule_id] = [
+                    timestamp for timestamp in self.alert_counts[rule_id]
+                    if timestamp > cutoff_time
+                ]
+
     def evaluate_metrics(self, stage: str, metrics: Dict[str, float]):
         """
         Evaluate metrics against alert rules and generate alerts as needed.
-        
+
         Args:
             stage: Pipeline stage name
             metrics: Dictionary of metric name -> value pairs
         """
         current_time = datetime.now()
-        
-        for rule in self.alert_rules.values():
-            if not rule.enabled:
-                continue
-                
-            # Apply stage filter if specified
-            if rule.stage_filter and rule.stage_filter != stage:
-                continue
-                
-            # Check rate limiting
-            if self._is_rate_limited(rule.rule_id):
-                continue
-                
-            # Evaluate each threshold
-            for threshold in rule.thresholds:
-                if threshold.metric_name not in metrics:
+
+        with self._lock:
+            for rule in self.alert_rules.values():
+                if not rule.enabled:
                     continue
-                    
-                current_value = metrics[threshold.metric_name]
-                
-                # Check threshold
-                if self._check_threshold(threshold, current_value):
-                    # Generate alert
-                    alert_id = f"{rule.rule_id}_{stage}_{threshold.metric_name}"
-                    
-                    # Check if alert already exists and is active
-                    if alert_id in self.active_alerts:
-                        existing_alert = self.active_alerts[alert_id]
-                        if existing_alert.status == AlertStatus.ACTIVE:
-                            # Update existing alert
-                            existing_alert.current_value = current_value
-                            continue
-                            
-                    # Create new alert
-                    alert = Alert(
-                        alert_id=alert_id,
-                        rule_id=rule.rule_id,
-                        stage=stage,
-                        metric_name=threshold.metric_name,
-                        current_value=current_value,
-                        threshold_value=threshold.value,
-                        severity=threshold.severity,
-                        message=f"{rule.name}: {threshold.metric_name} {threshold.operator} {threshold.value} (current: {current_value})"
-                    )
-                    
-                    self.active_alerts[alert_id] = alert
-                    self.alert_history.append(alert)
-                    
-                    # Update rate limiting
-                    self._update_rate_limiting(rule.rule_id)
-                    
-                    # Send notifications
-                    self._send_notifications(alert)
-                    
-                    logger.warning(f"Generated alert: {alert.message}")
-                    
-                else:
-                    # Check if we should resolve an existing alert
-                    alert_id = f"{rule.rule_id}_{stage}_{threshold.metric_name}"
-                    if alert_id in self.active_alerts:
-                        existing_alert = self.active_alerts[alert_id]
-                        if existing_alert.status == AlertStatus.ACTIVE:
-                            existing_alert.status = AlertStatus.RESOLVED
-                            existing_alert.resolved_at = current_time
-                            logger.info(f"Resolved alert: {alert_id}")
-                            
+
+                # Apply stage filter if specified
+                if rule.stage_filter and rule.stage_filter != stage:
+                    continue
+
+                # Check rate limiting
+                if self._is_rate_limited(rule.rule_id):
+                    continue
+
+                # Evaluate each threshold
+                for threshold in rule.thresholds:
+                    if threshold.metric_name not in metrics:
+                        continue
+
+                    current_value = metrics[threshold.metric_name]
+
+                    # Check threshold
+                    if self._check_threshold(threshold, current_value):
+                        # Generate alert
+                        alert_id = f"{rule.rule_id}_{stage}_{threshold.metric_name}"
+
+                        # Check if alert already exists and is active
+                        if alert_id in self.active_alerts:
+                            existing_alert = self.active_alerts[alert_id]
+                            if existing_alert.status == AlertStatus.ACTIVE:
+                                # Update existing alert
+                                existing_alert.current_value = current_value
+                                continue
+
+                        # Create new alert
+                        alert = Alert(
+                            alert_id=alert_id,
+                            rule_id=rule.rule_id,
+                            stage=stage,
+                            metric_name=threshold.metric_name,
+                            current_value=current_value,
+                            threshold_value=threshold.value,
+                            severity=threshold.severity,
+                            message=f"{rule.name}: {threshold.metric_name} {threshold.operator} {threshold.value} (current: {current_value})"
+                        )
+
+                        self.active_alerts[alert_id] = alert
+                        self.alert_history.append(alert)
+
+                        # Update rate limiting
+                        self._update_rate_limiting(rule.rule_id)
+
+                        # Send notifications
+                        self._send_notifications(alert)
+
+                        logger.warning(f"Generated alert: {alert.message}")
+
+                    else:
+                        # Check if we should resolve an existing alert
+                        alert_id = f"{rule.rule_id}_{stage}_{threshold.metric_name}"
+                        if alert_id in self.active_alerts:
+                            existing_alert = self.active_alerts[alert_id]
+                            if existing_alert.status == AlertStatus.ACTIVE:
+                                existing_alert.status = AlertStatus.RESOLVED
+                                existing_alert.resolved_at = current_time
+                                logger.info(f"Resolved alert: {alert_id}")
+
     def _check_threshold(self, threshold: AlertThreshold, value: float) -> bool:
         """Check if value breaches threshold."""
         if threshold.operator == ">":
@@ -593,143 +653,153 @@ class AlertSystem:
             return value <= threshold.value
         elif threshold.operator == "==":
             return value == threshold.value
+        elif threshold.operator == "!=":
+            return value != threshold.value
         return False
-        
+
     def _is_rate_limited(self, rule_id: str) -> bool:
         """Check if rule is rate limited."""
         if rule_id not in self.alert_counts:
             return False
-            
+
         rule = self.alert_rules.get(rule_id)
         if not rule:
             return False
-            
+
         # Count alerts in the last hour
         cutoff_time = datetime.now() - timedelta(hours=1)
         recent_alerts = [
             timestamp for timestamp in self.alert_counts[rule_id]
             if timestamp > cutoff_time
         ]
-        
+
         return len(recent_alerts) >= rule.max_alerts_per_hour
-        
+
     def _update_rate_limiting(self, rule_id: str):
         """Update rate limiting counters."""
         current_time = datetime.now()
-        
+
         if rule_id not in self.alert_counts:
             self.alert_counts[rule_id] = []
-            
+
         self.alert_counts[rule_id].append(current_time)
         self.last_alert_times[rule_id] = current_time
-        
+
     def _send_notifications(self, alert: Alert, escalation: bool = False):
         """Send alert notifications through configured channels."""
         rule = self.alert_rules.get(alert.rule_id)
         if not rule:
             return
-            
+
         for channel_id in rule.notification_channels:
             if channel_id not in self.notification_channels:
                 logger.warning(f"Notification channel {channel_id} not configured")
                 continue
-                
+
             channel = self.notification_channels[channel_id]
-            
+
             try:
-                # Run notification in background
-                import asyncio
-                asyncio.create_task(channel.send_alert(alert))
-                
+                # Run notification in background thread
+                thread = threading.Thread(
+                    target=self._send_notification_thread,
+                    args=(channel, alert, escalation),
+                    daemon=True
+                )
+                thread.start()
+
             except Exception as e:
                 logger.error(f"Error sending notification via {channel_id}: {e}")
-                
+
+    def _send_notification_thread(self, channel: NotificationChannel, alert: Alert, escalation: bool):
+        """Thread function for sending notifications."""
+        try:
+            success = channel.send_alert(alert)
+            if not success:
+                logger.warning(f"Failed to send alert {alert.alert_id} via {channel.channel_id}")
+        except Exception as e:
+            logger.error(f"Error in notification thread for {channel.channel_id}: {e}")
+
     def acknowledge_alert(self, alert_id: str, user: str = "system") -> bool:
         """Acknowledge an active alert."""
-        if alert_id not in self.active_alerts:
+        with self._lock:
+            if alert_id not in self.active_alerts:
+                return False
+
+            alert = self.active_alerts[alert_id]
+            if alert.status == AlertStatus.ACTIVE:
+                alert.status = AlertStatus.ACKNOWLEDGED
+                alert.acknowledged_at = datetime.now()
+                alert.metadata["acknowledged_by"] = user
+
+                logger.info(f"Alert {alert_id} acknowledged by {user}")
+                return True
+
             return False
-            
-        alert = self.active_alerts[alert_id]
-        if alert.status == AlertStatus.ACTIVE:
-            alert.status = AlertStatus.ACKNOWLEDGED
-            alert.acknowledged_at = datetime.now()
-            alert.metadata["acknowledged_by"] = user
-            
-            logger.info(f"Alert {alert_id} acknowledged by {user}")
-            return True
-            
-        return False
-        
+
     def resolve_alert(self, alert_id: str, user: str = "system") -> bool:
         """Manually resolve an alert."""
-        if alert_id not in self.active_alerts:
-            return False
-            
-        alert = self.active_alerts[alert_id]
-        alert.status = AlertStatus.RESOLVED
-        alert.resolved_at = datetime.now() 
-        alert.metadata["resolved_by"] = user
-        
-        logger.info(f"Alert {alert_id} resolved by {user}")
-        return True
-        
+        with self._lock:
+            if alert_id not in self.active_alerts:
+                return False
+
+            alert = self.active_alerts[alert_id]
+            alert.status = AlertStatus.RESOLVED
+            alert.resolved_at = datetime.now()
+            alert.metadata["resolved_by"] = user
+
+            logger.info(f"Alert {alert_id} resolved by {user}")
+            return True
+
     def get_active_alerts(self) -> List[Dict[str, Any]]:
         """Get list of active alerts."""
-        return [
-            {
-                "alert_id": alert.alert_id,
-                "rule_id": alert.rule_id,
-                "stage": alert.stage,
-                "severity": alert.severity.value,
-                "status": alert.status.value,
-                "metric_name": alert.metric_name,
-                "current_value": alert.current_value,
-                "threshold_value": alert.threshold_value,
-                "message": alert.message,
-                "created_at": alert.created_at.isoformat(),
-                "age_minutes": alert.age_minutes(),
-                "escalation_count": alert.escalation_count
-            }
-            for alert in self.active_alerts.values()
-            if alert.status in [AlertStatus.ACTIVE, AlertStatus.ACKNOWLEDGED]
-        ]
-        
+        with self._lock:
+            return [
+                alert.to_dict()
+                for alert in self.active_alerts.values()
+                if alert.status in [AlertStatus.ACTIVE, AlertStatus.ACKNOWLEDGED]
+            ]
+
     def get_alert_summary(self) -> Dict[str, Any]:
         """Get summary statistics of alerts."""
-        active_alerts = [a for a in self.active_alerts.values() if a.status == AlertStatus.ACTIVE]
-        
-        severity_counts = {
-            "info": 0,
-            "warning": 0,
-            "critical": 0,
-            "emergency": 0
-        }
-        
-        for alert in active_alerts:
-            severity_counts[alert.severity.value] += 1
-            
-        return {
-            "total_active": len(active_alerts),
-            "total_acknowledged": len([a for a in self.active_alerts.values() if a.status == AlertStatus.ACKNOWLEDGED]),
-            "total_resolved_24h": len([a for a in self.alert_history if a.resolved_at and a.resolved_at > datetime.now() - timedelta(hours=24)]),
-            "severity_breakdown": severity_counts,
-            "top_alerting_stages": self._get_top_alerting_stages()
-        }
-        
+        with self._lock:
+            active_alerts = [a for a in self.active_alerts.values() if a.status == AlertStatus.ACTIVE]
+
+            severity_counts = {
+                "info": 0,
+                "warning": 0,
+                "critical": 0,
+                "emergency": 0
+            }
+
+            for alert in active_alerts:
+                severity_counts[alert.severity.value] += 1
+
+            return {
+                "total_active": len(active_alerts),
+                "total_acknowledged": len(
+                    [a for a in self.active_alerts.values() if a.status == AlertStatus.ACKNOWLEDGED]),
+                "total_resolved_24h": len([a for a in self.alert_history if
+                                           a.resolved_at and a.resolved_at > datetime.now() - timedelta(hours=24)]),
+                "severity_breakdown": severity_counts,
+                "top_alerting_stages": self._get_top_alerting_stages()
+            }
+
     def _get_top_alerting_stages(self) -> List[Dict[str, Any]]:
         """Get stages with most alerts."""
         stage_counts = {}
         for alert in self.active_alerts.values():
             if alert.status == AlertStatus.ACTIVE:
                 stage_counts[alert.stage] = stage_counts.get(alert.stage, 0) + 1
-                
+
         return [
             {"stage": stage, "alert_count": count}
             for stage, count in sorted(stage_counts.items(), key=lambda x: x[1], reverse=True)[:5]
         ]
 
+
 # Global alert system instance
 _alert_system: Optional[AlertSystem] = None
+
 
 def get_alert_system() -> AlertSystem:
     """Get or create global alert system instance."""

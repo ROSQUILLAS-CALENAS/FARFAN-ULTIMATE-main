@@ -8,46 +8,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7131941-30ca-4dc0-8d47-9573452efdf5" name="Changes" comment="m&#10;&#10;k">
-      <change afterPath="$PROJECT_DIR$/.idea/developer-tools.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/backend.2025-09-04_1951.152-out.log" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/backend.2025-09-04_1951.152-out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/backend.2025-09-04_1951.152.log" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/backend.2025-09-04_1951.152.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/gc.log" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/gc.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/idea.log" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/idea.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-51-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-52-31.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-53-20.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-54-19.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-56-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-57-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-58-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-19-59-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-00-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-01-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-02-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-03-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-04-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-05-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-06-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-07-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-08-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-09-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-10-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-11-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-12-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-13-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-14-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-15-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-16-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-17-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-18-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-19-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-20-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-meters.2025-09-04-20-21-16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.qodana/log/open-telemetry-metrics.2025-09-04-19-51-16.csv" beforeDir="false" afterPath="$PROJECT_DIR$/.qodana/log/open-telemetry-metrics.2025-09-04-19-51-16.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canonical_flow/dependency_audit.json" beforeDir="false" afterPath="$PROJECT_DIR$/canonical_flow/dependency_audit.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recovery_scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/recovery_scripts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adaptive_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptive_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adaptive_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptive_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adaptive_scoring_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptive_scoring_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add_annotations_batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/add_annotations_batch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/advanced_loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/airflow_orchestrator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/alert_system.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis_nlp_orchestrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_nlp_orchestrator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics_enhancement.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics_enhancement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answer_formatter.py" beforeDir="false" afterPath="$PROJECT_DIR$/answer_formatter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answer_synthesizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/answer_synthesizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/answer_synthesizer_backup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atroZ-data-binding-example.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atroZ-data-binding.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atroz_api_demo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atroz_integration_example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit_logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/audit_logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit_trail.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/automated_dependency_resolution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/automated_dependency_resolver.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/azure_deploy.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/canonical_flow/K_knowledge_extraction/causal_dnp_framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/canonical_flow/K_knowledge_extraction/causal_dnp_framework.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canonical_flow/readiness.json" beforeDir="false" afterPath="$PROJECT_DIR$/canonical_flow/readiness.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canonical_output_auditor.py" beforeDir="false" afterPath="$PROJECT_DIR$/canonical_output_auditor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/egw_query_expansion/core/import_safety.py" beforeDir="false" afterPath="$PROJECT_DIR$/egw_query_expansion/core/import_safety.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validate_import_safety.py" beforeDir="false" afterPath="$PROJECT_DIR$/validate_import_safety.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validate_k_workflow_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/validate_k_workflow_tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,14 +49,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;THEBLESSMAN867&quot;
-  }
+  &quot;lastFilter&quot;: {}
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/THEBLESSMAN867/FARFAN-ULTIMATE-main.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/ROSQUILLAS-CALENAS/FARFAN-ULTIMATE-main&quot;,
     &quot;accountId&quot;: &quot;5805c3a4-ce21-4169-b086-0ad1b73d1213&quot;
   }
 }</component>
@@ -74,63 +62,200 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="3266GtRNUi22UywqcUfPBvpDYpy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.pytest in test_retriever_determinism.py.executor": "Run",
-    "Python.Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.executor": "Run",
-    "Python.Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.executor": "Run",
-    "Python.ComprehensiveStaticAudit.executor": "Run",
-    "Python.DEVELOPMENT PLAN.executor": "Run",
-    "Python.automated_dependency_resolution.executor": "Run",
-    "Python.canonical_output_auditor.executor": "Run",
-    "Python.comprehensive_pipeline_orchestrator.executor": "Run",
-    "Python.dependency_analysis_tool.executor": "Run",
-    "Python.deterministic_pipeline_validator.executor": "Run",
-    "Python.distributed_processor.executor": "Run",
-    "Python.fix_imports_venv.executor": "Run",
-    "Python.ingestion_enhancer.executor": "Debug",
-    "Python.project_health_check.executor": "Run",
-    "Python.report_compiler.executor": "Run",
-    "Python.scratch_3.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHELLCHECK.PATH": "/Users/recovered/Library/Application Support/JetBrains/PyCharm2025.1/plugins/Shell Script/shellcheck",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/recovered/Downloads/FARFAN-ULTIMATE-main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.pytest in test_retriever_determinism.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Comprehensive dependency analysis for PIROBOSTALES system Identifies root causes of import failures and dependency conflicts.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ComprehensiveStaticAudit.executor&quot;: &quot;Run&quot;,
+    &quot;Python.DEVELOPMENT PLAN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.automated_dependency_resolution.executor&quot;: &quot;Run&quot;,
+    &quot;Python.canonical_output_auditor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.comprehensive_pipeline_orchestrator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config_consolidated.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config_loader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dependency_analysis_tool.executor&quot;: &quot;Run&quot;,
+    &quot;Python.deterministic_pipeline_validator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.distributed_processor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fix_imports_venv.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ingestion_enhancer.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.project_health_check.executor&quot;: &quot;Run&quot;,
+    &quot;Python.report_compiler.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scratch_3.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/recovered/Library/Application Support/JetBrains/PyCharm2025.1/plugins/Shell Script/shellcheck&quot;,
+    &quot;Shell Script.execute.sh.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/recovered/PycharmProjects/FARFAN-ULTIMATE-main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="FARFAN-RAVE" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="config_loader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="untrusted" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config_loader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="FARFAN-RAVE" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Docutils task">
+      <module name="FARFAN-RAVE" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Sphinx task">
+      <module name="FARFAN-RAVE" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="FARFAN-RAVE" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <module name="FARFAN-RAVE" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.config_loader" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
+        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
       </set>
     </attachedChunks>
   </component>

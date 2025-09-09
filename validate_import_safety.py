@@ -8,12 +8,12 @@ import os
 sys.path.insert(0, os.path.join(os.getcwd(), 'egw_query_expansion', 'core'))
 
 try:
-# # #     from import_safety import (  # Module not found  # Module not found  # Module not found
-        ImportSafety, safe_import, get_import_report, 
+    from import_safety import (
+        ImportSafety, safe_import, get_import_report,
         safe_import_numpy, safe_import_scipy, safe_import_torch,
         safe_import_sklearn, safe_import_faiss, safe_import_transformers,
         safe_import_sentence_transformers, safe_import_pot,
-        check_dependencies, log_import_summary
+        check_dependencies, log_import_summary,
     )
     print("✓ Successfully imported import_safety module")
 except ImportError as e:
