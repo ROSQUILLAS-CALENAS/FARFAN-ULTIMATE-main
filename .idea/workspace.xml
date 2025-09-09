@@ -8,37 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7131941-30ca-4dc0-8d47-9573452efdf5" name="Changes" comment="m&#10;&#10;k">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptive_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptive_analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptive_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptive_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptive_scoring_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptive_scoring_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add_annotations_batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/add_annotations_batch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/advanced_loader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/airflow_orchestrator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/alert_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/alert_system.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis_nlp_orchestrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_nlp_orchestrator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytics_enhancement.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics_enhancement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/answer_formatter.py" beforeDir="false" afterPath="$PROJECT_DIR$/answer_formatter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/answer_synthesizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/answer_synthesizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/answer_synthesizer_backup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/atroZ-data-binding-example.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/atroZ-data-binding.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/atroz_api_demo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/atroz_integration_example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit_logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/audit_logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audit_trail.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/automated_dependency_resolution.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/automated_dependency_resolver.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/azure_deploy.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/canonical_flow/K_knowledge_extraction/causal_dnp_framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/canonical_flow/K_knowledge_extraction/causal_dnp_framework.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canonical_flow/readiness.json" beforeDir="false" afterPath="$PROJECT_DIR$/canonical_flow/readiness.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canonical_output_auditor.py" beforeDir="false" afterPath="$PROJECT_DIR$/canonical_output_auditor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/egw_query_expansion/core/import_safety.py" beforeDir="false" afterPath="$PROJECT_DIR$/egw_query_expansion/core/import_safety.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validate_import_safety.py" beforeDir="false" afterPath="$PROJECT_DIR$/validate_import_safety.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validate_k_workflow_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/validate_k_workflow_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canonical_web_server.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
