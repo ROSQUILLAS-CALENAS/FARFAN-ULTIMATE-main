@@ -9,7 +9,6 @@ Provides standardized retrieval interface for query processing and document rank
 import json
 import math
 import os
-import pickle
 # # # from collections import Counter, defaultdict  # Module not found  # Module not found  # Module not found
 # # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 # # # from typing import Any, Dict, List, Tuple, Optional  # Module not found  # Module not found  # Module not found
@@ -172,12 +171,28 @@ class BM25Index:
         }
         
         with open(path, 'wb') as f:
-            pickle.dump(index_data, f)
+            # Use secure serialization
+            from security_utils import secure_pickle_replacement
+            serialized_data = secure_pickle_replacement(index_data, use_msgpack=True)
+            f.write(serialized_data)
     
     def load_index(self, path: str) -> None:
 # # #         """Load the index from disk."""  # Module not found  # Module not found  # Module not found
         with open(path, 'rb') as f:
-            index_data = pickle.load(f)
+            # Use secure deserialization, fallback to legacy format  
+            from security_utils import secure_unpickle_replacement
+            
+            # Try to read as secure format first
+            try:
+                serialized_data = f.read()
+                index_data = secure_unpickle_replacement(serialized_data)
+            except Exception:
+                # Fallback to legacy pickle format
+                f.seek(0)  # Reset file pointer
+                import pickle
+                import logging
+                logging.warning(f"Using legacy pickle format for lexical index. Consider regenerating index with secure format.")
+                index_data = pickle.load(f)
         
         self.k1 = index_data['k1']
         self.b = index_data['b']

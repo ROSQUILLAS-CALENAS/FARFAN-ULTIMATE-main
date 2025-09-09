@@ -9,6 +9,10 @@ POT>=0.9.1
 scikit-learn>=1.3.0
 packaging>=21.0
 
+# Security dependencies for safe serialization
+jsonpickle>=3.0.0
+msgpack>=1.0.0
+
 # Data handling and processing
 datasets>=2.14.0
 pandas>=1.5.0

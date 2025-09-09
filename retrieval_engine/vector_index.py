@@ -8,7 +8,6 @@ Provides standardized retrieval interface for vector similarity search.
 
 import json
 import os
-import pickle
 # # # from pathlib import Path  # Module not found  # Module not found  # Module not found
 # # # from typing import Any, Dict, List, Optional, Tuple, Union  # Module not found  # Module not found  # Module not found
 
@@ -292,8 +291,12 @@ class VectorIndex:
             'document_texts': self.document_texts,
         }
         
-        with open(f"{path}_metadata.pkl", 'wb') as f:
-            pickle.dump(metadata, f)
+        # Use secure serialization for metadata
+        from security_utils import secure_pickle_replacement
+        
+        with open(f"{path}_metadata.msgpack", 'wb') as f:
+            serialized_metadata = secure_pickle_replacement(metadata, use_msgpack=True)
+            f.write(serialized_metadata)
         
         # Save embeddings if they exist
         if self.document_embeddings is not None:
@@ -304,9 +307,24 @@ class VectorIndex:
         # Load FAISS index
         self.index = faiss.read_index(f"{path}.faiss")
         
-        # Load metadata
-        with open(f"{path}_metadata.pkl", 'rb') as f:
-            metadata = pickle.load(f)
+        # Load metadata with secure deserialization, fallback to legacy format
+        from security_utils import secure_unpickle_replacement
+        
+        metadata_path = f"{path}_metadata.msgpack"
+        legacy_path = f"{path}_metadata.pkl"
+        
+        if os.path.exists(metadata_path):
+            with open(metadata_path, 'rb') as f:
+                serialized_data = f.read()
+                metadata = secure_unpickle_replacement(serialized_data)
+        elif os.path.exists(legacy_path):
+            import logging
+            logging.warning(f"Using legacy pickle format for {legacy_path}. Consider migrating to secure format.")
+            import pickle
+            with open(legacy_path, 'rb') as f:
+                metadata = pickle.load(f)
+        else:
+            raise FileNotFoundError(f"Neither {metadata_path} nor {legacy_path} found")
         
         self.embedding_dim = metadata['embedding_dim']
         self.index_type = metadata['index_type']

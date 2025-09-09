@@ -14,8 +14,8 @@ module-level state issues.
 """
 
 import functools
-import pickle
 import logging
+from security_utils import secure_pickle_replacement, secure_unpickle_replacement
 # # # from typing import Any, Dict, Optional, Callable, Union  # Module not found  # Module not found  # Module not found
 # # # from dataclasses import dataclass, asdict  # Module not found  # Module not found  # Module not found
 import json
@@ -309,11 +309,13 @@ def validate_serialization(wrapper: Union[functools.partial, DocumentProcessorCa
         True if serialization succeeds, False otherwise
     """
     try:
-        # Test pickling
-        serialized = pickle.dumps(wrapper)
+        # Test secure serialization
+        from security_utils import secure_pickle_replacement, secure_unpickle_replacement
+        
+        serialized = secure_pickle_replacement(wrapper, use_msgpack=True)
         
         # Test unpickling
-        deserialized = pickle.loads(serialized)
+        deserialized = secure_unpickle_replacement(serialized)
         
         # Test that it's still callable
         if not callable(deserialized):

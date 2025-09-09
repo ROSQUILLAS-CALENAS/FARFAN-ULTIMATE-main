@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 import logging
-import pickle
+from security_utils import secure_pickle_replacement, secure_unpickle_replacement
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -1605,31 +1605,36 @@ class DNPAlignmentValidator:
     def save_models(self) -> bool:
         """Guarda modelos entrenados en disco"""
         try:
-            # Guardar modelos de dimensiones
+            # Guardar modelos de dimensiones using secure serialization
             for dim, model in self.dimension_models.items():
-                model_path = self.models_path / f"dimension_{dim}_model.pkl"
+                model_path = self.models_path / f"dimension_{dim}_model.msgpack"
                 with open(model_path, "wb") as f:
-                    pickle.dump(model, f)
+                    serialized_data = secure_pickle_replacement(model, use_msgpack=True)
+                    f.write(serialized_data)
 
-            # Guardar modelos del Decálogo
+            # Guardar modelos del Decálogo using secure serialization
             for point, model in self.decalogo_models.items():
-                model_path = self.models_path / f"decalogo_{point}_model.pkl"
+                model_path = self.models_path / f"decalogo_{point}_model.msgpack"
                 with open(model_path, "wb") as f:
-                    pickle.dump(model, f)
+                    serialized_data = secure_pickle_replacement(model, use_msgpack=True)
+                    f.write(serialized_data)
 
-            # Guardar modelo global
+            # Guardar modelo global using secure serialization
             if self.global_model:
-                with open(self.models_path / "global_model.pkl", "wb") as f:
-                    pickle.dump(self.global_model, f)
+                with open(self.models_path / "global_model.msgpack", "wb") as f:
+                    serialized_data = secure_pickle_replacement(self.global_model, use_msgpack=True)
+                    f.write(serialized_data)
 
-            # Guardar preprocesadores
+            # Guardar preprocesadores using secure serialization
             if self.feature_scaler:
-                with open(self.models_path / "feature_scaler.pkl", "wb") as f:
-                    pickle.dump(self.feature_scaler, f)
+                with open(self.models_path / "feature_scaler.msgpack", "wb") as f:
+                    serialized_data = secure_pickle_replacement(self.feature_scaler, use_msgpack=True)
+                    f.write(serialized_data)
 
             if self.feature_selector:
-                with open(self.models_path / "feature_selector.pkl", "wb") as f:
-                    pickle.dump(self.feature_selector, f)
+                with open(self.models_path / "feature_selector.msgpack", "wb") as f:
+                    serialized_data = secure_pickle_replacement(self.feature_selector, use_msgpack=True)
+                    f.write(serialized_data)
 
             # Guardar metadatos
             metadata = {
@@ -1667,35 +1672,77 @@ class DNPAlignmentValidator:
             self.feature_importance = metadata.get("feature_importance", {})
             self.model_performance = metadata.get("model_performance", {})
 
-            # Cargar modelos de dimensiones
+            # Cargar modelos de dimensiones using secure deserialization
             for dim in self.dimension_weights.keys():
-                model_path = self.models_path / f"dimension_{dim}_model.pkl"
+                # Try new secure format first, fallback to old format
+                model_path = self.models_path / f"dimension_{dim}_model.msgpack"
+                legacy_path = self.models_path / f"dimension_{dim}_model.pkl"
+                
                 if model_path.exists():
                     with open(model_path, "rb") as f:
+                        serialized_data = f.read()
+                        self.dimension_models[dim] = secure_unpickle_replacement(serialized_data)
+                elif legacy_path.exists():
+                    logging.warning(f"Using legacy pickle format for {legacy_path}. Consider migrating to secure format.")
+                    with open(legacy_path, "rb") as f:
+                        import pickle
                         self.dimension_models[dim] = pickle.load(f)
 
-            # Cargar modelos del Decálogo
+            # Cargar modelos del Decálogo using secure deserialization
             for point in self.decalogo_weights.keys():
-                model_path = self.models_path / f"decalogo_{point}_model.pkl"
+                # Try new secure format first, fallback to old format
+                model_path = self.models_path / f"decalogo_{point}_model.msgpack"
+                legacy_path = self.models_path / f"decalogo_{point}_model.pkl"
+                
                 if model_path.exists():
                     with open(model_path, "rb") as f:
+                        serialized_data = f.read()
+                        self.decalogo_models[point] = secure_unpickle_replacement(serialized_data)
+                elif legacy_path.exists():
+                    logging.warning(f"Using legacy pickle format for {legacy_path}. Consider migrating to secure format.")
+                    with open(legacy_path, "rb") as f:
+                        import pickle
                         self.decalogo_models[point] = pickle.load(f)
 
-            # Cargar modelo global
-            global_path = self.models_path / "global_model.pkl"
+            # Cargar modelo global using secure deserialization
+            global_path = self.models_path / "global_model.msgpack"
+            legacy_global = self.models_path / "global_model.pkl"
+            
             if global_path.exists():
                 with open(global_path, "rb") as f:
+                    serialized_data = f.read()
+                    self.global_model = secure_unpickle_replacement(serialized_data)
+            elif legacy_global.exists():
+                logging.warning(f"Using legacy pickle format for {legacy_global}. Consider migrating to secure format.")
+                with open(legacy_global, "rb") as f:
+                    import pickle
                     self.global_model = pickle.load(f)
 
-            # Cargar preprocesadores
-            scaler_path = self.models_path / "feature_scaler.pkl"
+            # Cargar preprocesadores using secure deserialization
+            scaler_path = self.models_path / "feature_scaler.msgpack"
+            legacy_scaler = self.models_path / "feature_scaler.pkl"
+            
             if scaler_path.exists() and SKLEARN_AVAILABLE:
                 with open(scaler_path, "rb") as f:
+                    serialized_data = f.read()
+                    self.feature_scaler = secure_unpickle_replacement(serialized_data)
+            elif legacy_scaler.exists() and SKLEARN_AVAILABLE:
+                logging.warning(f"Using legacy pickle format for {legacy_scaler}. Consider migrating to secure format.")
+                with open(legacy_scaler, "rb") as f:
+                    import pickle
                     self.feature_scaler = pickle.load(f)
 
-            selector_path = self.models_path / "feature_selector.pkl"
+            selector_path = self.models_path / "feature_selector.msgpack"
+            legacy_selector = self.models_path / "feature_selector.pkl"
+            
             if selector_path.exists() and SKLEARN_AVAILABLE:
                 with open(selector_path, "rb") as f:
+                    serialized_data = f.read()
+                    self.feature_selector = secure_unpickle_replacement(serialized_data)
+            elif legacy_selector.exists() and SKLEARN_AVAILABLE:
+                logging.warning(f"Using legacy pickle format for {legacy_selector}. Consider migrating to secure format.")
+                with open(legacy_selector, "rb") as f:
+                    import pickle
                     self.feature_selector = pickle.load(f)
 
 # # #             logger.info(f"Models loaded from {self.models_path}")  # Module not found  # Module not found  # Module not found

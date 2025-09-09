@@ -1,8 +1,36 @@
 #!/usr/bin/env python3
 """Quick validation of DecalogoQuestionRegistry"""
 
-# Import the registry module directly
-exec(open('decalogo_question_registry.py').read())
+from security_utils import safe_exec, SecurityError
+import logging
+
+# Safe import of the registry module
+try:
+    # Read the file content safely
+    with open('decalogo_question_registry.py', 'r') as f:
+        registry_code = f.read()
+    
+    # Execute safely (this is a controlled case with our own trusted code)
+    # In production, prefer proper imports over exec
+    safe_globals = {}
+    safe_exec(registry_code, safe_globals)
+    
+    # Extract the classes we need
+    DecalogoQuestionRegistry = safe_globals.get('DecalogoQuestionRegistry')
+    Dimension = safe_globals.get('Dimension')
+    ClusterType = safe_globals.get('ClusterType')
+    
+    if not all([DecalogoQuestionRegistry, Dimension, ClusterType]):
+        raise ImportError("Could not safely import required classes from decalogo_question_registry.py")
+        
+except (SecurityError, IOError, ImportError) as e:
+    logging.error(f"Failed to safely import decalogo_question_registry.py: {e}")
+    # Fallback to direct import if safe execution fails
+    try:
+        from decalogo_question_registry import DecalogoQuestionRegistry, Dimension, ClusterType
+    except ImportError as ie:
+        logging.error(f"Direct import also failed: {ie}")
+        raise
 
 # Run validation
 if __name__ == "__main__":

@@ -222,12 +222,13 @@ def test_pickle_roundtrip():
         # Create wrapper
         original_wrapper = create_multiprocessing_safe_wrapper(config, wrapper_type)
         
-        # Serialize
-        serialized = pickle.dumps(original_wrapper)
+        # Serialize using secure method
+        from security_utils import secure_pickle_replacement, secure_unpickle_replacement
+        serialized = secure_pickle_replacement(original_wrapper, use_msgpack=True)
         print(f"Serialized size: {len(serialized)} bytes")
         
         # Deserialize
-        deserialized_wrapper = pickle.loads(serialized)
+        deserialized_wrapper = secure_unpickle_replacement(serialized)
         
         # Test functionality
         test_doc = "test_document.txt"
