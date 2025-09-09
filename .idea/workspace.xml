@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d7131941-30ca-4dc0-8d47-9573452efdf5" name="Changes" comment="m&#10;&#10;k">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canonical_web_server.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
