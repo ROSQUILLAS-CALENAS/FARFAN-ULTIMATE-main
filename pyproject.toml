@@ -30,7 +30,7 @@ packages = ["egw_query_expansion"]
 
 [tool.setuptools.dynamic]
 version = {attr = "egw_query_expansion.__version__"}
-description = {attr = "egw_query_expansion.__description__"}
+description = {file = ["README.md"]}
 readme = {file = ["README.md"], content-type = "text/markdown"}
 
 # Pyright configuration

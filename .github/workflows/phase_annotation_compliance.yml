@@ -1,0 +1,349 @@
+name: Phase Annotation Compliance
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - '**/*.py'
+      - '.github/workflows/phase_annotation_compliance.yml'
+      - 'tools/phase_annotation_*.py'
+
+jobs:
+  validate-annotations:
+    runs-on: ubuntu-latest
+    name: Phase Annotation Validation
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install ast json pathlib dataclasses
+        
+    - name: Run Phase Annotation Validation
+      id: validation
+      run: |
+        echo "🔍 Running phase annotation validation..."
+        python tools/phase_annotation_validator.py --validate --report --output phase_validation_report.json --ci-mode
+        
+    - name: Upload validation report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: phase-validation-report
+        path: phase_validation_report.json
+        retention-days: 30
+        
+    - name: Generate validation summary
+      if: always()
+      run: |
+        echo "📊 Validation Summary" >> $GITHUB_STEP_SUMMARY
+        echo "===================" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -f phase_validation_report.json ]; then
+          TOTAL_FILES=$(jq -r '.validation_summary.total_files_scanned' phase_validation_report.json)
+          FILES_WITH_ANNOTATIONS=$(jq -r '.validation_summary.files_with_annotations' phase_validation_report.json)
+          TOTAL_VIOLATIONS=$(jq -r '.validation_summary.total_violations' phase_validation_report.json)
+          COMPLIANCE_SCORE=$(jq -r '.validation_summary.compliance_score' phase_validation_report.json)
+          
+          echo "- **Files Scanned**: $TOTAL_FILES" >> $GITHUB_STEP_SUMMARY
+          echo "- **Files with Annotations**: $FILES_WITH_ANNOTATIONS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Violations**: $TOTAL_VIOLATIONS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Compliance Score**: $COMPLIANCE_SCORE%" >> $GITHUB_STEP_SUMMARY
+          
+          # Add violation details if any exist
+          if [ "$TOTAL_VIOLATIONS" -gt 0 ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Violations by Type" >> $GITHUB_STEP_SUMMARY
+            jq -r '.violations_by_type | to_entries[] | "- **\(.key)**: \(.value)"' phase_validation_report.json >> $GITHUB_STEP_SUMMARY
+          fi
+        else
+          echo "❌ Validation report not generated" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+    - name: Comment PR with validation results
+      if: github.event_name == 'pull_request' && always()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          if (fs.existsSync('phase_validation_report.json')) {
+            const report = JSON.parse(fs.readFileSync('phase_validation_report.json', 'utf8'));
+            
+            const summary = report.validation_summary;
+            const violations = report.violations_by_type;
+            const duplicateCodes = report.duplicate_codes;
+            
+            let comment = `## 📋 Phase Annotation Validation Results\n\n`;
+            comment += `### Summary\n`;
+            comment += `- **Files Scanned**: ${summary.total_files_scanned}\n`;
+            comment += `- **Files with Annotations**: ${summary.files_with_annotations}\n`;
+            comment += `- **Files Missing Annotations**: ${summary.files_missing_annotations}\n`;
+            comment += `- **Total Violations**: ${summary.total_violations}\n`;
+            comment += `- **Compliance Score**: ${summary.compliance_score}%\n\n`;
+            
+            if (summary.total_violations > 0) {
+              comment += `### Violations by Type\n`;
+              Object.entries(violations).forEach(([type, count]) => {
+                comment += `- **${type.replace(/_/g, ' ')}**: ${count}\n`;
+              });
+              comment += '\n';
+            }
+            
+            if (duplicateCodes.length > 0) {
+              comment += `### Duplicate Component Codes\n`;
+              duplicateCodes.slice(0, 5).forEach(([code, files]) => {
+                comment += `- **${code}**: Found in ${files.length} files\n`;
+              });
+              comment += '\n';
+            }
+            
+            if (summary.total_violations === 0) {
+              comment += `✅ **All phase annotations are compliant!**\n`;
+            } else if (report.violations_by_severity.error > 0) {
+              comment += `❌ **Validation failed**: ${report.violations_by_severity.error} error(s) found.\n`;
+            } else {
+              comment += `⚠️ **Validation passed with warnings**: ${summary.total_violations} issue(s) to address.\n`;
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+          }
+
+  auto-fix-annotations:
+    runs-on: ubuntu-latest
+    name: Auto-fix Phase Annotations
+    needs: validate-annotations
+    if: failure() && github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Run Auto-fix
+      run: |
+        echo "🔧 Attempting to auto-fix phase annotation issues..."
+        python tools/phase_annotation_refactor.py --fix --apply
+        
+    - name: Check for changes
+      id: changes
+      run: |
+        if git diff --quiet; then
+          echo "changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "changes=true" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit fixes
+      if: steps.changes.outputs.changes == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "🤖 Auto-fix phase annotation compliance issues"
+        
+    - name: Push changes
+      if: steps.changes.outputs.changes == 'true'
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.head_ref }}
+        
+    - name: Comment on PR about auto-fixes
+      if: steps.changes.outputs.changes == 'true'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `🤖 **Auto-fix Applied**\n\nI've automatically fixed some phase annotation compliance issues in this PR. Please review the changes and re-run the validation if needed.`
+          });
+
+  phase-coverage-analysis:
+    runs-on: ubuntu-latest
+    name: Phase Coverage Analysis
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python  
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Analyze phase coverage
+      run: |
+        echo "📊 Analyzing phase coverage and distribution..."
+        python tools/phase_annotation_validator.py --validate --report --output coverage_report.json
+        
+        # Generate phase coverage metrics
+        python -c "
+        import json
+        
+        with open('coverage_report.json') as f:
+            report = json.load(f)
+            
+        phase_dist = report.get('phase_distribution', {})
+        total_components = sum(phase_dist.values())
+        
+        print('Phase Coverage Analysis:')
+        print('=' * 30)
+        
+        canonical_phases = {
+            'I': 'Ingestion Preparation',
+            'X': 'Context Construction', 
+            'K': 'Knowledge Extraction',
+            'A': 'Analysis NLP',
+            'L': 'Classification Evaluation',
+            'R': 'Search Retrieval',
+            'O': 'Orchestration Control',
+            'G': 'Aggregation Reporting',
+            'T': 'Integration Storage',
+            'S': 'Synthesis Output'
+        }
+        
+        for phase_id, phase_name in canonical_phases.items():
+            count = phase_dist.get(phase_id, 0)
+            percentage = (count / total_components * 100) if total_components > 0 else 0
+            print(f'{phase_id}: {phase_name:<25} {count:>3} components ({percentage:>5.1f}%)')
+            
+        print(f'\nTotal Components: {total_components}')
+        "
+        
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: phase-coverage-report
+        path: coverage_report.json
+        retention-days: 7
+
+  detect-regressions:
+    runs-on: ubuntu-latest
+    name: Detect Annotation Regressions
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout PR branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.head_ref }}
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Validate PR branch
+      run: |
+        python tools/phase_annotation_validator.py --validate --report --output pr_validation.json
+        
+    - name: Checkout base branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.base_ref }}
+        
+    - name: Validate base branch
+      run: |
+        python tools/phase_annotation_validator.py --validate --report --output base_validation.json
+        
+    - name: Compare validation results
+      run: |
+        python -c "
+        import json
+        
+        try:
+            with open('pr_validation.json') as f:
+                pr_report = json.load(f)
+            with open('base_validation.json') as f:
+                base_report = json.load(f)
+                
+            pr_violations = pr_report['validation_summary']['total_violations']
+            base_violations = base_report['validation_summary']['total_violations']
+            
+            print(f'Base branch violations: {base_violations}')
+            print(f'PR branch violations: {pr_violations}')
+            
+            if pr_violations > base_violations:
+                increase = pr_violations - base_violations
+                print(f'❌ REGRESSION: {increase} new validation violations introduced!')
+                exit(1)
+            elif pr_violations < base_violations:
+                improvement = base_violations - pr_violations
+                print(f'✅ IMPROVEMENT: {improvement} validation violations fixed!')
+            else:
+                print('✅ No change in validation violations.')
+                
+        except FileNotFoundError as e:
+            print(f'Warning: Could not compare - {e}')
+        except Exception as e:
+            print(f'Error comparing reports: {e}')
+        "
+        
+    - name: Post regression analysis
+      if: always()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let comment = `## 📈 Phase Annotation Regression Analysis\n\n`;
+          
+          try {
+            if (fs.existsSync('pr_validation.json') && fs.existsSync('base_validation.json')) {
+              const prReport = JSON.parse(fs.readFileSync('pr_validation.json', 'utf8'));
+              const baseReport = JSON.parse(fs.readFileSync('base_validation.json', 'utf8'));
+              
+              const prViolations = prReport.validation_summary.total_violations;
+              const baseViolations = baseReport.validation_summary.total_violations;
+              
+              comment += `- **Base Branch**: ${baseViolations} violations\n`;
+              comment += `- **PR Branch**: ${prViolations} violations\n`;
+              
+              if (prViolations > baseViolations) {
+                const increase = prViolations - baseViolations;
+                comment += `\n❌ **Regression Detected**: ${increase} new validation violations introduced.\n`;
+              } else if (prViolations < baseViolations) {
+                const improvement = baseViolations - prViolations;
+                comment += `\n✅ **Improvement**: ${improvement} validation violations fixed!\n`;
+              } else {
+                comment += `\n✅ **No Change**: Validation violation count remains the same.\n`;
+              }
+            } else {
+              comment += `⚠️ Unable to perform regression analysis - validation reports missing.\n`;
+            }
+          } catch (error) {
+            comment += `❌ Error during regression analysis: ${error.message}\n`;
+          }
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
