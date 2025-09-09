@@ -1,0 +1,1432 @@
+{
+  "metadata": {
+    "total_components": 108,
+    "phases_covered": 10,
+    "validation_status": "ERRORS"
+  },
+  "components": {
+    "50O": {
+      "file_path": "validator.py",
+      "phase": "O",
+      "code": "50O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 65.0,
+      "lifecycle_state": "maintenance"
+    },
+    "22A": {
+      "file_path": "dependency_analysis_module.py",
+      "phase": "A",
+      "code": "22A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "52O": {
+      "file_path": "airflow_orchestrator.py",
+      "phase": "O",
+      "code": "52O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "53O": {
+      "file_path": "smoke_tests.py",
+      "phase": "O",
+      "code": "53O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "55O": {
+      "file_path": "run_audit_validation.py",
+      "phase": "O",
+      "code": "55O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 70.0,
+      "lifecycle_state": "maintenance"
+    },
+    "56O": {
+      "file_path": "recovery_system.py",
+      "phase": "O",
+      "code": "56O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "57O": {
+      "file_path": "automated_dependency_resolver.py",
+      "phase": "O",
+      "code": "57O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "58O": {
+      "file_path": "parallel_processor.py",
+      "phase": "O",
+      "code": "58O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "59O": {
+      "file_path": "minimal_contract_scanner.py",
+      "phase": "O",
+      "code": "59O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "60O": {
+      "file_path": "rubric_validator.py",
+      "phase": "O",
+      "code": "60O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "61O": {
+      "file_path": "metadata.py",
+      "phase": "O",
+      "code": "61O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "13K": {
+      "file_path": "causal_graph.py",
+      "phase": "K",
+      "code": "13K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "14K": {
+      "file_path": "dnp_alignment_engine.py",
+      "phase": "K",
+      "code": "14K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "63O": {
+      "file_path": "dependency_manager.py",
+      "phase": "O",
+      "code": "63O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "53S": {
+      "file_path": "canonical_output_auditor.py",
+      "phase": "S",
+      "code": "53S",
+      "stage_order": 10,
+      "phase_name": "synthesis_output",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "26A": {
+      "file_path": "text_analyzer.py",
+      "phase": "A",
+      "code": "26A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 50.0,
+      "lifecycle_state": "experimental"
+    },
+    "66O": {
+      "file_path": "integration_example.py",
+      "phase": "O",
+      "code": "66O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "54G": {
+      "file_path": "meso_aggregator.py",
+      "phase": "G",
+      "code": "54G",
+      "stage_order": 8,
+      "phase_name": "aggregation_reporting",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 100.0,
+      "lifecycle_state": "active"
+    },
+    "27A": {
+      "file_path": "improved_mapeo.py",
+      "phase": "A",
+      "code": "27A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "68O": {
+      "file_path": "query_generator.py",
+      "phase": "O",
+      "code": "68O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "59T": {
+      "file_path": "compensation_engine.py",
+      "phase": "T",
+      "code": "59T",
+      "stage_order": 9,
+      "phase_name": "integration_storage",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "70O": {
+      "file_path": "validate_pipeline_dependencies.py",
+      "phase": "O",
+      "code": "70O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "71O": {
+      "file_path": "document_processor.py",
+      "phase": "O",
+      "code": "71O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 50.0,
+      "lifecycle_state": "experimental"
+    },
+    "24L": {
+      "file_path": "evaluation_driven_processor.py",
+      "phase": "L",
+      "code": "24L",
+      "stage_order": 5,
+      "phase_name": "classification_evaluation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "73O": {
+      "file_path": "data_integrity_checker.py",
+      "phase": "O",
+      "code": "73O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "74O": {
+      "file_path": "update_distributed_processor_demo.py",
+      "phase": "O",
+      "code": "74O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "75O": {
+      "file_path": "constraint_validator.py",
+      "phase": "O",
+      "code": "75O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 100.0,
+      "lifecycle_state": "active"
+    },
+    "76O": {
+      "file_path": "contract_adapters.py",
+      "phase": "O",
+      "code": "76O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 65.0,
+      "lifecycle_state": "maintenance"
+    },
+    "77O": {
+      "file_path": "Comprehensive Deterministic Pipeline Validator with Micro-Level Characterization.py",
+      "phase": "O",
+      "code": "77O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "78O": {
+      "file_path": "decision_engine.py",
+      "phase": "O",
+      "code": "78O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "81O": {
+      "file_path": "stream_processor.py",
+      "phase": "O",
+      "code": "81O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "84O": {
+      "file_path": "validate_audit_system.py",
+      "phase": "O",
+      "code": "84O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "86O": {
+      "file_path": "contract_validator.py",
+      "phase": "O",
+      "code": "86O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "experimental"
+    },
+    "15K": {
+      "file_path": "causal_dnp_framework.py",
+      "phase": "K",
+      "code": "15K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "87O": {
+      "file_path": "pdf_text_reader.py",
+      "phase": "O",
+      "code": "87O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "88O": {
+      "file_path": "comprehensive_pipeline_orchestrator.py",
+      "phase": "O",
+      "code": "88O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "89O": {
+      "file_path": "validate_refactor.py",
+      "phase": "O",
+      "code": "89O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "90O": {
+      "file_path": "ocr.py",
+      "phase": "O",
+      "code": "90O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "91O": {
+      "file_path": "deterministic_pipeline_validator.py",
+      "phase": "O",
+      "code": "91O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "93O": {
+      "file_path": "contract_system.py",
+      "phase": "O",
+      "code": "93O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "55G": {
+      "file_path": "audit_logger.py",
+      "phase": "G",
+      "code": "55G",
+      "stage_order": 8,
+      "phase_name": "aggregation_reporting",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "56G": {
+      "file_path": "contract_diffs_report.py",
+      "phase": "G",
+      "code": "56G",
+      "stage_order": 8,
+      "phase_name": "aggregation_reporting",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 65.0,
+      "lifecycle_state": "maintenance"
+    },
+    "94O": {
+      "file_path": "stage_validation_middleware.py",
+      "phase": "O",
+      "code": "94O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "97O": {
+      "file_path": "theory_validator.py",
+      "phase": "O",
+      "code": "97O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "32A": {
+      "file_path": "contract_analysis_scanner.py",
+      "phase": "A",
+      "code": "32A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "98O": {
+      "file_path": "validate_installation.py",
+      "phase": "O",
+      "code": "98O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "17K": {
+      "file_path": "embedding_generator.py",
+      "phase": "K",
+      "code": "17K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "99O": {
+      "file_path": "atroz_api_demo.py",
+      "phase": "O",
+      "code": "99O",
+      "stage_order": 7,
+      "phase_name": "orchestration_control",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 65.0,
+      "lifecycle_state": "maintenance"
+    },
+    "37R": {
+      "file_path": "retrieval_engine.py",
+      "phase": "R",
+      "code": "37R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 65.0,
+      "lifecycle_state": "maintenance"
+    },
+    "34A": {
+      "file_path": "validate_analysis_nlp_components.py",
+      "phase": "A",
+      "code": "34A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "35A": {
+      "file_path": "dependency_analysis_tool.py",
+      "phase": "A",
+      "code": "35A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 65.0,
+      "lifecycle_state": "maintenance"
+    },
+    "19K": {
+      "file_path": "tools/apply_adv_graphics_stack.py",
+      "phase": "K",
+      "code": "19K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "40R": {
+      "file_path": "retrieval_engine/hybrid_retriever.py",
+      "phase": "R",
+      "code": "40R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "41R": {
+      "file_path": "semantic_reranking/reranker.py",
+      "phase": "R",
+      "code": "41R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "37A": {
+      "file_path": "canonical_flow/A_analysis_nlp/implementacion_mapeo.py",
+      "phase": "A",
+      "code": "37A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "13A": {
+      "file_path": "canonical_flow/A_analysis_nlp/adaptive_analyzer.py",
+      "phase": "A",
+      "code": "13A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "38A": {
+      "file_path": "canonical_flow/A_analysis_nlp/extractor_evidencias_contextual.py",
+      "phase": "A",
+      "code": "38A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "41A": {
+      "file_path": "canonical_flow/A_analysis_nlp/dnp_alignment_adapter.py",
+      "phase": "A",
+      "code": "41A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "42A": {
+      "file_path": "canonical_flow/A_analysis_nlp/evidence_validation_model.py",
+      "phase": "A",
+      "code": "42A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "09X": {
+      "file_path": "canonical_flow/X_context_construction/immutable_context.py",
+      "phase": "X",
+      "code": "09X",
+      "stage_order": 2,
+      "phase_name": "context_construction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "10X": {
+      "file_path": "canonical_flow/X_context_construction/context_adapter.py",
+      "phase": "X",
+      "code": "10X",
+      "stage_order": 2,
+      "phase_name": "context_construction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "11X": {
+      "file_path": "canonical_flow/X_context_construction/lineage_tracker.py",
+      "phase": "X",
+      "code": "11X",
+      "stage_order": 2,
+      "phase_name": "context_construction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "42R": {
+      "file_path": "canonical_flow/mathematical_enhancers/retrieval_enhancer.py",
+      "phase": "R",
+      "code": "42R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "58G": {
+      "file_path": "canonical_flow/mathematical_enhancers/aggregation_enhancer.py",
+      "phase": "G",
+      "code": "58G",
+      "stage_order": 8,
+      "phase_name": "aggregation_reporting",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "61T": {
+      "file_path": "canonical_flow/T_integration_storage/compensation_engine.py",
+      "phase": "T",
+      "code": "61T",
+      "stage_order": 9,
+      "phase_name": "integration_storage",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "62T": {
+      "file_path": "canonical_flow/T_integration_storage/analytics_enhancement.py",
+      "phase": "T",
+      "code": "62T",
+      "stage_order": 9,
+      "phase_name": "integration_storage",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "63T": {
+      "file_path": "canonical_flow/T_integration_storage/optimization_engine.py",
+      "phase": "T",
+      "code": "63T",
+      "stage_order": 9,
+      "phase_name": "integration_storage",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "64T": {
+      "file_path": "canonical_flow/T_integration_storage/metrics_collector.py",
+      "phase": "T",
+      "code": "64T",
+      "stage_order": 9,
+      "phase_name": "integration_storage",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "65T": {
+      "file_path": "canonical_flow/T_integration_storage/feedback_loop.py",
+      "phase": "T",
+      "code": "65T",
+      "stage_order": 9,
+      "phase_name": "integration_storage",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "54S": {
+      "file_path": "canonical_flow/S_synthesis_output/answer_formatter.py",
+      "phase": "S",
+      "code": "54S",
+      "stage_order": 10,
+      "phase_name": "synthesis_output",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "55S": {
+      "file_path": "canonical_flow/S_synthesis_output/answer_synthesizer.py",
+      "phase": "S",
+      "code": "55S",
+      "stage_order": 10,
+      "phase_name": "synthesis_output",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "20K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/causal_graph_constructor.py",
+      "phase": "K",
+      "code": "20K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "21K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/gate_validator.py",
+      "phase": "K",
+      "code": "21K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "22K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/causal_graph.py",
+      "phase": "K",
+      "code": "22K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "23K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/advanced_knowledge_graph_builder.py",
+      "phase": "K",
+      "code": "23K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "24K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/chunking_processor.py",
+      "phase": "K",
+      "code": "24K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "25K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/entity_concept_extractor.py",
+      "phase": "K",
+      "code": "25K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "26K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/causal_dnp_framework.py",
+      "phase": "K",
+      "code": "26K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "27K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/dnp_alignment_analyzer.py",
+      "phase": "K",
+      "code": "27K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "28K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/embedding_generator.py",
+      "phase": "K",
+      "code": "28K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "29K": {
+      "file_path": "canonical_flow/K_knowledge_extraction/embedding_builder.py",
+      "phase": "K",
+      "code": "29K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "27L": {
+      "file_path": "canonical_flow/L_classification_evaluation/conformal_risk_control.py",
+      "phase": "L",
+      "code": "27L",
+      "stage_order": 5,
+      "phase_name": "classification_evaluation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "29L": {
+      "file_path": "canonical_flow/L_classification_evaluation/demo_stage_orchestrator.py",
+      "phase": "L",
+      "code": "29L",
+      "stage_order": 5,
+      "phase_name": "classification_evaluation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "30L": {
+      "file_path": "canonical_flow/L_classification_evaluation/score_calculator.py",
+      "phase": "L",
+      "code": "30L",
+      "stage_order": 5,
+      "phase_name": "classification_evaluation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "31L": {
+      "file_path": "canonical_flow/L_classification_evaluation/evidence_adapter.py",
+      "phase": "L",
+      "code": "31L",
+      "stage_order": 5,
+      "phase_name": "classification_evaluation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "32L": {
+      "file_path": "canonical_flow/L_classification_evaluation/adaptive_scoring_engine.py",
+      "phase": "L",
+      "code": "32L",
+      "stage_order": 5,
+      "phase_name": "classification_evaluation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "30K": {
+      "file_path": "canonical_flow/knowledge/knowledge_audit_system.py",
+      "phase": "K",
+      "code": "30K",
+      "stage_order": 3,
+      "phase_name": "knowledge_extraction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "60G": {
+      "file_path": "canonical_flow/G_aggregation_reporting/report_compiler.py",
+      "phase": "G",
+      "code": "60G",
+      "stage_order": 8,
+      "phase_name": "aggregation_reporting",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 100.0,
+      "lifecycle_state": "active"
+    },
+    "43R": {
+      "file_path": "canonical_flow/R_search_retrieval/vector_index.py",
+      "phase": "R",
+      "code": "43R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "44R": {
+      "file_path": "canonical_flow/R_search_retrieval/reranker.py",
+      "phase": "R",
+      "code": "44R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "45R": {
+      "file_path": "canonical_flow/R_search_retrieval/lexical_index.py",
+      "phase": "R",
+      "code": "45R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "46R": {
+      "file_path": "canonical_flow/R_search_retrieval/deterministic_hybrid_retrieval.py",
+      "phase": "R",
+      "code": "46R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "47R": {
+      "file_path": "canonical_flow/R_search_retrieval/hybrid_retrieval_bridge.py",
+      "phase": "R",
+      "code": "47R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "48R": {
+      "file_path": "canonical_flow/R_search_retrieval/intelligent_recommendation_engine.py",
+      "phase": "R",
+      "code": "48R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "49R": {
+      "file_path": "canonical_flow/R_search_retrieval/hybrid_retrieval_core.py",
+      "phase": "R",
+      "code": "49R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "50R": {
+      "file_path": "canonical_flow/R_search_retrieval/hybrid_retriever.py",
+      "phase": "R",
+      "code": "50R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "51R": {
+      "file_path": "canonical_flow/R_search_retrieval/lexical_index_base.py",
+      "phase": "R",
+      "code": "51R",
+      "stage_order": 6,
+      "phase_name": "search_retrieval",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 60.0,
+      "lifecycle_state": "maintenance"
+    },
+    "01I": {
+      "file_path": "canonical_flow/I_ingestion_preparation/pdf_reader.py",
+      "phase": "I",
+      "code": "01I",
+      "stage_order": 1,
+      "phase_name": "ingestion_preparation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "12I": {
+      "file_path": "canonical_flow/I_ingestion_preparation/05I_raw_data_generator.py",
+      "phase": "I",
+      "code": "12I",
+      "stage_order": 1,
+      "phase_name": "ingestion_preparation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "13I": {
+      "file_path": "canonical_flow/I_ingestion_preparation/normative_validator.py",
+      "phase": "I",
+      "code": "13I",
+      "stage_order": 1,
+      "phase_name": "ingestion_preparation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "14I": {
+      "file_path": "canonical_flow/I_ingestion_preparation/feature_extractor.py",
+      "phase": "I",
+      "code": "14I",
+      "stage_order": 1,
+      "phase_name": "ingestion_preparation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "15I": {
+      "file_path": "canonical_flow/I_ingestion_preparation/advanced_loader.py",
+      "phase": "I",
+      "code": "15I",
+      "stage_order": 1,
+      "phase_name": "ingestion_preparation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "16I": {
+      "file_path": "canonical_flow/I_ingestion_preparation/preflight_validation.py",
+      "phase": "I",
+      "code": "16I",
+      "stage_order": 1,
+      "phase_name": "ingestion_preparation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "61G": {
+      "file_path": "G_aggregation_reporting/meso_aggregator.py",
+      "phase": "G",
+      "code": "61G",
+      "stage_order": 8,
+      "phase_name": "aggregation_reporting",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 100.0,
+      "lifecycle_state": "active"
+    },
+    "62G": {
+      "file_path": "G_aggregation_reporting/report_compiler.py",
+      "phase": "G",
+      "code": "62G",
+      "stage_order": 8,
+      "phase_name": "aggregation_reporting",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 100.0,
+      "lifecycle_state": "active"
+    },
+    "33L": {
+      "file_path": "egw_query_expansion/core/conformal_risk_control.py",
+      "phase": "L",
+      "code": "33L",
+      "stage_order": 5,
+      "phase_name": "classification_evaluation",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 85.0,
+      "lifecycle_state": "active"
+    },
+    "44A": {
+      "file_path": "egw_query_expansion/core/project_analyzer.py",
+      "phase": "A",
+      "code": "44A",
+      "stage_order": 4,
+      "phase_name": "analysis_nlp",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    },
+    "12X": {
+      "file_path": "egw_query_expansion/core/immutable_context.py",
+      "phase": "X",
+      "code": "12X",
+      "stage_order": 2,
+      "phase_name": "context_construction",
+      "owner": "THEBLESSMAN687",
+      "evidence_score": 75.0,
+      "lifecycle_state": "maintenance"
+    }
+  },
+  "sequence_validation": {
+    "valid": false,
+    "issues": [
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "50O",
+        "gap_before": "52O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "53O",
+        "gap_before": "55O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "61O",
+        "gap_before": "63O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "63O",
+        "gap_before": "66O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "66O",
+        "gap_before": "68O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "68O",
+        "gap_before": "70O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "71O",
+        "gap_before": "73O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "78O",
+        "gap_before": "81O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "81O",
+        "gap_before": "84O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "84O",
+        "gap_before": "86O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "91O",
+        "gap_before": "93O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "O",
+        "gap_after": "94O",
+        "gap_before": "97O"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "A",
+        "gap_after": "13A",
+        "gap_before": "22A"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "A",
+        "gap_after": "22A",
+        "gap_before": "26A"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "A",
+        "gap_after": "27A",
+        "gap_before": "32A"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "A",
+        "gap_after": "32A",
+        "gap_before": "34A"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "A",
+        "gap_after": "35A",
+        "gap_before": "37A"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "A",
+        "gap_after": "38A",
+        "gap_before": "41A"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "A",
+        "gap_after": "42A",
+        "gap_before": "44A"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "K",
+        "gap_after": "15K",
+        "gap_before": "17K"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "K",
+        "gap_after": "17K",
+        "gap_before": "19K"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "G",
+        "gap_after": "56G",
+        "gap_before": "58G"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "G",
+        "gap_after": "58G",
+        "gap_before": "60G"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "T",
+        "gap_after": "59T",
+        "gap_before": "61T"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "L",
+        "gap_after": "24L",
+        "gap_before": "27L"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "L",
+        "gap_after": "27L",
+        "gap_before": "29L"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "R",
+        "gap_after": "37R",
+        "gap_before": "40R"
+      },
+      {
+        "type": "sequence_gap",
+        "phase": "I",
+        "gap_after": "01I",
+        "gap_before": "12I"
+      }
+    ],
+    "phase_coverage": {
+      "ingestion_preparation": {
+        "phase": "I",
+        "component_count": 6,
+        "components": [
+          "01I",
+          "12I",
+          "13I",
+          "14I",
+          "15I",
+          "16I"
+        ]
+      },
+      "context_construction": {
+        "phase": "X",
+        "component_count": 4,
+        "components": [
+          "09X",
+          "10X",
+          "11X",
+          "12X"
+        ]
+      },
+      "knowledge_extraction": {
+        "phase": "K",
+        "component_count": 16,
+        "components": [
+          "13K",
+          "14K",
+          "15K",
+          "17K",
+          "19K",
+          "20K",
+          "21K",
+          "22K",
+          "23K",
+          "24K",
+          "25K",
+          "26K",
+          "27K",
+          "28K",
+          "29K",
+          "30K"
+        ]
+      },
+      "analysis_nlp": {
+        "phase": "A",
+        "component_count": 12,
+        "components": [
+          "22A",
+          "26A",
+          "27A",
+          "32A",
+          "34A",
+          "35A",
+          "37A",
+          "13A",
+          "38A",
+          "41A",
+          "42A",
+          "44A"
+        ]
+      },
+      "classification_evaluation": {
+        "phase": "L",
+        "component_count": 7,
+        "components": [
+          "24L",
+          "27L",
+          "29L",
+          "30L",
+          "31L",
+          "32L",
+          "33L"
+        ]
+      },
+      "search_retrieval": {
+        "phase": "R",
+        "component_count": 13,
+        "components": [
+          "37R",
+          "40R",
+          "41R",
+          "42R",
+          "43R",
+          "44R",
+          "45R",
+          "46R",
+          "47R",
+          "48R",
+          "49R",
+          "50R",
+          "51R"
+        ]
+      },
+      "orchestration_control": {
+        "phase": "O",
+        "component_count": 34,
+        "components": [
+          "50O",
+          "52O",
+          "53O",
+          "55O",
+          "56O",
+          "57O",
+          "58O",
+          "59O",
+          "60O",
+          "61O",
+          "63O",
+          "66O",
+          "68O",
+          "70O",
+          "71O",
+          "73O",
+          "74O",
+          "75O",
+          "76O",
+          "77O",
+          "78O",
+          "81O",
+          "84O",
+          "86O",
+          "87O",
+          "88O",
+          "89O",
+          "90O",
+          "91O",
+          "93O",
+          "94O",
+          "97O",
+          "98O",
+          "99O"
+        ]
+      },
+      "aggregation_reporting": {
+        "phase": "G",
+        "component_count": 7,
+        "components": [
+          "54G",
+          "55G",
+          "56G",
+          "58G",
+          "60G",
+          "61G",
+          "62G"
+        ]
+      },
+      "integration_storage": {
+        "phase": "T",
+        "component_count": 6,
+        "components": [
+          "59T",
+          "61T",
+          "62T",
+          "63T",
+          "64T",
+          "65T"
+        ]
+      },
+      "synthesis_output": {
+        "phase": "S",
+        "component_count": 3,
+        "components": [
+          "53S",
+          "54S",
+          "55S"
+        ]
+      }
+    }
+  }
+}
