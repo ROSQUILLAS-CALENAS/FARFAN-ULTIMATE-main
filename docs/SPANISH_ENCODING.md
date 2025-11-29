@@ -103,5 +103,5 @@ If you encounter encoding issues:
 ## Related Documentation
 
 - [README_METHODOLOGY.md](../README_METHODOLOGY.md) - DNP methodology documentation
-- [Cuestionario Original de la Metodología.md](../Cuestionario%20Original%20de%20la%20Metodología.md)
-- [Decálogo de Derechos Humanos_ Puntos y Clústeres.md](../Decálogo%20de%20Derechos%20Humanos_%20Puntos%20y%20Clústeres.md)
+- Cuestionario Original de la Metodología.md - Original methodology questionnaire
+- Decálogo de Derechos Humanos_ Puntos y Clústeres.md - Human rights framework clusters

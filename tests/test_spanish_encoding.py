@@ -81,6 +81,7 @@ def test_file_reading_with_spanish_content():
     ]
     
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    spanish_chars = ['á', 'é', 'í', 'ó', 'ú', 'ñ']
     
     for filename in test_files:
         filepath = os.path.join(base_path, filename)
@@ -88,7 +89,7 @@ def test_file_reading_with_spanish_content():
             with open(filepath, 'r', encoding='utf-8') as f:
                 content = f.read()
                 # Verify Spanish characters are present
-                assert 'á' in content or 'é' in content or 'í' in content or 'ó' in content or 'ú' in content or 'ñ' in content
+                assert any(char in content for char in spanish_chars), f"No Spanish characters found in {filename}"
                 # Verify the content is not corrupted
                 assert len(content) > 0
 
